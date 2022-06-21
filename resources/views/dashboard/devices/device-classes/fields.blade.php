@@ -1,0 +1,9 @@
+<div class="form-group row">
+    <div class="col">
+        {!!  Html::decode(Form::label('name' ,__('general.name') ,['class'=>'form-label']))   !!}
+        {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'),'required']) !!}
+        @error('name')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+</div>

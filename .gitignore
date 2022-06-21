@@ -1,0 +1,7 @@
+.idea/
+storage
+vendor
+node_modules
+*.env
+*.lock
+public/uploads/

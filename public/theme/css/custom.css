@@ -1,0 +1,150 @@
+.w-xs {
+    min-width: 80px;
+}
+
+.w-sm {
+    min-width: 95px;
+}
+
+.w-md {
+    min-width: 110px;
+}
+
+.w-lg {
+    min-width: 140px;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.select2-selection__rendered {
+    font-weight: 400;
+    color: #212529;
+}
+
+.s-tiny {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0.45rem !important;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.parsley-errors-list {
+    list-style: none !important;
+    padding-left: 0.5rem !important;
+}
+
+.parsley-errors-list .parsley-required {
+    color: #e83e8c;
+}
+
+.bootstrap-touchspin .input-group-btn-vertical>.btn {
+    padding: 0 !important;
+}
+
+
+
+/*.card .card-actions a {*/
+/*    padding: 6px 12px !important;*/
+/*}*/
+
+.col-form-label {
+    color: #0b0b0b;
+}
+
+.topbar .top-navbar .navbar-nav>.nav-item>.nav-link {
+    line-height: 0 !important;
+}
+
+.table-compact td {
+    padding: 0.2rem 0.2rem !important;
+}
+
+.table-super-compact td {
+    padding: 0.1rem 0.1rem !important;
+}
+
+.h-force-flex {
+    display: none !important;
+}
+
+.d-force-flex {
+    display: flow-root !important;
+}
+
+.img-responsive-small {
+    max-width: 70%;
+    height: auto;
+}
+
+.nav-search-box {
+    border: none !important;
+}
+
+.nav-search-box:focus {
+    outline: none !important;
+    border-bottom: 1px solid #472051 !important;
+    border-radius: 0 !important;
+}
+
+@media print {
+    .card {
+        border-top: none !important;
+    }
+
+    .card-body {
+        padding-top: 0 !important;
+    }
+
+    .dataTables_filter {
+        display: none !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_info {
+        display: none !important;
+    }
+
+    .dataTables_paginate {
+        display: none !important;
+    }
+
+    .dataTables_length {
+        display: none !important;
+    }
+
+    .dt-buttons {
+        display: none !important;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+
+    .fixed-footer {
+        position:fixed !important;
+        bottom: 0 !important;
+    }
+
+    .fixed-header {
+        position:fixed !important;
+        top: 0 !important;
+        width: 100% !important;
+    }
+}
