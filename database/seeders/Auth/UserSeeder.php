@@ -31,8 +31,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('admin123'),
                 'normal_password' => 'admin123',
                 'active' => true,
-                'created_at' => Carbon::now(),
-                'building_id' => 1,
+                'created_at' => Carbon::now()
             ]
         ]);
     }

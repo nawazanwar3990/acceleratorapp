@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\RealEstate\BuildingUnits\BuildingsController;
 use App\Http\Controllers\RealEstate\BuildingUnits\FlatController;
 use App\Http\Controllers\RealEstate\BuildingUnits\FloorController;
@@ -11,27 +11,12 @@ use App\Http\Controllers\RealEstate\Definition\DistrictController;
 use App\Http\Controllers\RealEstate\Definition\ProvinceController;
 use App\Http\Controllers\RealEstate\Definition\TehsilController;
 use App\Http\Controllers\RealEstate\GeneralController;
-use App\Http\Controllers\RealEstate\HumanResource\EmployeeController;
 use App\Http\Controllers\RealEstate\HumanResource\HumanResourceController;
 use App\Http\Controllers\RealEstate\ListController;
 use App\Http\Controllers\RealEstate\Sales\InstallmentPlanController;
 use App\Http\Controllers\RealEstate\Sales\SalesController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-//Temporary Route, will be removed when nav is set
-//Route::get('/', [HomeController::class, 'index'])->name('dashboard');
-//Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
@@ -40,7 +25,6 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::post('/change-building', [BuildingsController::class, 'changeBuilding'])->name('change-building');
     Route::get('/search-flat', [FlatController::class, 'searchFlat'])->name('search-flat');
-
     Route::post('get-provinces-of-country', [CountryController::class, 'getProvincesOfCountry'])->name('get.provinces-by-country');
     Route::post('get-districts-of-province', [ProvinceController::class, 'getDistrictsOfProvince'])->name('get.districts-by-province');
     Route::post('get-tehsils-of-district', [DistrictController::class, 'getTehsilsOfDistrict'])->name('get.tehsils-by-district');
@@ -63,12 +47,9 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::post('get-flat-revisions', [FlatController::class, 'getFlatRevisions'])->name('get.flat-revisions');
     Route::post('get-flat-object', [FlatController::class, 'getFlatObject'])->name('get.flat-object');
     Route::get('nav-search', [GeneralController::class, 'navSearch'])->name('nav-search');
-
-    //Lists
     Route::get('/brokers-list', [ListController::class, 'brokerList'])->name('brokers-list');
     Route::get('/sellers-list', [ListController::class, 'sellerList'])->name('sellers-list');
     Route::get('/buyers-list', [ListController::class, 'buyerList'])->name('buyers-list');
-
     require __DIR__ . '/real-estate/definition/definition.php';
     require __DIR__ . '/accounts.php';
     require __DIR__ . '/payroll.php';
@@ -82,5 +63,4 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/real-estate/front-desk.php';
     require __DIR__ . '/real-estate/fixed-assets.php';
 });
-
 require __DIR__ . '/auth.php';

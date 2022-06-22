@@ -1,10 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 use App\Services\RealEstate\HomeService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use function __;
+use function redirect;
+use function session;
+use function view;
 
 class HomeController extends Controller
 {
@@ -12,24 +22,10 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
-    public function index(Request $request)
+    public function index(Request $request): View|Factory|Redirector|Application|RedirectResponse
     {
-        if (Auth::user() == null) {
-            return redirect('login');
-        }
-
-        $sId = $request->query('sId');
-        if ($sId) {
-            session()->forget('sId');
-            session()->put('sId', $sId);
-            return redirect()->route('dashboard.index');
-        }
-
-        $params = [
-            'pageTitle' => __('general.dashboard'),
-        ];
-        return view('dashboard.index', $params);
+        $pageTitle = __('general.dashboard');
+        return view('dashboard.index', compact('pageTitle'));
     }
 
     public function dashboardDataAjax()

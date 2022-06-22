@@ -24,7 +24,9 @@ class KeyWordEnum extends AbstractEnum
     public const SALES_ENQUIRY = 'sales_enquiry';
     public const COMPLAIN_TYPE = 'complain_type';
     public const FRONT_DESK_SETUP = 'front_desk_setup';
-    public const SYSTEM_SETTINGS = 'system_settings';
+
+    public const SYSTEM_SETTING = 'system_setting';
+
     public const BUILDING_PRINT = 'building_print';
     public const FLAT_OWNERS = 'flat_owners';
     public const BUILDING_UNITS = 'building_units';
@@ -55,12 +57,13 @@ class KeyWordEnum extends AbstractEnum
     public const EXPENSES = 'expenses';
     public const EXPENSES_STATEMENT = 'expenses_statement';
     public const DEFINITIONS = 'definitions';
-    public const SERVICES = 'services';
     public const FLOOR_NAMES = 'floor_names';
     public const FLOOR_TYPES = 'floor_types';
     public const FLOOR_SIZE = 'floor_size';
     public const ACCOUNTS = 'accounts';
-    public const LEDGERS = 'ledgers';
+
+    public const LEDGER = 'ledger';
+
     public const INSTALLMENT_TERM = 'installment_term';
     public const SALES_QUOTATION = 'sales_quotation';
     public const SUPPLIER_LEDGER = 'supplier_ledger';
@@ -68,7 +71,8 @@ class KeyWordEnum extends AbstractEnum
     public const BUYER_LEDGER = 'buyer_ledger';
     public const BROKER_LEDGER = 'broker_ledger';
     public const GENERAL_LEDGER = 'general_ledger';
-    public const VOUCHERS = 'vouchers';
+
+    public const VOUCHER = 'voucher';
     public const BUYER_CASH_RECEIVING = 'buyer_cash_receiving';
     public const BUYER_INSTALLMENT_RECEIVING = 'buyer_installment_receiving';
     public const SUPPLIER_PAYMENT = 'supplier_payment';
@@ -94,9 +98,11 @@ class KeyWordEnum extends AbstractEnum
     public const OWN_STOCK = 'own_stock';
     public const INVESTOR_STOCK = 'investor_stock';
     public const AUTHORIZATION = 'authorization';
-    public const PERMISSIONS = 'permissions';
-    public const ROLES = 'roles';
-    public const USERS = 'users';
+
+    public const PERMISSION = 'permissions';
+    public const ROLE = 'roles';
+    public const USER = 'users';
+
     public const GENERAL = 'general';
     public const RELATIONS = 'relation';
     public const CAST = 'cast';
@@ -123,15 +129,8 @@ class KeyWordEnum extends AbstractEnum
     public const CASH_BOOK = 'cash_book';
     public const PROFIT_LOSS = 'profit_loss';
     public const BROKER_REPORT = 'broker_report';
-    public const DEVICE = 'device';
-    public const DEVICE_TYPE = 'device_type';
-    public const DEVICE_MODEL = 'device_model';
-    public const DEVICE_MAKE = 'device_make';
-    public const DEVICE_LOCATION = 'device_location';
-    public const DEVICE_OPERATING_SYSTEM = 'device_operating_system';
-    public const DEVICE_CLASS = 'device_class';
-    public const DEVICE_MANAGEMENT = 'device_management';
-    public const SYNC_PERMISSIONS = 'sync_permission';
+
+    public const SYNC_PERMISSION = 'sync_permission';
     public const PAYROLL = 'payroll';
     public const ADVANCE_SALARY = 'advance_salary';
     public const SALARY_RECORDS = 'salary_records';
@@ -144,6 +143,18 @@ class KeyWordEnum extends AbstractEnum
     public const OPENING_BALANCE_VOUCHER = 'opening_balance_voucher';
     public const CREATE_ACCOUNT_HEAD = 'create_account_head';
     public const BUSINESS_SETTINGS = 'business_settings';
+
+    public const PACKAGES_PLAIN = 'packages_plain';
+    public const INVOICE_TICKET_AND_ACCOUNTING = 'invoice_ticket_and_account';
+    public const REPORTING_AND_STAT_HANDLING = 'reporting_and_stat_handling';
+    public const SYSTEM_CONFIGURATION = 'system_configuration';
+    public const FREELANCE_AND_MENTOR = 'freelancer_and_mentor';
+    public const USER_MANAGEMENT_SYSTEM = 'user_management_system';
+    public const FRONT_DESK_MANAGEMENT_SYSTEM = 'front_desk_management_system';
+    public const CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING = 'co_working_space_allotment_and_handling';
+    public const MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT = 'event_appointment_and_event_management';
+    public const SERVICE_CREATION = 'service_creation';
+    public const DEFINITION = 'definition';
 
     static function getConstants()
     {

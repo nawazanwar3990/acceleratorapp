@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\DB;
 class RoleEnum extends AbstractEnum
 {
     public const ROLE_SUPER_ADMIN = 'super-admin';
-    public const ROLE_ADMIN = 'admin';
+    public const SERVICE_PROVIDER = 'service-provider';
+    public const CLIENT = 'client';
 
     public static function getValues(): array
     {
         return [
             self::ROLE_SUPER_ADMIN,
-            self::ROLE_ADMIN
+            self::SERVICE_PROVIDER,
+            self::CLIENT
         ];
     }
 
@@ -26,7 +28,8 @@ class RoleEnum extends AbstractEnum
     {
         return [
             self::ROLE_SUPER_ADMIN => __(self::ROLE_SUPER_ADMIN),
-            self::ROLE_ADMIN => __(self::ROLE_ADMIN)
+            self::SERVICE_PROVIDER => __(self::SERVICE_PROVIDER),
+            self::CLIENT => __(self::CLIENT)
         ];
     }
 

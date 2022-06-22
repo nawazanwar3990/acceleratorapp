@@ -1,13 +1,5 @@
 <?php
 
-
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RealEstate\Definition\FloorNameController;
-use App\Http\Controllers\RealEstate\Definition\FloorTypeController;
-use App\Http\Controllers\RealEstate\Definition\ServiceController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

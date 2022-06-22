@@ -2,9 +2,6 @@
     <div class="scroll-sidebar">
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-{{--                <li>--}}
-{{--                    <input id="nav-search-box" name="nav-search-box" type="text" class="form-control nav-search-box" placeholder="Search Navigation...">--}}
-{{--                </li>--}}
                 @foreach(\App\Enum\Nav\MainNavEnum::getTranslationKeys() as $key=>$value)
                     @if($key == \App\Enum\KeywordEnum::DASHBOARD)
                         @can('hasModuleAccess',$key)
@@ -25,50 +22,23 @@
                                     {!! \App\Enum\Nav\MainNavEnum::getIcon($key) !!}
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
-                                @switch($key)
-                                    @case(\App\Enum\Nav\MainNavEnum::DEFINITIONS)
+                             {{--  @switch($key)
+                                    @case(\App\Enum\Nav\MainNavEnum::DEFINITION)
                                         @include('components.nav.definitions')
                                         @break
-                                    @case(\App\Enum\Nav\MainNavEnum::DEVICE_MANAGEMENT)
+                                    @case(\App\Enum\Nav\MainNavEnum::SERVICE_CREATION)
                                         @include('components.nav.device-management')
                                         @break
-                                    @case(\App\Enum\Nav\MainNavEnum::BUILDING_UNITS)
-                                        @include('components.nav.building-units')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::HUMAN_RESOURCE)
+                                    @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT_SYSTEM)
                                         @include('components.nav.human-resource')
                                         @break
-                                    @case(\App\Enum\Nav\MainNavEnum::SALES)
-                                        @include('components.nav.sales-rent')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::INCOME_EXPENSE)
-                                        @include('components.nav.income-expense')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::ACCOUNTS)
+                                    @case(\App\Enum\Nav\MainNavEnum::INVOICE_TICKET_AND_ACCOUNTING)
                                         @include('components.nav.accounts')
                                         @break
-                                    @case(\App\Enum\Nav\MainNavEnum::REPORTS)
+                                    @case(\App\Enum\Nav\MainNavEnum::REPORTING_AND_STAT_HANDLING)
                                         @include('components.nav.reports')
                                         @break
-                                    @case(\App\Enum\Nav\MainNavEnum::INVENTORY)
-                                        @include('components.nav.inventory')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::AUTHORIZATION)
-                                        @include('components.nav.authorization')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::PRINT)
-                                        @include('components.nav.print')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::SETTINGS)
-                                        @include('components.nav.settings')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::FRONT_DESK)
-                                        @include('components.nav.front-desk')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::FIXED_ASSETS)
-                                        @include('components.nav.fixed_assets')
-                                        @break
-                                @endswitch
+                                @endswitch--}}
                             </li>
                         @endcan
                     @endif

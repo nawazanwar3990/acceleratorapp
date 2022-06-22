@@ -1,5 +1,19 @@
 <?php
 return [
+
+
+    'packages_plain'=>'Packages & Plans Modules',
+    'service_creation'=>'Service Creation',
+    'definition'=>'Definition',
+    'invoice_ticket_and_account'=>'Invoices/Tickets & Accounting',
+    'reporting_and_stat_handling'=>'Reporting & stats handling section',
+    'system_configuration'=>'System configuration',
+    'freelancer_and_mentor'=>'Freelancers & Mentors Section',
+    'user_management_system'=>'User Management System ',
+    'front_desk_management_system'=>'Front Desk Management system',
+    'co_working_space_allotment_and_handling'=>'Co Working Space allotment & Handling',
+    'event_appointment_and_event_management'=>'Meeting Appointments & Events Management Section',
+
     'please_wait' => 'Please Wait...',
     'dashboard' => 'Dashboard',
     'copyright' => 'Copyright',

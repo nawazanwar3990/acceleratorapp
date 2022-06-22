@@ -7,7 +7,6 @@ namespace App\Enum;
 use App\Models\Authorization\Permission;
 use App\Models\Authorization\RolePermission;
 use App\Models\Module;
-use App\Services\GeneralService;
 
 class ModuleEnum extends AbstractEnum
 {
@@ -21,14 +20,7 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
-            KeyWordEnum::DEFINITIONS => array(
-                KeyWordEnum::GENERAL => array(
-                    $ability . KeyWordEnum::SERVICES,
-                    $ability . KeyWordEnum::FLOOR_NAMES,
-                    $ability . KeyWordEnum::FLOOR_TYPES,
-                    $ability . KeyWordEnum::FLAT_TYPES,
-//                    $ability . KeyWordEnum::COMMODITY_TYPES,
-                ),
+            KeyWordEnum::DEFINITION => array(
                 KeyWordEnum::HUMAN_RESOURCE => array(
                     $ability . KeyWordEnum::RELATIONS,
                     $ability . KeyWordEnum::CAST,
@@ -46,36 +38,18 @@ class ModuleEnum extends AbstractEnum
                     $ability . KeyWordEnum::PROFESSION,
                     $ability . KeyWordEnum::ORGANIZATION,
                     $ability . KeyWordEnum::HR_BUSINESS,
-                ),
-                KeyWordEnum::DEVICE => array(
-                    $ability . KeyWordEnum::DEVICE_TYPE,
-                    $ability . KeyWordEnum::DEVICE_MODEL,
-                    $ability . KeyWordEnum::DEVICE_MAKE,
-                    $ability . KeyWordEnum::DEVICE_LOCATION,
-                    $ability . KeyWordEnum::DEVICE_OPERATING_SYSTEM,
-                    $ability . KeyWordEnum::DEVICE_CLASS,
                 )
             ),
-            KeyWordEnum::DEVICE_MANAGEMENT => array(
-                $ability . KeyWordEnum::DEVICE
-            ),
-            KeyWordEnum::BUILDING_UNITS => array(
-                $ability . KeyWordEnum::BUILDINGS,
-                $ability . KeyWordEnum::FLOORS,
-                $ability . KeyWordEnum::FLATS_SHOPS,
-                $ability . KeyWordEnum::SHARED_SPACE,
-                $ability . KeyWordEnum::BUILDING_UNITS_ALLOTMENT,
-            ),
-            KeyWordEnum::HUMAN_RESOURCE => array(
+            KeyWordEnum::USER_MANAGEMENT_SYSTEM => array(
+
                 $ability . KeyWordEnum::HR_PERSONS,
-                $ability . KeyWordEnum::SUPPLIERS,
-                $ability . KeyWordEnum::SELLERS,
-                $ability . KeyWordEnum::BUYERS,
-                $ability . KeyWordEnum::EMPLOYEES,
-                $ability . KeyWordEnum::BROKERS,
-                $ability . KeyWordEnum::NOMINEE_REGISTRATION,
+                $ability . KeyWordEnum::ROLE,
+                $ability . KeyWordEnum::PERMISSION,
+                $ability . KeyWordEnum::USER,
+                $ability . KeyWordEnum::SYNC_PERMISSION
+
             ),
-            KeyWordEnum::FRONT_DESK => array(
+            KeyWordEnum::FRONT_DESK_MANAGEMENT_SYSTEM => array(
                 KeyWordEnum::FRONT_DESK_SETUP => array(
                     $ability . KeyWordEnum::CALL_TYPE,
                     $ability . KeyWordEnum::COMPLAIN_TYPE,
@@ -90,29 +64,8 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::POSTAL_RECEIVE,
                 $ability . KeyWordEnum::COMPLAIN,
             ),
-            KeyWordEnum::FIXED_ASSETS => array(
-                $ability . KeyWordEnum::ASSETS_INVENTORY,
-                $ability . KeyWordEnum::ASSETS_LOCATION,
-                $ability . KeyWordEnum::ASSETS_UNIT,
-            ),
-            KeyWordEnum::SALES => array(
-                $ability . KeyWordEnum::TITLE_TRANSFER,
-                $ability . KeyWordEnum::SALES_LISTING,
-                $ability . KeyWordEnum::COMMODITY_DEAL_CLOSING,
-                $ability . KeyWordEnum::INSTALLMENT_PLANS,
-                $ability . KeyWordEnum::INSTALLMENT_TERM,
-                $ability . KeyWordEnum::SALES_QUOTATION,
-            ),
-            KeyWordEnum::INCOME_EXPENSE => array(
-                $ability . KeyWordEnum::INCOME_HEAD,
-                $ability . KeyWordEnum::INCOME_COLLECTION,
-                $ability . KeyWordEnum::INCOME_STATEMENT,
-                $ability . KeyWordEnum::EXPENSE_HEAD,
-                $ability . KeyWordEnum::EXPENSES,
-                $ability . KeyWordEnum::EXPENSES_STATEMENT,
-            ),
-            KeyWordEnum::ACCOUNTS => array(
-                KeyWordEnum::VOUCHERS => array(
+            KeyWordEnum::INVOICE_TICKET_AND_ACCOUNTING => array(
+                KeyWordEnum::VOUCHER => array(
                     $ability . KeyWordEnum::BUYER_CASH_RECEIVING,
                     $ability . KeyWordEnum::BUYER_INSTALLMENT_RECEIVING,
                     $ability . KeyWordEnum::SUPPLIER_PAYMENT,
@@ -122,8 +75,7 @@ class ModuleEnum extends AbstractEnum
                     $ability . KeyWordEnum::CREDIT_VOUCHER,
                     $ability . KeyWordEnum::OPENING_BALANCE_VOUCHER,
                 ),
-
-                KeyWordEnum::LEDGERS => array(
+                KeyWordEnum::LEDGER => array(
                     $ability . KeyWordEnum::SUPPLIER_LEDGER,
                     $ability . KeyWordEnum::SELLER_LEDGER,
                     $ability . KeyWordEnum::BUYER_LEDGER,
@@ -142,7 +94,7 @@ class ModuleEnum extends AbstractEnum
                 ),
                 $ability . KeyWordEnum::CREATE_ACCOUNT_HEAD,
             ),
-            KeyWordEnum::REPORTS => array(
+            KeyWordEnum::REPORTING_AND_STAT_HANDLING => array(
                 $ability . KeyWordEnum::CASH_BOOK,
                 $ability . KeyWordEnum::PROFIT_LOSS,
                 $ability . KeyWordEnum::BALANCE_SHEET,
@@ -160,28 +112,16 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::PURCHASE_REPORT,
                 $ability . KeyWordEnum::STOCK_REPORT,
             ),
-            KeyWordEnum::INVENTORY => array(
-                $ability . KeyWordEnum::PURCHASE_STOCK,
-                $ability . KeyWordEnum::OWN_STOCK,
-                $ability . KeyWordEnum::INVESTOR_STOCK,
+            KeyWordEnum::SYSTEM_CONFIGURATION => array(
+                $ability . KeyWordEnum::SYSTEM_SETTING
             ),
-            KeyWordEnum::AUTHORIZATION => array(
-                $ability . KeyWordEnum::PERMISSIONS,
-                $ability . KeyWordEnum::SYNC_PERMISSIONS,
-                $ability . KeyWordEnum::ROLES,
-                $ability . KeyWordEnum::USERS,
-            ),
-            KeyWordEnum::PRINT => array(
-                $ability . KeyWordEnum::INSTALLMENT_PLANS,
-                $ability . KeyWordEnum::FLAT_OWNERS,
-                $ability . KeyWordEnum::NOMINEE_PRINT,
-                $ability . KeyWordEnum::HR_PRINT,
-                $ability . KeyWordEnum::TITLE_TRANSFER_PRINT,
-            ),
-            KeyWordEnum::SETTINGS => array(
-                $ability . KeyWordEnum::SYSTEM_SETTINGS,
-                $ability . KeyWordEnum::BUSINESS_SETTINGS,
-            )
+            KeyWordEnum::SERVICE_CREATION,
+            KeyWordEnum::PACKAGES_PLAIN,
+            KeyWordEnum::FREELANCE_AND_MENTOR,
+            KeyWordEnum::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING,
+            KeyWordEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT,
+
+
         ];
     }
 

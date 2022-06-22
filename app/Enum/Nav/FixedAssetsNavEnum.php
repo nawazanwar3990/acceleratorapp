@@ -10,8 +10,6 @@ class FixedAssetsNavEnum extends AbstractEnum
     public const ASSETS_LOCATION = KeyWordEnum::ASSETS_LOCATION;
     public const ASSETS_UNIT = KeyWordEnum::ASSETS_UNIT;
 
-
-
     public static function getValues(): array
     {
         return [

@@ -7,39 +7,33 @@ use App\Enum\KeyWordEnum;
 class MainNavEnum extends AbstractEnum
 {
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
-    public const DEFINITIONS = KeyWordEnum::DEFINITIONS;
-    public const DEVICE_MANAGEMENT = KeyWordEnum::DEVICE_MANAGEMENT;
-    public const BUILDING_UNITS = KeyWordEnum::BUILDING_UNITS;
-    public const HUMAN_RESOURCE = KeyWordEnum::HUMAN_RESOURCE;
-    public const FRONT_DESK = KeyWordEnum::FRONT_DESK;
-    public const FIXED_ASSETS = KeyWordEnum::FIXED_ASSETS;
-    public const SALES = KeyWordEnum::SALES;
-    public const INCOME_EXPENSE = KeyWordEnum::INCOME_EXPENSE;
-    public const ACCOUNTS = KeyWordEnum::ACCOUNTS;
-    public const REPORTS = KeyWordEnum::REPORTS;
-    public const INVENTORY = KeyWordEnum::INVENTORY;
-    public const AUTHORIZATION = KeyWordEnum::AUTHORIZATION;
-    public const PRINT = KeyWordEnum::PRINT;
-    public const SETTINGS = KeyWordEnum::SETTINGS;
+    public const DEFINITION =KeyWordEnum::DEFINITION;
+    public const SERVICE_CREATION =KeyWordEnum::SERVICE_CREATION;
+    public const PACKAGES_PLAIN =KeyWordEnum::PACKAGES_PLAIN;
+    public const INVOICE_TICKET_AND_ACCOUNTING = KeyWordEnum::INVOICE_TICKET_AND_ACCOUNTING;
+    public const REPORTING_AND_STAT_HANDLING = KeyWordEnum::REPORTING_AND_STAT_HANDLING;
+    public const SYSTEM_CONFIGURATION = KeyWordEnum::SYSTEM_CONFIGURATION;
+    public const FREELANCE_AND_MENTOR = KeyWordEnum::FREELANCE_AND_MENTOR;
+    public const USER_MANAGEMENT_SYSTEM = KeyWordEnum::USER_MANAGEMENT_SYSTEM;
+    public const FRONT_DESK_MANAGEMENT_SYSTEM = KeyWordEnum::FRONT_DESK_MANAGEMENT_SYSTEM;
+    public const CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING = KeyWordEnum::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING;
+    public const MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT = KeyWordEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT;
 
     public static function getValues(): array
     {
         return [
             self::DASHBOARD,
-            self::DEFINITIONS,
-            self::DEVICE_MANAGEMENT,
-            self::BUILDING_UNITS,
-            self::HUMAN_RESOURCE,
-            self::FRONT_DESK,
-            self::FIXED_ASSETS,
-            self::SALES,
-            self::INCOME_EXPENSE,
-            self::ACCOUNTS,
-            self::REPORTS,
-            self::INVENTORY,
-            self::AUTHORIZATION,
-            self::PRINT,
-            self::SETTINGS,
+            self::DEFINITION,
+            self::SERVICE_CREATION,
+            self::PACKAGES_PLAIN,
+            self::INVOICE_TICKET_AND_ACCOUNTING,
+            self::REPORTING_AND_STAT_HANDLING,
+            self::SYSTEM_CONFIGURATION,
+            self::FREELANCE_AND_MENTOR,
+            self::USER_MANAGEMENT_SYSTEM,
+            self::FRONT_DESK_MANAGEMENT_SYSTEM,
+            self::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING,
+            self::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT
         ];
     }
 
@@ -47,20 +41,17 @@ class MainNavEnum extends AbstractEnum
     {
         $routes = [
             self::DASHBOARD => '<i class="bx bxs-dashboard"></i>',
-            self::DEFINITIONS => '<i class="fas fa-info"></i>',
-            self::DEVICE_MANAGEMENT => '<i class="fas fa-info"></i>',
-            self::BUILDING_UNITS => '<i class="fas fa-building"></i>',
-            self::HUMAN_RESOURCE => '<i class="fas fa-users"></i>',
-            self::FRONT_DESK => '<i class="fas fa-briefcase"></i>',
-            self::FIXED_ASSETS => '<i class="fas fa-money-bill"></i>',
-            self::SALES => '<i class="fas fa-shopping-cart"></i>',
-            self::INCOME_EXPENSE => '<i class="far fa-money-bill-alt"></i>',
-            self::ACCOUNTS => '<i class="fas fa-chart-pie"></i>',
-            self::REPORTS => '<i class="fas fa-chart-bar"></i>',
-            self::INVENTORY => '<i class="fas fa-boxes"></i>',
-            self::AUTHORIZATION => '<i class="fas fa-lock"></i>',
-            self::PRINT => '<i class="fas fa-print"></i>',
-            self::SETTINGS => '<i class="fa fa-cog"></i>',
+            self::DEFINITION => '<i class="fas fa-info"></i>',
+            self::SERVICE_CREATION => '<i class="fas fa-info"></i>',
+            self::PACKAGES_PLAIN => '<i class="fas fa-info"></i>',
+            self::INVOICE_TICKET_AND_ACCOUNTING => '<i class="fas fa-building"></i>',
+            self::REPORTING_AND_STAT_HANDLING => '<i class="fas fa-users"></i>',
+            self::SYSTEM_CONFIGURATION => '<i class="fas fa-briefcase"></i>',
+            self::FREELANCE_AND_MENTOR => '<i class="fas fa-money-bill"></i>',
+            self::USER_MANAGEMENT_SYSTEM => '<i class="fas fa-shopping-cart"></i>',
+            self::FRONT_DESK_MANAGEMENT_SYSTEM => '<i class="far fa-money-bill-alt"></i>',
+            self::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING => '<i class="fas fa-chart-pie"></i>',
+            self::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT => '<i class="fas fa-chart-bar"></i>'
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -73,20 +64,17 @@ class MainNavEnum extends AbstractEnum
     {
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general', self::DASHBOARD)),
-            self::DEFINITIONS => __(sprintf('%s.%s', 'general', self::DEFINITIONS)),
-            self::DEVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::DEVICE_MANAGEMENT)),
-            self::BUILDING_UNITS => __(sprintf('%s.%s', 'general', self::BUILDING_UNITS)),
-            self::HUMAN_RESOURCE => __(sprintf('%s.%s', 'general', self::HUMAN_RESOURCE)),
-            self::FRONT_DESK => __(sprintf('%s.%s', 'general', self::FRONT_DESK)),
-            self::FIXED_ASSETS => __(sprintf('%s.%s', 'general', self::FIXED_ASSETS)),
-            self::SALES => __(sprintf('%s.%s', 'general', self::SALES)),
-            self::INCOME_EXPENSE => __(sprintf('%s.%s', 'general', self::INCOME_EXPENSE)),
-            self::ACCOUNTS => __(sprintf('%s.%s', 'general', self::ACCOUNTS)),
-            self::REPORTS => __(sprintf('%s.%s', 'general', self::REPORTS)),
-            self::INVENTORY => __(sprintf('%s.%s', 'general', self::INVENTORY)),
-            self::AUTHORIZATION => __(sprintf('%s.%s', 'general', self::AUTHORIZATION)),
-            self::PRINT => __(sprintf('%s.%s', 'general', self::PRINT)),
-            self::SETTINGS => __(sprintf('%s.%s', 'general', self::SETTINGS)),
+            self::DEFINITION => __(sprintf('%s.%s', 'general', self::DEFINITION)),
+            self::SERVICE_CREATION => __(sprintf('%s.%s', 'general', self::SERVICE_CREATION)),
+            self::PACKAGES_PLAIN => __(sprintf('%s.%s', 'general', self::PACKAGES_PLAIN)),
+            self::INVOICE_TICKET_AND_ACCOUNTING => __(sprintf('%s.%s', 'general', self::INVOICE_TICKET_AND_ACCOUNTING)),
+            self::REPORTING_AND_STAT_HANDLING => __(sprintf('%s.%s', 'general', self::REPORTING_AND_STAT_HANDLING)),
+            self::SYSTEM_CONFIGURATION => __(sprintf('%s.%s', 'general', self::SYSTEM_CONFIGURATION)),
+            self::FREELANCE_AND_MENTOR => __(sprintf('%s.%s', 'general', self::FREELANCE_AND_MENTOR)),
+            self::USER_MANAGEMENT_SYSTEM => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT_SYSTEM)),
+            self::FRONT_DESK_MANAGEMENT_SYSTEM => __(sprintf('%s.%s', 'general', self::FRONT_DESK_MANAGEMENT_SYSTEM)),
+            self::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING)),
+            self::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT))
         ];
     }
 }
