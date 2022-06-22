@@ -155,6 +155,8 @@ class KeyWordEnum extends AbstractEnum
     public const MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT = 'event_appointment_and_event_management';
     public const SERVICE_CREATION = 'service_creation';
     public const DEFINITION = 'definition';
+    public const SUBSCRIPTION ='subscription' ;
+    public const PLAN ='plan' ;
 
     static function getConstants()
     {

@@ -88,6 +88,7 @@ class TableEnum extends \App\Enum\AbstractEnum
     public const ROLE_PERMISSION = 'role_permission';
 
     public const MODULES = 'modules';
+    public const PLANS ='plans' ;
 
     /**
      * @inheritDoc

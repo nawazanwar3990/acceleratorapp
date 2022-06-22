@@ -49,74 +49,14 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::SYNC_PERMISSION
 
             ),
-            KeyWordEnum::FRONT_DESK_MANAGEMENT_SYSTEM => array(
-                KeyWordEnum::FRONT_DESK_SETUP => array(
-                    $ability . KeyWordEnum::CALL_TYPE,
-                    $ability . KeyWordEnum::COMPLAIN_TYPE,
-                    $ability . KeyWordEnum::SOURCE,
-                    $ability . KeyWordEnum::REFERENCE,
-                    $ability . KeyWordEnum::PURPOSE,
-                ),
-                $ability . KeyWordEnum::SALES_ENQUIRY,
-                $ability . KeyWordEnum::VISITOR_BOOK,
-                $ability . KeyWordEnum::PHONE_CALL_LOG,
-                $ability . KeyWordEnum::POSTAL_DISPATCH,
-                $ability . KeyWordEnum::POSTAL_RECEIVE,
-                $ability . KeyWordEnum::COMPLAIN,
-            ),
-            KeyWordEnum::INVOICE_TICKET_AND_ACCOUNTING => array(
-                KeyWordEnum::VOUCHER => array(
-                    $ability . KeyWordEnum::BUYER_CASH_RECEIVING,
-                    $ability . KeyWordEnum::BUYER_INSTALLMENT_RECEIVING,
-                    $ability . KeyWordEnum::SUPPLIER_PAYMENT,
-                    $ability . KeyWordEnum::SELLER_PAYMENT,
-                    $ability . KeyWordEnum::BROKER_PAYMENT,
-                    $ability . KeyWordEnum::DEBIT_VOUCHER,
-                    $ability . KeyWordEnum::CREDIT_VOUCHER,
-                    $ability . KeyWordEnum::OPENING_BALANCE_VOUCHER,
-                ),
-                KeyWordEnum::LEDGER => array(
-                    $ability . KeyWordEnum::SUPPLIER_LEDGER,
-                    $ability . KeyWordEnum::SELLER_LEDGER,
-                    $ability . KeyWordEnum::BUYER_LEDGER,
-                    $ability . KeyWordEnum::BROKER_LEDGER,
-                    $ability . KeyWordEnum::GENERAL_LEDGER,
-                ),
-
-                KeyWordEnum::PAYROLL => array(
-                    $ability . KeyWordEnum::ADVANCE_SALARY,
-                    $ability . KeyWordEnum::SALARY_RECORDS,
-                ),
-
-                KeyWordEnum::EMPLOYEE_LOAN => array(
-                    $ability . KeyWordEnum::EMPLOYEE_LOAN_RECORDS,
-                    $ability . KeyWordEnum::EMPLOYEE_LOAN_RECEIVING,
-                ),
-                $ability . KeyWordEnum::CREATE_ACCOUNT_HEAD,
-            ),
-            KeyWordEnum::REPORTING_AND_STAT_HANDLING => array(
-                $ability . KeyWordEnum::CASH_BOOK,
-                $ability . KeyWordEnum::PROFIT_LOSS,
-                $ability . KeyWordEnum::BALANCE_SHEET,
-                $ability . KeyWordEnum::BROKER_REPORT,
-                $ability . KeyWordEnum::AGING_REPORT,
-                $ability . KeyWordEnum::PENDING_COLLECTIONS,
-                $ability . KeyWordEnum::COLLECTED_PAYMENTS,
-                $ability . KeyWordEnum::CASH_ONLY_DEALINGS,
-                $ability . KeyWordEnum::COMMODITY_ONLY_DEALINGS,
-                $ability . KeyWordEnum::CASH_COMMODITY_DEALINGS,
-                $ability . KeyWordEnum::COMMODITY_EXPECTED_VALUE,
-                $ability . KeyWordEnum::FLAT_WISE_PROFIT_LOSS,
-                $ability . KeyWordEnum::SALES_REPORT,
-                $ability . KeyWordEnum::BROKER_WISE_SALES,
-                $ability . KeyWordEnum::PURCHASE_REPORT,
-                $ability . KeyWordEnum::STOCK_REPORT,
-            ),
-            KeyWordEnum::SYSTEM_CONFIGURATION => array(
-                $ability . KeyWordEnum::SYSTEM_SETTING
-            ),
+            KeyWordEnum::FRONT_DESK_MANAGEMENT_SYSTEM,
+            KeyWordEnum::INVOICE_TICKET_AND_ACCOUNTING,
+            KeyWordEnum::REPORTING_AND_STAT_HANDLING,
+            KeyWordEnum::SYSTEM_CONFIGURATION,
             KeyWordEnum::SERVICE_CREATION,
-            KeyWordEnum::PACKAGES_PLAIN,
+            KeyWordEnum::PACKAGES_PLAIN => array(
+                $ability . KeyWordEnum::PLAN
+            ),
             KeyWordEnum::FREELANCE_AND_MENTOR,
             KeyWordEnum::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING,
             KeyWordEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT,
@@ -153,14 +93,14 @@ class ModuleEnum extends AbstractEnum
                         foreach ($inner_value as $child_key => $child_value) {
                             if (is_array($child_value)) {
                                 self::add_permission($child_key, 'parent');
-                            }else{
+                            } else {
                                 self::make_module($outer_key, $inner_key, $child_value);
                                 self::add_permission($child_value, null);
                             }
                         }
                     } else {
                         self::make_module($outer_key, null, $inner_value);
-                        self::add_permission($inner_value,null);
+                        self::add_permission($inner_value, null);
                     }
                 }
             } else {

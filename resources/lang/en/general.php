@@ -13,6 +13,9 @@ return [
     'front_desk_management_system'=>'Front Desk Management system',
     'co_working_space_allotment_and_handling'=>'Co Working Space allotment & Handling',
     'event_appointment_and_event_management'=>'Meeting Appointments & Events Management Section',
+    'plan'=>'Plan',
+    'new_plan'=>'New Plan',
+    'plans'=>'Plans',
 
     'please_wait' => 'Please Wait...',
     'dashboard' => 'Dashboard',

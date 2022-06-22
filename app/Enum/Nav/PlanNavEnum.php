@@ -4,23 +4,27 @@ namespace App\Enum\Nav;
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
 
-class DefinitionsNavEnum extends AbstractEnum
+class PlanNavEnum extends AbstractEnum
 {
-    public const GENERAL = KeyWordEnum::GENERAL;
-    public const HUMAN_RESOURCE = KeyWordEnum::HUMAN_RESOURCE;
+    public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
+    public const PLAN = KeyWordEnum::PLAN;
+
+
     public static function getValues(): array
     {
         return [
-            self::GENERAL,
-            self::HUMAN_RESOURCE,
+            self::SUBSCRIPTION,
+            self::PLAN,
         ];
     }
 
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::GENERAL => '<i class="mdi mdi-account"></i>',
-            self::HUMAN_RESOURCE => '<i class="mdi mdi-account"></i>',
+            self::SUBSCRIPTION => '<i class="mdi mdi-account"></i>',
+            self::PLAN => '<i class="mdi mdi-account"></i>',
+
+
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -32,16 +36,17 @@ class DefinitionsNavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::GENERAL => __(sprintf('%s.%s', 'general', self::GENERAL)),
-            self::HUMAN_RESOURCE => __(sprintf('%s.%s', 'general', self::HUMAN_RESOURCE)),
+            self::SUBSCRIPTION => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION)),
+            self::PLAN => __(sprintf('%s.%s', 'general', self::PLAN)),
+
         ];
     }
 
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::GENERAL => route('dashboard.service.index'),
-            self::HUMAN_RESOURCE => route('dashboard.floorName.index'),
+            self::SUBSCRIPTION => route('dashboard.subscriptions.index'),
+            self::PLAN => route('dashboard.plans.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

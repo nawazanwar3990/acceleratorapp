@@ -13,6 +13,9 @@ class RoleEnum extends AbstractEnum
 {
     public const ROLE_SUPER_ADMIN = 'super-admin';
     public const SERVICE_PROVIDER = 'service-provider';
+    public const INCUBATOR = 'incubator';
+    public const FREELANCER = 'freelancer';
+    public const MENTOR = 'mentor';
     public const CLIENT = 'client';
 
     public static function getValues(): array
@@ -20,6 +23,9 @@ class RoleEnum extends AbstractEnum
         return [
             self::ROLE_SUPER_ADMIN,
             self::SERVICE_PROVIDER,
+            self::INCUBATOR,
+            self::FREELANCER,
+            self::MENTOR,
             self::CLIENT
         ];
     }
@@ -29,6 +35,9 @@ class RoleEnum extends AbstractEnum
         return [
             self::ROLE_SUPER_ADMIN => __(self::ROLE_SUPER_ADMIN),
             self::SERVICE_PROVIDER => __(self::SERVICE_PROVIDER),
+            self::INCUBATOR => __(self::INCUBATOR),
+            self::FREELANCER => __(self::FREELANCER),
+            self::MENTOR => __(self::MENTOR),
             self::CLIENT => __(self::CLIENT)
         ];
     }

@@ -22,23 +22,17 @@
                                     {!! \App\Enum\Nav\MainNavEnum::getIcon($key) !!}
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
-                             {{--  @switch($key)
+                                @switch($key)
                                     @case(\App\Enum\Nav\MainNavEnum::DEFINITION)
-                                        @include('components.nav.definitions')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::SERVICE_CREATION)
-                                        @include('components.nav.device-management')
-                                        @break
+                                    @include('components.nav.definitions')
+                                    @break
                                     @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT_SYSTEM)
-                                        @include('components.nav.human-resource')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::INVOICE_TICKET_AND_ACCOUNTING)
-                                        @include('components.nav.accounts')
-                                        @break
-                                    @case(\App\Enum\Nav\MainNavEnum::REPORTING_AND_STAT_HANDLING)
-                                        @include('components.nav.reports')
-                                        @break
-                                @endswitch--}}
+                                    @include('components.nav.human-resource')
+                                    @break
+                                    @case(\App\Enum\Nav\MainNavEnum::PACKAGES_PLAIN)
+                                    @include('components.nav.plans')
+                                    @break
+                                @endswitch
                             </li>
                         @endcan
                     @endif
