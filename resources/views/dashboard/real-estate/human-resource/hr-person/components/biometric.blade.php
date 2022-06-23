@@ -13,7 +13,7 @@
             <div class="fields">
 
                 <div class="row m-auto">
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/right_hand_1.png') }}" alt="" class="img-fluid">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/right_hand_2.png') }}" alt="" class="img-fluid">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/right_hand_3.png') }}" alt="" class="img-fluid">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/right_hand_4.png') }}" alt="" class="img-fluid">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/right_hand_5.png') }}" alt="" class="img-fluid">
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/left_hand_6.png') }}" alt="" class="img-fluid">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/left_hand_7.png') }}" alt="" class="img-fluid">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/left_hand_8.png') }}" alt="" class="img-fluid">
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/left_hand_9.png') }}" alt="" class="img-fluid">
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 form-group mx-auto">
+                    <div class="col-md-2 mb-3 mx-auto">
                         <div class="card text-center">
                             <div class="">
                                 <img src="{{ asset('theme/images/fingers/left_hand_10.png') }}" alt="" class="img-fluid">

@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-3">
         {!!  Html::decode(Form::label('installment_plan_id' ,__('general.installment_plan').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        <div class="form-group">
+        <div class="mb-3">
             <div class="input-group">
                 {!!  Form::select('installment_plan_id', \App\Services\RealEstate\InstallmentService::getInstallmentPlansForDropdown(),null,['id'=>'installment_plan_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_installment_plan'),'style'=>'width:80%',

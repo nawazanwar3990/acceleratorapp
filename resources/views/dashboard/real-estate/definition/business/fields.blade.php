@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="mb-3 row">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
     </div>
@@ -9,7 +9,7 @@
         @enderror
     </div>
 </div>
-<div class="form-group row">
+<div class="mb-3 row">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('parent_id' ,__('general.parent'),['class'=>'col-form-label']))   !!}
     </div>

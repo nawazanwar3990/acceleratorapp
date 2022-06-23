@@ -193,10 +193,10 @@ table.footable.footable-filtering-left > thead > tr.footable-filtering > th {
 table.footable.footable-filtering-center > thead > tr.footable-filtering > th {
 	text-align: center;
 }
-table.footable > thead > tr.footable-filtering > th div.form-group {
+table.footable > thead > tr.footable-filtering > th div.gy-2 {
 	margin-bottom: 0;
 }
-table.footable > thead > tr.footable-filtering > th div.form-group+div.form-group {
+table.footable > thead > tr.footable-filtering > th div.gy-2+div.gy-2 {
 	margin-top: 5px;
 }
 table.footable > thead > tr.footable-filtering > th div.input-group {
@@ -222,11 +222,11 @@ table.footable > thead > tr.footable-filtering > th ul.dropdown-menu > li > a.ch
 	table.footable > thead > tr.footable-filtering > th div.input-group {
 		width: auto;
 	}
-	table.footable > thead > tr.footable-filtering > th div.form-group {
+	table.footable > thead > tr.footable-filtering > th div.gy-2 {
 		margin-left: 2px;
 		margin-right: 2px;
 	}
-	table.footable > thead > tr.footable-filtering > th div.form-group+div.form-group {
+	table.footable > thead > tr.footable-filtering > th div.gy-2+div.gy-2 {
 		margin-top: 0;
 	}
 }

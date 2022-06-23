@@ -4,7 +4,7 @@
     </div>
     <div class="card-body py-2">
         <div class="row mt-2">
-            <div class="col-12 form-group">
+            <div class="col-12 mb-3">
                 {!! Form::file('docs[]',['class'=>'mdropify','id'=>'docs','multiple',"accept"=>".pdf"]) !!}
                 <div class="document_holder text-center my-3 row justify-content-center">
                     @if(isset($for))

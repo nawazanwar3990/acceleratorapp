@@ -1,16 +1,15 @@
-
 /*******************
 Custom-select
 ******************/
 .custom-select {
-    background: url(../../../assets/images/custom-select.png) right .75rem center no-repeat;
+    background: url(images/custom-select.png) right .75rem center no-repeat;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
     appearance: none;
-    background-size: none;
+    background-size: 0;
 }
-   
+
 /*******************
 textarea
 ******************/
@@ -39,11 +38,11 @@ Form-control
     opacity: 0.7;
 }
 
-.custom-control-input:focus~.custom-control-indicator {
+.custom-control-input:focus ~ .custom-control-indicator {
     box-shadow: none;
 }
 
-.custom-control-input:checked~.custom-control-indicator {
+.custom-control-input:checked ~ .custom-control-indicator {
     background-color: $success;
 }
 
@@ -51,7 +50,7 @@ form label {
     font-weight: 400;
 }
 
-.form-group {
+.gy-2 {
     margin-bottom: 25px;
 }
 
@@ -62,10 +61,12 @@ form label {
 .form-control-static {
     padding-top: 0px;
 }
-.custom-control-label::before, .custom-control-label::after{
+
+.custom-control-label::before, .custom-control-label::after {
     top: 0.15rem;
 }
-.form-bordered .form-group {
+
+.form-bordered .gy-2 {
     border-bottom: 1px solid $border-color;
     padding-bottom: 20px;
 }
@@ -77,6 +78,7 @@ Form Dropzone
 
 .dropzone {
     border: 1px dashed $border-color;
+
     .dz-message {
         padding: 5% 0;
         margin: 0px;
@@ -143,6 +145,7 @@ Form summernote
 
 .note-editor.note-frame {
     border: 1px solid $border-color;
+
     .panel-heading {
         padding: 6px 10px 10px;
         border-bottom: 1px solid $border-color;
@@ -154,7 +157,7 @@ Form summernote
 }
 
 
-/*============================================================== 
+/*==============================================================
 Form addons page
 ============================================================== */
 
@@ -175,6 +178,7 @@ Form addons page
             line-height: 1.42857143;
             color: $body-color;
             white-space: nowrap;
+
             &:hover,
             &:focus {
                 color: $themecolor;
@@ -182,12 +186,13 @@ Form addons page
             }
         }
     }
-    .show>.dropdown-menu {
+
+    .show > .dropdown-menu {
         display: block;
     }
 }
 
-.bootstrap-touchspin .input-group-btn-vertical>.btn {
+.bootstrap-touchspin .input-group-btn-vertical > .btn {
     padding: 9px 10px;
 }
 
@@ -195,41 +200,45 @@ Form addons page
     .select2-selection--single {
         border-color: $border-color;
         height: 38px;
+
         .select2-selection__rendered {
             line-height: 38px;
         }
+
         .select2-selection__arrow {
             height: 33px;
         }
     }
+
     .select2-selection--multiple {
-        .select2-selection__choice__remove{
+        .select2-selection__choice__remove {
             float: $rgt;
-            color:$white;
+            color: $white;
             margin-right: 0px;
             margin-left: 4px;
         }
-        .select2-selection__choice{
+
+        .select2-selection__choice {
             background: $themecolor;
-            color:$white;
-            border-color:$themecolor;    
+            color: $white;
+            border-color: $themecolor;
         }
     }
-}    
+}
 
 .input-form .btn {
-  padding: 8px 12px;
+    padding: 8px 12px;
 }
 
 
-/*============================================================== 
+/*==============================================================
 Form Material page
  ============================================================== */
 
 
 /*Material inputs*/
 
-.form-material .form-group {
+.form-material .gy-2 {
     overflow: hidden;
 }
 
@@ -259,7 +268,7 @@ Form Material page
     transition-duration: 0.3s;
 }
 
-.form-control-line .form-group {
+.form-control-line .gy-2 {
     overflow: hidden;
 }
 
@@ -268,6 +277,7 @@ Form Material page
     border-radius: 0px;
     padding-left: 0px;
     border-bottom: 1px solid $gray-200;
+
     &:focus {
         border-bottom: 1px solid $themecolor;
     }
@@ -275,7 +285,7 @@ Form Material page
 
 
 /*******************
-Form validation error 
+Form validation error
 ******************/
 
 .error .help-block {
@@ -284,12 +294,13 @@ Form validation error
 
 
 /*******************
-File Upload 
+File Upload
 ******************/
 
 .fileupload {
     overflow: hidden;
     position: relative;
+
     input.upload {
         cursor: pointer;
         filter: alpha(opacity=0);
@@ -303,65 +314,71 @@ File Upload
     }
 }
 
-.scale-up{ 
+.scale-up {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     -webkit-transform: scale(0);
     transform: scale(0);
-    display:inline-block;
+    display: inline-block;
     transform-origin: right 0px;
 }
-.scale-up-left{ 
+
+.scale-up-left {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     -webkit-transform: scale(0);
     transform: scale(0);
-    display:inline-block;
+    display: inline-block;
     transform-origin: left 0px;
 }
-.show>.scale-up{
-  transform: scale(1);
-  transform-origin: right 0px;
-}
-.show>.scale-up-left{
+
+.show > .scale-up {
     transform: scale(1);
-  transform-origin: left 0px;
+    transform-origin: right 0px;
+}
+
+.show > .scale-up-left {
+    transform: scale(1);
+    transform-origin: left 0px;
 }
 
 
 /*Radio button*/
 @keyframes ripple {
-  0% {
-    box-shadow: 0px 0px 0px 1px transparent;
-  }
-  50% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
-  }
-  100% {
-    box-shadow: 0px 0px 0px 15px transparent;
-  }
+    0% {
+        box-shadow: 0px 0px 0px 1px transparent;
+    }
+    50% {
+        box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0px 0px 0px 15px transparent;
+    }
 }
 
 /*Floating label*/
 
 /*Bootstrap Select*/
-.bootstrap-select.btn-group .dropdown-menu{
+.bootstrap-select.btn-group .dropdown-menu {
     box-shadow: $shadow;
 }
 
 /*Form Validation*/
-.help-block ul{
+.help-block ul {
     padding: 0px;
     margin: 0px;
-    li{
+
+    li {
         list-style: none;
     }
 }
-.error .form-control{
-    border-color:$danger;
+
+.error .form-control {
+    border-color: $danger;
 }
-.validate .form-control{
-    border-color:$success;
+
+.validate .form-control {
+    border-color: $success;
 }
 
 
@@ -370,11 +387,11 @@ File Upload
 .form-control-success,
 .form-control-warning,
 .form-control-danger {
-  padding-right: 2.25rem;
-  background-repeat: no-repeat;
-  background-position: center right 0.5625rem;
-  -webkit-background-size: 1.125rem 1.125rem;
-          background-size: 1.125rem 1.125rem;
+    padding-right: 2.25rem;
+    background-repeat: no-repeat;
+    background-position: center right 0.5625rem;
+    -webkit-background-size: 1.125rem 1.125rem;
+    background-size: 1.125rem 1.125rem;
 }
 
 
@@ -383,21 +400,21 @@ File Upload
 .has-success .col-form-label,
 .has-success .form-check-label,
 .has-success .custom-control {
-  color: $success;
+    color: $success;
 }
 
 .has-success .form-control {
-  border-color: $success;
+    border-color: $success;
 }
 
 .has-success .input-group-addon {
-  color: $success;
-  border-color: $success;
-  
+    color: $success;
+    border-color: $success;
+
 }
 
 .has-success .form-control-success {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
 }
 
 .has-warning .form-control-feedback,
@@ -405,21 +422,21 @@ File Upload
 .has-warning .col-form-label,
 .has-warning .form-check-label,
 .has-warning .custom-control {
-  color: $warning;
+    color: $warning;
 }
 
 .has-warning .form-control {
-  border-color: $warning;
+    border-color: $warning;
 }
 
 .has-warning .input-group-addon {
-  color: $warning;
-  border-color: $warning;
-  
+    color: $warning;
+    border-color: $warning;
+
 }
 
 .has-warning .form-control-warning {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E");
 }
 
 .has-danger .form-control-feedback,
@@ -427,19 +444,19 @@ File Upload
 .has-danger .col-form-label,
 .has-danger .form-check-label,
 .has-danger .custom-control {
-  color: $danger;
+    color: $danger;
 }
 
 .has-danger .form-control {
-  border-color: $danger;
+    border-color: $danger;
 }
 
 .has-danger .input-group-addon {
-  color: $danger;
-  border-color: $danger;
-  
+    color: $danger;
+    border-color: $danger;
+
 }
 
 .has-danger .form-control-danger {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
 }

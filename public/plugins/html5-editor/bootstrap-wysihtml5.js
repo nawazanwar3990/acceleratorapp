@@ -51,7 +51,7 @@
                   "<h3>" + locale.link.insert + "</h3>" +
                 "</div>" +
                 "<div class='modal-body'>" +
-                  "<div class='form-group'>" +
+                  "<div class='gy-2'>" +
 				  "<input value='http://' class='bootstrap-wysihtml5-insert-link-url form-control' type='text'>" +
                 "</div>" +
 				"</div>" +
@@ -77,7 +77,7 @@
                   "<h3>" + locale.image.insert + "</h3>" +
                 "</div>" +
                 "<div class='modal-body'>" +
-                 "<div class='form-group'>" +
+                 "<div class='gy-2'>" +
 				  "<input value='http://' class='bootstrap-wysihtml5-insert-image-url  m-wrap large form-control' type='text'>" +
                 "</div>" +
 				"</div>" +
@@ -95,7 +95,7 @@
         "html": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
-              "<div class='btn-group'>" + 
+              "<div class='btn-group'>" +
                 "<a class='btn" + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'><i class='fa fa-pencil'></i></a>" +
               "</div>" +
             "</li>";
@@ -366,7 +366,7 @@
             return methods.init.apply( this, arguments );
         } else {
             $.error( 'Method ' +  method + ' does not exist on jQuery.wysihtml5' );
-        }    
+        }
     };
 
     $.fn.wysihtml5.Constructor = Wysihtml5;

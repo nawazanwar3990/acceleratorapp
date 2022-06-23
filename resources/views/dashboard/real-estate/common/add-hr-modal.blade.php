@@ -12,13 +12,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             {!!  Html::decode(Form::label('first_name' ,__('general.first_name') .'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                             {!!  Form::text('first_name', null,['id'=>'modal_first_name', 'class'=>'form-control', 'required'])  !!}
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             {!!  Html::decode(Form::label('last_name' ,__('general.last_name') .'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                             {!!  Form::text('last_name', null,['id'=>'modal_last_name', 'class'=>'form-control', 'required'])  !!}
                         </div>
@@ -26,13 +26,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             {!!  Html::decode(Form::label('cnic' ,__('general.cnic') .'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                             {!!  Form::text('cnic', null,['id'=>'modal_cnic', 'class'=>'form-control cnic-mask', 'required'])  !!}
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             {!!  Html::decode(Form::label('cell_1' ,__('general.cell_1') .'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                             {!!  Form::text('cell_1', null,['id'=>'modal_cell_1', 'class'=>'form-control mobile-mask', 'required'])  !!}
                         </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             {!!  Html::decode(Form::label('date_of_birth' ,__('general.date_of_birth') .'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                             <div class="input-group">
                                 {!!  Form::text('date_of_birth', null,['id'=>'modal_date_of_birth', 'class'=>'form-control datepicker', 'required', 'autocomplete'=>'off'])  !!}

@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="mb-3 row">
 
     <div class="col">
         {!!  Html::decode(Form::label('building_name' ,__('general.building_name') ,['class'=>'form-label']))   !!}
@@ -34,7 +34,7 @@
 </div>
 
 
-<div class="form-group row">
+<div class="mb-3 row">
     <div class="col">
         {!!  Html::decode(Form::label('height' ,__('general.height_ft').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
         {!!  Form::number('height',null,['min' => 1, 'step' => 'any', 'id'=>'height','class'=>'form-control ','placeholder'=>__('general.height'), 'required']) !!}
@@ -69,7 +69,7 @@
 
 </div>
 
-<div class="form-group row">
+<div class="mb-3 row">
 
     <div class="col">
         {!!  Html::decode(Form::label('no_of_shops_flats' ,__('general.shops_flats') ,['class'=>'form-label']))   !!}

@@ -59,7 +59,7 @@
             doc++;
             let objTo = document.getElementById('documents')
             let divDoc = document.createElement("div");
-            divDoc.setAttribute("class", "form-group doc-remove-class" + doc);
+            divDoc.setAttribute("class", "mb-3 doc-remove-class" + doc);
             divDoc.innerHTML = '<div class="row">' +
                 '<div class="col-sm-10">' +
                 '<input type="file" class="form-control dropify" name="documents[]" data-height="75" data-allowed-file-extensions="doc docx pdf jpg jpeg png xlsx xls">' +

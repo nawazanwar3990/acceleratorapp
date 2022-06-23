@@ -4009,7 +4009,7 @@
 		$create: function () {
 			var self = this;
 			// generate the cell that actually contains all the UI.
-			var $form_grp = $('<div/>', {'class': 'form-group footable-filtering-search'})
+			var $form_grp = $('<div/>', {'class': 'gy-2 footable-filtering-search'})
 					.append($('<label/>', {'class': 'sr-only', text: 'Search'})),
 				$input_grp = $('<div/>', {'class': 'input-group'}).appendTo($form_grp),
 				$input_grp_btn = $('<div/>', {'class': 'input-group-btn'}),
@@ -6115,7 +6115,7 @@
 			 * @type {string}
 			 */
 			this.deleteText = table.o.editing.deleteText;
-			
+
 			/**
 			 * The text that appears in the view button. This can contain HTML.
 			 * @type {string}
@@ -6810,7 +6810,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.update = function(indexOrRow, data, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];
@@ -6827,7 +6827,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.delete = function(indexOrRow, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];

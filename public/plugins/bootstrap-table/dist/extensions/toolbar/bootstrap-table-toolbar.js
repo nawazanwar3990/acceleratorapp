@@ -59,7 +59,7 @@
         for (var i in pColumns) {
             var vObjCol = pColumns[i];
             if (!vObjCol.checkbox && vObjCol.visible && vObjCol.searchable) {
-                htmlForm.push('<div class="form-group">');
+                htmlForm.push('<div class="gy-2">');
                 htmlForm.push(sprintf('<label class="col-sm-4 control-label">%s</label>', vObjCol.title));
                 htmlForm.push('<div class="col-sm-6">');
                 htmlForm.push(sprintf('<input type="text" class="form-control input-md" name="%s" placeholder="%s" id="%s">', vObjCol.field, vObjCol.title, vObjCol.field));
@@ -68,7 +68,7 @@
             }
         }
 
-        htmlForm.push('<div class="form-group">');
+        htmlForm.push('<div class="gy-2">');
         htmlForm.push('<div class="col-sm-offset-9 col-sm-3">');
         htmlForm.push(sprintf('<button type="button" id="btnCloseAvd%s" class="btn btn-default" >%s</button>', "_" + that.options.idTable, searchText));
         htmlForm.push('</div>');

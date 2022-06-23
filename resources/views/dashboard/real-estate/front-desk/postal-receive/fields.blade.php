@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="mb-3 row">
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('to_title' ,__('general.to_title').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}

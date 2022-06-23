@@ -18,7 +18,7 @@
         <hr class="m-t-0 m-b-20">
         <div class="row mb-3">
             <div class="col-md-3">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-6">{{ __('general.first_name') }}</label>
                     <div class="col-md-6">
                         <p class="form-control-static" id="first_name"></p>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-6">{{ __('general.last_name') }}</label>
                     <div class="col-md-6">
                         <p class="form-control-static" id="last_name"></p>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-6">{{ __('general.cnic') }}</label>
                     <div class="col-md-6">
                         <p class="form-control-static" id="cnic"></p>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-6">{{ __('general.gender') }}</label>
                     <div class="col-md-6">
                         <p class="form-control-static" id="gender"></p>
@@ -54,7 +54,7 @@
         <hr class="m-t-0 m-b-20">
         <div class="row mb-3">
             <div class="col-md-3">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-6">{{ __('general.cell_1') }}</label>
                     <div class="col-md-6">
                         <p class="form-control-static" id="cell_1"></p>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-6">{{ __('general.cell_2') }}</label>
                     <div class="col-md-6">
                         <p class="form-control-static" id="cell_2"></p>
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="control-label text-end col-md-3">{{ __('general.address') }}</label>
                     <div class="col-md-9">
                         <p class="form-control-static" id="address"></p>

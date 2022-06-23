@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="mb-3 row">
     <div class="col-md-4">
         {!!  Html::decode(Form::label('asset_code' ,__('general.asset_code').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
 

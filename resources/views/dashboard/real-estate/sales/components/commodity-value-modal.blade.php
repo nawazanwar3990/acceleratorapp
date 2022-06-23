@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="mb-3">
                             {!!  Html::decode(Form::label('commodity_value' ,__('general.commodity_value') .'<i class="text-danger">*</i>' ,['class'=>' col-form-label']))   !!}
                             {!!  Form::number('commodity_value', null,['step'=>'any','min'=>'1','id'=>'commodity_value', 'class'=>'form-control', 'required'])
                             !!}

@@ -1,5 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/laravel-echo-setup.js": "/js/laravel-echo-setup.js",
-    "/css/app.css": "/css/app.css"
+    "/css/dashboard.min.css": "/css/dashboard.min.css",
+    "/css/auth.min.css": "/css/auth.min.css"
 }

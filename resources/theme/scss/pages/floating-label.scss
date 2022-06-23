@@ -4,19 +4,19 @@ Author: Wrappixel
 
 File: scss
 */
-@import '../variable'; 
+@import '../variable';
 
 
 /*******************/
 /*Floating Label*/
 /*******************/
 
-.floating-labels .form-group {
+.floating-labels .gy-2 {
     position: relative;
 }
 
 .floating-labels .form-control {
-    
+
     padding: 10px 10px 10px 0;
     display: block;
     border: none;
@@ -48,7 +48,7 @@ File: scss
 
 .floating-labels label {
     color: $body-color;
-    
+
     position: absolute;
     cursor: auto;
     top: 5px;
@@ -147,13 +147,13 @@ File: scss
 .has-feedback label~.t-0 {
     top: 0;
 }
-.form-group.error input, .form-group.error select, .form-group.error textarea {
+.gy-2.error input, .gy-2.error select, .gy-2.error textarea {
     border: 1px solid $red;
 }
-.form-group.validate input, .form-group.validate select, .form-group.validate textarea{
+.gy-2.validate input, .gy-2.validate select, .gy-2.validate textarea{
     border:1px solid $green;
 }
-.form-group.error .help-block{
+.gy-2.error .help-block{
     ul{
         padding: 0px;
         color:$red;
@@ -162,7 +162,7 @@ File: scss
                 }
     }
 }
-.form-group.issue .help-block{
+.gy-2.issue .help-block{
     ul{
         padding: 0px;
         color:$yellow;

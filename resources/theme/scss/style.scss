@@ -22,16 +22,15 @@ File: scss
 
 
 // Import Bootstrap source files
-@import "../../../assets/node_modules/bootstrap/scss/bootstrap";
 
 //This is for the icons
-@import '../icons/font-awesome/css/all.css';
-@import '../icons/simple-line-icons/css/simple-line-icons.css';
-@import '../icons/weather-icons/css/weather-icons.min.css';
-@import '../icons/themify-icons/themify-icons.css';
-@import '../icons/flag-icon-css/flag-icon.min.css';
-@import "../icons/material-design-iconic-font/css/materialdesignicons.min.css";
-@import './core/custom-iconmind.scss';
+@import 'icons/font-awesome/css/all.css';
+@import 'icons/simple-line-icons/css/simple-line-icons.css';
+@import 'icons/weather-icons/css/weather-icons.min.css';
+@import 'icons/themify-icons/themify-icons.css';
+@import 'icons/flag-icon-css/flag-icon.min.css';
+@import "icons/material-design-iconic-font/css/materialdesignicons.min.css";
+@import 'core/custom-iconmind';
 
 //This is the core files
 
@@ -39,6 +38,6 @@ File: scss
 @import 'widgets/widgets';
 @import 'responsive';
 
-
 //In This scss you can write your scss
 @import 'custom';
+

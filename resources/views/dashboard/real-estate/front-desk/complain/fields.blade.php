@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="mb-3 row">
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('complain_type_id' ,__('general.select_complain_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}

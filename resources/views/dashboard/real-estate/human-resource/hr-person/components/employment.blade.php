@@ -220,7 +220,7 @@
                         <p>{{ __('general.tax') }}</p>
                     </div>
                     <hr>
-                    <div class="col-md-3 form-group">
+                    <div class="col-md-3 mb-3">
                         {!!  Html::decode(Form::label('tax_type_id' ,__('general.tax_type') ,['class'=>'form-label']))   !!}
                         {!!  Form::select('tax_type_id', \App\Services\RealEstate\HrService::taxTypeForDropdown(),null,['id'=>'tax_type_id',
                             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_tax_type')])

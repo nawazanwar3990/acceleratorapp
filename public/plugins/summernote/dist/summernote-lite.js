@@ -604,7 +604,7 @@ var dialog = renderer.create('<div class="note-modal" aria-hidden="false" tabind
     $node.data('modal', new ModalUI($node, options));
 });
 var videoDialog = function (opt) {
-    var body = '<div class="note-form-group">' +
+    var body = '<div class="note-gy-2">' +
         '<label class="note-form-label">' +
         opt.lang.video.url + ' <small class="text-muted">' +
         opt.lang.video.providers + '</small>' +
@@ -624,12 +624,12 @@ var videoDialog = function (opt) {
     }).render();
 };
 var imageDialog = function (opt) {
-    var body = '<div class="note-form-group note-group-select-from-files">' +
+    var body = '<div class="note-gy-2 note-group-select-from-files">' +
         '<label class="note-form-label">' + opt.lang.image.selectFromFiles + '</label>' +
         '<input class="note-note-image-input note-input" type="file" name="files" accept="image/*" multiple="multiple" />' +
         opt.imageLimitation +
         '</div>' +
-        '<div class="note-form-group" style="overflow:auto;">' +
+        '<div class="note-gy-2" style="overflow:auto;">' +
         '<label class="note-form-label">' + opt.lang.image.url + '</label>' +
         '<input class="note-image-url note-input" type="text" />' +
         '</div>';
@@ -646,11 +646,11 @@ var imageDialog = function (opt) {
     }).render();
 };
 var linkDialog = function (opt) {
-    var body = '<div class="note-form-group">' +
+    var body = '<div class="note-gy-2">' +
         '<label class="note-form-label">' + opt.lang.link.textToDisplay + '</label>' +
         '<input class="note-link-text note-input" type="text" />' +
         '</div>' +
-        '<div class="note-form-group">' +
+        '<div class="note-gy-2">' +
         '<label class="note-form-label">' + opt.lang.link.url + '</label>' +
         '<input class="note-link-url note-input" type="text" value="http://" />' +
         '</div>' +
@@ -4282,7 +4282,7 @@ var Editor = /** @class */ (function () {
             })(idx);
             this.context.memo('help.formatH' + idx, this.lang.help['formatH' + idx]);
         }
-        
+
         this.insertParagraph = this.wrapCommand(function () {
             _this.typing.insertParagraph(_this.editable);
         });
@@ -6418,11 +6418,11 @@ var LinkDialog = /** @class */ (function () {
     LinkDialog.prototype.initialize = function () {
         var $container = this.options.dialogsInBody ? this.$body : this.$editor;
         var body = [
-            '<div class="form-group note-form-group">',
+            '<div class="gy-2 note-gy-2">',
             "<label class=\"note-form-label\">" + this.lang.link.textToDisplay + "</label>",
             '<input class="note-link-text form-control note-form-control  note-input" type="text" />',
             '</div>',
-            '<div class="form-group note-form-group">',
+            '<div class="gy-2 note-gy-2">',
             "<label class=\"note-form-label\">" + this.lang.link.url + "</label>",
             '<input class="note-link-url form-control note-form-control note-input" type="text" value="http://" />',
             '</div>',
@@ -6630,13 +6630,13 @@ var ImageDialog = /** @class */ (function () {
             imageLimitation = "<small>" + (this.lang.image.maximumFileSize + ' : ' + readableSize) + "</small>";
         }
         var body = [
-            '<div class="form-group note-form-group note-group-select-from-files">',
+            '<div class="gy-2 note-gy-2 note-group-select-from-files">',
             '<label class="note-form-label">' + this.lang.image.selectFromFiles + '</label>',
             '<input class="note-image-input note-form-control note-input" ',
             ' type="file" name="files" accept="image/*" multiple="multiple" />',
             imageLimitation,
             '</div>',
-            '<div class="form-group note-group-image-url" style="overflow:auto;">',
+            '<div class="gy-2 note-group-image-url" style="overflow:auto;">',
             '<label class="note-form-label">' + this.lang.image.url + '</label>',
             '<input class="note-image-url form-control note-form-control note-input ',
             ' col-md-12" type="text" />',
@@ -6847,7 +6847,7 @@ var VideoDialog = /** @class */ (function () {
     VideoDialog.prototype.initialize = function () {
         var $container = this.options.dialogsInBody ? this.$body : this.$editor;
         var body = [
-            '<div class="form-group note-form-group row-fluid">',
+            '<div class="gy-2 note-gy-2 row-fluid">',
             "<label class=\"note-form-label\">" + this.lang.video.url + " <small class=\"text-muted\">" + this.lang.video.providers + "</small></label>",
             '<input class="note-video-url form-control note-form-control note-input" type="text" />',
             '</div>'
