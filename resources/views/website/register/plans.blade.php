@@ -8,32 +8,52 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row pricing-plan justify-content-center">
-                        @foreach($plans as $plan)
-                            <div class="col-md-3 col-xs-12 col-sm-6 no-padding">
-                                <div class="pricing-box featured-plan">
-                                    <div class="pricing-body b-l">
-                                        <div class="pricing-header">
-                                            <h4 class="price-lable text-white bg-warning"> Popular</h4>
-                                            <h4 class="text-center">{{ $plan->name }}</h4>
-                                            <h2 class="text-center"><span class="price-sign">$</span>{{ $plan->price }}
-                                            </h2>
-                                            <p class="uppercase">per month</p>
-                                        </div>
-                                        <div class="price-table-content">
-                                            <div class="price-row"><i class="icon-user"></i> 3 Members</div>
-                                            <div class="price-row">
-                                                <button
-                                                    class="btn btn-success waves-effect waves-light m-t-20 text-white">
-                                                    Sign up
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ trans('general.name') }}</th>
+                                <th>{{ trans('general.type') }}</th>
+                                <th>{{ trans('general.price') }}</th>
+                                <th>{{ trans('general.limit') }}</th>
+                                <th>{{ trans('general.expiry_date') }}</th>
+                                <th>{{ trans('general.action') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach(\App\Enum\PlanEnum::getTranslationKeys() as $key=>$value)
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        {!! Form::text('name[]',$value,['class'=>'form-control','id'=>'name[]']) !!}
+                                    </td>
+                                    <td>
+                                        {!! Form::select('type[]',\App\Enum\PlanTypeEnum::getTranslationKeys(),\App\Enum\PlanTypeEnum::MONTHLY,['class'=>'form-control','id'=>'type','placeholder'=>trans('general.select')]) !!}
+                                    </td>
+                                    <td>
+                                        {!! Form::number('price[]',null,['class'=>'form-control','id'=>'price']) !!}
+                                    </td>
+                                    <td>
+                                        {!! Form::number('limit[]',null,['class'=>'form-control','id'=>'limit']) !!}
+                                    </td>
+                                    <td>{!! Form::text('expiry_date[]',null,['class'=>'form-control datepicker','id'=>'expiry_date']) !!}
+                                    </td>
+                                    <td class="text-center">
+                                        @if ($loop->last)
+                                            {!! Form::button(trans('general.add'),['class'=>'btn btn-success btn-xs mx-1']) !!}
+                                        @endif
+                                        {!! Form::button(trans('general.remove'),['class'=>'btn btn-danger btn-xs']) !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+                <div class="card-footer text-center">
+                    {!! Form::button(trans('general.prev'),['class'=>'btn btn-info']) !!}
+                    {!! Form::submit(trans('general.next'),['class'=>'btn btn-info']) !!}
                 </div>
             </div>
         </div>
