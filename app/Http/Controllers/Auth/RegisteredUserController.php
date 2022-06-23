@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
     {
         $model = $this->personService->store($request->all());
         if ($model) {
-            return redirect()->route('website.pricing-plans');
+            return redirect()->route('website.pricing-plans.index');
         }
     }
 }

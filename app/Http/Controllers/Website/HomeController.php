@@ -18,10 +18,4 @@ class HomeController extends Controller
         $pageTitle = __('general.website');
         return view('website.index', compact('pageTitle'));
     }
-    public function plans(): Factory|View|Application
-    {
-        $plans = Plan::all();
-        $pageTitle = __('general.plans');
-        return view('website.register.plans',compact('pageTitle','plans'));
-    }
 }

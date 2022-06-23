@@ -6,6 +6,8 @@
 @section('content')
     <div class="row">
         <div class="col-12">
+            {!! Form::open(['url' => route('website.pricing-plans.store'), 'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
+            <x-created-by-field></x-created-by-field>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -56,6 +58,7 @@
                     {!! Form::submit(trans('general.next'),['class'=>'btn btn-info']) !!}
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection

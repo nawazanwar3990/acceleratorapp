@@ -15,13 +15,16 @@ use App\Http\Controllers\RealEstate\HumanResource\HumanResourceController;
 use App\Http\Controllers\RealEstate\ListController;
 use App\Http\Controllers\RealEstate\Sales\InstallmentPlanController;
 use App\Http\Controllers\RealEstate\Sales\SalesController;
+use App\Http\Controllers\Website\PricingPlanController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('', [\App\Http\Controllers\Website\HomeController::class, 'index'])
         ->name('index');
-    Route::get('pricing-plans', [\App\Http\Controllers\Website\HomeController::class, 'plans'])
-        ->name('pricing-plans');
+
+    Route::resource('pricing-plans', PricingPlanController::class, ['names' => 'pricing-plans']);
+
+
     require __DIR__ . '/auth.php';
 });
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
