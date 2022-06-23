@@ -154,6 +154,8 @@ class KeyWordEnum extends AbstractEnum
     public const CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING = 'co_working_space_allotment_and_handling';
     public const MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT = 'event_appointment_and_event_management';
     public const SERVICE_CREATION = 'service_creation';
+    public const SERVICE_CREATION_LIST = 'service_list';
+    public const SERVICE_CREATION_NEW = 'new_service';
     public const DEFINITION = 'definition';
     public const SUBSCRIPTION ='subscription' ;
     public const PLAN ='plan' ;

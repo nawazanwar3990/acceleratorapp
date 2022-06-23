@@ -60,6 +60,7 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::FREELANCE_AND_MENTOR,
             KeyWordEnum::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING,
             KeyWordEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT,
+            KeyWordEnum::SERVICE_CREATION,
 
 
         ];
