@@ -6,7 +6,6 @@
     @yield('css-before')
     <link href="{{ asset('css/dashboard.min.css') }}" rel="stylesheet">
     @yield('css-after')
-    <link href="{{ asset('theme/css/custom.css') }}" rel="stylesheet">
     <title>{{ $pageTitle??null }}</title>
 </head>
 <body class="fixed-layout skin-purple">

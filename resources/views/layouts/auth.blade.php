@@ -8,6 +8,5 @@
 </head>
 <body>
 @yield('content')
-<script src="{{ asset('auth/style.min.js') }}"></script>
 </body>
 </html>

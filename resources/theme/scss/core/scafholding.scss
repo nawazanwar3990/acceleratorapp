@@ -67,7 +67,7 @@ ol li {
 
 
 /*******************
-Padding margin property 
+Padding margin property
 *******************/
 
 $vertical-property-map: ( m-t-: margin-top, m-b-: margin-bottom, m-r-: margin-right, m-l-: margin-left, p-t-: padding-top, p-b-: padding-bottom, p-r-: padding-right, p-l-: padding-left, p-: padding, m-:margin );
@@ -224,7 +224,6 @@ Rounds
     font-weight: 400;
     text-align: center;
     border-radius: 100%;
-    background: $info;
     img {
         border-radius: 100%;
     }

@@ -1,5 +1,7 @@
 {
+    "/css/website.min.css": "/css/website.min.css",
     "/css/dashboard.min.css": "/css/dashboard.min.css",
     "/css/auth.min.css": "/css/auth.min.css",
-    "/js/dashboard.min.js": "/js/dashboard.min.js"
+    "/js/dashboard.min.js": "/js/dashboard.min.js",
+    "/js/website.min.js": "/js/website.min.js"
 }
