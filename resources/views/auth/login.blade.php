@@ -4,7 +4,9 @@
              style="background-image:url( {{asset('images/background/login-register.jpg') }});">
         <div class="login-box card" style="border-top: none !important;">
             <div class="card-body">
-                <form class="form-horizontal form-material text-center" id="loginform" action="{{ route('doLogin') }}"
+                <form class="form-horizontal form-material text-center"
+                      id="loginform"
+                      action="{{ route('website.login') }}"
                       method="POST">
                     @csrf
                     <a href="javascript:void(0)" class="db">

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('', [\App\Http\Controllers\Website\HomeController::class, 'index'])
         ->name('home');
+    require __DIR__ . '/auth.php';
 });
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -64,4 +65,3 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/real-estate/fixed-assets.php';
     require __DIR__ . '/plan.php';
 });
-require __DIR__ . '/auth.php';

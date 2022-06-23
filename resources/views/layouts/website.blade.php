@@ -8,13 +8,12 @@
     @yield('css-after')
     <title>{{ $pageTitle??null }}</title>
 </head>
-<body>
-<div id="main-wrapper">
+<body class="bg-white">
+<div class="container">
     <x-website-header></x-website-header>
-    <div class="container-fluid">
+    <div class="page-wrapper">
         @yield('content')
     </div>
-    <x-website-footer></x-website-footer>
 </div>
 <script src="{{ asset('js/website.min.js') }}"></script>
 @include('includes.global-scripts')

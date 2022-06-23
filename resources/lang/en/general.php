@@ -16,6 +16,7 @@ return [
     'plan'=>'Plan',
     'new_plan'=>'New Plan',
     'plans'=>'Plans',
+    'register'=>'Register',
 
     'please_wait' => 'Please Wait...',
     'dashboard' => 'Dashboard',

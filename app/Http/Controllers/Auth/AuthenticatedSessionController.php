@@ -23,11 +23,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         if (Auth::user()->active == 1) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->route('website.home');
         } else {
             Auth::logout();
             return redirect()->route('dashboard.index')
-                ->withErrors(['login' => __('auth.blocked')])
+                ->withErrors(['login' => __('website.home')])
                 ->withInput(['login' => $request->login]);
         }
     }
@@ -38,6 +38,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         session()->forget('sId');
-        return redirect()->route('dashboard');
+        return redirect()->route('website.home');
     }
 }
