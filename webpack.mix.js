@@ -12,6 +12,7 @@ mix.scripts([
     'resources/theme/js/plugins/parsley.min.js',
     'resources/theme/js/plugins/bootstrap-datepicker.min.js',
     'resources/theme/js/plugins/jquery-ui.min.js',
+    'resources/theme/js/plugins/perfect-scrollbar.jquery.min.js',
     'resources/theme/js/sidebar.js',
     'resources/theme/js/search.js',
     'resources/theme/js/custom.js'
