@@ -25,7 +25,7 @@
                             </div>
                         </td>
                         <td class="text-center col-1">
-                            <img src="{{ \App\Services\RealEstate\HrService::getHrFirstPicture($owner->hr->id) }}" class="hr-pic" style="width:40px;" tabindex="-1"/>
+                            <img src="{{ \App\Services\PersonService::getHrFirstPicture($owner->hr->id) }}" class="hr-pic" style="width:40px;" tabindex="-1"/>
                         </td>
                         <td class="text-center col-2">
                             {!!  Form::text('hrName[]',$owner->hr->full_name,['class'=>'form-control hr-name', 'disabled', 'tabindex'=>'-1']) !!}

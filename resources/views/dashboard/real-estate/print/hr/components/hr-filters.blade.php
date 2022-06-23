@@ -18,7 +18,7 @@
 
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('hr_id' ,__('general.hr_name') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('hr_id', \App\Services\RealEstate\HrService::HrForDropdown(), request()->has('hr_id')?request()->get('hr_id'):null,['id'=>'hr_id',
+                {!!  Form::select('hr_id', \App\Services\PersonService::HrForDropdown(), request()->has('hr_id')?request()->get('hr_id'):null,['id'=>'hr_id',
                     'class'=>'select2 form-control', 'placeholder'=>'Select Hr Name','style'=>'width:100%'])
                 !!}
             </div>
@@ -35,7 +35,7 @@
 
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('nationality_id' ,__('general.nationality') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('nationality_id', \App\Services\RealEstate\HrService::nationalitiesForDropdown(), request()->has('nationality_id')?request()->get('nationality_id'):null,['id'=>'nationality_id',
+                {!!  Form::select('nationality_id', \App\Services\PersonService::nationalitiesForDropdown(), request()->has('nationality_id')?request()->get('nationality_id'):null,['id'=>'nationality_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.nationality'),'style'=>'width:100%'])
                 !!}
             </div>

@@ -1,6 +1,14 @@
 <?php
 return [
+
+    'incubator'=>'Incubator',
+    'service_provider'=>'Service Provider',
+    'mentor'=>'Mentor',
+
+    'role'=>'Role',
+    'next' => 'Next',
     'home' => 'Home',
+    'prev' => 'Prev',
     'packages_plain' => 'Packages & Plans Modules',
     'service_creation' => 'Service Creation',
     'definition' => 'Definition',

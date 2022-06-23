@@ -14,3 +14,7 @@
 @import 'plugins/sweetalert2.min';
 @import 'plugins/jquery.toast';
 @import 'responsive';
+
+.form-control {
+    background-color: white !important;
+}

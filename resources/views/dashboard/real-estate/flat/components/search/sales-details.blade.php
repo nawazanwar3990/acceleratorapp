@@ -156,7 +156,7 @@
                         <label class="mb-0">{{ __('general.gender') }}:</label>
                     </div>
                     <div class="col-2 border-bottom">
-                        {{ \App\Services\RealEstate\HrService::genderForDropdown( $purchaser->Hr->gender ) }}
+                        {{ \App\Services\PersonService::genderForDropdown( $purchaser->Hr->gender ) }}
                     </div>
                 </div>
                 <div class="row">
@@ -231,7 +231,7 @@
                         <label class="mb-0">{{ __('general.gender') }}:</label>
                     </div>
                     <div class="col-2 border-bottom">
-                        {{ \App\Services\RealEstate\HrService::genderForDropdown( $owner->Hr->gender ) }}
+                        {{ \App\Services\PersonService::genderForDropdown( $owner->Hr->gender ) }}
                     </div>
                 </div>
                 <div class="row">

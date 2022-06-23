@@ -34,7 +34,7 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('assigned' ,__('general.select_assigned') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('assigned', \App\Services\RealEstate\HrService::HrForDropdown(),null,['id'=>'assigned',
+        {!!  Form::select('assigned', \App\Services\PersonService::HrForDropdown(),null,['id'=>'assigned',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_assigned')])
         !!}
     </div>

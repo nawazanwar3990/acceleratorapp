@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-3">
         {!! Html::decode(Form::label('department_id' ,__('general.department').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!! Form::select('department_id',\App\Services\RealEstate\HrService::departmentForDropdown(), null,
+        {!! Form::select('department_id',\App\Services\PersonService::departmentForDropdown(), null,
             ['id'=>'department_id','class'=>'form-control select2','placeholder'=>trans('general.ph_department'),
              'style' => 'width:100%;', 'required', 'onchange'=>'getDepartmentEmployees();']) !!}
     </div>

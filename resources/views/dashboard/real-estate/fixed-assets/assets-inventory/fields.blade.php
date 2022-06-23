@@ -46,7 +46,7 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('hr_id' ,__('general.select_managed_by'),['class'=>'form-label']))   !!}
-        {!!  Form::select('hr_id', \App\Services\RealEstate\HrService::HrForDropdown(),null,['id'=>'hr_id',
+        {!!  Form::select('hr_id', \App\Services\PersonService::HrForDropdown(),null,['id'=>'hr_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_managed_by')])
         !!}
     </div>

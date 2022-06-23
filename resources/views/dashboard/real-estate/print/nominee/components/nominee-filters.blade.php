@@ -18,14 +18,14 @@
 
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('owner_id' ,__('general.owner_name') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('owner_id', \App\Services\RealEstate\HrService::HrForDropdown(), request()->has('owner_id')?request()->get('owner_id'):null,['id'=>'owner_id',
+                {!!  Form::select('owner_id', \App\Services\PersonService::HrForDropdown(), request()->has('owner_id')?request()->get('owner_id'):null,['id'=>'owner_id',
                     'class'=>'select2 form-control', 'placeholder'=>'Select Building','style'=>'width:100%'])
                 !!}
             </div>
 
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('nominee_id' ,__('general.nominee_name') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('nominee_id', \App\Services\RealEstate\HrService::HrForDropdown(), request()->has('nominee_id')?request()->get('nominee_id'):null,['id'=>'nominee_id',
+                {!!  Form::select('nominee_id', \App\Services\PersonService::HrForDropdown(), request()->has('nominee_id')?request()->get('nominee_id'):null,['id'=>'nominee_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.nominee_name'),'style'=>'width:100%'])
                 !!}
             </div>
