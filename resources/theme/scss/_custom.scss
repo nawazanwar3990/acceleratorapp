@@ -55,10 +55,9 @@
     color: #e83e8c;
 }
 
-.bootstrap-touchspin .input-group-btn-vertical>.btn {
+.bootstrap-touchspin .input-group-btn-vertical > .btn {
     padding: 0 !important;
 }
-
 
 
 /*.card .card-actions a {*/
@@ -69,7 +68,7 @@
     color: #0b0b0b;
 }
 
-.topbar .top-navbar .navbar-nav>.nav-item>.nav-link {
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
     line-height: 0 !important;
 }
 
@@ -138,12 +137,12 @@
     }
 
     .fixed-footer {
-        position:fixed !important;
+        position: fixed !important;
         bottom: 0 !important;
     }
 
     .fixed-header {
-        position:fixed !important;
+        position: fixed !important;
         top: 0 !important;
         width: 100% !important;
     }
