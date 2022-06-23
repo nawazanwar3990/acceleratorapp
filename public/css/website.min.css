@@ -32415,3 +32415,6 @@ File: scss
     display: none;
   }
 }
+.form-control {
+  background-color: white !important;
+}

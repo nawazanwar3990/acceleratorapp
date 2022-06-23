@@ -3,42 +3,42 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Authorization\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use App\Http\Requests\Authorization\PersonRequest;
+use App\Models\Authorization\Role;
+use App\Services\GeneralService;
+use App\Services\PersonService;
+use Database\Seeders\Auth\RoleSeeder;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-    public function create(): Factory|View|Application
+    public function __construct(
+        private PersonService $personService
+    )
     {
-        $pageTitle = trans('general.register');
-        return view('website.register.index',compact('pageTitle'));
+        GeneralService::makeMultipleDirectories('HR', [
+            'documents',
+            'signature',
+            'images',
+        ]);
     }
-    public function store(Request $request)
+
+    public function create($slug = null): Factory|View|Application
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        if ($slug) {
+            $slug = Role::whereSlug($slug)->value('id');
+        }
+        $pageTitle = trans('general.register');
+        return view('website.register.index', compact('pageTitle', 'slug'));
+    }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+    public function store(PersonRequest $request)
+    {
+        $model = $this->personService->store($request->all());
+        if ($model) {
+            return redirect()->route('website.pricing-plans.index');
+        }
     }
 }

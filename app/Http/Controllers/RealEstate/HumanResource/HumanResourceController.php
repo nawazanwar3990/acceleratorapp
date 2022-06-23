@@ -7,8 +7,8 @@ use App\Http\Requests\RealEstate\HumanResource\HrRequest;
 use App\Models\RealEstate\HumanResource\Hr;
 use App\Models\RealEstate\Media;
 use App\Services\Accounts\VoucherService;
+use App\Services\PersonService;
 use App\Services\RealEstate\BuildingService;
-use App\Services\RealEstate\HrService;
 use App\Traits\General;
 use Illuminate\Http\Request;
 
@@ -123,11 +123,11 @@ class HumanResourceController extends Controller
     }
 
     public function getHrDetails(Request $request) {
-        return HrService::getHrDetails($request);
+        return PersonService::getHrDetails($request);
     }
 
     public function getHrDetailsForEmployee(Request $request) {
-        return HrService::getHrDetailsForEmployee($request);
+        return PersonService::getHrDetailsForEmployee($request);
     }
 
     public function HrPickerTable(Request $request) {
@@ -168,7 +168,7 @@ class HumanResourceController extends Controller
                 "id" => $record->id,
 //                'present_linear_address' => $record->present_linear_address,
                 'cell_1' => $record->cell_1,
-                'image' => '<img src="' . HrService::getHrFirstPicture($record->id) . '" class="img-responsive-small" />',
+                'image' => '<img src="' . PersonService::getHrFirstPicture($record->id) . '" class="img-responsive-small" />',
                 'cnic' => $record->cnic,
                 "button"=>'<button type="button" class="btn btn-primary btn-sm" onclick="pickHr(' . $record->id .  ');"><i class="fas fa-paper-plane"></i></button>',
             ];

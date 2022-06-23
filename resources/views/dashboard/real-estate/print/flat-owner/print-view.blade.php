@@ -20,16 +20,16 @@
 
                         @include('dashboard.real-estate.print.flat-owner.components.flat-info')
 
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.header',['printTitle'=>'Flat Owner Details'])
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.personal-detail')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.secondary-person-detail')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.address.permanent-address')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.address.temporary-address')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.employment')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.tax-info')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.govt-service')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.private-job')
-                        @include('dashboard.real-estate.human-resource.hr-person.print-components.own-business')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.header',['printTitle'=>'Flat Owner Details'])
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.personal-detail')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.secondary-person-detail')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.address.permanent-address')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.address.temporary-address')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.employment')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.tax-info')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.govt-service')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.private-job')
+                        @include('dashboard.authorization.human-resource.hr-person.print-components.own-business')
                         {{--                        @include('dashboard.real-estate.human-resource.hr-person.print-components.finger-print')--}}
                         {{--                        @include('dashboard.real-estate.human-resource.hr-person.print-components.declaration')--}}
 

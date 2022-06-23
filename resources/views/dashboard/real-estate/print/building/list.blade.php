@@ -14,7 +14,7 @@
                 {{ \App\Services\RealEstate\BuildingService::buildingFacingsForDropdown($record->facing) }}
             @endisset
         </td>
-        <td style="font-size: 12px">{{ \App\Services\RealEstate\HrService::getHrById($record->owners[0]->hr_id)->first_name }}</td>
+        <td style="font-size: 12px">{{ \App\Services\PersonService::getHrById($record->owners[0]->hr_id)->first_name }}</td>
         <td style="font-size: 12px">{{ $record->furnished === 1 ? "Done" : "Incomplete" }}</td>
         <td style="font-size: 12px">{{ $record->sales_status }}</td>
     </tr>

@@ -51,7 +51,7 @@
                         <label class="mb-0" style="font-size: 10px">{{ __('general.gender') }}:</label>
                     </div>
                     <div class="col-2 border-bottom" style="font-size: 10px">
-                        {{ \App\Services\RealEstate\HrService::genderForDropdown( $broker->Hr->gender ) }}
+                        {{ \App\Services\PersonService::genderForDropdown( $broker->Hr->gender ) }}
                     </div>
 
                     <div class="col-1 text-right">

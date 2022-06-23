@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Enum\RoleEnum;
+use App\Models\Authorization\Role;
 use App\Models\Devices\DeviceClass;
 use App\Models\Devices\DeviceLocation;
 use App\Models\Devices\DeviceMake;
@@ -21,30 +23,39 @@ class DefinitionService
     {
         return DeviceMake::pluck('name', 'id');
     }
+
     public static function get_device_model_dropdown()
     {
         return DeviceModel::pluck('name', 'id');
     }
+
     public static function get_device_location_dropdown()
     {
         return DeviceLocation::pluck('name', 'id');
     }
+
     public static function get_device_class_dropdown()
     {
         return DeviceClass::pluck('name', 'id');
     }
+
     public static function get_device_operating_system_dropdown()
     {
         return DeviceOperatingSystem::pluck('name', 'id');
     }
 
-    public static function chackParentExsit($id,$model)
+    public static function chackParentExsit($id, $model)
     {
         $data = $model::whereParentId($id)->count();
-        if ($data > 0){
+        if ($data > 0) {
             return true;
-        } else{
+        } else {
             return false;
         }
+    }
+
+    public static function pluck_services_roles()
+    {
+        return Role::whereIn('slug', [RoleEnum::INCUBATOR, RoleEnum::SERVICE_PROVIDER, RoleEnum::MENTOR])->pluck('name', 'id');
     }
 }

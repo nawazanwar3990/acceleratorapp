@@ -15,37 +15,25 @@ use Intervention\Image\Facades\Image;
 
 class HrRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         if ($this->has('model_id')) {
             return [
                 'first_name' => ['required'],
                 'last_name' => ['required'],
-                'cnic' => ['required', Rule::unique(TableEnum::HRS, 'cnic')->ignore($this->input('model_id'))],
-                'date_of_birth' => ['required', 'date'],
+                'email' => ['required', Rule::unique(TableEnum::USERS, 'email')
+                    ->ignore($this->input('model_id'))],
                 'cell_1' => ['required'],
             ];
         } else {
             return [
                 'first_name' => ['required'],
                 'last_name' => ['required'],
-                'cnic' => ['required', Rule::unique(TableEnum::HRS, 'cnic')],
-                'date_of_birth' => ['required', 'date'],
+                'email' => ['required', Rule::unique(TableEnum::USERS, 'email')],
                 'cell_1' => ['required'],
             ];
         }
