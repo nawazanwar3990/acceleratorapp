@@ -20,7 +20,7 @@
                                        class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.login') }}</a>
                                 </li>
                                 <li class="nav-item mx-1">
-                                    <a href="{{ route('website.register') }}"
+                                    <a href="{{ route('website.pricing-plans') }}"
                                        class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.register') }}</a>
                                 </li>
                             </ul>

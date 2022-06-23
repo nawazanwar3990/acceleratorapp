@@ -7,7 +7,7 @@
                         @can('hasModuleAccess',$key)
                             <li>
                                 <a class="waves-effect waves-dark"
-                                   href="{{ route('dashboard.home') }}">
+                                   href="{{ route('dashboard.index') }}">
                                     {!! \App\Enum\Nav\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
                                     {{ $value }}
                                 </a>

@@ -20,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('', [\App\Http\Controllers\Website\HomeController::class, 'index'])
         ->name('home');
+    Route::get('pricing-plans', [\App\Http\Controllers\Website\HomeController::class, 'plans'])
+        ->name('pricing-plans');
     require __DIR__ . '/auth.php';
 });
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('index');
     Route::post('/change-building', [BuildingsController::class, 'changeBuilding'])->name('change-building');
     Route::get('/search-flat', [FlatController::class, 'searchFlat'])->name('search-flat');
     Route::post('get-provinces-of-country', [CountryController::class, 'getProvincesOfCountry'])->name('get.provinces-by-country');

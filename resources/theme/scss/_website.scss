@@ -1,8 +1,13 @@
 @import 'variable';
-@import 'colors/default';
+@import 'colors/purple';
 @import "bootstrap/_bootstrap";
 @import 'icons/bx-font/icons.css';
+@import 'core/core';
+
 @import 'widgets/widgets';
+@import "pages/pricing-page";
+
+@import 'responsive';
 @import 'plugins/owl.carousel.min';
 @import 'plugins/owl.theme.default';
 @import 'plugins/bootstrap-datepicker.min';

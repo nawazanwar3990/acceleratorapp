@@ -4,7 +4,7 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('dashboard.home') }}">
+            <a class="navbar-brand" href="{{ route('dashboard.index') }}">
                 <b>
                     <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
                     <img src="{{ asset('images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
@@ -35,7 +35,6 @@
                     </form>
                 </li>
             </ul>
-
             <ul class="navbar-nav my-lg-0">
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(\Illuminate\Support\Facades\Auth::user()->photo ?? 'theme/images/users/1.jpg') }}" alt="user" class="">
@@ -50,7 +49,7 @@
                         <button class="dropdown-item" href="javascript:void(0);" onclick="LogoutConfirm();">
                             <i class="fa fa-power-off"></i> <span>{{__('general.logout')}}</span>
                         </button>
-                        <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                        <form method="POST" action="{{ route('website.logout') }}" id="logoutForm">
                             @csrf
                         </form>
                     </div>
