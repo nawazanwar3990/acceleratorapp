@@ -1,22 +1,21 @@
 <?php
 return [
-
-
-    'packages_plain'=>'Packages & Plans Modules',
-    'service_creation'=>'Service Creation',
-    'definition'=>'Definition',
-    'invoice_ticket_and_account'=>'Invoices/Tickets & Accounting',
-    'reporting_and_stat_handling'=>'Reporting & stats handling section',
-    'system_configuration'=>'System configuration',
-    'freelancer_and_mentor'=>'Freelancers & Mentors Section',
-    'user_management_system'=>'User Management System ',
-    'front_desk_management_system'=>'Front Desk Management system',
-    'co_working_space_allotment_and_handling'=>'Co Working Space allotment & Handling',
-    'event_appointment_and_event_management'=>'Meeting Appointments & Events Management Section',
-    'plan'=>'Plan',
-    'new_plan'=>'New Plan',
-    'plans'=>'Plans',
-    'register'=>'Register',
+    'home' => 'Home',
+    'packages_plain' => 'Packages & Plans Modules',
+    'service_creation' => 'Service Creation',
+    'definition' => 'Definition',
+    'invoice_ticket_and_account' => 'Invoices/Tickets & Accounting',
+    'reporting_and_stat_handling' => 'Reporting & stats handling section',
+    'system_configuration' => 'System configuration',
+    'freelancer_and_mentor' => 'Freelancers & Mentors Section',
+    'user_management_system' => 'User Management System ',
+    'front_desk_management_system' => 'Front Desk Management system',
+    'co_working_space_allotment_and_handling' => 'Co Working Space allotment & Handling',
+    'event_appointment_and_event_management' => 'Meeting Appointments & Events Management Section',
+    'plan' => 'Plan',
+    'new_plan' => 'New Plan',
+    'plans' => 'Plans',
+    'register' => 'Register',
 
     'please_wait' => 'Please Wait...',
     'dashboard' => 'Dashboard',
@@ -1058,5 +1057,5 @@ return [
     'new_permissions' => 'New Permissions',
     'sync_permission' => 'Sync Permission',
     'new_users' => 'New User',
-    'function_name'=>'Function Name'
+    'function_name' => 'Function Name'
 ];

@@ -11,9 +11,9 @@
 <body class="bg-white">
 <div class="container">
     <x-website-header></x-website-header>
-    <div class="page-wrapper m-l-0">
-        @yield('content')
-    </div>
+    @include('website.components.home.banner')
+    <x-website-breadcrumb :title="$pageTitle"></x-website-breadcrumb>
+    @yield('content')
 </div>
 <script src="{{ asset('js/website.min.js') }}"></script>
 @include('includes.global-scripts')

@@ -9,13 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     use HasFactory;
-    protected $table=TableEnum::PLANS;
-    protected $fillable =[
+
+    protected $table = TableEnum::PLANS;
+    protected $fillable = [
+        'user_id',
         'name',
         'slug',
-        'active',
-        'price',
         'type',
-        'limit'
+        'price',
+        'limit',
+        'is_featured',
+        'is_active',
     ];
 }

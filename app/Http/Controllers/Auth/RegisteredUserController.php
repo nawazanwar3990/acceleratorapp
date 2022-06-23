@@ -18,7 +18,8 @@ class RegisteredUserController extends Controller
 {
     public function create(): Factory|View|Application
     {
-        return view('website.register.plans');
+        $pageTitle = trans('general.register');
+        return view('website.register.index',compact('pageTitle'));
     }
     public function store(Request $request)
     {

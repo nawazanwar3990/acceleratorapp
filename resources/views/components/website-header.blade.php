@@ -20,12 +20,16 @@
                                        class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.login') }}</a>
                                 </li>
                                 <li class="nav-item mx-1">
-                                    <a href="{{ route('website.pricing-plans') }}"
+                                    <a href="{{ route('website.register') }}"
                                        class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.register') }}</a>
                                 </li>
                             </ul>
                         @else
                             <ul class="navbar-nav ms-auto">
+                                <li class="nav-item mx-1">
+                                    <a href="{{ route('dashboard.index') }}"
+                                       class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.dashboard') }}</a>
+                                </li>
                                 <form id="logout-form" action="{{ route('website.logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>

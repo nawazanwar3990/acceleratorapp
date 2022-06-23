@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('', [\App\Http\Controllers\Website\HomeController::class, 'index'])
-        ->name('home');
+        ->name('index');
     Route::get('pricing-plans', [\App\Http\Controllers\Website\HomeController::class, 'plans'])
         ->name('pricing-plans');
     require __DIR__ . '/auth.php';

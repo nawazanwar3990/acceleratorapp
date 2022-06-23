@@ -5,8 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -16,12 +15,15 @@ return new class extends Migration
     {
         Schema::create(TableEnum::PLANS, function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
             $table->string('name')->unique()->nullable();
             $table->string('slug')->unique()->nullable();
-            $table->string('active')->unique()->nullable();
-            $table->string('type')->unique()->nullable();
-            $table->string('price')->unique()->nullable();
-            $table->string('limit')->unique()->nullable();
+            $table->string('type')->nullable();
+            $table->string('price')->nullable();
+            $table->string('limit')->nullable();
+            $table->string('expiry_date')->nullable();
+            $table->boolean('is_featured')->default(true);
+            $table->boolean('is_active')->default(true);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
