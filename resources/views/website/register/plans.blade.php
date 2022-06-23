@@ -16,7 +16,8 @@
                                         <div class="pricing-header">
                                             <h4 class="price-lable text-white bg-warning"> Popular</h4>
                                             <h4 class="text-center">{{ $plan->name }}</h4>
-                                            <h2 class="text-center"><span class="price-sign">$</span>{{ $plan->price }}</h2>
+                                            <h2 class="text-center"><span class="price-sign">$</span>{{ $plan->price }}
+                                            </h2>
                                             <p class="uppercase">per month</p>
                                         </div>
                                         <div class="price-table-content">

@@ -401,7 +401,14 @@ class PersonService
         $user->email = $model->email;
         $user->normal_password = 'user1234';
         $user->password = Hash::make('user1234');
+
         if ($user->save()) {
+
+            if (request()->has('role_id')){
+                $role = request()->input('role_id');
+                $user->roles()->sync([$role]);
+            }
+
             $model->user_id = $user->id;
             $model->save();
         }
