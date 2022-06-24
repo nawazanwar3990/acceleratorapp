@@ -27044,7 +27044,7 @@ sidebar navigation
 }
 .sidebar-nav ul li a {
   color: #8d97ad;
-  padding: 10px 35px 10px 15px;
+  padding: 10px 35px 10px 10px;
   display: block;
   align-items: center;
   font-size: 14px;
@@ -28372,8 +28372,8 @@ icons path
   font-family: "Material Design Icons";
   src: url(/fonts/materialdesignicons-webfont.ttf?fa3815d439cf3406399e278012c73535) format("truetype");
 }
-/*============================================================== 
- For all pages 
+/*==============================================================
+ For all pages
  ============================================================== */
 #main-wrapper {
   width: 100%;
@@ -29637,7 +29637,7 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   min-height: 380px;
 }
 
-/*============================================================== 
+/*==============================================================
 widget-chart-page product review
  ============================================================== */
 .product-review {

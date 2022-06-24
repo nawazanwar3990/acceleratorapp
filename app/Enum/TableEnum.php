@@ -89,6 +89,7 @@ class TableEnum extends \App\Enum\AbstractEnum
 
     public const MODULES = 'modules';
     public const PLANS ='plans' ;
+    public const EVENTS ='events' ;
 
     /**
      * @inheritDoc

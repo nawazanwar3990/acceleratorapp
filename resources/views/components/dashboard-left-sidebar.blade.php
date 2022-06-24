@@ -35,13 +35,15 @@
                                     @case(\App\Enum\Nav\MainNavEnum::PACKAGES_PLAIN)
                                     @include('components.nav.plans')
                                     @break
+                                    @case(\App\Enum\Nav\MainNavEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT)
+                                    @include('components.nav.event')
+                                    @break
                                 @endswitch
                             </li>
                         @endcan
                     @endif
                 @endforeach
             </ul>
-
         </nav>
     </div>
 </aside>

@@ -4,25 +4,25 @@ namespace App\Enum\Nav;
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
 
-class PlanNavEnum extends AbstractEnum
+class EventNavEnum extends AbstractEnum
 {
-    public const PLAN_LIST = KeyWordEnum::PLAN_LIST;
-    public const PLAN_NEW = KeyWordEnum::PLAN_NEW;
+    public const EVENT_LIST = KeyWordEnum::EVENT_LIST;
+    public const EVENT_NEW = KeyWordEnum::EVENT_NEW;
 
 
     public static function getValues(): array
     {
         return [
-            self::PLAN_LIST,
-            self::PLAN_NEW,
+            self::EVENT_LIST,
+            self::EVENT_NEW,
         ];
     }
 
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::PLAN_LIST => '<i class="mdi mdi-account"></i>',
-            self::PLAN_NEW => '<i class="mdi mdi-account"></i>',
+            self::EVENT_LIST => '<i class="mdi mdi-account"></i>',
+            self::EVENT_NEW => '<i class="mdi mdi-account"></i>',
 
 
         ];
@@ -36,8 +36,8 @@ class PlanNavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::PLAN_NEW => __(sprintf('%s.%s', 'general', self::PLAN_NEW)),
-            self::PLAN_LIST => __(sprintf('%s.%s', 'general', self::PLAN_LIST)),
+            self::EVENT_NEW => __(sprintf('%s.%s', 'general', self::EVENT_NEW)),
+            self::EVENT_LIST => __(sprintf('%s.%s', 'general', self::EVENT_LIST)),
 
         ];
     }
@@ -45,8 +45,8 @@ class PlanNavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::PLAN_NEW => route('dashboard.plans.create'),
-            self::PLAN_LIST => route('dashboard.plans.index'),
+            self::EVENT_NEW => route('dashboard.events.create'),
+            self::EVENT_LIST => route('dashboard.events.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

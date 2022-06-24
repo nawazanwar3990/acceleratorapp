@@ -66,4 +66,5 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/real-estate/front-desk.php';
     require __DIR__ . '/real-estate/fixed-assets.php';
     require __DIR__ . '/plan.php';
+    require __DIR__ . '/event-and-meeting.php';
 });

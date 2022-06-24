@@ -159,6 +159,12 @@ class KeyWordEnum extends AbstractEnum
     public const DEFINITION = 'definition';
     public const SUBSCRIPTION ='subscription' ;
     public const PLAN ='plan' ;
+    public const PLAN_LIST = 'plan_list';
+    public const PLAN_NEW = 'new_plan';
+    public const EVENT_LIST = 'event_list';
+    public const EVENT_NEW = 'new_event';
+    public const MEETING_SCHEDULING = 'meeting_scheduling';
+    public const MENTOR_SECTION = 'mentor_section';
 
     static function getConstants()
     {

@@ -5,13 +5,13 @@
         <!-- ============================================================== -->
         <div class="navbar-header">
             <a class="navbar-brand" href="{{ route('dashboard.index') }}">
-                <b>
-                    <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
-                    <img src="{{ asset('images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
-                </b>
+{{--                <b>--}}
+{{--                    <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo" />--}}
+{{--                    <img src="{{ asset('images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />--}}
+{{--                </b>--}}
                 <span>
-                     <img src="{{ asset('images/logo-text.png') }}" alt="homepage" class="dark-logo" />
-                     <img src="{{ asset('images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
+{{--                     <img src="{{ asset('images/logo-text.png') }}" alt="homepage" class="dark-logo" />--}}
+                     <img src="{{ asset('images/business-accelerator-logo-white.png') }}" class="light-logo" style="margin-left: 31px;" alt="homepage" />
                 </span>
             </a>
         </div>
@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item mt-2">
                     <form action="{{ route('dashboard.search-flat') }}" class="app-search d-none d-md-block d-lg-block">
-                        <input type="text" name="search" class="form-control" placeholder="Flat Name, Number & Enter">
+                        <input type="text" name="search" class="form-control" placeholder="Services, Co-Working Space....">
                     </form>
                 </li>
             </ul>
