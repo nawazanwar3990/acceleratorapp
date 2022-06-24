@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-class TableEnum extends \App\Enum\AbstractEnum
+class TableEnum extends AbstractEnum
 {
 
     public const USERS = 'users';

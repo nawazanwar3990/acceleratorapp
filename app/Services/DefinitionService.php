@@ -56,10 +56,20 @@ class DefinitionService
 
     public static function pluck_services_roles()
     {
-        return Role::whereIn('slug', [RoleEnum::INCUBATOR, RoleEnum::SERVICE_PROVIDER, RoleEnum::MENTOR])->pluck('name', 'id');
+        return Role::whereIn('slug', [
+            RoleEnum::INCUBATOR,
+            RoleEnum::SERVICE_PROVIDER,
+            RoleEnum::MENTOR,
+            RoleEnum::CUSTOMER
+        ])->pluck('name', 'id');
     }
     public static function list_services_roles()
     {
-        return Role::whereIn('slug', [RoleEnum::INCUBATOR, RoleEnum::SERVICE_PROVIDER, RoleEnum::MENTOR])->get();
+        return Role::whereIn('slug', [
+            RoleEnum::INCUBATOR,
+            RoleEnum::SERVICE_PROVIDER,
+            RoleEnum::MENTOR,
+            RoleEnum::CUSTOMER
+        ])->get();
     }
 }

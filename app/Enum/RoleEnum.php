@@ -17,6 +17,7 @@ class RoleEnum extends AbstractEnum
     public const FREELANCER = 'freelancer';
     public const MENTOR = 'mentor';
     public const CLIENT = 'client';
+    public const CUSTOMER = 'customer';
 
     public static function getValues(): array
     {
@@ -26,7 +27,8 @@ class RoleEnum extends AbstractEnum
             self::INCUBATOR,
             self::FREELANCER,
             self::MENTOR,
-            self::CLIENT
+            self::CLIENT,
+            self::CUSTOMER
         ];
     }
 
@@ -38,7 +40,8 @@ class RoleEnum extends AbstractEnum
             self::INCUBATOR => __(self::INCUBATOR),
             self::FREELANCER => __(self::FREELANCER),
             self::MENTOR => __(self::MENTOR),
-            self::CLIENT => __(self::CLIENT)
+            self::CLIENT => __(self::CLIENT),
+            self::CUSTOMER => __(self::CUSTOMER),
         ];
     }
 

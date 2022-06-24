@@ -25,13 +25,14 @@ class UserSeeder extends Seeder
                 'hr_id' => '1',
                 'first_name' => 'Super',
                 'last_name' => 'Admin',
-                'user_name' => 'superadmin',
+                'user_name' => uniqid(),
                 'email' => 'superadmin@gmail.com',
                 'photo' => 'theme/images/users/1.jpg',
                 'password' => Hash::make('admin123'),
                 'normal_password' => 'admin123',
                 'active' => true,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'email_verified_at' => Carbon::now()
             ]
         ]);
     }

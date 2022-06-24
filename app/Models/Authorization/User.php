@@ -78,6 +78,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return !!$role->intersect($this->roles);
     }
 
+    public function getRoleName(): bool
+    {
+        return $this->roles[0]->name;
+    }
+
     public function ability($permission = null): bool
     {
         return !is_null($permission) && RoleEnum::check_permission($this, $permission);

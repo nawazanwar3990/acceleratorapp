@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Authorization\Role;
 use App\Providers\RouteServiceProvider;
 use App\Services\PersonService;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -49,7 +51,13 @@ class RegisterController extends Controller
         ]);
         $data = $request->all();
         $user = $this->personService->store($data);
-        session()->put('register_user', $user);
-        return redirect()->route('website.plans.index');
+        if ($user->hasRole(RoleEnum::CUSTOMER)) {
+            event(new Registered($user));
+            return redirect()->route('login')->with('success', trans('general.verify_email_address_message'));
+        }else{
+            session()->put('register_user', $user);
+            return redirect()->route('website.plans.index');
+        }
+
     }
 }

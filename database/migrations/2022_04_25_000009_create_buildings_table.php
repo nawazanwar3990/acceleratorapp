@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBuildingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create(TableEnum::BUILDINGS, function (Blueprint $table) {
@@ -66,12 +61,6 @@ class CreateBuildingsTable extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists(TableEnum::BUILDINGS);

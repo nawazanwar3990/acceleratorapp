@@ -54,6 +54,6 @@ class PlanController extends Controller
         $user->plans()->createMany($data);
         event(new Registered($user));
         session()->forget('register_user');
-        return redirect()->route('login')->with('success', trans('general.resend_email_address_message'));
+        return redirect()->route('login')->with('success', trans('general.verify_email_address_message'));
     }
 }
