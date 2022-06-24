@@ -26,11 +26,13 @@ class PlanRequest extends FormRequest
             if ($this->method() == MethodEnum::PUT) {
                 $model_id = $this->get('model_id');
                 return [
-                    'name' => ['required', Rule::unique(TableEnum::PLANS)->ignore($model_id)]
+                    'name' => ['required', Rule::unique(TableEnum::PLANS)->ignore($model_id)],
+                    'user_id' => ['required']
                 ];
             } else {
                 return [
-                    'name' => ['required', Rule::unique(TableEnum::PLANS)]
+                    'name' => ['required', Rule::unique(TableEnum::PLANS)],
+                    'user_id' => ['required']
                 ];
             }
         } else {

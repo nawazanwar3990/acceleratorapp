@@ -37,7 +37,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Service::class);
+        // $this->authorize(\App\Enum\AbilityEnum::CREATE, Service::class);
         $params = [
             'pageTitle' => __('general.new_service'),
         ];
@@ -52,7 +52,7 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        $this->authorize('create', Service::class);
+        // $this->authorize('create', Service::class);
         if ($request->createData()) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.service.create')
@@ -84,7 +84,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('update', Service::class);
+        // $this->authorize('update', Service::class);
         $model = Service::findorFail($id);
 
         $params = [
@@ -104,7 +104,7 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
-        $this->authorize('update', Service::class);
+        // $this->authorize('update', Service::class);
         if ($request->updateData($id)) {
             return redirect()->route('dashboard.service.index')
                 ->with('success', __('general.record_updated_successfully'));
@@ -119,7 +119,7 @@ class ServiceController extends Controller
      */
     public function destroy(ServiceRequest $request,$id)
     {
-        $this->authorize('delete', Service::class);
+        // $this->authorize('delete', Service::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.service.index')
                 ->with('success', __('general.record_deleted_successfully'));

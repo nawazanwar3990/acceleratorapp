@@ -989,4 +989,17 @@ class GeneralService
         $user = session()->get('register_user');
         return ucwords($user->first_name . " " . $user->last_name);
     }
+
+    public static function activeStatus($id = null): array|string
+    {
+        $data = [
+            1 => "Active",
+            0 => "Inactive",
+        ];
+
+        if (!is_null($id)) {
+            $data = $data[$id];
+        }
+        return $data;
+    }
 }

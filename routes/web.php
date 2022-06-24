@@ -53,6 +53,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/sellers-list', [ListController::class, 'sellerList'])->name('sellers-list');
     Route::get('/buyers-list', [ListController::class, 'buyerList'])->name('buyers-list');
     require __DIR__ . '/real-estate/definition/definition.php';
+    require __DIR__ . '/real-estate/definition/service.php';
     require __DIR__ . '/accounts.php';
     require __DIR__ . '/payroll.php';
     require __DIR__ . '/real-estate/device.php';

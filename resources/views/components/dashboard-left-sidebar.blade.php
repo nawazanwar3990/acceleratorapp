@@ -29,6 +29,9 @@
                                     @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT_SYSTEM)
                                     @include('components.nav.human-resource')
                                     @break
+                                    @case(\App\Enum\Nav\MainNavEnum::SERVICE_CREATION)
+                                    @include('components.nav.service')
+                                    @break
                                     @case(\App\Enum\Nav\MainNavEnum::PACKAGES_PLAIN)
                                     @include('components.nav.plans')
                                     @break

@@ -21,7 +21,7 @@ return [
     'weekly' => 'Weekly',
     'home' => 'Home',
     'prev' => 'Prev',
-    'packages_plain' => 'Packages & Plans Modules',
+    'packages_plain' => 'Packages & Plans',
     'service_creation' => 'Service Creation',
     'definition' => 'Definition',
     'invoice_ticket_and_account' => 'Invoices/Tickets & Accounting',
@@ -36,6 +36,8 @@ return [
     'new_plan' => 'New Plan',
     'plans' => 'Plans',
     'register' => 'Register',
+    'service_list' => 'Services List',
+    'new_service' => 'New Service',
 
     'please_wait' => 'Please Wait...',
     'dashboard' => 'Dashboard',
@@ -1076,5 +1078,7 @@ return [
     'new_permissions' => 'New Permissions',
     'sync_permission' => 'Sync Permission',
     'new_users' => 'New User',
-    'function_name' => 'Function Name'
+    'function_name' => 'Function Name',
+    'plan_name' => 'Plan Name',
+    'person_name' => 'Person Name',
 ];

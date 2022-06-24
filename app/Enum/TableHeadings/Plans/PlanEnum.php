@@ -8,6 +8,7 @@ use App\Enum\AbstractEnum;
 class PlanEnum extends AbstractEnum
 {
     public const NAME = 'name';
+    public const CUSTOMER_NAME = 'customer_name';
     public const SLUG = 'slug';
     public const Active = 'active';
     public const PRICE = 'price';
@@ -28,6 +29,7 @@ class PlanEnum extends AbstractEnum
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
+            self::CUSTOMER_NAME => __(sprintf('%s.%s', 'general', self::CUSTOMER_NAME)),
             self::SLUG => __(sprintf('%s.%s', 'general', self::SLUG)),
             self::Active => __(sprintf('%s.%s', 'general', self::Active)),
             self::PRICE => __(sprintf('%s.%s', 'general', self::PRICE)),
