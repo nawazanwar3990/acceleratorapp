@@ -6,7 +6,7 @@
             <div class="card-body">
                 <form class="form-horizontal form-material text-center"
                       id="loginform"
-                      action="{{ route('website.login') }}"
+                      action="{{ route('login') }}"
                       method="POST">
                     @csrf
                     <a href="javascript:void(0)" class="db">

@@ -18,9 +18,10 @@ use App\Http\Controllers\RealEstate\Sales\SalesController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/mail-verifications.php';
+require __DIR__ . '/auth.php';
+
 Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     require __DIR__ . '/website.php';
-    require __DIR__ . '/auth.php';
 });
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
