@@ -14,11 +14,7 @@ class ServiceController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+
     public function index()
     {
         $this->authorize('view', Service::class);
@@ -30,11 +26,6 @@ class ServiceController extends Controller
         return view('dashboard.real-estate.definition.service.index',$params);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
     public function create()
     {
         // $this->authorize(\App\Enum\AbilityEnum::CREATE, Service::class);
@@ -44,12 +35,7 @@ class ServiceController extends Controller
         return view('dashboard.real-estate.definition.service.create',compact('params'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function store(ServiceRequest $request)
     {
         // $this->authorize('create', Service::class);
@@ -64,24 +50,14 @@ class ServiceController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $this->authorize('view', Service::class);
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         // $this->authorize('update', Service::class);
@@ -95,13 +71,7 @@ class ServiceController extends Controller
         return view('dashboard.real-estate.definition.service.edit', $params);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function update(ServiceRequest $request, $id)
     {
         // $this->authorize('update', Service::class);
@@ -111,12 +81,6 @@ class ServiceController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(ServiceRequest $request,$id)
     {
         // $this->authorize('delete', Service::class);
