@@ -12,8 +12,10 @@
 <div class="container">
     <x-website-header></x-website-header>
     @include('website.components.home.banner')
-    <x-website-breadcrumb :title="$pageTitle"></x-website-breadcrumb>
-    @yield('content')
+    {{--<x-website-breadcrumb :title="$pageTitle"></x-website-breadcrumb>--}}
+    <main class="mt-5">
+        @yield('content')
+    </main>
 </div>
 <script src="{{ asset('js/website.min.js') }}"></script>
 @include('includes.global-scripts')

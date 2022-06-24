@@ -304,108 +304,25 @@ class PersonService
     public function store($data): User
     {
         $model = Hr::create($data);
-        $this->uploadMedia($model);
-        return $this->makeItUser($model);
+        return $this->makeItUser($model, $data);
     }
 
-    private function uploadMedia($hrModel)
-    {
-        $user_id = \auth()->id();
-        if (request()->file('scanned_document')) {
-            $uploadedFile = request()->file('scanned_document');
-            $fileName = GeneralService::generateFileName($uploadedFile);
-            $path = 'uploads/HR/documents/' . $fileName;
-            $uploadedFile->move('uploads/HR/documents', $fileName);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $hrModel->id,
-                'record_type' => 'hr_document',
-                'created_by' => $user_id,
-                'updated_by' => $user_id,
-            ]);
-        }
-
-        //signature
-        if (request()->file('scanned_signature')) {
-            $uploadedFile = request()->file('scanned_signature');
-            $path = 'uploads/HR/signature/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $hrModel->id,
-                'record_type' => 'hr_signature',
-                'created_by' => $user_id,
-                'updated_by' => $user_id,
-            ]);
-        }
-        if (request()->file('first_image')) {
-            $uploadedFile = request()->file('first_image');
-            $path = 'uploads/HR/images/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $hrModel->id,
-                'record_type' => 'hr_first_image',
-                'created_by' => $user_id,
-                'updated_by' => $user_id,
-            ]);
-        }
-        if (request()->file('second_image')) {
-            $uploadedFile = request()->file('second_image');
-            $path = 'uploads/HR/images/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $hrModel->id,
-                'record_type' => 'hr_second_image',
-                'created_by' => $user_id,
-                'updated_by' => $user_id,
-            ]);
-        }
-        if (request()->file('third_image')) {
-            $uploadedFile = request()->file('third_image');
-            $path = 'uploads/HR/images/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $hrModel->id,
-                'record_type' => 'hr_third_image',
-                'created_by' => $user_id,
-                'updated_by' => $user_id,
-            ]);
-        }
-        if (request()->file('fourth_image')) {
-            $uploadedFile = request()->file('fourth_image');
-            $path = 'uploads/HR/images/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $hrModel->id,
-                'record_type' => 'hr_fourth_image',
-                'created_by' => $user_id,
-                'updated_by' => $user_id,
-            ]);
-        }
-    }
-
-    private function makeItUser($model)
+    private function makeItUser($model, $data): User
     {
         $user = new User();
         $user->hr_id = $model->id;
-        $user->first_name = $model->last_name;
+        $user->first_name = $model->first_name;
         $user->last_name = $model->last_name;
         $user->user_name = uniqid();
         $user->email = $model->email;
-        $user->normal_password = 'user1234';
-        $user->password = Hash::make('user1234');
+        $user->normal_password = $data['password'];
+        $user->password = Hash::make($data['password']);
 
         if ($user->save()) {
 
-            if (request()->has('role_id')) {
-                $role = request()->input('role_id');
-                $user->roles()->sync([$role]);
+            if (isset($data['role_id'])) {
+                $user->roles()->sync([$data['role_id']]);
             }
-
             $model->user_id = $user->id;
             $model->save();
         }
@@ -420,5 +337,10 @@ class PersonService
     public static function userForDropdown()
     {
         return User::where('active', 1)->orderBy('first_name', 'ASC')->pluck('first_name', 'id');
+    }
+
+    public function findByEmail(mixed $email)
+    {
+        return User::whereEmail($email)->first();
     }
 }

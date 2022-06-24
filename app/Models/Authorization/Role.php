@@ -14,7 +14,6 @@ class Role extends Model
 
     protected $table = TableEnum::ROLES;
     protected $fillable = [
-        'building_id',
         'name',
         'slug'
     ];

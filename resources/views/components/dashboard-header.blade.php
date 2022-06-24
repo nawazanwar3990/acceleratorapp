@@ -49,7 +49,7 @@
                         <button class="dropdown-item" href="javascript:void(0);" onclick="LogoutConfirm();">
                             <i class="fa fa-power-off"></i> <span>{{__('general.logout')}}</span>
                         </button>
-                        <form method="POST" action="{{ route('website.logout') }}" id="logoutForm">
+                        <form method="POST" action="{{ route('logout') }}" id="logoutForm">
                             @csrf
                         </form>
                     </div>
