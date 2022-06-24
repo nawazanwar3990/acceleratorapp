@@ -1,6 +1,14 @@
 <?php
 return [
+    'welcome_back' => 'Welcome Back',
+    'resend' => 'Resend',
+    'confirm_password' => 'Confirm Password',
+    'your_account_is_not_activate_message' => 'Your account is not Activated please check you inbox and activate account or ',
+    'choose_your_plans_message' => 'Add Your Plain',
+    'user_type' => 'User Type',
+    'basic_info' => 'Basic Info',
     'hi' => 'Hi',
+    'resend_email_address_message' => 'We have Resend you a mail,Could you verify your email address by clicking on the link we just emailed you,',
     'verify_email_address_message' => 'Thanks for signing up, Before get Started,Could you verify your email address by clicking on the link we just emailed you,',
     'check_your_inbox' => 'Check Your Inbox',
     'back_to_register' => 'Back to Register',
@@ -14,9 +22,11 @@ return [
     'add' => 'Add',
     'remove' => 'Remove',
     'monthly' => 'Monthly',
+
     'free' => 'Free',
     'basic' => 'Basic',
-    'premium' => 'premium',
+    'premium' => 'Premium',
+
     'yearly' => 'Yearly',
     'weekly' => 'Weekly',
     'home' => 'Home',

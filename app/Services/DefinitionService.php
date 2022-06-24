@@ -58,4 +58,8 @@ class DefinitionService
     {
         return Role::whereIn('slug', [RoleEnum::INCUBATOR, RoleEnum::SERVICE_PROVIDER, RoleEnum::MENTOR])->pluck('name', 'id');
     }
+    public static function list_services_roles()
+    {
+        return Role::whereIn('slug', [RoleEnum::INCUBATOR, RoleEnum::SERVICE_PROVIDER, RoleEnum::MENTOR])->get();
+    }
 }

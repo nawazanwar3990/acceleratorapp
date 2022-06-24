@@ -16,8 +16,8 @@ return new class extends Migration {
         Schema::create(TableEnum::PLANS, function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
-            $table->string('name')->unique()->nullable();
-            $table->string('slug')->unique()->nullable();
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->string('type')->nullable();
             $table->string('price')->nullable();
             $table->string('limit')->nullable();

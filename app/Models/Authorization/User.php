@@ -5,11 +5,13 @@ namespace App\Models\Authorization;
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
 use App\Enum\TableHeadings\RealEstate\Hr;
+use App\Models\Plans\Plan;
 use App\Models\RealEstate\Building;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,18 +32,22 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'active',
-        'first_password'
+        'first_password',
+        'email_verified_at'
     ];
     protected $hidden = [
         'password',
         'remember_token',
     ];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+
     public function hr(): HasOne
     {
         return $this->hasOne(Hr::class, 'user_id');
+    }
+
+    public function plans(): HasMany
+    {
+        return $this->hasMany(Plan::class);
     }
 
     public function Building(): BelongsTo
@@ -76,6 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return !is_null($permission) && RoleEnum::check_permission($this, $permission);
     }
+
     public function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
