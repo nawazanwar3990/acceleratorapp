@@ -301,14 +301,11 @@ class PersonService
         return $output;
     }
 
-    public function store($data)
+    public function store($data): User
     {
         $model = Hr::create($data);
-        if ($model) {
-            $this->uploadMedia($model);
-            $this->makeItUser($model);
-        }
-        return $model;
+        $this->uploadMedia($model);
+        return $this->makeItUser($model);
     }
 
     private function uploadMedia($hrModel)
@@ -404,7 +401,7 @@ class PersonService
 
         if ($user->save()) {
 
-            if (request()->has('role_id')){
+            if (request()->has('role_id')) {
                 $role = request()->input('role_id');
                 $user->roles()->sync([$role]);
             }
@@ -413,5 +410,10 @@ class PersonService
             $model->save();
         }
         return $user;
+    }
+
+    public function findUserById($id)
+    {
+        return User::find($id);
     }
 }

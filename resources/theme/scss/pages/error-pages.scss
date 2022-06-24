@@ -1,34 +1,23 @@
-/*
-Template Name: Admin Template
-Author: Wrappixel
+.error-box {
+    height: 100%;
+    position: fixed;
+    background: url(error-bg.jpg) no-repeat center center #fff;
+    width: 100%;
 
-File: scss
-*/
-@import '../variable'; 
-
-
-/*******************
-Error Page
-******************/
-
-.error-box{
-  height:100%;
-  position:fixed;
-  background:url(../../../../assets/images/background/error-bg.jpg) no-repeat center center #fff;
-  width:100%;
-    
-  .footer{
-    width:100%;
-    left:0px;
-    right:0px;
-  }
+    .footer {
+        width: 100%;
+        left: 0px;
+        right: 0px;
+    }
 }
-.error-body{
-   padding-top:5%;
-   h1{
-      font-size:210px;
-      font-weight:900;
-       text-shadow: 4px 4px 0 $white, 6px 6px 0 $gray-800;
-      line-height:210px;
-   }
+
+.error-body {
+    padding-top: 5%;
+
+    h1 {
+        font-size: 63px;
+        font-weight: 900;
+        text-shadow: 2px 2px 0 $white, 2px 3px 0 $gray-800;
+        line-height: 210px;
+    }
 }

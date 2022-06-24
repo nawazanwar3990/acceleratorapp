@@ -29747,6 +29747,28 @@ Pricing Page
   right: 0px;
 }
 
+.error-box {
+  height: 100%;
+  position: fixed;
+  background: url(/images/error-bg.jpg?9ff9b9625781034c1add3d2c71f06112) no-repeat center center #fff;
+  width: 100%;
+}
+.error-box .footer {
+  width: 100%;
+  left: 0px;
+  right: 0px;
+}
+
+.error-body {
+  padding-top: 5%;
+}
+.error-body h1, .error-body .h1 {
+  font-size: 63px;
+  font-weight: 900;
+  text-shadow: 2px 2px 0 #fff, 2px 3px 0 #343a40;
+  line-height: 210px;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel

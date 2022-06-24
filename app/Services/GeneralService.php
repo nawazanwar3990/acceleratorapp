@@ -29,6 +29,7 @@ class GeneralService
         }
         return $result;
     }
+
     public static function flattenArrayToHtmlSelect($dataArray, $placeHolder, $selValue = null): string
     {
         $output = '<option value>' . $placeHolder . '</option>';
@@ -73,7 +74,8 @@ class GeneralService
         return $data;
     }
 
-    public static function getBuildingServicesData($service_type){
+    public static function getBuildingServicesData($service_type)
+    {
         return BuildingServices::whereBuildingId(BuildingService::getBuildingId())->whereServiceType($service_type)->get();
     }
 
@@ -908,36 +910,48 @@ class GeneralService
         }
     }
 
-    public static function getShortFormOfRelation($relationID) {
+    public static function getShortFormOfRelation($relationID)
+    {
         switch ($relationID) {
             case 1:
-                return 'F/o'; break;
+                return 'F/o';
+                break;
             case 2:
-                return 'M/o'; break;
+                return 'M/o';
+                break;
             case 3:
-                return 'B/o'; break;
+                return 'B/o';
+                break;
             case 4:
-                return 'Sister/o'; break;
+                return 'Sister/o';
+                break;
             case 5:
-                return 'S/o'; break;
+                return 'S/o';
+                break;
             case 6:
-                return 'D/o'; break;
+                return 'D/o';
+                break;
             case 7:
-                return 'W/o'; break;
+                return 'W/o';
+                break;
             case 8:
-                return 'H/o'; break;
+                return 'H/o';
+                break;
         }
     }
 
-    public static function getServiceName($serviceID) {
+    public static function getServiceName($serviceID)
+    {
         return Service::find($serviceID)->name;
     }
 
-    public static function getPercentageDifference($value1, $value2) {
-        $val1 =  ($value1 - $value2) * -1;
-        $val2 =  (($value1 + $value2) / 2);
-        return number_format(($val1 / $val2) * 100, 2) ;
+    public static function getPercentageDifference($value1, $value2)
+    {
+        $val1 = ($value1 - $value2) * -1;
+        $val2 = (($value1 + $value2) / 2);
+        return number_format(($val1 / $val2) * 100, 2);
     }
+
     public static function makeDirectory($name)
     {
         $dirPath = public_path('uploads/' . $name);
@@ -947,6 +961,7 @@ class GeneralService
             }
         }
     }
+
     public static function makeMultipleDirectories($parent, $childs = array())
     {
         foreach ($childs as $child) {
@@ -958,6 +973,7 @@ class GeneralService
             }
         }
     }
+
     public static function generateFileName($file): string
     {
         $avatarNameWithExt = $file->getClientOriginalName();
@@ -966,5 +982,11 @@ class GeneralService
         $avatarName = preg_replace("/\s+/", '-', $avatarName);
         $avatarExtension = $file->getClientOriginalExtension();
         return $avatarName . '_' . time() . '.' . $avatarExtension;
+    }
+
+    public static function get_register_user_name(): string
+    {
+        $user = session()->get('register_user');
+        return ucwords($user->first_name . " " . $user->last_name);
     }
 }

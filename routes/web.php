@@ -15,16 +15,11 @@ use App\Http\Controllers\RealEstate\HumanResource\HumanResourceController;
 use App\Http\Controllers\RealEstate\ListController;
 use App\Http\Controllers\RealEstate\Sales\InstallmentPlanController;
 use App\Http\Controllers\RealEstate\Sales\SalesController;
-use App\Http\Controllers\Website\PricingPlanController;
 use Illuminate\Support\Facades\Route;
 
+require __DIR__ . '/mail-verifications.php';
 Route::group(['prefix' => '/', 'as' => 'website.'], function () {
-    Route::get('', [\App\Http\Controllers\Website\HomeController::class, 'index'])
-        ->name('index');
-
-    Route::resource('pricing-plans', PricingPlanController::class, ['names' => 'pricing-plans']);
-
-
+    require __DIR__ . '/website.php';
     require __DIR__ . '/auth.php';
 });
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');

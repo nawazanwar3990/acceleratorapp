@@ -6,9 +6,12 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            {!! Form::open(['url' => route('website.pricing-plans.store'), 'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
+            {!! Form::open(['url' => route('website.plans.store'), 'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
             <x-created-by-field></x-created-by-field>
             <div class="card">
+                <div class="card-header">
+                    <span class="text-info">{{ trans('general.hi') }}</span> {{ \App\Services\GeneralService::get_register_user_name()  }} {{__('general.choose_your_plans_message')}}
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">

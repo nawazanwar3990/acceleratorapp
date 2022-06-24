@@ -11,6 +11,7 @@ use Database\Seeders\Auth\RoleSeeder;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class RegisteredUserController extends Controller
 {
@@ -34,11 +35,10 @@ class RegisteredUserController extends Controller
         return view('website.register.index', compact('pageTitle', 'slug'));
     }
 
-    public function store(PersonRequest $request)
+    public function store(PersonRequest $request): RedirectResponse
     {
-        $model = $this->personService->store($request->all());
-        if ($model) {
-            return redirect()->route('website.pricing-plans.index');
-        }
+        $user = $this->personService->store($request->all());
+        session()->put('register_user', $user);
+        return redirect()->route('website.plans.index');
     }
 }
