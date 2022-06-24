@@ -967,4 +967,17 @@ class GeneralService
         $avatarExtension = $file->getClientOriginalExtension();
         return $avatarName . '_' . time() . '.' . $avatarExtension;
     }
+
+    public static function activeStatus($id = null)
+    {
+        $data = [
+            1 =>"Active",
+            0 => "Inactive",
+        ];
+
+        if (!is_null($id)) {
+            $data = $data[$id];
+        }
+        return $data;
+    }
 }

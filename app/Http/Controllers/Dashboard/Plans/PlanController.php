@@ -40,7 +40,7 @@ class PlanController extends Controller
     public function store(PlanRequest $request)
     {
         if ($request->createData()) {
-            return redirect()->route('dashboard.plans.create')
+            return redirect()->route('dashboard.plans.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }

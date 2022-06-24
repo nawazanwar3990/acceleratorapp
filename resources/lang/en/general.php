@@ -18,7 +18,7 @@ return [
     'weekly'=>'Weekly',
     'home' => 'Home',
     'prev' => 'Prev',
-    'packages_plain' => 'Packages & Plans Modules',
+    'packages_plain' => 'Packages & Plans',
     'service_creation' => 'Service Creation',
     'definition' => 'Definition',
     'invoice_ticket_and_account' => 'Invoices/Tickets & Accounting',
@@ -1075,5 +1075,7 @@ return [
     'new_permissions' => 'New Permissions',
     'sync_permission' => 'Sync Permission',
     'new_users' => 'New User',
-    'function_name' => 'Function Name'
+    'function_name' => 'Function Name',
+    'plan_name' => 'Plan Name',
+    'person_name' => 'Person Name',
 ];

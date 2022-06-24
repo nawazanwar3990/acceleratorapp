@@ -414,4 +414,9 @@ class PersonService
         }
         return $user;
     }
+
+    public static function userForDropdown()
+    {
+        return User::where('active', 1)->orderBy('first_name', 'ASC')->pluck('first_name', 'id');
+    }
 }
