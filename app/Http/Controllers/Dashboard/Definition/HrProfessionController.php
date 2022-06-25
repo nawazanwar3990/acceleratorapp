@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\HrProfessionRequest;
-use App\Models\Definition\HumanResource\HrProfession;
+use App\Http\Requests\UserManagement\HrProfessionRequest;
+use App\Models\UserManagement\HrProfession;
 use function __;
 use function redirect;
 use function view;

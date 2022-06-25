@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Authorization\User;
+use App\Models\UserManagement\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class VoucherPolicy

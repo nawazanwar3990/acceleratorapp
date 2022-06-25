@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\HrNationalityRequest;
-use App\Models\Definition\HumanResource\HrNationality;
+use App\Http\Requests\UserManagement\HrNationalityRequest;
+use App\Models\UserManagement\HrNationality;
 use function __;
 use function redirect;
 use function view;

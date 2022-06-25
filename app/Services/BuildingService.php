@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Building;
-use App\Models\Floor;
+use App\Models\FlatManagement\Floor;
 use function __;
 use function session;
 

@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\Definition\Service;
+use App\Models\ServiceManagement\Service;
 
 class ServiceData
 {

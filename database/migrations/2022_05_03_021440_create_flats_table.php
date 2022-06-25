@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create(TableEnum::FLATS, function (Blueprint $table) {
@@ -25,8 +20,6 @@ return new class extends Migration
             $table->string('facing')->nullable();
             $table->string('view')->nullable();
             $table->string('accommodation')->nullable();
-            $table->json('general_services')->nullable();
-            $table->json('security_services')->nullable();
             $table->boolean('furnished')->nullable()->default(true);
             $table->longText('furnished_details')->nullable();
             $table->string('length')->nullable();
@@ -41,18 +34,11 @@ return new class extends Migration
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
-
             $table->string('sales_status')->default('open');
             $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists(TableEnum::FLATS);

@@ -6,8 +6,8 @@ use App\Enum\KeyWordEnum;
 
 class ServiceNavEnum extends AbstractEnum
 {
-    public const LIST = KeyWordEnum::SERVICE_CREATION_LIST;
-    public const CREATE = KeyWordEnum::SERVICE_CREATION_NEW;
+    public const LIST = KeyWordEnum::SERVICE_MANAGEMENT_LIST;
+    public const CREATE = KeyWordEnum::SERVICE_MANAGEMENT_NEW;
 
     public static function getValues(): array
     {

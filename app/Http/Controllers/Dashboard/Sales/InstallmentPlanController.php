@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Sales;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Sales\InstallmentPlanRequest;
-use App\Models\Sales\InstallmentPlan;
+use App\Http\Requests\PlanManagement\PlanRequest;
+use App\Models\Sales\Plan;
 use App\Services\InstallmentService;
 use Illuminate\Http\Request;
 use function __;
@@ -20,8 +20,8 @@ class InstallmentPlanController extends Controller
 
     public function index()
     {
-        $this->authorize('view', InstallmentPlan::class);
-        $records = InstallmentPlan::orderBy('name', 'ASC')->get();
+        $this->authorize('view', Plan::class);
+        $records = Plan::orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.installment_plans'),
             'records' => $records,
@@ -32,7 +32,7 @@ class InstallmentPlanController extends Controller
 
     public function create()
     {
-        $this->authorize('create', InstallmentPlan::class);
+        $this->authorize('create', Plan::class);
         $params = [
             'pageTitle' => __('general.new_installment_plan'),
         ];
@@ -40,9 +40,9 @@ class InstallmentPlanController extends Controller
         return view('dashboard.installment-plans.create', $params);
     }
 
-    public function store(InstallmentPlanRequest $request)
+    public function store(PlanRequest $request)
     {
-        $this->authorize('create', InstallmentPlan::class);
+        $this->authorize('create', Plan::class);
         if ($request->createData()) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.installment-plans.create')
@@ -56,8 +56,8 @@ class InstallmentPlanController extends Controller
 
     public function show($id)
     {
-        $this->authorize('view', InstallmentPlan::class);
-        $records = InstallmentPlan::findOrFail($id);
+        $this->authorize('view', Plan::class);
+        $records = Plan::findOrFail($id);
         $params = [
             'pageTitle' => __('general.installment_plans_print'),
             'records' => $records,
@@ -68,8 +68,8 @@ class InstallmentPlanController extends Controller
 
     public function edit($id)
     {
-        $this->authorize('update', InstallmentPlan::class);
-        $model = InstallmentPlan::findorFail($id);
+        $this->authorize('update', Plan::class);
+        $model = Plan::findorFail($id);
         $params = [
             'pageTitle' => __('general.edit_installment_plan'),
             'model' => $model,
@@ -78,18 +78,18 @@ class InstallmentPlanController extends Controller
         return view('dashboard.installment-plans.edit', $params);
     }
 
-    public function update(InstallmentPlanRequest $request, $id)
+    public function update(PlanRequest $request, $id)
     {
-        $this->authorize('update', InstallmentPlan::class);
+        $this->authorize('update', Plan::class);
         if ($request->updateData($id)) {
             return redirect()->route('dashboard.installment-plans.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
 
-    public function destroy(InstallmentPlanRequest $request, $id)
+    public function destroy(PlanRequest $request, $id)
     {
-        $this->authorize('delete', InstallmentPlan::class);
+        $this->authorize('delete', Plan::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.installment-plans.index')
                 ->with('success', __('general.record_deleted_successfully'));
@@ -103,7 +103,7 @@ class InstallmentPlanController extends Controller
     public function addInstallmentPlanAjax(Request $request) {
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
-            $record = InstallmentPlan::create($request->all());
+            $record = Plan::create($request->all());
             $output = ['success' => true, 'msg' => '', 'data' => $record];
         }
 

@@ -2,10 +2,11 @@
 
 namespace App\Models\HumanResource;
 
-use App\Models\Authorization\User;
 use App\Models\Building;
-use App\Models\Definition\HumanResource\HrDepartment;
-use App\Models\Definition\HumanResource\HrDesignation;
+use App\Models\UserManagement\Hr;
+use App\Models\UserManagement\HrDepartment;
+use App\Models\UserManagement\HrDesignation;
+use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -17,7 +17,7 @@
     <div class="col-md-5">
         {!!  Form::select('parent_id', $parentHeads,null,['id'=>'parent_id',
             'class'=>'select2 form-control',
-            'placeholder'=>__('general.ph_parent_expense_head'),\App\Services\DefinitionService::chackParentExsit($model->id ?? null,\App\Models\Definition\HumanResource\HrBusiness::class) ? ' disabled' : ''])
+            'placeholder'=>__('general.ph_parent_expense_head'),\App\Services\DefinitionService::chackParentExsit($model->id ?? null,\App\Models\UserManagement\HrBusiness::class) ? ' disabled' : ''])
         !!}
     </div>
 </div>

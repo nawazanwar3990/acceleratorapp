@@ -2,27 +2,27 @@
 
 namespace App\Services;
 
-use App\Models\Authorization\User;
 use App\Models\Definition\General\Colony;
 use App\Models\Definition\General\Country;
 use App\Models\Definition\General\District;
 use App\Models\Definition\General\Province;
 use App\Models\Definition\General\Tehsil;
-use App\Models\Definition\HumanResource\HrBusiness;
-use App\Models\Definition\HumanResource\HrCast;
-use App\Models\Definition\HumanResource\HrDepartment;
-use App\Models\Definition\HumanResource\HrDesignation;
 use App\Models\Definition\HumanResource\HrEmployeeType;
 use App\Models\Definition\HumanResource\HrMinistry;
-use App\Models\Definition\HumanResource\HrNationality;
-use App\Models\Definition\HumanResource\HrOrganization;
-use App\Models\Definition\HumanResource\HrProfession;
-use App\Models\Definition\HumanResource\HrRelation;
 use App\Models\Definition\HumanResource\HrTaxStatus;
 use App\Models\Definition\HumanResource\HrTaxType;
 use App\Models\HumanResource\Employee;
-use App\Models\HumanResource\Hr;
 use App\Models\Media;
+use App\Models\UserManagement\Hr;
+use App\Models\UserManagement\HrBusiness;
+use App\Models\UserManagement\HrCast;
+use App\Models\UserManagement\HrDepartment;
+use App\Models\UserManagement\HrDesignation;
+use App\Models\UserManagement\HrNationality;
+use App\Models\UserManagement\HrOrganization;
+use App\Models\UserManagement\HrProfession;
+use App\Models\UserManagement\HrRelation;
+use App\Models\UserManagement\User;
 use Illuminate\Support\Facades\Hash;
 use function __;
 use function url;

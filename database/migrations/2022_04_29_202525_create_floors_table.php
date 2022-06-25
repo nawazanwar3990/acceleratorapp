@@ -7,16 +7,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create(TableEnum::FLOORS, function (Blueprint $table) {
             $table->id();
-
             $table->string('floor_name')->nullable();
             $table->string('floor_number')->nullable();
             $table->foreignId('floor_type_id')->nullable()->constrained(TableEnum::FLOOR_TYPES);
@@ -25,23 +19,13 @@ return new class extends Migration
             $table->string('area')->nullable();
             $table->string('height')->nullable();
             $table->integer('no_of_shops_flats')->nullable()->default(0);
-            $table->json('general_services')->nullable();
-            $table->json('security_services')->nullable();
-
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
-
             $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists(TableEnum::FLOORS);

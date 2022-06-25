@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\FlatOwner;
+use App\Models\FlatManagement\FlatOwner;
 use App\Models\Sales\Sale;
 use function __;
 use function view;

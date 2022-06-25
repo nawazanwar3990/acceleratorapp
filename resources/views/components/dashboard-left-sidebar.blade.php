@@ -23,19 +23,16 @@
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
                                 @switch($key)
-                                    @case(\App\Enum\Nav\MainNavEnum::DEFINITION)
-                                    @include('components.nav.definitions')
-                                    @break
-                                    @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT_SYSTEM)
+                                    @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT)
                                     @include('components.nav.human-resource')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::SERVICE_CREATION)
+                                    @case(\App\Enum\Nav\MainNavEnum::SERVICE_MANAGEMENT)
                                     @include('components.nav.service')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::PACKAGES_PLAIN)
+                                    @case(\App\Enum\Nav\MainNavEnum::PLAN_MANAGEMENT)
                                     @include('components.nav.plans')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT)
+                                    @case(\App\Enum\Nav\MainNavEnum::EVENT_MANAGEMENT)
                                     @include('components.nav.event')
                                     @break
                                 @endswitch

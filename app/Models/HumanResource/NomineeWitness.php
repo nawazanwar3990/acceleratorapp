@@ -2,8 +2,9 @@
 
 namespace App\Models\HumanResource;
 
-use App\Models\Authorization\User;
 use App\Models\Building;
+use App\Models\UserManagement\Hr;
+use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

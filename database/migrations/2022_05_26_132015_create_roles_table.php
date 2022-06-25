@@ -6,16 +6,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create(TableEnum::ROLES, function (Blueprint $table) {
             $table->id();
-
             $table->string('name')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
@@ -25,12 +19,6 @@ return new class extends Migration {
             $table->softDeletes();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists(TableEnum::ROLES);

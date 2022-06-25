@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Sales\InstallmentPlan;
+use App\Models\Sales\Plan;
 use App\Models\Sales\InstallmentTerm;
 use function __;
 
@@ -10,7 +10,7 @@ class InstallmentService
 {
 
     public static function getInstallmentPlansForDropdown() {
-        return InstallmentPlan::orderBy('name', 'ASC')->pluck('name', 'id');
+        return Plan::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function getInstallmentPlanDetailsForJS($request) {
@@ -18,7 +18,7 @@ class InstallmentService
         if ($request->ajax()) {
             $planID = $request->get('planID');
 
-            $record = InstallmentPlan::findorFail($planID);
+            $record = Plan::findorFail($planID);
             $output = ['success' => true, 'msg' => '', 'record' => $record];
         }
 

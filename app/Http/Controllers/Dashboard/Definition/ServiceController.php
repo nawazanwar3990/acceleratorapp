@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\ServiceRequest;
-use App\Models\Definition\Service;
+use App\Http\Requests\ServiceManagement\ServiceRequest;
+use App\Models\ServiceManagement\Service;
 use function __;
 use function redirect;
 use function view;

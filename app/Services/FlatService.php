@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Definition\General\FlatType;
-use App\Models\Flat;
-use App\Models\FlatOwner;
+use App\Models\FlatManagement\Flat;
+use App\Models\FlatManagement\FlatOwner;
 use App\Models\Sales\Sale;
 use function __;
 use function response;

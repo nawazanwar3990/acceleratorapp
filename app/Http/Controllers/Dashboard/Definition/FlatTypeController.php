@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\FlatTypeRequest;
+use App\Http\Requests\ServiceManagement\FlatTypeRequest;
 use App\Models\Definition\General\FlatType;
 use function __;
 use function redirect;

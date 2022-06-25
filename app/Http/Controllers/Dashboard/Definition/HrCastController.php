@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\HrCastRequest;
-use App\Models\Definition\HumanResource\HrCast;
+use App\Http\Requests\UserManagement\HrCastRequest;
+use App\Models\UserManagement\HrCast;
 use function __;
 use function redirect;
 use function view;

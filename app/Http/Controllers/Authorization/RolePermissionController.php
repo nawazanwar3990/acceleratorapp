@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Authorization;
 use App\Http\Controllers\Controller;
-use App\Models\Authorization\Permission;
-use App\Models\Authorization\Role;
+use App\Models\UserManagement\Permission;
+use App\Models\UserManagement\Role;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

@@ -6,30 +6,17 @@ class TableEnum extends AbstractEnum
 {
 
     public const USERS = 'users';
-    public const VISITOR_BOOKS = 'visitor_books';
-    public const POSTAL_RECEIVES = 'postal_receives';
-    public const SYSTEM_SETTINGS = 'system_settings';
+    public const SETTINGS = 'settings';
     public const COMPLAINS = 'complains';
-    public const ASSETS_INVENTORIES = 'assets_inventories';
-    public const PHONE_CALL_LOGS = 'phone_call_logs';
-    public const SALE_ENQUIRIES = 'sale_enquiries';
-    public const POSTAL_DISPATCHES = 'postal_dispatches';
-    public const ASSETS_LOCATION = 'assets_locations';
-    public const BUILDINGS = 'buildings';
     public const SOURCES = 'sources';
-    public const ASSETS_UNITS = 'assets_units';
-    public const CALL_TYPES = 'call_types';
     public const REFERENCES = 'references';
     public const PURPOSES = 'purposes';
-    public const COMPLAIN_TYPES = 'complain_types';
-    public const ACCOUNT_HEADS = 'account_heads';
-    public const EXPENSE_HEADS = 'expense_heads';
-    public const EXPENSES = 'expenses';
+
     public const MEDIA = 'media';
     public const SERVICES = 'services';
     public const FLOOR_NAMES = 'floor_names';
     public const FLOOR_TYPES = 'floor_types';
-    public const BUILDING_SERVICES = 'building_services';
+
     public const FLOORS = 'floors';
     public const HR_CASTS = 'hr_casts';
     public const HR_RELATIONS = 'hr_relations';
@@ -49,15 +36,11 @@ class TableEnum extends AbstractEnum
     public const TEHSILS = 'tehsils';
     public const COLONIES = 'colonies';
     public const HR_BUSINESSES = 'hr_businesses';
-    public const BUSINESS_OWNERS = 'building_owners';
     public const FLAT_TYPES = 'flat_types';
     public const FLATS = 'flats';
-    public const FLAT_OWNERS = 'flat_owners';
+    public const FLAT_OWNER = 'flat_owner';
     public const VOUCHER_PREFIXES = 'voucher_prefixes';
-    public const FISCAL_YEARS = 'fiscal_years';
-    public const TRANSACTIONS = 'transactions';
     public const SALES = 'sales';
-    public const COMMODITY_TYPES = 'commodity_types';
     public const INSTALLMENT_PLANS = 'installment_plans';
     public const NOMINEES = 'nominees';
     public const PURCHASERS = 'purchasers';
@@ -75,11 +58,7 @@ class TableEnum extends AbstractEnum
     public const DEVICES = 'devices';
     public const EMPLOYEES = 'employees';
     public const SALARIES = 'salaries';
-    public const EMPLOYEE_LOANS = 'employee_loans';
-    public const QUOTATIONS = 'quotations';
     public const QUOTATION_INSTALLMENTS = 'quotation_installments';
-    public const BUSINESSES = 'businesses';
-    public const SALES_COMMODITIES = 'sales_commodities';
 
     public const TABLE_NOTIFICATIONS = 'notifications';
     public const ROLES = 'roles';
@@ -88,8 +67,9 @@ class TableEnum extends AbstractEnum
     public const ROLE_PERMISSION = 'role_permission';
 
     public const MODULES = 'modules';
-    public const PLANS ='plans' ;
-    public const EVENTS ='events' ;
+    public const PLANS = 'plans';
+    public const EVENTS = 'events';
+    public const FLAT_SERVICE = 'flat_service';
 
     /**
      * @inheritDoc

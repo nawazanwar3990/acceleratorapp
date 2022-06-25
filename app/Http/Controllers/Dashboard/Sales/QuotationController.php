@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Sales;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Sales\QuotationRequest;
+use App\Http\Requests\PlanManagement\QuotationRequest;
 use App\Models\Sales\Quotation;
 use function __;
 use function redirect;

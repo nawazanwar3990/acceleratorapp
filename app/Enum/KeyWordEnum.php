@@ -6,7 +6,6 @@ class KeyWordEnum extends AbstractEnum
 {
 
     public const DASHBOARD = 'dashboard';
-    public const SETTINGS = 'settings';
     public const FRONT_DESK = 'front_desk';
     public const FIXED_ASSETS = 'fixed_assets';
     public const ASSETS_INVENTORY = 'assets_inventory';
@@ -25,42 +24,26 @@ class KeyWordEnum extends AbstractEnum
     public const COMPLAIN_TYPE = 'complain_type';
     public const FRONT_DESK_SETUP = 'front_desk_setup';
 
-    public const SYSTEM_SETTING = 'system_setting';
-
     public const BUILDING_PRINT = 'building_print';
     public const FLAT_OWNERS = 'flat_owners';
-    public const BUILDING_UNITS = 'building_units';
     public const NOMINEE_PRINT = 'nominee_print';
     public const BUILDINGS = 'buildings';
     public const HR_PRINT = 'hr_print';
-    public const FLOORS = 'floors';
     public const FLATS_SHOPS = 'flats_shop';
     public const SHARED_SPACE = 'shared_space';
     public const BUILDING_UNITS_ALLOTMENT = 'building_units_allotment';
     public const HUMAN_RESOURCE = 'human_resource';
     public const HR_PERSONS = 'hr_persons';
-    public const SUPPLIERS = 'suppliers';
-    public const SELLERS = 'sellers';
     public const BUYERS = 'buyers';
     public const EMPLOYEES = 'employees';
-    public const BROKERS = 'brokers';
     public const SALES = 'sales';
     public const TITLE_TRANSFER = 'title_transfer';
     public const SALES_LISTING = 'sales_listing';
     public const COMMODITY_DEAL_CLOSING = 'commodity_deal_closing';
-    public const INSTALLMENT_PLANS = 'installment_plans';
-    public const INCOME_EXPENSE = 'income_expense';
-    public const INCOME_HEAD = 'income_head';
-    public const INCOME_COLLECTION = 'income_collection';
-    public const INCOME_STATEMENT = 'income_statement';
-    public const EXPENSE_HEAD = 'expense_head';
-    public const EXPENSES = 'expenses';
-    public const EXPENSES_STATEMENT = 'expenses_statement';
+
     public const DEFINITIONS = 'definitions';
     public const FLOOR_NAMES = 'floor_names';
-    public const FLOOR_TYPES = 'floor_types';
     public const FLOOR_SIZE = 'floor_size';
-    public const ACCOUNTS = 'accounts';
 
     public const LEDGER = 'ledger';
 
@@ -97,33 +80,13 @@ class KeyWordEnum extends AbstractEnum
     public const PURCHASE_STOCK = 'purchase_stock';
     public const OWN_STOCK = 'own_stock';
     public const INVESTOR_STOCK = 'investor_stock';
-    public const AUTHORIZATION = 'authorization';
 
     public const PERMISSION = 'permissions';
     public const ROLE = 'roles';
     public const USER = 'users';
 
     public const GENERAL = 'general';
-    public const RELATIONS = 'relation';
-    public const CAST = 'cast';
-    public const EMPLOYEE_TYPE = 'employee_type';
-    public const EMPLOYEE_SUB_TYPE = 'employee_sub_type';
-    public const TAX_TYPE = 'tax_type';
-    public const NATIONALITY = 'nationality';
-    public const COUNTRY = 'country';
-    public const PROVINCE = 'province';
-    public const DISTRICT = 'district';
-    public const TEHSIL = 'tehsil';
-    public const COLONY = 'colony';
-    public const DEPARTMENT = 'department';
-    public const DESIGNATION = 'designation';
-    public const MINISTRY = 'ministry';
-    public const EMPLOYMENT = 'employment';
-    public const PROFESSION = 'profession';
-    public const ORGANIZATION = 'organization';
-    public const TAX_STATUS = 'tax_status';
-    public const HR_BUSINESS = 'hr_business';
-    public const FLAT_TYPES = 'flat_types';
+
     public const COMMODITY_TYPES = 'commodity_types';
     public const PRINT = 'print';
     public const CASH_BOOK = 'cash_book';
@@ -143,28 +106,53 @@ class KeyWordEnum extends AbstractEnum
     public const OPENING_BALANCE_VOUCHER = 'opening_balance_voucher';
     public const CREATE_ACCOUNT_HEAD = 'create_account_head';
     public const BUSINESS_SETTINGS = 'business_settings';
-
-    public const PACKAGES_PLAIN = 'packages_plain';
-    public const INVOICE_TICKET_AND_ACCOUNTING = 'invoice_ticket_and_account';
-    public const REPORTING_AND_STAT_HANDLING = 'reporting_and_stat_handling';
-    public const SYSTEM_CONFIGURATION = 'system_configuration';
-    public const FREELANCE_AND_MENTOR = 'freelancer_and_mentor';
-    public const USER_MANAGEMENT_SYSTEM = 'user_management_system';
-    public const FRONT_DESK_MANAGEMENT_SYSTEM = 'front_desk_management_system';
-    public const CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING = 'co_working_space_allotment_and_handling';
-    public const MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT = 'event_appointment_and_event_management';
-    public const SERVICE_CREATION = 'service_creation';
-    public const SERVICE_CREATION_LIST = 'service_list';
-    public const SERVICE_CREATION_NEW = 'new_service';
-    public const DEFINITION = 'definition';
-    public const SUBSCRIPTION ='subscription' ;
-    public const PLAN ='plan' ;
+    //plan management
+    public const PLAN_MANAGEMENT = 'plan_management';
+    public const PLAN = 'plan';
     public const PLAN_LIST = 'plan_list';
     public const PLAN_NEW = 'new_plan';
+    // system management
+    public const SYSTEM_CONFIGURATION = 'system_configuration';
+    public const SETTING = 'setting';
+    //user management
+    public const USER_MANAGEMENT = 'USER_MANAGEMENT';
+    public const RELATIONS = 'relation';
+    public const CAST = 'cast';
+    public const EMPLOYEE_TYPE = 'employee_type';
+    public const EMPLOYEE_SUB_TYPE = 'employee_sub_type';
+    public const TAX_TYPE = 'tax_type';
+    public const NATIONALITY = 'nationality';
+    public const COUNTRY = 'country';
+    public const PROVINCE = 'province';
+    public const DISTRICT = 'district';
+    public const TEHSIL = 'tehsil';
+    public const COLONY = 'colony';
+    public const DEPARTMENT = 'department';
+    public const DESIGNATION = 'designation';
+    public const MINISTRY = 'ministry';
+    public const EMPLOYMENT = 'employment';
+    public const PROFESSION = 'profession';
+    public const ORGANIZATION = 'organization';
+    public const TAX_STATUS = 'tax_status';
+    public const HR_BUSINESS = 'hr_business';
+    // event management
+    public const EVENT_MANAGEMENT = 'event_management';
+    public const EVENT = 'event';
     public const EVENT_LIST = 'event_list';
     public const EVENT_NEW = 'new_event';
-    public const MEETING_SCHEDULING = 'meeting_scheduling';
-    public const MENTOR_SECTION = 'mentor_section';
+    // flat management
+    public const FLAT_MANAGEMENT = 'flat_management';
+    public const FLAT = 'flat';
+    public const FLAT_TYPE = 'flat_type';
+    public const FLOOR = 'floor';
+    public const FLOOR_TYPE = 'floor_type';
+    //service management
+    public const SERVICE_MANAGEMENT = 'service_management';
+    public const SERVICE = 'service';
+    //definition
+    public const DEFINITION = 'definition';
+    public const HR_PERSON = 'hr_person';
+    public const RELATION = 'relation';
 
     static function getConstants()
     {

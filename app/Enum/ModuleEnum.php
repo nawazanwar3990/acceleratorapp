@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-use App\Models\Authorization\Permission;
-use App\Models\Authorization\RolePermission;
+use App\Models\UserManagement\Permission;
+use App\Models\UserManagement\RolePermission;
 use App\Models\Module;
 
 class ModuleEnum extends AbstractEnum
@@ -20,49 +20,47 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
-            KeyWordEnum::DEFINITION => array(
-                KeyWordEnum::HUMAN_RESOURCE => array(
+            KeyWordEnum::USER_MANAGEMENT => array(
+                KeyWordEnum::DEFINITION => array(
                     $ability . KeyWordEnum::RELATIONS,
                     $ability . KeyWordEnum::CAST,
-                    $ability . KeyWordEnum::TAX_TYPE,
-                    $ability . KeyWordEnum::TAX_STATUS,
                     $ability . KeyWordEnum::NATIONALITY,
                     $ability . KeyWordEnum::COUNTRY,
                     $ability . KeyWordEnum::PROVINCE,
                     $ability . KeyWordEnum::DISTRICT,
-                    $ability . KeyWordEnum::TEHSIL,
-                    $ability . KeyWordEnum::COLONY,
                     $ability . KeyWordEnum::DEPARTMENT,
                     $ability . KeyWordEnum::DESIGNATION,
                     $ability . KeyWordEnum::MINISTRY,
                     $ability . KeyWordEnum::PROFESSION,
                     $ability . KeyWordEnum::ORGANIZATION,
-                    $ability . KeyWordEnum::HR_BUSINESS,
-                )
-            ),
-            KeyWordEnum::USER_MANAGEMENT_SYSTEM => array(
-
+                    $ability . KeyWordEnum::HR_BUSINESS
+                ),
                 $ability . KeyWordEnum::HR_PERSONS,
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,
                 $ability . KeyWordEnum::USER,
                 $ability . KeyWordEnum::SYNC_PERMISSION
-
             ),
-            KeyWordEnum::FRONT_DESK_MANAGEMENT_SYSTEM,
-            KeyWordEnum::INVOICE_TICKET_AND_ACCOUNTING,
-            KeyWordEnum::REPORTING_AND_STAT_HANDLING,
-            KeyWordEnum::SYSTEM_CONFIGURATION,
-            KeyWordEnum::SERVICE_CREATION,
-            KeyWordEnum::PACKAGES_PLAIN => array(
+            KeyWordEnum::SERVICE_MANAGEMENT=>array(
+                $ability . KeyWordEnum::SERVICE
+            ),
+            KeyWordEnum::FLAT_MANAGEMENT=>array(
+                KeyWordEnum::DEFINITION => array(
+                    $ability . KeyWordEnum::FLAT_TYPE,
+                    $ability . KeyWordEnum::FLOOR_TYPE,
+                    $ability . KeyWordEnum::FLOOR,
+                ),
+                $ability . KeyWordEnum::FLAT
+            ),
+            KeyWordEnum::PLAN_MANAGEMENT => array(
                 $ability . KeyWordEnum::PLAN
             ),
-            KeyWordEnum::FREELANCE_AND_MENTOR,
-            KeyWordEnum::CO_WORKING_SPACE_ALLOTMENT_AND_HANDLING,
-            KeyWordEnum::MEETING_APPOINTMENT_AND_EVENT_MANAGEMENT,
-            KeyWordEnum::SERVICE_CREATION,
-
-
+            KeyWordEnum::EVENT_MANAGEMENT => array(
+                $ability . KeyWordEnum::EVENT
+            ),
+            KeyWordEnum::SYSTEM_CONFIGURATION => array(
+                $ability . KeyWordEnum::SETTING
+            ),
         ];
     }
 

@@ -21,7 +21,7 @@
             <div class="col-md-6">
                 <br>
                 <x-buttons :save="true" :saveNew="false" :cancel="false" :reset="false"
-                           formID="system_settings_form" cancelRoute="dashboard.system-settings.index"/>
+                           formID="SETTINGS_form" cancelRoute="dashboard.system-settings.index"/>
             </div>
         </div>
         {!! Form::close() !!}

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\CountryRequest;
+use App\Http\Requests\UserManagement\CountryRequest;
 use App\Models\Definition\General\Country;
 use App\Models\Definition\General\Province;
 use App\Services\GeneralService;

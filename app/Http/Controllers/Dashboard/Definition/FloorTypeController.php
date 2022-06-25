@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\FloorTypeRequest;
-use App\Models\Definition\FloorType;
+use App\Http\Requests\ServiceManagement\FloorTypeRequest;
+use App\Models\FlatManagement\FloorType;
 use function __;
 use function redirect;
 use function view;

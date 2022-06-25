@@ -6,10 +6,8 @@ use App\Enum\KeyWordEnum;
 
 class HrDefinitionsNavEnum extends AbstractEnum
 {
-    public const RELATIONS = KeyWordEnum::RELATIONS;
+    public const RELATION = KeyWordEnum::RELATION;
     public const CAST = KeyWordEnum::CAST;
-//    public const EMPLOYEE_TYPE = KeyWordEnum::EMPLOYEE_TYPE;
-//    public const EMPLOYEE_SUB_TYPE = KeyWordEnum::EMPLOYEE_SUB_TYPE;
     public const TAX_TYPE = KeyWordEnum::TAX_TYPE;
     public const TAX_STATUS = KeyWordEnum::TAX_STATUS;
     public const NATIONALITY = KeyWordEnum::NATIONALITY;
@@ -28,10 +26,8 @@ class HrDefinitionsNavEnum extends AbstractEnum
     public static function getValues(): array
     {
         return [
-            self::RELATIONS,
+            self::RELATION,
             self::CAST,
-//            self::EMPLOYEE_TYPE,
-//            self::EMPLOYEE_SUB_TYPE,
             self::TAX_TYPE,
             self::TAX_STATUS,
             self::NATIONALITY,
@@ -52,10 +48,8 @@ class HrDefinitionsNavEnum extends AbstractEnum
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::RELATIONS => '<i class="mdi mdi-account"></i>',
+            self::RELATION => '<i class="mdi mdi-account"></i>',
             self::CAST => '<i class="mdi mdi-account"></i>',
-//            self::EMPLOYEE_TYPE => '<i class="mdi mdi-account"></i>',
-//            self::EMPLOYEE_SUB_TYPE => '<i class="mdi mdi-account"></i>',
             self::TAX_TYPE => '<i class="mdi mdi-account"></i>',
             self::TAX_STATUS => '<i class="mdi mdi-account"></i>',
             self::NATIONALITY => '<i class="mdi mdi-account"></i>',
@@ -81,10 +75,8 @@ class HrDefinitionsNavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::RELATIONS => __(sprintf('%s.%s', 'general', self::RELATIONS)),
+            self::RELATION => __(sprintf('%s.%s', 'general', self::RELATION)),
             self::CAST => __(sprintf('%s.%s', 'general', self::CAST)),
-//            self::EMPLOYEE_TYPE => __(sprintf('%s.%s', 'general', self::EMPLOYEE_TYPE)),
-//            self::EMPLOYEE_SUB_TYPE => __(sprintf('%s.%s', 'general', self::EMPLOYEE_SUB_TYPE)),
             self::TAX_TYPE => __(sprintf('%s.%s', 'general', self::TAX_TYPE)),
             self::TAX_STATUS => __(sprintf('%s.%s', 'general', self::TAX_STATUS)),
             self::NATIONALITY => __(sprintf('%s.%s', 'general', self::NATIONALITY)),
@@ -105,10 +97,8 @@ class HrDefinitionsNavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::RELATIONS => route('dashboard.relation.index'),
+            self::RELATION => route('dashboard.relation.index'),
             self::CAST => route('dashboard.cast.index'),
-//            self::EMPLOYEE_TYPE => route('dashboard.employee-type.index'),
-//            self::EMPLOYEE_SUB_TYPE => route('dashboard'),
             self::TAX_TYPE => route('dashboard.tax-type.index'),
             self::TAX_STATUS => route('dashboard.tax-status.index'),
             self::NATIONALITY => route('dashboard.nationality.index'),

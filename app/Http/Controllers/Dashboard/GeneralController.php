@@ -6,13 +6,13 @@ use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Accounts\AccountHeadRequest;
 use App\Models\Accounts\AccountHead;
-use App\Models\Flat;
-use App\Models\FlatOwner;
-use App\Models\HumanResource\Hr;
+use App\Models\FlatManagement\Flat;
+use App\Models\FlatManagement\FlatOwner;
 use App\Models\HumanResource\Nominee;
 use App\Models\Sales\Installment;
-use App\Models\Sales\InstallmentPlan;
+use App\Models\Sales\Plan;
 use App\Models\Sales\Sale;
+use App\Models\UserManagement\Hr;
 use App\Services\Accounts\AccountsService;
 use App\Services\BrokerService;
 use App\Services\GeneralService;
@@ -54,7 +54,7 @@ class GeneralController extends Controller
 
     public function printInstallmentPlan()
     {
-        $records = InstallmentPlan::orderBy('name', 'ASC')->get();
+        $records = Plan::orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.print_installment_plans'),
             'records' => $records,

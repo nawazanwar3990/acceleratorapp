@@ -5,9 +5,9 @@ namespace App\Services;
 use App\Enum\TableEnum;
 use App\Models\Accounts\AccountHead;
 use App\Models\BuildingServices;
-use App\Models\Definition\Service;
-use App\Models\HumanResource\Hr;
 use App\Models\Media;
+use App\Models\ServiceManagement\Service;
+use App\Models\UserManagement\Hr;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 

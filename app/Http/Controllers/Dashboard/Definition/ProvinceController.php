@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Definition\ProvinceRequest;
+use App\Http\Requests\UserManagement\ProvinceRequest;
 use App\Models\Definition\General\District;
 use App\Models\Definition\General\Province;
 use App\Services\GeneralService;

@@ -5,5 +5,5 @@ use App\Enum\KeyWordEnum;
 
 class ServicesPolicy extends AbstractDefaultPolicy
 {
-    protected const KEYWORD = KeyWordEnum::SERVICE_CREATION;
+    protected const KEYWORD = KeyWordEnum::SERVICE_MANAGEMENT;
 }

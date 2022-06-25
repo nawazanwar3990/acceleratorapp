@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Authorization;
 
 use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Authorization\RoleRequest;
+use App\Http\Requests\UserManagement\RoleRequest;
 use App\Http\Requests\Devices\DeviceClassRequest;
-use App\Models\Authorization\Role;
-use App\Models\Authorization\User;
+use App\Models\UserManagement\Role;
+use App\Models\UserManagement\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

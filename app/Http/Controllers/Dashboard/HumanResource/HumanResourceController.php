@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Dashboard\HumanResource;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\HumanResource\HrRequest;
-use App\Models\HumanResource\Hr;
+use App\Http\Requests\UserManagement\HrRequest;
 use App\Models\Media;
+use App\Models\UserManagement\Hr;
 use App\Services\Accounts\VoucherService;
 use App\Services\PersonService;
 use App\Traits\General;

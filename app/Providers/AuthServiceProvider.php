@@ -7,12 +7,7 @@ use App\Enum\RoleEnum;
 use App\Models\Accounts\Expense;
 use App\Models\Accounts\ExpenseHead;
 use App\Models\Accounts\Salary;
-use App\Models\Authorization\Permission;
-use App\Models\Authorization\Role;
-use App\Models\Authorization\User;
 use App\Models\Building;
-use App\Models\Definition\FloorName;
-use App\Models\Definition\FloorType;
 use App\Models\Definition\General\Colony;
 use App\Models\Definition\General\CommodityType;
 use App\Models\Definition\General\Country;
@@ -20,19 +15,10 @@ use App\Models\Definition\General\District;
 use App\Models\Definition\General\FlatType;
 use App\Models\Definition\General\Province;
 use App\Models\Definition\General\Tehsil;
-use App\Models\Definition\HumanResource\HrBusiness;
-use App\Models\Definition\HumanResource\HrCast;
-use App\Models\Definition\HumanResource\HrDepartment;
-use App\Models\Definition\HumanResource\HrDesignation;
 use App\Models\Definition\HumanResource\HrEmployeeType;
 use App\Models\Definition\HumanResource\HrMinistry;
-use App\Models\Definition\HumanResource\HrNationality;
-use App\Models\Definition\HumanResource\HrOrganization;
-use App\Models\Definition\HumanResource\HrProfession;
-use App\Models\Definition\HumanResource\HrRelation;
 use App\Models\Definition\HumanResource\HrTaxStatus;
 use App\Models\Definition\HumanResource\HrTaxType;
-use App\Models\Definition\Service;
 use App\Models\Devices\Device;
 use App\Models\Devices\DeviceClass;
 use App\Models\Devices\DeviceLocation;
@@ -43,8 +29,10 @@ use App\Models\Devices\DeviceType;
 use App\Models\FixedAssets\AssetsInventory;
 use App\Models\FixedAssets\AssetsLocation;
 use App\Models\FixedAssets\AssetsUnit;
-use App\Models\Flat;
-use App\Models\Floor;
+use App\Models\FlatManagement\Flat;
+use App\Models\FlatManagement\Floor;
+use App\Models\FlatManagement\FloorName;
+use App\Models\FlatManagement\FloorType;
 use App\Models\FrontDesk\Complain;
 use App\Models\FrontDesk\FrontDeskSetup\CallType;
 use App\Models\FrontDesk\FrontDeskSetup\ComplainType;
@@ -57,12 +45,24 @@ use App\Models\FrontDesk\PostalReceive;
 use App\Models\FrontDesk\SaleEnquiry;
 use App\Models\FrontDesk\VisitorBook;
 use App\Models\HumanResource\Employee;
-use App\Models\HumanResource\Hr;
 use App\Models\HumanResource\Nominee;
-use App\Models\Sales\InstallmentPlan;
 use App\Models\Sales\InstallmentTerm;
+use App\Models\Sales\Plan;
 use App\Models\Sales\Sale;
-use App\Models\Settings\SystemSetting;
+use App\Models\ServiceManagement\Service;
+use App\Models\SystemConfiguration\Setting;
+use App\Models\UserManagement\Hr;
+use App\Models\UserManagement\HrBusiness;
+use App\Models\UserManagement\HrCast;
+use App\Models\UserManagement\HrDepartment;
+use App\Models\UserManagement\HrDesignation;
+use App\Models\UserManagement\HrNationality;
+use App\Models\UserManagement\HrOrganization;
+use App\Models\UserManagement\HrProfession;
+use App\Models\UserManagement\HrRelation;
+use App\Models\UserManagement\Permission;
+use App\Models\UserManagement\Role;
+use App\Models\UserManagement\User;
 use App\Policies\AssetsInventoryPolicy;
 use App\Policies\AssetsLocationPolicy;
 use App\Policies\AssetsUnitPolicy;
@@ -192,7 +192,7 @@ class AuthServiceProvider extends ServiceProvider
         AssetsUnit::class => AssetsUnitPolicy::class,
         /*sales and rent*/
         Sale::class => TitleTransferPolicy::class,
-        InstallmentPlan::class => InstallmentPlansPolicy::class,
+        Plan::class => InstallmentPlansPolicy::class,
         InstallmentTerm::class => InstallmentTermPolicy::class,
         /*income and expense*/
         ExpenseHead::class => ExpenseHeadsPolicy::class,
@@ -201,7 +201,7 @@ class AuthServiceProvider extends ServiceProvider
         /*Accounts*/
         Salary::class => SalaryPolicy::class,
         /*settings*/
-        SystemSetting::class => SystemSettingsPolicy::class,
+        Setting::class => SystemSettingsPolicy::class,
 
     ];
 

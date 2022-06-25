@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Sales;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Sales\InstallmentTermRequest;
+use App\Http\Requests\PlanManagement\TermRequest;
 use App\Models\Sales\InstallmentTerm;
 use Illuminate\Http\Request;
 use function __;
@@ -49,7 +49,7 @@ class InstallmentTermController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(InstallmentTermRequest $request)
+    public function store(TermRequest $request)
     {
         $this->authorize('create', InstallmentTerm::class);
         if ($request->createData()) {

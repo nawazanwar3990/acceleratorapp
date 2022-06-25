@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Plans\Plan;
+use App\Models\PlanManagement\Plan;
 use App\Services\PersonService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;

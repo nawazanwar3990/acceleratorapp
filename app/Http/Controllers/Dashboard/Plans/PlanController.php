@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Plans\PlanRequest;
-use App\Models\Plans\Plan;
+use App\Models\PlanManagement\Plan;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

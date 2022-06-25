@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\SystemSettingsRequest;
-use App\Models\Settings\SystemSetting;
+use App\Http\Requests\SystemConfiguration\SystemSettingsRequest;
+use App\Models\SystemConfiguration\Setting;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;
@@ -23,10 +23,10 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', SystemSetting::class);
-        $records = SystemSetting::first();
+        $this->authorize('view', Setting::class);
+        $records = Setting::first();
         $params = [
-            'pageTitle' => __('general.system_settings'),
+            'pageTitle' => __('general.SETTINGS'),
             'records' => $records,
         ];
 
@@ -40,7 +40,7 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', SystemSetting::class);
+        $this->authorize('create', Setting::class);
         //
     }
 
@@ -52,7 +52,7 @@ class SettingsController extends Controller
      */
     public function store(SystemSettingsRequest $request)
     {
-        $this->authorize('create', SystemSetting::class);
+        $this->authorize('create', Setting::class);
         if ($request->createData()) {
             return redirect()->route('dashboard.system-settings.index')
                 ->with('success', __('general.record_updated_successfully'));
@@ -67,7 +67,7 @@ class SettingsController extends Controller
      */
     public function show($id)
     {
-        $this->authorize('view', SystemSetting::class);
+        $this->authorize('view', Setting::class);
         //
     }
 
@@ -79,7 +79,7 @@ class SettingsController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('update', SystemSetting::class);
+        $this->authorize('update', Setting::class);
         //
     }
 
@@ -92,7 +92,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('update', SystemSetting::class);
+        $this->authorize('update', Setting::class);
         //
     }
 
@@ -104,7 +104,7 @@ class SettingsController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('delete', SystemSetting::class);
+        $this->authorize('delete', Setting::class);
         //
     }
 

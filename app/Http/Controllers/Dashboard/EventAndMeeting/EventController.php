@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\EventAndMeeting;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EventAndMeetings\EventRequest;
+use App\Http\Requests\EventManagement\EventRequest;
 use App\Models\EventAndMeetings\Event;
 use App\Traits\General;
 use Illuminate\Http\Request;

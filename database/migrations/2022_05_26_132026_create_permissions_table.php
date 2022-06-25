@@ -7,16 +7,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create(TableEnum::PERMISSIONS, function (Blueprint $table) {
             $table->id();
-
             $table->string('name')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->string('function_name')->nullable();
@@ -27,12 +21,6 @@ return new class extends Migration
             $table->softDeletes();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists(TableEnum::PERMISSIONS);

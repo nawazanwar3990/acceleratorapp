@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Broker;
-use App\Models\FlatOwner;
+use App\Models\FlatManagement\FlatOwner;
 use App\Services\BuildingService;
 use Illuminate\Support\Facades\DB;
 use function __;
