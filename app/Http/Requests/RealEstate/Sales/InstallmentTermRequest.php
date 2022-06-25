@@ -31,7 +31,7 @@ class InstallmentTermRequest extends FormRequest
     }
 
     public function createData() {
-        InstallmentTerm::whereBuildingId(BuildingService::getBuildingId())->where('id','>',0)->delete();
+        InstallmentTerm::where('id','>',0)->delete();
         return InstallmentTerm::create($this->all());
     }
 }

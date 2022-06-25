@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\RealEstate\BuildingUnits\BuildingsController;
-use App\Http\Controllers\RealEstate\BuildingUnits\FlatController;
-use App\Http\Controllers\RealEstate\BuildingUnits\FloorController;
+use App\Http\Controllers\Dashboard\BuildingUnits\BuildingsController;
+use App\Http\Controllers\Dashboard\BuildingUnits\FlatController;
+use App\Http\Controllers\Dashboard\BuildingUnits\FloorController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/buildings', BuildingsController::class, ['names' => 'buildings']);

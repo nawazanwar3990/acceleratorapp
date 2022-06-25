@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\RealEstate\Sales\InstallmentPlanController;
-use App\Http\Controllers\RealEstate\Sales\InstallmentTermController;
-use App\Http\Controllers\RealEstate\Sales\QuotationController;
-use App\Http\Controllers\RealEstate\Sales\SalesController;
+use App\Http\Controllers\Dashboard\Sales\InstallmentPlanController;
+use App\Http\Controllers\Dashboard\Sales\InstallmentTermController;
+use App\Http\Controllers\Dashboard\Sales\QuotationController;
+use App\Http\Controllers\Dashboard\Sales\SalesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/sales/title-transfer-print', [SalesController::class, 'titleTransferPrint'])->name('sales.title-transfer-print');

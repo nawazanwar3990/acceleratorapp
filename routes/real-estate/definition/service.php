@@ -1,6 +1,6 @@
 <?php
 
-use \App\Http\Controllers\RealEstate\Definition\ServiceController;
+use App\Http\Controllers\Dashboard\Definition\ServiceController;
 
 //Temporary Route, will be removed when nav is set
 Route::resource('service', ServiceController::class);

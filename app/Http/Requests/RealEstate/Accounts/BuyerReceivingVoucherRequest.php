@@ -47,7 +47,7 @@ class BuyerReceivingVoucherRequest extends FormRequest
 
         try {
             $flatID = $this->input('flat_id');
-            $flat = Flat::whereBuildingId(BuildingService::getBuildingId())->findorFail($flatID);
+            $flat = Flat::findorFail($flatID);
 
             //Cash in Hand Debit Transactions for Paid Amount
             Transaction::create([
@@ -93,7 +93,7 @@ class BuyerReceivingVoucherRequest extends FormRequest
 
 
             if (SalesService::salesRemainingAmount($this->input('sales_id')) <= 0) {
-                $salesRecord = Sale::whereBuildingId(BuildingService::getBuildingId())->findorFail($this->input('sales_id'));
+                $salesRecord = Sale::findorFail($this->input('sales_id'));
                 $salesRecord->status = 'closed';
                 $salesRecord->save();
 

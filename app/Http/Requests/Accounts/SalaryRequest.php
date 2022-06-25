@@ -88,7 +88,7 @@ class SalaryRequest extends FormRequest
 
             $salaryMonth = Carbon::parse($this->input('salary_month'))->format('Y-m');
 
-            $employees = Employee::whereBuildingId(BuildingService::getBuildingId())->where('salary_type', 2)
+            $employees = Employee::where('salary_type', 2)
                 ->when(($this->input('department_id') > 0), function ($query) {
                     $query->where('department_id', $this->input('department_id'));
                 })->orderBy('id')->get();
@@ -142,7 +142,7 @@ class SalaryRequest extends FormRequest
 //                        }
 
                         // Advance Salary Calculation
-                        $salaryAdvanceRecord = Salary::whereBuildingId(BuildingService::getBuildingId())->where('employee_id', $employee->id)
+                        $salaryAdvanceRecord = Salary::where('employee_id', $employee->id)
                             ->where('salary_month', $salaryMonth)->where('type', 2)
                             ->selectRaw('SUM(paid_salary) as advanceSalary, created_at')->groupBy('created_at')->first();
                         if (!empty($salaryAdvanceRecord)) {

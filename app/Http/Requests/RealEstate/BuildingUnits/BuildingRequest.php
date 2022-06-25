@@ -137,7 +137,7 @@ class BuildingRequest extends FormRequest
         if (count($owners)) {
             foreach ($owners as $owner) {
                 if (is_numeric($owner)) {
-                    $hrRecord = Hr::whereBuildingId(BuildingService::getBuildingId())->find($owner);
+                    $hrRecord = Hr::find($owner);
                     if ($hrRecord) {
                         BuildingOwner::create([
                             'hr_id' => $hrRecord->id,
@@ -159,8 +159,7 @@ class BuildingRequest extends FormRequest
 
     public function deleteData($id): bool
     {
-        $model = Building::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($id);
+        $model = Building::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

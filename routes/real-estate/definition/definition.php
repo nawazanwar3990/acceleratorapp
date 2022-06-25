@@ -1,34 +1,34 @@
 <?php
 
 
+use App\Http\Controllers\Dashboard\Definition\ColonyController;
+use App\Http\Controllers\Dashboard\Definition\CommodityTypeController;
+use App\Http\Controllers\Dashboard\Definition\CountryController;
+use App\Http\Controllers\Dashboard\Definition\DistrictController;
+use App\Http\Controllers\Dashboard\Definition\FlatTypeController;
+use App\Http\Controllers\Dashboard\Definition\FloorNameController;
+use App\Http\Controllers\Dashboard\Definition\FloorTypeController;
+use App\Http\Controllers\Dashboard\Definition\HrBusinessController;
+use App\Http\Controllers\Dashboard\Definition\HrCastController;
+use App\Http\Controllers\Dashboard\Definition\HrDepartmentController;
+use App\Http\Controllers\Dashboard\Definition\HrDesignationController;
+use App\Http\Controllers\Dashboard\Definition\HrEmployeeTypeController;
+use App\Http\Controllers\Dashboard\Definition\HrMinistryController;
+use App\Http\Controllers\Dashboard\Definition\HrNationalityController;
+use App\Http\Controllers\Dashboard\Definition\HrOrganizationController;
+use App\Http\Controllers\Dashboard\Definition\HrProfessionController;
+use App\Http\Controllers\Dashboard\Definition\HrTaxStatusController;
+use App\Http\Controllers\Dashboard\Definition\HrTaxTypeController;
+use App\Http\Controllers\Dashboard\Definition\ProvinceController;
+use App\Http\Controllers\Dashboard\Definition\RelationController;
+use App\Http\Controllers\Dashboard\Definition\ServiceController;
+use App\Http\Controllers\Dashboard\Definition\TehsilController;
 use App\Http\Controllers\Devices\DeviceClassController;
 use App\Http\Controllers\Devices\DeviceLocationController;
 use App\Http\Controllers\Devices\DeviceMakeController;
 use App\Http\Controllers\Devices\DeviceModelController;
 use App\Http\Controllers\Devices\DeviceOperatingSystemController;
 use App\Http\Controllers\Devices\DeviceTypeController;
-use App\Http\Controllers\RealEstate\Definition\ColonyController;
-use App\Http\Controllers\RealEstate\Definition\CommodityTypeController;
-use App\Http\Controllers\RealEstate\Definition\CountryController;
-use App\Http\Controllers\RealEstate\Definition\DistrictController;
-use App\Http\Controllers\RealEstate\Definition\FlatTypeController;
-use App\Http\Controllers\RealEstate\Definition\FloorNameController;
-use App\Http\Controllers\RealEstate\Definition\FloorTypeController;
-use App\Http\Controllers\RealEstate\Definition\HrBusinessController;
-use App\Http\Controllers\RealEstate\Definition\HrCastController;
-use App\Http\Controllers\RealEstate\Definition\HrDepartmentController;
-use App\Http\Controllers\RealEstate\Definition\HrDesignationController;
-use App\Http\Controllers\RealEstate\Definition\HrEmployeeTypeController;
-use App\Http\Controllers\RealEstate\Definition\HrMinistryController;
-use App\Http\Controllers\RealEstate\Definition\HrNationalityController;
-use App\Http\Controllers\RealEstate\Definition\HrOrganizationController;
-use App\Http\Controllers\RealEstate\Definition\HrProfessionController;
-use App\Http\Controllers\RealEstate\Definition\HrTaxStatusController;
-use App\Http\Controllers\RealEstate\Definition\HrTaxTypeController;
-use App\Http\Controllers\RealEstate\Definition\ProvinceController;
-use App\Http\Controllers\RealEstate\Definition\RelationController;
-use App\Http\Controllers\RealEstate\Definition\ServiceController;
-use App\Http\Controllers\RealEstate\Definition\TehsilController;
 use Illuminate\Support\Facades\Route;
 
 /*

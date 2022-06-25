@@ -76,7 +76,7 @@ class GeneralService
 
     public static function getBuildingServicesData($service_type)
     {
-        return BuildingServices::whereBuildingId(BuildingService::getBuildingId())->whereServiceType($service_type)->get();
+        return BuildingServices::whereServiceType($service_type)->get();
     }
 
     public static function getPaymentSubTypesForDropdown($id = null)
@@ -166,8 +166,7 @@ class GeneralService
 
     public static function hrAccountHeadExists($hrID): bool
     {
-        $hrRecord = Hr::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($hrID);
+        $hrRecord = Hr::findorFail($hrID);
         if ($hrRecord) {
             $existingRecord = AccountHead::whereBuildingId(BuildingService::getBuildingId())
                 ->where('account_id', $hrID)->where('HeadName', $hrRecord->getHeadName())

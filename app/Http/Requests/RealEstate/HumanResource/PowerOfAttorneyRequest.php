@@ -131,7 +131,7 @@ class PowerOfAttorneyRequest extends FormRequest
 
     public function deleteData($id)
     {
-        $model = PowerOfAttorney::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
+        $model = PowerOfAttorney::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

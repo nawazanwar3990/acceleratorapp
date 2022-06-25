@@ -17,10 +17,10 @@ class SalaryService
         DB::beginTransaction();
         try {
             $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-            $salary = Salary::whereBuildingId(BuildingService::getBuildingId())->findorFail($request->salary_id);
+            $salary = Salary::findorFail($request->salary_id);
             $salaryMonth = Carbon::parse($salary->salary_month)->format('F-Y');
 
-            $employee = Employee::whereBuildingId(BuildingService::getBuildingId())->findOrFail($salary->employee_id);
+            $employee = Employee::findOrFail($salary->employee_id);
             $employeeAccountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
                 ->where('account_type', 'employee')->whereJsonContains('account_id', GeneralService::prepareForJson([$employee->Hr->id]))
                 ->first();
@@ -115,19 +115,17 @@ class SalaryService
 
     public static function calculateEmployeeAdvanceSalary($employeeID, $salaryMonth) {
 
-        $employee = Employee::whereBuildingId(BuildingService::getBuildingId())->findorFail($employeeID);
+        $employee = Employee::findorFail($employeeID);
         $employeeSalary = $employee->salary;
         $loanAmount = 0;
         $checkMonth = Carbon::parse($salaryMonth)->format('Y-m');
 
-        $advanceSalary = Salary::whereBuildingId(BuildingService::getBuildingId())
-            ->where('employee_id', $employee->id)->where('type', 2)
+        $advanceSalary = Salary::where('employee_id', $employee->id)->where('type', 2)
             ->where('salary_month', $checkMonth)
             ->selectRaw('SUM(paid_salary) advance')
             ->first();
 
-        $salary = Salary::whereBuildingId(BuildingService::getBuildingId())
-            ->where('employee_id', $employee->id)->where('type', 1)
+        $salary = Salary::where('employee_id', $employee->id)->where('type', 1)
             ->where('salary_month', $checkMonth)
             ->selectRaw('SUM(paid_salary) salary')
             ->first();

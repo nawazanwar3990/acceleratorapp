@@ -42,7 +42,7 @@ class BrokerPaymentVoucherRequest extends FormRequest
         DB::beginTransaction();
         try {
             $brokerID = GeneralService::prepareForJson([$this->input('broker_id')]);
-            $brokerAccount = Broker::whereBuildingId(BuildingService::getBuildingId())->where('hr_id', $this->input('broker_id'))->firstOrFail();
+            $brokerAccount = Broker::where('hr_id', $this->input('broker_id'))->firstOrFail();
             $brokerAccountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
                 ->where('account_type', 'broker')->whereJsonContains('account_id', $brokerID)->first();
 

@@ -17,7 +17,7 @@ class EmployeeLoanController extends Controller
 
     public function index()
     {
-        $records = EmployeeLoan::whereBuildingId(BuildingService::getBuildingId())->get();
+        $records = EmployeeLoan::get();
         $params = [
             'pageTitle' => __('general.employee_loan'),
             'records' => $records,

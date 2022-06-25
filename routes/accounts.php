@@ -3,10 +3,10 @@
 use App\Http\Controllers\Accounts\EmployeeLoanController;
 use App\Http\Controllers\Accounts\ExpenseController;
 use App\Http\Controllers\Accounts\ExpenseHeadController;
-use App\Http\Controllers\RealEstate\Accounts\LedgerController;
-use App\Http\Controllers\RealEstate\Accounts\ReportController;
-use App\Http\Controllers\RealEstate\Accounts\VoucherController;
-use App\Http\Controllers\RealEstate\GeneralController;
+use App\Http\Controllers\Dashboard\Accounts\LedgerController;
+use App\Http\Controllers\Dashboard\Accounts\ReportController;
+use App\Http\Controllers\Dashboard\Accounts\VoucherController;
+use App\Http\Controllers\Dashboard\GeneralController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('create-account-head', [GeneralController::class, 'createAccountHead'])->name('create.account-head');

@@ -22,8 +22,7 @@ class ExpenseController extends Controller
 
     public function index()
     {
-        $records = Expense::whereBuildingId(BuildingService::getBuildingId())
-            ->orderBy('date', 'ASC')->get();
+        $records = Expense::orderBy('date', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.expenses'),
             'records' => $records,

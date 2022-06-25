@@ -131,7 +131,7 @@ class NomineeRequest extends FormRequest
 
     public function deleteData($id)
     {
-        $model = Nominee::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
+        $model = Nominee::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

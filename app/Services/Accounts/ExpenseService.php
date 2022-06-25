@@ -59,8 +59,7 @@ class ExpenseService
     }
 
     public static function getExpenseHeadsForDropdown() {
-        $heads = ExpenseHead::whereBuildingId(BuildingService::getBuildingId())
-            ->with('parent')
+        $heads = ExpenseHead::with('parent')
             ->orderBy('expense_head_name', 'ASC')->get();
 
         $expenseHeads = [];

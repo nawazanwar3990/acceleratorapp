@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\RealEstate\FixedAssets\AssetsInventoryController;
-use App\Http\Controllers\RealEstate\FixedAssets\AssetsLocationController;
-use App\Http\Controllers\RealEstate\FixedAssets\AssetsUnitController;
+use App\Http\Controllers\Dashboard\FixedAssets\AssetsInventoryController;
+use App\Http\Controllers\Dashboard\FixedAssets\AssetsLocationController;
+use App\Http\Controllers\Dashboard\FixedAssets\AssetsUnitController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/assets-inventory', AssetsInventoryController::class, ['names' => 'assets-inventory']);

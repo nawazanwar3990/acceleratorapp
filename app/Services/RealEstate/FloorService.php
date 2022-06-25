@@ -22,8 +22,7 @@ class FloorService
     }
 
     public static function getFloorsForDropdown() {
-        return Floor::whereBuildingId(BuildingService::getBuildingId())
-            ->orderBy('floor_name', 'ASC')->pluck('floor_name', 'id');
+        return Floor::orderBy('floor_name', 'ASC')->pluck('floor_name', 'id');
     }
 
     public static function getFlatsOfFloorForJS($request) {
@@ -53,8 +52,8 @@ class FloorService
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $floorID = $request->get('floorID');
-            $record = Floor::whereBuildingId(BuildingService::getBuildingId())->findOrFail($floorID);
-            $availableArea = Flat::whereBuildingId(BuildingService::getBuildingId())->where('floor_id', $record->id)->sum('area');
+            $record = Floor::findOrFail($floorID);
+            $availableArea = Flat::where('floor_id', $record->id)->sum('area');
 
             $output = ['success' => true, 'msg' => '', 'model' => $record, 'availableArea' => ($record->area - $availableArea)];
         }

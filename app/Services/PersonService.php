@@ -235,8 +235,7 @@ class PersonService
 
     public static function getHrFirstPicture($hrID)
     {
-        $pic = Media::whereBuildingId(BuildingService::getBuildingId())
-            ->where('record_type', 'hr_first_image')
+        $pic = Media::where('record_type', 'hr_first_image')
             ->where('record_id', $hrID)
             ->first();
         if ($pic) {
@@ -280,7 +279,7 @@ class PersonService
         if ($request->ajax()) {
             if ($request->has('hrID')) {
                 $hrID = $request->get('hrID');
-                $existingRecord = Employee::whereBuildingId(BuildingService::getBuildingId())->where('hr_id', $hrID)->first();
+                $existingRecord = Employee::where('hr_id', $hrID)->first();
                 if ($existingRecord) {
                     $output = ['success' => false, 'msg' => __('general.employee_already_exists')];
                 } else {

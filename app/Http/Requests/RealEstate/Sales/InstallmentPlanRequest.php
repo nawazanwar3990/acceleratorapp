@@ -52,13 +52,11 @@ class InstallmentPlanRequest extends FormRequest
     }
 
     public function updateData($id) {
-        return InstallmentPlan::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($id)->update($this->all());
+        return InstallmentPlan::findorFail($id)->update($this->all());
     }
 
     public function deleteData($id) {
-        $model = InstallmentPlan::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($id);
+        $model = InstallmentPlan::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

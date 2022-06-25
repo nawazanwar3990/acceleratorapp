@@ -24,7 +24,7 @@ class SalaryController extends Controller
         $salaryTypes = EmployeeService::getSalaryTypesForDropDown();
         $salaryTypes['3'] = __('general.advance_salary');
 
-        $records = Salary::whereBuildingId(BuildingService::getBuildingId())->with('employee.Hr')
+        $records = Salary::with('employee.Hr')
             ->when($request->filled('salary_month'), function ($query) use ($request) {
                 $salaryMonth = Carbon::parse($request->get('salary_month'))->format('Y-m');
                 $query->where('salary_month', $salaryMonth);

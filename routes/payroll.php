@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Accounts\SalaryController;
-use App\Http\Controllers\RealEstate\HumanResource\EmployeeController;
+use App\Http\Controllers\Dashboard\HumanResource\EmployeeController;
 use Illuminate\Support\Facades\Route;
+
 Route::post('get-employee-salary', [EmployeeController::class, 'getEmployeeSalary'])->name('get.employee-salary');
 Route::post('get-department-employees', [EmployeeController::class, 'getDepartmentEmployees'])->name('get.department-employees');
 

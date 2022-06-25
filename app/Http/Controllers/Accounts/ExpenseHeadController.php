@@ -18,7 +18,7 @@ class ExpenseHeadController extends Controller
 
     public function index()
     {
-        $records = ExpenseHead::whereBuildingId(BuildingService::getBuildingId())->get();
+        $records = ExpenseHead::get();
         $params = [
             'pageTitle' => __('general.expense_heads'),
             'records' => $records,
@@ -29,7 +29,7 @@ class ExpenseHeadController extends Controller
 
     public function create()
     {
-        $parentHeads = ExpenseHead::whereBuildingId(BuildingService::getBuildingId())->whereParentId('0')
+        $parentHeads = ExpenseHead::whereParentId('0')
             ->orderBy('expense_head_name', 'ASC')->pluck('expense_head_name', 'id');
         $params = [
             'pageTitle' => __('general.new_expense_head'),
@@ -59,9 +59,9 @@ class ExpenseHeadController extends Controller
 
     public function edit($id)
     {
-        $parentHeads = ExpenseHead::whereBuildingId(BuildingService::getBuildingId())->whereParentId('0')
+        $parentHeads = ExpenseHead::whereParentId('0')
             ->orderBy('expense_head_name', 'ASC')->pluck('expense_head_name', 'id');
-        $model = ExpenseHead::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
+        $model = ExpenseHead::findorFail($id);
 
         $params = [
             'pageTitle' => __('general.edit_expense_head'),

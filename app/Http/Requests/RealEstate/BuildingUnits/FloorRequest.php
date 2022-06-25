@@ -38,12 +38,12 @@ class FloorRequest extends FormRequest
     }
 
     public function updateData($id) {
-        Floor::whereBuildingId(BuildingService::getBuildingId())->findorFail($id)->update($this->all());
+        Floor::findorFail($id)->update($this->all());
         return true;
     }
 
     public function deleteData($id) {
-        $model = Floor::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
+        $model = Floor::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

@@ -9,8 +9,7 @@ class InstallmentService
 {
 
     public static function getInstallmentPlansForDropdown() {
-        return InstallmentPlan::whereBuildingId(BuildingService::getBuildingId())
-            ->orderBy('name', 'ASC')->pluck('name', 'id');
+        return InstallmentPlan::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function getInstallmentPlanDetailsForJS($request) {
@@ -18,7 +17,7 @@ class InstallmentService
         if ($request->ajax()) {
             $planID = $request->get('planID');
 
-            $record = InstallmentPlan::whereBuildingId(BuildingService::getBuildingId())->findorFail($planID);
+            $record = InstallmentPlan::findorFail($planID);
             $output = ['success' => true, 'msg' => '', 'record' => $record];
         }
 

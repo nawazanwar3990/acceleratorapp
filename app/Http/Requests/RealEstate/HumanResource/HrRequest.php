@@ -49,7 +49,7 @@ class HrRequest extends FormRequest
     }
 
     public function updateData($id) {
-        $model = Hr::whereBuildingId(BuildingService::getBuildingId())->findorFail($id)->update($this->all());
+        $model = Hr::findorFail($id)->update($this->all());
         if ($model) {
             $model = Hr::find($id);
             $this->uploadMedia($model);

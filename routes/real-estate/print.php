@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\RealEstate\GeneralController;
+use App\Http\Controllers\Dashboard\GeneralController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/print-installment-plans', [GeneralController::class, 'printInstallmentPlan'])->name('print.installment.plans');

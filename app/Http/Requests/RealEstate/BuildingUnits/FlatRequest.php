@@ -70,13 +70,12 @@ class FlatRequest extends FormRequest
 
     public function updateData($id)
     {
-        return Flat::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($id)->update($this->all());
+        return Flat::findorFail($id)->update($this->all());
     }
 
     public function deleteData($id)
     {
-        $model = Flat::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
+        $model = Flat::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

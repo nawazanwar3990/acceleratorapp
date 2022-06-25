@@ -53,11 +53,9 @@ class ExpenseRequest extends FormRequest
     }
 
     public function updateData($id) {
-        Expense::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($id)->update($this->all());
+        Expense::findorFail($id)->update($this->all());
 
-        $model = Expense::whereBuildingId(BuildingService::getBuildingId())
-            ->find($id);
+        $model = Expense::find($id);
         if ($model) {
             $this->saveMedia($model);
         }
@@ -66,8 +64,7 @@ class ExpenseRequest extends FormRequest
     }
 
     public function deleteData($id) {
-        $model = Expense::whereBuildingId(BuildingService::getBuildingId())
-            ->findorFail($id);
+        $model = Expense::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

@@ -12,8 +12,7 @@ class SellerService
 {
     public static function convertHrToSellerAccountHead($hrID) {
 
-        $existingRecord = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Customer Receivable')->whereJsonContains('account_id', $hrID)
+        $existingRecord = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Customer Receivable')->whereJsonContains('account_id', $hrID)
             ->first();
         if ($existingRecord) {
             return $existingRecord;
@@ -57,8 +56,7 @@ class SellerService
 
     public static function sellerLedger($request) {
         $sellerName = '';
-        $sellerAccounts = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Customer Receivable')->pluck('HeadName', 'HeadCode');
+        $sellerAccounts = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Customer Receivable')->pluck('HeadName', 'HeadCode');
 
         if ($request->has('seller_account') &&  $request->get('seller_account') != '') {
 

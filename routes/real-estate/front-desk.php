@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\RealEstate\FrontDesk\ComplainController;
-use App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup\CallTypeController;
-use App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup\ComplainTypeController;
-use App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup\PurposeController;
-use App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup\ReferenceController;
-use App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup\SourceController;
-use App\Http\Controllers\RealEstate\FrontDesk\PhoneCallLogController;
-use App\Http\Controllers\RealEstate\FrontDesk\PostalDispatchController;
-use App\Http\Controllers\RealEstate\FrontDesk\PostalReceiveController;
-use App\Http\Controllers\RealEstate\FrontDesk\SaleEnquiryController;
-use App\Http\Controllers\RealEstate\FrontDesk\VisitorBookController;
+use App\Http\Controllers\Dashboard\FrontDesk\ComplainController;
+use App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup\CallTypeController;
+use App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup\ComplainTypeController;
+use App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup\PurposeController;
+use App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup\ReferenceController;
+use App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup\SourceController;
+use App\Http\Controllers\Dashboard\FrontDesk\PhoneCallLogController;
+use App\Http\Controllers\Dashboard\FrontDesk\PostalDispatchController;
+use App\Http\Controllers\Dashboard\FrontDesk\PostalReceiveController;
+use App\Http\Controllers\Dashboard\FrontDesk\SaleEnquiryController;
+use App\Http\Controllers\Dashboard\FrontDesk\VisitorBookController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/call-type', CallTypeController::class, ['names' => 'call-type']);

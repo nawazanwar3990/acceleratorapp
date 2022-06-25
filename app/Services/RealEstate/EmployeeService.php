@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class EmployeeService
 {
     public static function convertHrToEmployeeAccountHead($hrID) {
-        $existingRecord = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'employee')->whereJsonContains('account_id', GeneralService::prepareForJson( [$hrID] ))
+        $existingRecord = AccountHead::where('account_type', 'employee')->whereJsonContains('account_id', GeneralService::prepareForJson( [$hrID] ))
             ->first();
         if ($existingRecord) {
             return $existingRecord;
@@ -63,7 +62,7 @@ class EmployeeService
     }
 
     public static function getEmployeesForDropdown($type = 'daily') {
-        $data = Employee::whereBuildingId(BuildingService::getBuildingId())->with('Hr');
+        $data = Employee::with('Hr');
         if ($type == 'daily') {
             $data = $data->where('salary_type', '1');
         }
@@ -99,7 +98,7 @@ class EmployeeService
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $employeeID = $request->get('employeeID');
-            $record = Employee::whereBuildingId(BuildingService::getBuildingId())->findOrFail($employeeID);
+            $record = Employee::findOrFail($employeeID);
 
             $data = [
                 'salary' => $record->salary,
@@ -115,7 +114,7 @@ class EmployeeService
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $departmentID = $request->get('departmentID');
-            $records = Employee::whereBuildingId(BuildingService::getBuildingId())->where('department_id', $departmentID)
+            $records = Employee::where('department_id', $departmentID)
                 ->where('salary_type', 2)->with('Hr')->get()->sortBy('Hr.full_name')->pluck('Hr.full_name', 'id');
             $data = '<option value>' . __('general.ph_employee') . '</option>';
             if ($records) {
@@ -133,10 +132,10 @@ class EmployeeService
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $employeeID = $request->get('employeeID');
-            $employee = Employee::whereBuildingId(BuildingService::getBuildingId())->findorFail($employeeID);
+            $employee = Employee::findorFail($employeeID);
 
             if ($employee) {
-                $loan = EmployeeLoan::whereBuildingId(BuildingService::getBuildingId())->where('employee_id', $employee->id)->whereIn('status', [1,2,4])->get();
+                $loan = EmployeeLoan::where('employee_id', $employee->id)->whereIn('status', [1,2,4])->get();
                 if ($loan->count() > 0) {
                     $output['msg'] = __('general.already_enrolled_in_loan');
                 } else {

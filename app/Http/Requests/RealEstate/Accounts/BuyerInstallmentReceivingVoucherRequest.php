@@ -56,8 +56,8 @@ class BuyerInstallmentReceivingVoucherRequest extends FormRequest
         DB::beginTransaction();
 
         try {
-            $flat = Flat::whereBuildingId(BuildingService::getBuildingId())->findorFail($this->input('flat_id'));
-            $installmentRecord = Installment::whereBuildingId(BuildingService::getBuildingId())->findorFail($this->input('installment_id'));
+            $flat = Flat::findorFail($this->input('flat_id'));
+            $installmentRecord = Installment::findorFail($this->input('installment_id'));
 
             //Cash in Hand Debit Transactions for Paid Amount
             Transaction::create([
@@ -164,7 +164,7 @@ class BuyerInstallmentReceivingVoucherRequest extends FormRequest
             $installmentRecord->save();
 
             if (SalesService::salesRemainingAmount($installmentRecord->sale_id) <= 0) {
-                $salesRecord = Sale::whereBuildingId(BuildingService::getBuildingId())->findorFail($installmentRecord->sale_id);
+                $salesRecord = Sale::findorFail($installmentRecord->sale_id);
                 $salesRecord->status = 'closed';
                 $salesRecord->save();
 

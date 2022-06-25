@@ -84,7 +84,7 @@ class SalesRequest extends FormRequest
         try {
             $model = Sale::create($this->all());
             if ($model) {
-                Flat::whereBuildingId(BuildingService::getBuildingId())->findorFail($model->flat_id)
+                Flat::findorFail($model->flat_id)
                     ->update(['sales_status' => 'in-execution']);
 
                 $this->voucherNo = VoucherService::getNextVoucherNo('INV');
@@ -176,8 +176,7 @@ class SalesRequest extends FormRequest
             }
         }
         //==============>Seller Transactions
-        $accountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Customer Receivable')
+        $accountHead = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Customer Receivable')
             ->whereJsonContains('account_id', $this->input('sellers', []))->first();
         //Seller Credit for Total Amount
         $accountHead->transactions()->save(
@@ -217,8 +216,7 @@ class SalesRequest extends FormRequest
 
 
         //==============>Purchaser Transactions
-        $accountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Account Payable')
+        $accountHead = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Account Payable')
             ->whereJsonContains('account_id', $this->input('purchaser', []))->first();
         //Purchaser Debit for Total Amount
         $accountHead->transactions()->save(

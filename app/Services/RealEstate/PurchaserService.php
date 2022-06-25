@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class PurchaserService
 {
     public static function convertHrToPurchaserAccountHead($hrID) {
-        $existingRecord = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Account Payable')->whereJsonContains('account_id', $hrID)
+        $existingRecord = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Account Payable')->whereJsonContains('account_id', $hrID)
             ->first();
         if ($existingRecord) {
             return $existingRecord;
@@ -55,8 +54,7 @@ class PurchaserService
     public static function purchaserLedger($request)
     {
         $purchaserName = '';
-        $purchaserAccounts = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Account Payable')->pluck('HeadName', 'HeadCode');
+        $purchaserAccounts = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Account Payable')->pluck('HeadName', 'HeadCode');
 
         if ($request->has('buyer_id') &&  $request->get('buyer_id') != '') {
 

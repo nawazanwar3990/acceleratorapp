@@ -65,7 +65,7 @@ class FlatService
         $flatID = $request->get('flatID');
 
         if ($request->ajax()) {
-            $record = Flat::whereBuildingId(BuildingService::getBuildingId())->where('floor_id', $floorID)->findorFail($flatID);
+            $record = Flat::where('floor_id', $floorID)->findorFail($flatID);
             foreach ($record->general_services as $key => $service) {
                 $generalServices .= '<option value="' . $service . '" selected>' . GeneralService::getServiceName($service) . '</option>';
             }
@@ -84,7 +84,7 @@ class FlatService
         if ($request->ajax()) {
             $buildingID = $request->get('buildingID');
             $flatID = $request->get('flatID');
-            $owners = FlatOwner::whereBuildingId(BuildingService::getBuildingId())->where('flat_id', $flatID)
+            $owners = FlatOwner::where('flat_id', $flatID)
                 ->where('status', true)->with('Hr')->get();
 
             return response()->json(['success' => true, 'msg' => '', 'data' => view('dashboard.real-estate.sales.components.seller-details-body', compact('owners'))->render()]);
@@ -130,7 +130,7 @@ class FlatService
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $flatID = $request->get('flatID');
-            $records = Sale::whereBuildingId(BuildingService::getBuildingId())->where('flat_id', $flatID)->count();
+            $records = Sale::where('flat_id', $flatID)->count();
             $output = ['success' => true, 'msg' => '', 'data' => ($records + 1)];
         }
 

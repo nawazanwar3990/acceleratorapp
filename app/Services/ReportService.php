@@ -61,7 +61,7 @@ class ReportService
     }
 
     public static function brokerWiseSalesReport($request) {
-        $brokerAccounts = Broker::whereBuildingId(BuildingService::getBuildingId())->with('Hr')
+        $brokerAccounts = Broker::with('Hr')
             ->get()->pluck('hr.full_name', 'hr.id');
 
         $records = DB::table(TableEnum::SALES)

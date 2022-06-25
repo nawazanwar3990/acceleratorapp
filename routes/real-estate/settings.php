@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\RealEstate\BusinessController;
-use App\Http\Controllers\RealEstate\Settings\SettingsController;
+use App\Http\Controllers\Dashboard\BusinessController;
+use App\Http\Controllers\Dashboard\Settings\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/system-settings', SettingsController::class, ['names' => 'system-settings']);

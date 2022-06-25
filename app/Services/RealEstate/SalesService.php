@@ -42,15 +42,13 @@ class SalesService
 
     public static function salesReceivedAmount($salesID, $useDiscountVouchers = true)
     {
-        $salesRecord = Sale::whereBuildingId(BuildingService::getBuildingId())->findorFail($salesID);
+        $salesRecord = Sale::findorFail($salesID);
 
-        $buyers = FlatOwner::whereBuildingId(BuildingService::getBuildingId())
-            ->where('flat_id', $salesRecord->flat->id)->where('sale_id', $salesRecord->id)
+        $buyers = FlatOwner::where('flat_id', $salesRecord->flat->id)->where('sale_id', $salesRecord->id)
             ->where('status', true)->pluck('hr_id')->toArray();
 
         $buyers = GeneralService::prepareForJson($buyers);
-        $buyerAccountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Account Payable')
+        $buyerAccountHead = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Account Payable')
             ->whereJsonContains('account_id', $buyers)->first();
 
         $amount = Transaction::where('COAID', $buyerAccountHead->HeadCode)->whereHas('flat',function($query) use ($salesRecord) {
@@ -82,7 +80,7 @@ class SalesService
     }
 
     public static function salesPendingCollection($request) {
-        $records = Sale::whereBuildingId(BuildingService::getBuildingId())->with('installments')
+        $records = Sale::with('installments')
             ->where('status', 'open')->get();
 
         return [
@@ -91,15 +89,13 @@ class SalesService
     }
 
     public static function salesTransactions($salesID, $useDiscountVouchers = true) {
-        $salesRecord = Sale::whereBuildingId(BuildingService::getBuildingId())->findorFail($salesID);
+        $salesRecord = Sale::findorFail($salesID);
 
-        $buyers = FlatOwner::whereBuildingId(BuildingService::getBuildingId())
-            ->where('flat_id', $salesRecord->flat->id)->where('sale_id', $salesRecord->id)
+        $buyers = FlatOwner::where('flat_id', $salesRecord->flat->id)->where('sale_id', $salesRecord->id)
             ->where('status', true)->pluck('hr_id')->toArray();
 
         $buyers = GeneralService::prepareForJson($buyers);
-        $buyerAccountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'SP')->where('PHeadName', 'Account Payable')
+        $buyerAccountHead = AccountHead::where('account_type', 'SP')->where('PHeadName', 'Account Payable')
             ->whereJsonContains('account_id', $buyers)->first();
 
         $amount = Transaction::where('COAID', $buyerAccountHead->HeadCode)->whereHas('flat',function($query) use ($salesRecord) {

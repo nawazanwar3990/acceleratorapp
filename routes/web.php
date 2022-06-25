@@ -1,20 +1,20 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BuildingUnits\BuildingsController;
+use App\Http\Controllers\Dashboard\BuildingUnits\FlatController;
+use App\Http\Controllers\Dashboard\BuildingUnits\FloorController;
+use App\Http\Controllers\Dashboard\Definition\ColonyController;
+use App\Http\Controllers\Dashboard\Definition\CommodityTypeController;
+use App\Http\Controllers\Dashboard\Definition\CountryController;
+use App\Http\Controllers\Dashboard\Definition\DistrictController;
+use App\Http\Controllers\Dashboard\Definition\ProvinceController;
+use App\Http\Controllers\Dashboard\Definition\TehsilController;
+use App\Http\Controllers\Dashboard\GeneralController;
 use App\Http\Controllers\Dashboard\HomeController;
-use App\Http\Controllers\RealEstate\BuildingUnits\BuildingsController;
-use App\Http\Controllers\RealEstate\BuildingUnits\FlatController;
-use App\Http\Controllers\RealEstate\BuildingUnits\FloorController;
-use App\Http\Controllers\RealEstate\Definition\ColonyController;
-use App\Http\Controllers\RealEstate\Definition\CommodityTypeController;
-use App\Http\Controllers\RealEstate\Definition\CountryController;
-use App\Http\Controllers\RealEstate\Definition\DistrictController;
-use App\Http\Controllers\RealEstate\Definition\ProvinceController;
-use App\Http\Controllers\RealEstate\Definition\TehsilController;
-use App\Http\Controllers\RealEstate\GeneralController;
-use App\Http\Controllers\RealEstate\HumanResource\HumanResourceController;
-use App\Http\Controllers\RealEstate\ListController;
-use App\Http\Controllers\RealEstate\Sales\InstallmentPlanController;
-use App\Http\Controllers\RealEstate\Sales\SalesController;
+use App\Http\Controllers\Dashboard\HumanResource\HumanResourceController;
+use App\Http\Controllers\Dashboard\ListController;
+use App\Http\Controllers\Dashboard\Sales\InstallmentPlanController;
+use App\Http\Controllers\Dashboard\Sales\SalesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

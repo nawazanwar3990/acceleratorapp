@@ -1,11 +1,10 @@
 <?php
 
 
-use App\Http\Controllers\RealEstate\HumanResource\HumanResourceController;
-use App\Http\Controllers\RealEstate\HumanResource\NomineeController;
-use App\Http\Controllers\RealEstate\HumanResource\PowerOfAttorneyController;
-use App\Http\Controllers\RealEstate\HumanResource\EmployeeController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Dashboard\HumanResource\EmployeeController;
+use App\Http\Controllers\Dashboard\HumanResource\HumanResourceController;
+use App\Http\Controllers\Dashboard\HumanResource\NomineeController;
+use App\Http\Controllers\Dashboard\HumanResource\PowerOfAttorneyController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class BrokerService
 {
     public static function convertHrToBrokerAccountHead($hrID) {
-        $existingRecord = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'broker')->whereJsonContains('account_id', GeneralService::prepareForJson( [$hrID] ))
+        $existingRecord = AccountHead::where('account_type', 'broker')->whereJsonContains('account_id', GeneralService::prepareForJson( [$hrID] ))
             ->first();
         if ($existingRecord) {
             return $existingRecord;
@@ -56,7 +55,7 @@ class BrokerService
     public static function brokerLedger($request) {
         $brokerName = '';
         $ledger = [];
-        $brokerAccounts = Broker::whereBuildingId(BuildingService::getBuildingId())->with('Hr')
+        $brokerAccounts = Broker::with('Hr')
             ->get()->pluck('hr.full_name', 'hr.id');
 
         if ($request->has('broker_id') &&  $request->get('broker_id') != '') {
@@ -79,14 +78,14 @@ class BrokerService
     }
 
     public static function brokerReport($request) {
-        $brokerAccounts = Broker::whereBuildingId(BuildingService::getBuildingId())->with('Hr')
+        $brokerAccounts = Broker::with('Hr')
             ->get()->pluck('hr.full_name', 'hr.id');
 
         if ($request->has('broker_id') && $request->filled('broker_id')) {
             $records = Broker::whereBuildingId(BuildingService::getBuildingId())
                 ->where('id', $request->get('broker_id'))->get();
         } else {
-            $records = Broker::whereBuildingId(BuildingService::getBuildingId())->get();
+            $records = Broker::get();
         }
 
         return [
@@ -99,8 +98,7 @@ class BrokerService
 
     public static function getBrokerAmounts($brokerHrID, $startDate = null, $endDate = null) {
         $arr = GeneralService::prepareForJson( [$brokerHrID] );
-        $accountHead = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-            ->where('account_type', 'broker')->whereJsonContains('account_id', $arr)
+        $accountHead = AccountHead::where('account_type', 'broker')->whereJsonContains('account_id', $arr)
             ->first();
 
         if ($accountHead) {
