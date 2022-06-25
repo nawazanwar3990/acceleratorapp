@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.users.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Authorization\User::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\User::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.users.list')
                         </tbody>

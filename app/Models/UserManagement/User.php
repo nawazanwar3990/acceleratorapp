@@ -4,7 +4,7 @@ namespace App\Models\UserManagement;
 
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\RealEstate\Hr;
+use App\Enum\TableHeadings\UserManagement\Hr;
 use App\Models\Building;
 use App\Models\PlanManagement\Plan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;

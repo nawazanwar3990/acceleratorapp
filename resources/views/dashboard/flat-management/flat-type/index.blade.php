@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.flat-type.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Definition\FlatType::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\FlatType::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.flat-management.flat-type.list')
                         </tbody>

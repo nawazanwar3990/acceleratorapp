@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.events.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Events\EventEnum::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\EventsManagement\EventEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.event-management.events.list')
                         </tbody>

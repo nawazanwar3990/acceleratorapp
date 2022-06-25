@@ -9,7 +9,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('installment_terms', function (Blueprint $table) {
+        Schema::create(TableEnum::INSTALLMENT_TERMS, function (Blueprint $table) {
             $table->id();
             $table->longText('installment_text')->nullable();
             $table->boolean('status')->default(true);
@@ -20,14 +20,8 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('installment_terms');
+        Schema::dropIfExists(TableEnum::INSTALLMENT_TERMS);
     }
 };

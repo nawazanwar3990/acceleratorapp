@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.floor-type.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Definition\FloorType::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\FloorType::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.flat-management.floor-type.list')
                         </tbody>

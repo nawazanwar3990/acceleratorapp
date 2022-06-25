@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.profession.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Definition\Profession::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Profession::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.profession.list')
                         </tbody>

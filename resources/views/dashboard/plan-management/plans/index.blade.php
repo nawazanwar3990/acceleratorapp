@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.plan-management.plans.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\RealEstate\InstallmentPlans::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\RealEstate\Plans::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.plan-management.plans.list')
                         </tbody>

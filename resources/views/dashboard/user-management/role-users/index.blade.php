@@ -9,7 +9,7 @@
                     <x-created-by-field></x-created-by-field>
                     <x-hidden-building-id></x-hidden-building-id>
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Authorization\RoleUser::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\RoleUser::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.role-users.list')
                         </tbody>

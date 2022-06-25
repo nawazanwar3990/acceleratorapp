@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.department.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Definition\Department::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Department::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.department.list')
                         </tbody>

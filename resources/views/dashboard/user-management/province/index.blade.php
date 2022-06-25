@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.province.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Definition\Province::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Province::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.province.list')
                         </tbody>

@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.permissions.create','is_create'=>true])
                 <div class="card-body table-responsive">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Authorization\Permission::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Permission::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.permissions.list')
                         </tbody>

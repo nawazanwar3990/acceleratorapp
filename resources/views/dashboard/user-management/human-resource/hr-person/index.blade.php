@@ -6,7 +6,7 @@
                 @include('components.General.form-list-header',['url'=>'dashboard.human-resource.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\RealEstate\Hr::getTranslationKeys()])
+                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Hr::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.human-resource.hr-person.list')
                         </tbody>

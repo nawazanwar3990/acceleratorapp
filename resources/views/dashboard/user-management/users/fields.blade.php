@@ -1,5 +1,5 @@
 <table class="table table-bordered table-hover">
-    @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\Authorization\User::getTranslationKeys()])
+    @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\User::getTranslationKeys()])
     <tbody>
     @forelse($persons as $person)
         <tr>
