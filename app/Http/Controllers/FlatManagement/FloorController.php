@@ -28,7 +28,7 @@ class FloorController extends Controller
             'pageTitle' => __('general.floor_names'),
             'records' => $records,
         ];
-        return view('dashboard.definition.floor-name.index',$params);
+        return view('dashboard.definition.floors.index',$params);
     }
 
     /**
@@ -43,7 +43,7 @@ class FloorController extends Controller
             'pageTitle' => __('general.new_floor_names'),
         ];
 
-        return view('dashboard.definition.floor-name.create', $params);
+        return view('dashboard.definition.floors.create', $params);
     }
 
     /**
@@ -57,10 +57,10 @@ class FloorController extends Controller
         $this->authorize('create', FloorName::class);
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.floor-name.create')
+                return redirect()->route('dashboard.floors.create')
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.floor-name.index')
+                return redirect()->route('dashboard.floors.index')
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -94,7 +94,7 @@ class FloorController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.definition.floor-name.edit', $params);
+        return view('dashboard.definition.floors.edit', $params);
     }
 
     /**
@@ -108,7 +108,7 @@ class FloorController extends Controller
     {
         $this->authorize('update', FloorName::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.floor-name.index')
+            return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
@@ -123,7 +123,7 @@ class FloorController extends Controller
     {
         $this->authorize('delete', FloorName::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.floor-name.index')
+            return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

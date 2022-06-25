@@ -9,8 +9,8 @@
         </td>
         <td class="text-center">
             @include('components.General.table-actions', [
-                'edit' => route('dashboard.floor-name.edit', $record->id),
-                'delete' => route('dashboard.floor-name.destroy', $record->id),
+                'edit' => route('dashboard.floors.edit', $record->id),
+                'delete' => route('dashboard.floors.destroy', $record->id),
             ])
         </td>
     </tr>

@@ -31,7 +31,7 @@ class FlatController extends Controller
             'pageTitle' => __('general.floor_names'),
             'records' => $records,
         ];
-        return view('dashboard.definition.floor-name.index',$params);
+        return view('dashboard.definition.floors.index',$params);
     }
 
     /**
@@ -43,7 +43,7 @@ class FlatController extends Controller
         $params = [
             'pageTitle' => __('general.new_floor_names'),
         ];
-        return view('dashboard.definition.floor-name.create', $params);
+        return view('dashboard.definition.floors.create', $params);
     }
 
     /**
@@ -70,7 +70,7 @@ class FlatController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.definition.floor-name.edit', $params);
+        return view('dashboard.definition.floors.edit', $params);
     }
 
     /**
@@ -92,7 +92,7 @@ class FlatController extends Controller
     {
         $this->authorize('delete', Flat::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.floor-name.index')
+            return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

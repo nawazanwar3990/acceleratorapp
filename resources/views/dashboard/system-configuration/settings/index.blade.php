@@ -13,20 +13,19 @@
 
 @section('content')
     <div class="container">
-        {!! Form::open(['url' => route('dashboard.system-settings.store')]) !!}
-        <x-created-by-field />
-        @include('dashboard.system-configuration.system-settings.components.settings-fields',['records'=>$records])
+        {!! Form::open(['url' => route('dashboard.settings.store')]) !!}
+        <x-created-by-field></x-created-by-field>
+        @include('dashboard.system-configuration.settings.components.settings-fields',['records'=>$records])
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
                 <br>
                 <x-buttons :save="true" :saveNew="false" :cancel="false" :reset="false"
-                           formID="SETTINGS_form" cancelRoute="dashboard.system-settings.index"/>
+                           formID="SETTINGS_form" cancelRoute="dashboard.settings.index"></x-buttons>
             </div>
         </div>
         {!! Form::close() !!}
     </div>
-    @include('dashboard.system-configuration.system-settings.print-view.view-page')
 @endsection
 @section('innerScript')
     <script src="{{ url('plugins/select2/js/select2.min.js') }}"></script>
@@ -42,9 +41,9 @@
         }
 
         function currencySymbol(elem){
-            if(elem == 'left'){
+            if(elem === 'left'){
                 $("#example_currency_symbol").html(`<p>Example: <b>{{ session()->get('currencySymbol') }} 10,000</b></p>`);
-            }else if (elem == 'right'){
+            }else if (elem === 'right'){
                 $("#example_currency_symbol").html(`<p>Example: <b>10,000  {{ session()->get('currencySymbol') }}</b></p>`);
             } else {
                 $("#example_currency_symbol").html(`<p>Example: <b>10,000</b></p>`);

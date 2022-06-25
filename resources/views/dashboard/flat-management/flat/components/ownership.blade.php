@@ -1,7 +1,7 @@
 <div class="my-3">
     <h4 class="card-title text-purple">{{ __('general.ownership') }}</h4>
     <hr>
-    @include('dashboard.common.hr-picker-with-percentage', ['fieldName' => 'owners', 'shareFieldName' => 'ownerShare'])
+    @include('dashboard.components.hr-picker-with-percentage', ['fieldName' => 'owners', 'shareFieldName' => 'ownerShare'])
 
     <div class="row mt-2">
         <div class="col-md-6"></div>

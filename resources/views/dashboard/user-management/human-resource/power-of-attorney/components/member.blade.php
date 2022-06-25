@@ -17,7 +17,7 @@
                         <hr>
                     </div>
                     <div class="col-md-12">
-                        @include('dashboard.common.single-hr-picker',
+                        @include('dashboard.components.single-hr-picker',
                         [
                             'fieldName' => 'executant_hr_id',
                             'for' => 'edit',
@@ -31,7 +31,7 @@
                         <hr>
                     </div>
                     <div class="col-md-12">
-                        @include('dashboard.common.single-hr-picker',
+                        @include('dashboard.components.single-hr-picker',
                         [
                             'fieldName' => 'auth_attorney_hr_id',
                             'for' => 'edit',

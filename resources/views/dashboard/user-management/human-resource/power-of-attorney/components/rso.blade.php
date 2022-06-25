@@ -81,7 +81,7 @@
                                     <label>{{ __('general.scrutinised_by') }}</label>
                                 </div>
                                 <div class="col-md-12">
-                                    @include('dashboard.common.single-hr-picker', [
+                                    @include('dashboard.components.single-hr-picker', [
                                         'fieldName' => 'attested_by_person_id',
                                         'for' => 'edit',
                                         'records'=>\App\Services\PersonService::getHrById($model->attested_by_person_id ?? null)])

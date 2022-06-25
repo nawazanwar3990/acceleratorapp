@@ -52,7 +52,7 @@ class GeneralDefinitionsNavEnum extends AbstractEnum
     {
         $routes = array(
             self::SERVICES => route('dashboard.service.index'),
-            self::FLOOR_NAMES => route('dashboard.floor-name.index'),
+            self::FLOOR_NAMES => route('dashboard.floors.index'),
             self::FLOOR_TYPES => route('dashboard.floor-type.index'),
             self::FLAT_TYPES => route('dashboard.flat-type.index'),
 //            self::COMMODITY_TYPES => route('dashboard.commodity-type.index'),

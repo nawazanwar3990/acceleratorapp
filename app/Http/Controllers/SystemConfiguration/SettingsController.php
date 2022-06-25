@@ -5,6 +5,10 @@ namespace App\Http\Controllers\SystemConfiguration;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SystemConfiguration\SystemSettingsRequest;
 use App\Models\SystemConfiguration\Setting;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;
@@ -16,7 +20,11 @@ class SettingsController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+
+    /**
+     * @throws AuthorizationException
+     */
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', Setting::class);
         $records = Setting::first();
@@ -25,41 +33,19 @@ class SettingsController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.settings.system-settings.index', $params);
+        return view('dashboard.system-configurations.settings.index', $params);
     }
-    public function create()
-    {
-        $this->authorize('create', Setting::class);
-        //
-    }
+
+    /**
+     * @throws AuthorizationException
+     */
     public function store(SystemSettingsRequest $request)
     {
         $this->authorize('create', Setting::class);
         if ($request->createData()) {
-            return redirect()->route('dashboard.system-settings.index')
+            return redirect()->route('dashboard.settings.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
-    public function show($id)
-    {
-        $this->authorize('view', Setting::class);
-        //
-    }
-    public function edit($id)
-    {
-        $this->authorize('update', Setting::class);
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        $this->authorize('update', Setting::class);
-        //
-    }
-    public function destroy($id)
-    {
-        $this->authorize('delete', Setting::class);
-        //
-    }
-
 
 }

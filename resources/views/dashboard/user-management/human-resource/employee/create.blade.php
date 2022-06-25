@@ -19,14 +19,14 @@
             </div>
         </div>
     </div>
-    @include('dashboard.common.hr-picker-modal')
+    @include('dashboard.components.hr-picker-modal')
 @endsection
 @section('inner-script-files')
     <script src="{{ url('plugins/select2/js/select2.min.js') }}" type="text/javascript"></script>
     @include('includes.datatable-js')
 @endsection
 @section('innerScript')
-    @include('dashboard.common.hr-picker-script')
+    @include('dashboard.components.hr-picker-script')
     <script>
         $(function () {
             $('.select2').select2();

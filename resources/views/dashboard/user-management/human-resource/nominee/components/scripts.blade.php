@@ -4,7 +4,7 @@
 @endsection
 
 @section('innerScript')
-    @include('dashboard.common.hr-picker-script')
+    @include('dashboard.components.hr-picker-script')
     <script>
         $(function () {
             initDropify();

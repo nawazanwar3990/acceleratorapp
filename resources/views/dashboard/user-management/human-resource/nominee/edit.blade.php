@@ -23,6 +23,6 @@
             </div>
         </div>
     </div>
-    @include('dashboard.common.hr-picker-modal')
+    @include('dashboard.components.hr-picker-modal')
 @endsection
 @include('dashboard.user-management.human-resource.nominee.components.scripts')

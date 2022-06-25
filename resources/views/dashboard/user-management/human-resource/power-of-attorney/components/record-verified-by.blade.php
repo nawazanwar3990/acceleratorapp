@@ -16,7 +16,7 @@
                         <p>{{ __('general.verification_by') }}</p>
                     </div>
                     <hr>
-                    @include('dashboard.common.hr-picker', ['fieldName' => 'verified_hr_id','for'=>'edit','records'=>$verification])
+                    @include('dashboard.components.hr-picker', ['fieldName' => 'verified_hr_id','for'=>'edit','records'=>$verification])
                 </div>
 
                 <div class="row mb-3">
@@ -24,7 +24,7 @@
                         <p>{{ __('general.witness') }}</p>
                     </div>
                     <hr>
-                    @include('dashboard.common.hr-picker', ['fieldName' => 'witness_hr_id','for'=>'edit','records'=>$witness])
+                    @include('dashboard.components.hr-picker', ['fieldName' => 'witness_hr_id','for'=>'edit','records'=>$witness])
                 </div>
             </div>
         </div>

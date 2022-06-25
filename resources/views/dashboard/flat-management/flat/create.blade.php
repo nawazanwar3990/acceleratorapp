@@ -21,5 +21,5 @@
         </div>
     </div>
 @endsection
-@include('dashboard.common.hr-picker-modal')
+@include('dashboard.components.hr-picker-modal')
 @include('dashboard.flat-management.flat.components.scripts')

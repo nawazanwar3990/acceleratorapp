@@ -37,7 +37,7 @@
                             <hr>
                         </div>
                         <div class="col-md-12">
-                            @include('dashboard.common.single-hr-picker', [
+                            @include('dashboard.components.single-hr-picker', [
                                 'fieldName' => 'pte_by_person_id',
                                 'for' => 'edit',
                                 'records'=>\App\Services\PersonService::getHrById($model->is_process_through_embassy ?? null)])

@@ -24,22 +24,22 @@
                                 </a>
                                 @switch($key)
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
-                                    @include('components.left-nav-bar.user-management')
+                                    @include('dashboard.components.left-nav-bar.user-management')
                                     @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SERVICE_MANAGEMENT)
-                                    @include('components.left-nav-bar.service-management')
+                                    @include('dashboard.components.left-nav-bar.service-management')
                                     @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
-                                    @include('components.left-nav-bar.plan-management')
+                                    @include('dashboard.components.left-nav-bar.plan-management')
                                     @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::EVENT_MANAGEMENT)
-                                    @include('components.left-nav-bar.event-management')
+                                    @include('dashboard.components.left-nav-bar.event-management')
                                     @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::FLAT_MANAGEMENT)
-                                    @include('components.left-nav-bar.flat-management')
+                                    @include('dashboard.components.left-nav-bar.flat-management')
                                     @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
-                                    @include('components.left-nav-bar.system-configuration')
+                                    @include('dashboard.components.left-nav-bar.system-configuration')
                                     @break
                                 @endswitch
                             </li>
