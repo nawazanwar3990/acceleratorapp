@@ -34,7 +34,7 @@ class ColonyController extends Controller
             'pageTitle' => __('general.colony'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.colony.index', $params);
+        return view('dashboard.definition.colony.index', $params);
     }
 
     /**
@@ -49,7 +49,7 @@ class ColonyController extends Controller
             'pageTitle' => __('general.new_colony'),
         ];
 
-        return view('dashboard.real-estate.definition.colony.create', $params);
+        return view('dashboard.definition.colony.create', $params);
     }
 
     /**
@@ -98,7 +98,7 @@ class ColonyController extends Controller
             'pageTitle' => __('general.edit_colony'),
             'model' => $model,
         ];
-        return view('dashboard.real-estate.definition.colony.edit', $params);
+        return view('dashboard.definition.colony.edit', $params);
     }
 
     /**

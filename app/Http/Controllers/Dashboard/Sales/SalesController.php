@@ -54,7 +54,7 @@ class SalesController extends Controller
             'flatsList' => $flatsList,
         ];
 
-        return view('dashboard.real-estate.sales.index', $params);
+        return view('dashboard.sales.index', $params);
     }
 
     public function create()
@@ -64,7 +64,7 @@ class SalesController extends Controller
             'pageTitle' => __('general.title_transfer'),
         ];
 
-        return view('dashboard.real-estate.sales.create', $params);
+        return view('dashboard.sales.create', $params);
     }
 
     public function store(SalesRequest $request)
@@ -102,7 +102,7 @@ class SalesController extends Controller
         ];
 
 //        dd($params);
-        return view('dashboard.real-estate.print.title-transfer.print-view', $params);
+        return view('dashboard.print.title-transfer.print-view', $params);
     }
 
     public function edit($id)
@@ -146,7 +146,7 @@ class SalesController extends Controller
             'buyer' => $buyer,
         ];
 
-        return view('dashboard.real-estate.sales.print.seller-affidavit', $params);
+        return view('dashboard.sales.print.seller-affidavit', $params);
     }
 
     public function commodityDealClosings(Request $request) {
@@ -159,7 +159,7 @@ class SalesController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.sales.commodity-deal-closings', $params);
+        return view('dashboard.sales.commodity-deal-closings', $params);
     }
 
     public function getCommodityTypeView(Request $request) {

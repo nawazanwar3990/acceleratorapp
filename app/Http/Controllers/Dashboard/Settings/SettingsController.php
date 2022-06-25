@@ -30,7 +30,7 @@ class SettingsController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.settings.system-settings.index', $params);
+        return view('dashboard.settings.system-settings.index', $params);
     }
 
     /**

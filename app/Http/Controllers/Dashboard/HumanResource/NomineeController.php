@@ -37,7 +37,7 @@ class NomineeController extends Controller
             'pageTitle' => __('general.nominee'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.human-resource.nominee.index',$params);
+        return view('dashboard.human-resource.nominee.index',$params);
     }
 
     /**
@@ -52,7 +52,7 @@ class NomineeController extends Controller
             'pageTitle' => __('general.new_nominee'),
         ];
 
-        return view('dashboard.real-estate.human-resource.nominee.create', $params);
+        return view('dashboard.human-resource.nominee.create', $params);
     }
 
     /**
@@ -93,7 +93,7 @@ class NomineeController extends Controller
             'verification' => $verification,
             'witness' => $witness,
         ];
-        return view('dashboard.real-estate.human-resource.nominee.print-form',$params);
+        return view('dashboard.human-resource.nominee.print-form',$params);
     }
 
     /**
@@ -117,7 +117,7 @@ class NomineeController extends Controller
             'witness' => $witness,
             'media' => $media,
         ];
-        return view('dashboard.real-estate.human-resource.nominee.edit', $params);
+        return view('dashboard.human-resource.nominee.edit', $params);
     }
 
     /**

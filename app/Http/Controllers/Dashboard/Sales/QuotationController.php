@@ -27,7 +27,7 @@ class QuotationController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.quotation.index', $params);
+        return view('dashboard.quotation.index', $params);
     }
 
     public function create()
@@ -37,7 +37,7 @@ class QuotationController extends Controller
             'pageTitle' => __('general.new_sales_quotation'),
         ];
 
-        return view('dashboard.real-estate.quotation.create', $params);
+        return view('dashboard.quotation.create', $params);
     }
 
     public function store(QuotationRequest $request)
@@ -65,7 +65,7 @@ class QuotationController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.quotation.print', $params);
+        return view('dashboard.quotation.print', $params);
     }
 
     public function edit($id)

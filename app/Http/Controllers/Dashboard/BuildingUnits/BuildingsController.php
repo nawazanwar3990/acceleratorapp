@@ -34,7 +34,7 @@ class BuildingsController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.buildings.index', $params);
+        return view('dashboard.buildings.index', $params);
     }
 
     public function create()
@@ -44,7 +44,7 @@ class BuildingsController extends Controller
             'pageTitle' => __('general.new_building'),
         ];
 
-        return view('dashboard.real-estate.buildings.create', $params);
+        return view('dashboard.buildings.create', $params);
     }
 
     public function store(BuildingRequest $request)
@@ -76,7 +76,7 @@ class BuildingsController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.buildings.edit', $params);
+        return view('dashboard.buildings.edit', $params);
     }
 
     public function update(BuildingRequest $request, $id)

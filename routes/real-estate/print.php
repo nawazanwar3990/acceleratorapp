@@ -20,13 +20,13 @@ Route::get('/filter-hr', [GeneralController::class, 'filterHr'])->name('filter.h
 Route::get('/print-title-transfer-detail', [GeneralController::class, 'printTitleTransferDetails'])->name('print.title.transfer.detail');
 
 Route::get('print-1',function (){
-    return view('dashboard.real-estate.print.print-theme.print-1.print');
+    return view('dashboard.print.print-theme.print-1.print');
 });
 
 Route::get('print-2',function (){
-    return view('dashboard.real-estate.print.print-theme.print-2.print');
+    return view('dashboard.print.print-theme.print-2.print');
 });
 
 Route::get('print-3',function (){
-    return view('dashboard.real-estate.print.print-theme.print-3.print');
+    return view('dashboard.print.print-theme.print-3.print');
 });

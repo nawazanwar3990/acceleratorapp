@@ -28,7 +28,7 @@ class HrMinistryController extends Controller
             'pageTitle' => __('general.ministry'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.ministry.index', $params);
+        return view('dashboard.definition.ministry.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrMinistryController extends Controller
             'pageTitle' => __('general.new_ministry'),
         ];
 
-        return view('dashboard.real-estate.definition.ministry.create', $params);
+        return view('dashboard.definition.ministry.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrMinistryController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.ministry.edit', $params);
+        return view('dashboard.definition.ministry.edit', $params);
     }
 
     /**

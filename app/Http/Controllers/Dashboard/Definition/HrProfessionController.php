@@ -28,7 +28,7 @@ class HrProfessionController extends Controller
             'pageTitle' => __('general.profession'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.profession.index', $params);
+        return view('dashboard.definition.profession.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrProfessionController extends Controller
             'pageTitle' => __('general.new_profession'),
         ];
 
-        return view('dashboard.real-estate.definition.profession.create', $params);
+        return view('dashboard.definition.profession.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrProfessionController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.profession.edit', $params);
+        return view('dashboard.definition.profession.edit', $params);
     }
 
     /**

@@ -28,7 +28,7 @@ class HrDepartmentController extends Controller
             'pageTitle' => __('general.department'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.department.index', $params);
+        return view('dashboard.definition.department.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrDepartmentController extends Controller
             'pageTitle' => __('general.new_department'),
         ];
 
-        return view('dashboard.real-estate.definition.department.create', $params);
+        return view('dashboard.definition.department.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrDepartmentController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.department.edit', $params);
+        return view('dashboard.definition.department.edit', $params);
     }
 
     /**

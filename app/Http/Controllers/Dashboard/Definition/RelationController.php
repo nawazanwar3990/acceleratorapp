@@ -28,7 +28,7 @@ class RelationController extends Controller
             'pageTitle' => __('general.relation'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.relation.index', $params);
+        return view('dashboard.definition.relation.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class RelationController extends Controller
             'pageTitle' => __('general.new_relation'),
         ];
 
-        return view('dashboard.real-estate.definition.relation.create', $params);
+        return view('dashboard.definition.relation.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class RelationController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.relation.edit', $params);
+        return view('dashboard.definition.relation.edit', $params);
     }
 
     /**

@@ -24,7 +24,7 @@ class ServiceController extends Controller
             'pageTitle' => __('general.service'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.service.index',$params);
+        return view('dashboard.definition.service.index',$params);
     }
 
     public function create()
@@ -33,7 +33,7 @@ class ServiceController extends Controller
         $params = [
             'pageTitle' => __('general.new_service'),
         ];
-        return view('dashboard.real-estate.definition.service.create',compact('params'));
+        return view('dashboard.definition.service.create',compact('params'));
     }
 
 
@@ -69,7 +69,7 @@ class ServiceController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.service.edit', $params);
+        return view('dashboard.definition.service.edit', $params);
     }
 
 

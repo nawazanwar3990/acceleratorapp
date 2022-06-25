@@ -31,7 +31,7 @@ class CountryController extends Controller
             'pageTitle' => __('general.country'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.country.index', $params);
+        return view('dashboard.definition.country.index', $params);
     }
 
     /**
@@ -46,7 +46,7 @@ class CountryController extends Controller
             'pageTitle' => __('general.new_country'),
         ];
 
-        return view('dashboard.real-estate.definition.country.create', $params);
+        return view('dashboard.definition.country.create', $params);
     }
 
     /**
@@ -97,7 +97,7 @@ class CountryController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.country.edit', $params);
+        return view('dashboard.definition.country.edit', $params);
     }
 
     /**

@@ -25,7 +25,7 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.flat_types'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.flat-type.index',$params);
+        return view('dashboard.definition.flat-type.index',$params);
     }
 
     public function create()
@@ -35,7 +35,7 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.new_flat_types'),
         ];
 
-        return view('dashboard.real-estate.definition.flat-type.create', $params);
+        return view('dashboard.definition.flat-type.create', $params);
     }
 
     public function store(FlatTypeRequest $request)
@@ -68,7 +68,7 @@ class FlatTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.flat-type.edit', $params);
+        return view('dashboard.definition.flat-type.edit', $params);
     }
 
     public function update(FlatTypeRequest $request, $id)

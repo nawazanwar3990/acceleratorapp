@@ -33,7 +33,7 @@ class PostalReceiveController extends Controller
             'pageTitle' => __('general.postal_receive_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.postal-receive.index', $params);
+        return view('dashboard.front-desk.postal-receive.index', $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class PostalReceiveController extends Controller
             'pageTitle' => __('general.postal_receive_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.postal-receive.create', $params);
+        return view('dashboard.front-desk.postal-receive.create', $params);
     }
 
     /**
@@ -99,7 +99,7 @@ class PostalReceiveController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.postal-receive.edit', $params);
+        return view('dashboard.front-desk.postal-receive.edit', $params);
     }
 
     /**

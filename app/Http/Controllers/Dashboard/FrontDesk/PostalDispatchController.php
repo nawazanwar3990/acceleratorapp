@@ -33,7 +33,7 @@ class PostalDispatchController extends Controller
             'pageTitle' => __('general.postal_dispatch_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.postal-dispatch.index', $params);
+        return view('dashboard.front-desk.postal-dispatch.index', $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class PostalDispatchController extends Controller
             'pageTitle' => __('general.postal_dispatch_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.postal-dispatch.create', $params);
+        return view('dashboard.front-desk.postal-dispatch.create', $params);
     }
 
     /**
@@ -99,7 +99,7 @@ class PostalDispatchController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.postal-dispatch.edit', $params);
+        return view('dashboard.front-desk.postal-dispatch.edit', $params);
     }
 
     /**

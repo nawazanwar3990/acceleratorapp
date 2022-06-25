@@ -30,7 +30,7 @@ class HrBusinessController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.definition.business.index', $params);
+        return view('dashboard.definition.business.index', $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class HrBusinessController extends Controller
             'parentHeads' => $parentHeads,
         ];
 
-        return view('dashboard.real-estate.definition.business.create', $params);
+        return view('dashboard.definition.business.create', $params);
     }
 
     /**
@@ -101,7 +101,7 @@ class HrBusinessController extends Controller
             'parentHeads' => $parentHeads,
             'model' => $model,
         ];
-        return view('dashboard.real-estate.definition.business.edit', $params);
+        return view('dashboard.definition.business.edit', $params);
     }
 
     /**

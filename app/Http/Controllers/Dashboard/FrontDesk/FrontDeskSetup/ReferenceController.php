@@ -28,7 +28,7 @@ class ReferenceController extends Controller
             'pageTitle' => __('general.reference_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.front-desk-setup.reference.index', $params);
+        return view('dashboard.front-desk.front-desk-setup.reference.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class ReferenceController extends Controller
             'pageTitle' => __('general.reference_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.reference.create', $params);
+        return view('dashboard.front-desk.front-desk-setup.reference.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class ReferenceController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.reference.edit', $params);
+        return view('dashboard.front-desk.front-desk-setup.reference.edit', $params);
     }
 
     /**

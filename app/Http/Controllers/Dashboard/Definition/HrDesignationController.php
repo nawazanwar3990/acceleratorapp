@@ -24,7 +24,7 @@ class HrDesignationController extends Controller
             'pageTitle' => __('general.designation'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.designation.index', $params);
+        return view('dashboard.definition.designation.index', $params);
     }
 
     public function create()
@@ -34,7 +34,7 @@ class HrDesignationController extends Controller
             'pageTitle' => __('general.new_designation'),
         ];
 
-        return view('dashboard.real-estate.definition.designation.create', $params);
+        return view('dashboard.definition.designation.create', $params);
     }
 
     public function store(HrDesignationRequest $request)
@@ -67,7 +67,7 @@ class HrDesignationController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.designation.edit', $params);
+        return view('dashboard.definition.designation.edit', $params);
     }
 
     public function update(HrDesignationRequest $request, $id)

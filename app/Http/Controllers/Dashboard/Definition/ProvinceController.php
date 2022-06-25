@@ -31,7 +31,7 @@ class ProvinceController extends Controller
             'pageTitle' => __('general.province'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.province.index', $params);
+        return view('dashboard.definition.province.index', $params);
     }
 
     /**
@@ -46,7 +46,7 @@ class ProvinceController extends Controller
             'pageTitle' => __('general.new_province'),
         ];
 
-        return view('dashboard.real-estate.definition.province.create', $params);
+        return view('dashboard.definition.province.create', $params);
     }
 
     /**
@@ -97,7 +97,7 @@ class ProvinceController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.province.edit', $params);
+        return view('dashboard.definition.province.edit', $params);
     }
 
     /**

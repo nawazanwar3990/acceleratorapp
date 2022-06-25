@@ -22,7 +22,7 @@ class LedgerController extends Controller
             'records' => $data['ledger'],
         ];
 
-        return view('dashboard.real-estate.ledgers.seller', $params);
+        return view('dashboard.ledgers.seller', $params);
     }
 
     public function buyerLedger(Request $request) {
@@ -34,7 +34,7 @@ class LedgerController extends Controller
             'records' => $data['ledger'],
         ];
 
-        return view('dashboard.real-estate.ledgers.buyer', $params);
+        return view('dashboard.ledgers.buyer', $params);
     }
 
     public function brokerLedger(Request $request) {
@@ -46,7 +46,7 @@ class LedgerController extends Controller
             'records' => $data['ledger'],
         ];
 
-        return view('dashboard.real-estate.ledgers.broker', $params);
+        return view('dashboard.ledgers.broker', $params);
     }
 
     public function generalLedger(Request $request) {
@@ -67,7 +67,7 @@ class LedgerController extends Controller
                 'generalHeads' => $data['generalHeads'],
             ];
         }
-        return view('dashboard.real-estate.ledgers.general', $params);
+        return view('dashboard.ledgers.general', $params);
     }
 
     public function getTransactionHeadsOfGeneralHead(Request $request) {

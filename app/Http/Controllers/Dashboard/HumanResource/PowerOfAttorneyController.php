@@ -35,7 +35,7 @@ class PowerOfAttorneyController extends Controller
             'pageTitle' => $pageTitle,
             'data' => $data
         ];
-        return view('dashboard.real-estate.human-resource.power-of-attorney.index', $viewParams);
+        return view('dashboard.human-resource.power-of-attorney.index', $viewParams);
     }
 
     public function create()
@@ -45,7 +45,7 @@ class PowerOfAttorneyController extends Controller
         $viewParams = [
             'pageTitle' => $pageTitle
         ];
-        return view('dashboard.real-estate.human-resource.power-of-attorney.create', $viewParams);
+        return view('dashboard.human-resource.power-of-attorney.create', $viewParams);
     }
 
     public function store(PowerOfAttorneyRequest $request): RedirectResponse
@@ -77,7 +77,7 @@ class PowerOfAttorneyController extends Controller
             'witness' => $witness,
             'media' => $media,
         ];
-        return view('dashboard.real-estate.human-resource.power-of-attorney.edit', $params);
+        return view('dashboard.human-resource.power-of-attorney.edit', $params);
 
     }
 

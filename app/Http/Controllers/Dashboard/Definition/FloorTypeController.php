@@ -28,7 +28,7 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.floor_types'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.floor-type.index',$params);
+        return view('dashboard.definition.floor-type.index',$params);
     }
 
     /**
@@ -43,7 +43,7 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.new_floor_types'),
         ];
 
-        return view('dashboard.real-estate.definition.floor-type.create', $params);
+        return view('dashboard.definition.floor-type.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class FloorTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.floor-type.edit', $params);
+        return view('dashboard.definition.floor-type.edit', $params);
     }
 
     /**

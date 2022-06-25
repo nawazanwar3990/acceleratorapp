@@ -28,7 +28,7 @@ class HrTaxTypeController extends Controller
             'pageTitle' => __('general.tax_type'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.tax-type.index', $params);
+        return view('dashboard.definition.tax-type.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrTaxTypeController extends Controller
             'pageTitle' => __('general.new_tax_type'),
         ];
 
-        return view('dashboard.real-estate.definition.tax-type.create', $params);
+        return view('dashboard.definition.tax-type.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrTaxTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.tax-type.edit', $params);
+        return view('dashboard.definition.tax-type.edit', $params);
     }
 
     /**

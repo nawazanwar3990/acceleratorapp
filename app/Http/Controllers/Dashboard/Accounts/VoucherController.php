@@ -31,7 +31,7 @@ class VoucherController extends Controller
             'pageTitle' => __('general.buyer_cash_receiving_voucher'),
             'flatRecords' => $flatRecords
         ];
-        return view('dashboard.real-estate.vouchers.buyer-receiving', $params);
+        return view('dashboard.vouchers.buyer-receiving', $params);
     }
 
     public function saveBuyerCashReceiving(BuyerReceivingVoucherRequest $request) {
@@ -52,7 +52,7 @@ class VoucherController extends Controller
             'pageTitle' => __('general.buyer_installment_receiving_voucher'),
             'flatRecords' => $flatRecords
         ];
-        return view('dashboard.real-estate.vouchers.buyer-installment-receiving', $params);
+        return view('dashboard.vouchers.buyer-installment-receiving', $params);
     }
 
     public function saveBuyerInstallmentReceiving(BuyerInstallmentReceivingVoucherRequest $request) {
@@ -83,7 +83,7 @@ class VoucherController extends Controller
             'installment' => $installment,
             'accountHead' => $accountHead,
         ];
-        return view('dashboard.real-estate.vouchers.print.buyer-installment-receiving', $params);
+        return view('dashboard.vouchers.print.buyer-installment-receiving', $params);
     }
 
     public function sellerPayment() {
@@ -101,7 +101,7 @@ class VoucherController extends Controller
             'pageTitle' => __('general.broker_payment_voucher'),
             'brokers' => $brokers
         ];
-        return view('dashboard.real-estate.vouchers.broker-payment', $params);
+        return view('dashboard.vouchers.broker-payment', $params);
     }
 
     public function saveBrokerPayment(BrokerPaymentVoucherRequest $request) {
@@ -136,7 +136,7 @@ class VoucherController extends Controller
             'paymentAccounts' => $paymentAccounts,
             'pageTitle' => __('general.debit_voucher'),
         ];
-        return view('dashboard.real-estate.vouchers.debit', $params);
+        return view('dashboard.vouchers.debit', $params);
     }
 
     public function saveDebitVoucher(DebitVoucherRequest $request) {
@@ -166,7 +166,7 @@ class VoucherController extends Controller
             'paymentAccounts' => $paymentAccounts,
             'pageTitle' => __('general.credit_voucher'),
         ];
-        return view('dashboard.real-estate.vouchers.credit', $params);
+        return view('dashboard.vouchers.credit', $params);
     }
 
     public function saveCreditVoucher(CreditVoucherRequest $request) {
@@ -191,7 +191,7 @@ class VoucherController extends Controller
             'accountHeads' => $accountHeads,
             'pageTitle' => __('general.opening_balance_voucher'),
         ];
-        return view('dashboard.real-estate.vouchers.opening-balance', $params);
+        return view('dashboard.vouchers.opening-balance', $params);
     }
 
     public function saveOpeningBalanceVoucher(OpeningBalanceVoucherRequest $request) {

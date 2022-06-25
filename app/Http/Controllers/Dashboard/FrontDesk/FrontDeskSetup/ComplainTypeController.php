@@ -28,7 +28,7 @@ class ComplainTypeController extends Controller
             'pageTitle' => __('general.complain_type_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.front-desk-setup.complain-type.index', $params);
+        return view('dashboard.front-desk.front-desk-setup.complain-type.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class ComplainTypeController extends Controller
             'pageTitle' => __('general.complain_type_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.complain-type.create', $params);
+        return view('dashboard.front-desk.front-desk-setup.complain-type.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class ComplainTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.complain-type.edit', $params);
+        return view('dashboard.front-desk.front-desk-setup.complain-type.edit', $params);
     }
 
     /**

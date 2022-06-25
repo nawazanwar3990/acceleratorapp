@@ -32,7 +32,7 @@ class FlatController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.flat.index', $params);
+        return view('dashboard.flat.index', $params);
     }
 
     public function create()
@@ -43,7 +43,7 @@ class FlatController extends Controller
             'pageTitle' => __('general.new_flat_shop'),
         ];
 
-        return view('dashboard.real-estate.flat.create', $params);
+        return view('dashboard.flat.create', $params);
     }
 
     public function store(FlatRequest $request)
@@ -70,7 +70,7 @@ class FlatController extends Controller
             'pageTitle' => __('general.print_flat_owners'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.print.flat-owner.print-view', $params);
+        return view('dashboard.print.flat-owner.print-view', $params);
     }
 
     public function edit($id)
@@ -88,7 +88,7 @@ class FlatController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.flat.edit', $params);
+        return view('dashboard.flat.edit', $params);
     }
 
     public function update(FlatRequest $request, $id)
@@ -156,6 +156,6 @@ class FlatController extends Controller
             'owners' => $owners,
             'purchasers' => $purchasers,
         ];
-        return view('dashboard.real-estate.flat.search', $params);
+        return view('dashboard.flat.search', $params);
     }
 }

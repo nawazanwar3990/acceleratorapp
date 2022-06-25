@@ -28,7 +28,7 @@ class FloorNameController extends Controller
             'pageTitle' => __('general.floor_names'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.floor-name.index',$params);
+        return view('dashboard.definition.floor-name.index',$params);
     }
 
     /**
@@ -43,7 +43,7 @@ class FloorNameController extends Controller
             'pageTitle' => __('general.new_floor_names'),
         ];
 
-        return view('dashboard.real-estate.definition.floor-name.create', $params);
+        return view('dashboard.definition.floor-name.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class FloorNameController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.floor-name.edit', $params);
+        return view('dashboard.definition.floor-name.edit', $params);
     }
 
     /**

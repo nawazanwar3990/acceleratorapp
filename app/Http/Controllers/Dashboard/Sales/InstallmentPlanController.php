@@ -28,7 +28,7 @@ class InstallmentPlanController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.installment-plans.index', $params);
+        return view('dashboard.installment-plans.index', $params);
     }
 
     public function create()
@@ -38,7 +38,7 @@ class InstallmentPlanController extends Controller
             'pageTitle' => __('general.new_installment_plan'),
         ];
 
-        return view('dashboard.real-estate.installment-plans.create', $params);
+        return view('dashboard.installment-plans.create', $params);
     }
 
     public function store(InstallmentPlanRequest $request)
@@ -64,7 +64,7 @@ class InstallmentPlanController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.installment-plan.print-view', $params);
+        return view('dashboard.print.installment-plan.print-view', $params);
     }
 
     public function edit($id)
@@ -76,7 +76,7 @@ class InstallmentPlanController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.installment-plans.edit', $params);
+        return view('dashboard.installment-plans.edit', $params);
     }
 
     public function update(InstallmentPlanRequest $request, $id)

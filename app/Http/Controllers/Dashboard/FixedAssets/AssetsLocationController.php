@@ -29,7 +29,7 @@ class AssetsLocationController extends Controller
             'pageTitle' => __('general.assets_location_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.fixed-assets.assets-location.index', $params);
+        return view('dashboard.fixed-assets.assets-location.index', $params);
     }
 
     /**
@@ -44,7 +44,7 @@ class AssetsLocationController extends Controller
             'pageTitle' => __('general.assets_location_create'),
         ];
 
-        return view('dashboard.real-estate.fixed-assets.assets-location.create', $params);
+        return view('dashboard.fixed-assets.assets-location.create', $params);
     }
 
     /**
@@ -95,7 +95,7 @@ class AssetsLocationController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.fixed-assets.assets-location.edit', $params);
+        return view('dashboard.fixed-assets.assets-location.edit', $params);
     }
 
     /**

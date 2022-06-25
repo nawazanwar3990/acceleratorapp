@@ -41,7 +41,7 @@ class InstallmentTermController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.installment-term.create', $params);
+        return view('dashboard.installment-term.create', $params);
     }
 
     /**

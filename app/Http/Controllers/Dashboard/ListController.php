@@ -25,7 +25,7 @@ class ListController extends Controller
             'pageTitle' => __('general.brokers_list'),
             'records' => $brokers,
         ];
-        return view('dashboard.real-estate.lists.broker', $params);
+        return view('dashboard.lists.broker', $params);
     }
 
     public function sellerList() {
@@ -51,7 +51,7 @@ class ListController extends Controller
             'pageTitle' => __('general.sellers_list'),
             'records' => $freeFlatOwnersQuery,
         ];
-        return view('dashboard.real-estate.lists.seller', $params);
+        return view('dashboard.lists.seller', $params);
     }
 
     public function buyerList() {
@@ -79,7 +79,7 @@ class ListController extends Controller
             'pageTitle' => __('general.buyers_list'),
             'records' => $freeFlatBuyersQuery,
         ];
-        return view('dashboard.real-estate.lists.buyer', $params);
+        return view('dashboard.lists.buyer', $params);
     }
 
 }

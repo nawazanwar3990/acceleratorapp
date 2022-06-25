@@ -28,7 +28,7 @@ class HrNationalityController extends Controller
             'pageTitle' => __('general.nationality'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.nationality.index', $params);
+        return view('dashboard.definition.nationality.index', $params);
     }
 
     /**
@@ -42,7 +42,7 @@ class HrNationalityController extends Controller
         $params = [
             'pageTitle' => __('general.new_nationality'),
         ];
-        return view('dashboard.real-estate.definition.nationality.create', $params);
+        return view('dashboard.definition.nationality.create', $params);
     }
 
     /**
@@ -93,7 +93,7 @@ class HrNationalityController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.nationality.edit', $params);
+        return view('dashboard.definition.nationality.edit', $params);
     }
 
     /**

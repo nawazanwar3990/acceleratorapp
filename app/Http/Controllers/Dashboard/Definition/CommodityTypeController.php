@@ -32,7 +32,7 @@ class CommodityTypeController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.definition.commodity-type.index', $params);
+        return view('dashboard.definition.commodity-type.index', $params);
     }
 
     /**
@@ -50,7 +50,7 @@ class CommodityTypeController extends Controller
             'parentHeads' => $parentHeads,
         ];
 
-        return view('dashboard.real-estate.definition.commodity-type.create', $params);
+        return view('dashboard.definition.commodity-type.create', $params);
     }
 
     /**
@@ -103,7 +103,7 @@ class CommodityTypeController extends Controller
             'parentHeads' => $parentHeads,
             'model' => $model,
         ];
-        return view('dashboard.real-estate.definition.commodity-type.edit', $params);
+        return view('dashboard.definition.commodity-type.edit', $params);
     }
 
     /**

@@ -28,7 +28,7 @@ class HrTaxStatusController extends Controller
             'pageTitle' => __('general.tax_status'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.tax-status.index', $params);
+        return view('dashboard.definition.tax-status.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrTaxStatusController extends Controller
             'pageTitle' => __('general.new_tax_status'),
         ];
 
-        return view('dashboard.real-estate.definition.tax-status.create', $params);
+        return view('dashboard.definition.tax-status.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrTaxStatusController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.tax-status.edit', $params);
+        return view('dashboard.definition.tax-status.edit', $params);
     }
 
     /**

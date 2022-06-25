@@ -28,7 +28,7 @@ class PhoneCallLogController extends Controller
             'pageTitle' => __('general.phone_call_log_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.phone-call-log.index', $params);
+        return view('dashboard.front-desk.phone-call-log.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class PhoneCallLogController extends Controller
             'pageTitle' => __('general.phone_call_log_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.phone-call-log.create', $params);
+        return view('dashboard.front-desk.phone-call-log.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class PhoneCallLogController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.phone-call-log.edit', $params);
+        return view('dashboard.front-desk.phone-call-log.edit', $params);
     }
 
     /**

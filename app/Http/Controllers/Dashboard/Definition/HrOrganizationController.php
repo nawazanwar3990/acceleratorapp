@@ -28,7 +28,7 @@ class HrOrganizationController extends Controller
             'pageTitle' => __('general.organization'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.organization.index', $params);
+        return view('dashboard.definition.organization.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrOrganizationController extends Controller
             'pageTitle' => __('general.new_organization'),
         ];
 
-        return view('dashboard.real-estate.definition.organization.create', $params);
+        return view('dashboard.definition.organization.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrOrganizationController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.organization.edit', $params);
+        return view('dashboard.definition.organization.edit', $params);
     }
 
     /**

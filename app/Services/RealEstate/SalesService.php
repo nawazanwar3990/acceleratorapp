@@ -18,19 +18,19 @@ class SalesService
                 $viewCode = $request->get('viewCode');
                 switch ($viewCode) {
                     case '1-1':
-                        $html = view('dashboard.real-estate.sales.components.payment-method.onetime-cash')->render();
+                        $html = view('dashboard.sales.components.payment-method.onetime-cash')->render();
                         break;
                     case '1-2':
-                        $html = view('dashboard.real-estate.sales.components.payment-method.onetime-commodity')->render();
+                        $html = view('dashboard.sales.components.payment-method.onetime-commodity')->render();
                         break;
                     case '1-3':
-                        $html = view('dashboard.real-estate.sales.components.payment-method.onetime-cash-commodity')->render();
+                        $html = view('dashboard.sales.components.payment-method.onetime-cash-commodity')->render();
                         break;
                     case '2-1':
-                        $html = view('dashboard.real-estate.sales.components.payment-method.installment-cash')->render();
+                        $html = view('dashboard.sales.components.payment-method.installment-cash')->render();
                         break;
                     case '2-2':
-                        $html = view('dashboard.real-estate.sales.components.payment-method.installment-commodity')->render();
+                        $html = view('dashboard.sales.components.payment-method.installment-commodity')->render();
                         break;
                 }
                 $output = ['success' => true, 'msg' => '', 'data' => $html];
@@ -114,9 +114,9 @@ class SalesService
             if ($request->has('viewCode')) {
                 $viewCode = $request->get('viewCode');
                 $html = match ($viewCode) {
-                    'fixed' => view('dashboard.real-estate.sales.components.payment-method.commodity-types.fixed')->render(),
-                    'other' => view('dashboard.real-estate.sales.components.payment-method.commodity-types.other')->render(),
-                    'movable' => view('dashboard.real-estate.sales.components.payment-method.commodity-types.movable')->render(),
+                    'fixed' => view('dashboard.sales.components.payment-method.commodity-types.fixed')->render(),
+                    'other' => view('dashboard.sales.components.payment-method.commodity-types.other')->render(),
+                    'movable' => view('dashboard.sales.components.payment-method.commodity-types.movable')->render(),
                 };
                 $output = ['success' => true, 'msg' => '', 'data' => $html];
             }

@@ -27,7 +27,7 @@ class EmployeeController extends Controller
             'pageTitle' => __('general.employees'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.human-resource.employee.index', $params);
+        return view('dashboard.human-resource.employee.index', $params);
     }
 
     public function create()
@@ -36,7 +36,7 @@ class EmployeeController extends Controller
         $params = [
             'pageTitle' => __('general.new_employee'),
         ];
-        return view('dashboard.real-estate.human-resource.employee.create', $params);
+        return view('dashboard.human-resource.employee.create', $params);
     }
 
     public function store(EmployeeRequest $request)
@@ -67,7 +67,7 @@ class EmployeeController extends Controller
             'pageTitle' => __('general.edit_employee'),
             'model' => $model,
         ];
-        return view('dashboard.real-estate.human-resource.employee.edit', $params);
+        return view('dashboard.human-resource.employee.edit', $params);
 
     }
 

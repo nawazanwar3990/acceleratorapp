@@ -28,7 +28,7 @@ class HrCastController extends Controller
             'pageTitle' => __('general.cast'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.cast.index', $params);
+        return view('dashboard.definition.cast.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class HrCastController extends Controller
             'pageTitle' => __('general.new_cast'),
         ];
 
-        return view('dashboard.real-estate.definition.cast.create', $params);
+        return view('dashboard.definition.cast.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class HrCastController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.cast.edit', $params);
+        return view('dashboard.definition.cast.edit', $params);
     }
 
     /**

@@ -31,7 +31,7 @@ class DistrictController extends Controller
             'pageTitle' => __('general.district'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.district.index', $params);
+        return view('dashboard.definition.district.index', $params);
     }
 
     /**
@@ -46,7 +46,7 @@ class DistrictController extends Controller
             'pageTitle' => __('general.new_district'),
         ];
 
-        return view('dashboard.real-estate.definition.district.create', $params);
+        return view('dashboard.definition.district.create', $params);
     }
 
     /**
@@ -97,7 +97,7 @@ class DistrictController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.definition.district.edit', $params);
+        return view('dashboard.definition.district.edit', $params);
     }
 
     /**

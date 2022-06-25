@@ -31,7 +31,7 @@ class TehsilController extends Controller
             'pageTitle' => __('general.tehsil'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.definition.tehsil.index', $params);
+        return view('dashboard.definition.tehsil.index', $params);
     }
 
     /**
@@ -46,7 +46,7 @@ class TehsilController extends Controller
             'pageTitle' => __('general.new_tehsil'),
         ];
 
-        return view('dashboard.real-estate.definition.tehsil.create', $params);
+        return view('dashboard.definition.tehsil.create', $params);
     }
 
     /**
@@ -95,7 +95,7 @@ class TehsilController extends Controller
             'pageTitle' => __('general.edit_tehsil'),
             'model' => $model,
         ];
-        return view('dashboard.real-estate.definition.tehsil.edit', $params);
+        return view('dashboard.definition.tehsil.edit', $params);
     }
 
     /**

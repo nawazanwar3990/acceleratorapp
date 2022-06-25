@@ -28,7 +28,7 @@ class AssetsUnitController extends Controller
             'pageTitle' => __('general.assets_unit_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.fixed-assets.assets-unit.index', $params);
+        return view('dashboard.fixed-assets.assets-unit.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class AssetsUnitController extends Controller
             'pageTitle' => __('general.assets_unit_create'),
         ];
 
-        return view('dashboard.real-estate.fixed-assets.assets-unit.create', $params);
+        return view('dashboard.fixed-assets.assets-unit.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class AssetsUnitController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.fixed-assets.assets-unit.edit', $params);
+        return view('dashboard.fixed-assets.assets-unit.edit', $params);
     }
 
     /**

@@ -28,7 +28,7 @@ class FloorController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.floor.index', $params);
+        return view('dashboard.floor.index', $params);
     }
 
     public function create()
@@ -38,7 +38,7 @@ class FloorController extends Controller
             'pageTitle' => __('general.new_floor'),
         ];
 
-        return view('dashboard.real-estate.floor.create', $params);
+        return view('dashboard.floor.create', $params);
     }
 
     public function store(FloorRequest $request)
@@ -70,7 +70,7 @@ class FloorController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.floor.edit', $params);
+        return view('dashboard.floor.edit', $params);
     }
 
     public function update(FloorRequest $request, $id)

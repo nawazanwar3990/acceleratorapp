@@ -28,7 +28,7 @@ class SourceController extends Controller
             'pageTitle' => __('general.source_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.front-desk-setup.source.index', $params);
+        return view('dashboard.front-desk.front-desk-setup.source.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class SourceController extends Controller
             'pageTitle' => __('general.source_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.source.create', $params);
+        return view('dashboard.front-desk.front-desk-setup.source.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class SourceController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.source.edit', $params);
+        return view('dashboard.front-desk.front-desk-setup.source.edit', $params);
     }
 
     /**

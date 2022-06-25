@@ -33,7 +33,7 @@ class AssetsInventoryController extends Controller
             'pageTitle' => __('general.assets_inventory_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.fixed-assets.assets-inventory.index', $params);
+        return view('dashboard.fixed-assets.assets-inventory.index', $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class AssetsInventoryController extends Controller
             'pageTitle' => __('general.assets_inventory_create'),
         ];
 
-        return view('dashboard.real-estate.fixed-assets.assets-inventory.create', $params);
+        return view('dashboard.fixed-assets.assets-inventory.create', $params);
     }
 
     /**
@@ -99,7 +99,7 @@ class AssetsInventoryController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.fixed-assets.assets-inventory.edit', $params);
+        return view('dashboard.fixed-assets.assets-inventory.edit', $params);
     }
 
     /**

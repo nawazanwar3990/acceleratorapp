@@ -33,7 +33,7 @@ class VisitorBookController extends Controller
             'pageTitle' => __('general.visitor_book_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.visitor-book.index', $params);
+        return view('dashboard.front-desk.visitor-book.index', $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class VisitorBookController extends Controller
             'pageTitle' => __('general.visitor_book_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.visitor-book.create', $params);
+        return view('dashboard.front-desk.visitor-book.create', $params);
     }
 
     /**
@@ -99,7 +99,7 @@ class VisitorBookController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.visitor-book.edit', $params);
+        return view('dashboard.front-desk.visitor-book.edit', $params);
     }
 
     /**

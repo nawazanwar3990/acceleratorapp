@@ -29,7 +29,7 @@ class CallTypeController extends Controller
             'pageTitle' => __('general.call_type_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.front-desk-setup.call-type.index', $params);
+        return view('dashboard.front-desk.front-desk-setup.call-type.index', $params);
     }
 
     /**
@@ -44,7 +44,7 @@ class CallTypeController extends Controller
             'pageTitle' => __('general.call_type_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.call-type.create', $params);
+        return view('dashboard.front-desk.front-desk-setup.call-type.create', $params);
     }
 
     /**
@@ -95,7 +95,7 @@ class CallTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.call-type.edit', $params);
+        return view('dashboard.front-desk.front-desk-setup.call-type.edit', $params);
     }
 
     /**

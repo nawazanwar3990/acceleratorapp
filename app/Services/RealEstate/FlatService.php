@@ -87,7 +87,7 @@ class FlatService
             $owners = FlatOwner::where('flat_id', $flatID)
                 ->where('status', true)->with('Hr')->get();
 
-            return response()->json(['success' => true, 'msg' => '', 'data' => view('dashboard.real-estate.sales.components.seller-details-body', compact('owners'))->render()]);
+            return response()->json(['success' => true, 'msg' => '', 'data' => view('dashboard.sales.components.seller-details-body', compact('owners'))->render()]);
         }
 
         return response()->json($output);

@@ -61,7 +61,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.installment-plan.index', $params);
+        return view('dashboard.print.installment-plan.index', $params);
     }
 
     public function printFlatOwner()
@@ -73,7 +73,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.flat-owner.index', $params);
+        return view('dashboard.print.flat-owner.index', $params);
     }
 
     public function filterFlatOwner(Request $request)
@@ -89,7 +89,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.flat-owner.index', $params);
+        return view('dashboard.print.flat-owner.index', $params);
     }
 
     public function salesInvoicesByFlat(Request $request) {
@@ -140,7 +140,7 @@ class GeneralController extends Controller
                 }
                 $currentInstallment = $records[0]->id;
                 $installmentRecords = $salesRecord->installments()->orderBy('installment_date', 'ASC')->get();
-                $installmentDetails = view('dashboard.real-estate.vouchers.components.buyer-installments-details', compact('installmentRecords'))->render();
+                $installmentDetails = view('dashboard.vouchers.components.buyer-installments-details', compact('installmentRecords'))->render();
             }
 
 
@@ -177,7 +177,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.building.index', $params);
+        return view('dashboard.print.building.index', $params);
     }
 
     public function filterBuilding(Request $request)
@@ -194,7 +194,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.building.index', $params);
+        return view('dashboard.print.building.index', $params);
     }
 
     public function printNominee()
@@ -205,7 +205,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.nominee.index', $params);
+        return view('dashboard.print.nominee.index', $params);
     }
 
     public function filterNominee(Request $request)
@@ -219,7 +219,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.nominee.index', $params);
+        return view('dashboard.print.nominee.index', $params);
     }
 
     public function printHr()
@@ -230,7 +230,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.hr.index', $params);
+        return view('dashboard.print.hr.index', $params);
     }
 
     public function filterHr(Request $request)
@@ -248,7 +248,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.hr.index', $params);
+        return view('dashboard.print.hr.index', $params);
     }
 
     public function printTitleTransferDetails(){
@@ -258,7 +258,7 @@ class GeneralController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.print.title-transfer.index', $params);
+        return view('dashboard.print.title-transfer.index', $params);
     }
 
     public function getInstallmentDetails(Request $request) {

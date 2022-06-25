@@ -36,7 +36,7 @@ class HumanResourceController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.human-resource.hr-person.index', $params);
+        return view('dashboard.human-resource.hr-person.index', $params);
     }
 
     public function create()
@@ -48,7 +48,7 @@ class HumanResourceController extends Controller
             'lastId' => (is_null($lastId) ? '1' : $lastId),
         ];
 
-        return view('dashboard.real-estate.human-resource.hr-person.create', $params);
+        return view('dashboard.human-resource.hr-person.create', $params);
     }
 
     public function store(HrRequest $request)
@@ -73,7 +73,7 @@ class HumanResourceController extends Controller
             'pageTitle' => __('general.print_hr_persons'),
             'model' => $model,
         ];
-        return view('dashboard.real-estate.human-resource.hr-person.print-form',$params);
+        return view('dashboard.human-resource.hr-person.print-form',$params);
     }
 
     public function edit($id)
@@ -97,7 +97,7 @@ class HumanResourceController extends Controller
             'document' => is_null($document) ? '' : $document->filename,
         ];
 
-        return view('dashboard.real-estate.human-resource.hr-person.edit', $params);
+        return view('dashboard.human-resource.hr-person.edit', $params);
     }
 
     public function update(HrRequest $request, $id)

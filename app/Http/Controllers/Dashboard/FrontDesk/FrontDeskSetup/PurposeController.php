@@ -28,7 +28,7 @@ class PurposeController extends Controller
             'pageTitle' => __('general.purpose_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.front-desk-setup.purpose.index', $params);
+        return view('dashboard.front-desk.front-desk-setup.purpose.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class PurposeController extends Controller
             'pageTitle' => __('general.purpose_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.purpose.create', $params);
+        return view('dashboard.front-desk.front-desk-setup.purpose.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class PurposeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.front-desk-setup.purpose.edit', $params);
+        return view('dashboard.front-desk.front-desk-setup.purpose.edit', $params);
     }
 
     /**

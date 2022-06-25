@@ -27,7 +27,7 @@ class BusinessController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.business.index', $params);
+        return view('dashboard.business.index', $params);
     }
 
     public function create()

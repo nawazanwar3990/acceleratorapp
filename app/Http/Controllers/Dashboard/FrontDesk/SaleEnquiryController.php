@@ -28,7 +28,7 @@ class SaleEnquiryController extends Controller
             'pageTitle' => __('general.sales_enquiry_list'),
             'records' => $records,
         ];
-        return view('dashboard.real-estate.front-desk.sales-enquiry.index', $params);
+        return view('dashboard.front-desk.sales-enquiry.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class SaleEnquiryController extends Controller
             'pageTitle' => __('general.sales_enquiry_create'),
         ];
 
-        return view('dashboard.real-estate.front-desk.sales-enquiry.create', $params);
+        return view('dashboard.front-desk.sales-enquiry.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class SaleEnquiryController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.real-estate.front-desk.sales-enquiry.edit', $params);
+        return view('dashboard.front-desk.sales-enquiry.edit', $params);
     }
 
     /**

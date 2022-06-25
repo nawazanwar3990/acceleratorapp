@@ -30,7 +30,7 @@ class HrEmployeeTypeController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.real-estate.definition.employment.index', $params);
+        return view('dashboard.definition.employment.index', $params);
     }
 
     /**
@@ -48,7 +48,7 @@ class HrEmployeeTypeController extends Controller
             'parentHeads' => $parentHeads,
         ];
 
-        return view('dashboard.real-estate.definition.employment.create', $params);
+        return view('dashboard.definition.employment.create', $params);
     }
 
     /**
@@ -101,7 +101,7 @@ class HrEmployeeTypeController extends Controller
             'parentHeads' => $parentHeads,
             'model' => $model,
         ];
-        return view('dashboard.real-estate.definition.employment.edit', $params);
+        return view('dashboard.definition.employment.edit', $params);
     }
 
     /**
