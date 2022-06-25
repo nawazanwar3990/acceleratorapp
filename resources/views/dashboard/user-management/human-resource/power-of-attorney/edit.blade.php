@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body border-top">
                     {!! Form::model($model, ['url' =>route('dashboard.poa.update', $model->id), 'method' => 'POST','files' => true,'id' => 'poa_form', 'class' => 'solid-validation']) !!}
                     @method('PUT')

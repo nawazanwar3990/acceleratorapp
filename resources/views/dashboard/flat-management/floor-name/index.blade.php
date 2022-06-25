@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header',['url'=>'dashboard.floors.create','is_create'=>true])
+                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.floors.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('components.General.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\FloorName::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\FloorName::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.flat-management.floors.list')
                         </tbody>

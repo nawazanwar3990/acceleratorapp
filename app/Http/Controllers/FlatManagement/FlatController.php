@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FlatManagement;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FlatManagement\FloorNameRequest;
+use App\Http\Requests\FlatManagement\FlatRequest;
 use App\Models\FlatManagement\Flat;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -31,7 +31,7 @@ class FlatController extends Controller
             'pageTitle' => __('general.floor_names'),
             'records' => $records,
         ];
-        return view('dashboard.definition.floors.index',$params);
+        return view('dashboard.flat-management.flat.index',$params);
     }
 
     /**
@@ -43,13 +43,13 @@ class FlatController extends Controller
         $params = [
             'pageTitle' => __('general.new_floor_names'),
         ];
-        return view('dashboard.definition.floors.create', $params);
+        return view('dashboard.flat-management.flat.create', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function store(FloorNameRequest $request)
+    public function store(FlatRequest $request)
     {
         $this->authorize('create', Flat::class);
         if ($request->createData()) {
@@ -61,22 +61,22 @@ class FlatController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function edit($id)
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Flat::class);
         $model = Flat::findorFail($id);
         $params = [
-            'pageTitle' => __('general.edit_floor_names'),
+            'pageTitle' => __('general.edit_flat'),
             'model' => $model,
         ];
 
-        return view('dashboard.definition.floors.edit', $params);
+        return view('dashboard.flat-management.flat.edit', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function update(FloorNameRequest $request, $id)
+    public function update(FlatRequest $request, $id)
     {
         $this->authorize('update', Flat::class);
         if ($request->updateData($id)) {
@@ -88,11 +88,11 @@ class FlatController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function destroy(FloorNameRequest $request, $id)
+    public function destroy(FlatRequest $request, $id)
     {
         $this->authorize('delete', Flat::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.floors.index')
+            return redirect()->route('dashboard.flats.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

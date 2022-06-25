@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body border-top">
                     {!! Form::open(['route' => 'dashboard.poa.store' ,'files' => true, 'id' => 'poa_form','method'=>'post','class' => 'solid-validation']) !!}
                     {!! csrf_field() !!}

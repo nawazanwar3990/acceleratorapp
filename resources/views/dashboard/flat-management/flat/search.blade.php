@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     @if (is_null($salesRecord))
                         @include('dashboard.flat-management.flat.components.search.flat-details')

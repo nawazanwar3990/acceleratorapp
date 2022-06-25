@@ -7,7 +7,7 @@
         <td>{{ $record->cell_1 }}</td>
         <td>{{ $record->cell_1 }}</td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.human-resource.edit', $record->id),
                 'delete' => route('dashboard.human-resource.destroy', $record->id),
                 'show' => route('dashboard.human-resource.show', $record->id),

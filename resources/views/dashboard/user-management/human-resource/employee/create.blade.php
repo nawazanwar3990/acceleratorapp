@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.employees.store'), 'method' => 'POST','files' => true,'id' =>'employee_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field />

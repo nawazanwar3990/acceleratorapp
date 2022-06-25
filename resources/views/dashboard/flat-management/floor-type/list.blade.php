@@ -8,7 +8,7 @@
             </span>
         </td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.floor-type.edit', $record->id),
                 'delete' => route('dashboard.floor-type.destroy', $record->id),
             ])

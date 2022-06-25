@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     {!! Form::model($model, ['url' =>route('dashboard.organization.update', $model->id), 'method' => 'POST','files' => true,'id' =>'organization_form', 'class' => 'solid-validation']) !!}
                     @method('PUT')

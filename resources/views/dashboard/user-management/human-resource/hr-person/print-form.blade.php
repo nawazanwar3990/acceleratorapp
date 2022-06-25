@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                @include('components.General.form-list-header', ['print' => true])
+                @include('dashboard.components.general.form-list-header', ['print' => true])
                 <div class="card-body">
                     {!! Form::model($model) !!}
                     <section id="printArea">

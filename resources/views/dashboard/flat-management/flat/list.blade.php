@@ -30,7 +30,7 @@
 {{--        </td>--}}
         <td class="text-center">
             @if ($record->sales_status == 'open')
-                @include('components.General.table-actions', [
+                @include('dashboard.components.general.table-actions', [
                     'edit' => route('dashboard.flats-shops.edit', $record->id),
                     'delete' => route('dashboard.flats-shops.destroy', $record->id),
                 ])

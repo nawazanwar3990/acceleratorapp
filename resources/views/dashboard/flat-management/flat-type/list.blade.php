@@ -16,7 +16,7 @@
             </h6>
         </td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.flat-type.edit', $record->id),
                 'delete' => route('dashboard.flat-type.destroy', $record->id),
             ])

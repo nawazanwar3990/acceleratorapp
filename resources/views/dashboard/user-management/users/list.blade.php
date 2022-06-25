@@ -5,7 +5,7 @@
         <td>{{ $record->last_name}}</td>
         <td>{{ $record->email}}</td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.users.edit', $record->id),
                 'delete' => route('dashboard.users.destroy', $record->id),
             ])

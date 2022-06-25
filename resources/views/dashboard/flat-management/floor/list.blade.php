@@ -6,7 +6,7 @@
         <td>{{ $record->floorType->name }}</td>
         <td>{{ $record->area }}</td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.floors.edit', $record->id),
                 'delete' => route('dashboard.floors.destroy', $record->id),
             ])

@@ -9,7 +9,7 @@
             </span>
         </td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.service.edit', $record->id),
                 'delete' => route('dashboard.service.destroy', $record->id),
             ])

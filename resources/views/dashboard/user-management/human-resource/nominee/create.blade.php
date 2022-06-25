@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.nominee.store'), 'method' => 'POST','files' => true,'id' =>'nominee_form', 'class' => 'solid-validation']) !!}
 

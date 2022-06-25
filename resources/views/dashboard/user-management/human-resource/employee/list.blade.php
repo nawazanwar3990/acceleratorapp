@@ -8,7 +8,7 @@
         <td>{{  $record->department->name }}</td>
         <td>{{  $record->designation->name }}</td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.employees.edit', $record->id),
                 'delete' => route('dashboard.employees.destroy', $record->id),
                 'show' => route('dashboard.human-resource.show', $record->Hr->id),

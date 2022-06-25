@@ -10,7 +10,7 @@
        <td>{{ $record->desc}}</td>
        <td><img src='{{ asset(\App\Services\EventService::getEventImage($record->id)) }}' width="100px" alt=""></td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.events.edit', $record->id),
                 'delete' => route('dashboard.events.destroy', $record->id),
             ])
