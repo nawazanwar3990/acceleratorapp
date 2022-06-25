@@ -11,6 +11,8 @@ class KeyWordEnum extends AbstractEnum
     public const PLAN = 'plan';
     public const PLAN_LIST = 'plan_list';
     public const PLAN_NEW = 'new_plan';
+    public const INSTALLMENT = 'installment';
+    public const INSTALLMENT_TERM = 'installment_term';
     // system management
     public const SYSTEM_CONFIGURATION = 'system_configuration';
     public const SETTING = 'setting';

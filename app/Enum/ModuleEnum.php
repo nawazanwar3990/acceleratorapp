@@ -21,39 +21,33 @@ class ModuleEnum extends AbstractEnum
         return [
             KeyWordEnum::DASHBOARD,
             KeyWordEnum::USER_MANAGEMENT => array(
-                KeyWordEnum::DEFINITION => array(
-                    $ability . KeyWordEnum::RELATIONS,
-                    $ability . KeyWordEnum::CAST,
-                    $ability . KeyWordEnum::NATIONALITY,
-                    $ability . KeyWordEnum::COUNTRY,
-                    $ability . KeyWordEnum::PROVINCE,
-                    $ability . KeyWordEnum::DISTRICT,
-                    $ability . KeyWordEnum::DEPARTMENT,
-                    $ability . KeyWordEnum::DESIGNATION,
-                    $ability . KeyWordEnum::MINISTRY,
-                    $ability . KeyWordEnum::PROFESSION,
-                    $ability . KeyWordEnum::ORGANIZATION,
-                    $ability . KeyWordEnum::HR_BUSINESS
-                ),
-                $ability . KeyWordEnum::HR_PERSONS,
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,
                 $ability . KeyWordEnum::USER,
-                $ability . KeyWordEnum::SYNC_PERMISSION
+                $ability . KeyWordEnum::SYNC_PERMISSION,
+                $ability . KeyWordEnum::RELATIONS,
+                $ability . KeyWordEnum::COUNTRY,
+                $ability . KeyWordEnum::PROVINCE,
+                $ability . KeyWordEnum::DISTRICT,
+                $ability . KeyWordEnum::DEPARTMENT,
+                $ability . KeyWordEnum::DESIGNATION,
+                $ability . KeyWordEnum::PROFESSION,
+                $ability . KeyWordEnum::ORGANIZATION,
+                $ability . KeyWordEnum::HR_PERSON
             ),
             KeyWordEnum::SERVICE_MANAGEMENT=>array(
                 $ability . KeyWordEnum::SERVICE
             ),
             KeyWordEnum::FLAT_MANAGEMENT=>array(
-                KeyWordEnum::DEFINITION => array(
-                    $ability . KeyWordEnum::FLAT_TYPE,
-                    $ability . KeyWordEnum::FLOOR_TYPE,
-                    $ability . KeyWordEnum::FLOOR,
-                ),
+                $ability . KeyWordEnum::FLAT_TYPE,
+                $ability . KeyWordEnum::FLOOR_TYPE,
+                $ability . KeyWordEnum::FLOOR,
                 $ability . KeyWordEnum::FLAT
             ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
-                $ability . KeyWordEnum::PLAN
+                $ability . KeyWordEnum::PLAN,
+                $ability . KeyWordEnum::INSTALLMENT,
+                $ability . KeyWordEnum::INSTALLMENT_TERM,
             ),
             KeyWordEnum::EVENT_MANAGEMENT => array(
                 $ability . KeyWordEnum::EVENT

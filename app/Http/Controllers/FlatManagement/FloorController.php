@@ -9,7 +9,7 @@ use function __;
 use function redirect;
 use function view;
 
-class FloorNameController extends Controller
+class FloorController extends Controller
 {
     public function __construct()
     {
