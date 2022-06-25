@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Building;
 use App\Models\Floor;
+use function __;
+use function session;
 
 class BuildingService
 {

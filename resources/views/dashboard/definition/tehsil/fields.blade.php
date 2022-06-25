@@ -16,7 +16,7 @@
         {!!  Html::decode(Form::label('district_id' ,__('general.district').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
     </div>
     <div class="col-md-5">
-        {!!  Form::select('district_id', \App\Services\RealEstate\DistrictService::districtDropDown(),null,['id'=>'district_id',
+        {!!  Form::select('district_id', \App\Services\DistrictService::districtDropDown(),null,['id'=>'district_id',
             'class'=>'select2 form-control form-select', 'placeholder'=>__('general.district'),'style'=>'width:100%;', 'required'])
         !!}
         @error('name')

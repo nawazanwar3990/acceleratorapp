@@ -16,7 +16,7 @@
         {!!  Html::decode(Form::label('province_id' ,__('general.province').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
     </div>
     <div class="col-md-5">
-        {!!  Form::select('province_id', \App\Services\RealEstate\ProvinceService::provinceDropDown(),null,['id'=>'province_id',
+        {!!  Form::select('province_id', \App\Services\ProvinceService::provinceDropDown(),null,['id'=>'province_id',
             'class'=>'select2 form-control form-select', 'placeholder'=>__('general.province'),'style'=>'width:100%;', 'required'])
         !!}
         @error('name')

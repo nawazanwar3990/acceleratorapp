@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\Sales;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Sales\InstallmentPlanRequest;
 use App\Models\Sales\InstallmentPlan;
-use App\Services\RealEstate\InstallmentService;
+use App\Services\InstallmentService;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;

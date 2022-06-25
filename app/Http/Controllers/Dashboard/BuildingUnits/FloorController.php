@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\BuildingUnits;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BuildingUnits\FloorRequest;
 use App\Models\Floor;
-use App\Services\RealEstate\FloorService;
+use App\Services\FloorService;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;

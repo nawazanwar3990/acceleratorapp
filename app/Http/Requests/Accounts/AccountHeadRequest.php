@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Accounts;
 
 use App\Models\Accounts\AccountHead;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AccountHeadRequest extends FormRequest

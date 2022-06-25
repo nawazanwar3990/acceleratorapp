@@ -4,7 +4,7 @@
         <td>{{ $record->Hr->full_name }}</td>
         <td>{{ $record->Hr->cnic }}</td>
         <td>{{ $record->Hr->cell_1 }}</td>
-        <td>{{ \App\Services\RealEstate\EmployeeService::getSalaryTypesForDropDown( $record->salary_type) }}</td>
+        <td>{{ \App\Services\EmployeeService::getSalaryTypesForDropDown( $record->salary_type) }}</td>
         <td>{{  $record->department->name }}</td>
         <td>{{  $record->designation->name }}</td>
         <td class="text-center">

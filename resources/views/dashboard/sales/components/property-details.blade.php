@@ -14,7 +14,7 @@
     </div>--}}
     <div class="col-md-3">
         {!!  Html::decode(Form::label('floor_id' ,__('general.floor').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::select('floor_id', \App\Services\RealEstate\FloorService::getFloorsForDropdown(),null,['id'=>'floor_id', 'onchange'=>'getFlatsOfFloor(this);',
+        {!!  Form::select('floor_id', \App\Services\FloorService::getFloorsForDropdown(),null,['id'=>'floor_id', 'onchange'=>'getFlatsOfFloor(this);',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_floor_name'),'required','style'=>'width:100%'])
         !!}
         @error('floor_id')
@@ -56,13 +56,13 @@
     </div>
     <div class="col-md-3">
         {!!  Html::decode(Form::label('general_services' ,__('general.security_services') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('general_services[]', \App\Services\RealEstate\BuildingService::getBuildingServices() ,null,['id'=>'general_services', 'multiple',
+        {!!  Form::select('general_services[]', \App\Services\BuildingService::getBuildingServices() ,null,['id'=>'general_services', 'multiple',
             'class'=>'select2 form-control','style'=>'width:100%', 'disabled', 'tabindex'=>'-1'])
         !!}
     </div>
     <div class="col-md-3">
         {!!  Html::decode(Form::label('security_services' ,__('general.security_services') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('security_services[]', \App\Services\RealEstate\BuildingService::getBuildingServices('security'),null,['id'=>'security_services', 'multiple',
+        {!!  Form::select('security_services[]', \App\Services\BuildingService::getBuildingServices('security'),null,['id'=>'security_services', 'multiple',
             'class'=>'select2 form-control','style'=>'width:100%', 'disabled', 'tabindex'=>'-1'])
         !!}
     </div>

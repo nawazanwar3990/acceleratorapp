@@ -16,7 +16,7 @@
         {!!  Html::decode(Form::label('country_id' ,__('general.country').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
     </div>
     <div class="col-md-5">
-        {!!  Form::select('country_id', \App\Services\RealEstate\CountryService::countryDropDown(),null,['id'=>'country_id',
+        {!!  Form::select('country_id', \App\Services\CountryService::countryDropDown(),null,['id'=>'country_id',
             'class'=>'select2 form-control form-select', 'placeholder'=>__('general.country'),'style'=>'width:100%;', 'required'])
         !!}
         @error('name')

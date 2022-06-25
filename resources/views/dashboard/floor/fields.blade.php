@@ -26,7 +26,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('floor_type_id' ,__('general.floor_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::select('floor_type_id', \App\Services\RealEstate\FloorService::getFloorTypesForDropdown(),null,['id'=>'floor_type_id',
+        {!!  Form::select('floor_type_id', \App\Services\FloorService::getFloorTypesForDropdown(),null,['id'=>'floor_type_id',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_floor_type'),'required','style'=>'width:100%'])
         !!}
     </div>
@@ -81,7 +81,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('general_services' ,__('general.general_services'),['class'=>'form-label']))   !!}
-        {!!  Form::select('general_services[]', \App\Services\RealEstate\ServiceData::getGeneralServicesForDropdown(),isset($for) ? $model->general_services : \App\Services\RealEstate\BuildingService::getBuildingServices(),['id'=>'general_services',
+        {!!  Form::select('general_services[]', \App\Services\ServiceData::getGeneralServicesForDropdown(),isset($for) ? $model->general_services : \App\Services\BuildingService::getBuildingServices(),['id'=>'general_services',
             'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
         !!}
         @error('general_services')
@@ -91,7 +91,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('security_services' ,__('general.security_services') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('security_services[]', \App\Services\RealEstate\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services : \App\Services\RealEstate\BuildingService::getBuildingServices('security'),['id'=>'security_services',
+        {!!  Form::select('security_services[]', \App\Services\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services : \App\Services\BuildingService::getBuildingServices('security'),['id'=>'security_services',
             'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
         !!}
         @error('security_services')

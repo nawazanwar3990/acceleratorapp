@@ -3,7 +3,7 @@
 @endphp
 @forelse($records as $record)
 @php
-    $receivedAmount = \App\Services\RealEstate\SalesService::salesReceivedAmount($record->id)['received'];
+    $receivedAmount = \App\Services\SalesService::salesReceivedAmount($record->id)['received'];
     $totalAmount += $record->after_discount_amount;
     $totalReceived += $receivedAmount;
     $totalBalance += ($record->after_discount_amount - $receivedAmount);

@@ -17,7 +17,7 @@
         <div class="row mb-2">
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('employee_id' ,__('general.employee') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('employee_id', \App\Services\RealEstate\EmployeeService::getEmployeesForDropdown('all'), request()->has('employee_id')?request()->get('employee_id'):null,['id'=>'employee_id',
+                {!!  Form::select('employee_id', \App\Services\EmployeeService::getEmployeesForDropdown('all'), request()->has('employee_id')?request()->get('employee_id'):null,['id'=>'employee_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_employee'),'style'=>'width:100%'])
                 !!}
             </div>

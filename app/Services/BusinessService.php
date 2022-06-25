@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
+
+use function session;
 
 class BusinessService
 {

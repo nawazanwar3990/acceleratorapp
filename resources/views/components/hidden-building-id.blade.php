@@ -1,1 +1,1 @@
-{!! Form::hidden('building_id',\App\Services\RealEstate\BuildingService::getBuildingId()) !!}
+{!! Form::hidden('building_id',\App\Services\BuildingService::getBuildingId()) !!}

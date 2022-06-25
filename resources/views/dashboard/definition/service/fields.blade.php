@@ -15,7 +15,7 @@
             {!!  Html::decode(Form::label('type' ,__('general.type').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
         </div>
         <div class="col-md-5">
-            {!!  Form::select('type', \App\Services\RealEstate\ServiceData::getServiceTypeDropdown(),null,['id'=>'type',
+            {!!  Form::select('type', \App\Services\ServiceData::getServiceTypeDropdown(),null,['id'=>'type',
                 'class'=>'select2 form-control',
                 'placeholder'=>__('general.type'),'style'=>'width:100%;'])
             !!}

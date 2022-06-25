@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Definition\General\FlatType;
 use App\Models\Flat;
 use App\Models\FlatOwner;
 use App\Models\Sales\Sale;
-use App\Services\GeneralService;
+use function __;
+use function response;
+use function view;
 
 class FlatService
 {

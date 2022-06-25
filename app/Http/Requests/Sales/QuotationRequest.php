@@ -4,7 +4,7 @@ namespace App\Http\Requests\Sales;
 
 use App\Models\Sales\Quotation;
 use App\Models\Sales\QuotationInstallment;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Accounts;
 use App\Models\Accounts\Expense;
 use App\Models\Accounts\Transaction;
 use App\Models\Media;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

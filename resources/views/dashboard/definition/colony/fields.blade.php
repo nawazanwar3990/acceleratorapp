@@ -16,7 +16,7 @@
         {!!  Html::decode(Form::label('tehsil_id' ,__('general.tehsil').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
     </div>
     <div class="col-md-5">
-        {!!  Form::select('tehsil_id', \App\Services\RealEstate\TehsilService::tehsilDropDown(),null,['id'=>'tehsil_id',
+        {!!  Form::select('tehsil_id', \App\Services\TehsilService::tehsilDropDown(),null,['id'=>'tehsil_id',
             'class'=>'select2 form-control form-select', 'placeholder'=>__('general.tehsil'),'style'=>'width:100%;', 'required'])
         !!}
         @error('name')

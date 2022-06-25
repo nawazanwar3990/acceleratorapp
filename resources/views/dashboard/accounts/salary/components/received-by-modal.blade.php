@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             {!!  Html::decode(Form::label('received_by' ,'Received By <i class="text-danger">*</i>' ,['class'=>' col-form-label']))   !!}
-                            {!!  Form::select('received_by',\App\Services\RealEstate\EmployeeService::getEmployeesForDropdown('all'), null,['id'=>'received_by',
+                            {!!  Form::select('received_by',\App\Services\EmployeeService::getEmployeesForDropdown('all'), null,['id'=>'received_by',
                                 'class'=>'employee-select form-control', 'style' => 'width:100%', 'required', 'placeholder'=>__('general.ph_employee')])
                             !!}
                         </div>

@@ -4,7 +4,7 @@
         <td>{{ $record->employee->Hr->full_name }}</td>
         <td>{{ \App\Services\GeneralService::formatDate( $record->date ) }}</td>
         <td>{{ \App\Services\GeneralService::number_format( $record->loan_amount ) }}</td>
-        <td>{{ \App\Services\RealEstate\EmployeeService::loanReturnTypes( $record->return_type ) }}</td>
+        <td>{{ \App\Services\EmployeeService::loanReturnTypes( $record->return_type ) }}</td>
         <td class="text-center">
             <h4><span @class([
                     'badge',
@@ -20,7 +20,7 @@
             @elseif ($record->status == 5)
                 {{ __('general.returned') }}
             @else
-                {{ \App\Services\RealEstate\EmployeeService::loanStatus( $record->status ) }}
+                {{ \App\Services\EmployeeService::loanStatus( $record->status ) }}
             @endif
             </span></h4>
         </td>

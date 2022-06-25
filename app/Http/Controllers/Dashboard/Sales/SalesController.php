@@ -10,7 +10,7 @@ use App\Models\Flat;
 use App\Models\FlatOwner;
 use App\Models\Sales\Sale;
 use App\Services\Accounts\QueryService;
-use App\Services\RealEstate\SalesService;
+use App\Services\SalesService;
 use App\Traits\General;
 use Illuminate\Http\Request;
 use function __;

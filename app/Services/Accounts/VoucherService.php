@@ -3,7 +3,7 @@
 namespace App\Services\Accounts;
 
 use App\Models\Accounts\VoucherPrefix;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 
 class VoucherService
 {

@@ -1,7 +1,7 @@
 <div class="row mb-2 2-2">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('commodity_type_id' ,__('general.commodity_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::select('commodity_type_id', \App\Services\RealEstate\CommodityService::getCommodityTypesForDropdown(),null,['id'=>'commodity_type_id',
+        {!!  Form::select('commodity_type_id', \App\Services\CommodityService::getCommodityTypesForDropdown(),null,['id'=>'commodity_type_id',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_commodity_type'),'style'=>'width:100%',
             'required', 'onchange' => 'getCommoditySubTypes();'])
         !!}
@@ -16,7 +16,7 @@
         {!!  Html::decode(Form::label('installment_plan_id' ,__('general.installment_plan').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         <div class="mb-3">
             <div class="input-group">
-                {!!  Form::select('installment_plan_id', \App\Services\RealEstate\InstallmentService::getInstallmentPlansForDropdown(),null,['id'=>'installment_plan_id',
+                {!!  Form::select('installment_plan_id', \App\Services\InstallmentService::getInstallmentPlansForDropdown(),null,['id'=>'installment_plan_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_installment_plan'),'style'=>'width:80%',
                     'required', 'onchange' => 'getInstallmentDetails();'])
                 !!}

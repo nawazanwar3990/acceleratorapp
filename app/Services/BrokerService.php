@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
 use App\Models\Broker;
 use App\Services\Accounts\QueryService;
-use App\Services\GeneralService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 

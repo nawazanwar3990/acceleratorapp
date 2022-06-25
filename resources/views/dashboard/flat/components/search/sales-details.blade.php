@@ -410,7 +410,7 @@
                 </thead>
                 <tbody>
                 @php $totalPayment = 0; @endphp
-                @foreach(\App\Services\RealEstate\SalesService::salesTransactions($salesRecord->id) as $transaction)
+                @foreach(\App\Services\SalesService::salesTransactions($salesRecord->id) as $transaction)
                     @php
                         $totalPayment += $transaction->Credit;
                     @endphp

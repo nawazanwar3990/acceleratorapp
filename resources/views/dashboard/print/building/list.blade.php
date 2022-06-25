@@ -6,12 +6,12 @@
         <td style="font-size: 12px">{{ $record->area }}</td>
         <td style="font-size: 12px">
             @isset($record->view)
-                {{ \App\Services\RealEstate\FlatService::getFlatViewsForDropdown($record->view) }}
+                {{ \App\Services\FlatService::getFlatViewsForDropdown($record->view) }}
             @endisset
         </td>
         <td style="font-size: 12px">
             @isset($record->facing)
-                {{ \App\Services\RealEstate\BuildingService::buildingFacingsForDropdown($record->facing) }}
+                {{ \App\Services\BuildingService::buildingFacingsForDropdown($record->facing) }}
             @endisset
         </td>
         <td style="font-size: 12px">{{ \App\Services\PersonService::getHrById($record->owners[0]->hr_id)->first_name }}</td>

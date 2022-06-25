@@ -6,7 +6,7 @@ use App\Models\HumanResource\Nominee;
 use App\Models\HumanResource\NomineeVerification;
 use App\Models\HumanResource\NomineeWitness;
 use App\Models\Media;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

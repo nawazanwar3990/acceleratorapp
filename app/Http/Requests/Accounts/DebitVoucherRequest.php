@@ -6,7 +6,7 @@ use App\Models\Accounts\Transaction;
 use App\Models\Prefixes;
 use App\Services\Accounts\AccountsService;
 use App\Services\Accounts\VoucherService;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use function auth;

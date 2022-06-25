@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
 use App\Models\Accounts\EmployeeLoan;
-use App\Services\RealEstate\BuildingService;
-use App\Services\RealEstate\EmployeeService;
+use App\Services\EmployeeService;
 use Illuminate\Http\Request;
 
 class EmployeeLoanController extends Controller

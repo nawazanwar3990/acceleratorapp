@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Dashboard\Accounts;
 
 use App\Http\Controllers\Controller;
 use App\Services\Accounts\BalanceSheetService;
-use App\Services\RealEstate\BrokerService;
-use App\Services\RealEstate\SalesService;
+use App\Services\BrokerService;
 use App\Services\ReportService;
+use App\Services\SalesService;
 use Illuminate\Http\Request;
 use function __;
 use function view;

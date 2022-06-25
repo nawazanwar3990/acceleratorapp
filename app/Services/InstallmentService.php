@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Sales\InstallmentPlan;
 use App\Models\Sales\InstallmentTerm;
+use function __;
 
 class InstallmentService
 {

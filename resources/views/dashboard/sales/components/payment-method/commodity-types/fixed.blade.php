@@ -27,9 +27,9 @@
 
                 <td>{!! Form::text('commodity[type][]', null,['class'=>'form-control comm-type','readonly', 'tabindex' => '-1']) !!}</td>
                 <td>{!! Form::number('commodity[size][]', null,['step'=>'1','min'=>'1','class'=>'form-control comm-size', 'required']) !!}</td>
-                <td>{!! Form::select('commodity[unit][]', \App\Services\RealEstate\CommodityService::getFixedCommodityUnitsForDropDown(), null,['class'=>'form-select comm-unit', 'required']) !!}</td>
-                <td>{!! Form::select('commodity[construction_status][]',\App\Services\RealEstate\CommodityService::getCommodityConstructionStatusForDropDown() , null,['class'=>'form-select comm-construction-status']) !!}</td>
-                <td>{!! Form::select('commodity[property_type][]',\App\Services\RealEstate\CommodityService::getCommodityPropertyTypeForDropDown(), null,['class'=>'form-select comm-property-type']) !!}</td>
+                <td>{!! Form::select('commodity[unit][]', \App\Services\CommodityService::getFixedCommodityUnitsForDropDown(), null,['class'=>'form-select comm-unit', 'required']) !!}</td>
+                <td>{!! Form::select('commodity[construction_status][]',\App\Services\CommodityService::getCommodityConstructionStatusForDropDown() , null,['class'=>'form-select comm-construction-status']) !!}</td>
+                <td>{!! Form::select('commodity[property_type][]',\App\Services\CommodityService::getCommodityPropertyTypeForDropDown(), null,['class'=>'form-select comm-property-type']) !!}</td>
                 <td>{!! Form::number('commodity[price][]', null,['step'=>'any','min'=>'1','class'=>'form-control comm-price', 'required', 'onchange' => 'calculateCommodityPrice();', 'onkeyup' => 'calculateCommodityPrice();']) !!}</td>
                 <td>{!! Form::text('commodity[remarks][]', null,['class'=>'form-control comm-further-details']) !!}</td>
                 <td class="text-center col-1">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
-use App\Services\RealEstate\HomeService;
+use App\Services\HomeService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -10,10 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use function __;
-use function redirect;
-use function session;
 use function view;
 
 class HomeController extends Controller

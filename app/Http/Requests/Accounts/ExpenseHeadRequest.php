@@ -6,7 +6,7 @@ use App\Enum\TableEnum;
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\ExpenseHead;
 use App\Services\Accounts\ExpenseService;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;

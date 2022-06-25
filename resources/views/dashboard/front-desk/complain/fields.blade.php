@@ -2,14 +2,14 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('complain_type_id' ,__('general.select_complain_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::select('complain_type_id', \App\Services\RealEstate\FrontDeskService::complainTypeDropdown(),null,['id'=>'complain_type_id',
+        {!!  Form::select('complain_type_id', \App\Services\FrontDeskService::complainTypeDropdown(),null,['id'=>'complain_type_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_complain_type'),'required'])
         !!}
     </div>
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('source_id' ,__('general.select_source').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::select('source_id', \App\Services\RealEstate\FrontDeskService::sourceDropdown(),null,['id'=>'source_id',
+        {!!  Form::select('source_id', \App\Services\FrontDeskService::sourceDropdown(),null,['id'=>'source_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_source'),'required'])
         !!}
     </div>

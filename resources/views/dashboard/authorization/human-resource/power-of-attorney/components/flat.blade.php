@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         {!! Form::label('flat_id',__('general.ph_flat_name')) !!}
-                        {!! Form::select('flat_id',\App\Services\RealEstate\FlatService::FlatForDropdown(),null,['class'=>'select2 form-control','style'=>'width:100%','id'=>'flat_id','readonly','placeholder'=>'Select Flat','onchange'=>'mapFlat("flat_id","flat");']) !!}
+                        {!! Form::select('flat_id',\App\Services\FlatService::FlatForDropdown(),null,['class'=>'select2 form-control','style'=>'width:100%','id'=>'flat_id','readonly','placeholder'=>'Select Flat','onchange'=>'mapFlat("flat_id","flat");']) !!}
                     </div>
                     <div class="col-md-4">
                         {!! Form::label('flat_name',__('general.flat_name')) !!}

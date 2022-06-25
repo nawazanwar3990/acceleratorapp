@@ -3,7 +3,7 @@
 namespace App\Services\Accounts;
 
 use App\Models\Accounts\AccountHead;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 

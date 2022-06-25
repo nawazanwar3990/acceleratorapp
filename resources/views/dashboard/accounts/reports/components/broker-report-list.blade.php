@@ -1,6 +1,6 @@
 @forelse($records as $record)
     @php
-        $brokerData = \App\Services\RealEstate\BrokerService::getBrokerAmounts($record->Hr->id, $startDate, $endDate);
+        $brokerData = \App\Services\BrokerService::getBrokerAmounts($record->Hr->id, $startDate, $endDate);
     @endphp
     <tr>
         <td>{{ $loop->iteration }}</td>

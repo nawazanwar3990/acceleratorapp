@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\EmployeeLoan;
 use App\Models\HumanResource\Employee;
-use App\Services\GeneralService;
 use Illuminate\Support\Facades\Auth;
+use function __;
 
 class EmployeeService
 {

@@ -24,7 +24,7 @@
                     <a class="nav-link dropdown-toggle waves-effect" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span>{{ session()->get('bName')  }} <i class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-end animated">
-                        @foreach(\App\Services\RealEstate\BuildingService::getBuildingsOfBusiness() as $id => $name)
+                        @foreach(\App\Services\BuildingService::getBuildingsOfBusiness() as $id => $name)
                             <button type="button" class="dropdown-item" onclick="changeBuilding({{ $id }});" >{{ $name }}</button>
                         @endforeach
                     </div>

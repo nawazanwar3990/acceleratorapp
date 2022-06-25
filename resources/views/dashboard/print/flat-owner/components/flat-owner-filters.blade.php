@@ -18,14 +18,14 @@
 
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('status' ,__('general.flat_owners') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('status', \App\Services\RealEstate\FlatService::getFlatOwnerStatus(), request()->has('status')?request()->get('status'):null,['id'=>'status',
+                {!!  Form::select('status', \App\Services\FlatService::getFlatOwnerStatus(), request()->has('status')?request()->get('status'):null,['id'=>'status',
                     'class'=>'select2 form-control', null,'style'=>'width:100%'])
                 !!}
             </div>
 
             <div class="col-md-3">
                 {!!  Html::decode(Form::label('flat_id' ,__('general.flats') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('flat_id', \App\Services\RealEstate\FlatService::FlatForDropdown(), request()->has('flat_id')?request()->get('flat_id'):null,['id'=>'flat_id',
+                {!!  Form::select('flat_id', \App\Services\FlatService::FlatForDropdown(), request()->has('flat_id')?request()->get('flat_id'):null,['id'=>'flat_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.flats'),'style'=>'width:100%'])
                 !!}
             </div>

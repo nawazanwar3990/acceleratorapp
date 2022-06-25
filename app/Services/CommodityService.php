@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Definition\General\CommodityType;
+use function __;
 
 class CommodityService
 {

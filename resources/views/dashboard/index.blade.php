@@ -26,7 +26,7 @@
                                 <div class="ms-auto">
                                     <h2 class="counter text-primary">
                                         <a href="{{ route('dashboard.buildings.index') }}" target="_blank" class="link display-5 ms-auto">
-                                            {{ \App\Services\RealEstate\HomeService::getTotalBuildingCount() }}
+                                            {{ \App\Services\HomeService::getTotalBuildingCount() }}
                                         </a>
                                     </h2>
                                 </div>
@@ -49,7 +49,7 @@
                                 <div class="ms-auto">
                                     <h2 class="counter text-primary">
                                         <a href="{{ route('dashboard.floors.index') }}" target="_blank" class="link display-5 ms-auto">
-                                            {{ \App\Services\RealEstate\HomeService::getTotalFloorsCount() }}
+                                            {{ \App\Services\HomeService::getTotalFloorsCount() }}
                                         </a>
                                     </h2>
                                 </div>
@@ -72,7 +72,7 @@
                                 <div class="ms-auto">
                                     <h2 class="counter text-primary">
                                         <a href="{{ route('dashboard.flats-shops.index') }}" target="_blank" class="link display-5 ms-auto">
-                                            {{ \App\Services\RealEstate\HomeService::getTotalFlatsCount() }}
+                                            {{ \App\Services\HomeService::getTotalFlatsCount() }}
                                         </a>
                                     </h2>
                                 </div>
@@ -95,7 +95,7 @@
                                 <div class="ms-auto">
                                     <h2 class="counter text-primary">
                                         <a href="{{ route('dashboard.sales.index') }}" target="_blank" class="link display-5 ms-auto">
-                                            {{ \App\Services\RealEstate\HomeService::getTotalSoldFlatsCount() }}
+                                            {{ \App\Services\HomeService::getTotalSoldFlatsCount() }}
                                         </a>
                                     </h2>
                                 </div>
@@ -114,7 +114,7 @@
                     <h5 class="card-title">{{ __('general.monthly_sales') }}</h5>
                     <div class="row">
                         <div class="col-12">
-                            @php $salesData = \App\Services\RealEstate\HomeService::salesStatistics(); @endphp
+                            @php $salesData = \App\Services\HomeService::salesStatistics(); @endphp
                             <h1 class="text-white">{{  \App\Services\GeneralService::number_format( $salesData['totalSalesAmount'] ) }}</h1>
                             <p class="light_op_text">{{ $salesData['month'] }}</p>
                             <b class="text-white">({{ $salesData['totalSales'] }} Sales)</b>
@@ -130,7 +130,7 @@
                     <h5 class="card-title">{{ __('general.yearly_sales') }}</h5>
                     <div class="row">
                         <div class="col-12">
-                            @php $salesData = \App\Services\RealEstate\HomeService::salesStatistics(true); @endphp
+                            @php $salesData = \App\Services\HomeService::salesStatistics(true); @endphp
                             <h1 class="text-white">{{  \App\Services\GeneralService::number_format( $salesData['totalSalesAmount'] ) }}</h1>
                             <p class="light_op_text">{{ $salesData['year'] }}</p>
                             <b class="text-white">({{ $salesData['totalSales'] }} Sales)</b>
@@ -146,7 +146,7 @@
                     <h5 class="card-title">{{ __('general.monthly_installment_collectable') }}</h5>
                     <div class="row">
                         <div class="col-12">
-                            @php $installmentData = \App\Services\RealEstate\HomeService::installmentStatistics(); @endphp
+                            @php $installmentData = \App\Services\HomeService::installmentStatistics(); @endphp
                             <h1 class="text-white">{{  \App\Services\GeneralService::number_format( $installmentData['collectableAmount'] ) }}</h1>
                             <p class="light_op_text">{{ $installmentData['month'] }}</p>
                             <b class="text-white">({{ $installmentData['collectableCount'] }} Sales)</b>
@@ -214,7 +214,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse(\App\Services\RealEstate\HomeService::latestSales() as $sale)
+                            @forelse(\App\Services\HomeService::latestSales() as $sale)
                                 <tr>
                                     <td><a href="{{ route('dashboard.sales.show', $sale->transfer_no) }}" target="_blank">{{ $sale->transfer_no }}</a></td>
                                     <td>{{ \App\Services\GeneralService::formatDate( $sale->date ) }}</td>

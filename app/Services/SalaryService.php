@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Salary;
 use App\Models\Accounts\Transaction;
 use App\Models\HumanResource\Employee;
-use App\Services\GeneralService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function __;
+use function dd;
 
 class SalaryService
 {

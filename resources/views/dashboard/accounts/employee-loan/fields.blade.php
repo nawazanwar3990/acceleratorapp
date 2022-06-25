@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-3">
         {!!  Html::decode(Form::label('employee_id' ,__('general.employee').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
-        {!!  Form::select('employee_id', \App\Services\RealEstate\EmployeeService::getEmployeesForDropdown('all') ,null,['id'=>'employee_id',
+        {!!  Form::select('employee_id', \App\Services\EmployeeService::getEmployeesForDropdown('all') ,null,['id'=>'employee_id',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_employee'),'style'=>'width:100%', 'required', 'onchange'=>'getEmployeeLoanDetails();'])
         !!}
     </div>
@@ -25,7 +25,7 @@
 <div class="row mb-2">
     <div class="col-md-3 details-row" style="display: none;">
         {!!  Html::decode(Form::label('return_type' ,__('general.return_condition').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
-        {!!  Form::select('return_type', \App\Services\RealEstate\EmployeeService::loanReturnTypes() ,null,['id'=>'return_type',
+        {!!  Form::select('return_type', \App\Services\EmployeeService::loanReturnTypes() ,null,['id'=>'return_type',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_return_condition'),'style'=>'width:100%', 'required', 'onchange'=>'applyReturnCondition();'])
         !!}
     </div>
@@ -38,7 +38,7 @@
     </div>
     <div class="col-md-3 salary-deduct" style="display: none;">
         {!!  Html::decode(Form::label('deduct_type' ,__('general.deduct_condition').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
-        {!!  Form::select('deduct_type', \App\Services\RealEstate\EmployeeService::loanReturnTypes() ,null,['id'=>'deduct_type',
+        {!!  Form::select('deduct_type', \App\Services\EmployeeService::loanReturnTypes() ,null,['id'=>'deduct_type',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_deduct_type'),'style'=>'width:100%', 'required', 'onchange'=>'getEmployeeLoanDetails();'])
         !!}
     </div>

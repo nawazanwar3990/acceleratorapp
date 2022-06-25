@@ -2,8 +2,8 @@
 
 namespace App\Services\Accounts;
 
+use App\Services\BuildingService;
 use App\Services\GeneralService;
-use App\Services\RealEstate\BuildingService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 

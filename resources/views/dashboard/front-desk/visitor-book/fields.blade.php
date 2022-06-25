@@ -2,7 +2,7 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('purpose_id' ,__('general.select_purpose').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::select('purpose_id', \App\Services\RealEstate\FrontDeskService::purposeDropdown(),null,['id'=>'purpose_id',
+        {!!  Form::select('purpose_id', \App\Services\FrontDeskService::purposeDropdown(),null,['id'=>'purpose_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_purpose'),'required'])
         !!}
     </div>

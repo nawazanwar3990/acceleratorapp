@@ -101,7 +101,7 @@
         <div class="row">
             <div class="col-md-4">
                 {!!  Html::decode(Form::label('salary_type' ,__('general.salary_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-                {!!  Form::select('salary_type', \App\Services\RealEstate\EmployeeService::getSalaryTypesForDropDown(),null,['id'=>'salary_type',
+                {!!  Form::select('salary_type', \App\Services\EmployeeService::getSalaryTypesForDropDown(),null,['id'=>'salary_type',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_salary_type'),'required','style'=>'width:100%'])
                 !!}
             </div>

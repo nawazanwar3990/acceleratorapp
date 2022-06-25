@@ -76,7 +76,7 @@
 
                             <div class="installment-statment">
                                 @php
-                                       echo  \App\Services\RealEstate\InstallmentService::getInstallmentTerm()->installment_text;
+                                       echo  \App\Services\InstallmentService::getInstallmentTerm()->installment_text;
                                     @endphp
                             </div>
                         </div>

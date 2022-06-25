@@ -41,14 +41,14 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('reference_id' ,__('general.select_reference') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('reference_id', \App\Services\RealEstate\FrontDeskService::referenceDropdown(),null,['id'=>'reference_id',
+        {!!  Form::select('reference_id', \App\Services\FrontDeskService::referenceDropdown(),null,['id'=>'reference_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_reference')])
         !!}
     </div>
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('source_id' ,__('general.select_source') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('source_id', \App\Services\RealEstate\FrontDeskService::sourceDropdown(),null,['id'=>'source_id',
+        {!!  Form::select('source_id', \App\Services\FrontDeskService::sourceDropdown(),null,['id'=>'source_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_source')])
         !!}
     </div>

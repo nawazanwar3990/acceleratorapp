@@ -3,8 +3,8 @@
         <td class="text-center">{{ $loop->iteration }}</td>
         <td>{{ $record->name }}</td>
         <td>{{ $record->area }}</td>
-        <td>{{ \App\Services\RealEstate\BuildingService::buildingTypesForDropdown( $record->building_type)  }}</td>
-        <td>{{ \App\Services\RealEstate\BuildingService::buildingNoOfFloorsForDropdown( $record->no_of_floors)  }}</td>
+        <td>{{ \App\Services\BuildingService::buildingTypesForDropdown( $record->building_type)  }}</td>
+        <td>{{ \App\Services\BuildingService::buildingNoOfFloorsForDropdown( $record->no_of_floors)  }}</td>
         <td>@include('components.General.status-column')</td>
         <td class="text-center">
             @include('components.General.table-actions', [

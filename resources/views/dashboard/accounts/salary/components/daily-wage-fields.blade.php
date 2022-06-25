@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-3">
             {!! Html::decode(Form::label('employee_id' ,__('general.employee') ,['class'=>'form-label'])) !!}
-            {!! Form::select('employee_id',\App\Services\RealEstate\EmployeeService::getEmployeesForDropdown(), null,
+            {!! Form::select('employee_id',\App\Services\EmployeeService::getEmployeesForDropdown(), null,
                 ['id'=>'employee_id','class'=>'form-control select2','placeholder'=>trans('general.ph_employee'),
                 'onchange' => 'getEmployeeDailyWage();', 'style' => 'width:100%;']) !!}
         </div>

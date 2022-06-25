@@ -32,7 +32,7 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('assets_unit_id' ,__('general.select_unit'),['class'=>'form-label']))   !!}
-        {!!  Form::select('assets_unit_id', \App\Services\RealEstate\FixedAssetsService::AssetsUnitDropDown(),null,['id'=>'unit_id',
+        {!!  Form::select('assets_unit_id', \App\Services\FixedAssetsService::AssetsUnitDropDown(),null,['id'=>'unit_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_unit')])
         !!}
     </div>
@@ -53,7 +53,7 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('assets_location_id' ,__('general.select_assets_location'),['class'=>'form-label']))   !!}
-        {!!  Form::select('assets_location_id', \App\Services\RealEstate\FixedAssetsService::AssetsLocationDropDown(),null,['id'=>'assets_location_id',
+        {!!  Form::select('assets_location_id', \App\Services\FixedAssetsService::AssetsLocationDropDown(),null,['id'=>'assets_location_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_assets_location')])
         !!}
     </div>

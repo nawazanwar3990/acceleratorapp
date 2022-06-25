@@ -19,7 +19,7 @@
 
     <div class="col-md-4 my-2">
         {!!  Html::decode(Form::label('call_type_id' ,__('general.select_call_type') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('call_type_id', \App\Services\RealEstate\FrontDeskService::callTypeDropdown(),null,['id'=>'call_type_id',
+        {!!  Form::select('call_type_id', \App\Services\FrontDeskService::callTypeDropdown(),null,['id'=>'call_type_id',
             'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.select_call_type')])
         !!}
     </div>

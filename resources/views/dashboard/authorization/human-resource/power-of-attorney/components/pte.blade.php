@@ -20,7 +20,7 @@
                     <div class="row mb-2 ">
                         <div class="col-md-3">
                             {!! Form::label('pte_situated_in','Situated In') !!}
-                            {!! Form::select('pte_situated_in',\App\Services\RealEstate\CountryService::countryDropDown(),null,['class'=>'form-control select2','id'=>'pte_situated_in','placeholder'=>"Select Country",'style'=>'width:100%;']) !!}
+                            {!! Form::select('pte_situated_in',\App\Services\CountryService::countryDropDown(),null,['class'=>'form-control select2','id'=>'pte_situated_in','placeholder'=>"Select Country",'style'=>'width:100%;']) !!}
                         </div>
                         <div class="col-md-3">
                             {!! Form::label('pte_dairy_number','Dairy No') !!}

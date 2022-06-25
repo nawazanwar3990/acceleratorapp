@@ -22,7 +22,7 @@
         <div class="col">
             {!!  Html::decode(Form::label('floor_id' ,__('general.floor_name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
 
-            {!!  Form::select('floor_id', \App\Services\RealEstate\FloorService::getFloorsForDropdown(),null,['id'=>'floor_id',
+            {!!  Form::select('floor_id', \App\Services\FloorService::getFloorsForDropdown(),null,['id'=>'floor_id',
                 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_floor_name'),'required','style'=>'width:100%',
                 'onchange' => 'getFloorDetails();'])
             !!}
@@ -49,7 +49,7 @@
 
         <div class="col">
             {!!  Html::decode(Form::label('flat_type_id' ,__('general.flat_type').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-            {!!  Form::select('flat_type_id', \App\Services\RealEstate\FlatService::getFlatTypesForDropdown(),null,['id'=>'flat_type_id',
+            {!!  Form::select('flat_type_id', \App\Services\FlatService::getFlatTypesForDropdown(),null,['id'=>'flat_type_id',
                 'class'=>'select2 form-control form-select', 'placeholder'=>__('general.flat_type'),'style'=>'width:100%', 'required'])
             !!}
             @error('flat_type_id')
@@ -72,7 +72,7 @@
 
         <div class="col">
             {!!  Html::decode(Form::label('general_services' ,__('general.general_services'),['class'=>'col-form-label']))   !!}
-            {!!  Form::select('general_services[]', \App\Services\RealEstate\ServiceData::getGeneralServicesForDropdown(),isset($for) ? $model->general_services : \App\Services\RealEstate\BuildingService::getBuildingServices(),['id'=>'general_services',
+            {!!  Form::select('general_services[]', \App\Services\ServiceData::getGeneralServicesForDropdown(),isset($for) ? $model->general_services : \App\Services\BuildingService::getBuildingServices(),['id'=>'general_services',
                 'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
             !!}
             @error('general_services')
@@ -82,7 +82,7 @@
 
         <div class="col">
             {!!  Html::decode(Form::label('security_services' ,__('general.security_services'),['class'=>'col-form-label']))   !!}
-            {!!  Form::select('security_services[]', \App\Services\RealEstate\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services : \App\Services\RealEstate\BuildingService::getBuildingServices('security'),['id'=>'security_services',
+            {!!  Form::select('security_services[]', \App\Services\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services : \App\Services\BuildingService::getBuildingServices('security'),['id'=>'security_services',
                 'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
             !!}
             @error('security_services')
@@ -95,7 +95,7 @@
 
         <div class="col">
             {!!  Html::decode(Form::label('facing' ,__('general.facing'),['class'=>'col-form-label']))   !!}
-            {!!  Form::select('facing', \App\Services\RealEstate\BuildingService::buildingFacingsForDropdown(),null,['id'=>'facing',
+            {!!  Form::select('facing', \App\Services\BuildingService::buildingFacingsForDropdown(),null,['id'=>'facing',
                 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_facing'),'style'=>'width:100%'])
             !!}
             @error('facing')
@@ -105,7 +105,7 @@
 
         <div class="col">
             {!!  Html::decode(Form::label('view' ,__('general.view_location'),['class'=>'col-form-label']))   !!}
-            {!!  Form::select('view', \App\Services\RealEstate\FlatService::getFlatViewsForDropdown(),null,['id'=>'view',
+            {!!  Form::select('view', \App\Services\FlatService::getFlatViewsForDropdown(),null,['id'=>'view',
                 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_view_location'),'style'=>'width:100%'])
             !!}
             @error('view')
@@ -115,7 +115,7 @@
 
         <div class="col">
             {!!  Html::decode(Form::label('accommodation' ,__('general.number_of_accommodation'),['class'=>'col-form-label']))   !!}
-            {!!  Form::select('accommodation', \App\Services\RealEstate\FlatService::flatNoOfAccommodationForDropdown(),null,['id'=>'accommodation',
+            {!!  Form::select('accommodation', \App\Services\FlatService::flatNoOfAccommodationForDropdown(),null,['id'=>'accommodation',
                 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_number_of_accommodation'),'style'=>'width:100%'])
             !!}
             @error('accommodation')

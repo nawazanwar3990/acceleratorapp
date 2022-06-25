@@ -27,9 +27,9 @@
 
                 <td>{!! Form::text('commodity[type][]', null,['class'=>'form-control comm-type','readonly', 'tabindex' => '-1']) !!}</td>
                 <td>{!! Form::number('commodity[size][]', null,['step'=>'1','min'=>'1','class'=>'form-control comm-size', 'required', 'onchange' => 'calculateCommodityPrice();', 'onkeyup' => 'calculateCommodityPrice();']) !!}</td>
-                <td>{!! Form::select('commodity[unit][]', \App\Services\RealEstate\CommodityService::getAssetCommodityUnitsForDropDown(), null,['class'=>'form-select comm-unit', 'required']) !!}</td>
+                <td>{!! Form::select('commodity[unit][]', \App\Services\CommodityService::getAssetCommodityUnitsForDropDown(), null,['class'=>'form-select comm-unit', 'required']) !!}</td>
                 <td>{!! Form::number('commodity[price][]', null,['step'=>'any','min'=>'1','class'=>'form-control comm-price', 'required', 'onchange' => 'calculateCommodityPrice();', 'onkeyup' => 'calculateCommodityPrice();']) !!}</td>
-                <td>{!! Form::select('commodity[in_form_of][]',\App\Services\RealEstate\CommodityService::getCommodityInFormOfForDropDown() , null,['class'=>'form-select comm-in-form-of']) !!}</td>
+                <td>{!! Form::select('commodity[in_form_of][]',\App\Services\CommodityService::getCommodityInFormOfForDropDown() , null,['class'=>'form-select comm-in-form-of']) !!}</td>
                 <td>{!! Form::text('commodity[total_price][]', '0.00',['class'=>'form-control comm-total-price', 'readonly', 'tabindex' => '-1']) !!}</td>
                 <td>{!! Form::text('commodity[remarks][]', null,['class'=>'form-control comm-further-details']) !!}</td>
                 <td class="text-center col-1">

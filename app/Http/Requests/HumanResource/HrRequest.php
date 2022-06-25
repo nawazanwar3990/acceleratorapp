@@ -6,7 +6,7 @@ use App\Enum\TableEnum;
 use App\Models\HumanResource\Hr;
 use App\Models\Media;
 use App\Services\Accounts\VoucherService;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

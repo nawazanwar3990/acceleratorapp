@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Models\FixedAssets\AssetsLocation;
 use App\Models\FixedAssets\AssetsUnit;

@@ -6,7 +6,7 @@ use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Broker;
 use App\Models\FlatOwner;
-use App\Services\RealEstate\BuildingService;
+use App\Services\BuildingService;
 use Illuminate\Support\Facades\DB;
 use function __;
 use function view;

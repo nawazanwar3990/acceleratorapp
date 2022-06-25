@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\Definition;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Definition\CommodityTypeRequest;
 use App\Models\Definition\General\CommodityType;
-use App\Services\RealEstate\CommodityService;
+use App\Services\CommodityService;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;

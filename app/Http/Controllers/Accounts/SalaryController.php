@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Accounts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Accounts\SalaryRequest;
 use App\Models\Accounts\Salary;
-use App\Services\RealEstate\BuildingService;
-use App\Services\RealEstate\EmployeeService;
-use App\Services\RealEstate\SalaryService;
+use App\Services\EmployeeService;
+use App\Services\SalaryService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

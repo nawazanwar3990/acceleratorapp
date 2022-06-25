@@ -18,7 +18,7 @@
 
             <div class="col-md-4">
                 {!!  Html::decode(Form::label('building_id' ,__('general.building') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('building_id', \App\Services\RealEstate\BuildingService::getBuildingDropdown(), request()->has('building_id')?request()->get('building_id'):null,['id'=>'building_id',
+                {!!  Form::select('building_id', \App\Services\BuildingService::getBuildingDropdown(), request()->has('building_id')?request()->get('building_id'):null,['id'=>'building_id',
                     'class'=>'select2 form-control', 'placeholder'=>'Select Building','style'=>'width:100%','onchange '=>'getFloorsOfBuilding(this)'])
                 !!}
             </div>

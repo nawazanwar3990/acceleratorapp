@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="mb-3">
             <textarea id="mymce" name="installment_text">{{ $model->installment_text ?? '' }}</textarea>
-            <input type="hidden" name="building_id" value="{{ \App\Services\RealEstate\BuildingService::getBuildingId() }}">
+            <input type="hidden" name="building_id" value="{{ \App\Services\BuildingService::getBuildingId() }}">
         </div>
     </div>
 </div>

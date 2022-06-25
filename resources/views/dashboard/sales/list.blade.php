@@ -4,7 +4,7 @@
         <td>{{ $record->transfer_no }}</td>
         <td>{{ \App\Services\GeneralService::formatDate( $record->date ) }}</td>
         <td>
-            <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('general.building') }}: {{ \App\Services\RealEstate\BuildingService::getBuildingName() }}<br>{{ __('general.floor') }}: {{ $record->floor->floor_name }}">
+            <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('general.building') }}: {{ \App\Services\BuildingService::getBuildingName() }}<br>{{ __('general.floor') }}: {{ $record->floor->floor_name }}">
                 {{ $record->flat->flat_name }}
             </span>
         </td>

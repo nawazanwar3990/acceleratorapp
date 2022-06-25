@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\RealEstate;
+namespace App\Services;
 
 use App\Enum\TableEnum;
 use App\Models\Accounts\Expense;
