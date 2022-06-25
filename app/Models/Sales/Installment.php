@@ -45,10 +45,7 @@ class Installment extends Model
         return $this->belongsTo(InstallmentPlan::class, 'installment_plan_id');
     }
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function createdBy(): BelongsTo
     {

@@ -20,10 +20,7 @@ class VoucherPrefix extends Model
         'building_id',
     ];
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function createdBy(): BelongsTo
     {

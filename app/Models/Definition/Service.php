@@ -24,10 +24,7 @@ class Service extends Model
     ];
 
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function createdBy(): BelongsTo
     {

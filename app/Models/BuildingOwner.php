@@ -20,10 +20,7 @@ class BuildingOwner extends Model
         'updated_by',
     ];
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function createdBy(): BelongsTo
     {

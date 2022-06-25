@@ -50,10 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Plan::class);
     }
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function getFullNameAttribute(): string
     {

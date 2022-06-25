@@ -293,10 +293,7 @@ class Hr extends Model
         return $this->belongsTo(Colony::class, 'permanent_colony_id');
     }
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function createdBy(): BelongsTo
     {

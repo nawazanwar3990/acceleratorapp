@@ -38,10 +38,7 @@ class AccountHead extends Model
         'account_id' => 'array',
     ];
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function createdBy(): BelongsTo
     {

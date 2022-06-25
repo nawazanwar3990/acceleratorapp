@@ -66,10 +66,7 @@ class PowerOfAttorney extends Model
         return $this->belongsTo(User::class, 'deleted_by');
     }
 
-    public function Building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class);
-    }
+
 
     public function executent(): BelongsTo
     {
