@@ -1,23 +1,22 @@
 <?php
 
-use App\Http\Controllers\Authorization\PermissionController;
-use App\Http\Controllers\Authorization\RoleController;
-use App\Http\Controllers\Authorization\RolePermissionController;
-use App\Http\Controllers\Authorization\RoleUserController;
-use App\Http\Controllers\Authorization\UserController;
-use App\Http\Controllers\Dashboard\Definition\CountryController;
-use App\Http\Controllers\Dashboard\Definition\DistrictController;
 use App\Http\Controllers\Dashboard\Definition\HrBusinessController;
 use App\Http\Controllers\Dashboard\Definition\HrCastController;
-use App\Http\Controllers\Dashboard\Definition\HrDepartmentController;
-use App\Http\Controllers\Dashboard\Definition\HrDesignationController;
-use App\Http\Controllers\Dashboard\Definition\HrMinistryController;
 use App\Http\Controllers\Dashboard\Definition\HrNationalityController;
-use App\Http\Controllers\Dashboard\Definition\HrOrganizationController;
-use App\Http\Controllers\Dashboard\Definition\HrProfessionController;
-use App\Http\Controllers\Dashboard\Definition\ProvinceController;
-use App\Http\Controllers\Dashboard\Definition\RelationController;
-use App\Http\Controllers\Dashboard\HumanResource\HumanResourceController;
+use App\Http\Controllers\UserManagement\CountryController;
+use App\Http\Controllers\UserManagement\DistrictController;
+use App\Http\Controllers\UserManagement\HrDepartmentController;
+use App\Http\Controllers\UserManagement\HrDesignationController;
+use App\Http\Controllers\UserManagement\HrOrganizationController;
+use App\Http\Controllers\UserManagement\HrProfessionController;
+use App\Http\Controllers\UserManagement\HumanResourceController;
+use App\Http\Controllers\UserManagement\PermissionController;
+use App\Http\Controllers\UserManagement\ProvinceController;
+use App\Http\Controllers\UserManagement\RelationController;
+use App\Http\Controllers\UserManagement\RoleController;
+use App\Http\Controllers\UserManagement\RolePermissionController;
+use App\Http\Controllers\UserManagement\RoleUserController;
+use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('users', UserController::class, ['names' => 'users']);
