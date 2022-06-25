@@ -1,8 +1,8 @@
 <ul aria-expanded="false" class="collapse">
-    @foreach(\App\Enum\Nav\EventManagementNavEnum::getTranslationKeys() as $key=>$value)
+    @foreach(\App\Enum\LeftNavBar\EventManagementNavEnum::getTranslationKeys() as $key=>$value)
         <li>
             {@can('hasModuleAccess',$key)
-                <a href="{{ \App\Enum\Nav\EventManagementNavEnum::getRoute($key) }}">
+                <a href="{{ \App\Enum\LeftNavBar\EventManagementNavEnum::getRoute($key) }}">
                     {!! $value !!}
                 </a>
             @endcan

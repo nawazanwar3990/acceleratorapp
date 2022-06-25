@@ -1,5 +1,5 @@
 <?php
-namespace App\Enum\Nav;
+namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;

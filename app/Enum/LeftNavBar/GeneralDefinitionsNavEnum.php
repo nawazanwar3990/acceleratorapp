@@ -1,5 +1,5 @@
 <?php
-namespace App\Enum\Nav;
+namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
@@ -7,9 +7,7 @@ use App\Enum\KeyWordEnum;
 class GeneralDefinitionsNavEnum extends AbstractEnum
 {
     public const SERVICES = KeyWordEnum::SERVICES;
-    public const FLOOR_NAMES = KeyWordEnum::FLOOR_NAMES;
-    public const FLOOR_TYPES = KeyWordEnum::FLOOR_TYPES;
-    public const FLAT_TYPES = KeyWordEnum::FLAT_TYPES;
+
 //    public const COMMODITY_TYPES = KeyWordEnum::COMMODITY_TYPES;
 
     public static function getValues(): array

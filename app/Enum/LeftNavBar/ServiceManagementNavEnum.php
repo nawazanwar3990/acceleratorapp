@@ -1,26 +1,23 @@
 <?php
-namespace App\Enum\Nav;
+namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
 
-class DefinitionsNavEnum extends AbstractEnum
+class ServiceManagementNavEnum extends AbstractEnum
 {
-    public const GENERAL = KeyWordEnum::GENERAL;
-    public const HUMAN_RESOURCE = KeyWordEnum::HUMAN_RESOURCE;
+    public const SERVICE = KeyWordEnum::SERVICE;
     public static function getValues(): array
     {
         return [
-            self::GENERAL,
-            self::HUMAN_RESOURCE,
+            self::SERVICE,
         ];
     }
 
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::GENERAL => '<i class="mdi mdi-account"></i>',
-            self::HUMAN_RESOURCE => '<i class="mdi mdi-account"></i>',
+            self::SERVICE => '<i class="mdi mdi-account"></i>'
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -32,16 +29,14 @@ class DefinitionsNavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::GENERAL => __(sprintf('%s.%s', 'general', self::GENERAL)),
-            self::HUMAN_RESOURCE => __(sprintf('%s.%s', 'general', self::HUMAN_RESOURCE)),
+            self::SERVICE => __(sprintf('%s.%s', 'general', self::SERVICE)),
         ];
     }
 
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::GENERAL => route('dashboard.service.index'),
-            self::HUMAN_RESOURCE => route('dashboard.floorName.index'),
+            self::SERVICE => route('dashboard.service.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

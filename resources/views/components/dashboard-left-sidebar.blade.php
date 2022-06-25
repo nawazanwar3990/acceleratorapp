@@ -2,13 +2,13 @@
     <div class="scroll-sidebar">
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                @foreach(\App\Enum\Nav\MainNavEnum::getTranslationKeys() as $key=>$value)
+                @foreach(\App\Enum\LeftNavBar\MainNavEnum::getTranslationKeys() as $key=>$value)
                     @if($key == \App\Enum\KeywordEnum::DASHBOARD)
                         @can('hasModuleAccess',$key)
                             <li>
                                 <a class="waves-effect waves-dark"
                                    href="{{ route('dashboard.index') }}">
-                                    {!! \App\Enum\Nav\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
+                                    {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
                                     {{ $value }}
                                 </a>
                             </li>
@@ -19,27 +19,27 @@
                                 <a class="has-arrow waves-effect waves-dark"
                                    href="javascript:void(0)"
                                    aria-expanded="false">
-                                    {!! \App\Enum\Nav\MainNavEnum::getIcon($key) !!}
+                                    {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!}
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
                                 @switch($key)
-                                    @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT)
-                                    @include('components.nav.user-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
+                                    @include('components.left-nav-bar.user-management')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::SERVICE_MANAGEMENT)
-                                    @include('components.nav.service-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SERVICE_MANAGEMENT)
+                                    @include('components.left-nav-bar.service-management')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::PLAN_MANAGEMENT)
-                                    @include('components.nav.plan-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
+                                    @include('components.left-nav-bar.plan-management')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::EVENT_MANAGEMENT)
-                                    @include('components.nav.event-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::EVENT_MANAGEMENT)
+                                    @include('components.left-nav-bar.event-management')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::FLAT_MANAGEMENT)
-                                    @include('components.nav.flat-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::FLAT_MANAGEMENT)
+                                    @include('components.left-nav-bar.flat-management')
                                     @break
-                                    @case(\App\Enum\Nav\MainNavEnum::SYSTEM_CONFIGURATION)
-                                    @include('components.nav.system-configuration')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
+                                    @include('components.left-nav-bar.system-configuration')
                                     @break
                                 @endswitch
                             </li>
