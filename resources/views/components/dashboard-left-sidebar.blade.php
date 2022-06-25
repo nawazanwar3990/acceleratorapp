@@ -24,16 +24,22 @@
                                 </a>
                                 @switch($key)
                                     @case(\App\Enum\Nav\MainNavEnum::USER_MANAGEMENT)
-                                    @include('components.nav.human-resource')
+                                    @include('components.nav.user-management')
                                     @break
                                     @case(\App\Enum\Nav\MainNavEnum::SERVICE_MANAGEMENT)
-                                    @include('components.nav.service')
+                                    @include('components.nav.service-management')
                                     @break
                                     @case(\App\Enum\Nav\MainNavEnum::PLAN_MANAGEMENT)
-                                    @include('components.nav.plans')
+                                    @include('components.nav.plan-management')
                                     @break
                                     @case(\App\Enum\Nav\MainNavEnum::EVENT_MANAGEMENT)
-                                    @include('components.nav.event')
+                                    @include('components.nav.event-management')
+                                    @break
+                                    @case(\App\Enum\Nav\MainNavEnum::FLAT_MANAGEMENT)
+                                    @include('components.nav.flat-management')
+                                    @break
+                                    @case(\App\Enum\Nav\MainNavEnum::SYSTEM_CONFIGURATION)
+                                    @include('components.nav.system-configuration')
                                     @break
                                 @endswitch
                             </li>
