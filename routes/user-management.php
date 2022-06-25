@@ -1,8 +1,4 @@
 <?php
-
-use App\Http\Controllers\Dashboard\Definition\HrBusinessController;
-use App\Http\Controllers\Dashboard\Definition\HrCastController;
-use App\Http\Controllers\Dashboard\Definition\HrNationalityController;
 use App\Http\Controllers\UserManagement\CountryController;
 use App\Http\Controllers\UserManagement\DistrictController;
 use App\Http\Controllers\UserManagement\HrDepartmentController;
@@ -28,8 +24,6 @@ Route::get('/sync-permissions', [PermissionController::class, 'syncPermission'])
     ->name('sync-permissions.index');
 
 Route::resource('/relation', RelationController::class, ['names' => 'relation']);
-Route::resource('/hr-cast', HrCastController::class, ['names' => 'cast']);
-Route::resource('/hr-nationality', HrNationalityController::class, ['names' => 'nationality']);
 Route::resource('/country', CountryController::class, ['names' => 'country']);
 Route::resource('/province', ProvinceController::class, ['names' => 'province']);
 Route::resource('/district', DistrictController::class, ['names' => 'district']);
@@ -37,8 +31,6 @@ Route::resource('/hr-department', HrDepartmentController::class, ['names' => 'de
 Route::resource('/hr-designation', HrDesignationController::class, ['names' => 'designation']);
 Route::resource('/hr-profession', HrProfessionController::class, ['names' => 'profession']);
 Route::resource('/hr-organization', HrOrganizationController::class, ['names' => 'organization']);
-Route::resource('/hr-business', HrBusinessController::class, ['names' => 'hr-business']);
-
 
 Route::resource('/human-resource', HumanResourceController::class, ['names' => 'human-resource']);
 Route::post('/add-hr-ajax', [HumanResourceController::class, 'addHrAjax'])->name('add.hr-ajax');

@@ -25,7 +25,7 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.flat_types'),
             'records' => $records,
         ];
-        return view('dashboard.definition.flat-type.index',$params);
+        return view('dashboard.definition.flat-types.index',$params);
     }
 
     public function create()
@@ -35,7 +35,7 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.new_flat_types'),
         ];
 
-        return view('dashboard.definition.flat-type.create', $params);
+        return view('dashboard.definition.flat-types.create', $params);
     }
 
     public function store(FlatTypeRequest $request)
@@ -43,10 +43,10 @@ class FlatTypeController extends Controller
         $this->authorize('create', FlatType::class);
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.flat-type.create')
+                return redirect()->route('dashboard.flat-types.create')
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.flat-type.index')
+                return redirect()->route('dashboard.flat-types.index')
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -68,14 +68,14 @@ class FlatTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.definition.flat-type.edit', $params);
+        return view('dashboard.definition.flat-types.edit', $params);
     }
 
     public function update(FlatTypeRequest $request, $id)
     {
         $this->authorize('update', FlatType::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.flat-type.index')
+            return redirect()->route('dashboard.flat-types.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
@@ -84,7 +84,7 @@ class FlatTypeController extends Controller
     {
         $this->authorize('delete', FlatType::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.flat-type.index')
+            return redirect()->route('dashboard.flat-types.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

@@ -20,18 +20,11 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item mt-2"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                 <li class="nav-item mt-2"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
-                <li class="nav-item mt-2 dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>{{ session()->get('bName')  }} <i class="fa fa-angle-down"></i></span> </a>
-                    <div class="dropdown-menu dropdown-menu-end animated">
-                        @foreach(\App\Services\BuildingService::getBuildingsOfBusiness() as $id => $name)
-                            <button type="button" class="dropdown-item" onclick="changeBuilding({{ $id }});" >{{ $name }}</button>
-                        @endforeach
-                    </div>
-                </li>
                 <li class="nav-item mt-2">
-                    <form action="{{ route('dashboard.search-flat') }}" class="app-search d-none d-md-block d-lg-block">
-                        <input type="text" name="search" class="form-control" placeholder="Services, Co-Working Space....">
+                    <form action="" class="app-search d-none d-md-block d-lg-block">
+                        <label>
+                            <input type="text" name="search" class="form-control" placeholder="Services, Co-Working Space....">
+                        </label>
                     </form>
                 </li>
             </ul>

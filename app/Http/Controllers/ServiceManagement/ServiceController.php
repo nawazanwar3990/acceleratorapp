@@ -45,7 +45,7 @@ class ServiceController extends Controller
                 return redirect()->route('dashboard.service.create')
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.service.index')
+                return redirect()->route('dashboard.services.index')
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -77,7 +77,7 @@ class ServiceController extends Controller
     {
         // $this->authorize('update', Service::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.service.index')
+            return redirect()->route('dashboard.services.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
@@ -86,7 +86,7 @@ class ServiceController extends Controller
     {
         // $this->authorize('delete', Service::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.service.index')
+            return redirect()->route('dashboard.services.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

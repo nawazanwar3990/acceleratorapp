@@ -1,7 +1,8 @@
+{{--
 <div id="ssb-container" class="ssb-btns-right ssb-anim-slide">
     <ul class="ssb-light-hover">
         <li id="ssb-btn-3">
-            <a href="{{ route('dashboard.quotations.create') }}" class="bordered">
+            <a href="{{ route('dashboard.events.create') }}" class="bordered">
                 <span><i class="fas fa-file-alt"></i></span> Quotation
             </a>
         </li>
@@ -37,3 +38,4 @@
         </li>
     </ul>
 </div>
+--}}

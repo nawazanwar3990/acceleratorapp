@@ -40,7 +40,7 @@ class InstallmentTermController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.installment-term.create', $params);
+        return view('dashboard.installment-terms.create', $params);
     }
 
     /**
@@ -54,10 +54,10 @@ class InstallmentTermController extends Controller
         $this->authorize('create', InstallmentTerm::class);
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.installment-term.create')
+                return redirect()->route('dashboard.installment-terms.create')
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.installment-term.create')
+                return redirect()->route('dashboard.installment-terms.create')
                     ->with('success', __('general.record_created_successfully'));
             }
         }

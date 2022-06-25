@@ -28,7 +28,7 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.floor_types'),
             'records' => $records,
         ];
-        return view('dashboard.definition.floor-type.index',$params);
+        return view('dashboard.definition.floor-types.index',$params);
     }
 
     /**
@@ -43,7 +43,7 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.new_floor_types'),
         ];
 
-        return view('dashboard.definition.floor-type.create', $params);
+        return view('dashboard.definition.floor-types.create', $params);
     }
 
     /**
@@ -57,10 +57,10 @@ class FloorTypeController extends Controller
         $this->authorize('create', FloorType::class);
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.floor-type.create')
+                return redirect()->route('dashboard.floor-types.create')
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.floor-type.index')
+                return redirect()->route('dashboard.floor-types.index')
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -94,7 +94,7 @@ class FloorTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.definition.floor-type.edit', $params);
+        return view('dashboard.definition.floor-types.edit', $params);
     }
 
     /**
@@ -108,7 +108,7 @@ class FloorTypeController extends Controller
     {
         $this->authorize('update', FloorType::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.floor-type.index')
+            return redirect()->route('dashboard.floor-types.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
@@ -122,7 +122,7 @@ class FloorTypeController extends Controller
     public function destroy(FloorTypeRequest $request,int $id)
     {$this->authorize('delete', FloorType::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.floor-type.index')
+            return redirect()->route('dashboard.floor-types.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

@@ -36,7 +36,7 @@ class ServiceManagementNavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::SERVICE => route('dashboard.service.index')
+            self::SERVICE => route('dashboard.services.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

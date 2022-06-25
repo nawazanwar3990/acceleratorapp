@@ -259,44 +259,6 @@
             $('#' + imageHolderID).val(myBase64);
         });
     }
-
-    function changeBuilding(buildingID) {
-        swal.fire({
-            title: "{!! __('general.ask_for_change_building') !!}",
-            type: "question",
-            showCancelButton: true,
-            showConfirmButton: true,
-            confirmButtonText: "{{ __('general.change') }}",
-            confirmButtonColor: '#472051',
-            cancelButtonColor: '#472051',
-            allowOutsideClick: () => {
-                const popup = swal.getPopup();
-                popup.classList.remove('swal2-show');
-                setTimeout(() => {
-                    popup.classList.add('headShake', 'animated');
-                })
-                setTimeout(() => {
-                    popup.classList.remove('headShake', 'animated');
-                }, 500);
-                return false;
-            }
-
-        }).then((result) => {
-            if (result.value === true) {
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ route('dashboard.change-building') }}",
-                    data: {'buildingID': buildingID},
-                    success: function (result) {
-                        if (result.success === true) {
-                            window.location.reload();
-                        }
-                    }
-                });
-        }
-    });
-    }
-
     function initDropify() {
         $('.dropify').dropify({
             tpl: {
