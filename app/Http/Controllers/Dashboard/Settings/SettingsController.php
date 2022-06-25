@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Settings\SystemSettingsRequest;
+use App\Http\Requests\Settings\SystemSettingsRequest;
 use App\Models\Settings\SystemSetting;
 use Illuminate\Http\Request;
 use function __;

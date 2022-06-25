@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Dashboard\Sales;
 
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Sales\SalesRequest;
+use App\Http\Requests\Sales\SalesRequest;
 use App\Models\Broker;
 use App\Models\Flat;
 use App\Models\FlatOwner;
 use App\Models\Sales\Sale;
 use App\Services\Accounts\QueryService;
-use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\SalesService;
 use App\Traits\General;
 use Illuminate\Http\Request;

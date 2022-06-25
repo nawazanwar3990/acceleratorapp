@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\SourceRequest;
+use App\Http\Requests\FrontDesk\FrontDeskSetup\SourceRequest;
 use App\Models\FrontDesk\FrontDeskSetup\Source;
 use function __;
 use function redirect;

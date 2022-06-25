@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Dashboard\BuildingUnits;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\BuildingUnits\FloorRequest;
+use App\Http\Requests\BuildingUnits\FloorRequest;
 use App\Models\Floor;
-use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\FloorService;
 use Illuminate\Http\Request;
 use function __;

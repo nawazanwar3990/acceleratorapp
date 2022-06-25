@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FixedAssets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FixedAssets\AssetsInventoryRequest;
+use App\Http\Requests\FixedAssets\AssetsInventoryRequest;
 use App\Models\FixedAssets\AssetsInventory;
 use App\Traits\General;
 use function __;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\SaleEnquiryRequest;
+use App\Http\Requests\FrontDesk\SaleEnquiryRequest;
 use App\Models\FrontDesk\SaleEnquiry;
 use function __;
 use function redirect;

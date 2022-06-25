@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\BuildingUnits;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\BuildingUnits\BuildingRequest;
+use App\Http\Requests\BuildingUnits\BuildingRequest;
 use App\Models\Building;
 use App\Services\RealEstate\BuildingService;
 use App\Traits\General;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk\FrontDeskSetup;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\ComplainTypeRequest;
+use App\Http\Requests\FrontDesk\FrontDeskSetup\ComplainTypeRequest;
 use App\Models\FrontDesk\FrontDeskSetup\ComplainType;
 use function __;
 use function redirect;

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\HrEmployeeTypeRequest;
+use App\Http\Requests\Definition\HrEmployeeTypeRequest;
 use App\Models\Definition\HumanResource\HrEmployeeType;
-use App\Services\RealEstate\BuildingService;
 use function __;
 use function redirect;
 use function view;

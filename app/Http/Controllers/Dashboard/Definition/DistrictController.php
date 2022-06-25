@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\DistrictRequest;
+use App\Http\Requests\Definition\DistrictRequest;
 use App\Models\Definition\General\District;
 use App\Models\Definition\General\Tehsil;
 use App\Services\GeneralService;

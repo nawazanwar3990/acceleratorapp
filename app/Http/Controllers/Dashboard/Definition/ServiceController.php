@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\ServiceRequest;
+use App\Http\Requests\Definition\ServiceRequest;
 use App\Models\Definition\Service;
 use function __;
 use function redirect;

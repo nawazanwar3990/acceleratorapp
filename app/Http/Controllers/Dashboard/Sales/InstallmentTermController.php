@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Sales;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Sales\InstallmentTermRequest;
+use App\Http\Requests\Sales\InstallmentTermRequest;
 use App\Models\Sales\InstallmentTerm;
-use App\Services\RealEstate\BuildingService;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;

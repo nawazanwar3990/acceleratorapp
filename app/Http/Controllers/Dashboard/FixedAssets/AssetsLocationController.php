@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FixedAssets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FixedAssets\AssetsLocationRequest;
+use App\Http\Requests\FixedAssets\AssetsLocationRequest;
 use App\Models\FixedAssets\AssetsLocation;
 use function __;
 use function redirect;

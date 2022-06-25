@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\HrTaxTypeRequest;
+use App\Http\Requests\Definition\HrTaxTypeRequest;
 use App\Models\Definition\HumanResource\HrTaxType;
 use function __;
 use function redirect;

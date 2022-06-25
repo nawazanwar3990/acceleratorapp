@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Sales;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Sales\QuotationRequest;
+use App\Http\Requests\Sales\QuotationRequest;
 use App\Models\Sales\Quotation;
-use App\Services\RealEstate\BuildingService;
 use function __;
 use function redirect;
 use function view;

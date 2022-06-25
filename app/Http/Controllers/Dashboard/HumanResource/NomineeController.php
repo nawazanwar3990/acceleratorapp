@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\HumanResource;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\HumanResource\NomineeRequest;
+use App\Http\Requests\HumanResource\NomineeRequest;
 use App\Models\HumanResource\Nominee;
 use App\Models\HumanResource\NomineeVerification;
 use App\Models\HumanResource\NomineeWitness;

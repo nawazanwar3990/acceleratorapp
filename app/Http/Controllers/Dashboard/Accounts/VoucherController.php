@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Dashboard\Accounts;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Accounts\BrokerPaymentVoucherRequest;
-use App\Http\Requests\RealEstate\Accounts\BuyerInstallmentReceivingVoucherRequest;
-use App\Http\Requests\RealEstate\Accounts\BuyerReceivingVoucherRequest;
-use App\Http\Requests\RealEstate\Accounts\CreditVoucherRequest;
-use App\Http\Requests\RealEstate\Accounts\DebitVoucherRequest;
-use App\Http\Requests\RealEstate\Accounts\OpeningBalanceVoucherRequest;
-use App\Http\Requests\RealEstate\Accounts\SellerPaymentVoucherRequest;
+use App\Http\Requests\Accounts\BrokerPaymentVoucherRequest;
+use App\Http\Requests\Accounts\BuyerInstallmentReceivingVoucherRequest;
+use App\Http\Requests\Accounts\BuyerReceivingVoucherRequest;
+use App\Http\Requests\Accounts\CreditVoucherRequest;
+use App\Http\Requests\Accounts\DebitVoucherRequest;
+use App\Http\Requests\Accounts\OpeningBalanceVoucherRequest;
+use App\Http\Requests\Accounts\SellerPaymentVoucherRequest;
 use App\Models\Accounts\AccountHead;
 use App\Models\Broker;
 use App\Models\Flat;
@@ -17,7 +17,6 @@ use App\Models\FlatOwner;
 use App\Models\Sales\Installment;
 use App\Services\Accounts\AccountsService;
 use App\Services\GeneralService;
-use App\Services\RealEstate\BuildingService;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;

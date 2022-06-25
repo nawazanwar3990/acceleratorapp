@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\PhoneCallLogRequest;
+use App\Http\Requests\FrontDesk\PhoneCallLogRequest;
 use App\Models\FrontDesk\PhoneCallLog;
 use function __;
 use function redirect;

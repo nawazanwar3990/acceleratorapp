@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\ColonyRequest;
+use App\Http\Requests\Definition\ColonyRequest;
 use App\Models\Definition\General\Colony;
 use App\Models\Definition\General\Country;
 use App\Models\Definition\General\District;

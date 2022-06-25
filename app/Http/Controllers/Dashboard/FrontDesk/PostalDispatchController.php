@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\PostalDispatchRequest;
+use App\Http\Requests\FrontDesk\PostalDispatchRequest;
 use App\Models\FrontDesk\PostalDispatch;
 use App\Traits\General;
 use function __;

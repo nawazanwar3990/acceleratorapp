@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\BuildingUnits;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\BuildingUnits\FlatRequest;
+use App\Http\Requests\BuildingUnits\FlatRequest;
 use App\Models\Flat;
 use App\Models\FlatOwner;
 use App\Models\Sales\Sale;

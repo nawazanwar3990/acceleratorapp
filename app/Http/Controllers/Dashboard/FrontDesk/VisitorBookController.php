@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\VisitorBookRequest;
+use App\Http\Requests\FrontDesk\VisitorBookRequest;
 use App\Models\FrontDesk\VisitorBook;
 use App\Traits\General;
 use function __;

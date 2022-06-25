@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\CommodityTypeRequest;
+use App\Http\Requests\Definition\CommodityTypeRequest;
 use App\Models\Definition\General\CommodityType;
-use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\CommodityService;
 use Illuminate\Http\Request;
 use function __;

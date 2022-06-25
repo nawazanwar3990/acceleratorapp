@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\BusinessRequest;
+use App\Http\Requests\BusinessRequest;
 use App\Models\Business;
 use App\Traits\General;
 use function __;

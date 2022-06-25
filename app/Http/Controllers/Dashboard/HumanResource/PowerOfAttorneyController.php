@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\HumanResource;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\HumanResource\PowerOfAttorneyRequest;
+use App\Http\Requests\HumanResource\PowerOfAttorneyRequest;
 use App\Models\HumanResource\PowerOfAttorney;
 use App\Models\HumanResource\PowerOfAttorneyVerification;
 use App\Models\HumanResource\PowerOfAttorneyWitness;

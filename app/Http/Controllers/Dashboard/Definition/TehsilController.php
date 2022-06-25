@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\TehsilRequest;
+use App\Http\Requests\Definition\TehsilRequest;
 use App\Models\Definition\General\Colony;
 use App\Models\Definition\General\Tehsil;
 use App\Services\GeneralService;

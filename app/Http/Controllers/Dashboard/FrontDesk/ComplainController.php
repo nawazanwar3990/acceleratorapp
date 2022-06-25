@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FrontDesk;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\ComplainRequest;
+use App\Http\Requests\FrontDesk\ComplainRequest;
 use App\Models\FrontDesk\Complain;
 use App\Traits\General;
 use function __;

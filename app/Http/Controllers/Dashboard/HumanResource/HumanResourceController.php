@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Dashboard\HumanResource;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\HumanResource\HrRequest;
+use App\Http\Requests\HumanResource\HrRequest;
 use App\Models\HumanResource\Hr;
 use App\Models\Media;
 use App\Services\Accounts\VoucherService;
 use App\Services\PersonService;
-use App\Services\RealEstate\BuildingService;
 use App\Traits\General;
 use Illuminate\Http\Request;
 use function __;

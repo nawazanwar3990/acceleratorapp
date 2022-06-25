@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Definition;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Definition\HrProfessionRequest;
+use App\Http\Requests\Definition\HrProfessionRequest;
 use App\Models\Definition\HumanResource\HrProfession;
 use function __;
 use function redirect;

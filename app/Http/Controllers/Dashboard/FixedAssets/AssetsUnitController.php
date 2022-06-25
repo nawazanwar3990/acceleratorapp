@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\FixedAssets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FixedAssets\AssetsUnitRequest;
+use App\Http\Requests\FixedAssets\AssetsUnitRequest;
 use App\Models\FixedAssets\AssetsUnit;
 use function __;
 use function redirect;
