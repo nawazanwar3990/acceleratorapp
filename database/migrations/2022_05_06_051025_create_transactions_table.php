@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+
             $table->foreignId('fiscal_year_id')->nullable()->constrained(TableEnum::FISCAL_YEARS);
             $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
             $table->softDeletes();

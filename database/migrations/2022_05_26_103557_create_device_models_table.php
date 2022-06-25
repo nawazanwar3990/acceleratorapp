@@ -15,7 +15,7 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::DEVICE_MODELS, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+
             $table->foreignId('device_make_id')->nullable()->constrained(TableEnum::DEVICE_MAKES);
             $table->string('name')->unique()->nullable();
             $table->string('slug')->unique()->nullable();

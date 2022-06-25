@@ -20,11 +20,11 @@ class Role extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, TableEnum::ROLE_USER)->withPivot('building_id');
+        return $this->belongsToMany(User::class, TableEnum::ROLE_USER);
     }
 
     public function permissions(): BelongsToMany
     {
-        return $this->belongsToMany(Permission::class, TableEnum::ROLE_PERMISSION)->withPivot('building_id');
+        return $this->belongsToMany(Permission::class, TableEnum::ROLE_PERMISSION);
     }
 }

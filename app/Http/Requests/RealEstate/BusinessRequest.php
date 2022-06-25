@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate;
 
-use App\Models\RealEstate\Business;
+use App\Models\Business;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Intervention\Image\Facades\Image;

@@ -10,7 +10,7 @@
                 @include('components.General.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.human-resource.store'), 'method' => 'POST','files' => true,'id' =>'human_resource_form', 'class' => 'solid-validation']) !!}
-                    <x-hidden-building-id />
+
                     <x-created-by-field />
                     @include('dashboard.authorization.human-resource.hr-person.fields')
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"

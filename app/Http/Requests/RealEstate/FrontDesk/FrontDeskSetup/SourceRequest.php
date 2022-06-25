@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup;
 
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Source;
+use App\Models\FrontDesk\FrontDeskSetup\Source;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

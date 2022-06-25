@@ -2,8 +2,8 @@
 
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Building;
-use App\Models\RealEstate\Floor;
+use App\Models\Building;
+use App\Models\Floor;
 
 class BuildingService
 {

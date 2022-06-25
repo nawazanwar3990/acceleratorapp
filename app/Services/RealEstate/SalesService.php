@@ -4,8 +4,8 @@ namespace App\Services\RealEstate;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\FlatOwner;
-use App\Models\RealEstate\Sales\Sale;
+use App\Models\FlatOwner;
+use App\Models\Sales\Sale;
 use App\Services\GeneralService;
 
 class SalesService

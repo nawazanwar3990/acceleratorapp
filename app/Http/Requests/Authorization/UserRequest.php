@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Authorization;
 
 use App\Models\Authorization\User;
-use App\Models\RealEstate\HumanResource\Hr;
+use App\Models\HumanResource\Hr;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest

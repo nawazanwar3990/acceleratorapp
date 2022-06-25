@@ -4,9 +4,7 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\ServiceRequest;
-use App\Models\RealEstate\Definition\Service;
-use App\Services\RealEstate\BuildingService;
-use Illuminate\Http\Request;
+use App\Models\Definition\Service;
 
 class ServiceController extends Controller
 {

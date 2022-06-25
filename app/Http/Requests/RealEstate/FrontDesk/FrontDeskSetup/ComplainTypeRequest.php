@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup;
 
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\ComplainType;
+use App\Models\FrontDesk\FrontDeskSetup\ComplainType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

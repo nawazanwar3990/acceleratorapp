@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\Definition;
 
-use App\Models\RealEstate\Definition\HumanResource\HrCast;
+use App\Models\Definition\HumanResource\HrCast;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

@@ -4,7 +4,7 @@ namespace App\Models\Devices;
 
 use App\Enum\TableEnum;
 use App\Models\Authorization\User;
-use App\Models\RealEstate\Building;
+use App\Models\Building;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

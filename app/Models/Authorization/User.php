@@ -5,8 +5,8 @@ namespace App\Models\Authorization;
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
 use App\Enum\TableHeadings\RealEstate\Hr;
+use App\Models\Building;
 use App\Models\Plans\Plan;
-use App\Models\RealEstate\Building;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -67,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, TableEnum::ROLE_USER)->withPivot('building_id');
+        return $this->belongsToMany(Role::class, TableEnum::ROLE_USER);
     }
 
     public function hasRole($role): bool

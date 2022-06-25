@@ -1,6 +1,6 @@
 {!! Form::open(['url' => route('dashboard.salary.store'), 'method' => 'POST','files' => true,'id' =>'salary_form', 'class' => 'solid-validation']) !!}
     <x-created-by-field />
-    <x-hidden-building-id />
+
     {!! Form::hidden('autoSalary', false) !!}
     {!! Form::hidden('salary_no', \App\Services\Accounts\VoucherService::getNextVoucherNo('Salary')) !!}
     <div class="row mb-2 mt-2">

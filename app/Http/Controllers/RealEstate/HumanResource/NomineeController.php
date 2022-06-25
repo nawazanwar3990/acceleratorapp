@@ -4,12 +4,11 @@ namespace App\Http\Controllers\RealEstate\HumanResource;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\HumanResource\NomineeRequest;
-use App\Models\RealEstate\HumanResource\Nominee;
-use App\Models\RealEstate\HumanResource\NomineeVerification;
-use App\Models\RealEstate\HumanResource\NomineeWitness;
-use App\Models\RealEstate\Media;
+use App\Models\HumanResource\Nominee;
+use App\Models\HumanResource\NomineeVerification;
+use App\Models\HumanResource\NomineeWitness;
+use App\Models\Media;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class NomineeController extends Controller
 {

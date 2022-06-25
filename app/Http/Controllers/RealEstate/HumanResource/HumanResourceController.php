@@ -4,8 +4,8 @@ namespace App\Http\Controllers\RealEstate\HumanResource;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\HumanResource\HrRequest;
-use App\Models\RealEstate\HumanResource\Hr;
-use App\Models\RealEstate\Media;
+use App\Models\HumanResource\Hr;
+use App\Models\Media;
 use App\Services\Accounts\VoucherService;
 use App\Services\PersonService;
 use App\Services\RealEstate\BuildingService;

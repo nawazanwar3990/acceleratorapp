@@ -3,7 +3,7 @@
 namespace App\Services\RealEstate;
 
 use App\Models\Accounts\AccountHead;
-use App\Models\RealEstate\Definition\General\CommodityType;
+use App\Models\Definition\General\CommodityType;
 
 class CommodityService
 {

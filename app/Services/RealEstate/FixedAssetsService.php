@@ -2,8 +2,8 @@
 
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\FixedAssets\AssetsLocation;
-use App\Models\RealEstate\FixedAssets\AssetsUnit;
+use App\Models\FixedAssets\AssetsLocation;
+use App\Models\FixedAssets\AssetsUnit;
 
 class FixedAssetsService
 {

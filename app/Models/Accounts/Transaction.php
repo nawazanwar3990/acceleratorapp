@@ -3,8 +3,8 @@
 namespace App\Models\Accounts;
 
 use App\Models\Authorization\User;
-use App\Models\RealEstate\Building;
-use App\Models\RealEstate\Flat;
+use App\Models\Building;
+use App\Models\Flat;
 use Awobaz\Compoships\Compoships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

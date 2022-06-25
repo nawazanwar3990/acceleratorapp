@@ -4,9 +4,7 @@ namespace App\Http\Controllers\RealEstate\BuildingUnits;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\BuildingUnits\BuildingRequest;
-use App\Models\RealEstate\Building;
-use App\Models\RealEstate\BuildingServices;
-use App\Models\RealEstate\Floor;
+use App\Models\Building;
 use App\Services\RealEstate\BuildingService;
 use App\Traits\General;
 use Illuminate\Http\Request;

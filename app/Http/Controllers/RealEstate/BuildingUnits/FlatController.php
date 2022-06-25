@@ -4,16 +4,11 @@ namespace App\Http\Controllers\RealEstate\BuildingUnits;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\BuildingUnits\FlatRequest;
-use App\Models\RealEstate\BuildingServices;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\FlatOwner;
-use App\Models\RealEstate\Floor;
-use App\Models\RealEstate\HumanResource\Hr;
-use App\Models\RealEstate\Sales\Sale;
+use App\Models\Flat;
+use App\Models\FlatOwner;
+use App\Models\Sales\Sale;
 use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\FlatService;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class FlatController extends Controller
@@ -65,7 +60,7 @@ class FlatController extends Controller
     public function show($id)
     {
         $this->authorize('view', Flat::class);
-        $records = FlatOwner::with('Hr','flat')->whereBuildingId(BuildingService::getBuildingId())->findOrFail($id);
+        $records = FlatOwner::with('Hr','flat')->findOrFail($id);
 //        $model = Hr::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
         $params = [
             'pageTitle' => __('general.print_flat_owners'),

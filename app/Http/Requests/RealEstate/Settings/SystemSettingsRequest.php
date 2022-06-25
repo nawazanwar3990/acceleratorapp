@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests\RealEstate\Settings;
 
-use App\Models\RealEstate\Settings\SystemSetting;
+use App\Models\Settings\SystemSetting;
 use App\Services\GeneralService;
-use App\Services\RealEstate\BuildingService;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class SystemSettingsRequest extends FormRequest

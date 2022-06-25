@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\Definition;
 
-use App\Models\RealEstate\Definition\FloorType;
+use App\Models\Definition\FloorType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

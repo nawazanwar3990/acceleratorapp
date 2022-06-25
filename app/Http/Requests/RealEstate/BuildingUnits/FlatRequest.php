@@ -4,8 +4,8 @@ namespace App\Http\Requests\RealEstate\BuildingUnits;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\FlatOwner;
+use App\Models\Flat;
+use App\Models\FlatOwner;
 use App\Services\Accounts\VoucherService;
 use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\SellerService;

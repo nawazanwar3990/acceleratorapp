@@ -4,13 +4,12 @@ namespace App\Services\RealEstate;
 
 use App\Enum\TableEnum;
 use App\Models\Accounts\Expense;
-use App\Models\RealEstate\Building;
-use App\Models\RealEstate\BuildingOwner;
-use App\Models\RealEstate\Definition\General\Country;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\Floor;
-use App\Models\RealEstate\Sales\Installment;
-use App\Models\RealEstate\Sales\Sale;
+use App\Models\Building;
+use App\Models\BuildingOwner;
+use App\Models\Flat;
+use App\Models\Floor;
+use App\Models\Sales\Installment;
+use App\Models\Sales\Sale;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -23,31 +22,29 @@ class HomeService
 
     public static function getTotalFlatsCount()
     {
-        return Flat::whereBuildingId(BuildingService::getBuildingId())->count();
+        return Flat::count();
     }
 
     public static function getTotalFloorsCount()
     {
-        return Floor::whereBuildingId(BuildingService::getBuildingId())->count();
+        return Floor::count();
     }
 
     public static function getTotalBuildingsOwnerCount()
     {
-        return BuildingOwner::whereBuildingId(BuildingService::getBuildingId())->count();
+        return BuildingOwner::count();
     }
 
     public static function getTotalSoldFlatsCount()
     {
-        return Flat::whereBuildingId(BuildingService::getBuildingId())
-            ->where('sales_status', '!=', 'open')
+        return Flat::where('sales_status', '!=', 'open')
             ->count();
     }
 
     public static function getExpenceYearData(mixed $monthNumber)
     {
         return Expense::whereMonth('date', $monthNumber)
-            ->whereYear('date',Carbon::now()->year)
-            ->whereBuildingId(BuildingService::getBuildingId())
+            ->whereYear('date', Carbon::now()->year)
             ->whereIsPaid(true)
             ->sum('amount');
     }
@@ -72,14 +69,14 @@ class HomeService
 
     public static function expenceChartYearly()
     {
-        $expensesArray =[];
-        foreach (HomeService::getAllMonthName() as $month){
+        $expensesArray = [];
+        foreach (HomeService::getAllMonthName() as $month) {
             $date = Carbon::createFromFormat('M', $month);
             $monthNumber = $date->format('m');
 
             $data_expence_chart = HomeService::getExpenceYearData($monthNumber);
 
-            $data = array_push($expensesArray,$data_expence_chart);
+            $data = array_push($expensesArray, $data_expence_chart);
         }
         return $expensesArray;
     }
@@ -88,8 +85,8 @@ class HomeService
     {
         $totalDays = Carbon::now()->month($month)->daysInMonth;
         $days = [];
-        for ($i=1;$i<=$totalDays;$i++){
-            array_push($days,$i);
+        for ($i = 1; $i <= $totalDays; $i++) {
+            $days[] = $i;
         }
         return $days;
     }
@@ -97,21 +94,21 @@ class HomeService
     public static function getMonthlyExpenseData($days)
     {
         $data = [];
-        foreach ($days as $day){
+        foreach ($days as $day) {
 
             $chartData = Expense::whereDay('date', $day)
-                ->whereMonth('date',Carbon::now()->month)
-                ->whereBuildingId(BuildingService::getBuildingId())
+                ->whereMonth('date', Carbon::now()->month)
                 ->whereIsPaid(true)
                 ->sum('amount');
 
-            array_push($data,$chartData);
+            $data[] = $chartData;
         }
         return $data;
     }
 
-    public static function salesStatistics($forYear = false) {
-        $records = Sale::whereBuildingId(BuildingService::getBuildingId());
+    public static function salesStatistics($forYear = false)
+    {
+        $records = new Sale();
         if ($forYear === true) {
             $records = $records->whereYear('date', Carbon::today()->year);
         } else {
@@ -127,14 +124,13 @@ class HomeService
         ];
     }
 
-    public static function installmentStatistics() {
-        $recordsCollectable = Installment::whereBuildingId(BuildingService::getBuildingId())
-            ->whereMonth('installment_date', Carbon::today()->month)
+    public static function installmentStatistics()
+    {
+        $recordsCollectable = Installment::whereMonth('installment_date', Carbon::today()->month)
             ->whereYear('installment_date', Carbon::today()->year)
             ->where('status', 'unpaid')->get();
 
-        $recordsCollection = Installment::whereBuildingId(BuildingService::getBuildingId())
-            ->whereMonth('installment_date', Carbon::today()->month)
+        $recordsCollection = Installment::whereMonth('installment_date', Carbon::today()->month)
             ->whereYear('installment_date', Carbon::today()->year)
             ->where('status', 'paid')->get();
 
@@ -149,9 +145,9 @@ class HomeService
 
     }
 
-    public static function latestSales() {
+    public static function latestSales()
+    {
         return DB::table(TableEnum::SALES . ' as s')
-            ->where('s.building_id', BuildingService::getBuildingId())
             ->join(TableEnum::FLATS . ' as f', 'f.id', 's.flat_id')
             ->select('s.transfer_no', 's.date', 's.after_discount_amount', 'f.flat_name')
             ->orderBy('s.date', 'DESC')->take(10)->get();

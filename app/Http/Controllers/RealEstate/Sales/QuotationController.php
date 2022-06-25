@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\RealEstate\Sales;
 
-use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Sales\QuotationRequest;
-use App\Models\RealEstate\Sales\Quotation;
+use App\Models\Sales\Quotation;
 use App\Services\RealEstate\BuildingService;
-use Illuminate\Http\Request;
 
 class QuotationController extends Controller
 {

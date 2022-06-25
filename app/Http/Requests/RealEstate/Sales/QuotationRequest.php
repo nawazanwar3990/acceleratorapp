@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\RealEstate\Sales;
 
-use App\Models\RealEstate\Sales\Quotation;
-use App\Models\RealEstate\Sales\QuotationInstallment;
+use App\Models\Sales\Quotation;
+use App\Models\Sales\QuotationInstallment;
 use App\Services\RealEstate\BuildingService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;

@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\HrTaxTypeRequest;
-use App\Models\RealEstate\Definition\HumanResource\HrTaxType;
-use Illuminate\Http\Request;
+use App\Models\Definition\HumanResource\HrTaxType;
 
 class HrTaxTypeController extends Controller
 {

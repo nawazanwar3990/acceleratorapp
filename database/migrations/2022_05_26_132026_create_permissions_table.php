@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create(TableEnum::PERMISSIONS, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+
             $table->string('name')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->string('function_name')->nullable();

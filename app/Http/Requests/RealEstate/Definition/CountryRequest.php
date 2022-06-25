@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\Definition;
 
-use App\Models\RealEstate\Definition\General\Country;
+use App\Models\Definition\General\Country;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

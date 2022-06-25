@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RealEstate\Sales;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Sales\InstallmentTermRequest;
-use App\Models\RealEstate\Sales\InstallmentTerm;
+use App\Models\Sales\InstallmentTerm;
 use App\Services\RealEstate\BuildingService;
 use Illuminate\Http\Request;
 

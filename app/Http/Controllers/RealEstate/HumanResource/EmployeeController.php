@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RealEstate\HumanResource;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\HumanResource\EmployeeRequest;
-use App\Models\RealEstate\HumanResource\Employee;
+use App\Models\HumanResource\Employee;
 use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\EmployeeService;
 use Illuminate\Http\Request;

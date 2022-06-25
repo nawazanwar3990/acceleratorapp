@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\RealEstate\Media;
+use App\Models\Media;
 
 class EventService
 {

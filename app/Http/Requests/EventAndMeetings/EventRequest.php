@@ -3,7 +3,7 @@
 namespace App\Http\Requests\EventAndMeetings;
 
 use App\Models\EventAndMeetings\Event;
-use App\Models\RealEstate\Media;
+use App\Models\Media;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

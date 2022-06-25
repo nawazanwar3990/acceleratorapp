@@ -3,7 +3,7 @@
 namespace App\Models\Accounts;
 
 use App\Models\Authorization\User;
-use App\Models\RealEstate\Building;
+use App\Models\Building;
 use Awobaz\Compoships\Compoships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

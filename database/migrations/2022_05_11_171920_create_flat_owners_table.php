@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('percentage')->nullable();
             $table->boolean('status')->default(false);
             $table->foreignId('sale_id')->nullable()->constrained(TableEnum::SALES);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+
             $table->timestamps();
         });
     }

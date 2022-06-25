@@ -2,7 +2,7 @@
 namespace App\Services\RealEstate;
 
 
-use App\Models\RealEstate\Definition\General\Province;
+use App\Models\Definition\General\Province;
 
 class ProvinceService
 {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\FlatTypeRequest;
-use App\Models\RealEstate\Definition\General\FlatType;
+use App\Models\Definition\General\FlatType;
 
 class FlatTypeController extends Controller
 {

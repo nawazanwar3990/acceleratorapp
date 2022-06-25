@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\FrontDesk;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\ComplainRequest;
-use App\Models\RealEstate\FrontDesk\Complain;
+use App\Models\FrontDesk\Complain;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class ComplainController extends Controller
 {

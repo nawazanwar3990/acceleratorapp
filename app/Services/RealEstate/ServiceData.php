@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Definition\Service;
+use App\Models\Definition\Service;
 
 class ServiceData
 {

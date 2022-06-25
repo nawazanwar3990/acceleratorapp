@@ -19,9 +19,6 @@ class AccountsService
 
     public static function generalLedger($request) {
         $heads = AccountHead::where('IsGL',1)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
             ->orderByRaw('PHeadName ASC, HeadName ASC')->get();
         $generalHeads = self::generalHeadsDropDown($heads);
 

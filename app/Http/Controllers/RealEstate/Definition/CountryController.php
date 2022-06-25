@@ -4,8 +4,8 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\CountryRequest;
-use App\Models\RealEstate\Definition\General\Country;
-use App\Models\RealEstate\Definition\General\Province;
+use App\Models\Definition\General\Country;
+use App\Models\Definition\General\Province;
 use App\Services\GeneralService;
 use Illuminate\Http\Request;
 

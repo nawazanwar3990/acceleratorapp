@@ -10,7 +10,6 @@ use App\Models\Devices\DeviceMake;
 use App\Models\Devices\DeviceModel;
 use App\Models\Devices\DeviceOperatingSystem;
 use App\Models\Devices\DeviceType;
-use App\Models\RealEstate\Definition\HumanResource\HrBusiness;
 
 class DefinitionService
 {

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Accounts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Accounts\SalaryRequest;
 use App\Models\Accounts\Salary;
-use App\Models\RealEstate\HumanResource\Employee;
 use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\EmployeeService;
 use App\Services\RealEstate\SalaryService;

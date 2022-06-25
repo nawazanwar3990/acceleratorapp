@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\PurposeRequest;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Purpose;
-use Illuminate\Http\Request;
+use App\Models\FrontDesk\FrontDeskSetup\Purpose;
 
 class PurposeController extends Controller
 {

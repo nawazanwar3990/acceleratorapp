@@ -4,7 +4,6 @@ namespace App\Services\RealEstate;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\HumanResource\Hr;
 use App\Services\Accounts\QueryService;
 use App\Services\GeneralService;
 use Illuminate\Support\Facades\Auth;

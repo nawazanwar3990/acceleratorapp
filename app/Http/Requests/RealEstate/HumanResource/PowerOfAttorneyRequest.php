@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\RealEstate\HumanResource;
 
-use App\Models\RealEstate\HumanResource\PowerOfAttorney;
-use App\Models\RealEstate\HumanResource\PowerOfAttorneyVerification;
-use App\Models\RealEstate\HumanResource\PowerOfAttorneyWitness;
-use App\Models\RealEstate\Media;
+use App\Models\HumanResource\PowerOfAttorney;
+use App\Models\HumanResource\PowerOfAttorneyVerification;
+use App\Models\HumanResource\PowerOfAttorneyWitness;
+use App\Models\Media;
 use App\Services\RealEstate\BuildingService;
+use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\General;
 
 class PowerOfAttorneyRequest extends FormRequest
 {

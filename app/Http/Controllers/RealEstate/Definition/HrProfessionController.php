@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\HrProfessionRequest;
-use App\Models\RealEstate\Definition\HumanResource\HrProfession;
-use Illuminate\Http\Request;
+use App\Models\Definition\HumanResource\HrProfession;
 
 class HrProfessionController extends Controller
 {

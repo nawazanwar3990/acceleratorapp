@@ -5,10 +5,9 @@ namespace App\Services;
 use App\Enum\TableEnum;
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\Broker;
+use App\Models\Broker;
 use App\Services\Accounts\QueryService;
 use App\Services\RealEstate\BuildingService;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ReportService
@@ -37,21 +36,15 @@ class ReportService
 
     public static function profitLossReport($request) {
         $oResultAssetOtherIncome = AccountHead::where('HeadType','I')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->whereNotIn('HeadCode',[303])
             ->get();
 
         $oResultLiability = AccountHead::where('HeadType','E')->where('HeadCode','<>',402)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         $oResultClosingInventory = AccountHead::where('HeadName','Inventory')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
 
         return ['oResultAssetOtherIncome' => $oResultAssetOtherIncome, 'oResultLiability' => $oResultLiability, 'oResultClosingInventory' => $oResultClosingInventory];

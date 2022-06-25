@@ -4,10 +4,10 @@ namespace App\Http\Controllers\RealEstate\HumanResource;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\HumanResource\PowerOfAttorneyRequest;
-use App\Models\RealEstate\HumanResource\PowerOfAttorney;
-use App\Models\RealEstate\HumanResource\PowerOfAttorneyVerification;
-use App\Models\RealEstate\HumanResource\PowerOfAttorneyWitness;
-use App\Models\RealEstate\Media;
+use App\Models\HumanResource\PowerOfAttorney;
+use App\Models\HumanResource\PowerOfAttorneyVerification;
+use App\Models\HumanResource\PowerOfAttorneyWitness;
+use App\Models\Media;
 use App\Traits\General;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Settings\SystemSettingsRequest;
-use App\Models\RealEstate\Settings\SystemSetting;
+use App\Models\Settings\SystemSetting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class SettingsController extends Controller
 {

@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\RealEstate\Accounts;
 
-use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Models\RealEstate\Sales\Sale;
 use App\Services\Accounts\BalanceSheetService;
 use App\Services\RealEstate\BrokerService;
-use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\SalesService;
 use App\Services\ReportService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {

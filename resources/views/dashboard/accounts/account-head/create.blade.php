@@ -9,7 +9,7 @@
                 @include('components.General.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.save.account-head'), 'method' => 'POST','files' => true,'id' =>'account_head_form', 'class' => 'solid-validation']) !!}
-                    <x-hidden-building-id />
+
                     <x-created-by-field />
                     @include('dashboard.accounts.account-head.fields')
                     <x-buttons :save="true" :reset="true" formID="account_head_form"/>

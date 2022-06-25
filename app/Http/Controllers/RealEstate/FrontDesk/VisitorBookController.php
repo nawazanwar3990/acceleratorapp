@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\FrontDesk;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\VisitorBookRequest;
-use App\Models\RealEstate\FrontDesk\VisitorBook;
+use App\Models\FrontDesk\VisitorBook;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class VisitorBookController extends Controller
 {

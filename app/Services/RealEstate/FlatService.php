@@ -2,12 +2,11 @@
 
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Definition\General\FlatType;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\FlatOwner;
-use App\Models\RealEstate\Sales\Sale;
+use App\Models\Definition\General\FlatType;
+use App\Models\Flat;
+use App\Models\FlatOwner;
+use App\Models\Sales\Sale;
 use App\Services\GeneralService;
-use Illuminate\Support\Facades\DB;
 
 class FlatService
 {

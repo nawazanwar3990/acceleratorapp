@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\CallTypeRequest;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\CallType;
-use Illuminate\Http\Request;
+use App\Models\FrontDesk\FrontDeskSetup\CallType;
 
 class CallTypeController extends Controller
 {

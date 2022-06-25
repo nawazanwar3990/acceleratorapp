@@ -5,7 +5,7 @@ namespace App\Services\RealEstate;
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Salary;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\HumanResource\Employee;
+use App\Models\HumanResource\Employee;
 use App\Services\GeneralService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;

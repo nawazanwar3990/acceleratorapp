@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\RealEstate;
 
-use \App\Models\RealEstate\Definition\General\District;
+use App\Models\Definition\General\District;
 
 class DistrictService
 {

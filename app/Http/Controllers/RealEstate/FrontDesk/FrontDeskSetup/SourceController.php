@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\SourceRequest;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Source;
-use Illuminate\Http\Request;
+use App\Models\FrontDesk\FrontDeskSetup\Source;
 
 class SourceController extends Controller
 {

@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\FrontDesk\FrontDeskSetup;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\ReferenceRequest;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Reference;
-use Illuminate\Http\Request;
+use App\Models\FrontDesk\FrontDeskSetup\Reference;
 
 class ReferenceController extends Controller
 {

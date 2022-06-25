@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\RealEstate\HumanResource;
 
-use App\Models\RealEstate\HumanResource\Nominee;
-use App\Models\RealEstate\HumanResource\NomineeVerification;
-use App\Models\RealEstate\HumanResource\NomineeWitness;
-use App\Models\RealEstate\Media;
+use App\Models\HumanResource\Nominee;
+use App\Models\HumanResource\NomineeVerification;
+use App\Models\HumanResource\NomineeWitness;
+use App\Models\Media;
 use App\Services\RealEstate\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;

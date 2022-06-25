@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\HumanResource;
 
-use App\Models\RealEstate\HumanResource\Employee;
+use App\Models\HumanResource\Employee;
 use App\Services\RealEstate\EmployeeService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

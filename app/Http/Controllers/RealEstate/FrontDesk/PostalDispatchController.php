@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\FrontDesk;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\PostalDispatchRequest;
-use App\Models\RealEstate\FrontDesk\PostalDispatch;
+use App\Models\FrontDesk\PostalDispatch;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class PostalDispatchController extends Controller
 {

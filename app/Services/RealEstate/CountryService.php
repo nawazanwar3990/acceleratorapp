@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Definition\General\Country;
+use App\Models\Definition\General\Country;
 
 class CountryService
 {

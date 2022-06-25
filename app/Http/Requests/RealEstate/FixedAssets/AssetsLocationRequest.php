@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\FixedAssets;
 
-use App\Models\RealEstate\FixedAssets\AssetsLocation;
+use App\Models\FixedAssets\AssetsLocation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

@@ -40,6 +40,6 @@ class Permission extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class)->withPivot('building_id');
+        return $this->belongsToMany(Role::class);
     }
 }

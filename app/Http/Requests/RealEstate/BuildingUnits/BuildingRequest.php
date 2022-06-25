@@ -3,11 +3,11 @@
 namespace App\Http\Requests\RealEstate\BuildingUnits;
 
 use App\Enum\TableEnum;
-use App\Models\RealEstate\Building;
-use App\Models\RealEstate\BuildingOwner;
-use App\Models\RealEstate\BuildingServices;
-use App\Models\RealEstate\HumanResource\Hr;
-use App\Models\RealEstate\Media;
+use App\Models\Building;
+use App\Models\BuildingOwner;
+use App\Models\BuildingServices;
+use App\Models\HumanResource\Hr;
+use App\Models\Media;
 use App\Services\RealEstate\BuildingService;
 use App\Services\SeederService;
 use App\Traits\General;

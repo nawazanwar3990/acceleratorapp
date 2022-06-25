@@ -19,7 +19,7 @@
                         <hr>
                     </div>
                     <div class="col-md-12">
-                        @include('dashboard.real-estate.common.single-hr-picker',
+                        @include('dashboard.common.single-hr-picker',
                             [
                                 'fieldName' => 'owner_hr_id',
                                 'for' => 'edit',
@@ -34,7 +34,7 @@
                         <hr>
                     </div>
                     <div class="col-md-12">
-                        @include('dashboard.real-estate.common.single-hr-picker',
+                        @include('dashboard.common.single-hr-picker',
                             [
                                 'fieldName' => 'nominee_hr_id',
                                 'for' => 'edit',

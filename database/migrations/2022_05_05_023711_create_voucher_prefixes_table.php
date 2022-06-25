@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('prefix')->nullable();
             $table->BigInteger('number')->nullable();
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+
             $table->timestamps();
         });
     }

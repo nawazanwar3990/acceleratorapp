@@ -4,7 +4,7 @@ namespace App\Services\RealEstate;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\Broker;
+use App\Models\Broker;
 use App\Services\Accounts\QueryService;
 use App\Services\GeneralService;
 use Carbon\Carbon;

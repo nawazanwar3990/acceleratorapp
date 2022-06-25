@@ -9,7 +9,7 @@
                 @include('components.General.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.employee-loan.store'), 'method' => 'POST','files' => true,'id' =>'loan_form', 'class' => 'solid-validation']) !!}
-                        <x-hidden-building-id />
+
                         <x-created-by-field />
                         @include('dashboard.accounts.employee-loan.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"

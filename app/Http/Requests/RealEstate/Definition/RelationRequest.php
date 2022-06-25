@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\Definition;
 
-use App\Models\RealEstate\Definition\HumanResource\HrRelation;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use App\Models\Definition\HumanResource\HrRelation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

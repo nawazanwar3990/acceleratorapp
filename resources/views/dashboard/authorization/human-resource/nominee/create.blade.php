@@ -10,7 +10,7 @@
                 @include('components.General.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.nominee.store'), 'method' => 'POST','files' => true,'id' =>'nominee_form', 'class' => 'solid-validation']) !!}
-                    <x-hidden-building-id />
+
                     <x-created-by-field />
                     @include('dashboard.authorization.human-resource.nominee.fields')
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
@@ -20,6 +20,6 @@
             </div>
         </div>
     </div>
-    @include('dashboard.real-estate.common.hr-picker-modal')
+    @include('dashboard.common.hr-picker-modal')
 @endsection
 @include('dashboard.authorization.human-resource.nominee.components.scripts')

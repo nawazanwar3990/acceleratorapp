@@ -15,7 +15,7 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::ROLE_PERMISSION, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+
             $table->foreignId('role_id')->nullable()->constrained(TableEnum::ROLES);
             $table->foreignId('permission_id')->nullable()->constrained(TableEnum::PERMISSIONS);
             $table->timestamps();

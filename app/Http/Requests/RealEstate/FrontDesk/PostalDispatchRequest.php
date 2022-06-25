@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\RealEstate\FrontDesk;
 
-use App\Models\RealEstate\FrontDesk\PostalDispatch;
-use App\Models\RealEstate\Media;
+use App\Models\FrontDesk\PostalDispatch;
+use App\Models\Media;
 use App\Services\RealEstate\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;

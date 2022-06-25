@@ -33,7 +33,6 @@ class ExpenseService
             'depreciation_rate'=> '1',
             'account_id'       => $expenseModel->id,
             'account_type'     => 'expense',
-            'building_id'      => BuildingService::getBuildingId(),
             'created_by'       => Auth::user()->id,
             'updated_by'       => Auth::user()->id,
         ]);

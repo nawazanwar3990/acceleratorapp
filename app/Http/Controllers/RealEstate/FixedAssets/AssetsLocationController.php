@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\FixedAssets;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FixedAssets\AssetsLocationRequest;
-use App\Models\RealEstate\FixedAssets\AssetsLocation;
-use Illuminate\Http\Request;
+use App\Models\FixedAssets\AssetsLocation;
 
 class AssetsLocationController extends Controller
 {

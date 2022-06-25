@@ -4,8 +4,8 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\DistrictRequest;
-use App\Models\RealEstate\Definition\General\District;
-use App\Models\RealEstate\Definition\General\Tehsil;
+use App\Models\Definition\General\District;
+use App\Models\Definition\General\Tehsil;
 use App\Services\GeneralService;
 use Illuminate\Http\Request;
 

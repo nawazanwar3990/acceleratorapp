@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\FrontDesk;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\PostalReceiveRequest;
-use App\Models\RealEstate\FrontDesk\PostalReceive;
+use App\Models\FrontDesk\PostalReceive;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class PostalReceiveController extends Controller
 {

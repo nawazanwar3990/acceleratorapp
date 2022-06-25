@@ -4,8 +4,8 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\TehsilRequest;
-use App\Models\RealEstate\Definition\General\Colony;
-use App\Models\RealEstate\Definition\General\Tehsil;
+use App\Models\Definition\General\Colony;
+use App\Models\Definition\General\Tehsil;
 use App\Services\GeneralService;
 use Illuminate\Http\Request;
 

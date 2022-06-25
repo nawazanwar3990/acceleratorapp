@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\RealEstate\FixedAssets;
 
-use App\Models\RealEstate\FixedAssets\AssetsInventory;
-use App\Models\RealEstate\Media;
+use App\Models\FixedAssets\AssetsInventory;
+use App\Models\Media;
 use App\Services\RealEstate\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;

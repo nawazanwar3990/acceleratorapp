@@ -12,46 +12,30 @@ class BalanceSheetService
 
     public static function balanceSheetReport($request) {
         $fixedAssets = AccountHead::where('PHeadName', 'Assets')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         $liabilities = AccountHead::where('PHeadName', 'Liabilities')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         $expenses = AccountHead::where('PHeadName', 'Expense')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         $equityCapital = AccountHead::where('PHeadName', 'Capital')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         $equityDrawings = AccountHead::where('PHeadName', 'Drawings')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         /* just for p&l */
         $oResultAsset = AccountHead::where('HeadType', 'I')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
         $oResultLiability = AccountHead::where('HeadType', 'E')->where('HeadCode', '<>', 402)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->get();
 
         $oResultAssetOtherIncome = AccountHead::where('HeadType', 'I')
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->whereNotIn('HeadCode', [303])
             ->get();
 

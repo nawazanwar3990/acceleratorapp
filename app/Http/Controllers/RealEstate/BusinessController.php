@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\BusinessRequest;
-use App\Models\RealEstate\Business;
+use App\Models\Business;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class BusinessController extends Controller
 {

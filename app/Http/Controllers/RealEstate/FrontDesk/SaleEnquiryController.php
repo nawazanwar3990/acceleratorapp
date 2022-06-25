@@ -4,8 +4,7 @@ namespace App\Http\Controllers\RealEstate\FrontDesk;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FrontDesk\SaleEnquiryRequest;
-use App\Models\RealEstate\FrontDesk\SaleEnquiry;
-use Illuminate\Http\Request;
+use App\Models\FrontDesk\SaleEnquiry;
 
 class SaleEnquiryController extends Controller
 {

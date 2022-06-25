@@ -2,8 +2,8 @@
 
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Sales\InstallmentPlan;
-use App\Models\RealEstate\Sales\InstallmentTerm;
+use App\Models\Sales\InstallmentPlan;
+use App\Models\Sales\InstallmentTerm;
 
 class InstallmentService
 {

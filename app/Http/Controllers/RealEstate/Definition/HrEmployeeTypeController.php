@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\HrEmployeeTypeRequest;
-use App\Models\RealEstate\Definition\HumanResource\HrEmployeeType;
+use App\Models\Definition\HumanResource\HrEmployeeType;
 use App\Services\RealEstate\BuildingService;
-use Illuminate\Http\Request;
 
 class HrEmployeeTypeController extends Controller
 {

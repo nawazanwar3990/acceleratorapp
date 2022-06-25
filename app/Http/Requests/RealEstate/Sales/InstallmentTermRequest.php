@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\Sales;
 
-use App\Models\RealEstate\Sales\InstallmentTerm;
+use App\Models\Sales\InstallmentTerm;
 use App\Services\RealEstate\BuildingService;
 use Illuminate\Foundation\Http\FormRequest;
 

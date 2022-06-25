@@ -4,9 +4,8 @@ namespace App\Http\Controllers\RealEstate\FixedAssets;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\FixedAssets\AssetsInventoryRequest;
-use App\Models\RealEstate\FixedAssets\AssetsInventory;
+use App\Models\FixedAssets\AssetsInventory;
 use App\Traits\General;
-use Illuminate\Http\Request;
 
 class AssetsInventoryController extends Controller
 {

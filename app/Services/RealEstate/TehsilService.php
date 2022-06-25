@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Definition\General\Tehsil;
+use App\Models\Definition\General\Tehsil;
 
 class TehsilService
 {

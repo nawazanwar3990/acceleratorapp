@@ -28,6 +28,6 @@
             </div>
         </div>
     </div>
-    @include('dashboard.real-estate.common.hr-picker-modal')
+    @include('dashboard.common.hr-picker-modal')
 @endsection
 @include('dashboard.authorization.human-resource.power-of-attorney.components.script')

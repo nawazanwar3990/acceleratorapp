@@ -1,6 +1,6 @@
 {!! Form::open(['url' => route('dashboard.salary.store'), 'method' => 'POST','files' => true,'id' =>'auto_salary_form']) !!}
     <x-created-by-field />
-    <x-hidden-building-id />
+
     {!! Form::hidden('autoSalary', true) !!}
 
     <div class="row mb-2 mt-2">

@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Accounts;
 
 use App\Models\Accounts\Salary;
-use App\Models\RealEstate\HumanResource\Employee;
+use App\Models\HumanResource\Employee;
 use App\Services\Accounts\VoucherService;
 use App\Services\GeneralService;
 use App\Services\RealEstate\BuildingService;

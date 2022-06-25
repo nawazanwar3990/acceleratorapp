@@ -11,16 +11,14 @@ use App\Http\Requests\RealEstate\Accounts\DebitVoucherRequest;
 use App\Http\Requests\RealEstate\Accounts\OpeningBalanceVoucherRequest;
 use App\Http\Requests\RealEstate\Accounts\SellerPaymentVoucherRequest;
 use App\Models\Accounts\AccountHead;
-use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\Broker;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\FlatOwner;
-use App\Models\RealEstate\Sales\Installment;
+use App\Models\Broker;
+use App\Models\Flat;
+use App\Models\FlatOwner;
+use App\Models\Sales\Installment;
 use App\Services\Accounts\AccountsService;
 use App\Services\GeneralService;
 use App\Services\RealEstate\BuildingService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class VoucherController extends Controller
 {
@@ -126,9 +124,7 @@ class VoucherController extends Controller
     public function debitVoucher() {
 
         $heads = AccountHead::where('IsActive',1)->where('IsTransaction',1)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->orderByRaw('PHeadName ASC, HeadName ASC')->get();
         $accountHeads = AccountsService::generalHeadsDropDown($heads);
 
@@ -158,9 +154,7 @@ class VoucherController extends Controller
 
     public function creditVoucher() {
         $heads = AccountHead::where('IsActive',1)->where('IsTransaction',1)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->orderByRaw('PHeadName ASC, HeadName ASC')->get();
         $accountHeads = AccountsService::generalHeadsDropDown($heads);
 
@@ -190,9 +184,7 @@ class VoucherController extends Controller
 
     public function openingBalanceVoucher() {
         $heads = AccountHead::where('IsActive',1)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->orderByRaw('PHeadName ASC, HeadName ASC')->get();
         $accountHeads = AccountsService::generalHeadsDropDown($heads);
 

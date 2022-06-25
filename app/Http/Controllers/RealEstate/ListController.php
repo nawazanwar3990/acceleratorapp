@@ -4,11 +4,9 @@ namespace App\Http\Controllers\RealEstate;
 
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Models\Accounts\AccountHead;
-use App\Models\RealEstate\Broker;
-use App\Models\RealEstate\FlatOwner;
+use App\Models\Broker;
+use App\Models\FlatOwner;
 use App\Services\RealEstate\BuildingService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ListController extends Controller

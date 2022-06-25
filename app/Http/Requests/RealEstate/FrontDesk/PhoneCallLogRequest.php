@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\FrontDesk;
 
-use App\Models\RealEstate\FrontDesk\PhoneCallLog;
+use App\Models\FrontDesk\PhoneCallLog;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\CommodityTypeRequest;
-use App\Models\RealEstate\Definition\General\CommodityType;
+use App\Models\Definition\General\CommodityType;
 use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\CommodityService;
 use Illuminate\Http\Request;

@@ -10,7 +10,6 @@
                 @include('components.General.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.employees.store'), 'method' => 'POST','files' => true,'id' =>'employee_form', 'class' => 'solid-validation']) !!}
-                    <x-hidden-building-id />
                     <x-created-by-field />
                     @include('dashboard.authorization.human-resource.employee.fields')
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
@@ -20,14 +19,14 @@
             </div>
         </div>
     </div>
-    @include('dashboard.real-estate.common.hr-picker-modal')
+    @include('dashboard.common.hr-picker-modal')
 @endsection
 @section('inner-script-files')
     <script src="{{ url('plugins/select2/js/select2.min.js') }}" type="text/javascript"></script>
     @include('includes.datatable-js')
 @endsection
 @section('innerScript')
-    @include('dashboard.real-estate.common.hr-picker-script')
+    @include('dashboard.common.hr-picker-script')
     <script>
         $(function () {
             $('.select2').select2();

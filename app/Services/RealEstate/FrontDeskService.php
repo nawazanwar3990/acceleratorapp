@@ -3,11 +3,11 @@
 namespace App\Services\RealEstate;
 
 
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\CallType;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\ComplainType;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Purpose;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Reference;
-use App\Models\RealEstate\FrontDesk\FrontDeskSetup\Source;
+use App\Models\FrontDesk\FrontDeskSetup\CallType;
+use App\Models\FrontDesk\FrontDeskSetup\ComplainType;
+use App\Models\FrontDesk\FrontDeskSetup\Purpose;
+use App\Models\FrontDesk\FrontDeskSetup\Reference;
+use App\Models\FrontDesk\FrontDeskSetup\Source;
 
 class FrontDeskService
 {

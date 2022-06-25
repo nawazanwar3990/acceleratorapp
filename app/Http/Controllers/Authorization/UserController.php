@@ -6,7 +6,7 @@ use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Authorization\UserRequest;
 use App\Models\Authorization\User;
-use App\Models\RealEstate\HumanResource\Hr;
+use App\Models\HumanResource\Hr;
 use App\Services\RealEstate\BuildingService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;

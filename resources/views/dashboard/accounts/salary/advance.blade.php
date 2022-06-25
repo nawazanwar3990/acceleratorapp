@@ -10,7 +10,7 @@
                 <div class="card-body" style="overflow-x:auto">
                     {!! Form::open(['url' => route('dashboard.salary.save-advance'), 'method' => 'POST','files' => true,'id' =>'salary_form', 'class' => 'solid-validation']) !!}
                         <x-created-by-field />
-                        <x-hidden-building-id />
+
                         {!! Form::hidden('salary_no', \App\Services\Accounts\VoucherService::getNextVoucherNo('Salary')) !!}
                         {!! Form::hidden('salaryType', 'advance') !!}
                         @include('dashboard.accounts.salary.advance-fields')

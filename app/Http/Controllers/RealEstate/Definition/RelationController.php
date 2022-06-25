@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\RealEstate\Definition;
 
-use App\Enum\TableHeadings\Definition\Relation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\RelationRequest;
-use App\Models\RealEstate\Definition\HumanResource\HrRelation;
-use Illuminate\Http\Request;
+use App\Models\Definition\HumanResource\HrRelation;
 
 class RelationController extends Controller
 {

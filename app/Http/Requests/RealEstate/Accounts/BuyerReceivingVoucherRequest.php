@@ -4,9 +4,9 @@ namespace App\Http\Requests\RealEstate\Accounts;
 
 use App\Models\Accounts\AccountHead;
 use App\Models\Accounts\Transaction;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\FlatOwner;
-use App\Models\RealEstate\Sales\Sale;
+use App\Models\Flat;
+use App\Models\FlatOwner;
+use App\Models\Sales\Sale;
 use App\Services\GeneralService;
 use App\Services\RealEstate\BuildingService;
 use App\Services\RealEstate\SalesService;

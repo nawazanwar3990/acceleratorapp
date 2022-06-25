@@ -1,9 +1,9 @@
 <?php
 namespace App\Services\RealEstate;
 
-use App\Models\RealEstate\Definition\FloorType;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\Floor;
+use App\Models\Definition\FloorType;
+use App\Models\Flat;
+use App\Models\Floor;
 
 class FloorService
 {

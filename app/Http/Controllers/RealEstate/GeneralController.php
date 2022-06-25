@@ -3,23 +3,20 @@
 namespace App\Http\Controllers\RealEstate;
 
 use App\Enum\KeyWordEnum;
-use App\Enum\ModuleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Accounts\AccountHeadRequest;
 use App\Models\Accounts\AccountHead;
-use App\Models\RealEstate\Building;
-use App\Models\RealEstate\Flat;
-use App\Models\RealEstate\FlatOwner;
-use App\Models\RealEstate\HumanResource\Hr;
-use App\Models\RealEstate\HumanResource\Nominee;
-use App\Models\RealEstate\Sales\Installment;
-use App\Models\RealEstate\Sales\InstallmentPlan;
-use App\Models\RealEstate\Sales\Sale;
+use App\Models\Flat;
+use App\Models\FlatOwner;
+use App\Models\HumanResource\Hr;
+use App\Models\HumanResource\Nominee;
+use App\Models\Sales\Installment;
+use App\Models\Sales\InstallmentPlan;
+use App\Models\Sales\Sale;
 use App\Services\Accounts\AccountsService;
 use App\Services\GeneralService;
 use App\Services\RealEstate\BrokerService;
 use App\Services\RealEstate\BuildingService;
-use App\Services\RealEstate\FlatService;
 use App\Services\RealEstate\SalesService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -114,7 +111,7 @@ class GeneralController extends Controller
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $salesID = $request->get('salesID');
-            $salesRecord = Sale::with('installments')->whereBuildingId(BuildingService::getBuildingId())->findorFail($salesID);
+            $salesRecord = Sale::with('installments')->findorFail($salesID);
             $totalAmount = $salesRecord->after_discount_amount;
             $received = SalesService::salesReceivedAmount($salesID);
             $receivedAmount = $received['received'];
@@ -301,9 +298,7 @@ class GeneralController extends Controller
 
     public function createAccountHead() {
         $heads = AccountHead::where('IsGL',1)
-            ->where(function ($query) {
-                $query->whereNull('building_id')->orWhere('building_id', BuildingService::getBuildingId());
-            })
+
             ->orderByRaw('PHeadName ASC, HeadName ASC')->get();
 
         $parentHeads = AccountsService::generalHeadsDropDown($heads);

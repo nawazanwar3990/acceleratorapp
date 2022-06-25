@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests\RealEstate\Definition;
 
-use App\Models\RealEstate\Definition\Service;
-use App\Services\RealEstate\BuildingService;
+use App\Models\Definition\Service;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

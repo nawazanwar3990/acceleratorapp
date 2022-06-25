@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\RealEstate\FrontDesk;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\FrontDesk\FrontDeskSetup\CallTypeRequest;
 use App\Http\Requests\RealEstate\FrontDesk\PhoneCallLogRequest;
-use App\Models\RealEstate\FrontDesk\PhoneCallLog;
-use Illuminate\Http\Request;
+use App\Models\FrontDesk\PhoneCallLog;
 
 class PhoneCallLogController extends Controller
 {

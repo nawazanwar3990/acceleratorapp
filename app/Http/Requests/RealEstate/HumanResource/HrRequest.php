@@ -3,8 +3,8 @@
 namespace App\Http\Requests\RealEstate\HumanResource;
 
 use App\Enum\TableEnum;
-use App\Models\RealEstate\HumanResource\Hr;
-use App\Models\RealEstate\Media;
+use App\Models\HumanResource\Hr;
+use App\Models\Media;
 use App\Services\Accounts\VoucherService;
 use App\Services\RealEstate\BuildingService;
 use App\Traits\General;

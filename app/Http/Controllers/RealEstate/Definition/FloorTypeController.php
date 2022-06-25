@@ -4,9 +4,7 @@ namespace App\Http\Controllers\RealEstate\Definition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealEstate\Definition\FloorTypeRequest;
-use App\Models\RealEstate\Definition\FloorType;
-use App\Services\RealEstate\BuildingService;
-use Illuminate\Http\Request;
+use App\Models\Definition\FloorType;
 
 class FloorTypeController extends Controller
 {

@@ -12,7 +12,7 @@
                 <div class="card-body border-top">
                     {!! Form::open(['route' => 'dashboard.poa.store' ,'files' => true, 'id' => 'poa_form','method'=>'post','class' => 'solid-validation']) !!}
                     {!! csrf_field() !!}
-                    <x-hidden-building-id />
+
                     <x-created-by-field />
                         @include('dashboard.authorization.human-resource.power-of-attorney.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
@@ -22,6 +22,6 @@
             </div>
         </div>
     </div>
-    @include('dashboard.real-estate.common.hr-picker-modal')
+    @include('dashboard.common.hr-picker-modal')
 @endsection
 @include('dashboard.authorization.human-resource.power-of-attorney.components.script')
