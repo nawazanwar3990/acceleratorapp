@@ -18,7 +18,6 @@ class FlatOwner extends Model
         'percentage',
         'status',
         'sale_id',
-        'building_id',
     ];
 
 

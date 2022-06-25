@@ -25,7 +25,7 @@ class Employee extends Model
         'designation_id',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
     public function createdBy(): BelongsTo

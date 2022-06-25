@@ -17,7 +17,7 @@ class DeviceClass extends Model
 
     protected $table = TableEnum::DEVICE_CLASSES;
     protected $fillable = [
-        'building_id',
+
         'device_make_id',
         'name',
         'slug'

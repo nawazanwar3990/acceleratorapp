@@ -140,7 +140,7 @@ class Hr extends Model
         'rfid',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
     public function user(): HasOne

@@ -36,7 +36,7 @@ class InstallmentPlan extends Model
         'third_penalty_charges',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

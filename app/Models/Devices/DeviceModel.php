@@ -16,7 +16,7 @@ class DeviceModel extends Model
     use HasFactory, SoftDeletes;
     protected $table = TableEnum::DEVICE_MODELS;
     protected $fillable = [
-        'building_id',
+
         'device_make_id',
         'name',
         'slug'

@@ -15,7 +15,7 @@ class BuildingOwner extends Model
 
     protected $fillable = [
         'hr_id',
-        'building_id',
+
         'created_by',
         'updated_by',
     ];

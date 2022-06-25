@@ -24,7 +24,7 @@ class Expense extends Model
         'description',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

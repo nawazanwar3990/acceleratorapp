@@ -20,7 +20,7 @@ class FiscalYear extends Model
         'period_end_date',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Authorization\User;
 use App\Models\Definition\General\FlatType;
-use App\Models\RealEstate\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -46,7 +46,7 @@ class Flat extends Model
         'total_amount',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

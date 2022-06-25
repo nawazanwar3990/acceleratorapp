@@ -18,7 +18,7 @@ class CommodityType extends Model
         'status',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

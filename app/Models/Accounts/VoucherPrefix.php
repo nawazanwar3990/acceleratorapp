@@ -17,7 +17,7 @@ class VoucherPrefix extends Model
         'prefix',
         'number',
         'updated_by',
-        'building_id',
+
     ];
 
 

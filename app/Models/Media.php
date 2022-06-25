@@ -14,7 +14,7 @@ class Media extends Model
         'filename',
         'record_id',
         'record_type',
-        'building_id',
+
         'created_by',
         'updated_by',
     ];

@@ -31,7 +31,7 @@ class AccountHead extends Model
         'DepreciationRate',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
     protected $casts = [

@@ -18,7 +18,7 @@ class BuildingServices extends Model
         'service_type',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

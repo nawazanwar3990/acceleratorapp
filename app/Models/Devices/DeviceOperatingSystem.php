@@ -16,7 +16,7 @@ class DeviceOperatingSystem extends Model
     use HasFactory, SoftDeletes;
     protected $table = TableEnum::DEVICE_OPERATING_SYSTEMS;
     protected $fillable = [
-        'building_id',
+
         'name',
         'slug'
     ];

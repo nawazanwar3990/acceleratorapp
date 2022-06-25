@@ -30,7 +30,7 @@ class Floor extends Model
         'security_services',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

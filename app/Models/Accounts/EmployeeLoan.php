@@ -27,7 +27,7 @@ class EmployeeLoan extends Model
         'deduct_value',
         'deduct_amount',
         'details',
-        'building_id',
+
     ];
 
 

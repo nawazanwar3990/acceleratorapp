@@ -49,7 +49,7 @@ class Sale extends Model
 
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

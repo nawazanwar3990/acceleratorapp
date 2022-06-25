@@ -30,7 +30,7 @@ class Salary extends Model
         'type',
         'status',
 
-        'building_id',
+
         'created_by',
         'updated_by',
     ];

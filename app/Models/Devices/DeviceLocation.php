@@ -16,7 +16,7 @@ class DeviceLocation extends Model
     use HasFactory, SoftDeletes;
     protected $table = TableEnum::DEVICE_LOCATIONS;
     protected $fillable = [
-        'building_id',
+
         'name',
         'slug'
     ];

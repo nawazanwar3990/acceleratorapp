@@ -16,7 +16,7 @@ class HrBusiness extends Model
     protected $fillable = [
         'name',
         'parent_id',
-        'building_id',
+
         'created_by',
         'updated_by',
     ];

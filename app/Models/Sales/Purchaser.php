@@ -20,7 +20,7 @@ class Purchaser extends Model
         'percentage',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
 

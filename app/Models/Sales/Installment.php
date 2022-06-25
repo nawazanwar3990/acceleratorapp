@@ -37,7 +37,7 @@ class Installment extends Model
         'status',
         'created_by',
         'updated_by',
-        'building_id',
+
     ];
 
     public function plan(): BelongsTo

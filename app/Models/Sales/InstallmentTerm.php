@@ -19,7 +19,7 @@ class InstallmentTerm extends Model
         'created_by',
         'updated_by',
         'deleted_by',
-        'building_id',
+
     ];
 
     public function createdBy(): BelongsTo

@@ -28,7 +28,7 @@ class Transaction extends Model
         'is_posted',
         'is_opening',
         'is_approve',
-        'building_id',
+
         'created_by',
         'updated_by',
         'flat_id',

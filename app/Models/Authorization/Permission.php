@@ -16,7 +16,7 @@ class Permission extends Model
 
     protected $table = TableEnum::PERMISSIONS;
     protected $fillable = [
-        'building_id',
+
         'name',
         'slug',
         'function_name'
