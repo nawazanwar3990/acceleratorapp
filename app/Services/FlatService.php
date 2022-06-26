@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Definition\General\FlatType;
 use App\Models\FlatManagement\Flat;
 use App\Models\FlatManagement\FlatOwner;
-use App\Models\Sales\Sale;
+use App\Models\FlatManagement\FlatType;
 use function __;
 use function response;
 use function view;
@@ -160,9 +159,6 @@ class FlatService
             }
             if (isset($data->status)) {
                 $response['status'] = $data->status;
-            }
-            if (isset($data->facing)) {
-                $response['facing'] = BuildingService::buildingFacingsForDropdown($data->facing);
             }
             if (isset($data->area)) {
                 $response['area'] = $data->area;

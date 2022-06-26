@@ -3,7 +3,7 @@
         <div class="col justify-content-end d-flex">
             @if(isset($is_create) AND $is_create==true)
                 <a href="{{ route($url) }}" class="btn btn-primary d-inline-flex align-items-center justify-content-center">
-                    {{ __('general.create') }}&nbsp;<i class="fas fa-plus-circle"></i>
+                    {{ __('general.create') }}&nbsp;<i class="bx bx-plus-circle"></i>
                 </a>
             @endif
             &nbsp;

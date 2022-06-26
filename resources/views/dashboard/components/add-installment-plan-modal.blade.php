@@ -3,7 +3,7 @@
         <div class="modal-content">
             {!! Form::open(['url' => route('dashboard.add.installment-plan-ajax'), 'method' => 'POST','files' => true,'id' =>'add-installment-plan-form']) !!}
             <x-created-by-field></x-created-by-field>
-            <x-hidden-building-id></x-hidden-building-id>
+
             <div class="modal-header">
                 <h5 class="modal-title mt-0" id="myModalLabel">{{ __('general.add_installment_plan') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>

@@ -7,7 +7,7 @@
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['url' => route('dashboard.events.store'), 'method' => 'POST','files' => true,'id' =>'event_form', 'class' => 'solid-validation']) !!}
                         <x-created-by-field></x-created-by-field>
-                        <x-hidden-building-id></x-hidden-building-id>
+
                         @include('dashboard.event-management.events.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
                                    formID="event_form" cancelRoute="dashboard.events.index"></x-buttons>

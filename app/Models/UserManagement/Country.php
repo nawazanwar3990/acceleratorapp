@@ -1,29 +1,32 @@
 <?php
 
-namespace App\Models\HumanResource;
+namespace App\Models\UserManagement;
 
-use App\Models\Building;
-use App\Models\UserManagement\Hr;
-use App\Models\UserManagement\User;
+use App\Enum\TableEnum;
+use App\Enum\TableHeadings\UserManagement\Province;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NomineeVerification extends Model
+class Country extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    protected $table = TableEnum::COUNTRIES;
     protected $fillable = [
-        'nominee_id',
-        'verified_hr_id',
-
+        'name',
+        'status',
         'created_by',
         'updated_by',
         'deleted_by',
 
     ];
-
+    public function provinces(): HasMany
+    {
+        return $this->hasMany(Province::class);
+    }
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -40,9 +43,4 @@ class NomineeVerification extends Model
     }
 
 
-
-    public function hr(): BelongsTo
-    {
-        return $this->belongsTo(Hr::class,'verified_hr_id','id');
-    }
 }

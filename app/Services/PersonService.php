@@ -2,17 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Definition\General\Colony;
-use App\Models\Definition\General\Country;
-use App\Models\Definition\General\District;
-use App\Models\Definition\General\Province;
-use App\Models\Definition\General\Tehsil;
-use App\Models\Definition\HumanResource\HrEmployeeType;
-use App\Models\Definition\HumanResource\HrMinistry;
-use App\Models\Definition\HumanResource\HrTaxStatus;
-use App\Models\Definition\HumanResource\HrTaxType;
-use App\Models\HumanResource\Employee;
 use App\Models\Media;
+use App\Models\UserManagement\Country;
+use App\Models\UserManagement\District;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\HrBusiness;
 use App\Models\UserManagement\HrCast;
@@ -22,6 +14,7 @@ use App\Models\UserManagement\HrNationality;
 use App\Models\UserManagement\HrOrganization;
 use App\Models\UserManagement\HrProfession;
 use App\Models\UserManagement\HrRelation;
+use App\Models\UserManagement\Province;
 use App\Models\UserManagement\User;
 use Illuminate\Support\Facades\Hash;
 use function __;
@@ -80,17 +73,6 @@ class PersonService
     {
         return District::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
-
-    public static function tehsilsForDropdown()
-    {
-        return Tehsil::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function coloniesForDropdown()
-    {
-        return Colony::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
     public static function genderForDropdown($id = null)
     {
         $data = [
@@ -117,27 +99,6 @@ class PersonService
         }
         return $data;
     }
-
-    public static function employeeSubTypeForDropdown($id = null)
-    {
-        return HrEmployeeType::where('parent_id', '!=', 0)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function taxTypeForDropdown($id = null)
-    {
-        return HrTaxType::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function taxStatusForDropdown($id = null)
-    {
-        return HrTaxStatus::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function ministryForDropdown($id = null)
-    {
-        return HrMinistry::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
     public static function organizationsForDropdown($id = null)
     {
         return HrOrganization::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
@@ -192,17 +153,6 @@ class PersonService
         }
         return $data;
     }
-
-    public static function businessTypesForDropdown($id = null)
-    {
-        return HrBusiness::where('parent_id', 0)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function businessSubTypesForDropdown($id = null)
-    {
-        return HrBusiness::where('parent_id', '!=', 0)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
     public static function buildingNoOfFloorsForDropdown($id = null)
     {
         for ($i = 1; $i < 30; $i++) {

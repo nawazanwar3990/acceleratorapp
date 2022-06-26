@@ -7,7 +7,7 @@
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['route' => ['dashboard.role-permissions.store',['role'=>request()->query('role')]],'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field></x-created-by-field>
-                    <x-hidden-building-id></x-hidden-building-id>
+
                     <table class="table table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Permission::getTranslationKeys()])
                         <tbody>

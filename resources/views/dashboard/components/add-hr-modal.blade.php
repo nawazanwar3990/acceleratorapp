@@ -3,7 +3,7 @@
         <div class="modal-content">
             {!! Form::open(['url' => route('dashboard.add.hr-ajax'), 'method' => 'POST','files' => true,'id' =>'add-hr-form']) !!}
             <x-created-by-field></x-created-by-field>
-            <x-hidden-building-id></x-hidden-building-id>
+
             {!!  Form::hidden('hr_no', \App\Services\Accounts\VoucherService::getNextVoucherNo('HR')) !!}
             <div class="modal-header">
                 <h5 class="modal-title mt-0" id="myModalLabel">{{ __('general.add_hr') }}</h5>

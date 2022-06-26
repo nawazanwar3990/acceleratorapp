@@ -1,8 +1,7 @@
 <?php
 namespace App\Services;
 
-
-use App\Models\Definition\General\Province;
+use App\Models\UserManagement\Province;
 
 class ProvinceService
 {

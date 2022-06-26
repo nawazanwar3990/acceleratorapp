@@ -8,6 +8,6 @@ use App\Policies\AbstractDefaultPolicy;
 
 class PermissionPolicy extends AbstractDefaultPolicy
 {
-    protected const KEYWORD = KeyWordEnum::PERMISSIONS;
+    protected const KEYWORD = KeyWordEnum::PERMISSION;
 
 }

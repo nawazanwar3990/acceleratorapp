@@ -1,29 +1,36 @@
 <?php
 
-namespace App\Models\HumanResource;
+namespace App\Models\UserManagement;
 
-use App\Models\Building;
-use App\Models\UserManagement\Hr;
-use App\Models\UserManagement\User;
+use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NomineeWitness extends Model
+class Province extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    protected $table = TableEnum::PROVINCES;
     protected $fillable = [
-        'witness_hr_id',
-        'nominee_id',
-
+        'name',
+        'status',
+        'country_id',
         'created_by',
         'updated_by',
         'deleted_by',
 
     ];
-
+    public function districts(): HasMany
+    {
+        return $this->hasMany(District::class);
+    }
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
+    }
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -40,9 +47,4 @@ class NomineeWitness extends Model
     }
 
 
-
-    public function hr(): BelongsTo
-    {
-        return $this->belongsTo(Hr::class,'witness_hr_id','id');
-    }
 }

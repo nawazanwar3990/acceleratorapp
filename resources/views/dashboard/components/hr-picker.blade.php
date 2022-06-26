@@ -44,7 +44,7 @@
                             <a href="javascript:void(0);"
                                onclick="cloneHrRow(this);"
                                class="btn btn-sm btn-info">
-                                <i class="fas fa-plus-circle"></i>
+                                <i class="bx bx-plus-circle"></i>
                             </a>
                         </td>
                     </tr>
@@ -80,7 +80,7 @@
                         <a href="javascript:void(0);"
                            onclick="cloneHrRow(this);"
                            class="btn btn-sm btn-info">
-                            <i class="fas fa-plus-circle"></i>
+                            <i class="bx bx-plus-circle"></i>
                         </a>
                     </td>
                 </tr>

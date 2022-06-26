@@ -7,7 +7,7 @@
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['url' => route('dashboard.users.store'), 'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field></x-created-by-field>
-                    <x-hidden-building-id></x-hidden-building-id>
+
                     @include('dashboard.user-management.users.fields')
                     {!! Form::close() !!}
                 </div>

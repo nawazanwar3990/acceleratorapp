@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\Definition\General\Country;
+use App\Models\UserManagement\Country;
 
 class CountryService
 {

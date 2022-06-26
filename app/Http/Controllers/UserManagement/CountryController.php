@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\UserManagement;
-
-use App\Enum\TableHeadings\UserManagement\Country;
-use App\Enum\TableHeadings\UserManagement\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\CountryRequest;
+use App\Models\UserManagement\Country;
+use App\Models\UserManagement\Province;
 use App\Services\GeneralService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;

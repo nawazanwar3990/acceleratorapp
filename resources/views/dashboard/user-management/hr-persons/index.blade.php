@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.poa.create','is_create'=>true])
+                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.human-resource.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\RealEstate\POA::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Hr::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.user-management.human-resource.power-of-attorney.list')
+                        @include('dashboard.user-management.hr-persons.list')
                         </tbody>
                     </table>
                 </div>

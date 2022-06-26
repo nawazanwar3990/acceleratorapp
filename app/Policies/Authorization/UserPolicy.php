@@ -9,6 +9,6 @@ use App\Policies\AbstractDefaultPolicy;
 
 class UserPolicy extends AbstractDefaultPolicy
 {
-    protected const KEYWORD = KeyWordEnum::USERS;
+    protected const KEYWORD = KeyWordEnum::USER;
 
 }

@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Enum\TableEnum;
-use App\Models\Accounts\AccountHead;
-use App\Models\BuildingServices;
 use App\Models\Media;
 use App\Models\ServiceManagement\Service;
 use App\Models\UserManagement\Hr;
@@ -72,12 +70,6 @@ class GeneralService
         }
         return $data;
     }
-
-    public static function getBuildingServicesData($service_type)
-    {
-        return BuildingServices::whereServiceType($service_type)->get();
-    }
-
     public static function getPaymentSubTypesForDropdown($id = null)
     {
         $data = [
@@ -162,58 +154,6 @@ class GeneralService
         }
         return $data;
     }
-
-    public static function hrAccountHeadExists($hrID): bool
-    {
-        $hrRecord = Hr::findorFail($hrID);
-        if ($hrRecord) {
-            $existingRecord = AccountHead::whereBuildingId(BuildingService::getBuildingId())
-                ->where('account_id', $hrID)->where('HeadName', $hrRecord->getHeadName())
-                ->first();
-            if ($existingRecord) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    public static function getAmountByPercentage($totalAmount, $percentage): float|int
-    {
-        return (($totalAmount * $percentage) / 100);
-    }
-
-    public static function ledgerBalanceType($balance, $forReport = false): string
-    {
-        if ($forReport == true) {
-            return ($balance > 0) ? self::number_format($balance) : ('(' . self::number_format(($balance * -1)) . ')');
-        }
-        return ($balance > 0) ? "DR " . self::number_format($balance) : "CR " . self::number_format(($balance * -1));
-    }
-
-    public static function createAccountHeadName($records): string
-    {
-        $headName = '';
-        if (is_array($records)) {
-            foreach ($records as $key => $hr) {
-                $hrRecord = Hr::whereBuildingId(BuildingService::getBuildingId())
-                    ->findorFail($hr);
-                $headName .= ($hrRecord->id . '-' . $hrRecord->last_name);
-                if (($key > 0) && (!$key == count($records))) {
-                    $headName .= ' and ';
-                }
-            }
-        } else {
-            $hrRecord = Hr::whereBuildingId(BuildingService::getBuildingId())
-                ->findorFail($records);
-            $headName = $hrRecord->getHeadName();
-        }
-
-        return $headName;
-    }
-
     public static function yesOrNoForDropdown($id = null)
     {
         $data = [
@@ -225,20 +165,7 @@ class GeneralService
         }
         return $data;
     }
-
-    public static function poaPurposeForDropdown($id = null)
-    {
-        $data = [
-            'to_sell' => __('general.to_sell'),
-            'to_buy' => __('general.to_buy'),
-        ];
-        if (!is_null($id)) {
-            $data = $data[$id];
-        }
-        return $data;
-    }
-
-    public static function currencyPositionArray($id = null)
+    public static function currencyPositionArray($id = null): array|string
     {
         $data = [
             'left' => 'Before Amount',
@@ -267,7 +194,7 @@ class GeneralService
         return $penaltyAmount;
     }
 
-    public static function timeZoneArray()
+    public static function timeZoneArray(): array
     {
         return [
             'America/Adak' => '(GMT-10:00) America/Adak (Hawaii-Aleutian Standard Time)',
@@ -673,7 +600,7 @@ class GeneralService
         ];
     }
 
-    public static function currencySymbols($id = null)
+    public static function currencySymbols($id = null): array|string
     {
         $data = [
             "AFA" => "؋",

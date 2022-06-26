@@ -41,7 +41,7 @@ class HumanResourceController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.human-resource.hr-person.index', $params);
+        return view('dashboard.user-management.hr-persons.index', $params);
     }
 
     /**
@@ -56,7 +56,7 @@ class HumanResourceController extends Controller
             'lastId' => (is_null($lastId) ? '1' : $lastId),
         ];
 
-        return view('dashboard.human-resource.hr-person.create', $params);
+        return view('dashboard.user-management.hr-persons.create', $params);
     }
 
     /**
@@ -82,7 +82,7 @@ class HumanResourceController extends Controller
             'pageTitle' => __('general.print_hr_persons'),
             'model' => $model,
         ];
-        return view('dashboard.human-resource.hr-person.print-form',$params);
+        return view('dashboard.user-management.hr-persons.print-form',$params);
     }
 
     /**
@@ -109,7 +109,7 @@ class HumanResourceController extends Controller
             'document' => is_null($document) ? '' : $document->filename,
         ];
 
-        return view('dashboard.human-resource.hr-person.edit', $params);
+        return view('dashboard.user-management.hr-persons.edit', $params);
     }
 
     /**

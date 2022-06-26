@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\UserManagement;
-use App\Enum\TableHeadings\UserManagement\Province;
+use App\Models\UserManagement\Province;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
