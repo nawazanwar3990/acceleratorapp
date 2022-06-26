@@ -5,8 +5,6 @@ namespace App\Http\Requests\UserManagement;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\UserManagement\Hr;
-use App\Services\Accounts\VoucherService;
-use App\Services\BuildingService;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +13,7 @@ use Intervention\Image\Facades\Image;
 
 class HrRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -43,7 +41,6 @@ class HrRequest extends FormRequest
         $model = Hr::create($this->all());
         if ($model) {
             $this->uploadMedia($model);
-            VoucherService::updateNumber('HR');
         }
         return $model;
     }
@@ -57,7 +54,8 @@ class HrRequest extends FormRequest
         return $model;
     }
 
-    public function deleteData($id) {
+    public function deleteData($id): bool
+    {
         $model = Hr::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;

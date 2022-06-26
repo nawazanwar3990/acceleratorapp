@@ -39,11 +39,11 @@ return new class extends Migration {
             $table->foreignId('country_id')->nullable()->constrained(TableEnum::COUNTRIES);
             $table->foreignId('province_id')->nullable()->constrained(TableEnum::PROVINCES);
             $table->foreignId('district_id')->nullable()->constrained(TableEnum::DISTRICTS);
-            $table->string('present_street_no')->nullable();
-            $table->string('present_house_no')->nullable();
-            $table->string('present_postal_code')->nullable();
-            $table->string('present_post_office')->nullable();
-            $table->longText('linear_address')->nullable();
+            $table->string('street_no')->nullable();
+            $table->string('house_no')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('post_office')->nullable();
+            $table->longText('address')->nullable();
             $table->longText('left_thumb_code')->nullable();
             $table->longText('left_index_code')->nullable();
             $table->longText('left_middle_code')->nullable();

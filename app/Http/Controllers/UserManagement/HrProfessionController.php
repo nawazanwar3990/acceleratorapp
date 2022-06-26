@@ -5,6 +5,10 @@ namespace App\Http\Controllers\UserManagement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\HrProfessionRequest;
 use App\Models\UserManagement\HrProfession;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use function __;
 use function redirect;
 use function view;
@@ -15,12 +19,11 @@ class HrProfessionController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', HrProfession::class);
         $records = HrProfession::orderBy('name','ASC')->get();
@@ -28,81 +31,50 @@ class HrProfessionController extends Controller
             'pageTitle' => __('general.profession'),
             'records' => $records,
         ];
-        return view('dashboard.definition.profession.index', $params);
+        return view('dashboard.user-management.profession.index', $params);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', HrProfession::class);
         $params = [
             'pageTitle' => __('general.new_profession'),
         ];
 
-        return view('dashboard.definition.profession.create', $params);
+        return view('dashboard.user-management.profession.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(HrProfessionRequest $request)
     {
         $this->authorize('create', HrProfession::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.profession.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.profession.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.profession.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function show($id)
-    {
-        $this->authorize('view', HrProfession::class);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit($id)
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', HrProfession::class);
         $model = HrProfession::findorFail($id);
-
         $params = [
             'pageTitle' => __('general.edit_profession'),
             'model' => $model,
         ];
-
-        return view('dashboard.definition.profession.edit', $params);
+        return view('dashboard.user-management.profession.edit', $params);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(HrProfessionRequest $request, $id)
     {
@@ -114,12 +86,9 @@ class HrProfessionController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy(HrProfessionRequest $request,$id)
+    public function destroy(HrProfessionRequest $request, $id)
     {
         $this->authorize('delete', HrProfession::class);
         if ($request->deleteData($id)) {

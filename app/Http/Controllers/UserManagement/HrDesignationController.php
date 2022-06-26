@@ -5,6 +5,10 @@ namespace App\Http\Controllers\UserManagement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\HrDesignationRequest;
 use App\Models\UserManagement\HrDesignation;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use function __;
 use function redirect;
 use function view;
@@ -16,60 +20,62 @@ class HrDesignationController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    /**
+     * @throws AuthorizationException
+     */
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', HrDesignation::class);
-        $records = HrDesignation::orderBy('name','ASC')->get();
+        $records = HrDesignation::orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.designation'),
             'records' => $records,
         ];
-        return view('dashboard.definition.designation.index', $params);
+        return view('dashboard.user-management.designation.index', $params);
     }
 
-    public function create()
+    /**
+     * @throws AuthorizationException
+     */
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', HrDesignation::class);
         $params = [
             'pageTitle' => __('general.new_designation'),
         ];
 
-        return view('dashboard.definition.designation.create', $params);
+        return view('dashboard.user-management.designation.create', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function store(HrDesignationRequest $request)
     {
         $this->authorize('create', HrDesignation::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.designation.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.designation.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.designation.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
-    public function show($id)
-    {
-        $this->authorize('view', HrDesignation::class);
-        //
-    }
-
-    public function edit($id)
+    /**
+     * @throws AuthorizationException
+     */
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', HrDesignation::class);
         $model = HrDesignation::findorFail($id);
-
         $params = [
             'pageTitle' => __('general.edit_designation'),
             'model' => $model,
         ];
-
-        return view('dashboard.definition.designation.edit', $params);
+        return view('dashboard.user-management.designation.edit', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(HrDesignationRequest $request, $id)
     {
         $this->authorize('update', HrDesignation::class);
@@ -79,6 +85,9 @@ class HrDesignationController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(HrDesignationRequest $request, $id)
     {
         $this->authorize('delete', HrDesignation::class);

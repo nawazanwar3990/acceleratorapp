@@ -28,7 +28,7 @@ class RolePermissionController extends Controller
         foreach ($permissions as $permission) {
             $records[$permission->function_name][] = $permission;
         }
-        return view('dashboard.authorization.role-permissions.index', compact('records','role_id'));
+        return view('dashboard.user-management.role-permissions.index', compact('records','role_id'));
     }
 
     public function store(Request $request): RedirectResponse

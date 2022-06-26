@@ -18,6 +18,7 @@ class Hr extends Model
 
     protected $fillable = [
         'hr_no',
+        'user_id',
         'first_name',
         'middle_name',
         'last_name',
@@ -28,7 +29,6 @@ class Hr extends Model
         'cnic',
         'passport_number',
         'date_of_birth',
-        'cast_id',
         'gender',
         'marital_status',
         'organization_id',
@@ -40,11 +40,16 @@ class Hr extends Model
         'landline',
         'email',
         'facebook',
-        'note',
-        'remarks',
         'sec_contact_full_name',
         'sec_contact_relation',
         'sec_contact',
+        'country_id',
+        'province_id',
+        'district_id',
+        'street_no',
+        'house_no',
+        'postal_code',
+        'post_office',
         'address',
         'left_thumb_code',
         'left_index_code',
@@ -55,9 +60,7 @@ class Hr extends Model
         'right_index_code',
         'right_middle_code',
         'right_ring_code',
-        'right_little_code',
-        'created_by',
-        'updated_by'
+        'right_little_code'
     ];
 
     public function user(): HasOne

@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\UserRequest;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
-use App\Services\BuildingService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -40,7 +39,7 @@ class UserController extends Controller
             'pageTitle' => __('general.users'),
             'records' => $records,
         ];
-        return view('dashboard.authorization.users.index', $params);
+        return view('dashboard.user-management.users.index', $params);
     }
 
     /**
@@ -49,12 +48,12 @@ class UserController extends Controller
     public function create(): Factory|View|Application
     {
         $this->authorize(AbilityEnum::CREATE, User::class);
-        $persons = Hr::with('user')->where('building_id', BuildingService::getBuildingId())->get();
+        $persons = Hr::with('user')->get();
         $params = [
             'pageTitle' => __('general.new_users'),
             'persons' => $persons
         ];
-        return view('dashboard.authorization.users.create', $params);
+        return view('dashboard.user-management.users.create', $params);
     }
 
     /**
@@ -86,7 +85,6 @@ class UserController extends Controller
                 $user->normal_password = 'user1234';
                 $user->active = true;
                 $user->hr_id = $person->id;
-                $user->building_id = BuildingService::getBuildingId();
                 $user->created_by = auth()->id();
                 $user->save();
             }

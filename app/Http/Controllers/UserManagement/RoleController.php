@@ -4,7 +4,6 @@ namespace App\Http\Controllers\UserManagement;
 
 use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Devices\DeviceClassRequest;
 use App\Http\Requests\UserManagement\RoleRequest;
 use App\Models\UserManagement\Role;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -34,7 +33,7 @@ class RoleController extends Controller
             'pageTitle' => __('general.roles'),
             'records' => $records,
         ];
-        return view('dashboard.authorization.roles.index', $params);
+        return view('dashboard.user-management.roles.index', $params);
     }
 
     /**
@@ -46,7 +45,7 @@ class RoleController extends Controller
         $params = [
             'pageTitle' => __('general.new_roles'),
         ];
-        return view('dashboard.authorization.roles.create', $params);
+        return view('dashboard.user-management.roles.create', $params);
     }
 
     /**
@@ -71,7 +70,7 @@ class RoleController extends Controller
             'pageTitle' => __('general.edit') . " " . ucwords($role->name),
             'model' => $role
         ];
-        return view('dashboard.authorization.roles.edit', $params);
+        return view('dashboard.user-management.roles.edit', $params);
     }
 
     /**

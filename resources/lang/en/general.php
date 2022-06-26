@@ -1,5 +1,13 @@
 <?php
 return [
+    'user_management' => 'User Management',
+    'service_management' => 'Service Management',
+    'flat_management' => "Flat Management",
+    'plan_management' => 'Plan Management',
+    'event_management' => 'Event Management',
+    'system_configuration' => 'System Configuration',
+
+
     'welcome_back' => 'Welcome Back',
     'resend' => 'Resend',
     'confirm_password' => 'Confirm Password',
@@ -31,19 +39,6 @@ return [
     'weekly' => 'Weekly',
     'home' => 'Home',
     'prev' => 'Prev',
-    'PLAN_MANAGEMENT' => 'Packages & Plans',
-    'SERVICE_MANAGEMENT' => 'Service Creation',
-    'definition' => 'Definition',
-    'invoice_ticket_and_account' => 'Invoices/Tickets',
-    'reporting_and_stat_handling' => 'Reporting & Stats',
-    'system_configuration' => 'System Settings',
-    'freelancer_and_mentor' => 'FreeLancers Portal',
-    'mentor_section' => 'Mentor Section',
-    'USER_MANAGEMENT' => 'User Management',
-    'front_desk_management_system' => 'Front Desk Handling',
-    'co_working_space_allotment_and_handling' => 'Co-Working Space',
-    'event_appointment_and_event_management' => 'Events Handling',
-    'meeting_scheduling' => 'Meeting Scheduling',
     'plan' => 'Plan',
     'new_plan' => 'New Plan',
     'plans' => 'Plans',

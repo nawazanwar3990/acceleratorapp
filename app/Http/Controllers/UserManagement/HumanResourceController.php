@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\HrRequest;
 use App\Models\Media;
 use App\Models\UserManagement\Hr;
-use App\Services\Accounts\VoucherService;
 use App\Services\PersonService;
 use App\Traits\General;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;
@@ -25,7 +28,10 @@ class HumanResourceController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    /**
+     * @throws AuthorizationException
+     */
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', Hr::class);
         $records = Hr::orderBy('first_name','ASC')
@@ -38,7 +44,10 @@ class HumanResourceController extends Controller
         return view('dashboard.human-resource.hr-person.index', $params);
     }
 
-    public function create()
+    /**
+     * @throws AuthorizationException
+     */
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', Hr::class);
         $lastId = Hr::orderBy('id', 'DESC')->value('id');
@@ -50,21 +59,22 @@ class HumanResourceController extends Controller
         return view('dashboard.human-resource.hr-person.create', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function store(HrRequest $request)
     {
         $this->authorize('create', Hr::class);
         if ($request->createData()){
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.human-resource.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.human-resource.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.human-resource.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
-    public function show($id)
+    /**
+     * @throws AuthorizationException
+     */
+    public function show($id): Factory|View|Application
     {
         $this->authorize('view', Hr::class);
         $model = Hr::findorFail($id);
@@ -75,7 +85,10 @@ class HumanResourceController extends Controller
         return view('dashboard.human-resource.hr-person.print-form',$params);
     }
 
-    public function edit($id)
+    /**
+     * @throws AuthorizationException
+     */
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Hr::class);
         $model = Hr::findorFail($id);
@@ -99,6 +112,9 @@ class HumanResourceController extends Controller
         return view('dashboard.human-resource.hr-person.edit', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(HrRequest $request, $id)
     {
         $this->authorize('update', Hr::class);
@@ -108,6 +124,9 @@ class HumanResourceController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(HrRequest $request, $id)
     {
         $this->authorize('delete', Hr::class);
@@ -117,75 +136,8 @@ class HumanResourceController extends Controller
         }
     }
 
-    public function getHrDetails(Request $request) {
+    public function getHrDetails(Request $request): array
+    {
         return PersonService::getHrDetails($request);
-    }
-
-    public function getHrDetailsForEmployee(Request $request) {
-        return PersonService::getHrDetailsForEmployee($request);
-    }
-
-    public function HrPickerTable(Request $request) {
-        $data = [];
-        $draw = $request->get('draw');
-        $row = $request->get('start');
-        $rowPerPage = $request->get('length'); // Rows display per page
-        $orderColumnIndex = $request->get('order')[0]['column']; // Column index
-        $orderColumnName = $request->get('columns')[$orderColumnIndex]['data']; // Column name
-        if ($orderColumnName == 'button') {
-            $orderColumnName = 'first_name';
-        }
-        $columnSortOrder = $request->get('order')[0]['dir']; // asc or desc
-        $searchValue = $request->get('search')['value']; // Search value
-
-        // Search
-        $recordsTotal = Hr::count();
-
-        $recordsFiltered = Hr::where(function($query) use ($searchValue) {
-                $query->where('first_name', 'like', "%$searchValue%")
-//                    ->where('middle_name', 'like', "%$searchValue%")
-                    ->orWhere('last_name', 'like', "%$searchValue%")
-                    ->orWhere('cell_1', 'like', "%$searchValue%")
-                    ->orWhere('cnic', 'like', "%$searchValue%");
-            })
-            ->orderBy($orderColumnName, $columnSortOrder)
-            ->offset($row)->take($rowPerPage)
-            ->get();
-
-        foreach ($recordsFiltered as $record) {
-
-            $data[] = [
-                "first_name" => $record->first_name,
-                "middle_name" => $record->middle_name,
-                "last_name" => $record->last_name,
-                "id" => $record->id,
-//                'present_linear_address' => $record->present_linear_address,
-                'cell_1' => $record->cell_1,
-                'image' => '<img src="' . PersonService::getHrFirstPicture($record->id) . '" class="img-responsive-small" />',
-                'cnic' => $record->cnic,
-                "button"=>'<button type="button" class="btn btn-primary btn-sm" onclick="pickHr(' . $record->id .  ');"><i class="fas fa-paper-plane"></i></button>',
-            ];
-        }
-
-        // Response
-        $response = array(
-            "draw" => intval($draw),
-            "iTotalRecords" => $recordsTotal,
-            "iTotalDisplayRecords" => $recordsFiltered->count(),
-            "aaData" => $data
-        );
-
-        echo json_encode($response);
-    }
-
-    public function addHrAjax(Request $request) {
-        $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-        if ($request->ajax()) {
-            $record = Hr::create($request->all());
-            VoucherService::updateNumber('HR');
-            $output = ['success' => true, 'msg' => '', 'data' => $record];
-        }
-
-        return $output;
     }
 }

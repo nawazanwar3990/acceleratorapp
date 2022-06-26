@@ -5,8 +5,6 @@ namespace App\Http\Controllers\UserManagement;
 use App\Http\Controllers\Controller;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
-use App\Services\BuildingService;
-use App\Services\SchoolService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,10 +23,9 @@ class RoleUserController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $role_id = $request->query('role');
-        $users = User::with(['building', 'created_by', 'updated_by'])
-            ->where('building_id', BuildingService::getBuildingId())
+        $users = User::with(['created_by', 'updated_by'])
             ->paginate(20);
-        return view('dashboard.authorization.role-users.index',
+        return view('dashboard.user-management.role-users.index',
             compact(
                 'users',
                 'role_id'

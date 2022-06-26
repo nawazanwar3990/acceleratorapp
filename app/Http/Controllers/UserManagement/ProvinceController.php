@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\UserManagement;
 
+use App\Enum\TableHeadings\UserManagement\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\ProvinceRequest;
-use App\Models\Definition\General\District;
-use App\Models\Definition\General\Province;
+use App\Models\UserManagement\District;
 use App\Services\GeneralService;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;
@@ -18,12 +22,11 @@ class ProvinceController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', Province::class);
         $records = Province::with('country')->orderBy('name','ASC')->get();
@@ -31,81 +34,50 @@ class ProvinceController extends Controller
             'pageTitle' => __('general.province'),
             'records' => $records,
         ];
-        return view('dashboard.definition.province.index', $params);
+        return view('dashboard.user-management.province.index', $params);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', Province::class);
         $params = [
             'pageTitle' => __('general.new_province'),
         ];
 
-        return view('dashboard.definition.province.create', $params);
+        return view('dashboard.user-management.province.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(ProvinceRequest $request)
     {
         $this->authorize('create', Province::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.province.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.province.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.province.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $this->authorize('view', Province::class);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
     public function edit($id)
     {
         $this->authorize('update', Province::class);
         $model = Province::findorFail($id);
-
         $params = [
             'pageTitle' => __('general.edit_province'),
             'model' => $model,
         ];
-
-        return view('dashboard.definition.province.edit', $params);
+        return view('dashboard.user-management.province.edit', $params);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(ProvinceRequest $request, $id)
     {
@@ -117,12 +89,9 @@ class ProvinceController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy(ProvinceRequest $request,$id)
+    public function destroy(ProvinceRequest $request, $id)
     {
         $this->authorize('delete', Province::class);
         if ($request->deleteData($id)) {

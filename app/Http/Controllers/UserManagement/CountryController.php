@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\UserManagement;
 
+use App\Enum\TableHeadings\UserManagement\Country;
+use App\Enum\TableHeadings\UserManagement\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\CountryRequest;
-use App\Models\Definition\General\Country;
-use App\Models\Definition\General\Province;
 use App\Services\GeneralService;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;
@@ -18,76 +22,50 @@ class CountryController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', Country::class);
-        $records = Country::orderBy('name','ASC')->get();
+        $records = Country::orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.country'),
             'records' => $records,
         ];
-        return view('dashboard.definition.country.index', $params);
+        return view('dashboard.user-management.country.index', $params);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', Country::class);
         $params = [
             'pageTitle' => __('general.new_country'),
         ];
 
-        return view('dashboard.definition.country.create', $params);
+        return view('dashboard.user-management.country.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(CountryRequest $request)
     {
         $this->authorize('create', Country::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.country.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.country.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.country.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function show($id)
-    {
-        $this->authorize('view', Country::class);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit($id)
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Country::class);
         $model = Country::findorFail($id);
@@ -96,16 +74,11 @@ class CountryController extends Controller
             'pageTitle' => __('general.edit_country'),
             'model' => $model,
         ];
-
-        return view('dashboard.definition.country.edit', $params);
+        return view('dashboard.user-management.country.edit', $params);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(CountryRequest $request, $id)
     {
@@ -117,12 +90,9 @@ class CountryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy(CountryRequest $request,$id)
+    public function destroy(CountryRequest $request, $id)
     {
         $this->authorize('delete', Country::class);
         if ($request->deleteData($id)) {
@@ -131,7 +101,8 @@ class CountryController extends Controller
         }
     }
 
-    public function getProvincesOfCountry(Request $request) {
+    public function getProvincesOfCountry(Request $request)
+    {
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             if ($request->has('countryID')) {
@@ -140,7 +111,6 @@ class CountryController extends Controller
                 $output = ['success' => true, 'msg' => '', 'records' => GeneralService::flattenArrayToHtmlSelect($records, __('general.ph_province'))];
             }
         }
-
         return $output;
     }
 }

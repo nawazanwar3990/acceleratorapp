@@ -4,10 +4,11 @@ namespace App\Http\Controllers\UserManagement;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\DistrictRequest;
-use App\Models\Definition\General\District;
-use App\Models\Definition\General\Tehsil;
-use App\Services\GeneralService;
-use Illuminate\Http\Request;
+use App\Models\UserManagement\District;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use function __;
 use function redirect;
 use function view;
@@ -18,12 +19,11 @@ class DistrictController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', District::class);
         $records = District::with('province')->orderBy('name','ASC')->get();
@@ -31,63 +31,38 @@ class DistrictController extends Controller
             'pageTitle' => __('general.district'),
             'records' => $records,
         ];
-        return view('dashboard.definition.district.index', $params);
+        return view('dashboard.user-management.district.index', $params);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', District::class);
         $params = [
             'pageTitle' => __('general.new_district'),
         ];
 
-        return view('dashboard.definition.district.create', $params);
+        return view('dashboard.user-management.district.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(DistrictRequest $request)
     {
         $this->authorize('create', District::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.district.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.district.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.district.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function show($id)
-    {
-        $this->authorize('view', District::class);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit($id)
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', District::class);
         $model = District::findorFail($id);
@@ -96,16 +71,11 @@ class DistrictController extends Controller
             'pageTitle' => __('general.edit_district'),
             'model' => $model,
         ];
-
-        return view('dashboard.definition.district.edit', $params);
+        return view('dashboard.user-management.district.edit', $params);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(DistrictRequest $request, $id)
     {
@@ -117,30 +87,14 @@ class DistrictController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy(DistrictRequest $request,$id)
+    public function destroy(DistrictRequest $request, $id)
     {
         $this->authorize('delete', District::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.district.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
-    }
-
-    public function getTehsilsOfDistrict(Request $request) {
-        $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-        if ($request->ajax()) {
-            if ($request->has('districtID')) {
-                $districtID = $request->get('districtID');
-                $records = Tehsil::where('district_id', $districtID)->orderBy('name', 'ASC')->pluck('name', 'id');
-                $output = ['success' => true, 'msg' => '', 'records' => GeneralService::flattenArrayToHtmlSelect($records, __('general.ph_tehsil'))];
-            }
-        }
-
-        return $output;
     }
 }

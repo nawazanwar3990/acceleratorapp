@@ -12,6 +12,8 @@ mix.scripts([
     'resources/theme/js/plugins/bootstrap-datepicker.min.js',
     'resources/theme/js/plugins/jquery-ui.min.js',
     'resources/theme/js/plugins/perfect-scrollbar.jquery.min.js',
+    'resources/theme/js/plugins/select2.min.js',
+    'resources/theme/js/plugins/dropify.js',
     'resources/theme/js/waves.js',
     'resources/theme/js/sidebar.js',
     'resources/theme/js/search.js',

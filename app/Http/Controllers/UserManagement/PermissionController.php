@@ -4,7 +4,6 @@ namespace App\Http\Controllers\UserManagement;
 
 use App\Enum\AbilityEnum;
 use App\Enum\ModuleEnum;
-use App\Enum\PermissionEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\PermissionRequest;
 use App\Models\UserManagement\Permission;
@@ -41,7 +40,7 @@ class PermissionController extends Controller
             'pageTitle' => __('general.permissions'),
             'records' => $records,
         ];
-        return view('dashboard.authorization.permissions.index', $params);
+        return view('dashboard.user-management.permissions.index', $params);
     }
 
     /**
@@ -53,7 +52,7 @@ class PermissionController extends Controller
         $params = [
             'pageTitle' => __('general.new_permissions'),
         ];
-        return view('dashboard.authorization.permissions.create', $params);
+        return view('dashboard.user-management.permissions.create', $params);
     }
 
     /**
@@ -78,7 +77,7 @@ class PermissionController extends Controller
             'pageTitle' => __('general.edit') . " " . ucwords($permission->name),
             'model' => $permission
         ];
-        return view('dashboard.authorization.permissions.edit', $params);
+        return view('dashboard.user-management.permissions.edit', $params);
     }
 
     /**
