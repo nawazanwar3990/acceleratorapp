@@ -7,6 +7,7 @@ class KeyWordEnum extends AbstractEnum
 
     public const DASHBOARD = 'dashboard';
     //plan management
+    public const PACKAGE = 'package';
     public const PLAN_MANAGEMENT = 'plan_management';
     public const PLAN = 'plan';
     public const INSTALLMENT = 'installment';
@@ -35,8 +36,11 @@ class KeyWordEnum extends AbstractEnum
     public const EVENT_LIST = 'event_list';
     public const EVENT_NEW = 'new_event';
     // flat management
-    public const FLAT_MANAGEMENT = 'flat_management';
+    public const CO_WORKING_SPACE = 'working_space';
+    public const BUILDING = 'building';
+    public const SHOP = 'shop';
     public const FLAT = 'flat';
+    public const ROOM = 'room';
     public const FLAT_TYPE = 'flat_type';
     public const FLOOR = 'floor';
     public const FLOOR_TYPE = 'floor_type';

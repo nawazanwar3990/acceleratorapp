@@ -44,7 +44,7 @@ class PlanManagementNavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::PLAN => route('dashboard.plans.create'),
+            self::PLAN => route('dashboard.plans.index'),
             self::INSTALLMENT => route('dashboard.installments.index'),
             self::INSTALLMENT_TERM => route('dashboard.installment-terms.index'),
         );

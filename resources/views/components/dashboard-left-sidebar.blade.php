@@ -35,8 +35,8 @@
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::EVENT_MANAGEMENT)
                                     @include('dashboard.components.left-nav-bar.event-management')
                                     @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::FLAT_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.flat-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::CO_WORKING_SPACE)
+                                    @include('dashboard.components.left-nav-bar.working-space')
                                     @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
                                     @include('dashboard.components.left-nav-bar.system-configuration')

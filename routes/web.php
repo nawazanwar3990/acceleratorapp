@@ -30,6 +30,6 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/system-configuration.php';
     require __DIR__ . '/plan-management.php';
     require __DIR__ . '/event-management.php';
-    require __DIR__ . '/flat-management.php';
+    require __DIR__ . '/working-space.php';
 });
 require __DIR__ . '/auth.php';

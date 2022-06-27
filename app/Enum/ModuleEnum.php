@@ -20,6 +20,7 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
+            KeyWordEnum::PACKAGE,
             KeyWordEnum::USER_MANAGEMENT => array(
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,
@@ -38,7 +39,10 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::SERVICE_MANAGEMENT=>array(
                 $ability . KeyWordEnum::SERVICE
             ),
-            KeyWordEnum::FLAT_MANAGEMENT=>array(
+            KeyWordEnum::CO_WORKING_SPACE=>array(
+                $ability . KeyWordEnum::BUILDING,
+                $ability . KeyWordEnum::SHOP,
+                $ability . KeyWordEnum::ROOM,
                 $ability . KeyWordEnum::FLAT_TYPE,
                 $ability . KeyWordEnum::FLOOR_TYPE,
                 $ability . KeyWordEnum::FLOOR,

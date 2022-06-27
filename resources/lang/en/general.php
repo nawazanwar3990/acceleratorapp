@@ -1105,4 +1105,8 @@ return [
     'franchise' => 'Franchise',
     'contact_us' => 'Contact Us',
     'book_a_tour' => 'Book a Tour',
+    'working_space'=>'Working Space',
+    'shop'=>'Shop',
+    'room'=>'Room',
+    'package'=>'Package',
 ];

@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\WorkingSpace\FloorType;
 use Database\Seeders\Auth\PermissionSeeder;
 use Database\Seeders\Auth\RoleSeeder;
 use Database\Seeders\Auth\RoleUserSeeder;
@@ -12,6 +13,9 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        $this->call(FlatTypeSeeder::class);
+        $this->call(FloorTypeSeeder::class);
+        $this->call(ServiceSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(RoleSeeder::class);
