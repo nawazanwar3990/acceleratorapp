@@ -1097,4 +1097,12 @@ return [
     'end_time' => 'End Time',
     'event_type' => 'Event Type',
     'events' => 'Events',
+    'home' => 'Home',
+    'locations' => 'Locations',
+    'solutions' => 'Solutions',
+    'gallery' => 'Gallery',
+    'business_services' => 'Business Services',
+    'franchise' => 'Franchise',
+    'contact_us' => 'Contact Us',
+    'book_a_tour' => 'Book a Tour',
 ];

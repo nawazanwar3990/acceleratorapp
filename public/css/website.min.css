@@ -26388,12 +26388,12 @@ html body .m-30 {
   margin: 30px;
 }
 
-html body .m-t-40 {
-  margin-top: 40px;
+html body .m-t-130 {
+  margin-top: 130px;
 }
 
-html body .m-b-40 {
-  margin-bottom: 40px;
+html body .m-b-130 {
+  margin-bottom: 130px;
 }
 
 html body .m-r-40 {
@@ -28374,8 +28374,8 @@ icons path
   font-family: "Material Design Icons";
   src: url(/fonts/materialdesignicons-webfont.ttf?fa3815d439cf3406399e278012c73535) format("truetype");
 }
-/*============================================================== 
- For all pages 
+/*==============================================================
+ For all pages
  ============================================================== */
 #main-wrapper {
   width: 100%;
@@ -29639,7 +29639,7 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   min-height: 380px;
 }
 
-/*============================================================== 
+/*==============================================================
 widget-chart-page product review
  ============================================================== */
 .product-review {
@@ -29784,7 +29784,7 @@ File: scss
 /*-- ==============================================================
  Small Desktop & above all (1024px)
  ============================================================== */
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   .page-wrapper, .footer {
     margin-left: 220px;
   }
@@ -30189,7 +30189,7 @@ File: scss
   width: 100%;
 }
 
-/* 
+/*
  * 	Default theme - Owl Carousel CSS File
  */
 .owl-theme .owl-nav {
@@ -32226,7 +32226,7 @@ File: scss
 /*-- ==============================================================
  Small Desktop & above all (1024px)
  ============================================================== */
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   .page-wrapper, .footer {
     margin-left: 220px;
   }
@@ -32439,4 +32439,74 @@ File: scss
 }
 .form-control {
   background-color: white !important;
+}
+.footer{
+    padding: 80px 0 30px !important;
+    background: #EAEAEA !important;
+}
+.fix-width{
+    max-width: 1226px;
+    width: 100%;
+    margin: 0 auto;
+}
+.container{
+    max-width: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+.bg-dark-grey{
+    background: #EAEAEA;
+}
+.work-zone{
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 72px;
+}
+.tell-us{
+    position: absolute;
+    box-shadow: 0px 7px 30px rgb(0 0 0 / 12%);
+    border-radius: 20px;
+    left: 17%;
+    top: 272px;
+}
+.location{
+    margin-top: 180px;
+}
+.text-justify{
+    text-align: justify;
+}
+.client-img{
+    width:70%;
+    border-radius: 100%;
+}
+.testimonials-img{
+    width:100%;
+    border-radius: 10px;
+}
+.testimonials-desc h4{
+    font-weight: 600;
+    font-size: 24px;
+    padding: 30px 0px 10px 0px;
+    line-height: 27px;
+    text-align: center;
+}
+.testimonials-desc p{
+    text-align: center;
+}
+.offer-card{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.offer-card p{
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 0 !important;
+    margin-top: 13px;
+}
+.offer-user-img{
+    width:100%;
+    border-radius: 10px;
+}
+.card-heading{
+    font-weight: 700;
 }
