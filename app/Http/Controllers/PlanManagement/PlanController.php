@@ -4,8 +4,12 @@ namespace App\Http\Controllers\PlanManagement;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlanManagement\PlanRequest;
-use App\Models\Sales\Plan;
+use App\Models\PlanManagement\Plan;
 use App\Services\InstallmentService;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use function __;
 use function redirect;
@@ -18,7 +22,10 @@ class PlanController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    /**
+     * @throws AuthorizationException
+     */
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', Plan::class);
         $records = Plan::orderBy('name', 'ASC')->get();
@@ -27,46 +34,38 @@ class PlanController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.installment-plans.index', $params);
+        return view('dashboard.plan-management.plans.index', $params);
     }
 
-    public function create()
+    /**
+     * @throws AuthorizationException
+     */
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', Plan::class);
         $params = [
             'pageTitle' => __('general.new_installment_plan'),
         ];
 
-        return view('dashboard.installment-plans.create', $params);
+        return view('dashboard.plan-management.plans.create', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function store(PlanRequest $request)
     {
         $this->authorize('create', Plan::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.installment-plans.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.installment-plans.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.plans.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
-    public function show($id)
-    {
-        $this->authorize('view', Plan::class);
-        $records = Plan::findOrFail($id);
-        $params = [
-            'pageTitle' => __('general.installment_plans_print'),
-            'records' => $records,
-        ];
-
-        return view('dashboard.print.installment-plan.print-view', $params);
-    }
-
-    public function edit($id)
+    /**
+     * @throws AuthorizationException
+     */
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Plan::class);
         $model = Plan::findorFail($id);
@@ -75,23 +74,29 @@ class PlanController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.installment-plans.edit', $params);
+        return view('dashboard.plan-management.plans.edit', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(PlanRequest $request, $id)
     {
         $this->authorize('update', Plan::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.installment-plans.index')
+            return redirect()->route('dashboard.plans.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(PlanRequest $request, $id)
     {
         $this->authorize('delete', Plan::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.installment-plans.index')
+            return redirect()->route('dashboard.plans.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

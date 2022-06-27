@@ -5,7 +5,7 @@ namespace App\Enum\TableHeadings\PlanManagement;
 
 use App\Enum\AbstractEnum;
 
-class Plans extends AbstractEnum
+class PlanTableHeadingEnum extends AbstractEnum
 {
     public const NAME = 'name';
     public const MONTHS = 'months';

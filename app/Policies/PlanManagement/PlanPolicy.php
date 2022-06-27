@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies\PlainManagement;
+namespace App\Policies\PlanManagement;
 
 use App\Enum\KeyWordEnum;
 use App\Policies\AbstractDefaultPolicy;
