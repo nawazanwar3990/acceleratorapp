@@ -1,5 +1,7 @@
 <?php
 return [
+    'setting' => 'Setting',
+    'event' => 'Event',
     'user_management' => 'User Management',
     'service_management' => 'Service Management',
     'flat_management' => "Flat Management",

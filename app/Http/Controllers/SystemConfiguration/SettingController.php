@@ -14,7 +14,7 @@ use function __;
 use function redirect;
 use function view;
 
-class SettingsController extends Controller
+class SettingController extends Controller
 {
     public function __construct()
     {

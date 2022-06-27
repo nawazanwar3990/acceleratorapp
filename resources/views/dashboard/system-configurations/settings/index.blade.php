@@ -1,21 +1,13 @@
 @extends('layouts.dashboard')
 @section('css-before')
-    <link href="{{ url('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <style>
-        .tooltip-inner {
-            max-width: 500px !important;
-            /* If max-width does not work, try using width instead */
-            width: 500px !important;
-            text-align: left !important;
-        }
-    </style>
+
 @endsection
 
 @section('content')
     <div class="container">
         {!! Form::open(['url' => route('dashboard.settings.store')]) !!}
         <x-created-by-field></x-created-by-field>
-        @include('dashboard.system-configuration.settings.components.settings-fields',['records'=>$records])
+        @include('dashboard.system-configurations.settings.components.settings-fields',['records'=>$records])
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
@@ -28,10 +20,8 @@
     </div>
 @endsection
 @section('innerScript')
-    <script src="{{ url('plugins/select2/js/select2.min.js') }}"></script>
     <script>
         $(function () {
-            $('.select2').select2();
             $('[data-toggle="tooltip"]').tooltip({html:true});
         });
 
