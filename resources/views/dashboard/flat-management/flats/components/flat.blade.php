@@ -1,25 +1,3 @@
-{{--<div class="">--}}
-{{--    <h2 class="accordion-header" id="headingOne">--}}
-{{--        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"--}}
-{{--                aria-expanded="true" aria-controls="collapseOne">--}}
-{{--            {{ __('general.flats') }}--}}
-{{--        </button>--}}
-{{--    </h2>--}}
-
-<div class="row">
-    <div class="col-md-6">
-        <h4 class="card-title text-purple">{{ __('general.flat_details') }}</h4>
-    </div>
-    <div class="col-md-6 text-right">
-        <h4 class="card-title text-purple">
-            {{ __('general.total_saleable_area') }}:&nbsp;<span id="totalArea"
-                                                                class="fw-bold">0.00</span>&nbsp;<small>{{ __('general.sft') }}</small>,&nbsp;
-            {{ __('general.available_area') }}:&nbsp;<span id="availableArea"
-                                                           class="fw-bold">0.00</span>&nbsp;<small>{{ __('general.sft') }}</small>,&nbsp;
-        </h4>
-    </div>
-</div>
-<hr class="mt-1">
 <div class="row mb-2">
     <div class="col">
         {!!  Html::decode(Form::label('floor_id' ,__('general.floor_name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
@@ -97,7 +75,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('facing' ,__('general.facing'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('facing',null,null,['id'=>'facing',
+        {!!  Form::select('facing',\App\Services\FlatService::facingDropdown(),null,['id'=>'facing',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_facing'),'style'=>'width:100%'])
         !!}
         @error('facing')

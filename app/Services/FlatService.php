@@ -174,4 +174,21 @@ class FlatService
         }
 
     }
+    public static function facingDropdown($id = null)
+    {
+        $data = [
+            1 => __('general.east'),
+            2 => __('general.west'),
+            3 => __('general.south'),
+            4 => __('general.north'),
+            5 => __('general.north_east'),
+            6 => __('general.north_west'),
+            7 => __('general.south_east'),
+            8 => __('general.south_west'),
+        ];
+        if (!is_null($id)) {
+            $data = $data[$id];
+        }
+        return $data;
+    }
 }
