@@ -1100,4 +1100,5 @@ return [
     'working_space'=>'Working Space',
     'shop'=>'Shop',
     'room'=>'Room',
+    'package'=>'Package',
 ];

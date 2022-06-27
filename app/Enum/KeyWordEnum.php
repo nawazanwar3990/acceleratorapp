@@ -7,6 +7,7 @@ class KeyWordEnum extends AbstractEnum
 
     public const DASHBOARD = 'dashboard';
     //plan management
+    public const PACKAGE = 'package';
     public const PLAN_MANAGEMENT = 'plan_management';
     public const PLAN = 'plan';
     public const INSTALLMENT = 'installment';
