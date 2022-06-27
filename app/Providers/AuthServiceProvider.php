@@ -4,10 +4,10 @@ namespace App\Providers;
 
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
-use App\Models\FlatManagement\Flat;
-use App\Models\FlatManagement\FlatType;
-use App\Models\FlatManagement\Floor;
-use App\Models\FlatManagement\FloorType;
+use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\FlatType;
+use App\Models\WorkingSpace\Floor;
+use App\Models\WorkingSpace\FloorType;
 use App\Models\PlanManagement\Plan;
 use App\Models\Sales\InstallmentTerm;
 use App\Models\ServiceManagement\Service;

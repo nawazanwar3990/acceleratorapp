@@ -1097,4 +1097,7 @@ return [
     'end_time' => 'End Time',
     'event_type' => 'Event Type',
     'events' => 'Events',
+    'working_space'=>'Working Space',
+    'shop'=>'Shop',
+    'room'=>'Room',
 ];

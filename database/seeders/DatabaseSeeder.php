@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\FlatManagement\FloorType;
+use App\Models\WorkingSpace\FloorType;
 use Database\Seeders\Auth\PermissionSeeder;
 use Database\Seeders\Auth\RoleSeeder;
 use Database\Seeders\Auth\RoleUserSeeder;

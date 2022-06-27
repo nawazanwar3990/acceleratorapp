@@ -18,39 +18,39 @@
                         <hr class="mb-1">
                     </div>
                     <div class="col-12">
-                        <div class="row border-bottom mb-2">
-                            <div class="col-md-2 py-2 align-self-center">{{ trans('general.name') }}</div>
-                            <div class="col-md-2 py-2 align-self-center">{{ trans('general.type') }}</div>
-                            <div class="col-md-2 py-2 align-self-center">{{ trans('general.price') }}</div>
-                            <div class="col-md-2 py-2 align-self-center">{{ trans('general.limit') }}</div>
-                            <div class="col-md-2 py-2 align-self-center">{{ trans('general.expiry_date') }}</div>
-                            <div class="col-md-2 py-2 text-center align-self-center">{{ trans('general.action') }}</div>
-                        </div>
-                        @foreach(\App\Enum\PlanEnum::getTranslationKeys() as $key=>$value)
-                            <div class="row border-bottom my-2">
-                                <div class="col-md-2 py-2 align-self-center">
-                                    {!! Form::text('name[]',$value,['class'=>'form-control form-control-sm','id'=>'name[]']) !!}
-                                </div>
-                                <div class="col-md-2  py-2 align-self-center">
-                                    {!! Form::select('type[]',\App\Enum\PlanTypeEnum::getTranslationKeys(),\App\Enum\PlanTypeEnum::MONTHLY,['class'=>'form-control form-control-sm','id'=>'type','placeholder'=>trans('general.select')]) !!}
-                                </div>
-                                <div class="col-md-2  py-2 align-self-center">
-                                    {!! Form::number('price[]',null,['class'=>'form-control form-control-sm','id'=>'price']) !!}
-                                </div>
-                                <div class="col-md-2  py-2 align-self-center">
-                                    {!! Form::number('limit[]',null,['class'=>'form-control form-control-sm','id'=>'limit']) !!}
-                                </div>
-                                <div class="col-md-2  py-2 align-self-center">
-                                    {!! Form::text('expiry_date[]',null,['class'=>'form-control datepicker form-control-sm','id'=>'expiry_date']) !!}
-                                </div>
-                                <div class="col-md-2  py-2 text-center align-self-center">
-                                    @if ($loop->last)
-                                        {!! Form::button('<i class="bx bx-plus"></i>',['class'=>'btn btn-success btn-xs mx-1']) !!}
-                                    @endif
-                                    {!! Form::button('<i class="bx bx-trash"></i>',['class'=>'btn btn-danger btn-xs']) !!}
-                                </div>
+                        <div class="row border-bottom my-2">
+                            <div class="col-2 py-2 align-self-center">
+                                {!! Form::text('name[]',null,['class'=>'form-control ','id'=>'name[]','placeholder'=>trans('general.name')]) !!}
                             </div>
-                        @endforeach
+                            <div class="col-2  py-2 align-self-center">
+                                {!!  Form::text('months[]',null,['id'=>'months[]', 'class'=>'form-control vertical-spin', 'onchange' => 'calculateInstallments();','placeholder'=>trans('general.months')])  !!}
+                            </div>
+                            <div class="col-4  py-2 align-self-center">
+                                {!!  Form::select('installment_duration', \App\Services\GeneralService::getInstallmentDurationForDropdown(),null,['id'=>'installment_duration',
+      'style' => 'width:100%;', 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_installment_duration'), 'required',
+      'onchange'=>'calculateInstallments();'])
+  !!}
+                            </div>
+                            <div class="col-4  py-2 align-self-center">
+                                {!!  Form::text('total_installments',null,['id'=>'total_installments','class'=>'form-control ','placeholder'=>'0', 'readonly', 'tabindex'=>'-1','placeholder'=>trans('general.total_installments')]) !!}
+                            </div>
+
+                            <div class="col-4  py-2 align-self-center">
+                                {!!  Form::number('reminder_days',10,['step'=>'1','min'=>'1','id'=>'reminder_days','class'=>'form-control ','placeholder'=>trans('general.reminder_days')]) !!}
+                            </div>
+
+                            <div class="col-4  py-2 align-self-center">
+                                {!!  Form::select('down_payment_type', \App\Services\GeneralService::getDiscountTypesForDropdown() ,null,['id'=>'down_payment_type','class'=>'form-control select2', 'required','placeholder'=>trans('general.down_payment_type')]) !!}
+                            </div>
+
+                            <div class="col-4  py-2 align-self-center">
+                                {!!  Form::number('down_payment_value',null,['step'=>'1','min'=>'1','id'=>'down_payment_value','class'=>'form-control ','placeholder'=>trans('general.down_payment_value')]) !!}
+                            </div>
+                            <div class="col-12  py-2 text-center align-self-center">
+                                {!! Form::button('<i class="bx bx-plus"></i>',['class'=>'btn btn-success mx-1']) !!}
+                                {!! Form::button('<i class="bx bx-trash"></i>',['class'=>'btn btn-danger']) !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="text-center">
@@ -65,4 +65,5 @@
 @section('inner-script-files')
 @endsection
 @section('innerScript')
+    @include('dashboard.plan-management.plans.components.scripts')
 @endsection

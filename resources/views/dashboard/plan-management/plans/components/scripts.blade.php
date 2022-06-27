@@ -1,21 +1,5 @@
-@section('inner-script-files')
-    <script src="{{ url('plugins/select2/js/select2.min.js') }}"></script>
-    <script src="{{ url('plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js') }}" type="text/javascript"></script>
-@endsection
 @section('innerScript')
     <script>
-        $(function () {
-            $('.select2').select2();
-            $(".vertical-spin").TouchSpin({
-                min: 12,
-                max: 120,
-                step: 1,
-                boostat: 2,
-                maxboostedstep: 5,
-                verticalbuttons: true,
-            });
-        });
-
         $('#penalties').on('change', function () {
             if ($(this).prop('checked')) {
                 $('.penalty-row').fadeIn('slow');

@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\FlatManagement\Flat;
-use App\Models\FlatManagement\FlatOwner;
-use App\Models\FlatManagement\FlatType;
+use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\FlatOwner;
+use App\Models\WorkingSpace\FlatType;
 use function __;
 use function response;
 use function view;

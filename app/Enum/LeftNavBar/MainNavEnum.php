@@ -12,7 +12,7 @@ class MainNavEnum extends AbstractEnum
     public const PLAN_MANAGEMENT =KeyWordEnum::PLAN_MANAGEMENT;
     public const EVENT_MANAGEMENT = KeyWordEnum::EVENT_MANAGEMENT;
     public const SYSTEM_CONFIGURATION = KeyWordEnum::SYSTEM_CONFIGURATION;
-    public const FLAT_MANAGEMENT = KeyWordEnum::FLAT_MANAGEMENT;
+    public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
 
     public static function getValues(): array
     {
@@ -23,7 +23,7 @@ class MainNavEnum extends AbstractEnum
             self::SYSTEM_CONFIGURATION,
             self::USER_MANAGEMENT,
             self::EVENT_MANAGEMENT,
-            self::FLAT_MANAGEMENT
+            self::CO_WORKING_SPACE
         ];
     }
 
@@ -36,7 +36,7 @@ class MainNavEnum extends AbstractEnum
             self::SYSTEM_CONFIGURATION => '<i class="fas fa-briefcase"></i>',
             self::USER_MANAGEMENT => '<i class="fas fa-shopping-cart"></i>',
             self::EVENT_MANAGEMENT => '<i class="fas fa-chart-bar"></i>',
-            self::FLAT_MANAGEMENT => '<i class="fas fa-chart-bar"></i>'
+            self::CO_WORKING_SPACE => '<i class="fas fa-chart-bar"></i>'
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -51,7 +51,7 @@ class MainNavEnum extends AbstractEnum
             self::DASHBOARD => __(sprintf('%s.%s', 'general', self::DASHBOARD)),
             self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
-            self::FLAT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::FLAT_MANAGEMENT)),
+            self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
             self::PLAN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PLAN_MANAGEMENT)),
             self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::EVENT_MANAGEMENT)),
             self::SYSTEM_CONFIGURATION => __(sprintf('%s.%s', 'general', self::SYSTEM_CONFIGURATION)),

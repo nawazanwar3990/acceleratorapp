@@ -2,7 +2,7 @@
 
 namespace App\Models\Sales;
 
-use App\Models\FlatManagement\Flat;
+use App\Models\WorkingSpace\Flat;
 use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
