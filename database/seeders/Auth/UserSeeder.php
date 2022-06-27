@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Admin',
                 'user_name' => uniqid(),
                 'email' => 'superadmin@gmail.com',
-                'photo' => 'theme/images/users/1.jpg',
+                'photo' => '/images/users/1.jpg',
                 'password' => Hash::make('admin123'),
                 'normal_password' => 'admin123',
                 'active' => true,

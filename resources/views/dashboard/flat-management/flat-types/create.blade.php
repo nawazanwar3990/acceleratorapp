@@ -9,7 +9,7 @@
                     {!! Form::open(['url' =>route('dashboard.flat-types.store'), 'method' => 'POST','files' => true,'id' =>'expense_head_form', 'class' => 'solid-validation']) !!}
 
                     <x-created-by-field></x-created-by-field>
-                    @include('dashboard.flat-management.flats-types.fields')
+                    @include('dashboard.flat-management.flat-types.fields')
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
                                formID="expense_head_form" cancelRoute="dashboard.flat-types.index"></x-buttons>
                     {!! Form::close() !!}

@@ -41,7 +41,6 @@
                     </div>
                 </nav>
             </div>
-            <!-- End Header -->
         </div>
     </div>
 </header>

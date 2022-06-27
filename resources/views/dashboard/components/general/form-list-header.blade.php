@@ -12,7 +12,7 @@
             @endif
             &nbsp;
             <div class="card-actions">
-                <a class="d-print-none btn btn-primary btn-minimize btn-action d-inline-flex align-items-center justify-content-center" data-action="expand" data-bs-toggle="tooltip" title="Toggle Fullscreen" data-bs-placement="top"><i class="mdi mdi-arrow-expand"></i></a>
+                <a class="d-print-none btn btn-primary btn-minimize btn-action d-inline-flex align-items-center justify-content-center" data-action="expand" data-bs-toggle="tooltip" title="Toggle Fullscreen" data-bs-placement="top"><i class="bx bx-expand"></i></a>
             </div>
         </div>
     </div>
