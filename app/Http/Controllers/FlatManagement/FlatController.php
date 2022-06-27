@@ -26,12 +26,12 @@ class FlatController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Flat::class);
-        $records = Flat::orderBy('name', 'ASC')->get();
+        $records = Flat::orderBy('flat_name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.floor_names'),
             'records' => $records,
         ];
-        return view('dashboard.flat-management.flat.index',$params);
+        return view('dashboard.flat-management.flats.index',$params);
     }
 
     /**
@@ -43,7 +43,7 @@ class FlatController extends Controller
         $params = [
             'pageTitle' => __('general.new_floor_names'),
         ];
-        return view('dashboard.flat-management.flat.create', $params);
+        return view('dashboard.flat-management.flats.create', $params);
     }
 
     /**
@@ -70,7 +70,7 @@ class FlatController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.flat-management.flat.edit', $params);
+        return view('dashboard.flat-management.flats.edit', $params);
     }
 
     /**

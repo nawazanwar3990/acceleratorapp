@@ -208,8 +208,7 @@ class PersonService
         if ($request->ajax()) {
             if ($request->has('hrID')) {
                 $hrID = $request->get('hrID');
-                $hr = Hr::whereBuildingId(BuildingService::getBuildingId())
-                    ->with('relation')->find($hrID);
+                $hr = Hr::with('relation')->find($hrID);
                 if ($hr) {
                     $pic = PersonService::getHrFirstPicture($hr->id);
                     $output = ['success' => true, 'msg' => '', 'record' => $hr, 'full_name' => $hr->full_name, 'pic' => $pic];
@@ -232,8 +231,7 @@ class PersonService
                 if ($existingRecord) {
                     $output = ['success' => false, 'msg' => __('general.employee_already_exists')];
                 } else {
-                    $hr = Hr::whereBuildingId(BuildingService::getBuildingId())
-                        ->with('relation')->find($hrID);
+                    $hr = Hr::with('relation')->find($hrID);
                     if ($hr) {
                         $pic = PersonService::getHrFirstPicture($hr->id);
                         $output = ['success' => true, 'msg' => '', 'record' => $hr, 'full_name' => $hr->full_name, 'pic' => $pic];

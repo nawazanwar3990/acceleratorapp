@@ -4,124 +4,46 @@ namespace App\Providers;
 
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
-use App\Models\Accounts\Expense;
-use App\Models\Accounts\ExpenseHead;
-use App\Models\Accounts\Salary;
-use App\Models\Building;
-use App\Models\Definition\General\Colony;
-use App\Models\Definition\General\CommodityType;
-use App\Models\Definition\General\Country;
-use App\Models\Definition\General\District;
-use App\Models\Definition\General\FlatType;
-use App\Models\Definition\General\Province;
-use App\Models\Definition\General\Tehsil;
-use App\Models\Definition\HumanResource\HrEmployeeType;
-use App\Models\Definition\HumanResource\HrMinistry;
-use App\Models\Definition\HumanResource\HrTaxStatus;
-use App\Models\Definition\HumanResource\HrTaxType;
-use App\Models\Devices\Device;
-use App\Models\Devices\DeviceClass;
-use App\Models\Devices\DeviceLocation;
-use App\Models\Devices\DeviceMake;
-use App\Models\Devices\DeviceModel;
-use App\Models\Devices\DeviceOperatingSystem;
-use App\Models\Devices\DeviceType;
-use App\Models\FixedAssets\AssetsInventory;
-use App\Models\FixedAssets\AssetsLocation;
-use App\Models\FixedAssets\AssetsUnit;
 use App\Models\FlatManagement\Flat;
+use App\Models\FlatManagement\FlatType;
 use App\Models\FlatManagement\Floor;
-use App\Models\FlatManagement\FloorName;
 use App\Models\FlatManagement\FloorType;
-use App\Models\FrontDesk\Complain;
-use App\Models\FrontDesk\FrontDeskSetup\CallType;
-use App\Models\FrontDesk\FrontDeskSetup\ComplainType;
-use App\Models\FrontDesk\FrontDeskSetup\Purpose;
-use App\Models\FrontDesk\FrontDeskSetup\Reference;
-use App\Models\FrontDesk\FrontDeskSetup\Source;
-use App\Models\FrontDesk\PhoneCallLog;
-use App\Models\FrontDesk\PostalDispatch;
-use App\Models\FrontDesk\PostalReceive;
-use App\Models\FrontDesk\SaleEnquiry;
-use App\Models\FrontDesk\VisitorBook;
-use App\Models\HumanResource\Employee;
-use App\Models\HumanResource\Nominee;
 use App\Models\Sales\InstallmentTerm;
 use App\Models\Sales\Plan;
-use App\Models\Sales\Sale;
 use App\Models\ServiceManagement\Service;
 use App\Models\SystemConfiguration\Setting;
+use App\Models\UserManagement\Country;
+use App\Models\UserManagement\District;
 use App\Models\UserManagement\Hr;
-use App\Models\UserManagement\HrBusiness;
-use App\Models\UserManagement\HrCast;
 use App\Models\UserManagement\HrDepartment;
 use App\Models\UserManagement\HrDesignation;
-use App\Models\UserManagement\HrNationality;
 use App\Models\UserManagement\HrOrganization;
 use App\Models\UserManagement\HrProfession;
 use App\Models\UserManagement\HrRelation;
 use App\Models\UserManagement\Permission;
+use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
-use App\Policies\AssetsInventoryPolicy;
-use App\Policies\AssetsLocationPolicy;
-use App\Policies\AssetsUnitPolicy;
-use App\Policies\Authorization\PermissionPolicy;
-use App\Policies\Authorization\RolePolicy;
-use App\Policies\Authorization\UserPolicy;
-use App\Policies\BuildingPolicy;
-use App\Policies\BusinessPolicy;
-use App\Policies\CallTypePolicy;
-use App\Policies\ColonyPolicy;
-use App\Policies\CommodityTypesPolicy;
-use App\Policies\ComplainPolicy;
-use App\Policies\ComplainTypePolicy;
-use App\Policies\CountryPolicy;
-use App\Policies\DepartmentPolicy;
-use App\Policies\DesignationPolicy;
-use App\Policies\DeviceClassPolicy;
-use App\Policies\DeviceLocationPolicy;
-use App\Policies\DeviceMakePolicy;
-use App\Policies\DeviceModelPolicy;
-use App\Policies\DeviceOperatingSystemPolicy;
-use App\Policies\DevicePolicy;
-use App\Policies\DeviceTypePolicy;
-use App\Policies\DistrictPolicy;
-use App\Policies\EmployeesPolicy;
-use App\Policies\EmployeeTypePolicy;
-use App\Policies\ExpenseHeadsPolicy;
-use App\Policies\ExpensesPolicy;
-use App\Policies\FlatShopsPolicy;
-use App\Policies\FlatTypesPolicy;
-use App\Policies\FloorNamesPolicy;
-use App\Policies\FloorsPolicy;
-use App\Policies\FloorTypesPolicy;
-use App\Policies\HrCastPolicy;
-use App\Policies\HrPersonPolicy;
-use App\Policies\InstallmentPlansPolicy;
-use App\Policies\InstallmentTermPolicy;
-use App\Policies\MinistryPolicy;
-use App\Policies\NationalityPolicy;
-use App\Policies\NomineeRegistrationPolicy;
-use App\Policies\OrganizationPolicy;
-use App\Policies\PhoneCallLogPolicy;
-use App\Policies\PostalDispatchPolicy;
-use App\Policies\PostalReceivePolicy;
-use App\Policies\ProfessionPolicy;
-use App\Policies\ProvincePolicy;
-use App\Policies\PurposePolicy;
-use App\Policies\ReferencePolicy;
-use App\Policies\RelationPolicy;
-use App\Policies\SalaryPolicy;
-use App\Policies\SalesEnquiryPolicy;
-use App\Policies\ServicesPolicy;
-use App\Policies\SourcePolicy;
-use App\Policies\SystemSettingsPolicy;
-use App\Policies\TaxStatusPolicy;
-use App\Policies\TaxTypePolicy;
-use App\Policies\TehsilPolicy;
-use App\Policies\TitleTransferPolicy;
-use App\Policies\VisitorBookPolicy;
+use App\Policies\FlatManagement\FlatPolicy;
+use App\Policies\FlatManagement\FlatTypePolicy;
+use App\Policies\FlatManagement\FloorPolicy;
+use App\Policies\FlatManagement\FloorTypePolicy;
+use App\Policies\PlainManagement\InstallmentTermPolicy;
+use App\Policies\PlainManagement\PlanPolicy;
+use App\Policies\ServiceManagement\ServicePolicy;
+use App\Policies\SystemConfiguration\SettingPolicy;
+use App\Policies\UserManagement\CountryPolicy;
+use App\Policies\UserManagement\DepartmentPolicy;
+use App\Policies\UserManagement\DesignationPolicy;
+use App\Policies\UserManagement\DistrictPolicy;
+use App\Policies\UserManagement\HrPersonPolicy;
+use App\Policies\UserManagement\OrganizationPolicy;
+use App\Policies\UserManagement\PermissionPolicy;
+use App\Policies\UserManagement\ProfessionPolicy;
+use App\Policies\UserManagement\ProvincePolicy;
+use App\Policies\UserManagement\RelationPolicy;
+use App\Policies\UserManagement\RolePolicy;
+use App\Policies\UserManagement\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -133,75 +55,35 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
+
         User::class => UserPolicy::class,
         Role::class => RolePolicy::class,
         Permission::class => PermissionPolicy::class,
-        /*Definitions*/
-        Service::class => ServicesPolicy::class,
-        FloorName::class => FloorNamesPolicy::class,
-        FloorType::class => FloorTypesPolicy::class,
-        FlatType::class => FlatTypesPolicy::class,
-        CommodityType::class => CommodityTypesPolicy::class,
+        Service::class => ServicePolicy::class,
+
+        Floor::class => FloorPolicy::class,
+        FloorType::class => FloorTypePolicy::class,
+        FlatType::class => FlatTypePolicy::class,
+
+
         HrRelation::class => RelationPolicy::class,
-        HrCast::class => HrCastPolicy::class,
-        HrEmployeeType::class => EmployeeTypePolicy::class,
-        HrTaxType::class => TaxTypePolicy::class,
-        HrTaxStatus::class => TaxStatusPolicy::class,
         Country::class => CountryPolicy::class,
         Province::class => ProvincePolicy::class,
         District::class => DistrictPolicy::class,
-        Tehsil::class => TehsilPolicy::class,
-        Colony::class => ColonyPolicy::class,
+
         HrDepartment::class => DepartmentPolicy::class,
         HrDesignation::class => DesignationPolicy::class,
-        HrNationality::class => NationalityPolicy::class,
-        HrMinistry::class => MinistryPolicy::class,
         HrProfession::class => ProfessionPolicy::class,
         HrOrganization::class => OrganizationPolicy::class,
-        HrBusiness::class => BusinessPolicy::class,
-        /*Device Definitions*/
-        DeviceType::class => DeviceTypePolicy::class,
-        DeviceModel::class => DeviceModelPolicy::class,
-        DeviceMake::class => DeviceMakePolicy::class,
-        DeviceLocation::class => DeviceLocationPolicy::class,
-        DeviceOperatingSystem::class => DeviceOperatingSystemPolicy::class,
-        DeviceClass::class => DeviceClassPolicy::class,
-        /*All Provider*/
-        Device::class => DevicePolicy::class,
-        Building::class => BuildingPolicy::class,
-        Floor::class => FloorsPolicy::class,
-        Flat::class => FlatShopsPolicy::class,
-        Hr::class => HrPersonPolicy::class,
-        Employee::class => EmployeesPolicy::class,
-        Nominee::class => NomineeRegistrationPolicy::class,
-        /*Front Desk*/
-        CallType::class => CallTypePolicy::class,
-        ComplainType::class => ComplainTypePolicy::class,
-        Source::class => SourcePolicy::class,
-        Reference::class => ReferencePolicy::class,
-        Purpose::class => PurposePolicy::class,
-        SaleEnquiry::class => SalesEnquiryPolicy::class,
-        VisitorBook::class => VisitorBookPolicy::class,
-        PhoneCallLog::class => PhoneCallLogPolicy::class,
-        PostalDispatch::class => PostalDispatchPolicy::class,
-        PostalReceive::class => PostalReceivePolicy::class,
-        Complain::class => ComplainPolicy::class,
-        /*Fixed Assets*/
-        AssetsInventory::class => AssetsInventoryPolicy::class,
-        AssetsLocation::class => AssetsLocationPolicy::class,
-        AssetsUnit::class => AssetsUnitPolicy::class,
-        /*sales and rent*/
-        Sale::class => TitleTransferPolicy::class,
-        Plan::class => InstallmentPlansPolicy::class,
-        InstallmentTerm::class => InstallmentTermPolicy::class,
-        /*income and expense*/
-        ExpenseHead::class => ExpenseHeadsPolicy::class,
-        Expense::class => ExpensesPolicy::class,
 
-        /*Accounts*/
-        Salary::class => SalaryPolicy::class,
-        /*settings*/
-        Setting::class => SystemSettingsPolicy::class,
+        Flat::class => FlatPolicy::class,
+        Hr::class => HrPersonPolicy::class,
+
+
+        Plan::class => PlanPolicy::class,
+        InstallmentTerm::class => InstallmentTermPolicy::class,
+
+        Setting::class => SettingPolicy::class,
 
     ];
 

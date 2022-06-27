@@ -76,7 +76,7 @@ class HrRequest extends FormRequest
                 'filename' => $path,
                 'record_id' => $hrModel->id,
                 'record_type' => 'hr_document',
-                'building_id' => BuildingService::getBuildingId(),
+
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ]);
@@ -91,7 +91,7 @@ class HrRequest extends FormRequest
                 'filename' => $path,
                 'record_id' => $hrModel->id,
                 'record_type' => 'hr_signature',
-                'building_id' => BuildingService::getBuildingId(),
+
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ]);
@@ -106,7 +106,7 @@ class HrRequest extends FormRequest
                 'filename' => $path,
                 'record_id' => $hrModel->id,
                 'record_type' => 'hr_first_image',
-                'building_id' => BuildingService::getBuildingId(),
+
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ]);
@@ -119,7 +119,7 @@ class HrRequest extends FormRequest
                 'filename' => $path,
                 'record_id' => $hrModel->id,
                 'record_type' => 'hr_second_image',
-                'building_id' => BuildingService::getBuildingId(),
+
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ]);
@@ -132,7 +132,7 @@ class HrRequest extends FormRequest
                 'filename' => $path,
                 'record_id' => $hrModel->id,
                 'record_type' => 'hr_third_image',
-                'building_id' => BuildingService::getBuildingId(),
+
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ]);
@@ -145,7 +145,7 @@ class HrRequest extends FormRequest
                 'filename' => $path,
                 'record_id' => $hrModel->id,
                 'record_type' => 'hr_fourth_image',
-                'building_id' => BuildingService::getBuildingId(),
+
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ]);

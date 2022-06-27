@@ -8,7 +8,7 @@
                     <table class="table table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\FlatType::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.flat-management.flat-types.list')
+                        @include('dashboard.flat-management.flats-types.list')
                         </tbody>
                     </table>
                 </div>

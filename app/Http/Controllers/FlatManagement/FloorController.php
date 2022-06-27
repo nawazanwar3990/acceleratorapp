@@ -4,7 +4,11 @@ namespace App\Http\Controllers\FlatManagement;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FlatManagement\FloorNameRequest;
-use App\Models\FlatManagement\FloorName;
+use App\Models\FlatManagement\Floor;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use function __;
 use function redirect;
 use function view;
@@ -15,98 +19,68 @@ class FloorController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        $this->authorize('view', FloorName::class);
-        $records = FloorName::orderBy('name', 'ASC')->get();
+        $this->authorize('view', Floor::class);
+        $records = Floor::orderBy('floor_name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.floor_names'),
             'records' => $records,
         ];
-        return view('dashboard.definition.floors.index',$params);
+        return view('dashboard.flat-management.floors.index',$params);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
-        $this->authorize('create', FloorName::class);
+        $this->authorize('create', Floor::class);
         $params = [
             'pageTitle' => __('general.new_floor_names'),
         ];
 
-        return view('dashboard.definition.floors.create', $params);
+        return view('dashboard.flat-management.floors.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(FloorNameRequest $request)
     {
-        $this->authorize('create', FloorName::class);
+        $this->authorize('create', Floor::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.floors.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.floors.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.floors.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function show($id)
+    public function edit($id): Factory|View|Application
     {
-        $this->authorize('view', FloorName::class);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $this->authorize('update', FloorName::class);
-        $model = FloorName::findorFail($id);
+        $this->authorize('update', Floor::class);
+        $model = Floor::findorFail($id);
 
         $params = [
             'pageTitle' => __('general.edit_floor_names'),
             'model' => $model,
         ];
 
-        return view('dashboard.definition.floors.edit', $params);
+        return view('dashboard.flat-management.floors.edit', $params);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(FloorNameRequest $request, $id)
     {
-        $this->authorize('update', FloorName::class);
+        $this->authorize('update', Floor::class);
         if ($request->updateData($id)) {
             return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_updated_successfully'));
@@ -114,14 +88,11 @@ class FloorController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy(FloorNameRequest $request,$id)
+    public function destroy(FloorNameRequest $request, $id)
     {
-        $this->authorize('delete', FloorName::class);
+        $this->authorize('delete', Floor::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_deleted_successfully'));

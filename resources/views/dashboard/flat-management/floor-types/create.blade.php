@@ -8,10 +8,10 @@
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.floor-types.store'), 'method' => 'POST','files' => true,'id' =>'expense_head_form', 'class' => 'solid-validation']) !!}
 
-                    <x-created-by-field />
+                    <x-created-by-field></x-created-by-field>
                     @include('dashboard.flat-management.floor-types.fields')
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
-                               formID="expense_head_form" cancelRoute="dashboard.floor-types.index"/>
+                               formID="expense_head_form" cancelRoute="dashboard.floor-types.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>
             </div>

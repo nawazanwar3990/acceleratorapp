@@ -4,7 +4,11 @@ namespace App\Http\Controllers\FlatManagement;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FlatManagement\FlatTypeRequest;
-use App\Models\Definition\General\FlatType;
+use App\Models\FlatManagement\FlatType;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use function __;
 use function redirect;
 use function view;
@@ -17,7 +21,10 @@ class FlatTypeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    /**
+     * @throws AuthorizationException
+     */
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', FlatType::class);
         $records = FlatType::orderBy('name', 'ASC')->get();
@@ -25,40 +32,38 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.flat_types'),
             'records' => $records,
         ];
-        return view('dashboard.definition.flat-types.index',$params);
+        return view('dashboard.flat-management.flats-types.index',$params);
     }
 
-    public function create()
+    /**
+     * @throws AuthorizationException
+     */
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', FlatType::class);
         $params = [
             'pageTitle' => __('general.new_flat_types'),
         ];
 
-        return view('dashboard.definition.flat-types.create', $params);
+        return view('dashboard.flat-management.flats-types.create', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function store(FlatTypeRequest $request)
     {
         $this->authorize('create', FlatType::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.flat-types.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.flat-types.index')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.flat-types.index')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 
-    public function show($id)
-    {
-        $this->authorize('view', FlatType::class);
-        //
-    }
-
-    public function edit($id)
+    /**
+     * @throws AuthorizationException
+     */
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', FlatType::class);
         $model = FlatType::findorFail($id);
@@ -68,9 +73,12 @@ class FlatTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.definition.flat-types.edit', $params);
+        return view('dashboard.flat-management.flats-types.edit', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(FlatTypeRequest $request, $id)
     {
         $this->authorize('update', FlatType::class);
@@ -80,6 +88,9 @@ class FlatTypeController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(FlatTypeRequest $request, $id)
     {
         $this->authorize('delete', FlatType::class);

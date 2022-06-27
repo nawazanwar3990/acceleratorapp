@@ -8,9 +8,9 @@
                 <div class="card-body">
                     {!! Form::model($model, ['url' =>route('dashboard.floor-types.update', $model->id), 'method' => 'POST','files' => true,'id' =>'floorName', 'class' => 'solid-validation']) !!}
                     @method('PUT')
-                    <x-updated-by-field />
+                    <x-updated-by-field></x-updated-by-field>
                     @include('dashboard.flat-management.floor-types.fields', ['for' => 'edit'])
-                    <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.floor-types.index"/>
+                    <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.floor-types.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -1,7 +1,5 @@
 @extends('layouts.dashboard')
 @section('css-before')
-    <link href="{{ url('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    @include('includes.datatable-css')
 @endsection
 @section('content')
     <div class="row">
@@ -9,17 +7,14 @@
             <div class="card card-shadow pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body" style="padding-top: 0;">
-                    {!! Form::open(['url' => route('dashboard.flats-shops.store'), 'method' => 'POST','files' => true,'id' =>'flat_form', 'class' => 'solid-validation']) !!}
-                        <x-created-by-field />
-
+                    {!! Form::open(['url' => route('dashboard.flats.store'), 'method' => 'POST','files' => true,'id' =>'flat_form', 'class' => 'solid-validation']) !!}
+                        <x-created-by-field></x-created-by-field>
                         @include('dashboard.flat-management.flats.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
-                                   formID="flat_form" cancelRoute="dashboard.flats-shops.index"/>
+                                   formID="flat_form" cancelRoute="dashboard.flats.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@include('dashboard.components.hr-picker-modal')
-@include('dashboard.flat-management.flats.components.scripts')

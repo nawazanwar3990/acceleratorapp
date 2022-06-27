@@ -10,8 +10,8 @@
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.service.edit', $record->id),
-                'delete' => route('dashboard.service.destroy', $record->id),
+                'edit' => route('dashboard.services.edit', $record->id),
+                'delete' => route('dashboard.services.destroy', $record->id),
             ])
         </td>
     </tr>

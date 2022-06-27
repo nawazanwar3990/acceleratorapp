@@ -5,6 +5,10 @@ namespace App\Http\Controllers\FlatManagement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FlatManagement\FloorTypeRequest;
 use App\Models\FlatManagement\FloorType;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use function __;
 use function redirect;
 use function view;
@@ -15,12 +19,11 @@ class FloorTypeController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $this->authorize('view', FloorType::class);
         $records = FloorType::orderBy('name', 'ASC')->get();
@@ -28,63 +31,38 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.floor_types'),
             'records' => $records,
         ];
-        return view('dashboard.definition.floor-types.index',$params);
+        return view('dashboard.flat-management.floor-types.index',$params);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', FloorType::class);
         $params = [
             'pageTitle' => __('general.new_floor_types'),
         ];
 
-        return view('dashboard.definition.floor-types.create', $params);
+        return view('dashboard.flat-management.floor-types.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(FloorTypeRequest $request)
     {
         $this->authorize('create', FloorType::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.floor-types.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
                 return redirect()->route('dashboard.floor-types.index')
                     ->with('success', __('general.record_created_successfully'));
             }
-        }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
      */
-    public function show($id)
-    {
-        $this->authorize('view', FloorType::class);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', FloorType::class);
         $model = FloorType::findorFail($id);
@@ -94,15 +72,11 @@ class FloorTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.definition.floor-types.edit', $params);
+        return view('dashboard.flat-management.floor-types.edit', $params);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(FloorTypeRequest $request, $id)
     {
@@ -114,12 +88,9 @@ class FloorTypeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy(FloorTypeRequest $request,int $id)
+    public function destroy(FloorTypeRequest $request, int $id)
     {$this->authorize('delete', FloorType::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.floor-types.index')

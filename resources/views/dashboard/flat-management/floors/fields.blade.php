@@ -2,7 +2,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('building_name' ,__('general.building_name') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('building_name',session()->get('bName'),['id'=>'name','class'=>'form-control ','placeholder'=>__('general.building_name'),'disabled', 'tabindex'=>'-1']) !!}
+        {!!  Form::text('building_name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.building_name')]) !!}
         @error('name')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -81,7 +81,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('general_services' ,__('general.general_services'),['class'=>'form-label']))   !!}
-        {!!  Form::select('general_services[]', \App\Services\ServiceData::getGeneralServicesForDropdown(),isset($for) ? $model->general_services : \App\Services\BuildingService::getBuildingServices(),['id'=>'general_services',
+        {!!  Form::select('general_services[]', \App\Services\ServiceData::getGeneralServicesForDropdown(),isset($for) ? $model->general_services :null,['id'=>'general_services',
             'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
         !!}
         @error('general_services')
@@ -91,7 +91,7 @@
 
     <div class="col">
         {!!  Html::decode(Form::label('security_services' ,__('general.security_services') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('security_services[]', \App\Services\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services : \App\Services\BuildingService::getBuildingServices('security'),['id'=>'security_services',
+        {!!  Form::select('security_services[]', \App\Services\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services :null,['id'=>'security_services',
             'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
         !!}
         @error('security_services')

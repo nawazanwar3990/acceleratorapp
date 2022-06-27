@@ -32,8 +32,7 @@ class FloorService
         $floorID = $request->get('floorID');
         $buildingID = $request->get('buildingID');
         if ($request->ajax()) {
-            $records = Flat::whereBuildingId(BuildingService::getBuildingId())
-                ->where('sales_status', $request->get('status', 'open'))
+            $records = Flat::where('sales_status', $request->get('status', 'open'))
                 ->where('floor_id', $floorID)->orderBy('flat_name', 'ASC')->select('flat_name', 'flat_number', 'id')->get();
             foreach ($records as $record) {
                 $html .= '<option value="' . $record->id . '">' . $record->name_number . '</option>';
@@ -46,7 +45,7 @@ class FloorService
 
     public static function getFloorByBuilding($building_id)
     {
-        return Floor::whereBuildingId($building_id)->select('floor_name','id')->get();
+        return Floor::select('floor_name','id')->get();
     }
 
     public static function getFloorDetailsForJS($request) {
