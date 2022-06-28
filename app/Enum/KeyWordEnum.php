@@ -52,6 +52,10 @@ class KeyWordEnum extends AbstractEnum
     public const HR_PERSON = 'hr_person';
     public const RELATION = 'relation';
 
+    const PACKAGE_MANAGEMENT = 'package_management';
+    const MODULE = 'duration';
+    const DURATION = 'duration';
+
     static function getConstants()
     {
         $oClass = new \ReflectionClass(__CLASS__);

@@ -33,6 +33,9 @@ class TableEnum extends AbstractEnum
     const ROLE_PERMISSION = 'role_permission';
     const MODULES = 'modules';
     const EVENTS = 'events';
+    const PACKAGES = 'packages';
+    const PACKAGE_MODULE = 'package_module';
+    const DURATIONS = 'durations';
 
 
     /**

@@ -20,7 +20,10 @@ Route::resource('roles', RoleController::class, ['names' => 'roles']);
 Route::resource('permissions', PermissionController::class, ['names' => 'permissions']);
 Route::resource('role-users', RoleUserController::class, ['names' => 'role-users']);
 Route::resource('role-permissions', RolePermissionController::class, ['names' => 'role-permissions']);
+
 Route::get('/sync-permissions', [PermissionController::class, 'syncPermission'])
+    ->name('sync-permissions.index');
+Route::get('/sync-modules', [PermissionController::class, 'syncPermission'])
     ->name('sync-permissions.index');
 
 Route::resource('/relation', RelationController::class, ['names' => 'relation']);

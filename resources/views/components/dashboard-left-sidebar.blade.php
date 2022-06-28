@@ -3,11 +3,13 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 @foreach(\App\Enum\LeftNavBar\MainNavEnum::getTranslationKeys() as $key=>$value)
-                    @if($key == \App\Enum\KeywordEnum::DASHBOARD)
+                    @if(in_array($key,[
+                        \App\Enum\KeyWordEnum::DASHBOARD
+                        ]))
                         @can('hasModuleAccess',$key)
                             <li>
                                 <a class="waves-effect waves-dark"
-                                   href="{{ route('dashboard.index') }}">
+                                   href="{{ \App\Enum\LeftNavBar\MainNavEnum::getRoute($key) }}">
                                     {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
                                     {{ $value }}
                                 </a>
@@ -23,6 +25,9 @@
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
                                 @switch($key)
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::PACKAGE_MANAGEMENT)
+                                    @include('dashboard.components.left-nav-bar.package-management')
+                                    @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
                                     @include('dashboard.components.left-nav-bar.user-management')
                                     @break
