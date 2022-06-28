@@ -32,7 +32,7 @@ class PackageController extends Controller
             'pageTitle' => __('general.packages'),
             'records' => $records,
         ];
-        return view('dashboard.packages.index',$params);
+        return view('dashboard.package-management.packages.index',$params);
     }
 
     /**
@@ -44,7 +44,7 @@ class PackageController extends Controller
         $params = [
             'pageTitle' => __('general.new_package'),
         ];
-        return view('dashboard.packages.create', $params);
+        return view('dashboard.package-management.packages.create', $params);
     }
 
     /**
@@ -71,7 +71,7 @@ class PackageController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.packages.edit', $params);
+        return view('dashboard.package-management.packages.edit', $params);
     }
 
     /**

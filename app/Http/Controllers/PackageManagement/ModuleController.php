@@ -19,18 +19,15 @@ class ModuleController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', Module::class);
+        //$this->authorize('view', Module::class);
         $records = Module::all();
         $params = [
             'pageTitle' => __('general.modules'),
             'records' => $records,
         ];
-        return view('dashboard.modules.index',$params);
+       return view('dashboard.package-management.modules.index',$params);
     }
 
     /**
@@ -42,7 +39,7 @@ class ModuleController extends Controller
         $params = [
             'pageTitle' => __('general.new_module'),
         ];
-        return view('dashboard.modules.create', $params);
+        return view('dashboard.package-management.modules.create', $params);
     }
 
     /**
@@ -69,7 +66,7 @@ class ModuleController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.modules.edit', $params);
+        return view('dashboard.package-management.modules.edit', $params);
     }
 
     /**

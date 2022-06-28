@@ -34,9 +34,6 @@
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SERVICE_MANAGEMENT)
                                     @include('dashboard.components.left-nav-bar.service-management')
                                     @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.plan-management')
-                                    @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::EVENT_MANAGEMENT)
                                     @include('dashboard.components.left-nav-bar.event-management')
                                     @break

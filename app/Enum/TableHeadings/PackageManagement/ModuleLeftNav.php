@@ -9,7 +9,8 @@ use function __;
 class ModuleLeftNav extends AbstractEnum
 {
     public const NAME = 'name';
-    public const SlUG = 'slug';
+    public const PARENT_TYPE = 'parent_type';
+    public const CHILD_TYPE = 'child_type';
     public static function getValues(): array
     {
         return [];
@@ -18,7 +19,8 @@ class ModuleLeftNav extends AbstractEnum
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::SlUG => __(sprintf('%s.%s', 'general', self::SlUG)),
+            self::PARENT_TYPE => __(sprintf('%s.%s', 'general', self::PARENT_TYPE)),
+            self::CHILD_TYPE => __(sprintf('%s.%s', 'general', self::CHILD_TYPE)),
         ];
     }
 }

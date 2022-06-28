@@ -7,7 +7,6 @@ class KeyWordEnum extends AbstractEnum
 
     public const DASHBOARD = 'dashboard';
     //plan management
-    public const PACKAGE = 'package';
     public const PLAN_MANAGEMENT = 'plan_management';
     public const PLAN = 'plan';
     public const INSTALLMENT = 'installment';
@@ -53,7 +52,8 @@ class KeyWordEnum extends AbstractEnum
     public const RELATION = 'relation';
 
     const PACKAGE_MANAGEMENT = 'package_management';
-    const MODULE = 'duration';
+    public const PACKAGE = 'package';
+    const MODULE = 'module';
     const DURATION = 'duration';
 
     static function getConstants()
