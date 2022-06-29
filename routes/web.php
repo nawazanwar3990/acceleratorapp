@@ -13,6 +13,7 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('index');
     require __DIR__ . '/service-management.php';
+    require __DIR__ . '/freelancers-portal.php';
     require __DIR__ . '/user-management.php';
     require __DIR__ . '/system-configuration.php';
     require __DIR__ . '/plan-management.php';

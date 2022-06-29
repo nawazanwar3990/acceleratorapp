@@ -22,32 +22,32 @@ class ServiceSeeder extends Seeder
         DB::table(TableEnum::SERVICES)->insert([
             [
                 'name' => 'Gas',
-                'type' => '1',
+                'type' => 'general_service',
                 'status' => true,
             ],
             [
                 'name' => 'Electricity',
-                'type' => '1',
+                'type' => 'general_service',
                 'status' => true,
             ],
             [
                 'name' => 'Water',
-                'type' => '1',
+                'type' => 'general_service',
                 'status' => true,
             ],
             [
                 'name' => 'Smoke Sensor',
-                'type' => '2',
+                'type' => 'security_service',
                 'status' => true,
             ],
             [
                 'name' => 'Fire Alarm',
-                'type' => '2',
+                'type' => 'security_service',
                 'status' => true,
             ],
             [
                 'name' => 'Lift',
-                'type' => '1',
+                'type' => 'general_service',
                 'status' => true,
             ],
         ]);

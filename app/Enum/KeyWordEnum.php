@@ -50,6 +50,9 @@ class KeyWordEnum extends AbstractEnum
     public const DEFINITION = 'definition';
     public const HR_PERSON = 'hr_person';
     public const RELATION = 'relation';
+    //Freelancers Portal
+    public const FREELANCERS_PORTAL = 'freelancers_portal';
+    public const FREELANCERS = 'freelancers';
 
     const PACKAGE_MANAGEMENT = 'package_management';
     public const PACKAGE = 'package';
