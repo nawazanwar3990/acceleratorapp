@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
+use App\Models\PackageManagement\Module;
 use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\RolePermission;
-use App\Models\Module;
 
 class ModuleEnum extends AbstractEnum
 {
@@ -20,7 +20,11 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
-            KeyWordEnum::PACKAGE,
+            KeyWordEnum::PACKAGE_MANAGEMENT=>array(
+                $ability . KeyWordEnum::MODULE,
+                $ability . KeyWordEnum::DURATION,
+                $ability . KeyWordEnum::PACKAGE,
+            ),
             KeyWordEnum::USER_MANAGEMENT => array(
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,

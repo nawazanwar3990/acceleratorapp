@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.floor-types.create','is_create'=>true])
+                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.modules.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\DurationLeftNavEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\PackageManagement\ModuleLeftNav::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.working-space.floor-types.list')
+                        @include('dashboard.package-management.modules.list')
                         </tbody>
                     </table>
                 </div>

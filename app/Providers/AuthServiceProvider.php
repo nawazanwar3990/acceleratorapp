@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
+use App\Models\PackageManagement\Duration;
+use App\Models\PackageManagement\Module;
+use App\Models\PackageManagement\Package;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatType;
 use App\Models\WorkingSpace\Floor;
@@ -28,6 +31,9 @@ use App\Policies\FlatManagement\FlatPolicy;
 use App\Policies\FlatManagement\FlatTypePolicy;
 use App\Policies\FlatManagement\FloorPolicy;
 use App\Policies\FlatManagement\FloorTypePolicy;
+use App\Policies\ModulePolicy;
+use App\Policies\PackageManagement\DurationPolicy;
+use App\Policies\PackageManagement\PackagePolicy;
 use App\Policies\PlanManagement\InstallmentTermPolicy;
 use App\Policies\PlanManagement\PlanPolicy;
 use App\Policies\ServiceManagement\ServicePolicy;
@@ -84,6 +90,9 @@ class AuthServiceProvider extends ServiceProvider
         InstallmentTerm::class => InstallmentTermPolicy::class,
 
         Setting::class => SettingPolicy::class,
+        Duration::class => DurationPolicy::class,
+        Module::class =>ModulePolicy ::class,
+        Package::class => PackagePolicy::class,
 
     ];
 
