@@ -4,6 +4,10 @@
         {!!  Form::select('type',\App\Enum\PackageTypeEnum::getTranslationKeys(),null,['id'=>'package_type','class'=>'form-control ','placeholder'=>__('general.type'), 'required']) !!}
     </div>
     <div class="col-md-3 mb-3">
+        {!!  Html::decode(Form::label('trail_expire_date' ,__('general.trail_expire_date').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
+        {!!  Form::text('trail_expire_date',null,['id'=>'trail_expire_date','class'=>'form-control datepicker ','required']) !!}
+    </div>
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
     </div>

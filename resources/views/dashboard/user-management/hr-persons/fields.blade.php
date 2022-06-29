@@ -206,7 +206,6 @@
             </thead>
             <tbody>
             @forelse(\App\Services\PackageService::get_vendor_packages() as $record)
-                <tr>
                     <td>{{ \App\Enum\PackageTypeEnum::getTranslationKeyBy($record->type) }}</td>
                     <td>{{ $record->name }}</td>
                     <td>
@@ -241,8 +240,8 @@
                         </UL>
                     </td>
                     <td class="text-center">
-                        <div class="form-check form-switch">
-                            {!! Form::radio('package['.$record->id.']',false,false,['class'=>'form-check-input']) !!}
+                        <div class="form-check">
+                            {!! Form::radio('package_id',$record->id,false,['class'=>'form-check-input']) !!}
                         </div>
                     </td>
                 </tr>

@@ -1,6 +1,5 @@
 @extends('layouts.dashboard')
 @section('css-before')
-    <link href="{{ url('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row">
@@ -19,4 +18,3 @@
         </div>
     </div>
 @endsection
-@include('dashboard.package-management.packages.scripts', ['for' => 'edit'])

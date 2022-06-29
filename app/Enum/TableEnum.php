@@ -36,6 +36,7 @@ class TableEnum extends AbstractEnum
     const PACKAGES = 'packages';
     const PACKAGE_MODULE = 'package_module';
     const DURATIONS = 'durations';
+    const HR_PACKAGE = 'hr_package';
 
 
     /**

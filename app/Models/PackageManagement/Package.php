@@ -19,10 +19,10 @@ class Package extends Model
         'type',
         'duration_type_id',
         'duration_limit',
+        'trail_expire_date',
         'name',
         'slug',
         'price',
-        'is_expire',
         'reminder_days'
     ];
 

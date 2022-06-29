@@ -8,12 +8,14 @@ class PackageTypeEnum extends AbstractEnum
 {
     public const FREE = 'free';
     public const PAYED = 'payed';
+    public const TRAIL = 'trail';
 
     public static function getValues(): array
     {
         return array(
             self::FREE,
-            self::PAYED
+            self::PAYED,
+            self::TRAIL
         );
     }
 
@@ -21,7 +23,8 @@ class PackageTypeEnum extends AbstractEnum
     {
         return array(
             self::FREE => __(sprintf('%s.%s', 'general', self::FREE)),
-            self::PAYED => __(sprintf('%s.%s', 'general', self::PAYED))
+            self::PAYED => __(sprintf('%s.%s', 'general', self::PAYED)),
+            self::TRAIL => __(sprintf('%s.%s', 'general', self::TRAIL))
         );
     }
 }

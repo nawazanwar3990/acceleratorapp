@@ -4,10 +4,13 @@ namespace App\Http\Requests\UserManagement;
 
 use App\Enum\TableEnum;
 use App\Models\Media;
+use App\Models\PackageManagement\Package;
 use App\Models\UserManagement\Hr;
 use App\Traits\General;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
@@ -17,6 +20,7 @@ class HrRequest extends FormRequest
     {
         return true;
     }
+
     public function rules()
     {
         if ($this->has('model_id')) {
@@ -37,15 +41,18 @@ class HrRequest extends FormRequest
         }
     }
 
-    public function createData() {
+    public function createData()
+    {
         $model = Hr::create($this->all());
         if ($model) {
+            $this->addPackage($model);
             $this->uploadMedia($model);
         }
         return $model;
     }
 
-    public function updateData($id) {
+    public function updateData($id)
+    {
         $model = Hr::findorFail($id)->update($this->all());
         if ($model) {
             $model = Hr::find($id);
@@ -65,7 +72,8 @@ class HrRequest extends FormRequest
         return true;
     }
 
-    private function uploadMedia($hrModel) {
+    private function uploadMedia($hrModel)
+    {
         //scanned document
         if ($this->file('scanned_document')) {
             $uploadedFile = $this->file('scanned_document');
@@ -150,5 +158,17 @@ class HrRequest extends FormRequest
                 'updated_by' => Auth::user()->id,
             ]);
         }
+    }
+
+    private function addPackage($model)
+    {
+        $pId = $this->package_id;
+        DB::table(TableEnum::HR_PACKAGE)->insert([
+            'package_id' => $pId,
+            'hr_id' => $model->id,
+            'price' => Package::find($pId)->price,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
     }
 }

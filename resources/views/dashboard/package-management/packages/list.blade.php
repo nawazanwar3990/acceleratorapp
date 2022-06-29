@@ -24,7 +24,6 @@
             @endif
         </td>
         <td>{{ $record->price }}</td>
-        <td>{{ $record->is_expire }}</td>
         <td>{{ $record->reminder_days }}</td>
         <td style="width: 230px;">
             <UL class="list-group list-group-flush bg-transparent">
