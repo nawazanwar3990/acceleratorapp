@@ -39,6 +39,9 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::SERVICE_MANAGEMENT=>array(
                 $ability . KeyWordEnum::SERVICE
             ),
+            KeyWordEnum::FREELANCERS_PORTAL=>array(
+                $ability . KeyWordEnum::FREELANCERS
+            ),
             KeyWordEnum::CO_WORKING_SPACE=>array(
                 $ability . KeyWordEnum::BUILDING,
                 $ability . KeyWordEnum::SHOP,
