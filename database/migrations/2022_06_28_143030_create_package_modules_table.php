@@ -10,8 +10,9 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::PACKAGE_MODULE, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('package_id')->nullable()->constrained(TableEnum::ROLES);
-            $table->foreignId('module_id')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('package_id')->nullable()->constrained(TableEnum::PACKAGES);
+            $table->foreignId('module_id')->nullable()->constrained(TableEnum::MODULES);
+            $table->string('limit')->nullable();
             $table->timestamps();
         });
     }

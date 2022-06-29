@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\PackageManagement;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\PackageRequest;
 use App\Http\Requests\WorkingSpace\FlatRequest;
@@ -27,12 +28,12 @@ class PackageController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Package::class);
-        $records = Package::all();
+        $records = Package::with('duration_type','modules')->get();
         $params = [
             'pageTitle' => __('general.packages'),
             'records' => $records,
         ];
-        return view('dashboard.package-management.packages.index',$params);
+        return view('dashboard.package-management.packages.index', $params);
     }
 
     /**

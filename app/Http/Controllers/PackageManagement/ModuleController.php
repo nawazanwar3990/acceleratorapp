@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\PackageManagement;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\ModuleRequest;
 use App\Models\PackageManagement\Module;
@@ -27,7 +28,7 @@ class ModuleController extends Controller
             'pageTitle' => __('general.modules'),
             'records' => $records,
         ];
-       return view('dashboard.package-management.modules.index',$params);
+        return view('dashboard.package-management.modules.index', $params);
     }
 
     /**

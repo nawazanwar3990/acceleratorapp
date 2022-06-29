@@ -52,11 +52,9 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::FLOOR,
                 $ability . KeyWordEnum::FLAT
             ),
-            KeyWordEnum::PLAN_MANAGEMENT => array(
-                $ability . KeyWordEnum::PLAN,
-                $ability . KeyWordEnum::INSTALLMENT,
-                $ability . KeyWordEnum::INSTALLMENT_TERM,
-            ),
+            KeyWordEnum::FREELANCER,
+            KeyWordEnum::INVESTOR,
+            KeyWordEnum::SERVICE_PROVIDER,
             KeyWordEnum::EVENT_MANAGEMENT => array(
                 $ability . KeyWordEnum::EVENT
             ),

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\PackageTypeEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -10,10 +11,11 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::PACKAGES, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('duration_id')->nullable()->constrained(TableEnum::DURATIONS);
-            $table->string('name')->nullable()->unique();
-            $table->string('slug')->nullable()->unique();
+            $table->enum('type', PackageTypeEnum::getValues())->default(PackageTypeEnum::FREE);
+            $table->string('name')->nullable();
+            $table->foreignId('duration_type_id')->nullable()->constrained(TableEnum::DURATIONS);
+            $table->string('duration_limit')->nullable();
+            $table->string('slug')->nullable();
             $table->string('price')->nullable();
             $table->string('is_expire')->default(false);
             $table->integer('reminder_days')->nullable();

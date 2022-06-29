@@ -34,8 +34,7 @@ return [
     'monthly' => 'Monthly',
 
     'free' => 'Free',
-    'basic' => 'Basic',
-    'premium' => 'Premium',
+    'payed' => 'Payed',
 
     'yearly' => 'Yearly',
     'weekly' => 'Weekly',
@@ -992,7 +991,6 @@ return [
     'hr_print' => 'HR Print',
     'installment_name' => 'Installment Name',
     'installment_years' => 'Installment Years',
-    'reminder_days' => 'Installment Days',
     'third_penalty_days' => 'Third Penalty Days',
     'third_penalty_type' => 'Third Penalty Type',
     'third_penalty_charges' => 'Third Penalty Charges',
@@ -1111,5 +1109,16 @@ return [
     'duration' => 'Duration',
     'module' => 'Module',
     'parent_type' => 'Parent Type',
-    'child_type' => 'Child Type'
+    'child_type' => 'Child Type',
+    'packages' => 'Packages',
+    'new_package' => 'New Package',
+    'modules' => 'Modules',
+    'durations' => 'Durations',
+    'new_duration' => 'New Duration',
+    'reminder_days' => 'Reminder Days',
+    'daily' => 'Daily',
+    'is_expire' => 'Is Expire',
+
+    'duration_type' => 'Duration Type',
+    'duration_limit' => 'Duration Limit'
 ];
