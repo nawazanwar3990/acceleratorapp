@@ -1143,5 +1143,11 @@ return [
     'is_expire' => 'Is Expire',
 
     'duration_type' => 'Duration Type',
-    'duration_limit' => 'Duration Limit'
+    'duration_limit' => 'Duration Limit',
+    'vendor'=>'Vendor',
+    'client'=>'Client',
+    'online'=>'Online',
+    'offline'=>'Offline',
+    'select_payment_type'=>'Select Payment Type',
+    'payment_type_note'=>' Select Your Online And Offline Payment'
 ];

@@ -19,6 +19,26 @@
         </div>
     </div>
 </div>
+<div class="row mt-5">
+    <div class="col-md-6">
+        <h3>{{ __('general.payment_type') }}</h3>
+        <p>
+            {{ __('general.payment_type_note') }}
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        {!!  Html::decode(Form::label('payment_type' ,__('general.payment_type') ,['class'=>'form-label']))   !!}
+                        {!!  Form::select('payment_type[]', \App\Enum\PaymentTypeEnum::getTranslationKeys(),$records->payment_type,['id'=>'payment_type','class'=>'select2 form-control', 'placeholder'=>__('general.select_payment_type'),'style'=>'width="100%"','multiple']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {{--currency symbol position--}}
 <div class="row mt-5">
     <div class="col-md-6">

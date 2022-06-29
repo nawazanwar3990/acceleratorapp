@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Enum\PaymentTypeEnum;
 use App\Enum\TableEnum;
+use App\Models\SystemConfiguration\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -14,14 +16,15 @@ class SettingSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table(TableEnum::SETTINGS)->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        DB::table(TableEnum::SETTINGS)->insert([
+        Setting::create(
             [
                 'currency_format' => 'PKR',
+                'payment_type' => PaymentTypeEnum::getValues(),
                 'time_zone' => 'Asia/Karachi',
                 'language' => 'en',
                 'currency_symbol_position' => 'hide',
                 'date_format' => 'd-M-Y'
-            ],
-        ]);
+            ]
+        );
     }
 }

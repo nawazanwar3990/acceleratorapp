@@ -3,7 +3,6 @@
 namespace App\Models\SystemConfiguration;
 
 use App\Models\UserManagement\User;
-use App\Models\Building;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,9 +10,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Setting extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    protected $casts = [
+        'payment_type' => 'array'
+    ];
     protected $fillable = [
+        'payment_type',
         'currency_format',
         'time_zone',
         'language',

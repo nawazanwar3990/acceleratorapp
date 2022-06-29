@@ -4,7 +4,7 @@
             <ul id="sidebarnav">
                 @foreach(\App\Enum\LeftNavBar\MainNavEnum::getTranslationKeys() as $key=>$value)
                     @if(in_array($key,[
-                        \App\Enum\KeyWordEnum::DASHBOARD
+                        \App\Enum\KeyWordEnum::DASHBOARD,\App\Enum\KeyWordEnum::VENDOR,\App\Enum\KeyWordEnum::CLIENT
                         ]))
                         @can('hasModuleAccess',$key)
                             <li>

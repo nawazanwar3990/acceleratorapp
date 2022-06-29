@@ -56,11 +56,13 @@ class KeyWordEnum extends AbstractEnum
 
     const PACKAGE_MANAGEMENT = 'package_management';
     public const PACKAGE = 'package';
-    const MODULE = 'module';
-    const DURATION = 'duration';
-    const FREELANCER = 'freelancer';
-    const INVESTOR = 'investor';
-    const SERVICE_PROVIDER = 'service_provider';
+    public const MODULE = 'module';
+    public const DURATION = 'duration';
+    public const FREELANCER = 'freelancer';
+    public const INVESTOR = 'investor';
+   public const SERVICE_PROVIDER = 'service_provider';
+   public const VENDOR = 'vendor';
+   public const CLIENT = 'client';
 
     static function getConstants()
     {

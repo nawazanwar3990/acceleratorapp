@@ -24,6 +24,7 @@ class DurationSeeder extends Seeder
             DB::table(TableEnum::DURATIONS)->insert([
                 [
                     'name' => $value,
+                    'slug' => $key,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                     'created_by' => 1,

@@ -11,15 +11,26 @@
                 --
             @endisset
         </td>
-        <td>{{ $record->duration_limit }}</td>
+        <td>
+            {{ $record->duration_limit }}
+            @if($record->duration_type->slug===\App\Enum\DurationEnum::Daily)
+                Days
+            @elseif($record->duration_type->slug===\App\Enum\DurationEnum::MONTHLY)
+                Months
+            @elseif($record->duration_type->slug===\App\Enum\DurationEnum::WEEKLY)
+                Weeks
+            @elseif($record->duration_type->slug===\App\Enum\DurationEnum::YEARLY)
+                Years
+            @endif
+        </td>
         <td>{{ $record->price }}</td>
         <td>{{ $record->is_expire }}</td>
         <td>{{ $record->reminder_days }}</td>
-        <td style="width: 200px;">
+        <td style="width: 230px;">
             <UL class="list-group list-group-flush bg-transparent">
                 @foreach($record->modules as $module)
                     <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                        <i class="bx bx-check text-success"></i> <small> <strong class="text-infogit ">{{ $module->pivot->limit }}</strong> {{ str_replace('_',' ',$module->name) }}   </small>
+                        <i class="bx bx-check text-success"></i> <small><strong class="text-infogit ">{{ $module->pivot->limit }}</strong> {{ str_replace('_',' ',$module->name) }}   </small>
                     </li>
                 @endforeach
             </UL>

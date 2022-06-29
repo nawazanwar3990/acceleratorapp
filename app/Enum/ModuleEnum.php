@@ -25,6 +25,8 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::DURATION,
                 $ability . KeyWordEnum::PACKAGE,
             ),
+            KeyWordEnum::VENDOR,
+            KeyWordEnum::CLIENT,
             KeyWordEnum::USER_MANAGEMENT => array(
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,
