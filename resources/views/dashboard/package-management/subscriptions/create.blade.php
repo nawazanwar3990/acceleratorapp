@@ -7,8 +7,6 @@
             <div class="card shadow-none pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
-                    {!! Form::open(['url' =>route('dashboard.subscriptions.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
-                    <x-created-by-field></x-created-by-field>
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title mb-0">{{ trans('general.packages') }}</h5>
@@ -69,9 +67,11 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center p-5">
+                                        <td colspan="9" class="text-center p-5">
                                             <a href="{{ route('dashboard.packages.create') }}"
-                                               class="btn btn-info">{{ trans('general.new_package') }}</a>
+                                               class="btn btn-info">
+                                                {{ trans('general.new_package') }} <i class="bx bx-plus-circle"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforelse
@@ -79,10 +79,11 @@
                             </table>
                         </div>
                     </div>
-                    <div class="my-3 text-center">
-                        <a class="btn btn-info" onclick="apply_subscription();">{{ trans('general.save') }}</a>
-                    </div>
-                    {!! Form::close() !!}
+                    @if(count($packages)>0)
+                        <div class="my-3 text-center">
+                            <a class="btn btn-info" onclick="apply_subscription();">{{ trans('general.save') }}</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

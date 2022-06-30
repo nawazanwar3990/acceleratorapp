@@ -6,6 +6,7 @@ use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
 use App\Enum\TableHeadings\UserManagement\VendorTableHeadingEnum;
 use App\Models\Building;
+use App\Models\PackageManagement\Subscription;
 use App\Models\PlanManagement\Plan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,15 +43,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hr(): HasOne
     {
-        return $this->hasOne(VendorTableHeadingEnum::class, 'user_id');
+        return $this->hasOne(Hr::class, 'user_id');
     }
-
-    public function plans(): HasMany
-    {
-        return $this->hasMany(Plan::class);
-    }
-
-
 
     public function getFullName(): string
     {
@@ -83,6 +77,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function ability($permission = null): bool
     {
         return !is_null($permission) && RoleEnum::check_permission($this, $permission);
+    }
+
+    public function subscription(): BelongsTo
+    {
+        return $this->belongsTo(Subscription::class, 'subscribed_id', 'id');
     }
 
     public function created_by(): BelongsTo
