@@ -5,12 +5,8 @@
         <td>{{ $record->full_name }}</td>
         <td>{{ $record->cell_1 }}</td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.vendors.edit', $record->id),
-                'delete' => route('dashboard.vendors.destroy', $record->id),
-            ])
-            <a class="btn btn-sm btn-success" href="{{ route('dashboard.subscriptions.index',['vId'=>$record->id]) }}">
-                {{__('general.subscriptions')}} <i class="bx bx-happy-heart-eyes"></i>
+            <a class="btn btn-sm btn-success" href="{{ route('dashboard.subscriptions.create',['id'=>$record->user_id]) }}">
+                {{__('general.apply_subscription')}} <i class="bx bx-plus-circle"></i>
             </a>
         </td>
     </tr>

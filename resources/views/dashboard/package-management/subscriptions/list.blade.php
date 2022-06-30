@@ -11,15 +11,6 @@
         <td>
             @isset($record->package)
                 <strong class="text-center">{{ $record->package->name }}</strong>
-                <UL class="list-group list-group-flush bg-transparent">
-                    @foreach($record->package->modules as $module)
-                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                            <i class="bx bx-check text-success"></i> <small><strong
-                                    class="text-infogit ">{{ $module->pivot->limit }}</strong> {{ str_replace('_',' ',$module->name) }}
-                            </small>
-                        </li>
-                    @endforeach
-                </UL>
             @else
                 --
             @endisset
@@ -42,12 +33,6 @@
             {{ $record->renewal_date }}
         </td>
         <td class="text-center">
-            @if(!$record->is_payed)
-                <a class="btn btn-xs btn-warning mx-1"
-                   onclick="renew_package('{{ $record->id }}','{{ $record->package->id }}','{{ $record->subscribed->id }}')">
-                    {{ trans('general.pay_to_subscribe') }} <i class="bx bx-plus-circle"></i>
-                </a>
-            @endif
             @if(\App\Services\GeneralService::is_expire_package(\Carbon\Carbon::now(),$record->expire_date))
                 <a class="btn btn-xs btn-warning mx-1"
                    onclick="renew_package('{{ $record->id }}','{{ $record->package->id }}','{{ $record->subscribed->id }}')">

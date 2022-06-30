@@ -1,5 +1,6 @@
 <?php
 return [
+    'apply_subscription'=>'Apply Subscription',
     'pay_to_subscribe' => 'Pay to Active',
     'payments' => 'Payments',
     'logs' => 'Logs',
