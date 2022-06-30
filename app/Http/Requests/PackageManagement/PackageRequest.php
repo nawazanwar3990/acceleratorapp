@@ -59,11 +59,13 @@ class PackageRequest extends FormRequest
             for ($i = 0; $i < count($module_ids); $i++) {
                 $module_id = $modules['id'][$i];
                 $limit = $modules['limit'][$i];
-                DB::table(TableEnum::PACKAGE_MODULE)->insert([
-                    'package_id' => $model->id,
-                    'module_id' => $module_id,
-                    'limit' => $limit
-                ]);
+                if ($limit!=''){
+                    DB::table(TableEnum::PACKAGE_MODULE)->insert([
+                        'package_id' => $model->id,
+                        'module_id' => $module_id,
+                        'limit' => $limit
+                    ]);
+                }
             }
         }
     }

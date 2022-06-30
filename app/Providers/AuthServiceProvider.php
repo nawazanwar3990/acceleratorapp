@@ -7,12 +7,12 @@ use App\Enum\RoleEnum;
 use App\Models\PackageManagement\Duration;
 use App\Models\PackageManagement\Module;
 use App\Models\PackageManagement\Package;
+use App\Models\PackageManagement\Subscription;
+use App\Models\PaymentManagement\Payment;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatType;
 use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\FloorType;
-use App\Models\PlanManagement\Plan;
-use App\Models\Sales\InstallmentTerm;
 use App\Models\ServiceManagement\Service;
 use App\Models\SystemConfiguration\Setting;
 use App\Models\UserManagement\Country;
@@ -34,15 +34,15 @@ use App\Policies\FlatManagement\FloorTypePolicy;
 use App\Policies\ModulePolicy;
 use App\Policies\PackageManagement\DurationPolicy;
 use App\Policies\PackageManagement\PackagePolicy;
-use App\Policies\PlanManagement\InstallmentTermPolicy;
-use App\Policies\PlanManagement\PlanPolicy;
+use App\Policies\PackageManagement\SubscriptionPolicy;
+use App\Policies\PaymentManagement\PaymentPolicy;
 use App\Policies\ServiceManagement\ServicePolicy;
 use App\Policies\SystemConfiguration\SettingPolicy;
 use App\Policies\UserManagement\CountryPolicy;
 use App\Policies\UserManagement\DepartmentPolicy;
 use App\Policies\UserManagement\DesignationPolicy;
 use App\Policies\UserManagement\DistrictPolicy;
-use App\Policies\UserManagement\HrPersonPolicy;
+use App\Policies\UserManagement\VendorPolicy;
 use App\Policies\UserManagement\OrganizationPolicy;
 use App\Policies\UserManagement\PermissionPolicy;
 use App\Policies\UserManagement\ProfessionPolicy;
@@ -81,17 +81,16 @@ class AuthServiceProvider extends ServiceProvider
         HrDesignation::class => DesignationPolicy::class,
         HrProfession::class => ProfessionPolicy::class,
         HrOrganization::class => OrganizationPolicy::class,
-
         Flat::class => FlatPolicy::class,
-        Hr::class => HrPersonPolicy::class,
 
+        Hr::class => VendorPolicy::class,
+        Payment::class => PaymentPolicy::class,
 
-        Plan::class => PlanPolicy::class,
-        InstallmentTerm::class => InstallmentTermPolicy::class,
+        Subscription::class => SubscriptionPolicy::class,
 
         Setting::class => SettingPolicy::class,
         Duration::class => DurationPolicy::class,
-        Module::class =>ModulePolicy ::class,
+        Module::class => ModulePolicy ::class,
         Package::class => PackagePolicy::class,
 
     ];

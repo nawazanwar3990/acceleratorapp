@@ -86,7 +86,7 @@ class FlatService
             $buildingID = $request->get('buildingID');
             $flatID = $request->get('flatID');
             $owners = FlatOwner::where('flat_id', $flatID)
-                ->where('status', true)->with('Hr')->get();
+                ->where('status', true)->with('VendorTableHeadingEnum')->get();
 
             return response()->json(['success' => true, 'msg' => '', 'data' => view('dashboard.sales.components.seller-details-body', compact('owners'))->render()]);
         }
@@ -101,14 +101,14 @@ class FlatService
 
     public static function FlatOwnerForDropdown()
     {
-        $all_owners = FlatOwner::with('Hr')
+        $all_owners = FlatOwner::with('VendorTableHeadingEnum')
             ->get()->pluck('hr.first_name', 'hr.id');
 
-        $active_owners = FlatOwner::with('Hr')
+        $active_owners = FlatOwner::with('VendorTableHeadingEnum')
             ->whereStatus(1)
             ->get()->pluck('hr.first_name', 'hr.id');
 
-        $old_owners = FlatOwner::with('Hr')
+        $old_owners = FlatOwner::with('VendorTableHeadingEnum')
             ->whereStatus(0)
             ->get()->pluck('hr.first_name', 'hr.id');
 

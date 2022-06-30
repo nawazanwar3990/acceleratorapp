@@ -6,7 +6,7 @@
                 @include('dashboard.components.general.form-list-header',['url'=>'dashboard.packages.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\PackageManagement\PackageLeftNav::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\PackageManagement\PackageTableHeading::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.package-management.packages.list')
                         </tbody>

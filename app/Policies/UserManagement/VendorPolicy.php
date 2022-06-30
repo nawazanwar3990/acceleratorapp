@@ -7,8 +7,8 @@ use App\Enum\KeyWordEnum;
 use App\Policies\AbstractDefaultPolicy;
 
 
-class HrPersonPolicy extends AbstractDefaultPolicy
+class VendorPolicy extends AbstractDefaultPolicy
 {
-    protected const KEYWORD = KeyWordEnum::HR_PERSON;
+    protected const KEYWORD = KeyWordEnum::VENDOR;
 
 }

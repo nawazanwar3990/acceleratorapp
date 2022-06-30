@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use App\Models\Media;
+use App\Models\PackageManagement\Package;
+use App\Models\PackageManagement\Subscription;
 use App\Models\UserManagement\Country;
 use App\Models\UserManagement\District;
 use App\Models\UserManagement\Hr;
-use App\Models\UserManagement\HrBusiness;
 use App\Models\UserManagement\HrCast;
 use App\Models\UserManagement\HrDepartment;
 use App\Models\UserManagement\HrDesignation;
@@ -16,7 +17,9 @@ use App\Models\UserManagement\HrProfession;
 use App\Models\UserManagement\HrRelation;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use function __;
 use function url;
 
@@ -73,6 +76,7 @@ class PersonService
     {
         return District::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
+
     public static function genderForDropdown($id = null)
     {
         $data = [
@@ -99,6 +103,7 @@ class PersonService
         }
         return $data;
     }
+
     public static function organizationsForDropdown($id = null)
     {
         return HrOrganization::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
@@ -153,6 +158,7 @@ class PersonService
         }
         return $data;
     }
+
     public static function buildingNoOfFloorsForDropdown($id = null)
     {
         for ($i = 1; $i < 30; $i++) {
@@ -202,64 +208,28 @@ class PersonService
         return Hr::find($id);
     }
 
-    public static function getHrDetails($request)
-    {
-        $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-        if ($request->ajax()) {
-            if ($request->has('hrID')) {
-                $hrID = $request->get('hrID');
-                $hr = Hr::with('relation')->find($hrID);
-                if ($hr) {
-                    $pic = PersonService::getHrFirstPicture($hr->id);
-                    $output = ['success' => true, 'msg' => '', 'record' => $hr, 'full_name' => $hr->full_name, 'pic' => $pic];
-                } else {
-                    $output = ['success' => false, 'msg' => __('general.no_record_found')];
-                }
-
-            }
-        }
-        return $output;
-    }
-
-    public static function getHrDetailsForEmployee($request)
-    {
-        $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-        if ($request->ajax()) {
-            if ($request->has('hrID')) {
-                $hrID = $request->get('hrID');
-                $existingRecord = Employee::where('hr_id', $hrID)->first();
-                if ($existingRecord) {
-                    $output = ['success' => false, 'msg' => __('general.employee_already_exists')];
-                } else {
-                    $hr = Hr::with('relation')->find($hrID);
-                    if ($hr) {
-                        $pic = PersonService::getHrFirstPicture($hr->id);
-                        $output = ['success' => true, 'msg' => '', 'record' => $hr, 'full_name' => $hr->full_name, 'pic' => $pic];
-                    } else {
-                        $output = ['success' => false, 'msg' => __('general.no_record_found')];
-                    }
-                }
-            }
-        }
-        return $output;
-    }
-
     public function store($data): User
     {
         $model = Hr::create($data);
-        return $this->makeItUser($model, $data);
+        $user = $this->makeItUser($model, $data);
+        if (request()->has('package_id')) {
+            $package_id = request()->input('package_id');
+            $this->addSubscription($user, $package_id);
+        }
+        return $user;
     }
 
     private function makeItUser($model, $data): User
     {
+        $password = $data['password'] ?? "user1234";
         $user = new User();
         $user->hr_id = $model->id;
         $user->first_name = $model->first_name;
         $user->last_name = $model->last_name;
         $user->user_name = uniqid();
         $user->email = $model->email;
-        $user->normal_password = $data['password'];
-        $user->password = Hash::make($data['password']);
+        $user->normal_password = $password;
+        $user->password = Hash::make($password);
 
         if ($user->save()) {
 
@@ -285,5 +255,20 @@ class PersonService
     public function findByEmail(mixed $email)
     {
         return User::whereEmail($email)->first();
+    }
+
+    private function addSubscription($user, $package_id): void
+    {
+
+        $package = Package::find($package_id);
+        $limit = $package->duration_limit;
+        $from_date = Carbon::now();
+        $duration_type = $package->duration_type->slug;
+        $subscription = new Subscription();
+        $subscription->subscribed_id = $user->id;
+        $subscription->package_id = $package_id;
+        $subscription->price = $package->price;
+        $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+        $subscription->save();
     }
 }

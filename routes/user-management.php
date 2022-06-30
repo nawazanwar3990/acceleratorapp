@@ -5,7 +5,7 @@ use App\Http\Controllers\UserManagement\HrDepartmentController;
 use App\Http\Controllers\UserManagement\HrDesignationController;
 use App\Http\Controllers\UserManagement\HrOrganizationController;
 use App\Http\Controllers\UserManagement\HrProfessionController;
-use App\Http\Controllers\UserManagement\HumanResourceController;
+use App\Http\Controllers\UserManagement\VendorController;
 use App\Http\Controllers\UserManagement\PermissionController;
 use App\Http\Controllers\UserManagement\ProvinceController;
 use App\Http\Controllers\UserManagement\RelationController;
@@ -35,5 +35,6 @@ Route::resource('/hr-designation', HrDesignationController::class, ['names' => '
 Route::resource('/hr-profession', HrProfessionController::class, ['names' => 'profession']);
 Route::resource('/hr-organization', HrOrganizationController::class, ['names' => 'organization']);
 
-Route::resource('/human-resource', HumanResourceController::class, ['names' => 'human-resource']);
-Route::post('/add-hr-ajax', [HumanResourceController::class, 'addHrAjax'])->name('add.hr-ajax');
+Route::resource('/vendors', VendorController::class, ['names' => 'vendors']);
+
+Route::post('/add-hr-ajax', [VendorController::class, 'addHrAjax'])->name('add.hr-ajax');

@@ -4,7 +4,7 @@ namespace App\Models\UserManagement;
 
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\UserManagement\Hr;
+use App\Enum\TableHeadings\UserManagement\VendorTableHeadingEnum;
 use App\Models\Building;
 use App\Models\PlanManagement\Plan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -42,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hr(): HasOne
     {
-        return $this->hasOne(Hr::class, 'user_id');
+        return $this->hasOne(VendorTableHeadingEnum::class, 'user_id');
     }
 
     public function plans(): HasMany
@@ -52,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
 
-    public function getFullNameAttribute(): string
+    public function getFullName(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }

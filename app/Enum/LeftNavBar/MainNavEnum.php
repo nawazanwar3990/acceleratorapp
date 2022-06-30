@@ -8,8 +8,6 @@ class MainNavEnum extends AbstractEnum
 {
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
     public const PACKAGE_MANAGEMENT = KeyWordEnum::PACKAGE_MANAGEMENT;
-    public const VENDOR = KeyWordEnum::VENDOR;
-    public const CLIENT = KeyWordEnum::CLIENT;
     public const USER_MANAGEMENT = KeyWordEnum::USER_MANAGEMENT;
     public const SERVICE_MANAGEMENT =KeyWordEnum::SERVICE_MANAGEMENT;
     public const FREELANCERS_PORTAL = KeyWordEnum::FREELANCERS_PORTAL;
@@ -24,8 +22,6 @@ class MainNavEnum extends AbstractEnum
         return [
             self::DASHBOARD,
             self::PACKAGE_MANAGEMENT,
-            self::VENDOR,
-            self::CLIENT,
             self::SERVICE_MANAGEMENT,
             self::FREELANCERS_PORTAL,
             self::PLAN_MANAGEMENT,
@@ -41,8 +37,6 @@ class MainNavEnum extends AbstractEnum
         $routes = [
             self::DASHBOARD => '<i class="bx bxs-dashboard"></i>',
             self::PACKAGE_MANAGEMENT => '<i class="fas fa-info"></i>',
-            self::VENDOR => '<i class="fas fa-info"></i>',
-            self::CLIENT => '<i class="fas fa-info"></i>',
             self::SERVICE_MANAGEMENT => '<i class="fas fa-info"></i>',
             self::FREELANCERS_PORTAL => '<i class="fas fa-chart-bar"></i>',
             self::PLAN_MANAGEMENT => '<i class="fas fa-info"></i>',
@@ -63,8 +57,6 @@ class MainNavEnum extends AbstractEnum
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general', self::DASHBOARD)),
             self::PACKAGE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PACKAGE_MANAGEMENT)),
-            self::VENDOR => __(sprintf('%s.%s', 'general', self::VENDOR)),
-            self::CLIENT => __(sprintf('%s.%s', 'general', self::CLIENT)),
             self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
             self::FREELANCERS_PORTAL => __(sprintf('%s.%s', 'general', self::FREELANCERS_PORTAL)),
@@ -78,8 +70,6 @@ class MainNavEnum extends AbstractEnum
     {
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
-            self::VENDOR => route('dashboard.human-resource.create',['type'=>'vendor']),
-            self::CLIENT => route('dashboard.human-resource.create',['type'=>'client']),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

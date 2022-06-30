@@ -9,13 +9,15 @@ class PackageManagementNavEnum extends AbstractEnum
     public const DURATION = KeyWordEnum::DURATION;
     public const MODULE = KeyWordEnum::MODULE;
     public const PACKAGE = KeyWordEnum::PACKAGE;
+    public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
 
     public static function getValues(): array
     {
         return [
             self::DURATION,
             self::MODULE,
-            self::PACKAGE
+            self::PACKAGE,
+            self::SUBSCRIPTION
         ];
     }
 
@@ -25,6 +27,7 @@ class PackageManagementNavEnum extends AbstractEnum
             self::DURATION => '<i class="mdi mdi-account"></i>',
             self::MODULE => '<i class="mdi mdi-account"></i>',
             self::PACKAGE => '<i class="mdi mdi-account"></i>',
+            self::SUBSCRIPTION => '<i class="mdi mdi-account"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -38,8 +41,8 @@ class PackageManagementNavEnum extends AbstractEnum
         return [
             self::DURATION => __(sprintf('%s.%s', 'general', self::DURATION)),
             self::MODULE => __(sprintf('%s.%s', 'general', self::MODULE)),
-            self::PACKAGE => __(sprintf('%s.%s', 'general', self::PACKAGE))
-
+            self::PACKAGE => __(sprintf('%s.%s', 'general', self::PACKAGE)),
+            self::SUBSCRIPTION => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION))
         ];
     }
 
@@ -49,7 +52,7 @@ class PackageManagementNavEnum extends AbstractEnum
             self::DURATION => route('dashboard.durations.index'),
             self::MODULE => route('dashboard.modules.index'),
             self::PACKAGE => route('dashboard.packages.index'),
-
+            self::SUBSCRIPTION => route('dashboard.subscriptions.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

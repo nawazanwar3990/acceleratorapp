@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class RoleEnum extends AbstractEnum
 {
     public const ROLE_SUPER_ADMIN = 'super-admin';
+    public const VENDOR = 'vendor';
     public const SERVICE_PROVIDER = 'service-provider';
     public const INCUBATOR = 'incubator';
     public const FREELANCER = 'freelancer';
@@ -23,6 +24,7 @@ class RoleEnum extends AbstractEnum
     {
         return [
             self::ROLE_SUPER_ADMIN,
+            self::VENDOR,
             self::SERVICE_PROVIDER,
             self::INCUBATOR,
             self::FREELANCER,
@@ -36,6 +38,7 @@ class RoleEnum extends AbstractEnum
     {
         return [
             self::ROLE_SUPER_ADMIN => __(self::ROLE_SUPER_ADMIN),
+            self::VENDOR => __(self::VENDOR),
             self::SERVICE_PROVIDER => __(self::SERVICE_PROVIDER),
             self::INCUBATOR => __(self::INCUBATOR),
             self::FREELANCER => __(self::FREELANCER),

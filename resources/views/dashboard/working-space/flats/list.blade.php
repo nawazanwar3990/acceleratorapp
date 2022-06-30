@@ -22,7 +22,7 @@
 {{--        <td>--}}
 {{--            @php $flatOwners = $record->owners()->where('status', true)->get(); @endphp--}}
 {{--            @foreach($flatOwners as $owner)--}}
-{{--                <small>{{ $owner->Hr->full_name }}</small>--}}
+{{--                <small>{{ $owner->VendorTableHeadingEnum->full_name }}</small>--}}
 {{--                @if (!$loop->last)--}}
 {{--                    <br>--}}
 {{--                @endif--}}

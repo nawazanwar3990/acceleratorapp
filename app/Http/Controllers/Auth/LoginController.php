@@ -10,9 +10,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -35,7 +35,7 @@ class LoginController extends Controller
     /**
      * @throws ValidationException
      */
-    public function apply(LoginRequest $request)
+    public function apply(LoginRequest $request): RedirectResponse
     {
         request()->validate([
             'email' => 'required',
@@ -99,6 +99,7 @@ class LoginController extends Controller
     public function logout(): Redirector|Application|RedirectResponse
     {
         Auth::logout();
+        Cache::flush();
         return redirect('/login');
     }
 }

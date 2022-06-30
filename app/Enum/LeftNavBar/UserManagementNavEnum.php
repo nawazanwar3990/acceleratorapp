@@ -19,7 +19,7 @@ class UserManagementNavEnum extends AbstractEnum
     public const SYNC_PERMISSION = KeyWordEnum::SYNC_PERMISSION;
     public const ROLE = KeyWordEnum::ROLE;
     public const USER = KeyWordEnum::USER;
-    public const HR_PERSON = KeyWordEnum::HR_PERSON;
+    public const VENDOR = KeyWordEnum::VENDOR;
 
     public static function getValues(): array
     {
@@ -36,7 +36,7 @@ class UserManagementNavEnum extends AbstractEnum
             self::SYNC_PERMISSION,
             self::ROLE,
             self::USER,
-            self::HR_PERSON
+            self::VENDOR
         ];
     }
 
@@ -55,7 +55,7 @@ class UserManagementNavEnum extends AbstractEnum
             self::SYNC_PERMISSION => '<i class="mdi mdi-account"></i>',
             self::ROLE => '<i class="far fa-user"></i>',
             self::USER => '<i class="far fa-user"></i>',
-            self::HR_PERSON => '<i class="mdi mdi-account"></i>',
+            self::VENDOR => '<i class="mdi mdi-account"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -79,7 +79,7 @@ class UserManagementNavEnum extends AbstractEnum
             self::SYNC_PERMISSION => __(sprintf('%s.%s', 'general', self::SYNC_PERMISSION)),
             self::ROLE => __(sprintf('%s.%s', 'general', self::ROLE)),
             self::USER => __(sprintf('%s.%s', 'general', self::USER)),
-            self::HR_PERSON => __(sprintf('%s.%s', 'general', self::HR_PERSON)),
+            self::VENDOR => __(sprintf('%s.%s', 'general', self::VENDOR)),
         ];
     }
 
@@ -94,7 +94,7 @@ class UserManagementNavEnum extends AbstractEnum
             self::DESIGNATION => route('dashboard.designation.index'),
             self::PROFESSION => route('dashboard.profession.index'),
             self::ORGANIZATION => route('dashboard.organization.index'),
-            self::HR_PERSON => route('dashboard.human-resource.index'),
+            self::VENDOR => route('dashboard.vendors.index'),
             self::PERMISSION => route('dashboard.permissions.index'),
             self::SYNC_PERMISSION => route('dashboard.sync-permissions.index'),
             self::ROLE => route('dashboard.roles.index'),

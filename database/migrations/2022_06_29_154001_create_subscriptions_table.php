@@ -6,20 +6,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create(TableEnum::HR_PACKAGE, function (Blueprint $table) {
+        Schema::create(TableEnum::SUBSCRIPTIONS, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hr_id')->nullable()->constrained(TableEnum::HRS);
+            $table->foreignId('subscribed_id')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('package_id')->nullable()->constrained(TableEnum::PACKAGES);
             $table->string('renewal_date')->nullable();
             $table->string('expire_date')->nullable();
             $table->string('price')->nullable();
+            $table->boolean('is_payed')->default(false);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
@@ -27,13 +23,8 @@ return new class extends Migration {
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::HR_PACKAGE);
+        Schema::dropIfExists(TableEnum::SUBSCRIPTIONS);
     }
 };

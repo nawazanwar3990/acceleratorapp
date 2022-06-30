@@ -13,7 +13,7 @@ class TableEnum extends AbstractEnum
     const HR_ORGANIZATIONS = 'hr_organizations';
     const HR_DEPARTMENT = 'hr_departments';
     const HR_PROFESSIONS = 'hr_professions';
-    const HR_DESIGNATION ='hr_designations';
+    const HR_DESIGNATION = 'hr_designations';
     const COUNTRIES = 'countries';
     const PROVINCES = 'provinces';
     const DISTRICTS = 'districts';
@@ -36,7 +36,9 @@ class TableEnum extends AbstractEnum
     const PACKAGES = 'packages';
     const PACKAGE_MODULE = 'package_module';
     const DURATIONS = 'durations';
-    const HR_PACKAGE = 'hr_package';
+    const SUBSCRIPTIONS = 'subscriptions';
+    const PAYMENTS = 'payments';
+    const SUBSCRIPTION_LOGS = 'subscription_logs';
 
 
     /**

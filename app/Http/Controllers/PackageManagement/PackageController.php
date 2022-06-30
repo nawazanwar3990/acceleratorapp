@@ -7,6 +7,7 @@ use App\Http\Requests\PackageManagement\PackageRequest;
 use App\Http\Requests\WorkingSpace\FlatRequest;
 use App\Models\PackageManagement\Package;
 use App\Models\WorkingSpace\Flat;
+use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -28,7 +29,9 @@ class PackageController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Package::class);
-        $records = Package::with('duration_type','modules')->get();
+        $records = Package::with('duration_type', 'modules')
+            ->where('created_by', auth()->id())
+            ->paginate(20);
         $params = [
             'pageTitle' => __('general.packages'),
             'records' => $records,

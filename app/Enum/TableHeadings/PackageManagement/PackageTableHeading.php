@@ -6,7 +6,7 @@ namespace App\Enum\TableHeadings\PackageManagement;
 use App\Enum\AbstractEnum;
 use function __;
 
-class PackageLeftNav extends AbstractEnum
+class PackageTableHeading extends AbstractEnum
 {
     public const TYPE = 'type';
     public const NAME = 'name';

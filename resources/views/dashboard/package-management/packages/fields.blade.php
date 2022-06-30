@@ -4,10 +4,6 @@
         {!!  Form::select('type',\App\Enum\PackageTypeEnum::getTranslationKeys(),null,['id'=>'package_type','class'=>'form-control ','placeholder'=>__('general.type'), 'required']) !!}
     </div>
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('trail_expire_date' ,__('general.trail_expire_date').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::text('trail_expire_date',null,['id'=>'trail_expire_date','class'=>'form-control datepicker ','required']) !!}
-    </div>
-    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
     </div>
@@ -27,6 +23,10 @@
         {!!  Html::decode(Form::label('reminder_days' ,__('general.reminder_days').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::text('reminder_days',null,['id'=>'reminder_days','class'=>'form-control ']) !!}
     </div>
+    <div class="col-md-3 mb-3">
+        {!!  Html::decode(Form::label('trail_expire_date' ,__('general.trail_expire_date') ,['class'=>'form-label'])) !!}
+        {!!  Form::text('trail_expire_date',null,['id'=>'trail_expire_date','class'=>'form-control datepicker ']) !!}
+    </div>
 </div>
 <div class="card">
     <div class="card-header">
@@ -40,16 +40,32 @@
                 <th>{{ trans('general.limit') }}</th>
             </tr>
             </thead>
-            @foreach(\App\Services\PackageService::pluck_module_for_super() as $module_key=>$module_value)
-                <tr>
-                    <td>
-                        {!!  Form::hidden('module[id][]',$module_key) !!}
-                        {!!  Form::text('module[name][]',ucwords(str_replace('_',' ',$module_value)),['id'=>'module_name','class'=>'form-control','readonly']) !!}
-                    </td>
-                    <td>
-                        {!!  Form::number('module[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
-                    </td>
-                </tr>
+            @foreach(\App\Enum\ModuleEnum::get_package_modules() as $moduleSlug)
+                @if(!is_array($moduleSlug))
+                    @php  $module = \App\Models\PackageManagement\Module::where('name',$moduleSlug)->first(); @endphp
+                    <tr>
+                        <td>
+                            {!!  Form::hidden('module[id][]',$module->id) !!}
+                            {!!  Form::text('module[name][]',ucwords(str_replace('_',' ',$module->name)),['id'=>'module_name','class'=>'form-control','readonly']) !!}
+                        </td>
+                        <td>
+                            {!!  Form::number('module[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
+                        </td>
+                    </tr>
+                @else
+                    @foreach($moduleSlug as $mSlug)
+                        @php  $module = \App\Models\PackageManagement\Module::where('name',$mSlug)->first(); @endphp
+                        <tr>
+                            <td>
+                                {!!  Form::hidden('module[id][]',$module->id) !!}
+                                {!!  Form::text('module[name][]',ucwords(str_replace('_',' ',$module->name)),['id'=>'module_name','class'=>'form-control','readonly']) !!}
+                            </td>
+                            <td>
+                                {!!  Form::number('module[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             @endforeach
         </table>
     </div>

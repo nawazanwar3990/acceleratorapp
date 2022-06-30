@@ -60,9 +60,12 @@ class KeyWordEnum extends AbstractEnum
     public const DURATION = 'duration';
     public const FREELANCER = 'freelancer';
     public const INVESTOR = 'investor';
-   public const SERVICE_PROVIDER = 'service_provider';
-   public const VENDOR = 'vendor';
-   public const CLIENT = 'client';
+    public const SERVICE_PROVIDER = 'service_provider';
+    public const VENDOR = 'vendor';
+    public const CLIENT = 'client';
+    public const SUBSCRIPTION = 'subscription';
+    public const PAYMENT = 'payment';
+    public const SUBSCRIPTION_LOG = 'subscription_log';
 
     static function getConstants()
     {

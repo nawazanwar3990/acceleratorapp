@@ -20,13 +20,14 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
-            KeyWordEnum::PACKAGE_MANAGEMENT=>array(
+            KeyWordEnum::PACKAGE_MANAGEMENT => array(
                 $ability . KeyWordEnum::MODULE,
                 $ability . KeyWordEnum::DURATION,
                 $ability . KeyWordEnum::PACKAGE,
+                $ability . KeyWordEnum::SUBSCRIPTION,
+                $ability . KeyWordEnum::SUBSCRIPTION_LOG,
+                $ability . KeyWordEnum::PAYMENT,
             ),
-            KeyWordEnum::VENDOR,
-            KeyWordEnum::CLIENT,
             KeyWordEnum::USER_MANAGEMENT => array(
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,
@@ -40,15 +41,16 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::DESIGNATION,
                 $ability . KeyWordEnum::PROFESSION,
                 $ability . KeyWordEnum::ORGANIZATION,
-                $ability . KeyWordEnum::HR_PERSON
+                $ability . KeyWordEnum::VENDOR,
+                $ability . KeyWordEnum::CLIENT
             ),
-            KeyWordEnum::SERVICE_MANAGEMENT=>array(
+            KeyWordEnum::SERVICE_MANAGEMENT => array(
                 $ability . KeyWordEnum::SERVICE
             ),
-            KeyWordEnum::FREELANCERS_PORTAL=>array(
+            KeyWordEnum::FREELANCERS_PORTAL => array(
                 $ability . KeyWordEnum::FREELANCERS
             ),
-            KeyWordEnum::CO_WORKING_SPACE=>array(
+            KeyWordEnum::CO_WORKING_SPACE => array(
                 $ability . KeyWordEnum::BUILDING,
                 $ability . KeyWordEnum::SHOP,
                 $ability . KeyWordEnum::ROOM,
@@ -67,6 +69,24 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::SETTING
             ),
         ];
+    }
+
+    public static function get_package_modules()
+    {
+        return array(
+            KeyWordEnum::FREELANCER,
+            KeyWordEnum::CO_WORKING_SPACE => array(
+                KeyWordEnum::BUILDING,
+                KeyWordEnum::SHOP,
+                KeyWordEnum::ROOM,
+                KeyWordEnum::FLOOR,
+                KeyWordEnum::FLAT
+            ),
+            KeyWordEnum::SERVICE_PROVIDER,
+            KeyWordEnum::INVESTOR,
+            KeyWordEnum::SERVICE,
+            KeyWordEnum::EVENT
+        );
     }
 
     public static function get_all_custom_permissions(): array
@@ -114,6 +134,21 @@ class ModuleEnum extends AbstractEnum
         }
         self::add_custom_permissions();
         self::add_permissions_to_super_admin();
+        self::add_permissions_to_vendor();
+    }
+
+    public static function add_permissions_to_vendor()
+    {
+        foreach (Permission::all() as $permission) {
+
+            RolePermission::updateOrCreate([
+                'permission_id' => $permission->id,
+                'role_id' => 2
+            ], [
+                'permission_id' => $permission->id,
+                'role_id' => 2
+            ]);
+        }
     }
 
     private static function add_permissions_to_super_admin()

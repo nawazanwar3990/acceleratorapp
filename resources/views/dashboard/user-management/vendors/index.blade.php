@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.human-resource.create','is_create'=>true])
+                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.vendors.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\Hr::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\VendorTableHeadingEnum::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.user-management.hr-persons.list')
+                        @include('dashboard.user-management.vendors.list')
                         </tbody>
                     </table>
                 </div>

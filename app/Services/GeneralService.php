@@ -2,16 +2,52 @@
 
 namespace App\Services;
 
+use App\Enum\DurationEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\ServiceManagement\Service;
-use App\Models\UserManagement\Hr;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Translation\Translator;
 use Illuminate\Support\Facades\DB;
 
 class GeneralService
 {
-    public static function array_flatten($array)
+    public static function get_duration_name($slug): array|string|Translator|Application|null
+    {
+        return match ($slug) {
+            DurationEnum::Daily => trans('general.days'),
+            DurationEnum::WEEKLY => trans('general.weeks'),
+            DurationEnum::MONTHLY => trans('general.months'),
+            DurationEnum::YEARLY => trans('general.years'),
+            default => null,
+        };
+    }
+
+    public static function get_remaining_time($type, $duration,$from_date): ?string
+    {
+        return match ($type) {
+            DurationEnum::YEARLY => date("Y-m-d H:i:s", strtotime("$from_date +$duration years")),
+            DurationEnum::MONTHLY => date("Y-m-d H:i:s", strtotime("$from_date +$duration months")),
+            DurationEnum::WEEKLY => date("Y-m-d H:i:s", strtotime("$from_date +$duration weeks")),
+            DurationEnum::Daily => date('Y-m-d H:i:s', strtotime('+' . $duration . ' days', strtotime($from_date))),
+            default => null,
+        };
+    }
+
+    public static function get_remaining_limit($key, $value): ?string
+    {
+        $from_date = today();
+        return match ($key) {
+            DurationEnum::YEARLY => $from_date->diff(date("Y-m-d", strtotime("$from_date +$value years")))->format('%y years'),
+            DurationEnum::MONTHLY => $from_date->diff(date("Y-m-d", strtotime("$from_date +$value months")))->format('%m months'),
+            DurationEnum::WEEKLY => date("Y-m-d", strtotime("$from_date +$value weeks")),
+            DurationEnum::Daily => date('Y-m-d', strtotime('+' . $value . ' days', strtotime($from_date))),
+            default => null,
+        };
+    }
+
+    public static function array_flatten($array): bool|array
     {
         if (!is_array($array)) {
             return FALSE;
@@ -70,6 +106,7 @@ class GeneralService
         }
         return $data;
     }
+
     public static function getPaymentSubTypesForDropdown($id = null)
     {
         $data = [
@@ -154,6 +191,7 @@ class GeneralService
         }
         return $data;
     }
+
     public static function yesOrNoForDropdown($id = null)
     {
         $data = [
@@ -165,6 +203,7 @@ class GeneralService
         }
         return $data;
     }
+
     public static function currencyPositionArray($id = null): array|string
     {
         $data = [
@@ -926,5 +965,14 @@ class GeneralService
             $data = $data[$id];
         }
         return $data;
+    }
+
+    public static function is_expire_package($date1, $date2): bool
+    {
+        if ($date1->gt($date2)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
