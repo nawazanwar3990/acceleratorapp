@@ -1,6 +1,17 @@
 <?php
 return [
-    'apply_subscription'=>'Apply Subscription',
+    'admin_management'=>"Admin Management",
+    'customer_management'=>"Customer Management",
+    'customer' => 'Customer',
+    'admin' => 'Admin',
+    'building_provider' => 'Building Provider',
+    'package_for' => "Package For",
+    'super-admin' => 'Supper Admin',
+    'co-working-space' => 'Co Working Space',
+    'freelancer' => 'Freelancer',
+    'investor' => 'Investor',
+    'apply_subscription' => 'Apply Subscription',
+    'service-provider' => 'Service Provider',
     'pay_to_subscribe' => 'Pay to Active',
     'payments' => 'Payments',
     'logs' => 'Logs',

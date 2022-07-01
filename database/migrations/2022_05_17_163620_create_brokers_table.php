@@ -7,32 +7,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create(TableEnum::MEDIA, function (Blueprint $table) {
+        Schema::create(TableEnum::BROKERS, function (Blueprint $table) {
             $table->id();
-            $table->string('filename')->nullable();
-            $table->integer('record_id')->nullable();
+            $table->foreignId('hr_id')->nullable()->constrained(TableEnum::HRS);
+            $table->foreignId('record_id')->nullable();
             $table->string('record_type')->nullable();
+            $table->string('percentage')->nullable();
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::MEDIA);
+        Schema::dropIfExists(TableEnum::BROKERS);
     }
 };

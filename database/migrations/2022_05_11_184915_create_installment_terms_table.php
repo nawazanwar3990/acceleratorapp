@@ -7,32 +7,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create(TableEnum::MEDIA, function (Blueprint $table) {
+        Schema::create(TableEnum::INSTALLMENT_TERMS, function (Blueprint $table) {
             $table->id();
-            $table->string('filename')->nullable();
-            $table->integer('record_id')->nullable();
-            $table->string('record_type')->nullable();
+            $table->longText('installment_text')->nullable();
+            $table->boolean('status')->default(true);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::MEDIA);
+        Schema::dropIfExists(TableEnum::INSTALLMENT_TERMS);
     }
 };

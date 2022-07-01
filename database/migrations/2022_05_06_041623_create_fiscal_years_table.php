@@ -7,32 +7,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create(TableEnum::MEDIA, function (Blueprint $table) {
+        Schema::create(TableEnum::FISCAL_YEARS, function (Blueprint $table) {
             $table->id();
-            $table->string('filename')->nullable();
-            $table->integer('record_id')->nullable();
-            $table->string('record_type')->nullable();
+            $table->string('name')->nullable();
+            $table->enum('status', ['open', 'closed'])->default('open');
+            $table->date('period_start_date')->nullable();
+            $table->date('period_end_date')->nullable();
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::MEDIA);
+        Schema::dropIfExists('fiscal_years');
     }
 };

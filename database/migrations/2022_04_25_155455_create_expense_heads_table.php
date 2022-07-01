@@ -14,14 +14,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(TableEnum::MEDIA, function (Blueprint $table) {
+        Schema::create(TableEnum::EXPENSE_HEADS, function (Blueprint $table) {
             $table->id();
-            $table->string('filename')->nullable();
-            $table->integer('record_id')->nullable();
-            $table->string('record_type')->nullable();
+            $table->string('expense_head_name')->nullable();
+            $table->foreignId('parent_id')->default('0');
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
+            $table->string('type')->default('expense');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::MEDIA);
+        Schema::dropIfExists(TableEnum::EXPENSE_HEADS);
     }
 };

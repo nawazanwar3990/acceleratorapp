@@ -18,7 +18,7 @@ use function __;
 use function redirect;
 use function view;
 
-class VendorController extends Controller
+class AdminController extends Controller
 {
     use General;
 
@@ -44,7 +44,7 @@ class VendorController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.user-management.vendors.index', $params);
+        return view('dashboard.admin-management.admins.index', $params);
     }
 
     /**
@@ -61,7 +61,7 @@ class VendorController extends Controller
             'type' => $type
         ];
 
-        return view('dashboard.user-management.vendors.create', $params);
+        return view('dashboard.admin-management.admins.create', $params);
     }
 
     /**
@@ -75,7 +75,7 @@ class VendorController extends Controller
             $role = Role::whereSlug(RoleEnum::VENDOR)->value('id');
             $user->roles()->sync([$role]);
             ModuleEnum::add_permissions_to_vendor();
-            return redirect()->route('dashboard.vendors.index')
+            return redirect()->route('dashboard.admins.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
@@ -87,7 +87,7 @@ class VendorController extends Controller
     {
         $this->authorize('delete', Hr::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.vendors.index')
+            return redirect()->route('dashboard.admins.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

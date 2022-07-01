@@ -9,29 +9,48 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-class RoleEnum extends AbstractEnum
+class AdminServiceEnum extends AbstractEnum
 {
-    public const SUPER_ADMIN = KeyWordEnum::SUPER_ADMIN;
-    public const ADMIN = KeyWordEnum::ADMIN;
-    public const CUSTOMER = KeyWordEnum::CUSTOMER;
+    public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
+    public const FREELANCER = KeyWordEnum::FREELANCER;
+    public const BUILDING_PROVIDER = KeyWordEnum::BUILDING_PROVIDER;
+    public const INVESTOR = KeyWordEnum::INVESTOR;
 
     public static function getValues(): array
     {
         return [
-            self::SUPER_ADMIN,
-            self::ADMIN,
-            self::CUSTOMER
+            self::CO_WORKING_SPACE,
+            self::FREELANCER,
+            self::BUILDING_PROVIDER,
+            self::INVESTOR
         ];
     }
 
     public static function getTranslationKeys(): array
     {
         return [
-            self::SUPER_ADMIN => __('general.' . self::SUPER_ADMIN),
-            self::ADMIN => __('general.' . self::ADMIN),
-            self::CUSTOMER => __('general.' . self::CUSTOMER),
+            self::CO_WORKING_SPACE => __('general.' . self::CO_WORKING_SPACE),
+            self::FREELANCER => __('general.' . self::FREELANCER),
+            self::BUILDING_PROVIDER => __('general.' . self::BUILDING_PROVIDER),
+            self::INVESTOR => __('general.' . self::INVESTOR)
         ];
     }
+
+    public static function getImage($key)
+    {
+        $images = array(
+            self::CO_WORKING_SPACE => asset('images/screen2.jpg'),
+            self::FREELANCER => asset('images/screen3.jpg'),
+            self::BUILDING_PROVIDER => asset('images/screen3.jpg'),
+            self::INVESTOR => asset('images/screen4.jpg')
+        );
+        if (!is_null($key) && array_key_exists($key, $images)) {
+            return $images[$key];
+        } else {
+            return null;
+        }
+    }
+
     public static function check_permission($user, $permission): bool
     {
         $permissions = self::get_query($user);

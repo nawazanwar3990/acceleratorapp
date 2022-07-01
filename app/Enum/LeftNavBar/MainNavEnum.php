@@ -9,6 +9,8 @@ class MainNavEnum extends AbstractEnum
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
     public const PACKAGE_MANAGEMENT = KeyWordEnum::PACKAGE_MANAGEMENT;
     public const USER_MANAGEMENT = KeyWordEnum::USER_MANAGEMENT;
+    public const ADMIN_MANAGEMENT = KeyWordEnum::ADMIN_MANAGEMENT;
+    public const CUSTOMER_MANAGEMENT = KeyWordEnum::CUSTOMER_MANAGEMENT;
     public const SERVICE_MANAGEMENT =KeyWordEnum::SERVICE_MANAGEMENT;
     public const FREELANCERS_PORTAL = KeyWordEnum::FREELANCERS_PORTAL;
     public const PLAN_MANAGEMENT =KeyWordEnum::PLAN_MANAGEMENT;
@@ -23,6 +25,8 @@ class MainNavEnum extends AbstractEnum
             self::DASHBOARD,
             self::PACKAGE_MANAGEMENT,
             self::SERVICE_MANAGEMENT,
+            self::ADMIN_MANAGEMENT,
+            self::CUSTOMER_MANAGEMENT,
             self::FREELANCERS_PORTAL,
             self::PLAN_MANAGEMENT,
             self::SYSTEM_CONFIGURATION,
@@ -38,6 +42,8 @@ class MainNavEnum extends AbstractEnum
             self::DASHBOARD => '<i class="bx bxs-dashboard"></i>',
             self::PACKAGE_MANAGEMENT => '<i class="fas fa-info"></i>',
             self::SERVICE_MANAGEMENT => '<i class="fas fa-info"></i>',
+            self::ADMIN_MANAGEMENT => '<i class="fas fa-chart-bar"></i>',
+            self::CUSTOMER_MANAGEMENT => '<i class="fas fa-chart-bar"></i>',
             self::FREELANCERS_PORTAL => '<i class="fas fa-chart-bar"></i>',
             self::PLAN_MANAGEMENT => '<i class="fas fa-info"></i>',
             self::SYSTEM_CONFIGURATION => '<i class="fas fa-briefcase"></i>',
@@ -59,6 +65,8 @@ class MainNavEnum extends AbstractEnum
             self::PACKAGE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PACKAGE_MANAGEMENT)),
             self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
+            self::ADMIN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::ADMIN_MANAGEMENT)),
+            self::CUSTOMER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::CUSTOMER_MANAGEMENT)),
             self::FREELANCERS_PORTAL => __(sprintf('%s.%s', 'general', self::FREELANCERS_PORTAL)),
             self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
             self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::EVENT_MANAGEMENT)),

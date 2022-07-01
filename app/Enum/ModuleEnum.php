@@ -40,15 +40,19 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::DEPARTMENT,
                 $ability . KeyWordEnum::DESIGNATION,
                 $ability . KeyWordEnum::PROFESSION,
-                $ability . KeyWordEnum::ORGANIZATION,
-                $ability . KeyWordEnum::VENDOR,
-                $ability . KeyWordEnum::CLIENT
+                $ability . KeyWordEnum::ORGANIZATION
             ),
             KeyWordEnum::SERVICE_MANAGEMENT => array(
                 $ability . KeyWordEnum::SERVICE
             ),
             KeyWordEnum::FREELANCERS_PORTAL => array(
                 $ability . KeyWordEnum::FREELANCERS
+            ),
+            KeyWordEnum::ADMIN_MANAGEMENT => array(
+                $ability . KeyWordEnum::ADMIN
+            ),
+            KeyWordEnum::CUSTOMER_MANAGEMENT => array(
+                $ability . KeyWordEnum::CUSTOMER
             ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 $ability . KeyWordEnum::BUILDING,
@@ -74,18 +78,13 @@ class ModuleEnum extends AbstractEnum
     public static function get_package_modules()
     {
         return array(
-            KeyWordEnum::FREELANCER,
             KeyWordEnum::CO_WORKING_SPACE => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::SHOP,
                 KeyWordEnum::ROOM,
                 KeyWordEnum::FLOOR,
                 KeyWordEnum::FLAT
-            ),
-            KeyWordEnum::SERVICE_PROVIDER,
-            KeyWordEnum::INVESTOR,
-            KeyWordEnum::SERVICE,
-            KeyWordEnum::EVENT
+            )
         );
     }
 

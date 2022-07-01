@@ -39,6 +39,21 @@ class TableEnum extends AbstractEnum
     const SUBSCRIPTIONS = 'subscriptions';
     const PAYMENTS = 'payments';
     const SUBSCRIPTION_LOGS = 'subscription_logs';
+    const BUILDINGS = 'building';
+    const BUILDING_OWNER = 'building_owner';
+    const BUILDING_SERVICE = 'building_service';
+    const SALES = 'sales';
+    const FLAT_PRICE_LOGS = 'flat_price_logs';
+    const INSTALLMENT_PLANS = 'installment_plans';
+    const QUOTATION_INSTALLMENTS = 'quotation_installments';
+    const QUOTATIONS = 'quotations';
+    const PURCHASERS = 'purchaser';
+    const TRANSACTIONS = 'transaction';
+    const FISCAL_YEARS = 'fiscal_years';
+    const BROKERS = 'brokers';
+    const ACCOUNT_HEADS = 'account_heads';
+    const EXPENSE_HEADS = 'expense_heads';
+    const EXPENSES = 'expenses';
 
 
     /**

@@ -11,10 +11,11 @@ return new class extends Migration
     {
         Schema::create(TableEnum::FLATS, function (Blueprint $table) {
             $table->id();
+            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
+            $table->foreignId('flat_type_id')->nullable()->constrained(TableEnum::FLAT_TYPES);
             $table->string('flat_name')->nullable();
             $table->string('flat_number')->nullable();
-            $table->foreignId('flat_type_id')->nullable()->constrained(TableEnum::FLAT_TYPES);
             $table->date('creation_date')->nullable();
             $table->boolean('status')->nullable()->default(true);
             $table->string('facing')->nullable();
@@ -31,10 +32,10 @@ return new class extends Migration
             $table->string('rate_type')->nullable();
             $table->decimal('rate_square_feet', 30, 2)->nullable();
             $table->decimal('total_amount', 30, 2)->nullable();
+            $table->string('sales_status')->default('open');
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
-            $table->string('sales_status')->default('open');
             $table->softDeletes();
             $table->timestamps();
         });

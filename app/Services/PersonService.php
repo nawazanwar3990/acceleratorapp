@@ -232,7 +232,6 @@ class PersonService
         $user->password = Hash::make($password);
 
         if ($user->save()) {
-
             if (isset($data['role_id'])) {
                 $user->roles()->sync([$data['role_id']]);
             }

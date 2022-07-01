@@ -51,13 +51,7 @@ class RegisterController extends Controller
         ]);
         $data = $request->all();
         $user = $this->personService->store($data);
-        if ($user->hasRole(RoleEnum::CUSTOMER)) {
-            event(new Registered($user));
-            return redirect()->route('login')->with('success', trans('general.verify_email_address_message'));
-        }else{
-            session()->put('register_user', $user);
-            return redirect()->route('website.plans.index');
-        }
-
+        event(new Registered($user));
+        return redirect()->route('login')->with('success', trans('general.verify_email_address_message'));
     }
 }

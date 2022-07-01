@@ -1,11 +1,12 @@
 <?php
 use App\Http\Controllers\UserManagement\CountryController;
+use App\Http\Controllers\UserManagement\CustomerController;
 use App\Http\Controllers\UserManagement\DistrictController;
 use App\Http\Controllers\UserManagement\HrDepartmentController;
 use App\Http\Controllers\UserManagement\HrDesignationController;
 use App\Http\Controllers\UserManagement\HrOrganizationController;
 use App\Http\Controllers\UserManagement\HrProfessionController;
-use App\Http\Controllers\UserManagement\VendorController;
+use App\Http\Controllers\UserManagement\AdminController;
 use App\Http\Controllers\UserManagement\PermissionController;
 use App\Http\Controllers\UserManagement\ProvinceController;
 use App\Http\Controllers\UserManagement\RelationController;
@@ -35,6 +36,7 @@ Route::resource('/hr-designation', HrDesignationController::class, ['names' => '
 Route::resource('/hr-profession', HrProfessionController::class, ['names' => 'profession']);
 Route::resource('/hr-organization', HrOrganizationController::class, ['names' => 'organization']);
 
-Route::resource('/vendors', VendorController::class, ['names' => 'vendors']);
+Route::resource('/admins', AdminController::class, ['names' => 'admins']);
+Route::resource('/customer', CustomerController::class, ['names' => 'customers']);
 
-Route::post('/add-hr-ajax', [VendorController::class, 'addHrAjax'])->name('add.hr-ajax');
+Route::post('/add-hr-ajax', [AdminController::class, 'addHrAjax'])->name('add.hr-ajax');

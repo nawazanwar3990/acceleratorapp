@@ -14,14 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(TableEnum::MEDIA, function (Blueprint $table) {
+        Schema::create(TableEnum::BUILDING_OWNER, function (Blueprint $table) {
             $table->id();
-            $table->string('filename')->nullable();
-            $table->integer('record_id')->nullable();
-            $table->string('record_type')->nullable();
-            $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('hr_id')->nullable()->constrained(TableEnum::HRS);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::MEDIA);
+        Schema::dropIfExists(TableEnum::BUILDING_OWNER);
     }
 };

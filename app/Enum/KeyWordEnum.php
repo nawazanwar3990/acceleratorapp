@@ -35,7 +35,7 @@ class KeyWordEnum extends AbstractEnum
     public const EVENT_LIST = 'event_list';
     public const EVENT_NEW = 'new_event';
     // flat management
-    public const CO_WORKING_SPACE = 'working_space';
+    public const CO_WORKING_SPACE = 'co-working-space';
     public const BUILDING = 'building';
     public const SHOP = 'shop';
     public const FLAT = 'flat';
@@ -60,12 +60,18 @@ class KeyWordEnum extends AbstractEnum
     public const DURATION = 'duration';
     public const FREELANCER = 'freelancer';
     public const INVESTOR = 'investor';
-    public const SERVICE_PROVIDER = 'service_provider';
+    public const SERVICE_PROVIDER = 'service-provider';
     public const VENDOR = 'vendor';
     public const CLIENT = 'client';
     public const SUBSCRIPTION = 'subscription';
     public const PAYMENT = 'payment';
     public const SUBSCRIPTION_LOG = 'subscription_log';
+    public const SUPER_ADMIN = 'super-admin';
+    public const CUSTOMER = 'customer';
+    public const BUILDING_PROVIDER = 'building_provider';
+    public const ADMIN = 'admin';
+    const ADMIN_MANAGEMENT = 'admin_management';
+    const CUSTOMER_MANAGEMENT = 'customer_management';
 
     static function getConstants()
     {
