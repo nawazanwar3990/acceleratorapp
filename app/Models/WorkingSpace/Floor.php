@@ -2,10 +2,14 @@
 
 namespace App\Models\WorkingSpace;
 
+use App\Enum\TableEnum;
+use App\Enum\TableHeadings\ServiceManagement\Service;
+use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Floor extends Model
@@ -15,11 +19,11 @@ class Floor extends Model
         'general_services' => 'array',
         'security_services' => 'array',
     ];
-
     protected $fillable = [
-        'floor_name',
-        'floor_number',
-        'floor_type_id',
+        'building_id',
+        'type_id',
+        'name',
+        'number',
         'length',
         'width',
         'area',
@@ -49,8 +53,22 @@ class Floor extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    public function floorType(): BelongsTo
+    public function type(): BelongsTo
     {
-        return $this->belongsTo(FloorType::class);
+        return $this->belongsTo(FloorType::class,'type_id');
+    }
+    public function building(): BelongsTo
+    {
+        return $this->belongsTo(Building::class,'building_id');
+    }
+
+    public function owners(): BelongsToMany
+    {
+        return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER);
+    }
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::FLOOR_SERVICE);
     }
 }

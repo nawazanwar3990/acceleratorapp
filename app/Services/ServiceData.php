@@ -1,21 +1,30 @@
 <?php
 namespace App\Services;
 
+use App\Enum\ServiceEnum;
 use App\Models\ServiceManagement\Service;
 
 class ServiceData
 {
-    public static function getFreelanceServiceForDropdown($id = null)
+    public static function getServiceTypeDropdown($id = null)
     {
-        return Service::where('type', 'freelancers_service')->orderBy('name', 'ASC')->pluck('name', 'id');
+        $data = [
+            1 => 'General Service',
+            2 => 'Security Service',
+        ];
+        if (!is_null($id)) {
+            $data = $data[$id];
+        }
+
+        return $data;
     }
 
     public static function getGeneralServicesForDropdown() {
-        return Service::where('type', 'general_services')->orderBy('name', 'ASC')->pluck('name', 'id');
+        return Service::where('type',ServiceEnum::GENERAL_SERVICE)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function getSecurityServicesForDropdown() {
-        return Service::where('type', 'security_services')->orderBy('name', 'ASC')->pluck('name', 'id');
+        return Service::where('type', ServiceEnum::SECURITY_SERVICE)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function getAllServicesForDropdown() {

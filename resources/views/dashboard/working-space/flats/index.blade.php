@@ -9,7 +9,7 @@
                 @include('dashboard.components.general.form-list-header',['url'=>'dashboard.flats.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover" id="datatable">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FlatManagement\PackageLeftNav::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\FlatTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.working-space.flats.list')
                         </tbody>

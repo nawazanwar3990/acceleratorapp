@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\FlatManagement;
+namespace App\Enum\TableHeadings\WorkingSpace;
 
 use App\Enum\AbstractEnum;
 use function __;
 
-class Flats extends AbstractEnum
+class FlatTableHeadingEnum extends AbstractEnum
 {
     public const FLOOR = 'floor';
     public const FLAT_SHOP_NAME = 'flat_shop_name';

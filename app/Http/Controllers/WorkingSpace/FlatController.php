@@ -28,7 +28,7 @@ class FlatController extends Controller
         $this->authorize('view', Flat::class);
         $records = Flat::orderBy('flat_name', 'ASC')->get();
         $params = [
-            'pageTitle' => __('general.floor_names'),
+            'pageTitle' => __('general.flats'),
             'records' => $records,
         ];
         return view('dashboard.working-space.flats.index',$params);
@@ -41,7 +41,7 @@ class FlatController extends Controller
     {
         $this->authorize('create', Flat::class);
         $params = [
-            'pageTitle' => __('general.new_floor_names'),
+            'pageTitle' => __('general.create_flats'),
         ];
         return view('dashboard.working-space.flats.create', $params);
     }

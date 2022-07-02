@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Requests\WorkingSpace;
-
-use App\Models\Definition\General\FlatType;
+use App\Models\WorkingSpace\FlatType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

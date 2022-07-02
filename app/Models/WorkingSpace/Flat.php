@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Models\WorkingSpace;
+use App\Enum\TableEnum;
+use App\Enum\TableHeadings\ServiceManagement\Service;
+use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -19,10 +23,11 @@ class Flat extends Model
     ];
 
     protected $fillable = [
+        'building_id',
         'floor_id',
-        'flat_name',
-        'flat_number',
-        'flat_type_id',
+        'type_id',
+        'name',
+        'number',
         'creation_date',
         'status',
         'sales_status',
@@ -68,15 +73,24 @@ class Flat extends Model
     {
         return $this->belongsTo(Floor::class);
     }
-
-    public function flatType(): BelongsTo
+    public function building(): BelongsTo
     {
-        return $this->belongsTo(FlatType::class);
+        return $this->belongsTo(Building::class);
     }
 
-    public function owners(): HasMany
+    public function type(): BelongsTo
     {
-        return $this->hasMany(FlatOwner::class);
+        return $this->belongsTo(FlatType::class,'type_id');
+    }
+
+    public function owners(): BelongsToMany
+    {
+        return $this->belongsToMany(Hr::class, TableEnum::FLAT_OWNER);
+    }
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::FLAT_SERVICE);
     }
 
     public function getNameNumberAttribute()

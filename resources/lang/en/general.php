@@ -1178,5 +1178,8 @@ return [
     'payment_type_note' => ' Select Your Online And Offline Payment',
     'edit_package' => 'Edit Package',
     'trail_expire_date' => 'Trial Expire Date',
-    'trail' => 'Trail'
+    'trail' => 'Trail',
+    'create_flats'=>'Create Flats',
+    'Flats'=>'Flats',
+    'edit_flat'=>'Edit Flat'
 ];

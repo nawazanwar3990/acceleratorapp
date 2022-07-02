@@ -11,9 +11,10 @@ return new class extends Migration
     {
         Schema::create(TableEnum::FLOORS, function (Blueprint $table) {
             $table->id();
-            $table->string('floor_name')->nullable();
-            $table->string('floor_number')->nullable();
-            $table->foreignId('floor_type_id')->nullable()->constrained(TableEnum::FLOOR_TYPES);
+            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('type_id')->nullable()->constrained(TableEnum::FLOOR_TYPES);
+            $table->string('name')->nullable();
+            $table->string('number')->nullable();
             $table->string('length')->nullable();
             $table->string('width')->nullable();
             $table->string('area')->nullable();

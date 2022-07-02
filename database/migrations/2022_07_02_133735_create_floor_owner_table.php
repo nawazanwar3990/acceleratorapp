@@ -9,14 +9,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create(TableEnum::QUOTATION_INSTALLMENTS, function (Blueprint $table) {
+        Schema::create(TableEnum::FLOOR_OWNER, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
-            $table->foreignId('quotation_id')->nullable()->constrained(TableEnum::QUOTATIONS);
-            $table->foreignId('installment_plan_id')->nullable()->constrained(TableEnum::INSTALLMENT_PLANS);
-            $table->string('installment_no')->nullable();
-            $table->date('installment_date')->nullable();
-            $table->decimal('installment_amount', 30, 2)->nullable();
+            $table->foreignId('hr_id')->nullable()->constrained(TableEnum::HRS);
+            $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLATS);
+            $table->foreignId('sale_id')->nullable()->constrained(TableEnum::SALES);
+            $table->string('percentage')->nullable();
+            $table->boolean('status')->default(false);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
@@ -26,6 +25,6 @@ return new class extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists(TableEnum::QUOTATION_INSTALLMENTS);
+        Schema::dropIfExists(TableEnum::FLOOR_OWNER);
     }
 };

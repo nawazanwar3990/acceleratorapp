@@ -1,14 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\FlatManagement;
+namespace App\Enum\TableHeadings\WorkingSpace;
 
 use App\Enum\AbstractEnum;
-use function __;
 
-class FlatType extends AbstractEnum
+class BuildingTableHeadingEnum extends AbstractEnum
 {
     public const NAME = 'name';
+    public const AREA = 'area';
+    public const BUILDING_TYPE = 'building_type';
+    public const FLOORS = 'floors';
     public const STATUS = 'status';
 
     /**
@@ -26,6 +28,9 @@ class FlatType extends AbstractEnum
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
+            self::AREA => __(sprintf('%s.%s', 'general', self::AREA)),
+            self::BUILDING_TYPE => __(sprintf('%s.%s', 'general', self::BUILDING_TYPE)),
+            self::FLOORS => __(sprintf('%s.%s', 'general', self::FLOORS)),
             self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
         ];
     }

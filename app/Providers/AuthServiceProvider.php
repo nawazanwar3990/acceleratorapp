@@ -9,6 +9,7 @@ use App\Models\PackageManagement\Module;
 use App\Models\PackageManagement\Package;
 use App\Models\PackageManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
+use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatType;
 use App\Models\WorkingSpace\Floor;
@@ -50,6 +51,7 @@ use App\Policies\UserManagement\ProvincePolicy;
 use App\Policies\UserManagement\RelationPolicy;
 use App\Policies\UserManagement\RolePolicy;
 use App\Policies\UserManagement\UserPolicy;
+use App\Policies\WorkingSpace\BuildingPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -92,6 +94,8 @@ class AuthServiceProvider extends ServiceProvider
         Duration::class => DurationPolicy::class,
         Module::class => ModulePolicy ::class,
         Package::class => PackagePolicy::class,
+
+        Building::class => BuildingPolicy::class,
 
     ];
 

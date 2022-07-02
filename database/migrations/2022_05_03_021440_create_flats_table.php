@@ -13,9 +13,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
-            $table->foreignId('flat_type_id')->nullable()->constrained(TableEnum::FLAT_TYPES);
-            $table->string('flat_name')->nullable();
-            $table->string('flat_number')->nullable();
+            $table->foreignId('type_id')->nullable()->constrained(TableEnum::FLAT_TYPES);
+            $table->string('name')->nullable();
+            $table->string('number')->nullable();
             $table->date('creation_date')->nullable();
             $table->boolean('status')->nullable()->default(true);
             $table->string('facing')->nullable();

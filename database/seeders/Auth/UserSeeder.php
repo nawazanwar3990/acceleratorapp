@@ -18,6 +18,18 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table(TableEnum::HRS)->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::table(TableEnum::HRS)->insert([
+            [
+                'user_id' => '1',
+                'first_name' => 'Super',
+                'last_name' => 'Admin',
+                'email' => 'superadmin@gmail.com',
+            ]
+        ]);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table(TableEnum::USERS)->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table(TableEnum::USERS)->insert([
