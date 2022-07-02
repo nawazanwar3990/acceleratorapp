@@ -56,11 +56,9 @@ class ModuleEnum extends AbstractEnum
             ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 $ability . KeyWordEnum::BUILDING,
-                $ability . KeyWordEnum::SHOP,
-                $ability . KeyWordEnum::ROOM,
-                $ability . KeyWordEnum::FLAT_TYPE,
                 $ability . KeyWordEnum::FLOOR_TYPE,
                 $ability . KeyWordEnum::FLOOR,
+                $ability . KeyWordEnum::FLAT_TYPE,
                 $ability . KeyWordEnum::FLAT
             ),
             KeyWordEnum::FREELANCER,

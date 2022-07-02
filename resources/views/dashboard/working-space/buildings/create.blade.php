@@ -18,4 +18,4 @@
         </div>
     </div>
 @endsection
-@include('dashboard.working-space.buildings.components.scripts')
+@include('dashboard.working-space.components.scripts')

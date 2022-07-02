@@ -4,37 +4,24 @@ namespace App\Http\Requests\WorkingSpace;
 
 use App\Enum\MediaTypeEnum;
 use App\Enum\ServiceEnum;
-use App\Enum\TableEnum;
 use App\Models\Media;
-use App\Models\UserManagement\Hr;
-use App\Models\WorkingSpace\Building;
+use App\Models\WorkingSpace\Floor;
 use App\Services\GeneralService;
 use App\Services\PersonService;
-use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class BuildingRequest extends FormRequest
+class FloorRequest extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => ['required'],
-            'area' => ['required'],
-            'length' => ['required'],
-            'width' => ['required'],
-            'building_corners' => ['required'],
-            'building_type' => ['required'],
-            'property_type' => ['required'],
-            'entry_gates' => ['required'],
-            'no_of_floors' => ['required'],
-            'facing' => ['required'],
+            'name' => 'required',
             'status' => 'boolean',
         ];
     }
@@ -48,7 +35,7 @@ class BuildingRequest extends FormRequest
 
     public function createData()
     {
-        $model = Building::create($this->all());
+        $model = Floor::create($this->all());
         if ($model) {
             $this->uploadMedia($model);
             $this->saveServices($model);
@@ -63,12 +50,12 @@ class BuildingRequest extends FormRequest
         if (count($documents)) {
             foreach ($documents as $document) {
                 $fileName = GeneralService::generateFileName($document);
-                $path = 'uploads/buildings/documents/' . $fileName;
-                $document->move('uploads/buildings/documents', $fileName);
+                $path = 'uploads/floors/documents/' . $fileName;
+                $document->move('uploads/floors/documents', $fileName);
                 Media::create([
                     'filename' => $path,
                     'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::BUILDING_DOCUMENT,
+                    'record_type' => MediaTypeEnum::FLOOR_DOCUMENT,
                     'building_id' => $model->id,
                     'created_by' => Auth::id(),
                     'updated_by' => Auth::id()
@@ -80,12 +67,12 @@ class BuildingRequest extends FormRequest
         if (count($images)) {
             foreach ($images as $image) {
                 $imageName = GeneralService::generateFileName($image);
-                $imagePath = 'uploads/buildings/images/' . $imageName;
-                $image->move('uploads/buildings/images', $imageName);
+                $imagePath = 'uploads/floors/images/' . $imageName;
+                $image->move('uploads/floors/images', $imageName);
                 Media::create([
                     'filename' => $imagePath,
                     'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::BUILDING_IMAGE,
+                    'record_type' => MediaTypeEnum::FLOOR_IMAGE,
                     'building_id' => $model->id,
                     'created_by' => Auth::id(),
                     'updated_by' => Auth::id()
@@ -93,6 +80,7 @@ class BuildingRequest extends FormRequest
             }
         }
     }
+
     private function saveServices($model)
     {
         $general_services = $this->input('general_services', []);
@@ -118,6 +106,7 @@ class BuildingRequest extends FormRequest
             );
         }
     }
+
     private function saveOwners($model)
     {
         $model->owners()->syncWithPivotValues(
@@ -131,18 +120,19 @@ class BuildingRequest extends FormRequest
 
     public function updateData($id)
     {
-        return Building::findorFail($id)->update($this->all());
+        return Floor::findorFail($id)->update($this->all());
 
     }
 
     public function deleteData($id): bool
     {
-        $model = Building::find($id);
+        $model = Floor::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::id();
             $model->save();
             $model->delete();
         }
+
         return true;
     }
 }

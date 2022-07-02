@@ -21,7 +21,6 @@
         <div class="col-md-6">
             <h5 class="card-title">{{ __('general.images') }}</h5>
             <small class="text-primary">Allowed Formats: JPG, JPEG, PNG, BMP</small>
-
             <div class="row">
                 <div class="col-sm-10">
                     {!! Form::file('images[]',['class'=>'form-control dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp']) !!}

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\WorkingSpace;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\WorkingSpace\FloorNameRequest;
+use App\Http\Requests\WorkingSpace\FloorRequest;
 use App\Models\WorkingSpace\Floor;
+use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -15,8 +16,10 @@ use function view;
 
 class FloorController extends Controller
 {
+    use General;
     public function __construct()
     {
+        $this->makeMultipleDirectories('floors', ['documents', 'images']);
         $this->middleware('auth');
     }
 
@@ -26,9 +29,9 @@ class FloorController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Floor::class);
-        $records = Floor::orderBy('floor_name', 'ASC')->get();
+        $records = Floor::orderBy('name', 'ASC')->get();
         $params = [
-            'pageTitle' => __('general.floor_names'),
+            'pageTitle' => __('general.floors'),
             'records' => $records,
         ];
         return view('dashboard.working-space.floors.index',$params);
@@ -41,7 +44,7 @@ class FloorController extends Controller
     {
         $this->authorize('create', Floor::class);
         $params = [
-            'pageTitle' => __('general.new_floor_names'),
+            'pageTitle' => __('general.new_floor'),
         ];
 
         return view('dashboard.working-space.floors.create', $params);
@@ -50,7 +53,7 @@ class FloorController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(FloorNameRequest $request)
+    public function store(FloorRequest $request)
     {
         $this->authorize('create', Floor::class);
         if ($request->createData()) {
@@ -68,7 +71,7 @@ class FloorController extends Controller
         $model = Floor::findorFail($id);
 
         $params = [
-            'pageTitle' => __('general.edit_floor_names'),
+            'pageTitle' => __('general.edit_floor'),
             'model' => $model,
         ];
 
@@ -78,7 +81,7 @@ class FloorController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(FloorNameRequest $request, $id)
+    public function update(FloorRequest $request, $id)
     {
         $this->authorize('update', Floor::class);
         if ($request->updateData($id)) {
@@ -90,7 +93,7 @@ class FloorController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function destroy(FloorNameRequest $request, $id)
+    public function destroy(FloorRequest $request, $id)
     {
         $this->authorize('delete', Floor::class);
         if ($request->deleteData($id)) {

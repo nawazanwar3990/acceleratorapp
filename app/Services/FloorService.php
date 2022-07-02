@@ -23,7 +23,7 @@ class FloorService
     }
 
     public static function getFloorsForDropdown() {
-        return Floor::orderBy('floor_name', 'ASC')->pluck('floor_name', 'id');
+        return Floor::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function getFlatsOfFloorForJS($request) {

@@ -19,8 +19,6 @@ class BuildingController extends Controller
     use General;
     public function __construct()
     {
-
-        $this->makeDirectory('buildings');
         $this->makeMultipleDirectories('buildings', ['documents', 'images']);
         $this->middleware('auth');
     }

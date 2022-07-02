@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FlatRequest;
 use App\Models\WorkingSpace\Flat;
+use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -15,8 +16,10 @@ use function view;
 
 class FlatController extends Controller
 {
+    use General;
     public function __construct()
     {
+        $this->makeMultipleDirectories('flats', ['documents', 'images']);
         $this->middleware('auth');
     }
 
@@ -26,7 +29,7 @@ class FlatController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Flat::class);
-        $records = Flat::orderBy('flat_name', 'ASC')->get();
+        $records = Flat::orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.flats'),
             'records' => $records,

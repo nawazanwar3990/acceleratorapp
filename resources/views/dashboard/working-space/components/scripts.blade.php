@@ -1,7 +1,7 @@
 @section('inner-script-files')
 @endsection
 @section('innerScript')
-    @include('dashboard.working-space.buildings.components.hr-picker-script')
+    @include('dashboard.working-space.components.hr-picker-script')
     <script>
         $(function () {
             $('.select2').select2();
@@ -18,13 +18,13 @@
             doc++;
             let objTo = document.getElementById('documents')
             let divDoc = document.createElement("div");
-            divDoc.setAttribute("class", "form-group doc-remove-class" + doc);
+            divDoc.setAttribute("class", "mb-3 doc-remove-class" + doc);
             divDoc.innerHTML = '<div class="row">' +
                 '<div class="col-sm-10">' +
                 '<input type="file" class="form-control dropify" name="documents[]" data-height="75" data-allowed-file-extensions="doc docx pdf">' +
                 '</div>' +
                 '<div class="col-sm-2">' +
-                '<button class="btn btn-danger" type="button" onclick="removeDocumentField(' + doc + ');"> <i class="fa fa-minus"></i> </button>' +
+                '<button class="btn btn-danger" type="button" onclick="removeDocumentField(' + doc + ');"> <i class="bx  bx-trash"></i> </button>' +
                 '</div>' +
                 '</div><div class="clear"></div>';
 
@@ -40,13 +40,13 @@
             img++;
             let objTo = document.getElementById('images')
             let divDoc = document.createElement("div");
-            divDoc.setAttribute("class", "form-group img-remove-class" + img);
+            divDoc.setAttribute("class", "mb-3 img-remove-class" + img);
             divDoc.innerHTML = '<div class="row">' +
                 '<div class="col-sm-10">' +
                 '<input type="file" class="form-control dropify" name="images[]" data-height="75" data-allowed-file-extensions="jpg jpeg png bmp">' +
                 '</div>' +
                 '<div class="col-sm-2">' +
-                '<button class="btn btn-danger" type="button" onclick="removeImageField(' + img + ');"> <i class="fa fa-minus"></i> </button>' +
+                '<button class="btn btn-danger" type="button" onclick="removeImageField(' + img + ');"> <i class="bx  bx-trash"></i> </button>' +
                 '</div>' +
                 '</div><div class="clear"></div>';
 

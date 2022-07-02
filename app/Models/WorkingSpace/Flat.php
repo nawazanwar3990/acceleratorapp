@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Flat extends Model
@@ -17,11 +16,6 @@ class Flat extends Model
     use HasFactory, SoftDeletes;
 
     protected $dates = ['creation_date'];
-    protected $casts = [
-        'general_services' => 'array',
-        'security_services' => 'array',
-    ];
-
     protected $fillable = [
         'building_id',
         'floor_id',
@@ -82,19 +76,26 @@ class Flat extends Model
     {
         return $this->belongsTo(FlatType::class,'type_id');
     }
-
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::FLAT_OWNER);
+        return $this->belongsToMany(Hr::class, TableEnum::FLAT_OWNER)
+            ->withPivot(
+                'created_by',
+                'updated_by'
+            );
     }
 
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(Service::class, TableEnum::FLAT_SERVICE);
+        return $this->belongsToMany(Service::class, TableEnum::FLAT_SERVICE)
+            ->withPivot(
+                'type',
+                'created_by',
+                'updated_by'
+            );
     }
-
     public function getNameNumberAttribute()
     {
-        return ($this->flat_name . ' [' . $this->flat_number . ']');
+        return ($this->name . ' [' . $this->number . ']');
     }
 }

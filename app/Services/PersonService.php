@@ -18,6 +18,7 @@ use App\Models\UserManagement\HrRelation;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use function __;
@@ -206,6 +207,11 @@ class PersonService
             return false;
         }
         return Hr::find($id);
+    }
+
+    public static function getCurrentHrId()
+    {
+        return Auth::user()->hr_id;
     }
 
     public function store($data): User

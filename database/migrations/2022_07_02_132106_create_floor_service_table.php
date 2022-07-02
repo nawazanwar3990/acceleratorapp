@@ -11,7 +11,6 @@ return new class extends Migration
     {
         Schema::create(TableEnum::FLOOR_SERVICE, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
             $table->string('type')->nullable();

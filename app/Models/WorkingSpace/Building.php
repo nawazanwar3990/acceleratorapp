@@ -83,6 +83,7 @@ class Building extends Model
     {
         return $this->hasMany(Flat::class);
     }
+
     public function floors(): HasMany
     {
         return $this->hasMany(Floor::class);
@@ -90,12 +91,21 @@ class Building extends Model
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::BUILDING_OWNER);
+        return $this->belongsToMany(Hr::class, TableEnum::BUILDING_OWNER)
+            ->withPivot(
+                'created_by',
+                'updated_by'
+            );
     }
 
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE);
+        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
+            ->withPivot(
+                'type',
+                'created_by',
+                'updated_by'
+            );
     }
 
 }

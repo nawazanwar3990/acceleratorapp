@@ -1,7 +1,7 @@
 <?php
 return [
-    'admin_management'=>"Admin Management",
-    'customer_management'=>"Customer Management",
+    'admin_management' => "Admin Management",
+    'customer_management' => "Customer Management",
     'customer' => 'Customer',
     'admin' => 'Admin',
     'building_provider' => 'Building Provider',
@@ -264,10 +264,10 @@ return [
     'floor_number' => 'Floor Number',
     'floor_type' => 'Floor Type',
     'length' => 'Length',
-    'shops_flats' => 'Number of PackageTableHeading/Shops',
+    'shops_flats' => 'Number of Flats/Shops',
     'wing' => 'Wing',
-    'flats' => 'PackageTableHeading',
-    'flats_shop' => 'PackageTableHeading/Shops',
+    'flats' => 'Flats',
+    'flats_shop' => 'Flat/Shops',
     'new_flat_shop' => 'New Flat/Shop',
     'edit_flat_shop' => 'Edit Flat/Shop',
     'department' => 'Department',
@@ -1179,7 +1179,7 @@ return [
     'edit_package' => 'Edit Package',
     'trail_expire_date' => 'Trial Expire Date',
     'trail' => 'Trail',
-    'create_flats'=>'Create Flats',
-    'Flats'=>'Flats',
-    'edit_flat'=>'Edit Flat'
+    'create_flats' => 'Create Flats',
+    'Flats' => 'Flats',
+    'edit_flat' => 'Edit Flat'
 ];

@@ -13,7 +13,6 @@
                     <x-edit-id :id="$model->id"></x-edit-id>
                     <div class="accordion" id="accordionExample">
                         @include('dashboard.working-space.flats.components.flat', ['for' => 'edit'])
-{{--                        @include('dashboard.real-estate.flat.components.ownership', ['for' => 'edit', 'records' => $model->owners])--}}
                         @include('dashboard.working-space.flats.components.area-amount', ['for' => 'edit'])
                     </div>
                     <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.flats.index"></x-buttons>
@@ -23,3 +22,4 @@
         </div>
     </div>
 @endsection
+@include('dashboard.working-space.components.scripts')

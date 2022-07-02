@@ -15,10 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Floor extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $casts = [
-        'general_services' => 'array',
-        'security_services' => 'array',
-    ];
     protected $fillable = [
         'building_id',
         'type_id',
@@ -64,11 +60,20 @@ class Floor extends Model
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER);
+        return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER)
+            ->withPivot(
+                'created_by',
+                'updated_by'
+            );
     }
 
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(Service::class, TableEnum::FLOOR_SERVICE);
+        return $this->belongsToMany(Service::class, TableEnum::FLOOR_SERVICE)
+            ->withPivot(
+                'type',
+                'created_by',
+                'updated_by'
+            );
     }
 }

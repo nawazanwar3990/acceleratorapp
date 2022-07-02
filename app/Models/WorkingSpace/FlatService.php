@@ -11,16 +11,10 @@ class FlatService extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'building_id',
         'flat_id',
         'service_id',
         'type'
-
     ];
-    public function building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class,'building_id');
-    }
     public function flat(): BelongsTo
     {
         return $this->belongsTo(Flat::class,'flat_id');
