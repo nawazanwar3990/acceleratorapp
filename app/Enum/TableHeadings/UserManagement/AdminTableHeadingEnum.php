@@ -6,7 +6,7 @@ namespace App\Enum\TableHeadings\UserManagement;
 use App\Enum\AbstractEnum;
 use function __;
 
-class VendorTableHeadingEnum extends AbstractEnum
+class AdminTableHeadingEnum extends AbstractEnum
 {
     public const HR_NO = 'hr_no';
     public const NAME = 'name';

@@ -29,7 +29,7 @@ class FloorController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Floor::class);
-        $records = Floor::orderBy('name', 'ASC')->get();
+        $records = Floor::with('type')->orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.floors'),
             'records' => $records,

@@ -6,7 +6,7 @@ namespace App\Enum\TableHeadings\UserManagement;
 
 use App\Enum\AbstractEnum;
 
-class Permission extends AbstractEnum
+class PermissionTableHeadingEnum extends AbstractEnum
 {
 
 

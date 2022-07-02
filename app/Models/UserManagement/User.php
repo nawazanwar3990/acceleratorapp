@@ -4,7 +4,7 @@ namespace App\Models\UserManagement;
 
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\UserManagement\VendorTableHeadingEnum;
+use App\Enum\TableHeadings\UserManagement\AdminTableHeadingEnum;
 use App\Models\Building;
 use App\Models\PackageManagement\Subscription;
 use App\Models\PlanManagement\Plan;

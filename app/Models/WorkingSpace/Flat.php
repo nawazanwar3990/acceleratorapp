@@ -2,7 +2,7 @@
 
 namespace App\Models\WorkingSpace;
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\ServiceManagement\Service;
+use App\Models\ServiceManagement\Service;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Flat extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $dates = ['creation_date'];
     protected $fillable = [
         'building_id',
@@ -30,8 +29,6 @@ class Flat extends Model
         'accommodation',
         'furnished',
         'furnished_details',
-        'general_services',
-        'security_services',
         'length',
         'width',
         'area',

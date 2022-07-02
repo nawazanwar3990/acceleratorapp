@@ -1,34 +1,30 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Enum\TableHeadings\UserManagement;
 
 use App\Enum\AbstractEnum;
-use function __;
 
-class Province extends AbstractEnum
+class RoleEnumHeading extends AbstractEnum
 {
-    public const NAME = 'name';
-    public const COUNTRY = 'country';
-    public const STATUS = 'status';
 
-    /**
-     * @inheritDoc
-     */
+
+    public const NAME = 'name';
+    public const SLUG= 'slug';
+
     public static function getValues(): array
     {
-        return [];
+        return [
+
+        ];
     }
 
-    /**
-     * @inheritDoc
-     */
     public static function getTranslationKeys(): array
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::COUNTRY => __(sprintf('%s.%s', 'general', self::COUNTRY)),
-            self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
+            self::SLUG => __(sprintf('%s.%s', 'general', self::SLUG))
         ];
     }
 }
