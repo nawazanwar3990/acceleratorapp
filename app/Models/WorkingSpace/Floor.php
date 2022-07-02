@@ -3,7 +3,7 @@
 namespace App\Models\WorkingSpace;
 
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\ServiceManagement\Service;
+use App\Models\ServiceManagement\Service;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Floor extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $fillable = [
         'building_id',
         'type_id',
@@ -25,14 +26,9 @@ class Floor extends Model
         'area',
         'height',
         'no_of_shops_flats',
-        'general_services',
-        'security_services',
         'created_by',
         'updated_by',
-
     ];
-
-
 
     public function createdBy(): BelongsTo
     {
@@ -51,20 +47,22 @@ class Floor extends Model
 
     public function type(): BelongsTo
     {
-        return $this->belongsTo(FloorType::class,'type_id');
+        return $this->belongsTo(FloorType::class, 'type_id');
     }
+
     public function building(): BelongsTo
     {
-        return $this->belongsTo(Building::class,'building_id');
+        return $this->belongsTo(Building::class, 'building_id');
     }
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER)
+        return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER, 'floor_id', 'hr_id')
             ->withPivot(
                 'created_by',
                 'updated_by'
-            );
+            )
+            ->withTimestamps();
     }
 
     public function services(): BelongsToMany
@@ -74,6 +72,7 @@ class Floor extends Model
                 'type',
                 'created_by',
                 'updated_by'
-            );
+            )
+            ->withTimestamps();
     }
 }

@@ -82,7 +82,8 @@ class Flat extends Model
             ->withPivot(
                 'created_by',
                 'updated_by'
-            );
+            )
+            ->withTimestamps();
     }
 
     public function services(): BelongsToMany
@@ -92,7 +93,8 @@ class Flat extends Model
                 'type',
                 'created_by',
                 'updated_by'
-            );
+            )
+            ->withTimestamps();
     }
     public function getNameNumberAttribute()
     {

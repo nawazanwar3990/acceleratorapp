@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create(TableEnum::FLOOR_OWNER, function (Blueprint $table) {
             $table->id();
             $table->foreignId('hr_id')->nullable()->constrained(TableEnum::HRS);
-            $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLATS);
+            $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
             $table->foreignId('sale_id')->nullable()->constrained(TableEnum::SALES);
             $table->string('percentage')->nullable();
             $table->boolean('status')->default(false);
