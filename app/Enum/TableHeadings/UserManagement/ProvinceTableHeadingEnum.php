@@ -6,9 +6,10 @@ namespace App\Enum\TableHeadings\UserManagement;
 use App\Enum\AbstractEnum;
 use function __;
 
-class Profession extends AbstractEnum
+class ProvinceTableHeadingEnum extends AbstractEnum
 {
     public const NAME = 'name';
+    public const COUNTRY = 'country';
     public const STATUS = 'status';
 
     /**
@@ -26,6 +27,7 @@ class Profession extends AbstractEnum
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
+            self::COUNTRY => __(sprintf('%s.%s', 'general', self::COUNTRY)),
             self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
         ];
     }

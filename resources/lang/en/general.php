@@ -1,5 +1,7 @@
 <?php
 return [
+    'admins' => "Admins",
+    'new_admin' => 'New Admin',
     'admin_management' => "Admin Management",
     'customer_management' => "Customer Management",
     'customer' => 'Customer',
@@ -636,7 +638,7 @@ return [
     'balance' => 'Balance',
     'commodity_types' => 'Commodity Types',
     'total_buildings' => 'Total Buildings',
-    'total_flats' => 'Total PackageTableHeading',
+    'total_flats' => 'Total Packages',
     'total_floors' => 'Total Floors',
     'total_flat_shop_owners' => 'Total Flat/Shop Owners',
     'commodity_type' => 'Commodity Type',
@@ -740,9 +742,9 @@ return [
     'buyer_name' => 'Buyer Name',
     'purchase_price' => 'Purchase Price',
     'purchase_rate_sft' => 'Purchase Rate <small>(Square Feet)</small>',
-    'cost_of_flats' => 'Cost of PackageTableHeading/Shops',
+    'cost_of_flats' => 'Cost of Packages/Shops',
     'flat_purchase' => 'Flat(s) Purchase',
-    'total_sold_flats' => 'Total Sold PackageTableHeading',
+    'total_sold_flats' => 'Total Sold Packages',
     'current_updates' => 'Current Updates',
     'current_sold_on_installments' => 'Current Sold On Installments',
     'total_cost' => 'Total Cost',

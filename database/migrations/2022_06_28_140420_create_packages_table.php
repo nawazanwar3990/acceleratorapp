@@ -13,7 +13,6 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::PACKAGES, function (Blueprint $table) {
             $table->id();
-            $table->enum('package_for', AdminServiceEnum::getValues())->default(AdminServiceEnum::CO_WORKING_SPACE);
             $table->enum('type', PackageTypeEnum::getValues())->default(PackageTypeEnum::FREE);
             $table->string('name')->nullable();
             $table->foreignId('duration_type_id')->nullable()->constrained(TableEnum::DURATIONS);

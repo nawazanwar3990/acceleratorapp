@@ -40,7 +40,7 @@ class AdminController extends Controller
         $records = Hr::orderBy('first_name', 'ASC')
             ->get();
         $params = [
-            'pageTitle' => __('general.vendors'),
+            'pageTitle' => __('general.admins'),
             'records' => $records,
         ];
 
@@ -56,7 +56,7 @@ class AdminController extends Controller
         $type = $request->get('type');
         $lastId = Hr::orderBy('id', 'DESC')->value('id');
         $params = [
-            'pageTitle' => __('general.new_vendor'),
+            'pageTitle' => __('general.new_admin'),
             'lastId' => (is_null($lastId) ? '1' : $lastId),
             'type' => $type
         ];

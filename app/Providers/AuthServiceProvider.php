@@ -43,7 +43,7 @@ use App\Policies\UserManagement\CountryPolicy;
 use App\Policies\UserManagement\DepartmentPolicy;
 use App\Policies\UserManagement\DesignationPolicy;
 use App\Policies\UserManagement\DistrictPolicy;
-use App\Policies\UserManagement\VendorPolicy;
+use App\Policies\UserManagement\AdminPolicy;
 use App\Policies\UserManagement\OrganizationPolicy;
 use App\Policies\UserManagement\PermissionPolicy;
 use App\Policies\UserManagement\ProfessionPolicy;
@@ -85,7 +85,7 @@ class AuthServiceProvider extends ServiceProvider
         HrOrganization::class => OrganizationPolicy::class,
         Flat::class => FlatPolicy::class,
 
-        Hr::class => VendorPolicy::class,
+        Hr::class => AdminPolicy::class,
         Payment::class => PaymentPolicy::class,
 
         Subscription::class => SubscriptionPolicy::class,

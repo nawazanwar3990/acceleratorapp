@@ -79,7 +79,6 @@
         function calculateArea() {
             let width = Number($('#width').val());
             let tempWidth;
-
             if (isNaN(width)) {
                 width = 0;
             }
@@ -113,6 +112,7 @@
             }
 
             let area = (Number(tempWidth) * Number(tempLength));
+            console.log(area);
             $('#area').val(area);
         }
     </script>

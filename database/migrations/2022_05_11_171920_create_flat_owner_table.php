@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('sale_id')->nullable()->constrained(TableEnum::SALES);
             $table->string('percentage')->nullable();
             $table->boolean('status')->default(false);
+            $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
             $table->timestamps();
         });
     }

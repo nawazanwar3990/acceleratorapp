@@ -3,7 +3,7 @@
 namespace App\Models\UserManagement;
 
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\UserManagement\Province;
+use App\Enum\TableHeadings\UserManagement\ProvinceTableHeadingEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,7 +25,7 @@ class District extends Model
     ];
     public function province(): BelongsTo
     {
-        return $this->belongsTo(Province::class, 'created_by');
+        return $this->belongsTo(ProvinceTableHeadingEnum::class, 'created_by');
     }
     public function createdBy(): BelongsTo
     {

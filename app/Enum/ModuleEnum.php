@@ -78,8 +78,6 @@ class ModuleEnum extends AbstractEnum
         return array(
             KeyWordEnum::CO_WORKING_SPACE => array(
                 KeyWordEnum::BUILDING,
-                KeyWordEnum::SHOP,
-                KeyWordEnum::ROOM,
                 KeyWordEnum::FLOOR,
                 KeyWordEnum::FLAT
             )

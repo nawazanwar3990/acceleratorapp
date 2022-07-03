@@ -1,9 +1,15 @@
 @forelse($records as $record)
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
-        <td>{{ $record->floor_name}}</td>
-        <td>{{ $record->floor_number}}</td>
-        <td>{{ $record->floorType->name }}</td>
+        <td>{{ $record->name}}</td>
+        <td>{{ $record->number}}</td>
+        <td>
+            @isset($record->type)
+                {{ $record->type->name }}
+            @else
+                --
+            @endisset
+        </td>
         <td>{{ $record->area }}</td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [

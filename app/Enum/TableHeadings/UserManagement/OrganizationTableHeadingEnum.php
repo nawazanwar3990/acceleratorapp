@@ -6,7 +6,7 @@ namespace App\Enum\TableHeadings\UserManagement;
 use App\Enum\AbstractEnum;
 use function __;
 
-class Designation extends AbstractEnum
+class OrganizationTableHeadingEnum extends AbstractEnum
 {
     public const NAME = 'name';
     public const STATUS = 'status';

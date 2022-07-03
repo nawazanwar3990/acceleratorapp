@@ -6,9 +6,8 @@ namespace App\Policies\UserManagement;
 use App\Enum\KeyWordEnum;
 use App\Policies\AbstractDefaultPolicy;
 
-
-class VendorPolicy extends AbstractDefaultPolicy
+class AdminPolicy extends AbstractDefaultPolicy
 {
-    protected const KEYWORD = KeyWordEnum::VENDOR;
+    protected const KEYWORD = KeyWordEnum::ADMIN;
 
 }

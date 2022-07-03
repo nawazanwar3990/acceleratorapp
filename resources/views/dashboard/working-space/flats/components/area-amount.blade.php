@@ -25,9 +25,8 @@
             @enderror
         </div>
         <div class="col mb-3">
-            {!!  Html::decode(Form::label('area_view' ,__('general.area'),['class'=>'form-label']))   !!}
-            {!!  Form::text('area_view',null,['id'=>'area_view','class'=>'form-control ','placeholder'=>'0','readonly', 'tabindex'=>'-1', 'required']) !!}
-            {!!  Form::hidden('area',null,['id'=>'area']) !!}
+            {!!  Html::decode(Form::label('area' ,__('general.area'),['class'=>'form-label']))   !!}
+            {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>'0','readonly', 'tabindex'=>'-1', 'required']) !!}
             @error('area')
             <span class="text-danger">{{ $message }}</span>
             @enderror
