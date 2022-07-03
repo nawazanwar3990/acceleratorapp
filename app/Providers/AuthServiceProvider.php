@@ -9,6 +9,8 @@ use App\Models\PackageManagement\Module;
 use App\Models\PackageManagement\Package;
 use App\Models\PackageManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
+use App\Models\PlanManagement\InstallmentPlan;
+use App\Models\PlanManagement\InstallmentTerm;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatType;
@@ -28,8 +30,7 @@ use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
-use App\Policies\FlatManagement\InstallmentTermPolicy;
-use App\Policies\FlatManagement\InstallmentPlanPolicy;
+use App\Policies\FlatManagement\FlatPolicy;
 use App\Policies\FlatManagement\FloorPolicy;
 use App\Policies\FlatManagement\FloorTypePolicy;
 use App\Policies\ModulePolicy;
@@ -37,6 +38,8 @@ use App\Policies\PackageManagement\DurationPolicy;
 use App\Policies\PackageManagement\PackagePolicy;
 use App\Policies\PackageManagement\SubscriptionPolicy;
 use App\Policies\PaymentManagement\PaymentPolicy;
+use App\Policies\PlanManagement\InstallmentPlanPolicy;
+use App\Policies\PlanManagement\InstallmentTermPolicy;
 use App\Policies\ServiceManagement\ServicePolicy;
 use App\Policies\SystemConfiguration\SettingPolicy;
 use App\Policies\UserManagement\CountryPolicy;
@@ -83,7 +86,7 @@ class AuthServiceProvider extends ServiceProvider
         HrDesignation::class => DesignationPolicy::class,
         HrProfession::class => ProfessionPolicy::class,
         HrOrganization::class => OrganizationPolicy::class,
-        Flat::class => InstallmentTermPolicy::class,
+        Flat::class => FlatPolicy::class,
 
         Hr::class => AdminPolicy::class,
         Payment::class => PaymentPolicy::class,
@@ -96,6 +99,9 @@ class AuthServiceProvider extends ServiceProvider
         Package::class => PackagePolicy::class,
 
         Building::class => BuildingPolicy::class,
+
+        InstallmentPlan::class => InstallmentPlanPolicy::class,
+        InstallmentTerm::class => InstallmentTermPolicy::class,
 
     ];
 

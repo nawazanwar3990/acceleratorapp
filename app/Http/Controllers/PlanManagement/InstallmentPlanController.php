@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\PlanManagement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlanManagement\InstallmentPlanRequest;
+use App\Models\PlanManagement\InstallmentPlan;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,16 +24,19 @@ class InstallmentPlanController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', InstallmentPlan::class);
-        $records = InstallmentPlan::whereBuildingId(BuildingService::getBuildingId())->orderBy('name', 'ASC')->get();
+        $records = InstallmentPlan::all();
         $params = [
             'pageTitle' => __('general.installment_plans'),
-            'records' => $records,
+            'records' => $records
         ];
 
         return view('dashboard.plan-management.installment-plans.index', $params);
     }
 
-    public function create()
+    /**
+     * @throws AuthorizationException
+     */
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', InstallmentPlan::class);
         $params = [
@@ -41,6 +46,9 @@ class InstallmentPlanController extends Controller
         return view('dashboard.plan-management.installment-plans.create', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function store(InstallmentPlanRequest $request)
     {
         $this->authorize('create', InstallmentPlan::class);
@@ -48,37 +56,39 @@ class InstallmentPlanController extends Controller
             if ($request->saveNew) {
                 return redirect()->route('dashboard.installment-plans.create')
                     ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.installment-plans.index')
-                    ->with('success', __('general.record_created_successfully'));
             }
         }
     }
 
-    public function show($id)
-    {
-        $this->authorize('view', InstallmentPlan::class);
-        $records = InstallmentPlan::findOrFail($id);
-        $params = [
-            'pageTitle' => __('general.installment_plans_print'),
-            'records' => $records,
-        ];
 
-        return view('dashboard.plan-management.installment-plan.print-view', $params);
-    }
+    /*  public function show($id): Factory|View|Application
+      {
+          $this->authorize('view', InstallmentPlan::class);
+          $records = InstallmentPlan::findOrFail($id);
+          $params = [
+              'pageTitle' => __('general.installment_plans_print'),
+              'records' => $records,
+          ];
 
-    public function edit($id)
+          return view('dashboard.plan-management.installment-plan.print-view', $params);
+      }*/
+
+    /**
+     * @throws AuthorizationException
+     */
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', InstallmentPlan::class);
-        $model = InstallmentPlan::whereBuildingId(BuildingService::getBuildingId())->findorFail($id);
         $params = [
             'pageTitle' => __('general.edit_installment_plan'),
-            'model' => $model,
         ];
 
         return view('dashboard.plan-management.installment-plans.edit', $params);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(InstallmentPlanRequest $request, $id)
     {
         $this->authorize('update', InstallmentPlan::class);
@@ -88,6 +98,9 @@ class InstallmentPlanController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(InstallmentPlanRequest $request, $id)
     {
         $this->authorize('delete', InstallmentPlan::class);
@@ -97,17 +110,19 @@ class InstallmentPlanController extends Controller
         }
     }
 
-    public function getInstallmentPlanDetails(Request $request) {
-        return InstallmentService::getInstallmentPlanDetailsForJS($request);
-    }
+    /* public function getInstallmentPlanDetails(Request $request)
+     {
+         return InstallmentService::getInstallmentPlanDetailsForJS($request);
+     }
 
-    public function addInstallmentPlanAjax(Request $request) {
-        $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-        if ($request->ajax()) {
-            $record = InstallmentPlan::create($request->all());
-            $output = ['success' => true, 'msg' => '', 'data' => $record];
-        }
+     public function addInstallmentPlanAjax(Request $request)
+     {
+         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
+         if ($request->ajax()) {
+             $record = InstallmentPlan::create($request->all());
+             $output = ['success' => true, 'msg' => '', 'data' => $record];
+         }
 
-        return $output;
-    }
+         return $output;
+     }*/
 }

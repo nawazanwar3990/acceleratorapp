@@ -7,14 +7,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create(TableEnum::INSTALLMENT_PLANS, function (Blueprint $table) {
+        Schema::create(TableEnum::PLANS, function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->integer('months')->nullable();
@@ -39,19 +34,12 @@ return new class extends Migration
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists(TableEnum::INSTALLMENT_PLANS);
+        Schema::dropIfExists(TableEnum::PLANS);
     }
 };

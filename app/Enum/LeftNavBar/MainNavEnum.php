@@ -67,8 +67,8 @@ class MainNavEnum extends AbstractEnum
             self::ADMIN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::ADMIN_MANAGEMENT)),
             self::CUSTOMER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::CUSTOMER_MANAGEMENT)),
             self::FREELANCERS_PORTAL => __(sprintf('%s.%s', 'general', self::FREELANCERS_PORTAL)),
+            self::PLAN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PLAN_MANAGEMENT)),
             self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
-            self::INSTALLMENT => __(sprintf('%s.%s', 'general', self::INSTALLMENT)),
             self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::EVENT_MANAGEMENT)),
             self::SYSTEM_CONFIGURATION => __(sprintf('%s.%s', 'general', self::SYSTEM_CONFIGURATION)),
         ];

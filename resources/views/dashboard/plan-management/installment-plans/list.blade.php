@@ -13,7 +13,7 @@
             @endif
         </td>
         <td class="text-center">
-            @include('components.General.table-actions', [
+            @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.installment-plans.edit', $record->id),
                 'delete' => route('dashboard.installment-plans.destroy', $record->id),
             ])

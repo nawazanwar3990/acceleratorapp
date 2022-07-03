@@ -44,7 +44,7 @@ class TableEnum extends AbstractEnum
     const BUILDING_SERVICE = 'building_service';
     const SALES = 'sales';
     const FLAT_PRICE_LOGS = 'flat_price_logs';
-    const INSTALLMENT_PLANS = 'installment_plans';
+
     const QUOTATION_INSTALLMENTS = 'quotation_installments';
     const QUOTATIONS = 'quotations';
     const PURCHASERS = 'purchaser';
@@ -56,6 +56,9 @@ class TableEnum extends AbstractEnum
     const EXPENSES = 'expenses';
     const FLOOR_SERVICE = 'floor_service';
     const FLOOR_OWNER = 'floor_owner';
+    const FLAT_PLANS = 'flat_plans';
+    const FLOOR_PLANS = 'floor_plans';
+    const BUILDING_PLANS = 'building_plans';
 
 
     /**

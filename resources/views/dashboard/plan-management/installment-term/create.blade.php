@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card card-shadow pt-0">
-                @include('dashboard.components.General.form-list-header')
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['url' => route('dashboard.installment-terms.store'), 'method' => 'POST','files' => true,'id' =>'installment_term_form', 'class' => 'solid-validation']) !!}
                         <x-created-by-field></x-created-by-field>

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\PlanManagement;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RealEstate\Sales\InstallmentTermRequest;
-use App\Models\RealEstate\Sales\InstallmentTerm;
-use App\Services\RealEstate\BuildingService;
+use App\Http\Requests\PlanManagement\InstallmentTermRequest;
+use App\Models\PlanManagement\InstallmentTerm;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class InstallmentTermController extends Controller
@@ -14,48 +17,34 @@ class InstallmentTermController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         $this->authorize('create', InstallmentTerm::class);
-        $model = InstallmentTerm::whereBuildingId(BuildingService::getBuildingId())->first();
         $params = [
-            'pageTitle' => __('general.new_installment_term'),
-            'model' => $model,
+            'pageTitle' => __('general.installment_term'),
         ];
 
-        return view('dashboard.real-estate.installment-term.create', $params);
+        return view('dashboard.plan-management.installment-term.create', $params);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(InstallmentTermRequest $request)
     {
         $this->authorize('create', InstallmentTerm::class);
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.installment-term.create')
-                    ->with('success', __('general.record_created_successfully'));
-            } else {
-                return redirect()->route('dashboard.installment-term.create')
+                return redirect()->route('dashboard.installment-terms.create')
                     ->with('success', __('general.record_created_successfully'));
             }
         }
