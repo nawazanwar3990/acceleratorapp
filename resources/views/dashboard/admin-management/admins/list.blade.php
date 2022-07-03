@@ -3,7 +3,7 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ $record->hr_no }}</td>
         <td>{{ $record->full_name }}</td>
-        <td>{{ $record->cell_1 }}</td>
+        <td>{{ $record->email }}</td>
         @if(!isset($record->user->subscribed))
             <td class="text-center">
                 <a class="btn btn-sm btn-success"

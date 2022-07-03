@@ -11,7 +11,7 @@
                     @method('PUT')
                     <x-updated-by-field></x-updated-by-field>
                     <x-edit-id :id="$model->id"></x-edit-id>
-                    @include('dashboard.user-management.vendors.fields', ['for' => 'edit'])
+                    @include('dashboard.admin-management.admins.fields',['for'=>'edit'])
                     <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.admins.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>

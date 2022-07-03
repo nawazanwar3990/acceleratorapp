@@ -107,7 +107,6 @@
         {!!  Html::decode(Form::label('sec_contact_full_name' ,__('general.full_name') ,['class'=>'form-label']))   !!}
         {!!  Form::text('sec_contact_full_name',null,['id'=>'sec_contact_full_name','class'=>'form-control ','placeholder'=>__('general.full_name')]) !!}
     </div>
-
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('sec_contact_relation' ,__('general.relation') ,['class'=>'form-label']))   !!}
         {!!  Form::select('sec_contact_relation', \App\Services\PersonService::relationsForDropdown(),null,['id'=>'contact_relation',
@@ -172,13 +171,11 @@
         {!! Form::file('fourth_image',['class'=>'form-control dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp', 'data-default-file' => isset($for) ? url($fourthImage) : '']) !!}
     </div>
 </div>
-
 <div class="row mb-3">
     <div class="col-md-6">
         {!!  Html::decode(Form::label('scanned_document' ,__('general.scanned_document') ,['class'=>'form-label']))   !!}
         {!! Form::file('scanned_document',['class'=>'form-control dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'doc docx pdf', 'data-default-file' => isset($for) ? url($document) : '']) !!}
     </div>
-
     <div class="col-md-6">
         {!!  Html::decode(Form::label('scanned_signature' ,__('general.scanned_signature') ,['class'=>'form-label']))   !!}
         {!! Form::file('scanned_signature',['class'=>'form-control dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp', 'data-default-file' => isset($for) ? url($signature) : '']) !!}

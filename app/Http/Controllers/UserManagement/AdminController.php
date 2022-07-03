@@ -72,9 +72,9 @@ class AdminController extends Controller
         $this->authorize('create', Hr::class);
         $data = $request->all();
         if ($user = $this->personService->store($data)) {
-            $role = Role::whereSlug(RoleEnum::VENDOR)->value('id');
+            $role = Role::where('slug', RoleEnum::ADMIN)->value('id');
             $user->roles()->sync([$role]);
-            ModuleEnum::add_permissions_to_vendor();
+            ModuleEnum::add_permission_to_admin();
             return redirect()->route('dashboard.admins.index')
                 ->with('success', __('general.record_created_successfully'));
         }
