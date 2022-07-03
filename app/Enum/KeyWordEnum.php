@@ -8,8 +8,7 @@ class KeyWordEnum extends AbstractEnum
     public const DASHBOARD = 'dashboard';
     //plan management
     public const PLAN_MANAGEMENT = 'plan_management';
-    public const PLAN = 'plan';
-    public const INSTALLMENT = 'installment';
+    public const  INSTALLMENT_PLAN = 'installment_plan';
     public const INSTALLMENT_TERM = 'installment_term';
     // system management
     public const SYSTEM_CONFIGURATION = 'system_configuration';
@@ -70,8 +69,8 @@ class KeyWordEnum extends AbstractEnum
     public const CUSTOMER = 'customer';
     public const BUILDING_PROVIDER = 'building_provider';
     public const ADMIN = 'admin';
-    const ADMIN_MANAGEMENT = 'admin_management';
-    const CUSTOMER_MANAGEMENT = 'customer_management';
+    public const ADMIN_MANAGEMENT = 'admin_management';
+    public const CUSTOMER_MANAGEMENT = 'customer_management';
 
     static function getConstants()
     {

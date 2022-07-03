@@ -18,7 +18,6 @@ class MainNavEnum extends AbstractEnum
     public const SYSTEM_CONFIGURATION = KeyWordEnum::SYSTEM_CONFIGURATION;
     public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
 
-
     public static function getValues(): array
     {
         return [
@@ -69,6 +68,7 @@ class MainNavEnum extends AbstractEnum
             self::CUSTOMER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::CUSTOMER_MANAGEMENT)),
             self::FREELANCERS_PORTAL => __(sprintf('%s.%s', 'general', self::FREELANCERS_PORTAL)),
             self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
+            self::INSTALLMENT => __(sprintf('%s.%s', 'general', self::INSTALLMENT)),
             self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::EVENT_MANAGEMENT)),
             self::SYSTEM_CONFIGURATION => __(sprintf('%s.%s', 'general', self::SYSTEM_CONFIGURATION)),
         ];
