@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Models\SalesManagement;
-
+namespace App\Models\SaleManagement;
 use App\Models\PlanManagement\InstallmentPlan;
 use App\Models\UserManagement\User;
 use App\Models\WorkingSpace\Building;
@@ -10,56 +9,53 @@ use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Installment extends Model
+class Sale extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $dates = ['installment_date', 'paid_date'];
-
+    protected $dates = ['date'];
     protected $fillable = [
-        'building_id',
+        'date',
+        'transfer_no',
+        'revision_no',
+        'transfer_type',
+        'transfer_sub_type',
         'floor_id',
         'flat_id',
-        'sale_id',
+        'payment_method',
+        'payment_sub_method',
+        'total_amount',
+        'discount',
+        'discount_value',
+        'discount_amount',
+        'after_discount_amount',
+        'down_payment',
+        'balance',
+        'commodity_type_id',
+        'commodity_sub_type_id',
         'installment_plan_id',
-        'installment_no',
-        'installment_serial',
-        'installment_date',
-        'installment_amount',
-        'first_penalty',
-        'first_penalty_amount',
-        'second_penalty',
-        'second_penalty_amount',
-        'third_penalty',
-        'third_penalty_amount',
-        'penalty_waived_off',
-        'penalty_waived_off_amount',
-        'paid_date',
-        'paid_voucher_no',
+        'commodity_units',
+        'commodity_unit_value',
+        'commodity_adjustment_value',
+        'total_broker_percentage',
+        'total_broker_amount',
         'status',
+        'remarks',
+        'transfer_fee',
+        'company_brokery',
         'created_by',
         'updated_by',
+        'building_id',
     ];
-
-    public function plan(): BelongsTo
-    {
-        return $this->belongsTo(InstallmentPlan::class, 'installment_plan_id');
-    }
 
     public function building(): BelongsTo
     {
         return $this->belongsTo(Building::class);
     }
-    public function floor(): BelongsTo
-    {
-        return $this->belongsTo(Floor::class);
-    }
-    public function flat(): BelongsTo
-    {
-        return $this->belongsTo(Flat::class);
-    }
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -74,9 +70,15 @@ class Installment extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by');
     }
-    public function sales(): BelongsTo
+
+    public function floor(): BelongsTo
     {
-        return $this->belongsTo(Sale::class);
+        return $this->belongsTo(Floor::class);
+    }
+
+    public function flat(): BelongsTo
+    {
+        return $this->belongsTo(Flat::class);
     }
 
     public function installmentPlan(): BelongsTo
@@ -84,8 +86,13 @@ class Installment extends Model
         return $this->belongsTo(InstallmentPlan::class);
     }
 
-    public function getFullNameAttribute(): string
+    public function purchasers(): HasMany
     {
-        return ($this->installment_no . ' [' . $this->installment_serial . ']');
+        return $this->hasMany(Purchaser::class);
+    }
+
+    public function installments(): HasMany
+    {
+        return $this->hasMany(Installment::class);
     }
 }

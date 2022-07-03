@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\SalesManagement;
+namespace App\Models\SaleManagement;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
 use App\Models\WorkingSpace\Building;
