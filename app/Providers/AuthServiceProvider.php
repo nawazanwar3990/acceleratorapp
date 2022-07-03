@@ -28,8 +28,8 @@ use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
-use App\Policies\FlatManagement\FlatPolicy;
-use App\Policies\FlatManagement\FlatTypePolicy;
+use App\Policies\FlatManagement\InstallmentTermPolicy;
+use App\Policies\FlatManagement\InstallmentPlanPolicy;
 use App\Policies\FlatManagement\FloorPolicy;
 use App\Policies\FlatManagement\FloorTypePolicy;
 use App\Policies\ModulePolicy;
@@ -71,7 +71,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Floor::class => FloorPolicy::class,
         FloorType::class => FloorTypePolicy::class,
-        FlatType::class => FlatTypePolicy::class,
+        FlatType::class => InstallmentPlanPolicy::class,
 
 
         HrRelation::class => RelationPolicy::class,
@@ -83,7 +83,7 @@ class AuthServiceProvider extends ServiceProvider
         HrDesignation::class => DesignationPolicy::class,
         HrProfession::class => ProfessionPolicy::class,
         HrOrganization::class => OrganizationPolicy::class,
-        Flat::class => FlatPolicy::class,
+        Flat::class => InstallmentTermPolicy::class,
 
         Hr::class => AdminPolicy::class,
         Payment::class => PaymentPolicy::class,
