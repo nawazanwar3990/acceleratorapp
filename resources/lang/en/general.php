@@ -1,5 +1,6 @@
 <?php
 return [
+    'plan_for' => 'Plan For',
     'admins' => "Admins",
     'new_admin' => 'New Admin',
     'admin_management' => "Admin Management",

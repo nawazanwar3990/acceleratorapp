@@ -18,6 +18,7 @@ class Plan extends Model
 
     protected $table = TableEnum::PLANS;
     protected $fillable = [
+        'plan_for',
         'building_id',
         'floor_id',
         'flat_id',

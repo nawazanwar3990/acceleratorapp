@@ -11,6 +11,10 @@ use function view;
 
 class FlatService
 {
+    public static function getFlatForDropdown()
+    {
+        return Flat::orderBy('name', 'ASC')->pluck('name', 'id');
+    }
     public static function getFlatTypesForDropdown()
     {
         return FlatType::orderBy('name', 'ASC')->pluck('name', 'id');

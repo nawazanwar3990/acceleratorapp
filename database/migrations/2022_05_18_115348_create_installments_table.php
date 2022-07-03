@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create(TableEnum::INSTALLMENTS, function (Blueprint $table) {
             $table->id();
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
             $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
             $table->foreignId('sale_id')->nullable()->constrained(TableEnum::SALES);
             $table->foreignId('plan_id')->nullable()->constrained(TableEnum::PLANS);

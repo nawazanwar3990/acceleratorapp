@@ -1,16 +1,20 @@
 <?php
 
+use App\Enum\PlanForEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create(TableEnum::PLANS, function (Blueprint $table) {
             $table->id();
+            $table->enum('plan_for', PlanForEnum::getValues())->default(PlanForEnum::BUILDING);
+            $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
+            $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
+            $table->foreignId('plan_id')->nullable()->constrained(TableEnum::PLANS);
             $table->string('name')->nullable();
             $table->integer('months')->nullable();
             $table->integer('installment_duration')->nullable();
@@ -38,6 +42,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
     public function down()
     {
         Schema::dropIfExists(TableEnum::PLANS);
