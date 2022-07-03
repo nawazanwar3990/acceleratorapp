@@ -8,7 +8,7 @@
                     <table class="table table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\AdminTableHeadingEnum::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.user-management.vendors.list')
+                        @include('dashboard.admin-management.admins.list')
                         </tbody>
                     </table>
                 </div>

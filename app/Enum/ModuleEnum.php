@@ -72,7 +72,17 @@ class ModuleEnum extends AbstractEnum
             ),
         ];
     }
-
+    public function admin_permissions(){
+        $data =  array(
+            KeyWordEnum::CO_WORKING_SPACE => array(
+                KeyWordEnum::BUILDING,
+                KeyWordEnum::FLOOR,
+                KeyWordEnum::FLAT
+            ),
+            KeyWordEnum::PLAN_MANAGEMENT=>array(
+            )
+        );
+    }
     public static function get_package_modules()
     {
         return array(
@@ -129,21 +139,12 @@ class ModuleEnum extends AbstractEnum
         }
         self::add_custom_permissions();
         self::add_permissions_to_super_admin();
-        self::add_permissions_to_vendor();
+        self::add_permission_to_admin();
     }
 
-    public static function add_permissions_to_vendor()
+    public static function add_permission_to_admin()
     {
-        foreach (Permission::all() as $permission) {
 
-            RolePermission::updateOrCreate([
-                'permission_id' => $permission->id,
-                'role_id' => 2
-            ], [
-                'permission_id' => $permission->id,
-                'role_id' => 2
-            ]);
-        }
     }
 
     private static function add_permissions_to_super_admin()

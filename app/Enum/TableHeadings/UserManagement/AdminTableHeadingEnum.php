@@ -10,25 +10,17 @@ class AdminTableHeadingEnum extends AbstractEnum
 {
     public const HR_NO = 'hr_no';
     public const NAME = 'name';
-    public const CONTACT = 'contact';
-
-    /**
-     * @inheritDoc
-     */
+    public const EMAIL = 'email';
     public static function getValues(): array
     {
         return [];
     }
-
-    /**
-     * @inheritDoc
-     */
     public static function getTranslationKeys(): array
     {
         return [
             self::HR_NO => __(sprintf('%s.%s', 'general', self::HR_NO)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::CONTACT => __(sprintf('%s.%s', 'general', self::CONTACT))
+            self::EMAIL => __(sprintf('%s.%s', 'general', self::EMAIL))
         ];
     }
 }
