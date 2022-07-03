@@ -2,6 +2,7 @@
 
 namespace App\Models\PlanManagement;
 
+use App\Enum\TableEnum;
 use App\Models\UserManagement\User;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
@@ -11,10 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InstallmentPlan extends Model
+class Plan extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = TableEnum::PLANS;
     protected $fillable = [
         'building_id',
         'floor_id',
@@ -47,14 +49,17 @@ class InstallmentPlan extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
     public function floor(): BelongsTo
     {
         return $this->belongsTo(Floor::class);
     }
+
     public function flat(): BelongsTo
     {
         return $this->belongsTo(Flat::class);
     }
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

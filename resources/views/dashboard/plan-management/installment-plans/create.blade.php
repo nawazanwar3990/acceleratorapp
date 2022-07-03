@@ -9,15 +9,15 @@
             <div class="card shadow-none pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
-                    {!! Form::open(['url' =>route('dashboard.installment-plans.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                    {!! Form::open(['url' =>route('dashboard.plans.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                         <x-created-by-field></x-created-by-field>
-                        @include('dashboard.plan-management.installment-plans.fields')
+                        @include('dashboard.plan-management.plans.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
-                                   formID="plan_form" cancelRoute="dashboard.installment-plans.index"></x-buttons>
+                                   formID="plan_form" cancelRoute="dashboard.plans.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@include('dashboard.plan-management.installment-plans.components.scripts')
+@include('dashboard.plan-management.plans.components.scripts')

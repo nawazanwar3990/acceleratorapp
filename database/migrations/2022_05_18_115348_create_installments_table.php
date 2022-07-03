@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
             $table->foreignId('sale_id')->nullable()->constrained(TableEnum::SALES);
-            $table->foreignId('installment_plan_id')->nullable()->constrained(TableEnum::INSTALLMENT_PLANS);
+            $table->foreignId('plan_id')->nullable()->constrained(TableEnum::PLANS);
             $table->string('installment_no')->nullable();
             $table->string('installment_serial')->nullable();
             $table->date('installment_date')->nullable();

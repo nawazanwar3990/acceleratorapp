@@ -464,7 +464,7 @@ class SalesRequest extends FormRequest
                 Installment::create([
                     'flat_id' => $salesModel->flat->id,
                     'sale_id' => $salesModel->id,
-                    'installment_plan_id' => $this->input('installment_plan_id'),
+                    'plan_id' => $this->input('plan_id'),
                     'installment_no' => $installmentNo,
                     'installment_serial' => VoucherService::getNextVoucherNo('INSTALLMENT'),
                     'installment_date' => Carbon::parse($installmentDate),

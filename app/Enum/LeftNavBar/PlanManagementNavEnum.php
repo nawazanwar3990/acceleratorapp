@@ -43,7 +43,7 @@ class PlanManagementNavEnum extends AbstractEnum
     {
         $routes = array(
             self::INSTALLMENT_TERM => route('dashboard.installment-terms.index'),
-            self::INSTALLMENT_PLAN => route('dashboard.installment-plans.index'),
+            self::INSTALLMENT_PLAN => route('dashboard.plans.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

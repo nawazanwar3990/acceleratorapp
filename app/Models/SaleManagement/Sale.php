@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models\SaleManagement;
-use App\Models\PlanManagement\InstallmentPlan;
+use App\Models\PlanManagement\Plan;
 use App\Models\UserManagement\User;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
@@ -36,7 +36,7 @@ class Sale extends Model
         'balance',
         'commodity_type_id',
         'commodity_sub_type_id',
-        'installment_plan_id',
+        'plan_id',
         'commodity_units',
         'commodity_unit_value',
         'commodity_adjustment_value',
@@ -83,7 +83,7 @@ class Sale extends Model
 
     public function installmentPlan(): BelongsTo
     {
-        return $this->belongsTo(InstallmentPlan::class);
+        return $this->belongsTo(Plan::class);
     }
 
     public function purchasers(): HasMany

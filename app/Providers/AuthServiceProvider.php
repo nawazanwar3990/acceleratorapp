@@ -9,7 +9,7 @@ use App\Models\PackageManagement\Module;
 use App\Models\PackageManagement\Package;
 use App\Models\PackageManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
-use App\Models\PlanManagement\InstallmentPlan;
+use App\Models\PlanManagement\Plan;
 use App\Models\PlanManagement\InstallmentTerm;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
@@ -100,7 +100,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Building::class => BuildingPolicy::class,
 
-        InstallmentPlan::class => InstallmentPlanPolicy::class,
+        Plan::class => InstallmentPlanPolicy::class,
         InstallmentTerm::class => InstallmentTermPolicy::class,
 
     ];

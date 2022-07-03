@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Requests\PlanManagement;
-use App\Models\PlanManagement\InstallmentPlan;
+use App\Models\PlanManagement\Plan;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class InstallmentPlanRequest extends FormRequest
+class PlanRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -35,15 +35,15 @@ class InstallmentPlanRequest extends FormRequest
     }
 
     public function createData() {
-        return InstallmentPlan::create($this->all());
+        return Plan::create($this->all());
     }
 
     public function updateData($id) {
-        return InstallmentPlan::findorFail($id)->update($this->all());
+        return Plan::findorFail($id)->update($this->all());
     }
 
     public function deleteData($id) {
-        $model = InstallmentPlan::findorFail($id);
+        $model = Plan::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();
