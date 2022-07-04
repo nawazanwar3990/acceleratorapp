@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\WorkingSpace;
 use App\Enum\MediaTypeEnum;
-use App\Enum\ServiceEnum;
+use App\Enum\ServiceTypeEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\Floor;
@@ -80,7 +80,7 @@ class FlatRequest extends FormRequest
                 [
                     'created_by' => Auth::id(),
                     'updated_by' => Auth::id(),
-                    'type' => ServiceEnum::GENERAL_SERVICE
+                    'type' => ServiceTypeEnum::GENERAL_SERVICE
                 ]
             );
         }
@@ -91,7 +91,7 @@ class FlatRequest extends FormRequest
                 [
                     'created_by' => Auth::id(),
                     'updated_by' => Auth::id(),
-                    'type' => ServiceEnum::SECURITY_SERVICE
+                    'type' => ServiceTypeEnum::SECURITY_SERVICE
                 ]
             );
         }

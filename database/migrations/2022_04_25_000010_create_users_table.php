@@ -28,9 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('active')->default(true);
             $table->boolean('first_password')->default(true);
-            $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('updated_by')->nullable();
+            $table->foreignId('deleted_by')->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

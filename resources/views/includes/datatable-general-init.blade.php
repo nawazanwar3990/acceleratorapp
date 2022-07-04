@@ -28,7 +28,7 @@
                     @endif
                 {
                     "extend": 'csv',
-                    "text": '<i class="far fa-file-excel"></i>',
+                    "text": '<i class="bx  bx-file-excel"></i>',
                     "titleAttr": '{{ __('general.export_csv') }}',
                     footer: true,
                     className: 'btn btn-sm btn-primary text-white',

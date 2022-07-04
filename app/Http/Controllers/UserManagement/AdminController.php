@@ -74,7 +74,6 @@ class AdminController extends Controller
         if ($user = $this->personService->store($data)) {
             $role = Role::where('slug', RoleEnum::ADMIN)->value('id');
             $user->roles()->sync([$role]);
-            ModuleEnum::add_permission_to_admin();
             return redirect()->route('dashboard.admins.index')
                 ->with('success', __('general.record_created_successfully'));
         }

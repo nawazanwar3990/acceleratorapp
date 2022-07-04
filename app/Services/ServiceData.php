@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Services;
 
-use App\Enum\ServiceEnum;
+use App\Enum\ServiceTypeEnum;
 use App\Models\ServiceManagement\Service;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceData
 {
@@ -19,15 +21,27 @@ class ServiceData
         return $data;
     }
 
-    public static function getGeneralServicesForDropdown() {
-        return Service::where('type',ServiceEnum::GENERAL_SERVICE)->orderBy('name', 'ASC')->pluck('name', 'id');
+    public static function getGeneralServicesForDropdown()
+    {
+        return Service::where('type', ServiceTypeEnum::GENERAL_SERVICE)
+            ->whereCreatedBy(Auth::id())
+            ->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getSecurityServicesForDropdown() {
-        return Service::where('type', ServiceEnum::SECURITY_SERVICE)->orderBy('name', 'ASC')->pluck('name', 'id');
+    public static function getSecurityServicesForDropdown()
+    {
+        return Service::where('type', ServiceTypeEnum::SECURITY_SERVICE)
+            ->whereCreatedBy(Auth::id())
+            ->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getAllServicesForDropdown() {
+    public static function getAllServicesForDropdown()
+    {
         return Service::orderBy('name', 'ASC')->pluck('name', 'id');
+    }
+
+    public function listServicesByPagination()
+    {
+        return Service::where('created_by', Auth::id())->paginate(20);
     }
 }

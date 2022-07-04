@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatOwner;
 use App\Models\WorkingSpace\FlatType;
+use Illuminate\Support\Facades\Auth;
 use function __;
 use function response;
 use function view;
@@ -15,6 +16,7 @@ class FlatService
     {
         return Flat::orderBy('name', 'ASC')->pluck('name', 'id');
     }
+
     public static function getFlatTypesForDropdown()
     {
         return FlatType::orderBy('name', 'ASC')->pluck('name', 'id');
@@ -77,7 +79,7 @@ class FlatService
             foreach ($record->security_services as $key => $service) {
                 $securityServices .= '<option value="' . $service . '" selected>' . GeneralService::getServiceName($service) . '</option>';
             }
-            $output = ['success' => true, 'msg' => '', 'record' => $record, 'gServices' => $generalServices, 'sServices' => $securityServices, 'creationDate' => GeneralService::formatDate( $record->creation_date)];
+            $output = ['success' => true, 'msg' => '', 'record' => $record, 'gServices' => $generalServices, 'sServices' => $securityServices, 'creationDate' => GeneralService::formatDate($record->creation_date)];
         }
 
         return $output;
@@ -178,6 +180,7 @@ class FlatService
         }
 
     }
+
     public static function facingDropdown($id = null)
     {
         $data = [
@@ -194,5 +197,10 @@ class FlatService
             $data = $data[$id];
         }
         return $data;
+    }
+
+    public function listFlatsByPagination()
+    {
+        return Flat::whereCreatedBy(Auth::id())->paginate(20);
     }
 }

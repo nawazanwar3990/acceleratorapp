@@ -6,11 +6,12 @@ namespace App\Enum;
 
 use App\Enum\AbstractEnum;
 
-class ServiceEnum extends AbstractEnum
+class ServiceTypeEnum extends AbstractEnum
 {
     public const GENERAL_SERVICE = 'general_service';
     public const SECURITY_SERVICE = 'security_service';
     public const FREELANCERS_SERVICE = 'freelancers_service';
+
     public static function getValues(): array
     {
         return array(

@@ -6,6 +6,7 @@ use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceManagement\ServiceRequest;
 use App\Models\ServiceManagement\Service;
+use App\Services\ServiceData;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -16,7 +17,9 @@ use function view;
 
 class ServiceController extends Controller
 {
-    public function __construct()
+    public function __construct(
+        private ServiceData $serviceData
+    )
     {
         $this->middleware('auth');
     }
@@ -27,7 +30,7 @@ class ServiceController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Service::class);
-        $records = Service::orderBy('name', 'ASC')->get();
+        $records = $this->serviceData->listServicesByPagination();
         $params = [
             'pageTitle' => __('general.service'),
             'records' => $records,

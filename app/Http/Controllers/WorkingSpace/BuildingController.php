@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\BuildingRequest;
 use App\Models\WorkingSpace\Building;
+use App\Services\BuildingService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -17,21 +18,21 @@ use Psr\Container\NotFoundExceptionInterface;
 class BuildingController extends Controller
 {
     use General;
-    public function __construct()
+    public function __construct(
+        private BuildingService $buildingService
+    )
     {
         $this->makeMultipleDirectories('buildings', ['documents', 'images']);
         $this->middleware('auth');
     }
 
     /**
-     * @throws ContainerExceptionInterface
      * @throws AuthorizationException
-     * @throws NotFoundExceptionInterface
      */
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Building::class);
-        $records = Building::orderBy('name', 'ASC')->get();
+        $records = $this->buildingService->listBuildingsByPagination();
         $params = [
             'pageTitle' => __('general.buildings'),
             'records' => $records,

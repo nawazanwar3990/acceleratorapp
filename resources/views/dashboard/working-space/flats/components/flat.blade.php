@@ -65,7 +65,6 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-
     <div class="col mb-3">
         {!!  Html::decode(Form::label('security_services' ,__('general.security_services'),['class'=>'col-form-label']))   !!}
         {!!  Form::select('security_services[]', \App\Services\ServiceData::getSecurityServicesForDropdown(),isset($for) ? $model->security_services :null,['id'=>'security_services',

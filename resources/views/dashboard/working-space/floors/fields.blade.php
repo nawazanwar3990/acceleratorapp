@@ -1,6 +1,6 @@
 <div class="mb-3 row">
 
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('building_id' ,__('general.building_name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
         {!!  Form::select('building_id', \App\Services\BuildingService::getBuildingDropdown(),null,['id'=>'building_id',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_name'),'required','style'=>'width:100%',
@@ -10,21 +10,21 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.floor_name').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.floor_name'), 'required']) !!}
         @error('name')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('number' ,__('general.floor_number').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::text('number',null,['id'=>'number','class'=>'form-control ','placeholder'=>__('general.floor_number'), 'required']) !!}
         @error('name')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('floor_type_id' ,__('general.floor_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::select('floor_type_id', \App\Services\FloorService::getFloorTypesForDropdown(),null,['id'=>'floor_type_id',
             'class'=>'select2 form-control', 'placeholder'=>__('general.ph_floor_type'),'required','style'=>'width:100%'])
@@ -33,28 +33,28 @@
 </div>
 
 <div class="mb-3 row">
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('height' ,__('general.height_ft').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
         {!!  Form::number('height',null,['min' => 1, 'step' => 'any', 'id'=>'height','class'=>'form-control ','placeholder'=>__('general.height'), 'required']) !!}
         @error('height')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('length' ,__('general.length_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::number('length',null,['min' => 1, 'step' => 'any', 'id'=>'length','class'=>'form-control ','placeholder'=>__('general.length'), 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();', 'required']) !!}
         @error('length')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('width' ,__('general.width_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::number('width',null,['min' => 1, 'step' => 'any', 'id'=>'width','class'=>'form-control ','placeholder'=>__('general.width'), 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();', 'required']) !!}
         @error('width')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <div class="col mb-3">
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('area_view' ,__('general.area_sft') ,['class'=>'form-label']))   !!}
         {!!  Form::number('area_view',isset($for) ? $model->area : null,['id'=>'area_view','class'=>'form-control ','placeholder'=>__('general.area'),'disabled', 'tabindex'=>'-1']) !!}
         {!!  Form::hidden('area',null,['id'=>'area']) !!}

@@ -1,7 +1,7 @@
 @forelse($records as $record)
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
-        <td>{{ \App\Enum\ServiceEnum::getServiceType($record->type) }}</td>
+        <td>{{ \App\Enum\ServiceTypeEnum::getServiceType($record->type) }}</td>
         <td>{{ $record->name ?? '' }}</td>
         <td>
             <span class="badge bg-{{ $record->status === 1 ? "success" : "danger" }}">

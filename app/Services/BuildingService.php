@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\WorkingSpace\Building;
+use Illuminate\Support\Facades\Auth;
 
 class BuildingService
 {
@@ -101,15 +102,21 @@ class BuildingService
 
     public static function getBuildingDropdown()
     {
-        return Building::pluck('name','id');
+        return Building::pluck('name', 'id');
     }
 
-    public static function getBuildingServices($type = 'general') {
+    public static function getBuildingServices($type = 'general')
+    {
         $data = Building::find(self::getBuildingId());
         if ($type == 'general') {
             return $data->general_services;
         } else {
             return $data->security_services;
         }
+    }
+
+    public function listBuildingsByPagination()
+    {
+        return Building::whereCreatedBy(Auth::id())->paginate(20);
     }
 }

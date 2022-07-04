@@ -1,32 +1,38 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\FloorType;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use function __;
 
 class FloorService
 {
-    public static function getFloorTypesForDropdown() {
+    public static function getFloorTypesForDropdown()
+    {
         return FloorType::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getNoOfShopsForDropdown($id = null) {
-        for($i = 1; $i <= 100; $i++) {
+    public static function getNoOfShopsForDropdown($id = null)
+    {
+        for ($i = 1; $i <= 100; $i++) {
             $data[$i] = $i;
         }
-        if (!is_null($id)){
+        if (!is_null($id)) {
             $data = $data[$id];
         }
         return $data;
     }
 
-    public static function getFloorsForDropdown() {
+    public static function getFloorsForDropdown()
+    {
         return Floor::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getFlatsOfFloorForJS($request) {
+    public static function getFlatsOfFloorForJS($request)
+    {
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         $html = '<option value>' . __('general.ph_flat_name') . '</option>';
         $floorID = $request->get('floorID');
@@ -45,10 +51,11 @@ class FloorService
 
     public static function getFloorByBuilding($building_id)
     {
-        return Floor::select('floor_name','id')->get();
+        return Floor::select('floor_name', 'id')->get();
     }
 
-    public static function getFloorDetailsForJS($request) {
+    public static function getFloorDetailsForJS($request)
+    {
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         if ($request->ajax()) {
             $floorID = $request->get('floorID');
@@ -58,5 +65,10 @@ class FloorService
             $output = ['success' => true, 'msg' => '', 'model' => $record, 'availableArea' => ($record->area - $availableArea)];
         }
         return $output;
+    }
+
+    public function listFloorByPagination(): LengthAwarePaginator
+    {
+        return Floor::with('type')->paginate(20);
     }
 }

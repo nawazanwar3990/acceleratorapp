@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorRequest;
 use App\Models\WorkingSpace\Floor;
+use App\Services\FloorService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -17,7 +18,9 @@ use function view;
 class FloorController extends Controller
 {
     use General;
-    public function __construct()
+    public function __construct(
+        private FloorService $floorService
+    )
     {
         $this->makeMultipleDirectories('floors', ['documents', 'images']);
         $this->middleware('auth');
@@ -29,7 +32,7 @@ class FloorController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Floor::class);
-        $records = Floor::with('type')->orderBy('name', 'ASC')->get();
+        $records = $this->floorService->listFloorByPagination();
         $params = [
             'pageTitle' => __('general.floors'),
             'records' => $records,

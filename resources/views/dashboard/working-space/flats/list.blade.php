@@ -1,10 +1,10 @@
 @forelse($records as $record)
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
-        <td>{{ $record->floor->floor_name }}</td>
-        <td>{{ $record->flat_name }}</td>
-        <td>{{ $record->flat_number }}</td>
-        <td>{{ $record->flatType->name ?? '' }}</td>
+        <td>{{ $record->floor->name }}</td>
+        <td>{{ $record->name }}</td>
+        <td>{{ $record->number }}</td>
+        <td>{{ $record->type->name ?? '' }}</td>
         <td>{{ $record->area }}</td>
         <td>
             @switch($record->sales_status)
@@ -19,20 +19,11 @@
                     @break
             @endswitch
         </td>
-{{--        <td>--}}
-{{--            @php $flatOwners = $record->owners()->where('status', true)->get(); @endphp--}}
-{{--            @foreach($flatOwners as $owner)--}}
-{{--                <small>{{ $owner->VendorTableHeadingEnum->full_name }}</small>--}}
-{{--                @if (!$loop->last)--}}
-{{--                    <br>--}}
-{{--                @endif--}}
-{{--            @endforeach--}}
-{{--        </td>--}}
         <td class="text-center">
             @if ($record->sales_status == 'open')
                 @include('dashboard.components.general.table-actions', [
-                    'edit' => route('dashboard.flats-shops.edit', $record->id),
-                    'delete' => route('dashboard.flats-shops.destroy', $record->id),
+                    'edit' => route('dashboard.flats.edit', $record->id),
+                    'delete' => route('dashboard.flats.destroy', $record->id),
                 ])
             @endif
         </td>

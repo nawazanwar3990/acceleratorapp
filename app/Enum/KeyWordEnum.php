@@ -71,6 +71,11 @@ class KeyWordEnum extends AbstractEnum
     public const ADMIN = 'admin';
     public const ADMIN_MANAGEMENT = 'admin_management';
     public const CUSTOMER_MANAGEMENT = 'customer_management';
+    public const SALE_MANAGEMENT = 'sale_management';
+    public const PURCHASER = 'purchaser';
+    public const SALE = 'sale';
+    public const INSTALLMENT = 'installment';
+
 
     static function getConstants()
     {
