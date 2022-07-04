@@ -6,6 +6,9 @@ use App\Enum\DurationEnum;
 use App\Enum\LeftNavBar\CoWorkingSpaceNavEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
+use App\Models\PackageManagement\Module;
+use App\Models\PackageManagement\Package;
+use App\Models\PackageManagement\Subscription;
 use App\Models\ServiceManagement\Service;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
@@ -13,6 +16,7 @@ use App\Models\WorkingSpace\Floor;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Translation\Translator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GeneralService
@@ -987,6 +991,20 @@ class GeneralService
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static function hasSubscriptionLimit(string $type)
+    {
+        $module_id = Module::where('name', $type)->value('id');
+        $subscriptionQuery = Subscription::where('subscribed_id', Auth::id());
+        if ($subscriptionQuery->exists()) {
+            $subscription = $subscriptionQuery->first();
+            $package_id = $subscription->package_id;
+            return DB::table(TableEnum::PACKAGE_MODULE)
+                ->where('package_id', $package_id)
+                ->where('module_id', $module_id)
+                ->value('limit');
         }
     }
 }

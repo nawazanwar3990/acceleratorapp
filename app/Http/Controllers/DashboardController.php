@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\KeyWordEnum;
+use App\Enum\ModuleEnum;
+use App\Models\WorkingSpace\Building;
+use App\Services\GeneralService;
 use App\Services\HomeService;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
@@ -19,7 +23,7 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request): View|Factory|Redirector|RedirectResponse|Application
+    public function index(Request $request)/*: View|Factory|Redirector|RedirectResponse|Application*/
     {
         if (Auth::user() == null) {
             return redirect('login');
