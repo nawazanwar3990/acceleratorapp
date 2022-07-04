@@ -194,9 +194,7 @@ class ModuleEnum extends AbstractEnum
             ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 KeyWordEnum::BUILDING,
-                KeyWordEnum::FLOOR_TYPE,
                 KeyWordEnum::FLOOR,
-                KeyWordEnum::FLAT_TYPE,
                 KeyWordEnum::FLAT
             ),
             KeyWordEnum::PLAN_MANAGEMENT => array(

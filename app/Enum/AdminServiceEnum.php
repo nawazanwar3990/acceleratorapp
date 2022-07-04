@@ -13,7 +13,6 @@ class AdminServiceEnum extends AbstractEnum
 {
     public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
     public const FREELANCER = KeyWordEnum::FREELANCER;
-    public const BUILDING_PROVIDER = KeyWordEnum::BUILDING_PROVIDER;
     public const INVESTOR = KeyWordEnum::INVESTOR;
 
     public static function getValues(): array
@@ -21,7 +20,6 @@ class AdminServiceEnum extends AbstractEnum
         return [
             self::CO_WORKING_SPACE,
             self::FREELANCER,
-            self::BUILDING_PROVIDER,
             self::INVESTOR
         ];
     }
@@ -31,7 +29,6 @@ class AdminServiceEnum extends AbstractEnum
         return [
             self::CO_WORKING_SPACE => __('general.' . self::CO_WORKING_SPACE),
             self::FREELANCER => __('general.' . self::FREELANCER),
-            self::BUILDING_PROVIDER => __('general.' . self::BUILDING_PROVIDER),
             self::INVESTOR => __('general.' . self::INVESTOR)
         ];
     }
@@ -41,11 +38,38 @@ class AdminServiceEnum extends AbstractEnum
         $images = array(
             self::CO_WORKING_SPACE => asset('images/screen2.jpg'),
             self::FREELANCER => asset('images/screen3.jpg'),
-            self::BUILDING_PROVIDER => asset('images/screen3.jpg'),
             self::INVESTOR => asset('images/screen4.jpg')
         );
         if (!is_null($key) && array_key_exists($key, $images)) {
             return $images[$key];
+        } else {
+            return null;
+        }
+    }
+
+    public static function getRoute($key)
+    {
+        $images = array(
+            self::CO_WORKING_SPACE => route('website.co-working-spaces.index'),
+            self::FREELANCER => route('website.freelancers.index'),
+            self::INVESTOR => route('website.investors.index'),
+        );
+        if (!is_null($key) && array_key_exists($key, $images)) {
+            return $images[$key];
+        } else {
+            return null;
+        }
+    }
+
+    public static function getRouteName($key): ?string
+    {
+        $routes = array(
+            self::CO_WORKING_SPACE => 'website.co-working-spaces.index',
+            self::FREELANCER => 'website.freelancers.index',
+            self::INVESTOR => 'website.investors.index',
+        );
+        if (!is_null($key) && array_key_exists($key, $routes)) {
+            return $routes[$key];
         } else {
             return null;
         }

@@ -10,12 +10,20 @@
                 <div class="col-md-9">
                     <div class="row">
                         @foreach(\App\Enum\AdminServiceEnum::getTranslationKeys() as $key=>$value)
-                            <div class="col-md-3 col-lg-3 col-xl-3 col-xxl-3 text-center">
+                            @php
+                                $currentRoute = \App\Enum\AdminServiceEnum::getRoute($key);
+                                $currentRouteName = \App\Enum\AdminServiceEnum::getRouteName($key);
+                                $url = \Illuminate\Support\Facades\Route::getCurrentRoute()->getName();
+                            @endphp
+                            <div
+                                class="col-md-4 col-lg-4 col-xl-4 col-xxl-4  text-center {{$currentRouteName== $url?'bg-success':''}}">
                                 <a href="{{ route('register',[$key]) }}">
                                     <img src='{{ \App\Enum\AdminServiceEnum::getImage($key)  }}' class="w-100" alt="">
                                 </a>
-                                <a href="{{ route('register',[$key]) }}"
-                                   class="my-3 btn btn-sm btn-info text-center">{{ $value }}</a>
+                                <a href="{{ $currentRoute  }}"
+                                   class="my-3 btn btn-sm btn-info text-center {{$currentRouteName== $url?'bg-white text-body':''}}">
+                                    {{ $value }}
+                                </a>
                             </div>
                         @endforeach
                     </div>
