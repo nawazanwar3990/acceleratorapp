@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\WorkingSpace;
 
+use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FlatRequest;
 use App\Models\WorkingSpace\Flat;
 use App\Services\FlatService;
+use App\Services\GeneralService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use function __;
 use function redirect;
 use function view;
@@ -41,11 +44,21 @@ class FlatController extends Controller
     }
 
     /**
+     * @return Application|Factory|View|RedirectResponse
      * @throws AuthorizationException
      */
-    public function create(): Factory|View|Application
+    public function create(): View|Factory|RedirectResponse|Application
     {
         $this->authorize('create', Flat::class);
+        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::FLAT);
+        $existing_limit = Flat::where('created_by', Auth::id())->count();
+        if ($existing_limit >= $package_limit) {
+            return redirect()
+                ->route('dashboard.flats.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
+        }
+        $params = [
+            'pageTitle' => __('general.new_building'),
+        ];
         $params = [
             'pageTitle' => __('general.create_flats'),
         ];
@@ -58,6 +71,12 @@ class FlatController extends Controller
     public function store(FlatRequest $request)
     {
         $this->authorize('create', Flat::class);
+        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::FLAT);
+        $existing_limit = Flat::where('created_by', Auth::id())->count();
+        if ($existing_limit >= $package_limit) {
+            return redirect()
+                ->route('dashboard.flats.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
+        }
         if ($request->createData()) {
             return redirect()->route('dashboard.flats.index')
                 ->with('success', __('general.record_created_successfully'));

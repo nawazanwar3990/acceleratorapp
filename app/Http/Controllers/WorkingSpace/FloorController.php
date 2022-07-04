@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\WorkingSpace;
 
+use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorRequest;
+use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\Floor;
 use App\Services\FloorService;
+use App\Services\GeneralService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use function __;
 use function redirect;
 use function view;
@@ -41,11 +45,18 @@ class FloorController extends Controller
     }
 
     /**
+     * @return Application|Factory|View|RedirectResponse
      * @throws AuthorizationException
      */
-    public function create(): Factory|View|Application
+    public function create(): View|Factory|RedirectResponse|Application
     {
         $this->authorize('create', Floor::class);
+        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::FLOOR);
+        $existing_limit = FLOOR::where('created_by', Auth::id())->count();
+        if ($existing_limit >= $package_limit) {
+            return redirect()
+                ->route('dashboard.floors.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
+        }
         $params = [
             'pageTitle' => __('general.new_floor'),
         ];
@@ -59,6 +70,12 @@ class FloorController extends Controller
     public function store(FloorRequest $request)
     {
         $this->authorize('create', Floor::class);
+        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::FLOOR);
+        $existing_limit = FLOOR::where('created_by', Auth::id())->count();
+        if ($existing_limit >= $package_limit) {
+            return redirect()
+                ->route('dashboard.floors.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
+        }
         if ($request->createData()) {
             return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_created_successfully'));
