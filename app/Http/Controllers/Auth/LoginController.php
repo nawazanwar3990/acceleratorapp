@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Services\PersonService;
@@ -60,7 +58,6 @@ class LoginController extends Controller
                     throw ValidationException::withMessages([
                         'login' => __('auth.failed'),
                     ]);
-
                 } else {
                     RateLimiter::clear($this->throttleKey());
                     return redirect()->route('dashboard.index')->with('success', trans('general.welcome_back'));

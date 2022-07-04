@@ -12,6 +12,12 @@ class PageController extends Controller
     {
         $user = session()->get('register_user');
         $pageTitle = __('general.verify_email_address_message');
-        return view('website.pages.verify-user-email-success',compact('pageTitle','user'));
+        return view('website.pages.verify-user-email-success', compact('pageTitle', 'user'));
+    }
+
+    public function expire(): Factory|View|Application
+    {
+        $pageTitle = 'Package Has Expire';
+        return view('website.pages.expire', compact('pageTitle'));
     }
 }
