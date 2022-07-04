@@ -14,21 +14,21 @@ class AdminServiceEnum extends AbstractEnum
 {
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const INVESTOR = KeyWordEnum::INVESTOR;
-    public const CUSTOMER = KeyWordEnum::CUSTOMER;
+    public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
 
     public static function getValues(): array
     {
         return [
             self::FREELANCER,
             self::INVESTOR,
-            self::CUSTOMER
+            self::CO_WORKING_SPACE
         ];
     }
 
     public static function getTranslationKeys(): array
     {
         return [
-            self::CUSTOMER => __('general.' . self::CUSTOMER),
+            self::CO_WORKING_SPACE => __('general.' . self::CO_WORKING_SPACE),
             self::FREELANCER => __('general.' . self::FREELANCER),
             self::INVESTOR => __('general.' . self::INVESTOR)
         ];
@@ -51,7 +51,7 @@ class AdminServiceEnum extends AbstractEnum
     public static function getRoute($key)
     {
         $images = array(
-            self::CO_WORKING_SPACE => route('website.co-working-spaces.index'),
+            self::CO_WORKING_SPACE => route('website.buildings.index'),
             self::FREELANCER => route('website.freelancers.index'),
             self::INVESTOR => route('website.investors.index'),
         );

@@ -23,7 +23,7 @@ class TableEnum extends AbstractEnum
     const FLATS = 'flats';
     const FLAT_SERVICE = 'flat_service';
     const FLAT_OWNER = 'flat_owner';
-    const PLANS = 'payments';
+    const PLANS = 'plans';
     const INSTALLMENT_TERMS = 'installment_terms';
     const INSTALLMENTS = 'installments';
     const SETTINGS = 'settings';

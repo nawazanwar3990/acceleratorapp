@@ -30,7 +30,7 @@ class PlanController extends Controller
             'records' => $records
         ];
 
-        return view('dashboard.plan-management.payments.index', $params);
+        return view('dashboard.plan-management.plans.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class PlanController extends Controller
             'pageTitle' => __('general.new_installment_plan'),
         ];
 
-        return view('dashboard.plan-management.payments.create', $params);
+        return view('dashboard.plan-management.plans.create', $params);
     }
 
     /**
@@ -53,23 +53,10 @@ class PlanController extends Controller
     {
         $this->authorize('create', Plan::class);
         if ($request->createData()) {
-            return redirect()->route('dashboard.payments.create')
+            return redirect()->route('dashboard.plans.create')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
-
-
-    /*  public function show($id): Factory|View|Application
-      {
-          $this->authorize('view', InstallmentPlan::class);
-          $records = InstallmentPlan::findOrFail($id);
-          $params = [
-              'pageTitle' => __('general.installment_plans_print'),
-              'records' => $records,
-          ];
-
-          return view('dashboard.plan-management.installment-plan.print-view', $params);
-      }*/
 
     /**
      * @throws AuthorizationException
@@ -81,7 +68,7 @@ class PlanController extends Controller
             'pageTitle' => __('general.edit_installment_plan'),
         ];
 
-        return view('dashboard.plan-management.payments.edit', $params);
+        return view('dashboard.plan-management.plans.edit', $params);
     }
 
     /**
@@ -91,7 +78,7 @@ class PlanController extends Controller
     {
         $this->authorize('update', Plan::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.payments.index')
+            return redirect()->route('dashboard.plans.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
@@ -103,24 +90,8 @@ class PlanController extends Controller
     {
         $this->authorize('delete', Plan::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.payments.index')
+            return redirect()->route('dashboard.plans.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }
-
-    /* public function getInstallmentPlanDetails(Request $request)
-     {
-         return InstallmentService::getInstallmentPlanDetailsForJS($request);
-     }
-
-     public function addInstallmentPlanAjax(Request $request)
-     {
-         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
-         if ($request->ajax()) {
-             $record = InstallmentPlan::create($request->all());
-             $output = ['success' => true, 'msg' => '', 'data' => $record];
-         }
-
-         return $output;
-     }*/
 }
