@@ -69,6 +69,12 @@ class FloorService
 
     public function listFloorByPagination(): LengthAwarePaginator
     {
-        return Floor::with('type')->paginate(20);
+        return Floor::with('all_general_services', 'all_security_services', 'flats', 'type','images')
+            ->paginate(20);
+    }
+
+    public function findById($id)
+    {
+        return Floor::find($id);
     }
 }

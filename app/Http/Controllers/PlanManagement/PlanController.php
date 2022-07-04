@@ -53,10 +53,8 @@ class PlanController extends Controller
     {
         $this->authorize('create', Plan::class);
         if ($request->createData()) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.plans.create')
-                    ->with('success', __('general.record_created_successfully'));
-            }
+            return redirect()->route('dashboard.plans.create')
+                ->with('success', __('general.record_created_successfully'));
         }
     }
 

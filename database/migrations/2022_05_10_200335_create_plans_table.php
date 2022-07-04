@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->enum('plan_for', PlanForEnum::getValues())->default(PlanForEnum::BUILDING);
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
+            $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
             $table->foreignId('plan_id')->nullable()->constrained(TableEnum::PLANS);
             $table->string('name')->nullable();
             $table->integer('months')->nullable();

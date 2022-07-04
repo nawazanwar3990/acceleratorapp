@@ -12,6 +12,10 @@
                 {{ $record->down_payment_value }}%
             @endif
         </td>
+        <td>{{ $record->total_installments }}</td>
+        <td>{{ $record->reminder_days }}</td>
+        <td>{{ \App\Services\GeneralService::getDiscountTypesForDropdown($record->down_payment_type) }}</td>
+        <td>{{ $record->down_payment_value }}</td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.plans.edit', $record->id),

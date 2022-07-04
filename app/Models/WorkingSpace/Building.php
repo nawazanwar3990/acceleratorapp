@@ -2,7 +2,10 @@
 
 namespace App\Models\WorkingSpace;
 
+use App\Enum\MediaTypeEnum;
+use App\Enum\ServiceTypeEnum;
 use App\Enum\TableEnum;
+use App\Models\Media;
 use App\Models\ServiceManagement\Service;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
@@ -89,6 +92,12 @@ class Building extends Model
         return $this->hasMany(Floor::class);
     }
 
+    public function images(): HasMany
+    {
+        return $this->hasMany(Media::class, 'record_id')
+            ->where('record_type', MediaTypeEnum::BUILDING_IMAGE);
+    }
+
     public function owners(): BelongsToMany
     {
         return $this->belongsToMany(Hr::class, TableEnum::BUILDING_OWNER)
@@ -108,6 +117,30 @@ class Building extends Model
                 'updated_by'
             )
             ->withTimestamps();
+    }
+
+    public function all_general_services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
+            ->withPivot(
+                'type',
+                'created_by',
+                'updated_by'
+            )
+            ->withTimestamps()
+            ->where('building_service.type', ServiceTypeEnum::GENERAL_SERVICE);
+    }
+
+    public function all_security_services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
+            ->withPivot(
+                'type',
+                'created_by',
+                'updated_by'
+            )
+            ->withTimestamps()
+            ->where('building_service.type', ServiceTypeEnum::SECURITY_SERVICE);
     }
 
 }

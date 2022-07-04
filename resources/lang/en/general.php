@@ -1,5 +1,28 @@
 <?php
 return [
+    'plan_holder_name' => 'Plan Holder Name',
+    'bookings' => 'Bookings',
+    'booking_form' => 'Booking Form',
+    'book_now' => 'Book Now',
+    'pricing_plans' => 'Pricing Plans',
+    'sqft' => 'Sqft',
+
+    'building_information'=>'Building Info',
+    'floor_information'=>'Floor Info',
+    'flat_information'=>'Flat Info',
+
+    'days_reminder_notice' => 'Days Reminder Notice',
+    'left_bar' => [
+        'building' => 'Buildings',
+        'floor' => 'Floors',
+        'flat' => 'Flats',
+        'floor_type' => 'Floor Types',
+        'flat_type' => "Flat Types"
+    ],
+    'number' => 'Number',
+    'book_now' => 'Book Now',
+    'available_flats' => 'Available Flats',
+    'co_working_space' => 'Co Working Space',
     'plan_for' => 'Plan For',
     'admins' => "Admins",
     'new_admin' => 'New Admin',
@@ -10,7 +33,7 @@ return [
     'building_provider' => 'Building Provider',
     'package_for' => "Package For",
     'super-admin' => 'Supper Admin',
-    'co-working-space' => 'Co Working Space',
+    'co-working-spaces' => 'Co Working Space',
     'freelancer' => 'Freelancer',
     'investor' => 'Investor',
     'apply_subscription' => 'Apply Subscription',

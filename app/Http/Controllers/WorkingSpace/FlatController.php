@@ -37,7 +37,7 @@ class FlatController extends Controller
             'pageTitle' => __('general.flats'),
             'records' => $records,
         ];
-        return view('dashboard.working-space.flats.index',$params);
+        return view('dashboard.working-spaces.flats.index',$params);
     }
 
     /**
@@ -49,7 +49,7 @@ class FlatController extends Controller
         $params = [
             'pageTitle' => __('general.create_flats'),
         ];
-        return view('dashboard.working-space.flats.create', $params);
+        return view('dashboard.working-spaces.flats.create', $params);
     }
 
     /**
@@ -76,7 +76,7 @@ class FlatController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.working-space.flats.edit', $params);
+        return view('dashboard.working-spaces.flats.edit', $params);
     }
 
     /**
@@ -101,5 +101,19 @@ class FlatController extends Controller
             return redirect()->route('dashboard.flats.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
+    }
+
+    /**
+     * @throws AuthorizationException
+     */
+    public function getFlats(): Factory|View|Application
+    {
+        $this->authorize('view', Flat::class);
+        $flats = $this->flatService->listFlatsByPagination();
+        $params = [
+            'pageTitle' => __('general.flats'),
+            'flats' => $flats,
+        ];
+        return view('website.working-spaces.flats', $params);
     }
 }

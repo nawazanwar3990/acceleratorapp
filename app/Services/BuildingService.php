@@ -117,6 +117,13 @@ class BuildingService
 
     public function listBuildingsByPagination()
     {
-        return Building::whereCreatedBy(Auth::id())->paginate(20);
+        return Building::with('all_general_services', 'all_security_services', 'flats', 'floors', 'images')
+            ->whereCreatedBy(Auth::id())
+            ->paginate(20);
+    }
+
+    public function findById($id)
+    {
+        return Building::find($id);
     }
 }

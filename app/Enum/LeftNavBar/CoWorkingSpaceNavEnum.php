@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
@@ -42,11 +43,20 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::BUILDING => __(sprintf('%s.%s', 'general', self::BUILDING)),
-            self::FLOOR_TYPE => __(sprintf('%s.%s', 'general', self::FLOOR_TYPE)),
-            self::FLOOR => __(sprintf('%s.%s', 'general', self::FLOOR)),
-            self::FLAT_TYPE => __(sprintf('%s.%s', 'general', self::FLAT_TYPE)),
-            self::FLAT => __(sprintf('%s.%s', 'general', self::FLAT))
+            self::BUILDING => __(sprintf('%s.%s', 'general.left_bar', self::BUILDING)),
+            self::FLOOR_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR_TYPE)),
+            self::FLOOR => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR)),
+            self::FLAT_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::FLAT_TYPE)),
+            self::FLAT => __(sprintf('%s.%s', 'general.left_bar', self::FLAT))
+        ];
+    }
+
+    public static function getAdminWorkingSpaces(): array
+    {
+        return [
+            self::BUILDING => __(sprintf('%s.%s', 'general.left_bar', self::BUILDING)),
+            self::FLOOR => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR)),
+            self::FLAT => __(sprintf('%s.%s', 'general.left_bar', self::FLAT))
         ];
     }
 
@@ -58,6 +68,20 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
             self::FLOOR => route('dashboard.floors.index'),
             self::FLAT_TYPE => route('dashboard.flat-types.index'),
             self::FLAT => route('dashboard.flats.index')
+        );
+        if (!is_null($key) && array_key_exists($key, $routes)) {
+            return $routes[$key];
+        } else {
+            return null;
+        }
+    }
+
+    public static function getWebsiteRoute($key = null, $params = null)
+    {
+        $routes = array(
+            self::BUILDING => ($params) ? route('website.buildings.index', $params) : route('website.buildings.index'),
+            self::FLOOR => ($params) ? route('website.floors.index', $params) : route('website.floors.index'),
+            self::FLAT => ($params) ? route('website.flats.index', $params) : route('website.flats.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

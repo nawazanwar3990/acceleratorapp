@@ -32,7 +32,7 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.flat_types'),
             'records' => $records,
         ];
-        return view('dashboard.working-space.flat-types.index',$params);
+        return view('dashboard.working-spaces.flat-types.index',$params);
     }
 
     /**
@@ -45,7 +45,7 @@ class FlatTypeController extends Controller
             'pageTitle' => __('general.new_flat_types'),
         ];
 
-        return view('dashboard.working-space.flat-types.create', $params);
+        return view('dashboard.working-spaces.flat-types.create', $params);
     }
 
     /**
@@ -73,7 +73,7 @@ class FlatTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.working-space.flat-types.edit', $params);
+        return view('dashboard.working-spaces.flat-types.edit', $params);
     }
 
     /**

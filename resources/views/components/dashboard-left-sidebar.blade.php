@@ -24,35 +24,35 @@
                                 </a>
                                 @switch($key)
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::PACKAGE_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.package-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.package-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.user-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.user-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::ADMIN_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.admin-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.admin-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::CUSTOMER_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.customer-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.customer-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SERVICE_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.service-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.service-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::FREELANCERS_PORTAL)
-                                    @include('dashboard.components.left-nav-bar.freelancer-portal')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.freelancer-portal')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.plan-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.plan-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::EVENT_MANAGEMENT)
-                                    @include('dashboard.components.left-nav-bar.event-management')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.event-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::CO_WORKING_SPACE)
-                                    @include('dashboard.components.left-nav-bar.working-space')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.working-spaces')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
-                                    @include('dashboard.components.left-nav-bar.system-configuration')
-                                    @break
+                                        @include('dashboard.components.left-nav-bar.system-configuration')
+                                        @break
                                 @endswitch
                             </li>
                         @endcan

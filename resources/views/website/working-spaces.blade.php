@@ -7,392 +7,73 @@
     <div class="row" style="position: relative;">
         @include('website.components.home.banner')
         @include('website.components.home.what-you-are')
-        @include('website.components.home.our-locations')
         <div class="col-md-12">
             <div class="fix-width">
-                <div class="row pt-5 pb-5">
-                    <div class="col-md-6 pb-4">
-                        <h1 class="card-heading">Amenities</h1>
-                        <p class="text-justify">
-                            Find your desired work placeFind your desired work placeFind your desired work placeFind your desireFind your desired work placed work placeFind your desired work placeFind your desired work place.
-                        </p>
-                    </div>
-                    <div class="row pb-5">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-{{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>RFID Access</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>RFID Access</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>RFID Access</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
+                <div class="row location pb-5">
+                    <div class="col-lg-3 col-md-4">
+                        <div class="card-body inbox-panel">
+                            <a href="{{ route('website.co-working-spaces.index') }}"
+                               class="btn btn-danger m-b-20 p-10 w-100 waves-effect waves-light text-white">
+                                {{  \App\Enum\AdminServiceEnum::getTranslationKeyBy(\App\Enum\AdminServiceEnum::CO_WORKING_SPACE) }}
+                            </a>
+                            <ul class="list-group list-group-full">
+                                @foreach(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getAdminWorkingSpaces() as $workingKey=>$workingValue)
+                                    <li class="list-group-item d-flex no-block align-items-center  @if($loop->first) active  @endif">
+                                        <a href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute($workingKey) }}"
+                                           class="d-flex no-block align-items-center @if($loop->first) text-white  @endif">
+                                            <i class="mdi mdi-gmail fs-4 me-2 d-flex align-items-center"></i> {{ $workingValue }}
+                                        </a>
+                                        <span class="badge bg-success ms-auto">
+                                            {{ \App\Services\GeneralService::get_working_space_count($workingKey) }}
+                                        </span>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
-                    <div class="row pb-5">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/expense.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>Unlimited Coffee</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
+                    <div class="col-lg-9 col-md-8 bg-light border-start">
+                        <div class="card-body justify-content-end">
+
                         </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/expense.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>Unlimited Coffee</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/expense.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>Unlimited Coffee</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pb-5">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/assets.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>Air Conditioned Spaces</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/assets.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>Air Conditioned Spaces</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/assets.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>Air Conditioned Spaces</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pb-5">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/income.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>24/7 access </h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/income.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>24/7 access </h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src='{{asset('images/icon/income.png')}}' alt="">
-                                    {{--                                    <i class="far fa-archive"></i>--}}
-                                </div>
-                                <div class="col-8">
-                                    <h4>24/7 access </h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="fix-width">
-                <div class="row pt-5 pb-5">
-                    <div class="col-md-6 pb-4">
-                        <h1 class="card-heading">Our Clients</h1>
-                        <p class="text-justify">
-                            Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src='{{ asset('images/users/1.jpg') }}' class="client-img" alt="">
-                        </div>
-                        <div class="col">
-                            <img src='{{ asset('images/users/2.jpg') }}' class="client-img" alt="">
-                        </div>
-                        <div class="col">
-                            <img src='{{ asset('images/users/3.jpg') }}' class="client-img" alt="">
-                        </div>
-                        <div class="col">
-                            <img src='{{ asset('images/users/4.jpg') }}' class="client-img" alt="">
-                        </div>
-                        <div class="col">
-                            <img src='{{ asset('images/users/5.jpg') }}' class="client-img" alt="">
-                        </div>
-                        <div class="col">
-                            <img src='{{ asset('images/users/6.jpg') }}' class="client-img" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="fix-width">
-                <div class="row pt-5 pb-5">
-                    <div class="col-md-6 pb-4">
-                        <h1 class="card-heading">Testimonials</h1>
-                        <p class="text-justify">
-                            Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src='{{ asset('images/users/1.jpg') }}' class="testimonials-img" alt="">
-                            <div class="testimonials-desc">
-                                <h4>Testimonials</h4>
-                                <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <img src='{{ asset('images/users/2.jpg') }}' class="testimonials-img" alt="">
-                            <div class="testimonials-desc">
-                                <h4>Testimonials</h4>
-                                <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <img src='{{ asset('images/users/3.jpg') }}' class="testimonials-img" alt="">
-                            <div class="testimonials-desc">
-                                <h4>Testimonials</h4>
-                                <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <img src='{{ asset('images/users/4.jpg') }}' class="testimonials-img" alt="">
-                            <div class="testimonials-desc">
-                                <h4>Testimonials</h4>
-                                <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="fix-width">
-                <div class="row pt-5 pb-5">
-                    <div class="col-md-6 pb-4">
-                        <h1 class="card-heading">Available Offices</h1>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card offer-card">
-                                <div class="card-body">
-                                    <h4><b>Private Office</b></h4>
-                                    <h3><b>Room B12 | E-11</b></h3>
-                                    <img src='{{ asset('images/users/2.jpg') }}' class="offer-user-img" alt="">
-                                        <div class="row py-4 text-center">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                                </div>
-                                                <div>
-                                                    <p>13 Member</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                                </div>
-                                                <div>
-                                                    <p>Air Conditioned</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                                </div>
-                                                <div >
-                                                    <p>Storage Space</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <div class="pb-3">
-                                        <h2>
-                                            80,000PKR
-                                        </h2>
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-4"><a href="">Contact Us</a></div>
-                                        <div class="col-4"><a href="">Book a Tour</a></div>
-                                        <div class="col-4"><a href="">Book Now</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card offer-card">
-                                <div class="card-body">
-                                    <h4><b>Private Office</b></h4>
-                                    <h3><b>Room B12 | Blue Area</b></h3>
-                                    <img src='{{ asset('images/users/4.jpg') }}' class="offer-user-img" alt="">
-                                    <div class="row py-4 text-center">
-                                        <div class="col-md-4">
-                                            <div>
-                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                            </div>
-                                            <div>
-                                                <p>13 Member</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div>
-                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                            </div>
-                                            <div>
-                                                <p>Air Conditioned</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div>
-                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                            </div>
-                                            <div >
-                                                <p>Storage Space</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pb-3">
-                                        <h2>
-                                            80,000PKR
-                                        </h2>
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-4"><a href="">Contact Us</a></div>
-                                        <div class="col-4"><a href="">Book a Tour</a></div>
-                                        <div class="col-4"><a href="">Book Now</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card offer-card">
-                                <div class="card-body">
-                                    <h4><b>Private Office</b></h4>
-                                    <h3><b>Room B12 | Gulberg Green</b></h3>
-                                    <img src='{{ asset('images/users/6.jpg') }}' class="offer-user-img" alt="">
-                                    <div class="row py-4 text-center">
-                                        <div class="col-md-4">
-                                            <div>
-                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                            </div>
-                                            <div>
-                                                <p>13 Member</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div>
-                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                            </div>
-                                            <div>
-                                                <p>Air Conditioned</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div>
-                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                            </div>
-                                            <div >
-                                                <p>Storage Space</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pb-3">
-                                        <h2>
-                                            80,000PKR
-                                        </h2>
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-4"><a href="">Contact Us</a></div>
-                                        <div class="col-4"><a href="">Book a Tour</a></div>
-                                        <div class="col-4"><a href="">Book Now</a></div>
-                                    </div>
+                        <div class="card-body p-t-0">
+                            <div class="card b-all shadow-none">
+                                <div class="inbox-center table-responsive">
+                                    <table class="table table-hover no-wrap">
+                                        <tbody>
+                                        @foreach(\App\Enum\AdminServiceEnum::listAllAdminsByPaginations() as $admin)
+                                            <tr class="unread">
+                                                <td style="width:40px" class="hidden-xs-down"><i
+                                                        class="bx bx-star"></i>
+                                                </td>
+                                                <td class="hidden-xs-down">
+                                                    {{ $admin->getFullName() }}
+                                                </td>
+                                                <td class="max-texts">
+                                                    <a class="btn btn-success btn-sm"
+                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::BUILDING) }}">
+                                                        {{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::BUILDING) }}
+                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::BUILDING,$admin) }}</strong>)
+                                                        <i class="bx bx-buildings"></i>
+                                                    </a>
+                                                    <a class="btn btn-info btn-sm"
+                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLOOR) }}">
+                                                        {{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLOOR) }}
+                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLOOR,$admin) }}</strong>)
+                                                        <i class="bx bxs-building"></i>
+                                                    </a>
+                                                    <a class="btn btn-primary btn-sm"
+                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLAT) }}">
+                                                        {{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLAT) }}
+                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLAT,$admin) }}</strong>)
+                                                        <i class="bx bxs-building-house"></i>
+                                                    </a>
+                                                </td>
+                                                <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
+                                                <td class="text-end"> 12:30 PM</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

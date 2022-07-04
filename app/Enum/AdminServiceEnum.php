@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
+use App\Models\UserManagement\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -104,5 +105,10 @@ class AdminServiceEnum extends AbstractEnum
             ->join(TableEnum::ROLE_USER, 'role_user.role_id', 'roles.id')
             ->join(TableEnum::USERS, 'role_user.user_id', 'users.id')
             ->where('users.id', $user->id);
+    }
+    public static function listAllAdminsByPaginations(){
+        return User::whereHas('roles',function ($q){
+            $q->where('slug',RoleEnum::ADMIN);
+        })->paginate(20);
     }
 }

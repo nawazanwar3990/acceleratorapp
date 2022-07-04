@@ -34,7 +34,7 @@ class KeyWordEnum extends AbstractEnum
     public const EVENT_LIST = 'event_list';
     public const EVENT_NEW = 'new_event';
     // flat management
-    public const CO_WORKING_SPACE = 'co-working-space';
+    public const CO_WORKING_SPACE = 'co_working_space';
     public const BUILDING = 'building';
     public const SHOP = 'shop';
     public const FLAT = 'flat';

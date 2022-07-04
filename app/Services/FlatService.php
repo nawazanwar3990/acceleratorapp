@@ -201,6 +201,13 @@ class FlatService
 
     public function listFlatsByPagination()
     {
-        return Flat::whereCreatedBy(Auth::id())->paginate(20);
+        return Flat::with('all_general_services','all_security_services','images')
+            ->whereCreatedBy(Auth::id())
+            ->paginate(20);
+    }
+
+    public function findById($id)
+    {
+        return Flat::find($id);
     }
 }

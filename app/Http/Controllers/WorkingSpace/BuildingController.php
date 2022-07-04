@@ -38,7 +38,7 @@ class BuildingController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.working-space.buildings.index', $params);
+        return view('dashboard.working-spaces.buildings.index', $params);
     }
 
     /**
@@ -51,7 +51,7 @@ class BuildingController extends Controller
             'pageTitle' => __('general.new_building'),
         ];
 
-        return view('dashboard.working-space.buildings.create', $params);
+        return view('dashboard.working-spaces.buildings.create', $params);
     }
 
     /**
@@ -89,7 +89,7 @@ class BuildingController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.working-space.buildings.edit', $params);
+        return view('dashboard.working-spaces.buildings.edit', $params);
     }
 
     /**
@@ -131,5 +131,19 @@ class BuildingController extends Controller
 
     public function getFloorsOfBuilding(Request $request) {
         return BuildingService::getFloorsOfBuildingForJS($request);
+    }
+
+    /**
+     * @throws AuthorizationException
+     */
+    public function getBuildings(): Factory|View|Application
+    {
+        $this->authorize('view', Building::class);
+        $buildings = $this->buildingService->listBuildingsByPagination();
+        $params = [
+            'pageTitle' => __('general.buildings'),
+            'buildings' => $buildings,
+        ];
+        return view('website.working-spaces.buildings', $params);
     }
 }

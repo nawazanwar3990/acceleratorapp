@@ -31,7 +31,7 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.floor_types'),
             'records' => $records,
         ];
-        return view('dashboard.working-space.floor-types.index',$params);
+        return view('dashboard.working-spaces.floor-types.index',$params);
     }
 
     /**
@@ -44,7 +44,7 @@ class FloorTypeController extends Controller
             'pageTitle' => __('general.new_floor_types'),
         ];
 
-        return view('dashboard.working-space.floor-types.create', $params);
+        return view('dashboard.working-spaces.floor-types.create', $params);
     }
 
     /**
@@ -72,7 +72,7 @@ class FloorTypeController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.working-space.floor-types.edit', $params);
+        return view('dashboard.working-spaces.floor-types.edit', $params);
     }
 
     /**

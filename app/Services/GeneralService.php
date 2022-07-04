@@ -3,9 +3,13 @@
 namespace App\Services;
 
 use App\Enum\DurationEnum;
+use App\Enum\LeftNavBar\CoWorkingSpaceNavEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\ServiceManagement\Service;
+use App\Models\WorkingSpace\Building;
+use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Floor;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Translation\Translator;
@@ -13,6 +17,16 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralService
 {
+    public static function get_working_space_count($type, $user = null): int
+    {
+        return match ($type) {
+            CoWorkingSpaceNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
+            CoWorkingSpaceNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
+            CoWorkingSpaceNavEnum::FLAT => ($user) ? Flat::whereCreatedBy($user->id)->count() : Flat::count(),
+            default => 0,
+        };
+    }
+
     public static function get_duration_name($slug): array|string|Translator|Application|null
     {
         return match ($slug) {
@@ -24,7 +38,7 @@ class GeneralService
         };
     }
 
-    public static function get_remaining_time($type, $duration,$from_date): ?string
+    public static function get_remaining_time($type, $duration, $from_date): ?string
     {
         return match ($type) {
             DurationEnum::YEARLY => date("Y-m-d H:i:s", strtotime("$from_date +$duration years")),

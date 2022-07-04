@@ -37,7 +37,7 @@ class FloorController extends Controller
             'pageTitle' => __('general.floors'),
             'records' => $records,
         ];
-        return view('dashboard.working-space.floors.index',$params);
+        return view('dashboard.working-spaces.floors.index',$params);
     }
 
     /**
@@ -50,7 +50,7 @@ class FloorController extends Controller
             'pageTitle' => __('general.new_floor'),
         ];
 
-        return view('dashboard.working-space.floors.create', $params);
+        return view('dashboard.working-spaces.floors.create', $params);
     }
 
     /**
@@ -78,7 +78,7 @@ class FloorController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.working-space.floors.edit', $params);
+        return view('dashboard.working-spaces.floors.edit', $params);
     }
 
     /**
@@ -103,5 +103,18 @@ class FloorController extends Controller
             return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
+    }
+    /**
+     * @throws AuthorizationException
+     */
+    public function getFloors(): Factory|View|Application
+    {
+        $this->authorize('view', Floor::class);
+        $floors = $this->floorService->listFloorByPagination();
+        $params = [
+            'pageTitle' => __('general.floors'),
+            'floors' => $floors,
+        ];
+        return view('website.working-spaces.floors', $params);
     }
 }
