@@ -12,23 +12,23 @@ use Illuminate\Support\Facades\DB;
 
 class AdminServiceEnum extends AbstractEnum
 {
-    public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const INVESTOR = KeyWordEnum::INVESTOR;
+    public const CUSTOMER = KeyWordEnum::CUSTOMER;
 
     public static function getValues(): array
     {
         return [
-            self::CO_WORKING_SPACE,
             self::FREELANCER,
-            self::INVESTOR
+            self::INVESTOR,
+            self::CUSTOMER
         ];
     }
 
     public static function getTranslationKeys(): array
     {
         return [
-            self::CO_WORKING_SPACE => __('general.' . self::CO_WORKING_SPACE),
+            self::CUSTOMER => __('general.' . self::CUSTOMER),
             self::FREELANCER => __('general.' . self::FREELANCER),
             self::INVESTOR => __('general.' . self::INVESTOR)
         ];

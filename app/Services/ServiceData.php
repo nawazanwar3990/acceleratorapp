@@ -35,6 +35,20 @@ class ServiceData
             ->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
+    public static function getGeneralServices()
+    {
+        return Service::where('type', ServiceTypeEnum::GENERAL_SERVICE)
+            ->whereCreatedBy(Auth::id())
+            ->orderBy('name', 'ASC')->get();
+    }
+
+    public static function getSecurityServices()
+    {
+        return Service::where('type', ServiceTypeEnum::SECURITY_SERVICE)
+            ->whereCreatedBy(Auth::id())
+            ->orderBy('name', 'ASC')->get();
+    }
+
     public static function getAllServicesForDropdown()
     {
         return Service::orderBy('name', 'ASC')->pluck('name', 'id');

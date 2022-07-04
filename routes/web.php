@@ -20,6 +20,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/event-management.php';
     require __DIR__ . '/working-space.php';
     require __DIR__ . '/package-management.php';
+    require __DIR__ . '/sale-management.php';
 
 
 });

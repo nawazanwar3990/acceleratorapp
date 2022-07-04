@@ -9,7 +9,6 @@
         @enderror
     </div>
 </div>
-
 <div class="mb-3 row">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('type' ,__('general.type').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
@@ -23,9 +22,16 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-
 </div>
 
+<div class="mb-3 row">
+    <div class="col-md-3">
+        {!!  Html::decode(Form::label('price' ,__('general.price').' (optional)' ,['class'=>'col-form-label']))   !!}
+    </div>
+    <div class="col-md-5">
+        {!!  Form::number('price',null,['id'=>'type','class'=>'form-control'])!!}
+    </div>
+</div>
 <div class="mb-3 row">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('status' ,__('general.active').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}

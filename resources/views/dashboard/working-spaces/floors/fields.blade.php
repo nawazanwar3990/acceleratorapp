@@ -31,7 +31,6 @@
         !!}
     </div>
 </div>
-
 <div class="mb-3 row">
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('height' ,__('general.height_ft').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
@@ -63,7 +62,6 @@
         @enderror
     </div>
 </div>
-
 <div class="mb-3 row">
     <div class="col mb-3">
         {!!  Html::decode(Form::label('no_of_shops_flats' ,__('general.shops_flats') ,['class'=>'form-label']))   !!}
@@ -91,4 +89,5 @@
         @enderror
     </div>
 </div>
+@include('dashboard.working-spaces.components.services')
 @include('dashboard.working-spaces.components.images')

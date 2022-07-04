@@ -16,6 +16,7 @@ class Service extends Model
         'type',
         'name',
         'status',
+        'price',
         'created_by',
         'updated_by',
         'deleted_by',

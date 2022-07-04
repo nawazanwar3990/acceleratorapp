@@ -5,8 +5,12 @@ namespace App\Http\Controllers\SaleManagement;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Models\SaleManagement\Sale;
+use App\Models\WorkingSpace\Flat;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -24,7 +28,7 @@ class SaleController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function index(Request $request)
+    public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Sale::class);
         $records = Sale::with('flat.floor', 'building', 'purchasers.Hr')
@@ -38,8 +42,9 @@ class SaleController extends Controller
                 QueryService::filterByDate($request, $query, TableEnum::SALES);
             })
             ->orderBy('date', 'DESC')->get();
-        $transferNoList = Sale::whereBuildingId(BuildingService::getBuildingId())->pluck('transfer_no', 'id');
-        $flatsList = Flat::whereBuildingId(BuildingService::getBuildingId())->where('sales_status', '!=', 'open')->get();
+
+        $transferNoList = Sale::pluck('transfer_no', 'id');
+        $flatsList = Flat::where('sales_status', '!=', 'open')->get();
 
         $params = [
             'pageTitle' => __('general.sales_listing'),
@@ -48,7 +53,7 @@ class SaleController extends Controller
             'flatsList' => $flatsList,
         ];
 
-        return view('dashboard.real-estate.sales.index', $params);
+        return view('dashboard.sales-management.sales.index', $params);
     }
 
     public function create()

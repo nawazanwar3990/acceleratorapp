@@ -82,7 +82,8 @@ class Floor extends Model
             ->withPivot(
                 'type',
                 'created_by',
-                'updated_by'
+                'updated_by',
+                'price'
             )
             ->withTimestamps();
     }
@@ -92,7 +93,8 @@ class Floor extends Model
             ->withPivot(
                 'type',
                 'created_by',
-                'updated_by'
+                'updated_by',
+                'price'
             )
             ->withTimestamps()
             ->where('floor_service.type',ServiceTypeEnum::GENERAL_SERVICE);
@@ -104,7 +106,8 @@ class Floor extends Model
             ->withPivot(
                 'type',
                 'created_by',
-                'updated_by'
+                'updated_by',
+                'price'
             )
             ->withTimestamps()
             ->where('floor_service.type',ServiceTypeEnum::SECURITY_SERVICE);

@@ -100,7 +100,8 @@ class Flat extends Model
             ->withPivot(
                 'type',
                 'created_by',
-                'updated_by'
+                'updated_by',
+                'price'
             )
             ->withTimestamps();
     }
@@ -115,7 +116,8 @@ class Flat extends Model
             ->withPivot(
                 'type',
                 'created_by',
-                'updated_by'
+                'updated_by',
+                'price'
             )
             ->withTimestamps()
             ->where('flat_service.type',ServiceTypeEnum::GENERAL_SERVICE);
@@ -127,7 +129,8 @@ class Flat extends Model
             ->withPivot(
                 'type',
                 'created_by',
-                'updated_by'
+                'updated_by',
+                'price'
             )
             ->withTimestamps()
             ->where('flat_service.type',ServiceTypeEnum::SECURITY_SERVICE);

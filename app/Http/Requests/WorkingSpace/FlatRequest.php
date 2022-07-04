@@ -5,6 +5,7 @@ use App\Enum\MediaTypeEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\FlatService;
 use App\Models\WorkingSpace\Floor;
 use App\Services\GeneralService;
 use App\Services\PersonService;
@@ -73,27 +74,38 @@ class FlatRequest extends FormRequest
 
     private function saveServices($model)
     {
-        $general_services = $this->input('general_services', []);
-        if (count($general_services) > 0) {
-            $model->services()->attach(
-                $general_services,
-                [
+        $general = $this->input('general', []);
+        $general_count = count($general['id']);
+        if ($general_count > 0) {
+            for ($i = 0; $i < $general_count; $i++) {
+                $id = $general['id'][$i];
+                $price = $general['price'][$i];
+                FlatService::create([
+                    'service_id' => $id,
+                    'flat_id' => $model->id,
+                    'price' => $price,
+                    'type' => ServiceTypeEnum::GENERAL_SERVICE,
                     'created_by' => Auth::id(),
-                    'updated_by' => Auth::id(),
-                    'type' => ServiceTypeEnum::GENERAL_SERVICE
-                ]
-            );
+                    'updated_by' => Auth::id()
+                ]);
+            }
         }
-        $security_services = $this->input('security_services', []);
-        if (count($security_services) > 0) {
-            $model->services()->attach(
-                $security_services,
-                [
+
+        $security = $this->input('security', []);
+        $security_count = count($security['id']);
+        if ($security_count > 0) {
+            for ($i = 0; $i < $security_count; $i++) {
+                $id = $security['id'][$i];
+                $price = $security['price'][$i];
+                FlatService::create([
+                    'service_id' => $id,
+                    'flat_id' => $model->id,
+                    'price' => $price,
+                    'type' => ServiceTypeEnum::SECURITY_SERVICE,
                     'created_by' => Auth::id(),
-                    'updated_by' => Auth::id(),
-                    'type' => ServiceTypeEnum::SECURITY_SERVICE
-                ]
-            );
+                    'updated_by' => Auth::id()
+                ]);
+            }
         }
     }
 

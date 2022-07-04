@@ -11,6 +11,8 @@ use App\Models\PackageManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
 use App\Models\PlanManagement\Plan;
 use App\Models\PlanManagement\InstallmentTerm;
+use App\Models\SaleManagement\Installment;
+use App\Models\SaleManagement\Sale;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatType;
@@ -31,8 +33,6 @@ use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
 use App\Policies\FlatManagement\FlatPolicy;
-use App\Policies\FlatManagement\FloorPolicy;
-use App\Policies\FlatManagement\FloorTypePolicy;
 use App\Policies\ModulePolicy;
 use App\Policies\PackageManagement\DurationPolicy;
 use App\Policies\PackageManagement\PackagePolicy;
@@ -40,6 +40,8 @@ use App\Policies\PackageManagement\SubscriptionPolicy;
 use App\Policies\PaymentManagement\PaymentPolicy;
 use App\Policies\PlanManagement\InstallmentPlanPolicy;
 use App\Policies\PlanManagement\InstallmentTermPolicy;
+use App\Policies\SaleManagement\InstallmentPolicy;
+use App\Policies\SaleManagement\SalePolicy;
 use App\Policies\ServiceManagement\ServicePolicy;
 use App\Policies\SystemConfiguration\SettingPolicy;
 use App\Policies\UserManagement\CountryPolicy;
@@ -72,8 +74,8 @@ class AuthServiceProvider extends ServiceProvider
         Permission::class => PermissionPolicy::class,
         Service::class => ServicePolicy::class,
 
-        Floor::class => FloorPolicy::class,
-        FloorType::class => FloorTypePolicy::class,
+        Floor::class => SalePolicy::class,
+        FloorType::class => InstallmentPolicy::class,
         FlatType::class => InstallmentPlanPolicy::class,
 
 
@@ -102,6 +104,9 @@ class AuthServiceProvider extends ServiceProvider
 
         Plan::class => InstallmentPlanPolicy::class,
         InstallmentTerm::class => InstallmentTermPolicy::class,
+
+        Sale::class => SalePolicy::class,
+        Installment::class => InstallmentPolicy::class,
 
     ];
 

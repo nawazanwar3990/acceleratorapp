@@ -113,6 +113,7 @@ class Building extends Model
         return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
             ->withPivot(
                 'type',
+                'price',
                 'created_by',
                 'updated_by'
             )
@@ -124,6 +125,7 @@ class Building extends Model
         return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
             ->withPivot(
                 'type',
+                'price',
                 'created_by',
                 'updated_by'
             )
@@ -136,6 +138,7 @@ class Building extends Model
         return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
             ->withPivot(
                 'type',
+                'price',
                 'created_by',
                 'updated_by'
             )

@@ -126,4 +126,9 @@ class BuildingService
     {
         return Building::find($id);
     }
+
+    public function getBuildingName()
+    {
+        return $this->name;
+    }
 }

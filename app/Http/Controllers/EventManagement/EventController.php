@@ -60,14 +60,14 @@ class EventController extends Controller
     public function update(EventRequest $request)
     {
         if ($request->updateData()) {
-            return redirect()->route('dashboard.plans.index')
+            return redirect()->route('dashboard.payments.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
     public function destroy(EventRequest $request)
     {
         if ($request->deleteData()) {
-            return redirect()->route('dashboard.plans.index')
+            return redirect()->route('dashboard.payments.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

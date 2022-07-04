@@ -3,103 +3,48 @@
     <hr>
     <div class="row">
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
-            @error('name')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('name' ,__('general.name') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('name',null,['id'=>'name','class'=>'form-control','placeholder'=>__('general.name'), 'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('length' ,__('general.length_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::number('length',null,['id'=>'length','class'=>'form-control ','placeholder'=>__('general.length'), 'required', 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();']) !!}
-            @error('length')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('length' ,__('general.length_ft') ,['class'=>'form-label']))   !!}
+            {!!  Form::number('length',null,['id'=>'length','class'=>'form-control ','placeholder'=>__('general.length'), 'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('width' ,__('general.width_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::number('width',null,['id'=>'width','class'=>'form-control ','placeholder'=>__('general.width'), 'required', 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();']) !!}
-            @error('width')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('width' ,__('general.width_ft') ,['class'=>'form-label']))   !!}
+            {!!  Form::number('width',null,['id'=>'width','class'=>'form-control ','placeholder'=>__('general.width'), 'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('area' ,__('general.saleable_area_sft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'), 'required', 'readonly', 'tabindex'=>'-1']) !!}
-            @error('area')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('building_corners' ,__('general.building_corners').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('building_corners', \App\Services\BuildingService::buildingCornersForDropdown(),null,['id'=>'building_corners',
-                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_corners'),'style'=>'width:100%;', 'required'])
-            !!}
-            @error('building_corners')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('area' ,__('general.saleable_area_sft') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'),'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('building_type' ,__('general.building_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('building_type', \App\Services\BuildingService::buildingTypesForDropdown(),null,['id'=>'building_type',
-                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_type'),'style'=>'width:100%;', 'required'])
-            !!}
-            @error('building_type')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('building_corners' ,__('general.building_corners') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('building_corners',\App\Services\BuildingService::buildingCornersForDropdown($model->building_corners),['id'=>'area','class'=>'form-control ','placeholder'=>__('general.building_corners'),'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('property_type' ,__('general.property_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('property_type', \App\Services\BuildingService::buildingPropertyTypesForDropdown(),null,['id'=>'property_type',
-                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_property_type'),'style'=>'width:100%;', 'required'])
-            !!}
-            @error('property_type')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('building_type' ,__('general.building_type') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('building_type',\App\Services\BuildingService::buildingTypesForDropdown($model->building_type),['id'=>'building_type','class'=>'form-control ','placeholder'=>__('general.building_type'),'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('entry_gates' ,__('general.entry_gates').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('entry_gates', \App\Services\BuildingService::buildingEntryGatesForDropdown(),null,['id'=>'entry_gates',
-                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_entry_gates'),'style'=>'width:100%;', 'required'])
-            !!}
-            @error('entry_gates')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('no_of_floors' ,__('general.no_of_floors').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('no_of_floors',\App\Services\BuildingService::buildingNoOfFloorsForDropdown(),null,['id'=>'no_of_floors',
-                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_no_of_floors'),'style'=>'width:100%;', 'required'])
-            !!}
-            @error('no_of_floors')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('property_type' ,__('general.property_type') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('property_type',\App\Services\BuildingService::buildingPropertyTypesForDropdown($model->property_type),['id'=>'property_type','class'=>'form-control ','placeholder'=>__('general.property_type'),'readonly']) !!}
         </div>
         <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('facing' ,__('general.facing').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('facing',\App\Services\BuildingService::buildingFacingsForDropdown(),null,['id'=>'facing',
-                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_facing'),'style'=>'width:100%;', 'required'])
-            !!}
-            @error('facing')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
+            {!!  Html::decode(Form::label('entry_gates' ,__('general.entry_gates') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('entry_gates',\App\Services\BuildingService::buildingEntryGatesForDropdown($model->entry_gates),['id'=>'entry_gates','class'=>'form-control ','placeholder'=>__('general.entry_gates'),'readonly']) !!}
+        </div>
+        <div class="col-md-3 mb-3">
+            {!!  Html::decode(Form::label('no_of_floors' ,__('general.no_of_floors') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('no_of_floors',\App\Services\BuildingService::buildingNoOfFloorsForDropdown($model->no_of_floors),['id'=>'no_of_floors','class'=>'form-control ','placeholder'=>__('general.no_of_floors'),'readonly']) !!}
+        </div>
+        <div class="col-md-3 mb-3">
+            {!!  Html::decode(Form::label('facing' ,__('general.facing') ,['class'=>'form-label']))   !!}
+            {!!  Form::text('facing',\App\Services\BuildingService::buildingFacingsForDropdown($model->facing),['id'=>'facing','class'=>'form-control ','placeholder'=>__('general.facing'),'readonly']) !!}
         </div>
     </div>
 </div>
-<div class="">
-    <h4 class="card-title text-purple">{{ __('general.general_services') }}</h4>
-    <hr>
-    <div class="row">
-
-    </div>
-</div>
-<div class="">
-    <h4 class="card-title text-purple">{{ __('general.security_services') }}</h4>
-    <hr>
-    <div class="row">
-    </div>
-</div>
+@include('website.booking.fields.services',[
+    'general_services'=>$model->all_general_services,
+    'security_services'=>$model->all_security_services
+])

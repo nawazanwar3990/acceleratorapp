@@ -173,13 +173,7 @@ class ModuleEnum extends AbstractEnum
     public static function customer_permissions()
     {
         return array(
-            KeyWordEnum::CO_WORKING_SPACE => array(
-                KeyWordEnum::BUILDING,
-                KeyWordEnum::FLOOR,
-                KeyWordEnum::FLAT
-            ),
             KeyWordEnum::SALE_MANAGEMENT => array(
-                KeyWordEnum::PURCHASER,
                 KeyWordEnum::SALE,
                 KeyWordEnum::INSTALLMENT
             )

@@ -34,7 +34,12 @@ class SubscriptionController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Subscription::class);
-        $records = Subscription::with(['subscribed', 'package'])->where('created_by', auth()->id());
+        $records = Subscription::with(['subscribed', 'package']);
+        if (request()->has('id')) {
+            $records = $records->where('subscribed_id', request()->query('id'));
+        } else {
+            $records = $records->where('subscribed_id', auth()->id());
+        }
         $records = $records->paginate(20);
         $params = [
             'pageTitle' => __('general.subscriptions'),
@@ -48,7 +53,7 @@ class SubscriptionController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
         $packages = Package::with('duration_type');
-        if ($user->hasRole(RoleEnum::VENDOR)) {
+        if ($user->hasRole(RoleEnum::ADMIN)) {
             $packages = $packages->where('created_by', 1)->get();
         }
         $params = [

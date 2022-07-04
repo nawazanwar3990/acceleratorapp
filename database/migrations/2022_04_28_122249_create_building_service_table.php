@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
             $table->string('type')->nullable();
+            $table->string('price')->nullable();
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);

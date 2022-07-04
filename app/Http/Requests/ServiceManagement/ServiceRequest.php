@@ -27,7 +27,7 @@ class ServiceRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'status' => 'boolean',
+            'status' => 'boolean'
         ];
     }
 

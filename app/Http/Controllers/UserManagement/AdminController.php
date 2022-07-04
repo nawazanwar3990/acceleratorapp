@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\VendorRequest;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\Role;
+use App\Models\UserManagement\User;
 use App\Services\PersonService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -37,8 +38,9 @@ class AdminController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Hr::class);
-        $records = Hr::orderBy('first_name', 'ASC')
-            ->get();
+        $records = User::whereHas('roles', function ($q) {
+            $q->where('slug', RoleEnum::ADMIN);
+        })->get();
         $params = [
             'pageTitle' => __('general.admins'),
             'records' => $records,

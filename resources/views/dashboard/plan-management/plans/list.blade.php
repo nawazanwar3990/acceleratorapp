@@ -18,8 +18,8 @@
         <td>{{ $record->down_payment_value }}</td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.plans.edit', $record->id),
-                'delete' => route('dashboard.plans.destroy', $record->id),
+                'edit' => route('dashboard.payments.edit', $record->id),
+                'delete' => route('dashboard.payments.destroy', $record->id),
             ])
         </td>
     </tr>

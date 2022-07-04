@@ -13,7 +13,8 @@ class FlatService extends Model
     protected $fillable = [
         'flat_id',
         'service_id',
-        'type'
+        'type',
+        'price'
     ];
     public function flat(): BelongsTo
     {

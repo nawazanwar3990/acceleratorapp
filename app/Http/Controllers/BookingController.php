@@ -70,6 +70,6 @@ class BookingController extends Controller
                 break;
         }
         $pageTitle = __('general.installment_plans');
-        return view('website.booking.pricing-plans', compact('pageTitle', 'model', 'plans', 'type'));
+        return view('website.booking.pricing-payments', compact('pageTitle', 'model', 'plans', 'type'));
     }
 }

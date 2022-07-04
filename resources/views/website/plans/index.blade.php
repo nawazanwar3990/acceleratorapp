@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                {!! Form::open(['url' => route('website.plans.store'), 'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
+                {!! Form::open(['url' => route('website.payments.store'), 'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
                 <x-created-by-field></x-created-by-field>
                 <div class="row mb-3">
                     <div class="col-12">

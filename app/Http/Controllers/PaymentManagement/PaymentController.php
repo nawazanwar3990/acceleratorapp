@@ -41,7 +41,7 @@ class PaymentController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Payment::class);
-        $records = Duration::all();
+        $records = Payment::with('subscribed','subscription','package')->paginate(20);
         $params = [
             'pageTitle' => __('general.payments'),
             'records' => $records,

@@ -88,24 +88,6 @@
             <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('general_services' ,__('general.general_services').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::select('general_services[]',\App\Services\ServiceData::getGeneralServicesForDropdown(),null,['id'=>'general_services',
-                'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;', 'required'])
-            !!}
-            @error('general_services')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="col-md-3 mb-3">
-            {!!  Html::decode(Form::label('security_services' ,__('general.security_services') ,['class'=>'form-label']))   !!}
-            {!!  Form::select('security_services[]', \App\Services\ServiceData::getSecurityServicesForDropdown(),null,['id'=>'security_services',
-                'multiple' => true, 'class'=>'select2 form-control','style'=>'width:100%;'])
-            !!}
-            @error('security_services')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
     </div>
     <div class="row mb-2">
         <div class="col-md-1 mb-3">

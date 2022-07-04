@@ -2,8 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Sales\Plan;
-use App\Models\Sales\InstallmentTerm;
+use App\Models\PlanManagement\InstallmentTerm;
+use App\Models\PlanManagement\Plan;
+use App\Models\SaleManagement\Installment;
 use function __;
 
 class InstallmentService
@@ -27,5 +28,8 @@ class InstallmentService
 
     public static function getInstallmentTerm(){
         return InstallmentTerm::first();
+    }
+    public function listInstallmentByPagination(){
+        return Installment::paginate(12);
     }
 }

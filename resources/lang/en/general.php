@@ -96,7 +96,7 @@ return [
     'prev' => 'Prev',
     'plan' => 'Plan',
     'new_plan' => 'New Plan',
-    'plans' => 'Plans',
+    'payments' => 'Plans',
     'register' => 'Register',
     'service_list' => 'Services List',
     'new_service' => 'New Service',
@@ -1209,5 +1209,10 @@ return [
     'trail' => 'Trail',
     'create_flats' => 'Create Flats',
     'Flats' => 'Flats',
-    'edit_flat' => 'Edit Flat'
+    'edit_flat' => 'Edit Flat',
+    'sale_management'=>'Sale Management',
+    'sale'=>'Sale',
+    'installment'=>'Installment',
+    'subscribed'=>'Subscribed',
+    'transaction'=>'Transaction'
 ];

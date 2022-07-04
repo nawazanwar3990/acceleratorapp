@@ -53,6 +53,9 @@
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
                                         @include('dashboard.components.left-nav-bar.system-configuration')
                                         @break
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SALE_MANAGEMENT)
+                                        @include('dashboard.components.left-nav-bar.sale-management')
+                                        @break
                                 @endswitch
                             </li>
                         @endcan

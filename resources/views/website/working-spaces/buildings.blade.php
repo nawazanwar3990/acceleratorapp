@@ -86,7 +86,7 @@
                                                             <div
                                                                 class="d-flex no-block align-items-center justify-content-center mt-2 pt-3 border-top">
                                                                 <a class="btn btn-xs btn-info"
-                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::BUILDING,$building->id]) }}">
+                                                                   href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::BUILDING,$building->id]) }}">
                                                                     {{ trans('general.book_now') }} <i
                                                                         class="bx bx-plus-circle"></i>
                                                                 </a>
@@ -219,7 +219,7 @@
                                                                                         <i class="bx bx-shopping-bag"></i>
                                                                                     </a>
                                                                                     <a class="btn btn-xs btn-info"
-                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLOOR,$floor->id]) }}">
+                                                                                       href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::FLOOR,$floor->id]) }}">
                                                                                         {{ trans('general.book_now') }}
                                                                                         <i class="bx bx-plus-circle"></i>
                                                                                     </a>
@@ -295,7 +295,7 @@
                                                                                         <i class="bx bx-shopping-bag"></i>
                                                                                     </a>
                                                                                     <a class="btn btn-xs btn-info"
-                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
+                                                                                       href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
                                                                                         {{ trans('general.book_now') }}
                                                                                         <i class="bx bx-plus-circle"></i>
                                                                                     </a>

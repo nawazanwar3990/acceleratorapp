@@ -17,6 +17,7 @@ class MainNavEnum extends AbstractEnum
     public const EVENT_MANAGEMENT = KeyWordEnum::EVENT_MANAGEMENT;
     public const SYSTEM_CONFIGURATION = KeyWordEnum::SYSTEM_CONFIGURATION;
     public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
+    public const SALE_MANAGEMENT = KeyWordEnum::SALE_MANAGEMENT;
 
     public static function getValues(): array
     {
@@ -32,6 +33,7 @@ class MainNavEnum extends AbstractEnum
             self::USER_MANAGEMENT,
             self::EVENT_MANAGEMENT,
             self::CO_WORKING_SPACE,
+            self::SALE_MANAGEMENT
         ];
     }
 
@@ -39,16 +41,17 @@ class MainNavEnum extends AbstractEnum
     {
         $routes = [
             self::DASHBOARD => '<i class="bx bxs-dashboard"></i>',
-            self::PACKAGE_MANAGEMENT => '<i class="fas fa-info"></i>',
-            self::SERVICE_MANAGEMENT => '<i class="fas fa-info"></i>',
-            self::ADMIN_MANAGEMENT => '<i class="fas fa-chart-bar"></i>',
-            self::CUSTOMER_MANAGEMENT => '<i class="fas fa-chart-bar"></i>',
-            self::FREELANCERS_PORTAL => '<i class="fas fa-chart-bar"></i>',
-            self::PLAN_MANAGEMENT => '<i class="fas fa-info"></i>',
-            self::SYSTEM_CONFIGURATION => '<i class="fas fa-briefcase"></i>',
-            self::USER_MANAGEMENT => '<i class="fas fa-shopping-cart"></i>',
-            self::EVENT_MANAGEMENT => '<i class="fas fa-chart-bar"></i>',
-            self::CO_WORKING_SPACE => '<i class="fas fa-chart-bar"></i>',
+            self::PACKAGE_MANAGEMENT => '<i class="bx bx-info"></i>',
+            self::SERVICE_MANAGEMENT => '<i class="bx bx-info"></i>',
+            self::ADMIN_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
+            self::CUSTOMER_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
+            self::FREELANCERS_PORTAL => '<i class="bx bx-chart-bar"></i>',
+            self::PLAN_MANAGEMENT => '<i class="bx bx-info"></i>',
+            self::SYSTEM_CONFIGURATION => '<i class="bx bx-briefcase"></i>',
+            self::USER_MANAGEMENT => '<i class="bx bx-shopping-cart"></i>',
+            self::EVENT_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
+            self::CO_WORKING_SPACE => '<i class="bx bx-chart-bar"></i>',
+            self::SALE_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -69,6 +72,7 @@ class MainNavEnum extends AbstractEnum
             self::FREELANCERS_PORTAL => __(sprintf('%s.%s', 'general', self::FREELANCERS_PORTAL)),
             self::PLAN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PLAN_MANAGEMENT)),
             self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
+            self::SALE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SALE_MANAGEMENT)),
             self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general', self::EVENT_MANAGEMENT)),
             self::SYSTEM_CONFIGURATION => __(sprintf('%s.%s', 'general', self::SYSTEM_CONFIGURATION)),
         ];
