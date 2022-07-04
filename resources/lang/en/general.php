@@ -1,5 +1,7 @@
 <?php
 return [
+    'for_rent' => 'For Rent',
+
     'plan_holder_name' => 'Plan Holder Name',
     'bookings' => 'Bookings',
     'booking_form' => 'Booking Form',
@@ -7,9 +9,9 @@ return [
     'pricing_plans' => 'Pricing Plans',
     'sqft' => 'Sqft',
 
-    'building_information'=>'Building Info',
-    'floor_information'=>'Floor Info',
-    'flat_information'=>'Flat Info',
+    'building_information' => 'Building Info',
+    'floor_information' => 'Floor Info',
+    'flat_information' => 'Flat Info',
 
     'days_reminder_notice' => 'Days Reminder Notice',
     'left_bar' => [

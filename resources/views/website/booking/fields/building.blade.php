@@ -89,14 +89,17 @@
             @enderror
         </div>
     </div>
-    <div class="row mb-2">
-        <div class="col-md-1 mb-3">
-            {!!  Html::decode(Form::label('status' ,__('general.active').'<i class="text-danger">*</i>' ,['class'=>'form-check-label']))   !!}
-        </div>
-        <div class="col-md-5 mb-3">
-            <div class="form-check form-switch">
-                {!! Form::checkbox('status', true, isset($for) ? $model->status : true,['class'=>'form-check-input']) !!}
-            </div>
-        </div>
+</div>
+<div class="">
+    <h4 class="card-title text-purple">{{ __('general.general_services') }}</h4>
+    <hr>
+    <div class="row">
+
+    </div>
+</div>
+<div class="">
+    <h4 class="card-title text-purple">{{ __('general.security_services') }}</h4>
+    <hr>
+    <div class="row">
     </div>
 </div>
