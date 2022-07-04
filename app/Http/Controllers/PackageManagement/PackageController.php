@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\PackageManagement;
 
+use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\PackageRequest;
 use App\Http\Requests\WorkingSpace\FlatRequest;
@@ -12,6 +13,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use function __;
 use function redirect;
 use function view;
@@ -29,9 +31,15 @@ class PackageController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Package::class);
-        $records = Package::with('duration_type', 'modules')
-            ->where('created_by', auth()->id())
-            ->paginate(20);
+        $records = Package::with('duration_type', 'modules');
+        if (Auth::user()->hasRole(RoleEnum::ADMIN)) {
+            $records = $records->whereHas('subscriptions', function ($q) {
+                $q->subscribed_id = Auth::id();
+            });
+        } else {
+            $records = $records->where('created_by', auth()->id());
+        }
+        $records = $records->paginate(20);
         $params = [
             'pageTitle' => __('general.packages'),
             'records' => $records,

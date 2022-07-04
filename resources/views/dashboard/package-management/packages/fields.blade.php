@@ -1,9 +1,5 @@
 <div class="row mb-3">
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('package_for' ,__('general.type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::select('package_for',\App\Enum\RoleEnum::getTranslationKeys(),null,['id'=>'package_for','class'=>'form-control ','placeholder'=>__('general.package_for'), 'required']) !!}
-    </div>
-    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('type' ,__('general.type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::select('type',\App\Enum\PackageTypeEnum::getTranslationKeys(),null,['id'=>'package_type','class'=>'form-control ','placeholder'=>__('general.type'), 'required']) !!}
     </div>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class Package extends Model
@@ -33,5 +34,9 @@ class Package extends Model
     public function modules(): BelongsToMany
     {
         return $this->belongsToMany(Module::class, TableEnum::PACKAGE_MODULE)->withPivot('limit');
+    }
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
     }
 }

@@ -186,6 +186,12 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::SERVICE_MANAGEMENT => array(
                 KeyWordEnum::SERVICE
             ),
+            KeyWordEnum::PACKAGE_MANAGEMENT => array(
+                KeyWordEnum::PACKAGE,
+                KeyWordEnum::SUBSCRIPTION,
+                KeyWordEnum::SUBSCRIPTION_LOG,
+                KeyWordEnum::PAYMENT
+            ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR,

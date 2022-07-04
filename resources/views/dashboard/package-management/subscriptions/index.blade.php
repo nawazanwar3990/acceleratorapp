@@ -3,7 +3,9 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.durations.create','is_create'=>false])
+                @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
+                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.durations.create','is_create'=>false])
+                @endif
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\PackageManagement\SubscriptionTableHeading::getTranslationKeys()])
