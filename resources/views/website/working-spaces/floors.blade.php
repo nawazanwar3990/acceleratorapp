@@ -52,8 +52,7 @@
                                                     <!-- column -->
                                                     <div class="col-md-6 border-end border-bottom">
                                                         <div class="p-20">
-                                                            <h4 class="card-title">{{ $floor->name }}</h4>
-                                                            <a class="card-title text-danger">{{ $floor->building->name }}</a>
+                                                            <h4 class="card-title">{{ $floor->name }} in ({{ $floor->building->name }})</h4>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.price') }}</span>
@@ -223,7 +222,7 @@
                                                                                         <i class="bx bx-shopping-bag"></i>
                                                                                     </a>
                                                                                     <a class="btn btn-xs btn-info"
-                                                                                       href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
+                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
                                                                                         {{ trans('general.book_now') }}
                                                                                         <i class="bx bx-plus-circle"></i>
                                                                                     </a>

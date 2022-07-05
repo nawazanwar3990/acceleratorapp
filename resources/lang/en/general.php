@@ -267,6 +267,7 @@ return [
     'flat_status' => 'Flat Status',
     'view_location' => 'View/Location',
     'number_of_accommodation' => 'No. of Person Accommodation',
+    'is_furnished' => 'Is Furnished',
     'furnished' => 'Furnished',
     'furnished_details' => 'Furnished Details',
     'details' => 'Details',

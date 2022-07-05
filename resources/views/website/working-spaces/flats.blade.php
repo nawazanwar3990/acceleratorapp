@@ -16,122 +16,171 @@
                     <div class="col-lg-9 col-md-8 bg-light border-start">
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Search Result For
-                                            "{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::FLAT) }}
-                                            "</h4>
-                                        <h6 class="card-subtitle">About {{ count($flats) }} result ( 0.10
-                                            seconds)</h6>
-                                        @foreach($flats as $flat)
-                                            <div class="d-flex flex-row comment-row">
-                                                <div class="pt-4">
-                                                    <div class="carousel slide" data-bs-ride="carousel">
-                                                        <div class="carousel-inner">
-                                                            @if(count($flat->images)>0)
-                                                                @foreach($flat->images as $image)
-                                                                    <div
-                                                                        class="carousel-item flex-column carousel-item-next carousel-item-start">
-                                                                        <img
-                                                                            onerror="this.src='{{ asset('images/default_building.webp') }}'"
-                                                                            src="{{ asset($image->filename) }}"
-                                                                            class="img img-circle" width="80" height="80"
-                                                                            alt="{{ $flat->name }}">
-                                                                    </div>
-                                                                @endforeach
-                                                            @else
+                                @foreach($flats as $flat)
+                                    <div class="card overflow-hidden">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-4 position-relative">
+                                                <div class="carousel slide" data-bs-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        @if(count($flat->images)>0)
+                                                            @foreach($flat->images as $image)
                                                                 <div
                                                                     class="carousel-item flex-column carousel-item-next carousel-item-start">
                                                                     <img
-                                                                        src="{{ asset('images/default_building.webp') }}"
-                                                                        class="img img-circle" width="80" height="80"
+                                                                        onerror="this.src='{{ asset('images/default_building.webp') }}'"
+                                                                        src="{{ asset($image->filename) }}"
+                                                                        class="img w-100"
                                                                         alt="{{ $flat->name }}">
                                                                 </div>
-                                                            @endif
-                                                        </div>
+                                                            @endforeach
+                                                        @else
+                                                            <div
+                                                                class="carousel-item flex-column carousel-item-next carousel-item-start">
+                                                                <img
+                                                                    src="{{ asset('images/default_building.webp') }}"
+                                                                    class="img w-100"
+                                                                    alt="{{ $flat->name }}">
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
-                                                <div class="comment-text w-100 align-self-center">
-                                                    <h3><a href="javacript:void(0)">{{ $flat->name }}</a></h3>
-                                                    <div class="comment-footer">
-                                                        <span class="date">{{ $flat->created_at }}</span>
-                                                        <span class="label label-info">Pending</span>
+                                                <span class="pull-right label label-danger position-absolute"
+                                                      style="top: 0;left: 8px;">{{ trans('general.for_rent') }}</span>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row no-gutters">
+                                                    <!-- column -->
+                                                    <div class="col-md-6 border-end border-bottom">
+                                                        <div class="p-20">
+                                                            <h4 class="card-title">{{ $flat->name }} in
+                                                                ({{ $flat->floor->name??'' }})
+                                                                of {{ $flat->building->name??'' }}</h4>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.price') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->price }} {{ \App\Services\GeneralService::get_default_currency() }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.accommodation') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\FlatService::flatNoOfAccommodationForDropdown($flat->accommodation) }} Persons</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.is_furnished') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">
+                                                                    @if($flat->furnished)
+                                                                        ✔
+                                                                    @else
+                                                                        ✘
+                                                                    @endif
+                                                                </span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.latitude') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->latitude }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.longitude') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->longitude }}</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <table class="table stylish-table table-sm m-b-5 m-t-10">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>{{ trans('general.number') }}</th>
-                                                            <th>{{ trans('general.area') }}</th>
-                                                            <th>{{ trans('general.accommodation') }}</th>
-                                                            <th>{{ trans('general.action') }}</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                           <tr>
-                                                               <td>{{ $flat->number }}</td>
-                                                               <td>{{ $flat->area }} {{ trans('general.sqft') }}</td>
-                                                               <td>{{ $flat->number }}</td>
-                                                               <td>{{ $flat->accommodation }}</td>
-                                                               <td>
-                                                                   <a class="btn btn-xs btn-info"
-                                                                      href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
-                                                                       {{ trans('general.book_now') }}
-                                                                       <i class="bx bx-plus-circle"></i>
-                                                                   </a>
-                                                               </td>
-                                                           </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <ul class="nav nav-tabs" role="tablist">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link active"
-                                                                       data-bs-toggle="tab"
-                                                                       href="#general_service_{{ $flat->id }}"
-                                                                       role="tab"
-                                                                       aria-selected="true">
-                                                                        <span>{{ trans('general.general_services') }}</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link"
-                                                                       data-bs-toggle="tab"
-                                                                       href="#security_service_{{ $flat->id }}"
-                                                                       role="tab"
-                                                                       aria-selected="false">
-                                                                        <span>{{ trans('general.security_services') }}</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="tab-content tabcontent-border">
-                                                                <div class="tab-pane active p-20"
-                                                                     id="general_service_{{ $flat->id }}"
-                                                                     role="tabpanel">
-                                                                    @if(count($flat->all_general_services)>0)
-                                                                        @foreach($flat->all_general_services as $service)
-                                                                            <a class="btn btn-xs btn-info">{{ $service->name }}</a>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </div>
-                                                                <div class="tab-pane p-20"
-                                                                     id="security_service_{{ $flat->id }}"
-                                                                     role="tabpanel">
-                                                                    @if(count($flat->all_security_services)>0)
-                                                                        @foreach($flat->all_security_services as $service)
-                                                                            <a class="btn btn-xs btn-info">{{ $service->name }}</a>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </div>
+                                                    <!-- column -->
+                                                    <div class="col-md-6 border-bottom">
+                                                        <div class="p-20">
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.area') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->area }} {{ trans('general.sqft') }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.flat_type') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->type->name??'' }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.facing') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\FlatService::facingDropdown($flat->facing) }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.view') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\FlatService::getFlatViewsForDropdown($flat->view) }}</span>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex no-block align-items-center justify-content-center mt-2 pt-3 border-top">
+                                                                <a class="btn btn-xs btn-success"
+                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
+                                                                    {{ trans('general.book_now') }} <i
+                                                                        class="bx bx-plus-circle"></i>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr style="color: pink;">
-                                        @endforeach
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="p-20">
+                                                    <ul class="nav nav-tabs" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active"
+                                                               data-bs-toggle="tab"
+                                                               href="#general_service_{{ $flat->id }}"
+                                                               role="tab"
+                                                               aria-selected="true">
+                                                                <span>{{ trans('general.general_services') }}</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link"
+                                                               data-bs-toggle="tab"
+                                                               href="#security_service_{{ $flat->id }}"
+                                                               role="tab"
+                                                               aria-selected="false">
+                                                                <span>{{ trans('general.security_services') }}</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content tabcontent-border">
+                                                        <div class="tab-pane active p-20"
+                                                             id="general_service_{{ $flat->id }}"
+                                                             role="tabpanel">
+                                                            @if(count($flat->all_general_services)>0)
+                                                                @foreach($flat->all_general_services as $service)
+                                                                    <a class="btn btn-xs btn-info">{{ $service->name }}</a>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                        <div class="tab-pane p-20"
+                                                             id="security_service_{{ $flat->id }}"
+                                                             role="tabpanel">
+                                                            @if(count($flat->all_security_services)>0)
+                                                                @foreach($flat->all_security_services as $service)
+                                                                    <a class="btn btn-xs btn-info">{{ $service->name }}</a>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
