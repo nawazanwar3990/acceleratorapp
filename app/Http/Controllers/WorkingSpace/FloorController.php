@@ -23,6 +23,7 @@ use function view;
 class FloorController extends Controller
 {
     use General;
+
     public function __construct(
         private FloorService $floorService
     )
@@ -42,7 +43,7 @@ class FloorController extends Controller
             'pageTitle' => __('general.floors'),
             'records' => $records,
         ];
-        return view('dashboard.working-spaces.floors.index',$params);
+        return view('dashboard.working-spaces.floors.index', $params);
     }
 
     /**
@@ -122,6 +123,7 @@ class FloorController extends Controller
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }
+
     /**
      * @throws AuthorizationException
      */

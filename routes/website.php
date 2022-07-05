@@ -30,8 +30,8 @@ Route::get('/floors', [FloorController::class, 'getFloors'])
 Route::get('/flats', [FlatController::class, 'getFlats'])
     ->name('flats.index');
 
-Route::get('/pricing-payments/{type?}/{id?}', [BookingController::class, 'pricingPlans'])
-    ->name('pricing-payments.index');
+Route::get('/pricing-plans/{type?}/{id?}', [BookingController::class, 'pricingPlans'])
+    ->name('pricing-plans.index');
 Route::get('/bookings/{type?}/{id?}/{plan?}', [BookingController::class, 'showBookingForm'])
     ->name('bookings.index');
 

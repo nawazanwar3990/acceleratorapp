@@ -53,7 +53,24 @@
                                                     <div class="col-md-6 border-end border-bottom">
                                                         <div class="p-20">
                                                             <h5 class="card-title">{{ $building->name }}</h5>
-                                                            <h5 class="text-danger">{{ $building->price }} {{ \App\Services\GeneralService::get_default_currency() }}</h5>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.price') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $building->price }} {{ \App\Services\GeneralService::get_default_currency() }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.latitude') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $building->latitude }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.longitude') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $building->longitude }}</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!-- column -->
@@ -85,8 +102,8 @@
                                                             </div>
                                                             <div
                                                                 class="d-flex no-block align-items-center justify-content-center mt-2 pt-3 border-top">
-                                                                <a class="btn btn-xs btn-info"
-                                                                   href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::BUILDING,$building->id]) }}">
+                                                                <a class="btn btn-xs btn-success"
+                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::BUILDING,$building->id]) }}">
                                                                     {{ trans('general.book_now') }} <i
                                                                         class="bx bx-plus-circle"></i>
                                                                 </a>
@@ -169,6 +186,7 @@
                                                                             class="table stylish-table table-sm m-b-5 m-t-10">
                                                                             <thead>
                                                                             <tr>
+                                                                                <th></th>
                                                                                 <th>{{ trans('general.number') }}</th>
                                                                                 <th>{{ trans('general.area') }}</th>
                                                                                 <th>{{ trans('general.available_flats') }}</th>
@@ -213,13 +231,13 @@
                                                                                 <td>{{ $floor->area }} {{ trans('general.sqft') }}</td>
                                                                                 <td>{{ $floor->no_of_shops_flats }}</td>
                                                                                 <td>
-                                                                                    <a class="btn btn-xs btn-success"
+                                                                                    <a class="btn btn-xs btn-info"
                                                                                        href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\KeyWordEnum::FLAT,['floorId'=>$floor->id]) }}">
                                                                                         {{ trans(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::FLAT)) }}
                                                                                         <i class="bx bx-shopping-bag"></i>
                                                                                     </a>
-                                                                                    <a class="btn btn-xs btn-info"
-                                                                                       href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::FLOOR,$floor->id]) }}">
+                                                                                    <a class="btn btn-xs btn-success"
+                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLOOR,$floor->id]) }}">
                                                                                         {{ trans('general.book_now') }}
                                                                                         <i class="bx bx-plus-circle"></i>
                                                                                     </a>
@@ -244,6 +262,7 @@
                                                                             class="table stylish-table table-sm m-b-5 m-t-10">
                                                                             <thead>
                                                                             <tr>
+                                                                                <th></th>
                                                                                 <th>{{ trans('general.number') }}</th>
                                                                                 <th>{{ trans('general.area') }}</th>
                                                                                 <th>{{ trans('general.accommodation') }}</th>
@@ -289,13 +308,13 @@
                                                                                 <td>{{ $flat->number }}</td>
                                                                                 <td>{{ $flat->accommodation }}</td>
                                                                                 <td>
-                                                                                    <a class="btn btn-xs btn-success"
+                                                                                    <a class="btn btn-xs btn-info"
                                                                                        href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\KeyWordEnum::FLAT,['floorId'=>$floor->id]) }}">
                                                                                         {{ trans(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::FLAT)) }}
                                                                                         <i class="bx bx-shopping-bag"></i>
                                                                                     </a>
-                                                                                    <a class="btn btn-xs btn-info"
-                                                                                       href="{{ route('website.pricing-payments.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
+                                                                                    <a class="btn btn-xs btn-success"
+                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
                                                                                         {{ trans('general.book_now') }}
                                                                                         <i class="bx bx-plus-circle"></i>
                                                                                     </a>

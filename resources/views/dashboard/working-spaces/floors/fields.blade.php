@@ -61,7 +61,7 @@
     </div>
     <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('area' ,__('general.area_sft') ,['class'=>'form-label']))   !!}
-        {!!  Form::number('area',isset($for) ? $model->area : null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'),'disabled', 'tabindex'=>'-1']) !!}
+        {!!  Form::number('area',isset($for) ? $model->area : null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'),'readonly']) !!}
         @error('area')
         <span class="text-danger">{{ $message }}</span>
         @enderror
