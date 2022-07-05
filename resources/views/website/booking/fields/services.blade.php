@@ -17,7 +17,7 @@
                             {!! Form::text('general[name][]',$service->name,['class'=>'form-control','readonly']) !!}
                         </td>
                         <td>
-                            {!! Form::text('general[price][]',$service->pivot->price,['class'=>'form-control','readonly']) !!}
+                            {!! Form::text('general[price][]',$service->pivot->price." ".\App\Services\GeneralService::get_default_currency(),['class'=>'form-control','readonly']) !!}
                         </td>
                     </tr>
                 @endforeach
@@ -43,7 +43,7 @@
                             {!! Form::text('security[name][]',$service->name,['class'=>'form-control','readonly']) !!}
                         </td>
                         <td>
-                            {!! Form::text('security[price][]',$service->pivot->price,['class'=>'form-control','readonly']) !!}
+                            {!! Form::text('security[price][]',$service->pivot->price." ".\App\Services\GeneralService::get_default_currency(),['class'=>'form-control','readonly']) !!}
                         </td>
                     </tr>
                 @endforeach
