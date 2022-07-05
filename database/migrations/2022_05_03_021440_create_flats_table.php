@@ -5,8 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create(TableEnum::FLATS, function (Blueprint $table) {
@@ -15,8 +14,14 @@ return new class extends Migration
             $table->foreignId('floor_id')->nullable()->constrained(TableEnum::FLOORS);
             $table->foreignId('type_id')->nullable()->constrained(TableEnum::FLAT_TYPES);
             $table->string('name')->nullable();
+            $table->string('price')->nullable();
             $table->string('number')->nullable();
             $table->date('creation_date')->nullable();
+
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+
+
             $table->boolean('status')->nullable()->default(true);
             $table->string('facing')->nullable();
             $table->string('view')->nullable();
@@ -40,6 +45,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
     public function down()
     {
         Schema::dropIfExists(TableEnum::FLATS);

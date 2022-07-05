@@ -4,6 +4,7 @@
         <td>{{ $record->name }}</td>
         <td>{{ $record->area }}</td>
         <td>{{ \App\Services\BuildingService::buildingTypesForDropdown( $record->building_type)  }}</td>
+        <td>{{ $record->price }}</td>
         <td>{{ \App\Services\BuildingService::buildingNoOfFloorsForDropdown( $record->no_of_floors)  }}</td>
         <td>@include('dashboard.components.general.status-column')</td>
         <td class="text-center">

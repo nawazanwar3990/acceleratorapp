@@ -10,6 +10,7 @@
                 --
             @endisset
         </td>
+        <td>{{ $record->price }}</td>
         <td>{{ $record->area }}</td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [

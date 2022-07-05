@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Setting::create(
             [
-                'currency_format' => 'PKR',
+                'currency_format' => 'UAE',
                 'payment_type' => PaymentTypeEnum::getValues(),
                 'time_zone' => 'Asia/Karachi',
                 'language' => 'en',

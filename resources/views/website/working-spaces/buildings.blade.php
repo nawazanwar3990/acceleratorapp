@@ -53,7 +53,7 @@
                                                     <div class="col-md-6 border-end border-bottom">
                                                         <div class="p-20">
                                                             <h5 class="card-title">{{ $building->name }}</h5>
-                                                            <h5 class="text-danger">$ 220,000</h5>
+                                                            <h5 class="text-danger">{{ $building->price }} {{ \App\Services\GeneralService::get_default_currency() }}</h5>
                                                         </div>
                                                     </div>
                                                     <!-- column -->

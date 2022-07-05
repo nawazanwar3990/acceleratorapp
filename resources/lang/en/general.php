@@ -1214,5 +1214,7 @@ return [
     'sale'=>'Sale',
     'installment'=>'Installment',
     'subscribed'=>'Subscribed',
-    'transaction'=>'Transaction'
+    'transaction'=>'Transaction',
+    'latitude'=>'Latitude',
+    'longitude'=>'Longitude'
 ];

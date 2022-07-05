@@ -5,6 +5,7 @@
         <td>{{ $record->name }}</td>
         <td>{{ $record->number }}</td>
         <td>{{ $record->type->name ?? '' }}</td>
+        <td>{{ $record->price }}</td>
         <td>{{ $record->area }}</td>
         <td>
             @switch($record->sales_status)

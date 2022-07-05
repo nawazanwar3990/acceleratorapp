@@ -85,36 +85,39 @@ class FloorRequest extends FormRequest
     private function saveServices($model)
     {
         $general = $this->input('general', []);
-        $general_count = count($general['id']);
-        if ($general_count > 0) {
-            for ($i = 0; $i < $general_count; $i++) {
-                $id = $general['id'][$i];
-                $price = $general['price'][$i];
-                FloorService::create([
-                    'service_id' => $id,
-                    'floor_id' => $model->id,
-                    'price' => $price,
-                    'type' => ServiceTypeEnum::GENERAL_SERVICE,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]);
+        if (count($general)>0){
+            $general_count = count($general['id']);
+            if ($general_count > 0) {
+                for ($i = 0; $i < $general_count; $i++) {
+                    $id = $general['id'][$i];
+                    $price = $general['price'][$i];
+                    FloorService::create([
+                        'service_id' => $id,
+                        'floor_id' => $model->id,
+                        'price' => $price,
+                        'type' => ServiceTypeEnum::GENERAL_SERVICE,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]);
+                }
             }
         }
-
         $security = $this->input('security', []);
-        $security_count = count($security['id']);
-        if ($security_count > 0) {
-            for ($i = 0; $i < $security_count; $i++) {
-                $id = $security['id'][$i];
-                $price = $security['price'][$i];
-                FloorService::create([
-                    'service_id' => $id,
-                    'floor_id' => $model->id,
-                    'price' => $price,
-                    'type' => ServiceTypeEnum::SECURITY_SERVICE,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]);
+        if (count($security)>0) {
+            $security_count = count($security['id']);
+            if ($security_count > 0) {
+                for ($i = 0; $i < $security_count; $i++) {
+                    $id = $security['id'][$i];
+                    $price = $security['price'][$i];
+                    FloorService::create([
+                        'service_id' => $id,
+                        'floor_id' => $model->id,
+                        'price' => $price,
+                        'type' => ServiceTypeEnum::SECURITY_SERVICE,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]);
+                }
             }
         }
     }

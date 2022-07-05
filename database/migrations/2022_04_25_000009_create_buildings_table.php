@@ -26,9 +26,12 @@ class CreateBuildingsTable extends Migration
             $table->string('property_type')->nullable();
             $table->string('no_of_floors')->nullable();
             $table->string('facing')->nullable();
-            $table->json('general_services')->nullable();
-            $table->json('security_services')->nullable();
+            $table->string('price')->nullable();
+
             $table->boolean('status')->default(true);
+
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
 
             $table->string('d1')->nullable();
             $table->string('d2')->nullable();

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
 use App\Enum\LeftNavBar\CoWorkingSpaceNavEnum;
 use App\Enum\TableEnum;
@@ -21,6 +22,12 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralService
 {
+
+    public static function get_default_currency(): string
+    {
+        return CurrencyEnum::UAE;
+    }
+
     public static function get_working_space_count($type, $user = null): int
     {
         return match ($type) {
@@ -823,7 +830,8 @@ class GeneralService
             "VEF" => "Bs",
             "VND" => "₫",
             "YER" => "﷼",
-            "ZMK" => "ZK"
+            "ZMK" => "ZK",
+            "UAE" => 'DHS'
         ];
 
         if (!is_null($id)) {

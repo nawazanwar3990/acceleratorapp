@@ -110,9 +110,7 @@
             } else {
                 tempLength = 0;
             }
-
             let area = (Number(tempWidth) * Number(tempLength));
-            console.log(area);
             $('#area').val(area);
         }
     </script>

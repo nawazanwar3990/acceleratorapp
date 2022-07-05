@@ -11,6 +11,9 @@ class BuildingTableHeadingEnum extends AbstractEnum
     public const AREA = 'area';
     public const BUILDING_TYPE = 'building_type';
     public const FLOORS = 'floors';
+    public const PRICE = 'price';
+    public const latitude = 'latitude';
+    public const longitude = 'longitude';
     public const STATUS = 'status';
 
     /**
@@ -31,6 +34,9 @@ class BuildingTableHeadingEnum extends AbstractEnum
             self::AREA => __(sprintf('%s.%s', 'general', self::AREA)),
             self::BUILDING_TYPE => __(sprintf('%s.%s', 'general', self::BUILDING_TYPE)),
             self::FLOORS => __(sprintf('%s.%s', 'general', self::FLOORS)),
+            self::PRICE => __(sprintf('%s.%s', 'general', self::PRICE)),
+           /* self::latitude => __(sprintf('%s.%s', 'general', self::latitude)),
+            self::longitude => __(sprintf('%s.%s', 'general', self::longitude)),*/
             self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
         ];
     }

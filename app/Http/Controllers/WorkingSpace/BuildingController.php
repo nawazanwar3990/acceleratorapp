@@ -63,7 +63,7 @@ class BuildingController extends Controller
             'pageTitle' => __('general.new_building'),
         ];
 
-        return view('dashboard.working-spaces.buildings.create', $params);
+         return view('dashboard.working-spaces.buildings.create', $params);
     }
 
     /**
