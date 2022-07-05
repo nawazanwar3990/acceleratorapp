@@ -35,7 +35,6 @@ class BuildingRequest extends FormRequest
             'entry_gates' => ['required'],
             'no_of_floors' => ['required'],
             'facing' => ['required'],
-            'status' => 'boolean',
         ];
     }
 

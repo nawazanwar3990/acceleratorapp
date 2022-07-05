@@ -61,6 +61,18 @@
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
+                                                                    class="p-10 text-muted">{{ trans('general.building_type') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\BuildingService::buildingTypesForDropdown($building->building_type) }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
+                                                                    class="p-10 text-muted">{{ trans('general.property_type') }}</span>
+                                                                <span
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\BuildingService::buildingPropertyTypesForDropdown($building->property_type) }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span
                                                                     class="p-10 text-muted">{{ trans('general.latitude') }}</span>
                                                                 <span
                                                                     class="badge rounded-pill bg-info ms-auto">{{ $building->latitude }}</span>

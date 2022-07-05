@@ -25,7 +25,7 @@
         </div>
         <div class="col-3 mb-3">
             {!!  Html::decode(Form::label('area' ,__('general.saleable_area_sft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-            {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'), 'required', 'readonly', 'tabindex'=>'-1']) !!}
+            {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'), 'required', 'readonly']) !!}
             @error('area')
             <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -34,6 +34,24 @@
             {!!  Html::decode(Form::label('building_corners' ,__('general.building_corners').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
             {!!  Form::select('building_corners', \App\Services\BuildingService::buildingCornersForDropdown(),null,['id'=>'building_corners',
                 'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_corners'),'style'=>'width:100%;', 'required'])
+            !!}
+            @error('building_corners')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-3 mb-3">
+            {!!  Html::decode(Form::label('building_type' ,__('general.building_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+            {!!  Form::select('building_type', \App\Services\BuildingService::buildingTypesForDropdown(),null,['id'=>'building_type',
+                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_type'),'style'=>'width:100%;', 'required'])
+            !!}
+            @error('building_corners')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-3 mb-3">
+            {!!  Html::decode(Form::label('property_type' ,__('general.property_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+            {!!  Form::select('property_type', \App\Services\BuildingService::buildingPropertyTypesForDropdown(),null,['id'=>'property_type',
+                'class'=>'select2 form-control', 'placeholder'=>__('general.ph_property_type'),'style'=>'width:100%;', 'required'])
             !!}
             @error('building_corners')
             <div class="text-danger">{{ $message }}</div>
