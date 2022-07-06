@@ -4,6 +4,7 @@ namespace App\Models\UserManagement;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Building;
+use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -84,7 +85,10 @@ class Hr extends Model
     {
         return $this->belongsToMany(Building::class,TableEnum::BUILDING_OWNER,'hr_id');
     }
-
+    public function floors(): BelongsToMany
+    {
+        return $this->belongsToMany(Floor::class,TableEnum::FLOOR_OWNER,'hr_id');
+    }
     public function nationality(): BelongsTo
     {
         return $this->belongsTo(HrNationality::class);

@@ -114,6 +114,15 @@
                                                         <li class="nav-item">
                                                             <a class="nav-link active"
                                                                data-bs-toggle="tab"
+                                                               href="#floor_owner_{{ $floor->id }}"
+                                                               role="tab"
+                                                               aria-selected="true">
+                                                                <span>{{ trans('general.owner') }}</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link"
+                                                               data-bs-toggle="tab"
                                                                href="#general_service_{{ $floor->id }}"
                                                                role="tab"
                                                                aria-selected="true">
@@ -141,6 +150,29 @@
                                                     </ul>
                                                     <div class="tab-content tabcontent-border">
                                                         <div class="tab-pane active p-20"
+                                                             id="floor_owner_{{ $floor->id }}"
+                                                             role="tabpanel">
+                                                            @if(count($floor->owners)>0)
+                                                                @foreach($floor->owners as $owner)
+                                                                    <div class="d-flex no-block align-items-center">
+                                                                        <a href="javascript:void(0)">
+                                                                            <img alt="img"
+                                                                                 class="thumb-md img-circle m-r-10"
+                                                                                 src="{{ asset('images/users/agent.jpg') }}">
+                                                                        </a>
+                                                                        <div>
+                                                                            <h5 class="card-title m-b-0">{{ $owner->user->getFullName() }}</h5>
+                                                                            <h6 class="text-muted"> {{ $owner->floors()->count() }} {{ trans('general.floors') }}</h6>
+                                                                        </div>
+                                                                        <div class="ms-auto text-muted text-end">
+                                                                            <i class="fa fa-map-marker text-danger m-r-10"></i>
+                                                                            New York City
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                        <div class="tab-pane  p-20"
                                                              id="general_service_{{ $floor->id }}"
                                                              role="tabpanel">
                                                             @if(count($floor->all_general_services)>0)
