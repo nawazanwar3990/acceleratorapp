@@ -123,13 +123,8 @@ class FloorController extends Controller
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function getFloors(): Factory|View|Application
     {
-        $this->authorize('view', Floor::class);
         $floors = $this->floorService->listFloorByPagination();
         $params = [
             'pageTitle' => __('general.floors'),

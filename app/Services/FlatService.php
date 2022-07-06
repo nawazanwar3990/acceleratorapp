@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Enum\RoleEnum;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\FlatOwner;
 use App\Models\WorkingSpace\FlatType;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use function __;
 use function response;
@@ -199,11 +201,13 @@ class FlatService
         return $data;
     }
 
-    public function listFlatsByPagination()
+    public function listFlatsByPagination(): LengthAwarePaginator
     {
-        return Flat::with('all_general_services','all_security_services','images')
-            ->whereCreatedBy(Auth::id())
-            ->paginate(20);
+        $flats = Flat::with('all_general_services', 'all_security_services', 'images');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::ADMIN)) {
+            $flats = $flats->whereCreatedBy(Auth::id());
+        }
+        return $flats->paginate(20);
     }
 
     public function findById($id)

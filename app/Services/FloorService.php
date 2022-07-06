@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Enum\RoleEnum;
 use App\Models\WorkingSpace\Flat;
 use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\FloorType;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use function __;
 
 class FloorService
@@ -69,8 +71,11 @@ class FloorService
 
     public function listFloorByPagination(): LengthAwarePaginator
     {
-        return Floor::with('all_general_services', 'all_security_services', 'flats', 'type','images')
-            ->paginate(20);
+        $floors = Floor::with('all_general_services', 'all_security_services', 'flats', 'type', 'images');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::ADMIN)) {
+            $floors = $floors->whereCreatedBy(Auth::id());
+        }
+        return $floors->paginate(20);
     }
 
     public function findById($id)

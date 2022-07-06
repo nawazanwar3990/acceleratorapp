@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Enum\RoleEnum;
 use App\Models\WorkingSpace\Building;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class BuildingService
@@ -115,11 +117,13 @@ class BuildingService
         }
     }
 
-    public function listBuildingsByPagination()
+    public function listBuildingsByPagination(): LengthAwarePaginator
     {
-        return Building::with('all_general_services', 'all_security_services', 'flats', 'floors', 'images')
-            ->whereCreatedBy(Auth::id())
-            ->paginate(20);
+        $buildings = Building::with('all_general_services', 'all_security_services', 'flats', 'floors', 'images');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::ADMIN)) {
+            $buildings = $buildings->whereCreatedBy(Auth::id());
+        }
+        return $buildings->paginate(20);
     }
 
     public function findById($id)

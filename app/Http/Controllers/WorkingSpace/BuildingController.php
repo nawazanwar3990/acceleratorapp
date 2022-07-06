@@ -148,13 +148,8 @@ class BuildingController extends Controller
     {
         return BuildingService::getFloorsOfBuildingForJS($request);
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function getBuildings(): Factory|View|Application
     {
-        $this->authorize('view', Building::class);
         $buildings = $this->buildingService->listBuildingsByPagination();
         $params = [
             'pageTitle' => __('general.buildings'),
