@@ -34,7 +34,7 @@ class BuildingSeeder extends Seeder
         DB::table(TableEnum::BUILDING_OWNER)->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table(TableEnum::BUILDING_OWNER)->insert([
-            array('id' => '1', 'building_id' => '1', 'hr_id' => '1', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()),
+            array('id' => '1', 'building_id' => '1', 'hr_id' => '2', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()),
         ]);
     }
 }

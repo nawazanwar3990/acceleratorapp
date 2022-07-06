@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Models\UserManagement;
+use App\Enum\TableEnum;
 use App\Models\Media;
+use App\Models\WorkingSpace\Building;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -76,6 +79,10 @@ class Hr extends Model
     public function cast(): BelongsTo
     {
         return $this->belongsTo(HrCast::class);
+    }
+    public function buildings(): BelongsToMany
+    {
+        return $this->belongsToMany(Building::class,TableEnum::BUILDING_OWNER,'hr_id');
     }
 
     public function nationality(): BelongsTo
