@@ -1,4 +1,8 @@
 <div class="row">
+    <div class="col-md-12">
+        <h4 class="card-title text-purple">{{ __('general.building_detail') }}</h4>
+        <hr>
+    </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.name') ,['class'=>'form-label']))   !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control','placeholder'=>__('general.name'), 'readonly']) !!}

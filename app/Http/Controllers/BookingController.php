@@ -34,7 +34,6 @@ class BookingController extends Controller
                 $planId = null
     ): View|Factory|Redirector|Application|RedirectResponse
     {
-        $plan = Plan::find($planId);
         $model = null;
         switch ($type) {
             case KeyWordEnum::BUILDING:
@@ -48,6 +47,7 @@ class BookingController extends Controller
                 break;
         }
         $pageTitle = trans('general.booking_form');
+        $plan = $this->planService->findById($planId);
         return view('website.booking.' . $type, compact(
             'pageTitle',
             'model',

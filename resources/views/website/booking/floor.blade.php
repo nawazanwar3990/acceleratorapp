@@ -16,14 +16,15 @@
                     <div class="col-lg-9 col-md-8 py-4 border-start">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="mb-0">{{ $pageTitle }}</h4>
+                                <h4 class="mb-0">{{ $pageTitle }} for {{ $model->name }}</h4>
                             </div>
+                            {!! Form::model($model, ['url' =>route('website.booking.store'), 'method' => 'POST','files' => true, 'class' => 'form-horizontal']) !!}
                             <div class="card-body">
-                                {!! Form::model($model, ['url' =>route('website.booking.store'), 'method' => 'POST','files' => true, 'class' => 'form-horizontal']) !!}
-                                @method('PUT')
+                                @include('website.booking.fields.plan')
                                 @include('website.booking.fields.floors')
-                                {!! Form::close() !!}
                             </div>
+                            @include('website.booking.fields.total')
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

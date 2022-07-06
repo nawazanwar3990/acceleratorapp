@@ -71,7 +71,6 @@ class ServiceController extends Controller
     {
          $this->authorize('update', Service::class);
         $model = Service::findorFail($id);
-
         $params = [
             'pageTitle' => __('general.edit_service'),
             'model' => $model,

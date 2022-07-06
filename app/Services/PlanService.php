@@ -25,4 +25,9 @@ class PlanService
         };
         return $plans->paginate(20);
     }
+
+    public function findById(mixed $planId)
+    {
+        return Plan::find($planId);
+    }
 }

@@ -1,7 +1,11 @@
 <?php
 return [
-    'for_rent' => 'For Rent',
+    'building_detail' => 'Building Detail',
+    'flat_detail' => 'Flat Detail',
+    'floor_detail' => 'Floor Detail',
 
+    'for_rent' => 'For Rent',
+    'plan_detail' => 'Plan Detail',
     'plan_holder_name' => 'Plan Holder Name',
     'bookings' => 'Bookings',
     'booking_form' => 'Booking Form',
