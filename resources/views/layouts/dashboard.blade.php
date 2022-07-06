@@ -10,7 +10,7 @@
     <title>{{ $pageTitle??null }}</title>
 </head>
 <body class="fixed-layout skin-purple">
-<x-preloader></x-preloader>
+{{--<x-preloader></x-preloader>--}}
 <div id="main-wrapper">
     <x-dashboard-header></x-dashboard-header>
     <x-dashboard-left-sidebar></x-dashboard-left-sidebar>
