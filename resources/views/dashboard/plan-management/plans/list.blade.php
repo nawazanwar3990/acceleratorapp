@@ -43,7 +43,7 @@
         </td>
         <td>
             @if($record->down_payment_type == 1)
-                {{ \App\Services\GeneralService::number_format($record->down_payment_value) }}
+                {{ \App\Services\GeneralService::number_format($record->down_payment_value) }} {{ \App\Services\GeneralService::get_default_currency() }}
             @else
                 {{ $record->down_payment_value }}%
             @endif

@@ -30,24 +30,29 @@
                                                                 <h4 class="text-center">{{ $plan->name }}</h4>
                                                                 <h3 class="text-center fw-bold">
                                                                     <span class="price-sign"></span>
-                                                                    Installments : {{ $plan->months }}
+                                                                    {{ trans('general.months') }} : {{ $plan->months }}
                                                                 </h3>
                                                                 <p class="uppercase">
-                                                                    <span class="fw-bold">{{ trans('general.duration') }}
+                                                                    <span class="fw-bold">{{ trans('general.installment_duration') }}
                                                                         : </span> {{ \App\Services\GeneralService::getInstallmentDurationForDropdown($plan->installment_duration) }}
                                                                 </p>
                                                             </div>
                                                             <div class="price-table-content">
                                                                 <div class="price-row"><i
+                                                                        class="icon-user"></i> {{ $plan->total_installments }}
+                                                                    {{ trans('general.total_installments') }}
+                                                                </div>
+                                                                <div class="price-row"><i
                                                                         class="icon-user"></i> {{ $plan->reminder_days }}
-                                                                    {{ trans('general.days_reminder_notice') }}
+                                                                    {{ trans('general.reminder_days') }}
                                                                 </div>
                                                                 <div class="price-row"><i
                                                                         class="icon-screen-smartphone"></i>
-                                                                    {{ $plan->down_payment_value }} {{ \App\Services\GeneralService::getDiscountTypesForDropdown($plan->down_payment_type) }}
-                                                                </div>
-                                                                <div class="price-row"><i class="icon-refresh"></i>
-                                                                    Monthly Backups
+                                                                    @if($plan->down_payment_type == 1)
+                                                                        {{ \App\Services\GeneralService::number_format($plan->down_payment_value) }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                                                    @else
+                                                                        {{ $plan->down_payment_value }}%
+                                                                    @endif  {{ \App\Services\GeneralService::getDiscountTypesForDropdown($plan->down_payment_type) }}
                                                                 </div>
                                                                 <div class="price-row">
                                                                     <a href="{{ route('website.bookings.index',[$type,$model->id,$plan->id]) }}"
