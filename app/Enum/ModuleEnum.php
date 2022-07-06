@@ -287,7 +287,7 @@ class ModuleEnum extends AbstractEnum
         $create_slug = AbilityEnum::CREATE . "_" . $slug;
         self::$permissions[] = Permission::where('slug', $create_slug)->value('id');
 
-        $update_slug = AbilityEnum::CREATE . "_" . $slug;
+        $update_slug = AbilityEnum::UPDATE . "_" . $slug;
         self::$permissions[] = Permission::where('slug', $update_slug)->value('id');
 
         $delete_slug = AbilityEnum::DELETE . "_" . $slug;

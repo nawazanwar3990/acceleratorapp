@@ -15,12 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(FlatTypeSeeder::class);
         $this->call(FloorTypeSeeder::class);
-        $this->call(ServiceSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(RoleUserSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(DurationSeeder::class);
+
+        $this->call(ServiceSeeder::class);
+        $this->call(BuildingSeeder::class);
+
     }
 }
