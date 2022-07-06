@@ -25,7 +25,3 @@ $(window).resize(function (e) {
     sparkResize = setTimeout(sparklineLogin, 500);
 });
 sparklineLogin();
-
-function remove_row(cElement) {
-    $(cElement).closest('tr').remove();
-}
