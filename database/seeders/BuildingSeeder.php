@@ -29,5 +29,12 @@ class BuildingSeeder extends Seeder
             array('id' => '3', 'building_id' => '1', 'service_id' => '4', 'type' => 'security_service', 'price' => '5', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()),
             array('id' => '4', 'building_id' => '1', 'service_id' => '5', 'type' => 'security_service', 'price' => '4', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now())
         ]);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table(TableEnum::BUILDING_OWNER)->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::table(TableEnum::BUILDING_OWNER)->insert([
+            array('id' => '1', 'building_id' => '1', 'hr_id' => '1', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()),
+        ]);
     }
 }
