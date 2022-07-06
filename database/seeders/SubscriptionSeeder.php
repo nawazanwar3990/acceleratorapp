@@ -17,7 +17,7 @@ class SubscriptionSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         DB::table(TableEnum::SUBSCRIPTIONS)->insert([
-            array('subscribed_id' => '2', 'package_id' => '1', 'renewal_date' => Carbon::now(), 'expire_date' => Carbon::now(), 'price' => '1200', 'is_payed' => '1', 'created_by' => '1', 'updated_by' => NULL, 'deleted_by' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now())
+            array('subscribed_id' => '2', 'package_id' => '1', 'renewal_date' =>'2022-07-06 19:23:28', 'expire_date' =>'2022-08-06 19:23:28', 'price' => '1200', 'is_payed' => '1', 'created_by' => '1', 'updated_by' => NULL, 'deleted_by' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now())
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
