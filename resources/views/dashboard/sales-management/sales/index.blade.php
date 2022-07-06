@@ -8,7 +8,7 @@
                 @include('dashboard.components.general.form-list-header',['url'=>'','is_create'=>false])
                 <div class="card-body">
                     <table class="table table-bordered table-hover" id="datatable">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\SalesManagement\PaymentTableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\SalesManagement\SaleTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.sales-management.sales.list')
                         </tbody>

@@ -8,10 +8,9 @@ use function __;
 
 class PlanTableHeadingEnum extends AbstractEnum
 {
-    public const PLAN_FOR = 'plan_for';
-    public const PLAN_HOLDER_NAME = 'plan_holder_name';
     public const NAME = 'name';
-    public const MONTHS = 'months';
+    public const PLAN_FOR = 'plan_for';
+    public const TOTAL_MONTHS = 'months';
     public const INSTALLMENT_DURATION = 'installment_duration';
     public const TOTAL_INSTALLMENTS = 'total_installments';
     public const REMINDER_DAYS = 'reminder_days';
@@ -26,10 +25,9 @@ class PlanTableHeadingEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::PLAN_FOR => __(sprintf('%s.%s', 'general', self::PLAN_FOR)),
-            self::PLAN_HOLDER_NAME => __(sprintf('%s.%s', 'general', self::PLAN_HOLDER_NAME)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::MONTHS => __(sprintf('%s.%s', 'general', self::MONTHS)),
+            self::PLAN_FOR => __(sprintf('%s.%s', 'general', self::PLAN_FOR)),
+            self::TOTAL_MONTHS => __(sprintf('%s.%s', 'general', self::TOTAL_MONTHS)),
             self::INSTALLMENT_DURATION => __(sprintf('%s.%s', 'general', self::INSTALLMENT_DURATION)),
             self::TOTAL_INSTALLMENTS => __(sprintf('%s.%s', 'general', self::TOTAL_INSTALLMENTS)),
             self::REMINDER_DAYS => __(sprintf('%s.%s', 'general', self::REMINDER_DAYS)),

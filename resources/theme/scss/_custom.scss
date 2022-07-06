@@ -8,3 +8,15 @@
         }
     }
 }
+
+.select2-container {
+    .select2-selection--single {
+        height: 37px !important;
+        border: 1px solid #aaaaaa2e !important;
+        padding-top: 3px !important;
+
+        .select2-selection__arrow {
+            top: 4px !important;
+        }
+    }
+}

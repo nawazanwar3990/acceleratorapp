@@ -56,9 +56,10 @@ class TableEnum extends AbstractEnum
     const EXPENSES = 'expenses';
     const FLOOR_SERVICE = 'floor_service';
     const FLOOR_OWNER = 'floor_owner';
-    const FLAT_PLANS = 'flat_plans';
-    const FLOOR_PLANS = 'floor_plans';
-    const BUILDING_PLANS = 'building_plans';
+
+    const FLAT_PLAN = 'flat_plan';
+    const FLOOR_PLAN = 'floor_plan';
+    const BUILDING_PLAN = 'building_plan';
 
 
     /**

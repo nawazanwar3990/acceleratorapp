@@ -9,7 +9,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create(TableEnum::FLAT_PLANS, function (Blueprint $table) {
+        Schema::create(TableEnum::FLAT_PLAN, function (Blueprint $table) {
             $table->id();
             $table->foreignId('flat_id')->nullable()->constrained(TableEnum::FLATS);
             $table->foreignId('plan_id')->nullable()->constrained(TableEnum::PLANS);
@@ -22,6 +22,6 @@ return new class extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists(TableEnum::FLAT_PLANS);
+        Schema::dropIfExists(TableEnum::FLAT_PLAN);
     }
 };

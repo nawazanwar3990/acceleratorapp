@@ -16,6 +16,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function __;
 use function redirect;
@@ -35,10 +36,8 @@ class SubscriptionController extends Controller
     {
         $this->authorize('view', Subscription::class);
         $records = Subscription::with(['subscribed', 'package']);
-        if (request()->has('id')) {
-            $records = $records->where('subscribed_id', request()->query('id'));
-        } else {
-            $records = $records->where('subscribed_id', auth()->id());
+        if (Auth::user()->hasRole(RoleEnum::ADMIN)) {
+            $records = $records->where('subscribed_id',auth()->id());
         }
         $records = $records->paginate(20);
         $params = [

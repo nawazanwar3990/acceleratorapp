@@ -10,6 +10,7 @@ use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
@@ -19,9 +20,6 @@ class Plan extends Model
     protected $table = TableEnum::PLANS;
     protected $fillable = [
         'plan_for',
-        'building_id',
-        'floor_id',
-        'flat_id',
         'name',
         'months',
         'installment_duration',
@@ -46,19 +44,19 @@ class Plan extends Model
         'updated_by'
     ];
 
-    public function building(): BelongsTo
+    public function buildings(): BelongsToMany
     {
-        return $this->belongsTo(Building::class);
+        return $this->belongsToMany(Building::class,TableEnum::BUILDING_PLAN);
     }
 
-    public function floor(): BelongsTo
+    public function floors(): BelongsToMany
     {
-        return $this->belongsTo(Floor::class);
+        return $this->belongsToMany(Floor::class,TableEnum::FLOOR_PLAN);
     }
 
-    public function flat(): BelongsTo
+    public function flats(): BelongsToMany
     {
-        return $this->belongsTo(Flat::class);
+        return $this->belongsToMany(Flat::class,TableEnum::FLAT_PLAN);
     }
 
     public function createdBy(): BelongsTo

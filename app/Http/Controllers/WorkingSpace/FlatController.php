@@ -123,9 +123,6 @@ class FlatController extends Controller
         }
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function getFlats(): Factory|View|Application
     {
         $flats = $this->flatService->listFlatsByPagination();
