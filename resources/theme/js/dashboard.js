@@ -20,8 +20,12 @@ const sparklineLogin = function () {
 };
 var sparkResize;
 
-$(window).resize(function(e) {
+$(window).resize(function (e) {
     clearTimeout(sparkResize);
     sparkResize = setTimeout(sparklineLogin, 500);
 });
 sparklineLogin();
+
+function remove_row(cElement) {
+    $(cElement).closest('tr').remove();
+}

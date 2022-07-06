@@ -26,7 +26,7 @@
                                 {!! Form::text('general[price][]',$service->price,['class'=>'form-control']) !!}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-xs btn-danger">
+                                <a class="btn btn-xs btn-danger " onclick="remove_row(this);">
                                     <i class="bx bx-trash"></i>
                                 </a>
                             </td>
@@ -66,7 +66,7 @@
                                 {!! Form::text('security[price][]',$service->price,['class'=>'form-control']) !!}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-xs btn-danger">
+                                <a class="btn btn-xs btn-danger " onclick="remove_row(this);">
                                     <i class="bx bx-trash"></i>
                                 </a>
                             </td>
