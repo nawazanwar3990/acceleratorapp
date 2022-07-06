@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DurationSeeder::class);
         $this->call(PackageSeeder::class);
         $this->call(ServiceSeeder::class);
+        $this->call(SubscriptionSeeder::class);
         $this->call(BuildingSeeder::class);
 
     }
