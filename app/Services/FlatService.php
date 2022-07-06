@@ -16,7 +16,7 @@ class FlatService
 {
     public static function getFlatForDropdown()
     {
-        return Flat::orderBy('name', 'ASC')->pluck('name', 'id');
+        return Flat::where('created_by',Auth::id())->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function getFlatTypesForDropdown()

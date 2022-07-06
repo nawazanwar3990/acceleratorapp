@@ -48,6 +48,7 @@ class PlanRequest extends FormRequest
             } else if ($model->plan_for == PlanForEnum::FLAT) {
                 $this->manageFlats($model);
             }
+            return $model;
         }
 
     }

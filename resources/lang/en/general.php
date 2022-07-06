@@ -268,6 +268,10 @@ return [
     'view_location' => 'View/Location',
     'number_of_accommodation' => 'No. of Person Accommodation',
     'is_furnished' => 'Is Furnished',
+
+    'select_buildings' => 'Select Buildings',
+    'select_floors' => 'Select Floors',
+    'select_flats' => 'Select Flats',
     'furnished' => 'Furnished',
     'furnished_details' => 'Furnished Details',
     'details' => 'Details',
@@ -1211,11 +1215,11 @@ return [
     'create_flats' => 'Create Flats',
     'Flats' => 'Flats',
     'edit_flat' => 'Edit Flat',
-    'sale_management'=>'Sale Management',
-    'sale'=>'Sale',
-    'installment'=>'Installment',
-    'subscribed'=>'Subscribed',
-    'transaction'=>'Transaction',
-    'latitude'=>'Latitude',
-    'longitude'=>'Longitude'
+    'sale_management' => 'Sale Management',
+    'sale' => 'Sale',
+    'installment' => 'Installment',
+    'subscribed' => 'Subscribed',
+    'transaction' => 'Transaction',
+    'latitude' => 'Latitude',
+    'longitude' => 'Longitude'
 ];

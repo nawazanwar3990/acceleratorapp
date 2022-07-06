@@ -104,7 +104,7 @@ class BuildingService
 
     public static function getBuildingDropdown()
     {
-        return Building::pluck('name', 'id');
+        return Building::where('created_by',Auth::id())->pluck('name', 'id');
     }
 
     public static function getBuildingServices($type = 'general')
