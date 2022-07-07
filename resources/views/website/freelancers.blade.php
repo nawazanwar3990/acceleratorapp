@@ -30,16 +30,21 @@
                                                 <span><i class="ti-alarm-clock"></i> Duration: 8 Months</span>
                                             </p>
                                             <p>
-                                                <span><i class="ti-user"></i> Professor: William Doe</span>
+                                                <span><i class="ti-alarm-clock"></i> Services : </span>
+                                                @if(isset($freelancer->hr->services) && count($freelancer->hr->services)>0)
+                                                    @foreach($freelancer->hr->services as $service)
+                                                        <a class="badge badge-xs bg-info">
+                                                            {{ $service->name }}
+                                                        </a>
+                                                    @endforeach
+                                                @endif
                                             </p>
-                                            <p>
-                                                <span><i class="fa fa-graduation-cap"></i> Students: 400+</span>
-                                            </p>
-                                            <button
-                                                class="btn btn-success text-white btn-rounded waves-effect waves-light m-t-10">
-                                                More
-                                                Details
-                                            </button>
+                                           <div class="text-center">
+                                               <button
+                                                   class="btn btn-success text-white btn-rounded waves-effect waves-light m-t-10">
+                                                   Hire Now
+                                               </button>
+                                           </div>
                                         </div>
                                     </div>
                                 </div>

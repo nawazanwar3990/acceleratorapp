@@ -4,6 +4,7 @@ namespace App\Models\UserManagement;
 use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
+use App\Models\ServiceManagement\Service;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,6 +52,10 @@ class Hr extends Model
     public function cast(): BelongsTo
     {
         return $this->belongsTo(HrCast::class);
+    }
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class,TableEnum::HR_SERVICE,'hr_id');
     }
     public function buildings(): BelongsToMany
     {

@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-3 mb-3">
                             {!!  Html::decode(Form::label('sub_services[]' ,__('general.sub_services') ,['class'=>'form-label']))   !!}
-                            {!!  Form::select('sub_services',\App\Services\ServiceData::getFreelancerServicesDropdown(),null,['id'=>'sub_services',
+                            {!!  Form::select('sub_services[]',\App\Services\ServiceData::getFreelancerServicesDropdown(),null,['id'=>'sub_services',
                                 'class'=>'select2 form-control','style'=>'width:100%;', 'required','multiple'])
                             !!}
                         </div>
