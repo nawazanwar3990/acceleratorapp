@@ -19,7 +19,6 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         ->name('index')
         ->middleware('has_package');
     require __DIR__ . '/service-management.php';
-    require __DIR__ . '/freelancers-portal.php';
     require __DIR__ . '/user-management.php';
     require __DIR__ . '/system-configuration.php';
     require __DIR__ . '/plan-management.php';

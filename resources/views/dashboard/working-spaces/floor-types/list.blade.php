@@ -8,10 +8,12 @@
             </span>
         </td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.floor-types.edit', $record->id),
-                'delete' => route('dashboard.floor-types.destroy', $record->id),
-            ])
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+                @include('dashboard.components.general.table-actions', [
+                    'edit' => route('dashboard.floor-types.edit', $record->id),
+                    'delete' => route('dashboard.floor-types.destroy', $record->id),
+                ])
+            @endif
         </td>
     </tr>
 @empty

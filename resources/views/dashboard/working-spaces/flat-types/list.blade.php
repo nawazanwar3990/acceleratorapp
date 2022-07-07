@@ -16,10 +16,12 @@
             </h6>
         </td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.flat-types.edit', $record->id),
-                'delete' => route('dashboard.flat-types.destroy', $record->id),
-            ])
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+                @include('dashboard.components.general.table-actions', [
+                    'edit' => route('dashboard.flat-types.edit', $record->id),
+                    'delete' => route('dashboard.flat-types.destroy', $record->id),
+                ])
+            @endif
         </td>
     </tr>
 @empty

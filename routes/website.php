@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\FreelancerManagement\FreelancerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\WorkingSpace\BuildingController;
@@ -17,7 +18,8 @@ Route::get('/verify-user-email-success', [PageController::class, 'verifyUserEmai
 
 Route::get('/co-working-spaces', [HomeController::class, 'getCoWorkingSpaces'])
     ->name('co-working-spaces.index');
-Route::get('/freelancers', [HomeController::class, 'getFreelancers'])
+
+Route::get('/freelancers', [FreelancerController::class, 'getFreelancers'])
     ->name('freelancers.index');
 Route::get('/investors', [HomeController::class, 'getInvestors'])
     ->name('investors.index');

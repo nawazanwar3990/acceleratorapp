@@ -33,6 +33,7 @@ use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
 use App\Policies\FlatManagement\FlatPolicy;
+use App\Policies\FreelancerManagement\FreelancerPolicy;
 use App\Policies\ModulePolicy;
 use App\Policies\PackageManagement\DurationPolicy;
 use App\Policies\PackageManagement\PackagePolicy;
@@ -91,6 +92,8 @@ class AuthServiceProvider extends ServiceProvider
         Flat::class => FlatPolicy::class,
 
         Hr::class => AdminPolicy::class,
+        Hr::class => FreelancerPolicy::class,
+        
         Payment::class => PaymentPolicy::class,
 
         Subscription::class => SubscriptionPolicy::class,
@@ -107,7 +110,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Sale::class => SalePolicy::class,
         Installment::class => InstallmentPolicy::class,
-
     ];
 
     public function boot()

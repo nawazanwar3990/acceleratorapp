@@ -1,11 +1,9 @@
 <ul aria-expanded="false" class="collapse">
-    @foreach(\App\Enum\LeftNavBar\CustomerManagementNavEnum::getTranslationKeys() as $key=>$value)
+    @foreach(\App\Enum\LeftNavBar\CustomerNavEnum::getTranslationKeys() as $key=>$value)
         <li>
-            @can('hasModuleAccess',$key)
-                <a href="{{ \App\Enum\LeftNavBar\CustomerManagementNavEnum::getRoute($key) }}">
-                    {!! $value !!}
-                </a>
-            @endcan
+            <a href="{{ \App\Enum\LeftNavBar\CustomerNavEnum::getRoute($key) }}">
+                {!! $value !!}
+            </a>
         </li>
     @endforeach
 </ul>

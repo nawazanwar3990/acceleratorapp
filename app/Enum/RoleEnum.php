@@ -14,13 +14,16 @@ class RoleEnum extends AbstractEnum
     public const SUPER_ADMIN = KeyWordEnum::SUPER_ADMIN;
     public const ADMIN = KeyWordEnum::ADMIN;
     public const CUSTOMER = KeyWordEnum::CUSTOMER;
-
+    public const FREELANCER = KeyWordEnum::FREELANCER;
+    public const INVESTOR = KeyWordEnum::INVESTOR;
     public static function getValues(): array
     {
         return [
             self::SUPER_ADMIN,
             self::ADMIN,
-            self::CUSTOMER
+            self::CUSTOMER,
+            self::FREELANCER,
+            self::INVESTOR
         ];
     }
 
@@ -30,6 +33,8 @@ class RoleEnum extends AbstractEnum
             self::SUPER_ADMIN => __('general.' . self::SUPER_ADMIN),
             self::ADMIN => __('general.' . self::ADMIN),
             self::CUSTOMER => __('general.' . self::CUSTOMER),
+            self::FREELANCER => __('general.' . self::FREELANCER),
+            self::INVESTOR => __('general.' . self::INVESTOR),
         ];
     }
     public static function check_permission($user, $permission): bool

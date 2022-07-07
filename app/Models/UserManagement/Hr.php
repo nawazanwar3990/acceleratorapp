@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\UserManagement;
+use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Building;
@@ -21,62 +22,32 @@ class Hr extends Model
     ];
 
     protected $fillable = [
-        'hr_no',
         'user_id',
         'first_name',
         'middle_name',
         'last_name',
-        'relation_id',
-        'relation_first_name',
-        'relation_middle_name',
-        'relation_last_name',
+        'email',
         'cnic',
-        'passport_number',
+        'guardian_name',
         'date_of_birth',
         'gender',
         'marital_status',
-        'organization_id',
-        'department_id',
-        'profession_id',
         'cell_1',
         'cell_2',
-        'cell_whats_app',
-        'landline',
-        'email',
-        'facebook',
-        'sec_contact_full_name',
-        'sec_contact_relation',
-        'sec_contact',
-        'country_id',
-        'province_id',
-        'district_id',
-        'street_no',
-        'house_no',
-        'postal_code',
-        'post_office',
+        'web_portfolio',
+        'remarks',
+        'longitude',
+        'latitude',
         'address',
-        'left_thumb_code',
-        'left_index_code',
-        'left_middle_code',
-        'left_ring_code',
-        'left_little_code',
-        'right_thumb_code',
-        'right_index_code',
-        'right_middle_code',
-        'right_ring_code',
-        'right_little_code'
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function user(): HasOne
     {
         return $this->hasOne(User::class, 'hr_id');
     }
-
-    public function relation(): BelongsTo
-    {
-        return $this->belongsTo(HrRelation::class);
-    }
-
     public function cast(): BelongsTo
     {
         return $this->belongsTo(HrCast::class);
@@ -88,43 +59,6 @@ class Hr extends Model
     public function floors(): BelongsToMany
     {
         return $this->belongsToMany(Floor::class,TableEnum::FLOOR_OWNER,'hr_id');
-    }
-    public function nationality(): BelongsTo
-    {
-        return $this->belongsTo(HrNationality::class);
-    }
-    public function govtOrganization(): BelongsTo
-    {
-        return $this->belongsTo(HrOrganization::class, 'govt_organization_id');
-    }
-
-    public function govtDepartment(): BelongsTo
-    {
-        return $this->belongsTo(HrDepartment::class, 'govt_department_id');
-    }
-
-    public function govtProfession(): BelongsTo
-    {
-        return $this->belongsTo(HrProfession::class, 'govt_profession_id');
-    }
-
-    public function privateOrganization(): BelongsTo
-    {
-        return $this->belongsTo(HrOrganization::class, 'private_organization_id');
-    }
-
-    public function privateDepartment(): BelongsTo
-    {
-        return $this->belongsTo(HrDepartment::class, 'private_department_id');
-    }
-
-    public function privateProfession(): BelongsTo
-    {
-        return $this->belongsTo(HrProfession::class, 'private_profession_id');
-    }
-    public function secondaryContactRelation(): BelongsTo
-    {
-        return $this->belongsTo(HrRelation::class, 'sec_contact_relation');
     }
     public function createdBy(): BelongsTo
     {
@@ -145,20 +79,29 @@ class Hr extends Model
     {
         return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
     }
-
-    public function getRelationFullNameAttribute(): string
-    {
-        return $this->relation_first_name . ' ' . $this->relation_middle_name . ' ' . $this->relation_last_name;
-    }
-
     public function getHeadName(): string
     {
         return $this->id . '-' . $this->first_name . '-' . $this->middle_name . '-' . $this->last_name;
     }
 
-    public function mediaFirstImage(): BelongsTo
+    public function first_image(): BelongsTo
     {
-        return $this->belongsTo(Media::class, 'id', 'record_id');
+        return $this->belongsTo(Media::class, 'id', 'record_id')
+            ->where('type',MediaTypeEnum::HR_FIRST_IMAGE);
     }
-
+    public function second_image(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'id', 'record_id')
+            ->where('type',MediaTypeEnum::HR_SECOND_IMAGE);
+    }
+    public function third_image(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'id', 'record_id')
+            ->where('type',MediaTypeEnum::HR_THIRD_IMAGE);
+    }
+    public function fourth_image(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'id', 'record_id')
+            ->where('type',MediaTypeEnum::HR_FOURTH_IMAGE);
+    }
 }

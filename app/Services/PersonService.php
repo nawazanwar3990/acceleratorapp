@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\MediaTypeEnum;
 use App\Models\Media;
 use App\Models\PackageManagement\Package;
 use App\Models\PackageManagement\Subscription;
@@ -17,10 +18,12 @@ use App\Models\UserManagement\HrProfession;
 use App\Models\UserManagement\HrRelation;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\User;
+use App\Traits\General;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\Concerns\Has;
+use Intervention\Image\Facades\Image;
 use function __;
 use function url;
 
@@ -221,6 +224,7 @@ class PersonService
         if (request()->has('package_id')) {
             $package_id = request()->input('package_id');
             $this->addSubscription($user, $package_id);
+            $this->uploadMedia($model);
         }
         return $user;
     }
@@ -236,7 +240,6 @@ class PersonService
         $user->email = $model->email;
         $user->normal_password = $password;
         $user->password = Hash::make($password);
-
         if ($user->save()) {
             if (isset($data['role_id'])) {
                 $user->roles()->sync([$data['role_id']]);
@@ -275,5 +278,82 @@ class PersonService
         $subscription->price = $package->price;
         $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
         $subscription->save();
+    }
+
+    private function uploadMedia($model): void
+    {
+        if (request()->file('scanned_document')) {
+            $uploadedFile = request()->file('scanned_document');
+            $fileName = GeneralService::generateFileName($uploadedFile);
+            $path = 'uploads/hr/documents/' . $fileName;
+            $uploadedFile->move('uploads/hr/documents', $fileName);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $model->id,
+                'record_type' => MediaTypeEnum::HR_DOCUMENT,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
+            ]);
+        }
+        if (request()->file('scanned_signature')) {
+            $uploadedFile = request()->file('scanned_signature');
+            $path = 'uploads/hr/signature/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $model->id,
+                'record_type' => MediaTypeEnum::HR_SIGNATURE,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
+            ]);
+        }
+        if (request()->file('first_image')) {
+            $uploadedFile = request()->file('first_image');
+            $path = 'uploads/hr/images/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $model->id,
+                'record_type' => MediaTypeEnum::HR_FIRST_IMAGE,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
+            ]);
+        }
+        if (request()->file('second_image')) {
+            $uploadedFile = request()->file('second_image');
+            $path = 'uploads/hr/images/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $model->id,
+                'record_type' => MediaTypeEnum::HR_SECOND_IMAGE,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
+            ]);
+        }
+        if (request()->file('third_image')) {
+            $uploadedFile = request()->file('third_image');
+            $path = 'uploads/hr/images/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $model->id,
+                'record_type' => MediaTypeEnum::HR_THIRD_IMAGE,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
+            ]);
+        }
+        if (request()->file('fourth_image')) {
+            $uploadedFile = request()->file('fourth_image');
+            $path = 'uploads/hr/images/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $model->id,
+                'record_type' => MediaTypeEnum::HR_FOURTH_IMAGE,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
+            ]);
+        }
     }
 }

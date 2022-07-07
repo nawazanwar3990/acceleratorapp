@@ -21,11 +21,13 @@
             @endswitch
         </td>
         <td class="text-center">
-            @if ($record->sales_status == 'open')
-                @include('dashboard.components.general.table-actions', [
-                    'edit' => route('dashboard.flats.edit', $record->id),
-                    'delete' => route('dashboard.flats.destroy', $record->id),
-                ])
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+                @if ($record->sales_status == 'open')
+                    @include('dashboard.components.general.table-actions', [
+                        'edit' => route('dashboard.flats.edit', $record->id),
+                        'delete' => route('dashboard.flats.destroy', $record->id),
+                    ])
+                @endif
             @endif
         </td>
     </tr>

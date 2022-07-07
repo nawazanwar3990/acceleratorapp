@@ -38,6 +38,18 @@ class RoleUserSeeder extends Seeder
                 'user_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ],
+            [
+                'role_id' => Role::whereSlug(RoleEnum::FREELANCER)->value('id'),
+                'user_id' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'role_id' => Role::whereSlug(RoleEnum::INVESTOR)->value('id'),
+                'user_id' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ]);
     }

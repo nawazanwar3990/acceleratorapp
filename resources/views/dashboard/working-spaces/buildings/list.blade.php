@@ -8,10 +8,12 @@
         <td>{{ \App\Services\BuildingService::buildingNoOfFloorsForDropdown( $record->no_of_floors)  }}</td>
         <td>@include('dashboard.components.general.status-column')</td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.buildings.edit', $record->id),
-                'delete' => route('dashboard.buildings.destroy', $record->id),
-            ])
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+                @include('dashboard.components.general.table-actions', [
+                    'edit' => route('dashboard.buildings.edit', $record->id),
+                    'delete' => route('dashboard.buildings.destroy', $record->id),
+                ])
+            @endif
         </td>
     </tr>
 @empty

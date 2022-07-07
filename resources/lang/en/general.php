@@ -1,9 +1,12 @@
 <?php
 return [
+    'investor' => 'Investor',
     'building_detail' => 'Building Detail',
     'flat_detail' => 'Flat Detail',
     'floor_detail' => 'Floor Detail',
-
+    'investor_management' => 'Investors',
+    'freelancer_management' => 'Freelancers',
+    'freelancer' => 'Freelancer',
     'for_rent' => 'For Rent',
     'plan_detail' => 'Plan Detail',
     'plan_holder_name' => 'Plan Holder Name',
@@ -32,8 +35,8 @@ return [
     'plan_for' => 'Plan For',
     'admins' => "Admins",
     'new_admin' => 'New Admin',
-    'admin_management' => "Admin Management",
-    'customer_management' => "Customer Management",
+    'admin_management' => "Admins",
+    'customer_management' => "Customers",
     'customer' => 'Customer',
     'admin' => 'Admin',
     'building_provider' => 'Building Provider',
@@ -60,11 +63,11 @@ return [
     'subscriptions' => 'Subscriptions',
     'setting' => 'Setting',
     'event' => 'Event',
-    'user_management' => 'User Management',
-    'service_management' => 'Service Management',
-    'flat_management' => "Flat Management",
-    'plan_management' => 'Plan Management',
-    'event_management' => 'Event Management',
+    'user_management' => 'Users',
+    'service_management' => 'Services',
+    'flat_management' => "Flats",
+    'plan_management' => 'Plans',
+    'event_management' => 'Events',
     'system_configuration' => 'System Configuration',
 
 
@@ -1191,7 +1194,7 @@ return [
     'shop' => 'Shop',
     'room' => 'Room',
     'package' => 'Package',
-    'package_management' => 'Package Management',
+    'package_management' => 'Packages',
     'duration' => 'Duration',
     'module' => 'Module',
     'parent_type' => 'Parent Type',
@@ -1219,11 +1222,12 @@ return [
     'create_flats' => 'Create Flats',
     'Flats' => 'Flats',
     'edit_flat' => 'Edit Flat',
-    'sale_management' => 'Sale Management',
+    'sale_management' => 'Sales',
     'sale' => 'Sale',
     'installment' => 'Installment',
     'subscribed' => 'Subscribed',
     'transaction' => 'Transaction',
     'latitude' => 'Latitude',
-    'longitude' => 'Longitude'
+    'longitude' => 'Longitude',
+    'list' => 'List'
 ];

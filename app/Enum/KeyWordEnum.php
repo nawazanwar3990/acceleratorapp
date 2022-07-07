@@ -49,15 +49,14 @@ class KeyWordEnum extends AbstractEnum
     public const DEFINITION = 'definition';
     public const HR_PERSON = 'hr_person';
     public const RELATION = 'relation';
-    //Freelancers Portal
-    public const FREELANCERS_PORTAL = 'freelancers_portal';
-    public const FREELANCERS = 'freelancers';
-
+    //Freelancers
+    public const FREELANCER_MANAGEMENT = 'freelancer_management';
+    public const FREELANCER = 'freelancer';
+    //Packages
     const PACKAGE_MANAGEMENT = 'package_management';
     public const PACKAGE = 'package';
     public const MODULE = 'module';
     public const DURATION = 'duration';
-    public const FREELANCER = 'freelancer';
     public const INVESTOR = 'investor';
     public const SERVICE_PROVIDER = 'service-provider';
     public const VENDOR = 'vendor';
@@ -75,7 +74,9 @@ class KeyWordEnum extends AbstractEnum
     public const PURCHASER = 'purchaser';
     public const SALE = 'sale';
     public const INSTALLMENT = 'installment';
-
+    public const INVESTOR_MANAGEMENT = 'investor_management';
+    const LIST = 'list';
+    const CREATE = 'create';
 
     static function getConstants()
     {

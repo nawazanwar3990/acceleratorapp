@@ -35,17 +35,17 @@
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::CUSTOMER_MANAGEMENT)
                                         @include('dashboard.components.left-nav-bar.customer-management')
                                         @break
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::INVESTOR_MANAGEMENT)
+                                        @include('dashboard.components.left-nav-bar.investor-management')
+                                        @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SERVICE_MANAGEMENT)
                                         @include('dashboard.components.left-nav-bar.service-management')
                                         @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::FREELANCERS_PORTAL)
-                                        @include('dashboard.components.left-nav-bar.freelancer-portal')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::FREELANCER_MANAGEMENT)
+                                        @include('dashboard.components.left-nav-bar.freelancer-management')
                                         @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
                                         @include('dashboard.components.left-nav-bar.plan-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::EVENT_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.event-management')
                                         @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::CO_WORKING_SPACE)
                                         @include('dashboard.components.left-nav-bar.working-spaces')

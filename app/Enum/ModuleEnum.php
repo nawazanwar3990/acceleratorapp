@@ -36,21 +36,13 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::ROLE,
                 $ability . KeyWordEnum::PERMISSION,
                 $ability . KeyWordEnum::USER,
-                $ability . KeyWordEnum::SYNC_PERMISSION,
-                $ability . KeyWordEnum::RELATIONS,
-                $ability . KeyWordEnum::COUNTRY,
-                $ability . KeyWordEnum::PROVINCE,
-                $ability . KeyWordEnum::DISTRICT,
-                $ability . KeyWordEnum::DEPARTMENT,
-                $ability . KeyWordEnum::DESIGNATION,
-                $ability . KeyWordEnum::PROFESSION,
-                $ability . KeyWordEnum::ORGANIZATION
+                $ability . KeyWordEnum::SYNC_PERMISSION
             ),
             KeyWordEnum::SERVICE_MANAGEMENT => array(
                 $ability . KeyWordEnum::SERVICE
             ),
-            KeyWordEnum::FREELANCERS_PORTAL => array(
-                $ability . KeyWordEnum::FREELANCERS
+            KeyWordEnum::FREELANCER_MANAGEMENT => array(
+                $ability . KeyWordEnum::FREELANCER
             ),
             KeyWordEnum::ADMIN_MANAGEMENT => array(
                 $ability . KeyWordEnum::ADMIN
@@ -58,9 +50,11 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::CUSTOMER_MANAGEMENT => array(
                 $ability . KeyWordEnum::CUSTOMER
             ),
+            KeyWordEnum::INVESTOR_MANAGEMENT => array(
+                $ability . KeyWordEnum::INVESTOR
+            ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
-                $ability . KeyWordEnum::INSTALLMENT_PLAN,
-                $ability . KeyWordEnum::INSTALLMENT_TERM
+                $ability . KeyWordEnum::INSTALLMENT_PLAN
             ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 $ability . KeyWordEnum::BUILDING,
@@ -84,6 +78,12 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR,
                 KeyWordEnum::FLAT
+            ),
+            KeyWordEnum::FREELANCER_MANAGEMENT => array(
+                KeyWordEnum::FREELANCER
+            ),
+            KeyWordEnum::INVESTOR_MANAGEMENT => array(
+                KeyWordEnum::INVESTOR
             )
         );
     }
@@ -128,7 +128,6 @@ class ModuleEnum extends AbstractEnum
                 self::add_permission($outer_value, 'parent');
             }
         }
-        self::add_custom_permissions();
         self::add_permissions_to_super_admin();
         self::add_admin_permissions();
         self::$permissions = array();
@@ -198,8 +197,7 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::FLAT
             ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
-                KeyWordEnum::INSTALLMENT_PLAN,
-                KeyWordEnum::INSTALLMENT_TERM
+                KeyWordEnum::INSTALLMENT_PLAN
             ),
             KeyWordEnum::SALE_MANAGEMENT => array(
                 KeyWordEnum::PURCHASER,
