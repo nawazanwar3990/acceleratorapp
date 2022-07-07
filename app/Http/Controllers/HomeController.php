@@ -29,12 +29,4 @@ class HomeController extends Controller
     {
         return \view('website.working-spaces');
     }
-    public function getFreelancers(): Factory|View|Application
-    {
-        return \view('website.freelancers');
-    }
-    public function getInvestors(): Factory|View|Application
-    {
-        return \view('website.investors');
-    }
 }

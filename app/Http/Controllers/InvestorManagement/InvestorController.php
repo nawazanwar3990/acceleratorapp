@@ -92,4 +92,15 @@ class InvestorController extends Controller
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }
+    public function getInvestors(): Factory|View|Application
+    {
+        $investors = User::with('hr')->whereHas('roles', function ($q) {
+            $q->where('slug', RoleEnum::INVESTOR);
+        })->get();
+        $params = [
+            'pageTitle' => __('general.investors'),
+            'investors' => $investors,
+        ];
+        return view('website.investors', $params);
+    }
 }

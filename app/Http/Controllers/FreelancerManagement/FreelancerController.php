@@ -92,4 +92,16 @@ class FreelancerController extends Controller
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }
+
+    public function getFreelancers(): Factory|View|Application
+    {
+        $freelancers = User::with('hr')->whereHas('roles', function ($q) {
+            $q->where('slug', RoleEnum::FREELANCER);
+        })->get();
+        $params = [
+            'pageTitle' => __('general.freelancers'),
+            'freelancers' => $freelancers,
+        ];
+        return view('website.freelancers', $params);
+    }
 }

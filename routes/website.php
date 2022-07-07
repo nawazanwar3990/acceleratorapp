@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FreelancerManagement\FreelancerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvestorManagement\InvestorController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\WorkingSpace\BuildingController;
 use App\Http\Controllers\WorkingSpace\FlatController;
@@ -21,7 +22,7 @@ Route::get('/co-working-spaces', [HomeController::class, 'getCoWorkingSpaces'])
 
 Route::get('/freelancers', [FreelancerController::class, 'getFreelancers'])
     ->name('freelancers.index');
-Route::get('/investors', [HomeController::class, 'getInvestors'])
+Route::get('/investors', [InvestorController::class, 'getInvestors'])
     ->name('investors.index');
 
 
