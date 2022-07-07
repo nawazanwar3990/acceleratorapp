@@ -14,10 +14,10 @@
             {!!  Form::text('jobs[designation][]',null,['id'=>'jobs[designation][]','class'=>'form-control','autocomplete'=>'off', 'required']) !!}
         </td>
         <td>
-            {!!  Form::text('jobs[from][]',null,['id'=>'jobs[from][]','class'=>'form-control']) !!}
+            {!!  Form::text('jobs[from][]',null,['id'=>'jobs[from][]','class'=>'form-control datepicker']) !!}
         </td>
         <td>
-            {!!  Form::text('jobs[till][]',null,['id'=>'jobs[till][]','class'=>'form-control']) !!}
+            {!!  Form::text('jobs[till][]',null,['id'=>'jobs[till][]','class'=>'form-control datepicker']) !!}
         </td>
         <td>
             {!!  Form::text('jobs[expertise][]',null,['id'=>'jobs[expertise][]','class'=>'form-control']) !!}

@@ -199,6 +199,12 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::PLAN_MANAGEMENT => array(
                 KeyWordEnum::INSTALLMENT_PLAN
             ),
+            KeyWordEnum::FREELANCER_MANAGEMENT => array(
+                KeyWordEnum::FREELANCER
+            ),
+            KeyWordEnum::INVESTOR_MANAGEMENT => array(
+                KeyWordEnum::INVESTOR
+            ),
             KeyWordEnum::SALE_MANAGEMENT => array(
                 KeyWordEnum::PURCHASER,
                 KeyWordEnum::SALE,

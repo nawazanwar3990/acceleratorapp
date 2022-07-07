@@ -60,7 +60,7 @@ class LoginController extends Controller
                     ]);
                 } else {
                     RateLimiter::clear($this->throttleKey());
-                    return redirect()->route('dashboard.index')->with('success', trans('general.welcome_back'));
+                    return redirect()->route('website.index')->with('success', trans('general.welcome_back'));
                 }
             }
         } else {

@@ -25,3 +25,4 @@ $(window).resize(function (e) {
     sparkResize = setTimeout(sparklineLogin, 500);
 });
 sparklineLogin();
+

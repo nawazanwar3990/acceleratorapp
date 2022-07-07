@@ -36,10 +36,6 @@
         {!!  Form::text('web_portfolio',null,['id'=>'web_portfolio','class'=>'form-control ']) !!}
     </div>
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('remarks' ,__('general.remarks'),['class'=>'col-form-label']))   !!}
-        {!!  Form::textarea('remarks',null,['id'=>'remarks','class'=>'form-control ', 'rows'=>'2']) !!}
-    </div>
-    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('longitude' ,__('general.longitude'),['class'=>'col-form-label']))   !!}
         {!!  Form::text('longitude',null,['id'=>'longitude','class'=>'form-control ']) !!}
     </div>
@@ -48,7 +44,11 @@
         {!!  Form::text('latitude',null,['id'=>'latitude','class'=>'form-control ']) !!}
     </div>
     <div class="col-12 mb-3">
+        {!!  Html::decode(Form::label('remarks' ,__('general.remarks'),['class'=>'col-form-label']))   !!}
+        {!!  Form::textarea('remarks',null,['id'=>'remarks','class'=>'form-control ', 'rows'=>'2']) !!}
+    </div>
+    <div class="col-12 mb-3">
         {!!  Html::decode(Form::label('address' ,__('general.address'),['class'=>'col-form-label']))   !!}
-        {!!  Form::textarea('address',null,['id'=>'address','class'=>'form-control ']) !!}
+        {!!  Form::textarea('address',null,['id'=>'address','class'=>'form-control', 'rows'=>'2']) !!}
     </div>
 </div>

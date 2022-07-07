@@ -63,4 +63,9 @@ class ServiceData
     {
         return Service::whereType(ServiceTypeEnum::FREELANCER_SERVICE)->whereNull('parent_id')->orderBy('name', 'ASC')->pluck('name', 'id');
     }
+
+    public static function getFreelancerServicesDropdown()
+    {
+        return Service::whereType(ServiceTypeEnum::FREELANCER_SERVICE)->orderBy('name', 'ASC')->pluck('name', 'id');
+    }
 }

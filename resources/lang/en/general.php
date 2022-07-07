@@ -1,5 +1,8 @@
 <?php
 return [
+    'ph_services' => 'Services',
+    'main_service' => 'Main Service',
+    'sub_services' => 'Sub Services',
     'default_price' => 'Default Price',
     'investor' => 'Investor',
     'building_detail' => 'Building Detail',
@@ -1192,6 +1195,10 @@ return [
     'security_service' => 'Security Service',
     'freelancer_service' => 'Freelancer Service',
     'working_space' => 'Working Space',
+    'session_start' => 'Session Start',
+    'session_end' => 'Session End',
+    'new_freelancer' => 'New Freelancer',
+
     'shop' => 'Shop',
     'room' => 'Room',
     'package' => 'Package',

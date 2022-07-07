@@ -17,10 +17,10 @@
             {!!  Form::text('education[institute][]',null,['id'=>'education[institute][]','class'=>'form-control']) !!}
         </td>
         <td>
-            {!!  Form::text('education[session_start][]',null,['id'=>'education[session_start][]','class'=>'form-control']) !!}
+            {!!  Form::text('education[session_start][]',null,['id'=>'education[session_start][]','class'=>'form-control datepicker']) !!}
         </td>
         <td>
-            {!!  Form::text('education[session_end][]',null,['id'=>'education[session_end][]','class'=>'form-control']) !!}
+            {!!  Form::text('education[session_end][]',null,['id'=>'education[session_end][]','class'=>'form-control datepicker']) !!}
         </td>
         <td class="text-center">
             <a href="javascript:void(0);"
