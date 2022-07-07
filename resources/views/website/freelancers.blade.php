@@ -27,9 +27,6 @@
                                                 </a>
                                             </div>
                                             <p>
-                                                <span><i class="ti-alarm-clock"></i> Duration: 8 Months</span>
-                                            </p>
-                                            <p>
                                                 <span><i class="ti-alarm-clock"></i> Services : </span>
                                                 @if(isset($freelancer->hr->services) && count($freelancer->hr->services)>0)
                                                     @foreach($freelancer->hr->services as $service)
