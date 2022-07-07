@@ -3,6 +3,15 @@
         <td class="text-center">{{ $loop->iteration }}</td>
         <td>{{ \App\Enum\ServiceTypeEnum::getServiceType($record->type) }}</td>
         <td>{{ $record->name ?? '' }}</td>
+        <td>{{ $record->slug ?? '' }}</td>
+        <td>{{ $record->price ?? '0' }} {{ \App\Services\GeneralService::get_default_currency() }}</td>
+        <td>
+            @isset($record->parent)
+                {{ $record->parent->name }}
+            @else
+                --
+            @endif
+        </td>
         <td>
             <span class="badge bg-{{ $record->status === 1 ? "success" : "danger" }}">
                 {{ $record->status === 1 ? "Active" : "Deactivate" }}

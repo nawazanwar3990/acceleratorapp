@@ -22,7 +22,7 @@
     "use strict";
 
     // =================================================================================================================
-    // Service
+    // ServiceTableHeading
 
     var plugin_count = 0;
 
@@ -745,7 +745,7 @@
                 this.is_finish = true;
                 this.callOnFinish();
             }
-            
+
             this.dragging = false;
         },
 
@@ -1596,7 +1596,7 @@
 
 
         // =============================================================================================================
-        // Service methods
+        // ServiceTableHeading methods
 
         toggleInput: function () {
             this.$cache.input.toggleClass("irs-hidden-input");

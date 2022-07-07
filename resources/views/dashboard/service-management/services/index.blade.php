@@ -8,7 +8,7 @@
                 @endif
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\ServiceManagement\Service::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\ServiceManagement\ServiceTableHeading::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.service-management.services.list')
                         </tbody>

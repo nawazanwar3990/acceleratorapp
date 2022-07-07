@@ -5,24 +5,15 @@ namespace App\Http\Requests\ServiceManagement;
 use App\Models\ServiceManagement\Service;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ServiceRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
@@ -40,13 +31,21 @@ class ServiceRequest extends FormRequest
 
     public function createData()
     {
-        return Service::create($this->all());
+        $model = Service::create($this->all());
+        $model->created_by = Auth::id();
+        $model->slug = Str::slug($model->name, '') . "-" . $model->id;
+        $model->save();
+        return $model;
     }
 
     public function updateData($id)
     {
-        return Service::findorFail($id)->update($this->all());
-
+        $model = Service::findorFail($id);
+        $model->update($this->all());
+        $model->updated_by = Auth::id();
+        $model->slug = Str::slug($model->name, '') . "-" . $model->id;
+        $model->save();
+        return $model;
     }
 
     public function deleteData($id): bool

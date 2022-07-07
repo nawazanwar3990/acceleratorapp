@@ -32325,11 +32325,6 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   min-height: 380px;
 }
 
-@media (max-width: 1024px) {
-  .page-wrapper, .footer {
-    margin-left: 220px;
-  }
-}
 /*
 Template Name: Admin Template
 Author: Wrappixel

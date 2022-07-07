@@ -1,14 +1,4 @@
-<div class="mb-3 row">
-    <div class="col-md-3">
-        {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
-    </div>
-    <div class="col-md-5">
-        {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
-        @error('name')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-</div>
+
 <div class="mb-3 row">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('type' ,__('general.type').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
@@ -23,7 +13,25 @@
         @enderror
     </div>
 </div>
-
+<div class="mb-3 row">
+    <div class="col-md-3">
+        {!!  Html::decode(Form::label('parent_id' ,__('general.parent') ,['class'=>'col-form-label']))   !!}
+    </div>
+    <div class="col-md-5">
+        {!!  Form::select('parent_id',\App\Services\ServiceData::getParentFreelancerServicesDropdown(),null,['id'=>'parent_id','class'=>'form-control ','placeholder'=>__('general.parent')]) !!}
+    </div>
+</div>
+<div class="mb-3 row">
+    <div class="col-md-3">
+        {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
+    </div>
+    <div class="col-md-5">
+        {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
+        @error('name')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+</div>
 <div class="mb-3 row">
     <div class="col-md-3">
         {!!  Html::decode(Form::label('price' ,__('general.price').' (optional)' ,['class'=>'col-form-label']))   !!}

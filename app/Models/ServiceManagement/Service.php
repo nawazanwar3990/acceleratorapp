@@ -10,9 +10,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Service extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'parent_id',
         'type',
         'name',
         'status',
@@ -20,11 +21,12 @@ class Service extends Model
         'created_by',
         'updated_by',
         'deleted_by',
-
     ];
 
-
-
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(Service::class, 'parent_id');
+    }
 
     public function createdBy(): BelongsTo
     {

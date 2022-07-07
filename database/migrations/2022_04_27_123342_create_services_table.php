@@ -5,14 +5,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create(TableEnum::SERVICES, function (Blueprint $table) {
             $table->id();
+            $table->foreignId('parent_id')->nullable();
             $table->string('type')->nullable();
             $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->double('price')->nullable();
             $table->boolean('status')->nullable()->default(true);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
     public function down()
     {
         Schema::dropIfExists(TableEnum::SERVICES);

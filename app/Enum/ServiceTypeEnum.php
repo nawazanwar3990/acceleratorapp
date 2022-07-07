@@ -10,14 +10,14 @@ class ServiceTypeEnum extends AbstractEnum
 {
     public const GENERAL_SERVICE = 'general_service';
     public const SECURITY_SERVICE = 'security_service';
-    public const FREELANCERS_SERVICE = 'freelancers_service';
+    public const FREELANCER_SERVICE = 'freelancer_service';
 
     public static function getValues(): array
     {
         return array(
             self::GENERAL_SERVICE,
             self::SECURITY_SERVICE,
-            self::FREELANCERS_SERVICE
+            self::FREELANCER_SERVICE
         );
     }
 
@@ -26,7 +26,7 @@ class ServiceTypeEnum extends AbstractEnum
         return array(
             self::GENERAL_SERVICE => __(sprintf('%s.%s', 'general', self::GENERAL_SERVICE)),
             self::SECURITY_SERVICE => __(sprintf('%s.%s', 'general', self::SECURITY_SERVICE)),
-            self::FREELANCERS_SERVICE => __(sprintf('%s.%s', 'general', self::FREELANCERS_SERVICE)),
+            self::FREELANCER_SERVICE => __(sprintf('%s.%s', 'general', self::FREELANCER_SERVICE)),
 
         );
     }
@@ -34,9 +34,9 @@ class ServiceTypeEnum extends AbstractEnum
     public static function getServiceType($id = null)
     {
         $data = [
-            'general_service' =>  __(sprintf('%s.%s', 'general', self::GENERAL_SERVICE)),
-            'security_service' => __(sprintf('%s.%s', 'general', self::SECURITY_SERVICE)),
-            'freelancers_service' =>  __(sprintf('%s.%s', 'general', self::FREELANCERS_SERVICE)),
+            self::GENERAL_SERVICE  =>  __(sprintf('%s.%s', 'general', self::GENERAL_SERVICE)),
+            self::SECURITY_SERVICE => __(sprintf('%s.%s', 'general', self::SECURITY_SERVICE)),
+            self::FREELANCER_SERVICE =>  __(sprintf('%s.%s', 'general', self::FREELANCER_SERVICE)),
         ];
         if (!is_null($id)) {
             $data = $data[$id];

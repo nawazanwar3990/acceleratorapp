@@ -11,8 +11,8 @@ class ServiceData
     public static function getServiceTypeDropdown($id = null)
     {
         $data = [
-            1 => 'General Service',
-            2 => 'Security Service',
+            1 => 'General ServiceTableHeading',
+            2 => 'Security ServiceTableHeading',
         ];
         if (!is_null($id)) {
             $data = $data[$id];
@@ -57,5 +57,10 @@ class ServiceData
     public function listServicesByPagination()
     {
         return Service::where('created_by', Auth::id())->paginate(20);
+    }
+
+    public static function getParentFreelancerServicesDropdown()
+    {
+        return Service::whereType(ServiceTypeEnum::FREELANCER_SERVICE)->whereNull('parent_id')->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 }
