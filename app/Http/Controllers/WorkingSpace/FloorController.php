@@ -29,7 +29,7 @@ class FloorController extends Controller
     )
     {
         $this->makeMultipleDirectories('floors', ['documents', 'images']);
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**

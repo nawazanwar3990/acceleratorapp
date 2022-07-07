@@ -28,7 +28,6 @@ class BuildingController extends Controller
     )
     {
         $this->makeMultipleDirectories('buildings', ['documents', 'images']);
-        $this->middleware('auth');
     }
 
     /**

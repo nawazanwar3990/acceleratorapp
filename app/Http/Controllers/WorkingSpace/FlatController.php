@@ -27,7 +27,7 @@ class FlatController extends Controller
     )
     {
         $this->makeMultipleDirectories('flats', ['documents', 'images']);
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**

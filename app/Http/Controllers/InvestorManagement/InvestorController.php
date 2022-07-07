@@ -29,7 +29,7 @@ class InvestorController extends Controller
     )
     {
         $this->makeMultipleDirectories('hr', ['documents', 'images', 'signature']);
-        $this->middleware('auth');
+      //  $this->middleware('auth');
     }
 
     /**
