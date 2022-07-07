@@ -62,6 +62,7 @@ class TableEnum extends AbstractEnum
     const BUILDING_PLAN = 'building_plan';
     const HR_EDUCATION = 'hr_education';
     const HR_JOB = 'hr_job';
+    const HR_SERVICE = 'hr_service';
 
 
     /**
