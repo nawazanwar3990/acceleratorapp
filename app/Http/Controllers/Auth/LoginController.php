@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Services\PersonService;
@@ -97,6 +99,6 @@ class LoginController extends Controller
     {
         Auth::logout();
         Cache::flush();
-        return redirect('/login');
+        return redirect()->route('website.index');
     }
 }
