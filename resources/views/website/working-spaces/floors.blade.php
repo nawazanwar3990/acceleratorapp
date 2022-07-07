@@ -12,6 +12,7 @@
                 <div class="row location pb-5">
                     <div class="col-lg-3 col-md-4">
                         @include('website.working-spaces.left-panel')
+                        @include('website.search.floor')
                     </div>
                     <div class="col-lg-9 col-md-8 bg-light border-start">
                         <div class="row">
