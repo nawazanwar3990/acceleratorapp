@@ -35,16 +35,16 @@ class ServiceData
             ->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getGeneralServices()
+    public static function getBasicServices()
     {
-        return Service::where('type', ServiceTypeEnum::GENERAL_SERVICE)
+        return Service::where('type', ServiceTypeEnum::BASIC_SERVICE)
             ->whereCreatedBy(Auth::id())
             ->orderBy('name', 'ASC')->get();
     }
 
-    public static function getSecurityServices()
+    public static function getAdditionalServices()
     {
-        return Service::where('type', ServiceTypeEnum::SECURITY_SERVICE)
+        return Service::where('type', ServiceTypeEnum::ADDITIONAL_SERVICE)
             ->whereCreatedBy(Auth::id())
             ->orderBy('name', 'ASC')->get();
     }

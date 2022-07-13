@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('plan_id')->nullable()->constrained(TableEnum::PLANS);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

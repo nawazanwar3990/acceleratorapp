@@ -23,7 +23,7 @@ class PlanController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', Plan::class);
-        $records = Plan::all();
+        $records = Plan::with('basic_services', 'additional_services')->get();
         $params = [
             'pageTitle' => __('general.plans'),
             'records' => $records
@@ -63,8 +63,10 @@ class PlanController extends Controller
     public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Plan::class);
+        $model = Plan::with('basic_services', 'additional_services')->find($id);
         $params = [
             'pageTitle' => __('general.edit_installment_plan'),
+            'model' => $model
         ];
 
         return view('dashboard.plan-management.plans.edit', $params);

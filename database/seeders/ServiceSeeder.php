@@ -43,6 +43,7 @@ class ServiceSeeder extends Seeder
                 'slug' => 'water',
                 'type' => ServiceTypeEnum::BASIC_SERVICE,
                 'status' => true,
+                'created_by' => 2,
             ],
             [
                 'name' => 'Smoke Sensor',

@@ -120,9 +120,9 @@ class ModuleEnum extends AbstractEnum
             }
         }
         self::add_permissions_to_super_admin();
-       /* self::add_admin_permissions();
+        self::add_admin_permissions();
         self::$permissions = array();
-        self::add_customer_permissions();*/
+        self::add_customer_permissions();
     }
 
     public static function add_customer_permissions()
@@ -190,12 +190,6 @@ class ModuleEnum extends AbstractEnum
             ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
                 KeyWordEnum::PLAN
-            ),
-            KeyWordEnum::FREELANCER_MANAGEMENT => array(
-                KeyWordEnum::FREELANCER
-            ),
-            KeyWordEnum::INVESTOR_MANAGEMENT => array(
-                KeyWordEnum::INVESTOR
             )
         );
     }

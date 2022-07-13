@@ -11,7 +11,7 @@
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.plans.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                         <x-created-by-field></x-created-by-field>
-                        @include('dashboard.plan-management.plans.fields')
+                        @include('dashboard.plan-management.plans.fields',['for' => 'create'])
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
                                    formID="plan_form" cancelRoute="dashboard.plans.index"></x-buttons>
                     {!! Form::close() !!}

@@ -32,7 +32,7 @@ class ServiceController extends Controller
         $this->authorize('view', Service::class);
         $records = $this->serviceData->listServicesByPagination();
         $params = [
-            'pageTitle' => __('general.service'),
+            'pageTitle' => __('general.services'),
             'records' => $records,
         ];
         return view('dashboard.service-management.services.index',$params);

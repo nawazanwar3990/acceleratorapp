@@ -10,8 +10,10 @@
                     {!! Form::open(['url' =>route('dashboard.services.store'), 'method' => 'POST','files' => true,'id' =>'expense_head_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field></x-created-by-field>
                     @include('dashboard.service-management.services.fields')
-                    <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
-                               formID="expense_head_form" cancelRoute="dashboard.services.index"></x-buttons>
+                    <div class="text-center">
+                        <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
+                                   formID="expense_head_form" cancelRoute="dashboard.services.index"></x-buttons>
+                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>
