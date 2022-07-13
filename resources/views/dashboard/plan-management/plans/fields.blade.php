@@ -5,15 +5,15 @@
     </div>
 
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('buildings' ,__('general.buildings').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+        {!!  Html::decode(Form::label('buildings' ,__('general.buildings') ,['class'=>'form-label']))   !!}
         {!!  Form::select('buildings[]',\App\Services\BuildingService::getBuildingDropdown(),null,['buildings[]'=>'plan_for','class'=>'form-control select2','multiple','style' => 'width:100%;']) !!}
     </div>
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('floors' ,__('general.floors').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+        {!!  Html::decode(Form::label('floors' ,__('general.floors') ,['class'=>'form-label']))   !!}
         {!!  Form::select('floors[]',\App\Services\FloorService::getFloorsForDropdown(),null,['id'=>'floors[]','class'=>'form-control select2','multiple','style' => 'width:100%;']) !!}
     </div>
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('flats' ,__('general.flats').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+        {!!  Html::decode(Form::label('flats' ,__('general.flats') ,['class'=>'form-label']))   !!}
         {!!  Form::select('flat_id',\App\Services\FlatService::getFlatForDropdown(),null,['id'=>'flats[]','class'=>'form-control select2','multiple']) !!}
     </div>
 

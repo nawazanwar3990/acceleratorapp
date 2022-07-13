@@ -9,7 +9,6 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
@@ -26,7 +25,7 @@ class PlanController extends Controller
         $this->authorize('view', Plan::class);
         $records = Plan::all();
         $params = [
-            'pageTitle' => __('general.installment_plans'),
+            'pageTitle' => __('general.plans'),
             'records' => $records
         ];
 
@@ -40,7 +39,7 @@ class PlanController extends Controller
     {
         $this->authorize('create', Plan::class);
         $params = [
-            'pageTitle' => __('general.new_installment_plan'),
+            'pageTitle' => __('general.new_plan'),
         ];
 
         return view('dashboard.plan-management.plans.create', $params);
