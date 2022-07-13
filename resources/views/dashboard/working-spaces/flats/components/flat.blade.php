@@ -55,7 +55,7 @@
         {!!  Html::decode(Form::label('creation_date' ,__('general.creation_date') ,['class'=>'col-form-label']))   !!}
 
         <div class="input-group">
-            {!!  Form::text('creation_date',isset($for) ? \App\Services\GeneralService::formatDate($model->creation_date): \App\Services\GeneralService::formatDate(\Carbon\Carbon::today()),['id'=>'creation_date','class'=>'form-control datepicker']) !!}
+            {!!  Form::text('creation_date',$for=='edit' ? \App\Services\GeneralService::formatDate($model->creation_date): \App\Services\GeneralService::formatDate(\Carbon\Carbon::today()),['id'=>'creation_date','class'=>'form-control datepicker']) !!}
             <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
         </div>
         @error('creation_date')
@@ -138,7 +138,7 @@
     <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('furnished' ,__('general.furnished') ,['class'=>'form-label']))   !!}
         <div class="form-check form-switch">
-            {!! Form::checkbox('furnished', true, isset($for) ? $model->furnished : false,['class'=>'form-check-input']) !!}
+            {!! Form::checkbox('furnished', true, $for=='edit' ? $model->furnished : false,['class'=>'form-check-input']) !!}
         </div>
     </div>
     <div class="col-3 mb-3" id="furnished_details"
@@ -148,11 +148,11 @@
     </div>
     <div class="col-3 mb-3 pt-3">
         <div class="custom-control custom-radio">
-            {!!  Form::radio('rate_type','sft', isset($model) ? ($model->rate_type == 'sft' ? true: false) : true,['id'=>'rate_type_sft','class'=>'form-check-input rate-type']) !!}
+            {!!  Form::radio('rate_type','sft', $for=='edit' ? ($model->rate_type == 'sft' ? true: false) : true,['id'=>'rate_type_sft','class'=>'form-check-input rate-type']) !!}
             {!!  Html::decode(Form::label('rate_type_sft' ,__('general.rate_square_feet'),['class'=>'form-check-label']))   !!}
         </div>
         <div class="custom-control custom-radio">
-            {!!  Form::radio('rate_type','lumpsum', isset($model) ? ($model->rate_type == 'lumpsum' ? true: false) : false,['id'=>'rate_type_lumpsum','class'=>'form-check-input rate-type']) !!}
+            {!!  Form::radio('rate_type','lumpsum', $for=='edit' ? ($model->rate_type == 'lumpsum' ? true: false) : false,['id'=>'rate_type_lumpsum','class'=>'form-check-input rate-type']) !!}
             {!!  Html::decode(Form::label('rate_type_lumpsum' ,__('general.lumpsum'),['class'=>'form-check-label']))   !!}
         </div>
     </div>
