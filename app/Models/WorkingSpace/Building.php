@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Building extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $casts = [
         'general_services' => 'array',
         'security_services' => 'array',
@@ -107,6 +106,11 @@ class Building extends Model
                 'updated_by'
             )
             ->withTimestamps();
+    }
+
+    public function servicesCount()
+    {
+        return $this->services()->sum('building_service.price');
     }
 
     public function services(): BelongsToMany

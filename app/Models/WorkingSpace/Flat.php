@@ -96,7 +96,10 @@ class Flat extends Model
             )
             ->withTimestamps();
     }
-
+    public function servicesCount()
+    {
+        return $this->services()->sum('flat_service.price');
+    }
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::FLAT_SERVICE)
