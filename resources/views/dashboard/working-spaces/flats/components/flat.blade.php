@@ -53,7 +53,6 @@
     </div>
     <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('creation_date' ,__('general.creation_date') ,['class'=>'col-form-label']))   !!}
-
         <div class="input-group">
             {!!  Form::text('creation_date',$for=='edit' ? \App\Services\GeneralService::formatDate($model->creation_date): \App\Services\GeneralService::formatDate(\Carbon\Carbon::today()),['id'=>'creation_date','class'=>'form-control datepicker']) !!}
             <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
@@ -142,7 +141,7 @@
         </div>
     </div>
     <div class="col-3 mb-3" id="furnished_details"
-         style="{{ isset($for) ? ($model->furnished == true ? '' : 'display:none;'): 'display: none;' }}">
+         style="{{ isset($for=='edit') ? ($model->furnished == true ? '' : 'display:none;'): 'display: none;' }}">
         {!!  Html::decode(Form::label('furnished_details' ,__('general.details') ,['class'=>'col-form-label']))   !!}
         {!!  Form::text('furnished_details',null,['id'=>'furnished_details','class'=>'form-control ','placeholder'=>__('general.details')]) !!}
     </div>
