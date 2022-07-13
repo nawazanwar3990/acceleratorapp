@@ -32,7 +32,7 @@ use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
-use App\Policies\FlatManagement\FlatPolicy;
+use App\Policies\FlatManagement\OfficePolicy;
 use App\Policies\FreelancerManagement\FreelancerPolicy;
 use App\Policies\ModulePolicy;
 use App\Policies\PackageManagement\DurationPolicy;
@@ -89,7 +89,7 @@ class AuthServiceProvider extends ServiceProvider
         HrDesignation::class => DesignationPolicy::class,
         HrProfession::class => ProfessionPolicy::class,
         HrOrganization::class => OrganizationPolicy::class,
-        Office::class => FlatPolicy::class,
+        Office::class => OfficePolicy::class,
 
         Hr::class => AdminPolicy::class,
         Hr::class => FreelancerPolicy::class,

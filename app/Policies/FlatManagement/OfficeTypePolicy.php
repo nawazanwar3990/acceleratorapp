@@ -5,7 +5,7 @@ namespace App\Policies\FlatManagement;
 use App\Enum\KeyWordEnum;
 use App\Policies\AbstractDefaultPolicy;
 
-class FlatTypePolicy extends AbstractDefaultPolicy
+class OfficeTypePolicy extends AbstractDefaultPolicy
 {
-    protected const KEYWORD = KeyWordEnum::FLAT_TYPE;
+    protected const KEYWORD = KeyWordEnum::OFFICE_TYPE;
 }

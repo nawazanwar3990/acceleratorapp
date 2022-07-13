@@ -124,7 +124,7 @@
                                                             <div
                                                                 class="d-flex no-block align-items-center justify-content-center mt-2 pt-3 border-top">
                                                                 <a class="btn btn-xs btn-success"
-                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
+                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::OFFICE,$flat->id]) }}">
                                                                     {{ trans('general.book_now') }} <i
                                                                         class="bx bx-plus-circle"></i>
                                                                 </a>

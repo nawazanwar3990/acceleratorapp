@@ -1,5 +1,9 @@
 <?php
 return [
+    'offices' => 'Offices',
+    'new_office' => 'New Office',
+    'sitting_capacity' => 'Sitting Capacity',
+    'ph_sitting_capacity' => 'Sitting Capacity',
     'plans' => 'Plans',
     'no_of_persons' => 'No of Persons',
     'business_accelerator' => 'Business Accelerator',
@@ -31,9 +35,9 @@ return [
     'left_bar' => [
         'building' => 'Buildings',
         'floor' => 'Floors',
-        'flat' => 'Flats',
+        'office' => 'Offices',
         'floor_type' => 'Floor Types',
-        'flat_type' => "Flat Types"
+        'flat_type' => "Office Types"
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

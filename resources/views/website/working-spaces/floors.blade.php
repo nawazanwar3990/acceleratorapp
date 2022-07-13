@@ -250,12 +250,12 @@
                                                                                 <td>{{ $flat->accommodation }}</td>
                                                                                 <td>
                                                                                     <a class="btn btn-xs btn-success"
-                                                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\KeyWordEnum::FLAT,['floorId'=>$floor->id]) }}">
-                                                                                        {{ trans(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::FLAT)) }}
+                                                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\KeyWordEnum::OFFICE,['floorId'=>$floor->id]) }}">
+                                                                                        {{ trans(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::OFFICE)) }}
                                                                                         <i class="bx bx-shopping-bag"></i>
                                                                                     </a>
                                                                                     <a class="btn btn-xs btn-info"
-                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::FLAT,$flat->id]) }}">
+                                                                                       href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::OFFICE,$flat->id]) }}">
                                                                                         {{ trans('general.book_now') }}
                                                                                         <i class="bx bx-plus-circle"></i>
                                                                                     </a>

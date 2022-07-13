@@ -13,7 +13,7 @@
                     <table class="table table-bordered table-hover" id="datatable">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\FlatTableHeadingEnum::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.working-spaces.offices.list')
+                       {{-- @include('dashboard.working-spaces.offices.list')--}}
                         </tbody>
                     </table>
                 </div>
