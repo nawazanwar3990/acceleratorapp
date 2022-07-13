@@ -1,3 +1,7 @@
+@php
+    $general_services = $for=='edit'?$model->all_general_services: \App\Services\ServiceData::getGeneralServices();
+    $security_services = $for=='edit'?$model->all_security_services: \App\Services\ServiceData::getSecurityServices();
+@endphp
 <div class="">
     <h4 class="card-title text-purple">{{ __('general.general_services') }}</h4>
     <hr>
@@ -13,8 +17,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(count(\App\Services\ServiceData::getGeneralServices())>0)
-                    @foreach(\App\Services\ServiceData::getGeneralServices() as $service)
+                @if(count($general_services)>0)
+                    @foreach($general_services as $service)
                         <tr>
                             <td>
                                 {!! Form::text('general[id][]',$service->id,['class'=>'form-control','readonly']) !!}
@@ -53,8 +57,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(count(\App\Services\ServiceData::getSecurityServices())>0)
-                    @foreach(\App\Services\ServiceData::getSecurityServices() as $service)
+                @if(count($security_services)>0)
+                    @foreach($security_services as $service)
                         <tr>
                             <td>
                                 {!! Form::text('security[id][]',$service->id,['class'=>'form-control','readonly']) !!}

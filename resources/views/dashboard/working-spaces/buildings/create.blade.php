@@ -9,7 +9,7 @@
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['url' => route('dashboard.buildings.store'), 'method' => 'POST','files' => true,'id' =>'building_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field></x-created-by-field>
-                    @include('dashboard.working-spaces.buildings.fields')
+                    @include('dashboard.working-spaces.buildings.fields',['for'=>'create'])
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
                                formID="building_form" cancelRoute="dashboard.buildings.index"></x-buttons>
                     {!! Form::close() !!}
