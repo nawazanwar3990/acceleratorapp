@@ -67,7 +67,7 @@
                                 {!! Form::text('security[name][]',$service->name,['class'=>'form-control','readonly']) !!}
                             </td>
                             <td>
-                                {!! Form::text('security[price][]',$service->price,['class'=>'form-control']) !!}
+                                {!! Form::text('security[price][]',$service->pivot->price,['class'=>'form-control']) !!}
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-xs btn-danger " onclick="removeClonedRow(this);">
