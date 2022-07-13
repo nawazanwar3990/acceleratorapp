@@ -2,6 +2,7 @@
 
 namespace App\Models\WorkingSpace;
 
+use App\Enum\TableEnum;
 use App\Models\ServiceManagement\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class FlatService extends Model
 {
     use HasFactory;
+    protected $table=TableEnum::FLAT_SERVICE;
     protected $fillable = [
         'flat_id',
         'service_id',
