@@ -5,7 +5,8 @@
             <div class="header">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="#">
-{{--                        <img src="{{ asset('images/elite-admin-logo.png') }}" alt="logo">--}}
+                        <img src="{{ asset('images/business-accelerator-logo-white.png') }}" class="light-logo"
+                             style="margin-left: 31px;" alt="homepage"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
