@@ -7,7 +7,8 @@
             <div class="card card-shadow pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body" style="padding-top: 0;">
-                    {!! Form::open(['url' => route('dashboard.flats.store'), 'method' => 'POST','files' => true,'id' =>'flat_form', 'class' => 'solid-validation']) !!}
+                    {!! Form::model($model, ['url' =>route('dashboard.flats.update', $model->id), 'method' => 'POST','files' => true, 'class' => 'solid-validation']) !!}
+                    @method('PUT')
                     <x-created-by-field></x-created-by-field>
                     @include('dashboard.working-spaces.flats.fields',['for'=>'edit'])
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
