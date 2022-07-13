@@ -1,5 +1,7 @@
 <?php
 return [
+    'renewal_request' => 'Renewal Request',
+
     'ph_services' => 'Services',
     'main_service' => 'Main Service',
     'sub_services' => 'Sub Services',

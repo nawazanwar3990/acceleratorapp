@@ -13,6 +13,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use function __;
 use function redirect;
@@ -108,5 +109,12 @@ class PackageController extends Controller
             return redirect()->route('dashboard.packages.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
+    }
+
+    public function sendRenewalRequest(): RedirectResponse
+    {
+        return redirect()
+            ->back()
+            ->with('success', 'Renewal Request has send to admin you will receive notification while Approval');
     }
 }

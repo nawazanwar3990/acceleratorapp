@@ -17,5 +17,6 @@
     </div>
 </section>
 <script src="{{ asset('js/website.min.js') }}"></script>
+<x-session-messages></x-session-messages>
 </body>
 </html>

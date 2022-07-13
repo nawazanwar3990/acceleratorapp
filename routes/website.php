@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FreelancerManagement\FreelancerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestorManagement\InvestorController;
+use App\Http\Controllers\PackageManagement\PackageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\WorkingSpace\BuildingController;
 use App\Http\Controllers\WorkingSpace\FlatController;
@@ -40,3 +41,6 @@ Route::get('/bookings/{type?}/{id?}/{plan?}', [BookingController::class, 'showBo
 
 Route::post('/booking/store', [BookingController::class, 'storeBooking'])
     ->name('booking.store');
+
+Route::get('/package/renewal', [PackageController::class, 'sendRenewalRequest'])
+    ->name('package.renewal');
