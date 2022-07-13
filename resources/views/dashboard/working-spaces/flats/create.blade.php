@@ -9,7 +9,7 @@
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['url' => route('dashboard.flats.store'), 'method' => 'POST','files' => true,'id' =>'flat_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field></x-created-by-field>
-                    @include('dashboard.working-spaces.flats.fields')
+                    @include('dashboard.working-spaces.flats.fields',['for'=>'create'])
                     <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
                                formID="flat_form" cancelRoute="dashboard.flats.index"></x-buttons>
                     {!! Form::close() !!}

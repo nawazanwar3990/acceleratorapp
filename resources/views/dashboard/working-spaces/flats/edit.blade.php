@@ -4,18 +4,14 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <div class="card shadow-none pt-0">
+            <div class="card card-shadow pt-0">
                 @include('dashboard.components.general.form-list-header')
-                <div class="card-body">
-                    {!! Form::model($model, ['url' =>route('dashboard.flats.update', $model->id), 'method' => 'POST','files' => true,'id' =>'floorName', 'class' => 'solid-validation']) !!}
-                    @method('PUT')
-                    <x-updated-by-field></x-updated-by-field>
-                    <x-edit-id :id="$model->id"></x-edit-id>
-                    <div class="accordion" id="accordionExample">
-                        @include('dashboard.working-spaces.flats.components.flat', ['for' => 'edit'])
-                        @include('dashboard.working-spaces.flats.components.area-amount', ['for' => 'edit'])
-                    </div>
-                    <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.flats.index"></x-buttons>
+                <div class="card-body" style="padding-top: 0;">
+                    {!! Form::open(['url' => route('dashboard.flats.store'), 'method' => 'POST','files' => true,'id' =>'flat_form', 'class' => 'solid-validation']) !!}
+                    <x-created-by-field></x-created-by-field>
+                    @include('dashboard.working-spaces.flats.fields',['for'=>'edit'])
+                    <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
+                               formID="flat_form" cancelRoute="dashboard.flats.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>
             </div>
