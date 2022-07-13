@@ -26,8 +26,6 @@ return new class extends Migration {
             $table->string('web_portfolio')->nullable();
             $table->string('remarks')->nullable();
 
-            $table->string('longitude')->nullable();
-            $table->string('latitude')->nullable();
             $table->longText('address')->nullable();
 
             $table->foreignId('created_by')->nullable();

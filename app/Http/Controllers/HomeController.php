@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\BuildingService;
-use App\Services\FlatService;
+use App\Services\OfficeService;
 use App\Services\FloorService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function __construct(
         private BuildingService $buildingService,
         private FloorService    $floorService,
-        private FlatService     $flatService
+        private OfficeService $flatService
     ){
     }
     public function index(Request $request): View|Factory|Redirector|Application|RedirectResponse

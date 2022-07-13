@@ -12,7 +12,7 @@ use App\Models\PackageManagement\Package;
 use App\Models\PackageManagement\Subscription;
 use App\Models\ServiceManagement\Service;
 use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
@@ -33,7 +33,7 @@ class GeneralService
         return match ($type) {
             CoWorkingSpaceNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
             CoWorkingSpaceNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
-            CoWorkingSpaceNavEnum::FLAT => ($user) ? Flat::whereCreatedBy($user->id)->count() : Flat::count(),
+            CoWorkingSpaceNavEnum::FLAT => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
             default => 0,
         };
     }

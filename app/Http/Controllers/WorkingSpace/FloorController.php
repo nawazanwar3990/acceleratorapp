@@ -5,7 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorRequest;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;
 use App\Services\FloorService;
 use App\Services\GeneralService;

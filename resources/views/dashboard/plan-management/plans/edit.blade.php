@@ -18,4 +18,3 @@
         </div>
     </div>
 @endsection
-@include('dashboard.plan-management.plans.components.scripts', ['for' => 'edit'])

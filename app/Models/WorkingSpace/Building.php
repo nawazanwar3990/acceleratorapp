@@ -84,7 +84,7 @@ class Building extends Model
 
     public function flats(): HasMany
     {
-        return $this->hasMany(Flat::class);
+        return $this->hasMany(Office::class);
     }
 
     public function floors(): HasMany

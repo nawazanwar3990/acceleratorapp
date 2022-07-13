@@ -5,10 +5,10 @@ namespace App\Http\Controllers\PackageManagement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\DurationRequest;
 use App\Http\Requests\PackageManagement\PackageRequest;
-use App\Http\Requests\WorkingSpace\FlatRequest;
+use App\Http\Requests\WorkingSpace\FloorRequest;
 use App\Models\PackageManagement\Duration;
 use App\Models\PackageManagement\Package;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -29,7 +29,7 @@ class DurationController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', Flat::class);
+        $this->authorize('view', Office::class);
         $records = Duration::all();
         $params = [
             'pageTitle' => __('general.durations'),

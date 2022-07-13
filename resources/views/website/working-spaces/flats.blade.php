@@ -66,7 +66,7 @@
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.accommodation') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\FlatService::flatNoOfAccommodationForDropdown($flat->accommodation) }} Persons</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\OfficeService::OfficeSittingCapacityForDropdown($flat->accommodation) }} Persons</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
@@ -113,13 +113,13 @@
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.facing') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\FlatService::facingDropdown($flat->facing) }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\OfficeService::facingDropdown($flat->facing) }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.view') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\FlatService::getFlatViewsForDropdown($flat->view) }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ \App\Services\OfficeService::getOfficeViewsForDropdown($flat->view) }}</span>
                                                             </div>
                                                             <div
                                                                 class="d-flex no-block align-items-center justify-content-center mt-2 pt-3 border-top">

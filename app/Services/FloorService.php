@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\FloorType;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -33,14 +33,14 @@ class FloorService
         return Floor::where('created_by', Auth::id())->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getFlatsOfFloorForJS($request)
+    public static function getOfficesOfFloorForJS($request)
     {
         $output = ['success' => false, 'msg' => __('general.something_went_wrong')];
         $html = '<option value>' . __('general.ph_flat_name') . '</option>';
         $floorID = $request->get('floorID');
         $buildingID = $request->get('buildingID');
         if ($request->ajax()) {
-            $records = Flat::where('sales_status', $request->get('status', 'open'))
+            $records = Office::where('sales_status', $request->get('status', 'open'))
                 ->where('floor_id', $floorID)->orderBy('flat_name', 'ASC')->select('flat_name', 'flat_number', 'id')->get();
             foreach ($records as $record) {
                 $html .= '<option value="' . $record->id . '">' . $record->name_number . '</option>';
@@ -62,11 +62,16 @@ class FloorService
         if ($request->ajax()) {
             $floorID = $request->get('floorID');
             $record = Floor::findOrFail($floorID);
-            $availableArea = Flat::where('floor_id', $record->id)->sum('area');
+            $availableArea = Office::where('floor_id', $record->id)->sum('area');
 
             $output = ['success' => true, 'msg' => '', 'model' => $record, 'availableArea' => ($record->area - $availableArea)];
         }
         return $output;
+    }
+
+    public static function total_floors()
+    {
+        return Floor::where('created_by', Auth::id())->count();
     }
 
     public function listFloorByPagination(): LengthAwarePaginator

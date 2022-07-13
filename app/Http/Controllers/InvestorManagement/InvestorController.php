@@ -88,7 +88,7 @@ class InvestorController extends Controller
     {
         $this->authorize(AbilityEnum::DELETE, Hr::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.admins.index')
+            return redirect()->route('dashboard.business-accelerators.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

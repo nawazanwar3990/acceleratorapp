@@ -75,7 +75,7 @@ class CustomerController extends Controller
             $role = Role::whereSlug(RoleEnum::VENDOR)->value('id');
             $user->roles()->sync([$role]);
             ModuleEnum::add_permissions_to_vendor();
-            return redirect()->route('dashboard.admins.index')
+            return redirect()->route('dashboard.business-accelerators.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
@@ -87,7 +87,7 @@ class CustomerController extends Controller
     {
         $this->authorize('delete', Hr::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.admins.index')
+            return redirect()->route('dashboard.business-accelerators.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

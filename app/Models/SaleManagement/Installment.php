@@ -5,7 +5,7 @@ namespace App\Models\SaleManagement;
 use App\Models\PlanManagement\Plan;
 use App\Models\UserManagement\User;
 use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -58,7 +58,7 @@ class Installment extends Model
     }
     public function flat(): BelongsTo
     {
-        return $this->belongsTo(Flat::class);
+        return $this->belongsTo(Office::class);
     }
     public function createdBy(): BelongsTo
     {

@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('flats' ,__('general.flats') ,['class'=>'form-label']))   !!}
-        {!!  Form::select('flat_id',\App\Services\FlatService::getFlatForDropdown(),null,['id'=>'flats[]','class'=>'form-control select2','multiple']) !!}
+        {!!  Form::select('flat_id',\App\Services\OfficeService::getOfficeForDropdown(),null,['id'=>'flats[]','class'=>'form-control select2','multiple']) !!}
     </div>
 
     <div class="col-md-3 mb-3">

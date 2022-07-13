@@ -8,7 +8,6 @@ use App\Models\PackageManagement\Module;
 use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\RolePermission;
-use Illuminate\Support\Facades\DB;
 
 class ModuleEnum extends AbstractEnum
 {
@@ -44,30 +43,22 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::FREELANCER_MANAGEMENT => array(
                 $ability . KeyWordEnum::FREELANCER
             ),
-            KeyWordEnum::ADMIN_MANAGEMENT => array(
-                $ability . KeyWordEnum::ADMIN
+            KeyWordEnum::BUSINESS_ACCELERATOR => array(
+                $ability . KeyWordEnum::BUSINESS_ACCELERATOR
             ),
             KeyWordEnum::CUSTOMER_MANAGEMENT => array(
                 $ability . KeyWordEnum::CUSTOMER
             ),
-            KeyWordEnum::INVESTOR_MANAGEMENT => array(
-                $ability . KeyWordEnum::INVESTOR
-            ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
-                $ability . KeyWordEnum::INSTALLMENT_PLAN
+                $ability . KeyWordEnum::PLAN
             ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 $ability . KeyWordEnum::BUILDING,
                 $ability . KeyWordEnum::FLOOR_TYPE,
                 $ability . KeyWordEnum::FLOOR,
-                $ability . KeyWordEnum::FLAT_TYPE,
-                $ability . KeyWordEnum::FLAT
-            ),
-            KeyWordEnum::SALE_MANAGEMENT => array(
-                $ability . KeyWordEnum::PURCHASER,
-                $ability . KeyWordEnum::SALE,
-                $ability . KeyWordEnum::INSTALLMENT
-            ),
+                $ability . KeyWordEnum::OFFICE_TYPE,
+                $ability . KeyWordEnum::OFFICE
+            )
         ];
     }
 
@@ -77,7 +68,7 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::CO_WORKING_SPACE => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR,
-                KeyWordEnum::FLAT
+                KeyWordEnum::OFFICE
             ),
             KeyWordEnum::FREELANCER_MANAGEMENT => array(
                 KeyWordEnum::FREELANCER
@@ -129,9 +120,9 @@ class ModuleEnum extends AbstractEnum
             }
         }
         self::add_permissions_to_super_admin();
-        self::add_admin_permissions();
+       /* self::add_admin_permissions();
         self::$permissions = array();
-        self::add_customer_permissions();
+        self::add_customer_permissions();*/
     }
 
     public static function add_customer_permissions()
@@ -154,7 +145,7 @@ class ModuleEnum extends AbstractEnum
     public static function add_admin_permissions()
     {
         $permissions = self::admin_permissions();
-        $role = Role::where('slug', RoleEnum::ADMIN)->first();
+        $role = Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->first();
         foreach ($permissions as $parent_key => $parent_value) {
             if (is_array($parent_value)) {
                 self::get_view_permission_by_slug($parent_key);
@@ -172,10 +163,11 @@ class ModuleEnum extends AbstractEnum
     public static function customer_permissions()
     {
         return array(
-            KeyWordEnum::SALE_MANAGEMENT => array(
-                KeyWordEnum::SALE,
-                KeyWordEnum::INSTALLMENT
-            )
+            KeyWordEnum::CO_WORKING_SPACE => array(
+                KeyWordEnum::BUILDING,
+                KeyWordEnum::FLOOR,
+                KeyWordEnum::OFFICE
+            ),
         );
     }
 
@@ -194,21 +186,16 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::CO_WORKING_SPACE => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR,
-                KeyWordEnum::FLAT
+                KeyWordEnum::OFFICE
             ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
-                KeyWordEnum::INSTALLMENT_PLAN
+                KeyWordEnum::PLAN
             ),
             KeyWordEnum::FREELANCER_MANAGEMENT => array(
                 KeyWordEnum::FREELANCER
             ),
             KeyWordEnum::INVESTOR_MANAGEMENT => array(
                 KeyWordEnum::INVESTOR
-            ),
-            KeyWordEnum::SALE_MANAGEMENT => array(
-                KeyWordEnum::PURCHASER,
-                KeyWordEnum::SALE,
-                KeyWordEnum::INSTALLMENT
             )
         );
     }

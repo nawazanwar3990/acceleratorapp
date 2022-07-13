@@ -10,7 +10,7 @@ class MainNavEnum extends AbstractEnum
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
     public const PACKAGE_MANAGEMENT = KeyWordEnum::PACKAGE_MANAGEMENT;
     public const USER_MANAGEMENT = KeyWordEnum::USER_MANAGEMENT;
-    public const ADMIN_MANAGEMENT = KeyWordEnum::ADMIN_MANAGEMENT;
+    public const BUSINESS_ACCELERATOR = KeyWordEnum::BUSINESS_ACCELERATOR;
     public const INVESTOR_MANAGEMENT = KeyWordEnum::INVESTOR_MANAGEMENT;
     public const CUSTOMER_MANAGEMENT = KeyWordEnum::CUSTOMER_MANAGEMENT;
     public const SERVICE_MANAGEMENT = KeyWordEnum::SERVICE_MANAGEMENT;
@@ -26,7 +26,7 @@ class MainNavEnum extends AbstractEnum
             self::DASHBOARD,
             self::PACKAGE_MANAGEMENT,
             self::SERVICE_MANAGEMENT,
-            self::ADMIN_MANAGEMENT,
+            self::BUSINESS_ACCELERATOR,
             self::CUSTOMER_MANAGEMENT,
             self::INVESTOR_MANAGEMENT,
             self::FREELANCER_MANAGEMENT,
@@ -44,7 +44,7 @@ class MainNavEnum extends AbstractEnum
             self::DASHBOARD => '<i class="bx bxs-dashboard"></i>',
             self::PACKAGE_MANAGEMENT => '<i class="bx bx-info"></i>',
             self::SERVICE_MANAGEMENT => '<i class="bx bx-info"></i>',
-            self::ADMIN_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
+            self::BUSINESS_ACCELERATOR => '<i class="bx bx-chart-bar"></i>',
             self::CUSTOMER_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
             self::INVESTOR_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
             self::FREELANCER_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
@@ -68,7 +68,7 @@ class MainNavEnum extends AbstractEnum
             self::PACKAGE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PACKAGE_MANAGEMENT)),
             self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
-            self::ADMIN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::ADMIN_MANAGEMENT)),
+            self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general', self::BUSINESS_ACCELERATOR)),
             self::CUSTOMER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::CUSTOMER_MANAGEMENT)),
             self::FREELANCER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::FREELANCER_MANAGEMENT)),
             self::INVESTOR_MANAGEMENT => __(sprintf('%s.%s', 'general', self::INVESTOR_MANAGEMENT)),

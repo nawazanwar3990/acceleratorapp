@@ -17,24 +17,14 @@ class FloorSeeder extends Seeder
         DB::table(TableEnum::FLOORS)->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table(TableEnum::FLOORS)->insert([
-            array('building_id' => '1', 'type_id' => '2', 'name' => 'First Floor', 'number' => '001', 'length' => '12', 'width' => '12', 'area' => '144', 'height' => '12', 'price' => '12', 'latitude' => '12', 'longitude' => '23', 'no_of_shops_flats' => '1', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now())
-        ]);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table(TableEnum::FLOOR_SERVICE)->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        DB::table(TableEnum::FLOOR_SERVICE)->insert([
-            array('id' => '1', 'floor_id' => '1', 'service_id' => '1', 'type' => 'general_service', 'price' => '2', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-            array('id' => '2', 'floor_id' => '1', 'service_id' => '2', 'type' => 'general_service', 'price' => '2', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-            array('id' => '3', 'floor_id' => '1', 'service_id' => '4', 'type' => 'security_service', 'price' => '2', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-            array('id' => '4', 'floor_id' => '1', 'service_id' => '5', 'type' => 'security_service', 'price' => '2', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now())
+            array('building_id' => '1', 'type_id' => '2', 'name' => 'First Floor', 'number' => '001', 'length' => '12', 'width' => '12', 'area' => '144', 'height' => '12', 'no_of_offices' => '1', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now())
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table(TableEnum::FLOOR_OWNER)->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table(TableEnum::FLOOR_OWNER)->insert([
-            array('id' => '1', 'floor_id' => '1', 'hr_id' => '2', 'created_by' => '2', 'updated_by' => NULL, 'deleted_by' => NULL, 'deleted_at' => NULL, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+            array('id' => '1', 'floor_id' => '1', 'hr_id' => '2','created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
         ]);
     }
 }

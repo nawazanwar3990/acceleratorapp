@@ -8,8 +8,7 @@ class KeyWordEnum extends AbstractEnum
     public const DASHBOARD = 'dashboard';
     //plan management
     public const PLAN_MANAGEMENT = 'plan_management';
-    public const  INSTALLMENT_PLAN = 'installment_plan';
-    public const INSTALLMENT_TERM = 'installment_term';
+    public const  PLAN = 'plan';
     // system management
     public const SYSTEM_CONFIGURATION = 'system_configuration';
     public const SETTING = 'setting';
@@ -36,10 +35,9 @@ class KeyWordEnum extends AbstractEnum
     // flat management
     public const CO_WORKING_SPACE = 'co_working_space';
     public const BUILDING = 'building';
-    public const SHOP = 'shop';
-    public const FLAT = 'flat';
-    public const ROOM = 'room';
-    public const FLAT_TYPE = 'flat_type';
+
+    public const OFFICE = 'office';
+    public const OFFICE_TYPE = 'office_type';
     public const FLOOR = 'floor';
     public const FLOOR_TYPE = 'floor_type';
     //service management
@@ -66,17 +64,16 @@ class KeyWordEnum extends AbstractEnum
     public const SUBSCRIPTION_LOG = 'subscription_log';
     public const SUPER_ADMIN = 'super-admin';
     public const CUSTOMER = 'customer';
-    public const BUILDING_PROVIDER = 'building_provider';
-    public const ADMIN = 'admin';
-    public const ADMIN_MANAGEMENT = 'admin_management';
+    public const BUSINESS_ACCELERATOR = 'business-accelerator';
     public const CUSTOMER_MANAGEMENT = 'customer_management';
     public const SALE_MANAGEMENT = 'sale_management';
-    public const PURCHASER = 'purchaser';
-    public const SALE = 'sale';
-    public const INSTALLMENT = 'installment';
     public const INVESTOR_MANAGEMENT = 'investor_management';
-    const LIST = 'list';
-    const CREATE = 'create';
+    public const LIST = 'list';
+    public const CREATE = 'create';
+
+    public const BASIC_SERVICE = 'basic_service';
+    public const ADDITIONAL_SERVICE ='additional_service' ;
+
 
     static function getConstants()
     {

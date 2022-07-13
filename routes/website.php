@@ -7,7 +7,7 @@ use App\Http\Controllers\InvestorManagement\InvestorController;
 use App\Http\Controllers\PackageManagement\PackageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\WorkingSpace\BuildingController;
-use App\Http\Controllers\WorkingSpace\FlatController;
+use App\Http\Controllers\WorkingSpace\OfficeController;
 use App\Http\Controllers\WorkingSpace\FloorController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +31,7 @@ Route::get('/buildings', [BuildingController::class, 'getBuildings'])
     ->name('buildings.index');
 Route::get('/floors', [FloorController::class, 'getFloors'])
     ->name('floors.index');
-Route::get('/flats', [FlatController::class, 'getFlats'])
+Route::get('/flats', [OfficeController::class, 'getOffices'])
     ->name('flats.index');
 
 Route::get('/pricing-plans/{type?}/{id?}', [BookingController::class, 'pricingPlans'])

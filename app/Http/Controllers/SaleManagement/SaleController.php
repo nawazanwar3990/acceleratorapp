@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SaleManagement;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Models\SaleManagement\Sale;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -44,7 +44,7 @@ class SaleController extends Controller
             ->orderBy('date', 'DESC')->get();
 
         $transferNoList = Sale::pluck('transfer_no', 'id');
-        $flatsList = Flat::where('sales_status', '!=', 'open')->get();
+        $flatsList = Office::where('sales_status', '!=', 'open')->get();
 
         $params = [
             'pageTitle' => __('general.sales_listing'),

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;
 use App\Models\Sales\Installment;
 use Carbon\Carbon;
@@ -11,7 +11,7 @@ class HomeService
 {
     public static function getTotalFlatsCount()
     {
-        return Flat::count();
+        return Office::count();
     }
 
     public static function getTotalFloorsCount()
@@ -20,7 +20,7 @@ class HomeService
     }
     public static function getTotalSoldFlatsCount()
     {
-        return Flat::where('sales_status', '!=', 'open')
+        return Office::where('sales_status', '!=', 'open')
             ->count();
     }
     public static function getAllMonthName(): array

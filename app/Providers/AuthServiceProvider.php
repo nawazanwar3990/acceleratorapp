@@ -14,8 +14,8 @@ use App\Models\PlanManagement\InstallmentTerm;
 use App\Models\SaleManagement\Installment;
 use App\Models\SaleManagement\Sale;
 use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Flat;
-use App\Models\WorkingSpace\FlatType;
+use App\Models\WorkingSpace\Office;
+use App\Models\WorkingSpace\OfficeType;
 use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\FloorType;
 use App\Models\ServiceManagement\Service;
@@ -39,7 +39,7 @@ use App\Policies\PackageManagement\DurationPolicy;
 use App\Policies\PackageManagement\PackagePolicy;
 use App\Policies\PackageManagement\SubscriptionPolicy;
 use App\Policies\PaymentManagement\PaymentPolicy;
-use App\Policies\PlanManagement\InstallmentPlanPolicy;
+use App\Policies\PlanManagement\PlanPolicy;
 use App\Policies\PlanManagement\InstallmentTermPolicy;
 use App\Policies\SaleManagement\InstallmentPolicy;
 use App\Policies\SaleManagement\SalePolicy;
@@ -77,7 +77,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Floor::class => SalePolicy::class,
         FloorType::class => InstallmentPolicy::class,
-        FlatType::class => InstallmentPlanPolicy::class,
+        OfficeType::class => PlanPolicy::class,
 
 
         HrRelation::class => RelationPolicy::class,
@@ -89,11 +89,11 @@ class AuthServiceProvider extends ServiceProvider
         HrDesignation::class => DesignationPolicy::class,
         HrProfession::class => ProfessionPolicy::class,
         HrOrganization::class => OrganizationPolicy::class,
-        Flat::class => FlatPolicy::class,
+        Office::class => FlatPolicy::class,
 
         Hr::class => AdminPolicy::class,
         Hr::class => FreelancerPolicy::class,
-        
+
         Payment::class => PaymentPolicy::class,
 
         Subscription::class => SubscriptionPolicy::class,
@@ -105,7 +105,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Building::class => BuildingPolicy::class,
 
-        Plan::class => InstallmentPlanPolicy::class,
+        Plan::class => PlanPolicy::class,
         InstallmentTerm::class => InstallmentTermPolicy::class,
 
         Sale::class => SalePolicy::class,

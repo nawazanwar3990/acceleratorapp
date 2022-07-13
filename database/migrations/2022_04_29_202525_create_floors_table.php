@@ -18,13 +18,7 @@ return new class extends Migration {
             $table->string('width')->nullable();
             $table->string('area')->nullable();
             $table->string('height')->nullable();
-            $table->string('price')->nullable();
-
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-
-
-            $table->integer('no_of_shops_flats')->nullable()->default(0);
+            $table->integer('no_of_offices')->nullable()->default(0);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);

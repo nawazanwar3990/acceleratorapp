@@ -37,13 +37,13 @@
     </div>
     <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('facing' ,__('general.facing'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('facing',\App\Services\FlatService::facingDropdown($model->facing),['id'=>'facing',
+        {!!  Form::text('facing',\App\Services\OfficeService::facingDropdown($model->facing),['id'=>'facing',
             'class'=>' form-control', 'placeholder'=>__('general.ph_facing'),'readonly'])
         !!}
     </div>
     <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('view' ,__('general.view_location'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('view', \App\Services\FlatService::getFlatViewsForDropdown($model->view),['id'=>'view',
+        {!!  Form::text('view', \App\Services\OfficeService::getOfficeViewsForDropdown($model->view),['id'=>'view',
             'class'=>' form-control', 'placeholder'=>__('general.ph_view_location'),'readonly'])
         !!}
     </div>

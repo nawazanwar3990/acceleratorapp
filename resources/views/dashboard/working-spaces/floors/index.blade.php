@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+                @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                     @include('dashboard.components.general.form-list-header',['url'=>'dashboard.floors.create','is_create'=>true])
                 @endif
                 <div class="card-body">

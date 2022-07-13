@@ -54,7 +54,7 @@ class GeneralDefinitionsNavEnum extends AbstractEnum
             self::SERVICES => route('dashboard.services.index'),
             self::FLOOR_NAMES => route('dashboard.floors.index'),
             self::FLOOR_TYPES => route('dashboard.floor-types.index'),
-            self::FLAT_TYPES => route('dashboard.flat-types.index'),
+            self::FLAT_TYPES => route('dashboard.office-types.index'),
 //            self::COMMODITY_TYPES => route('dashboard.commodity-type.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {

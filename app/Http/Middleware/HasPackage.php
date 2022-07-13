@@ -19,7 +19,7 @@ class HasPackage
         foreach ($guards as $guard) {
             $currentGuard = Auth::guard($guard);
             if ($currentGuard->check()) {
-                if ($currentGuard->user()->hasRole(RoleEnum::ADMIN)) {
+                if ($currentGuard->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
                     $userId = $currentGuard->id();
                     $user = $currentGuard->user();
                     $subscriptionQuery = Subscription::where('subscribed_id', $userId);

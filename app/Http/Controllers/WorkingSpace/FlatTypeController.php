@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WorkingSpace;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FlatTypeRequest;
-use App\Models\WorkingSpace\FlatType;
+use App\Models\WorkingSpace\OfficeType;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -26,8 +26,8 @@ class FlatTypeController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', FlatType::class);
-        $records = FlatType::orderBy('name', 'ASC')->get();
+        $this->authorize('view', OfficeType::class);
+        $records = OfficeType::orderBy('name', 'ASC')->get();
         $params = [
             'pageTitle' => __('general.flat_types'),
             'records' => $records,
@@ -40,7 +40,7 @@ class FlatTypeController extends Controller
      */
     public function create(): Factory|View|Application
     {
-        $this->authorize('create', FlatType::class);
+        $this->authorize('create', OfficeType::class);
         $params = [
             'pageTitle' => __('general.new_flat_types'),
         ];
@@ -53,9 +53,9 @@ class FlatTypeController extends Controller
      */
     public function store(FlatTypeRequest $request)
     {
-        $this->authorize('create', FlatType::class);
+        $this->authorize('create', OfficeType::class);
         if ($request->createData()) {
-            return redirect()->route('dashboard.flat-types.index')
+            return redirect()->route('dashboard.office-types.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
@@ -65,8 +65,8 @@ class FlatTypeController extends Controller
      */
     public function edit($id): Factory|View|Application
     {
-        $this->authorize('update', FlatType::class);
-        $model = FlatType::findorFail($id);
+        $this->authorize('update', OfficeType::class);
+        $model = OfficeType::findorFail($id);
 
         $params = [
             'pageTitle' => __('general.edit_flat_types'),
@@ -81,9 +81,9 @@ class FlatTypeController extends Controller
      */
     public function update(FlatTypeRequest $request, $id)
     {
-        $this->authorize('update', FlatType::class);
+        $this->authorize('update', OfficeType::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.flat-types.index')
+            return redirect()->route('dashboard.office-types.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
@@ -93,9 +93,9 @@ class FlatTypeController extends Controller
      */
     public function destroy(FlatTypeRequest $request, $id)
     {
-        $this->authorize('delete', FlatType::class);
+        $this->authorize('delete', OfficeType::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.flat-types.index')
+            return redirect()->route('dashboard.office-types.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

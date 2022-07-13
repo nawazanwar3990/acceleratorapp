@@ -29,7 +29,7 @@
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
                                         @include('dashboard.components.left-nav-bar.user-management')
                                         @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::ADMIN_MANAGEMENT)
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::BUSINESS_ACCELERATOR)
                                         @include('dashboard.components.left-nav-bar.admin-management')
                                         @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::CUSTOMER_MANAGEMENT)
@@ -52,9 +52,6 @@
                                         @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
                                         @include('dashboard.components.left-nav-bar.system-configuration')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SALE_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.sale-management')
                                         @break
                                 @endswitch
                             </li>

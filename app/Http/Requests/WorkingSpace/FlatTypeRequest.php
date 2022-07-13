@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\WorkingSpace;
-use App\Models\WorkingSpace\FlatType;
+use App\Models\WorkingSpace\OfficeType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,18 +39,18 @@ class FlatTypeRequest extends FormRequest
 
     public function createData()
     {
-        return FlatType::create($this->all());
+        return OfficeType::create($this->all());
     }
 
     public function updateData($id)
     {
-        return FlatType::findorFail($id)->update($this->all());
+        return OfficeType::findorFail($id)->update($this->all());
 
     }
 
     public function deleteData($id)
     {
-        $model = FlatType::findorFail($id);
+        $model = OfficeType::findorFail($id);
         if ($model) {
             $model->deleted_by = Auth::user()->id;
             $model->save();

@@ -8,7 +8,7 @@
             </span>
         </td>
         <td class="text-center">
-            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                 @include('dashboard.components.general.table-actions', [
                     'edit' => route('dashboard.floor-types.edit', $record->id),
                     'delete' => route('dashboard.floor-types.destroy', $record->id),

@@ -1,11 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\WorkingSpace\FloorType;
-use Database\Seeders\Auth\PermissionSeeder;
-use Database\Seeders\Auth\RoleSeeder;
-use Database\Seeders\Auth\RoleUserSeeder;
-use Database\Seeders\Auth\UserSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +8,7 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        $this->call(FlatTypeSeeder::class);
+        $this->call(OfficeTypeSeeder::class);
         $this->call(FloorTypeSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(UserSeeder::class);
@@ -26,7 +21,5 @@ class DatabaseSeeder extends Seeder
         $this->call(SubscriptionSeeder::class);
         $this->call(BuildingSeeder::class);
         $this->call(FloorSeeder::class);
-        $this->call(PlanSeeder::class);
-        $this->call(FreelancerServiceSeeder::class);
     }
 }

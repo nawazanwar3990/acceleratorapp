@@ -8,18 +8,18 @@ use App\Enum\KeyWordEnum;
 class CoWorkingSpaceNavEnum extends AbstractEnum
 {
     public const BUILDING = KeyWordEnum::BUILDING;
-    public const FLAT = KeyWordEnum::FLAT;
+    public const OFFICE = KeyWordEnum::OFFICE;
     public const FLOOR = KeyWordEnum::FLOOR;
-    public const FLAT_TYPE = KeyWordEnum::FLAT_TYPE;
+    public const OFFICE_TYPE = KeyWordEnum::OFFICE_TYPE;
     public const FLOOR_TYPE = KeyWordEnum::FLOOR_TYPE;
 
     public static function getValues(): array
     {
         return [
             self::BUILDING,
-            self::FLAT,
+            self::OFFICE,
             self::FLOOR,
-            self::FLAT_TYPE,
+            self::OFFICE_TYPE,
             self::FLOOR_TYPE
         ];
     }
@@ -28,9 +28,9 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
     {
         $routes = [
             self::BUILDING => '<i class="mdi mdi-account"></i>',
-            self::FLAT => '<i class="mdi mdi-account"></i>',
+            self::OFFICE => '<i class="mdi mdi-account"></i>',
             self::FLOOR => '<i class="mdi mdi-account"></i>',
-            self::FLAT_TYPE => '<i class="mdi mdi-account"></i>',
+            self::OFFICE_TYPE => '<i class="mdi mdi-account"></i>',
             self::FLOOR_TYPE => '<i class="mdi mdi-account"></i>'
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
@@ -46,8 +46,8 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
             self::BUILDING => __(sprintf('%s.%s', 'general.left_bar', self::BUILDING)),
             self::FLOOR_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR_TYPE)),
             self::FLOOR => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR)),
-            self::FLAT_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::FLAT_TYPE)),
-            self::FLAT => __(sprintf('%s.%s', 'general.left_bar', self::FLAT))
+            self::OFFICE_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::OFFICE_TYPE)),
+            self::OFFICE => __(sprintf('%s.%s', 'general.left_bar', self::OFFICE))
         ];
     }
 
@@ -56,7 +56,7 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
         return [
             self::BUILDING => __(sprintf('%s.%s', 'general.left_bar', self::BUILDING)),
             self::FLOOR => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR)),
-            self::FLAT => __(sprintf('%s.%s', 'general.left_bar', self::FLAT))
+            self::OFFICE => __(sprintf('%s.%s', 'general.left_bar', self::OFFICE))
         ];
     }
 
@@ -64,10 +64,10 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
     {
         $routes = array(
             self::BUILDING => route('dashboard.buildings.index'),
-            self::FLOOR_TYPE => route('dashboard.flat-types.index'),
+            self::FLOOR_TYPE => route('dashboard.office-types.index'),
             self::FLOOR => route('dashboard.floors.index'),
-            self::FLAT_TYPE => route('dashboard.flat-types.index'),
-            self::FLAT => route('dashboard.flats.index')
+            self::OFFICE_TYPE => route('dashboard.office-types.index'),
+            self::OFFICE => route('dashboard.offices.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

@@ -8,15 +8,15 @@ use App\Enum\AbstractEnum;
 
 class ServiceTypeEnum extends AbstractEnum
 {
-    public const GENERAL_SERVICE = 'general_service';
-    public const SECURITY_SERVICE = 'security_service';
+    public const BASIC_SERVICE = KeyWordEnum::BASIC_SERVICE;
+    public const ADDITIONAL_SERVICE = KeyWordEnum::ADDITIONAL_SERVICE;
     public const FREELANCER_SERVICE = 'freelancer_service';
 
     public static function getValues(): array
     {
         return array(
-            self::GENERAL_SERVICE,
-            self::SECURITY_SERVICE,
+            self::BASIC_SERVICE,
+            self::ADDITIONAL_SERVICE,
             self::FREELANCER_SERVICE
         );
     }
@@ -24,8 +24,8 @@ class ServiceTypeEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return array(
-            self::GENERAL_SERVICE => __(sprintf('%s.%s', 'general', self::GENERAL_SERVICE)),
-            self::SECURITY_SERVICE => __(sprintf('%s.%s', 'general', self::SECURITY_SERVICE)),
+            self::BASIC_SERVICE => __(sprintf('%s.%s', 'general', self::BASIC_SERVICE)),
+            self::ADDITIONAL_SERVICE => __(sprintf('%s.%s', 'general', self::ADDITIONAL_SERVICE)),
             self::FREELANCER_SERVICE => __(sprintf('%s.%s', 'general', self::FREELANCER_SERVICE)),
 
         );
@@ -34,8 +34,8 @@ class ServiceTypeEnum extends AbstractEnum
     public static function getServiceType($id = null)
     {
         $data = [
-            self::GENERAL_SERVICE  =>  __(sprintf('%s.%s', 'general', self::GENERAL_SERVICE)),
-            self::SECURITY_SERVICE => __(sprintf('%s.%s', 'general', self::SECURITY_SERVICE)),
+            self::BASIC_SERVICE  =>  __(sprintf('%s.%s', 'general', self::BASIC_SERVICE)),
+            self::ADDITIONAL_SERVICE => __(sprintf('%s.%s', 'general', self::ADDITIONAL_SERVICE)),
             self::FREELANCER_SERVICE =>  __(sprintf('%s.%s', 'general', self::FREELANCER_SERVICE)),
         ];
         if (!is_null($id)) {

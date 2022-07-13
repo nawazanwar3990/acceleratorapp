@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Enum\KeyWordEnum;
 use App\Models\PlanManagement\Plan;
 use App\Services\BuildingService;
-use App\Services\FlatService;
+use App\Services\OfficeService;
 use App\Services\FloorService;
 use App\Services\PlanService;
 use Illuminate\Contracts\Foundation\Application;
@@ -20,8 +20,8 @@ class BookingController extends Controller
     public function __construct(
         private BuildingService $buildingService,
         private FloorService    $floorService,
-        private FlatService     $flatService,
-        private PlanService $planService,
+        private OfficeService   $flatService,
+        private PlanService     $planService,
     )
     {
         $this->middleware('auth');

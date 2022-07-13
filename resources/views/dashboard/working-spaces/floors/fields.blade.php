@@ -1,15 +1,5 @@
 <div class="mb-3 row">
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('building_id' ,__('general.building_name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
-        {!!  Form::select('building_id', \App\Services\BuildingService::getBuildingDropdown(),null,['id'=>'building_id',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_name'),'required','style'=>'width:100%',
-            'onchange' => 'getFloorDetails();'])
-        !!}
-        @error('floor_id')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.floor_name').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.floor_name'), 'required']) !!}
         @error('name')
@@ -30,67 +20,10 @@
         !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('price' ,__('general.price'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('price',null,['id'=>'price',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.price'),'style'=>'width:100%'])
-        !!}
-        @error('price')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('length' ,__('general.length_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::number('length',null,['min' => 1, 'step' => 'any', 'id'=>'length','class'=>'form-control ','placeholder'=>__('general.length'), 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();', 'required']) !!}
-        @error('length')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('width' ,__('general.width_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::number('width',null,['min' => 1, 'step' => 'any', 'id'=>'width','class'=>'form-control ','placeholder'=>__('general.width'), 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();', 'required']) !!}
-        @error('width')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('height' ,__('general.height_ft').'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
-        {!!  Form::number('height',null,['min' => 1, 'step' => 'any', 'id'=>'height','class'=>'form-control ','placeholder'=>__('general.height'), 'required']) !!}
-        @error('height')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('area' ,__('general.area_sft') ,['class'=>'form-label']))   !!}
-        {!!  Form::number('area',isset($for) ? $model->area : null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'),'readonly']) !!}
-        @error('area')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('no_of_shops_flats' ,__('general.shops_flats') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('no_of_shops_flats', 0,['id'=>'no_of_shops_flats', 'class'=>'form-control vertical-spin',])  !!}
-        @error('no_of_shops_flats')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('latitude' ,__('general.latitude'),['class'=>'form-label']))   !!}
-        {!!  Form::text('latitude',null,['id'=>'latitude',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.latitude'),'style'=>'width:100%'])
-        !!}
-        @error('price')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('longitude' ,__('general.longitude'),['class'=>'form-label']))   !!}
-        {!!  Form::text('longitude',null,['id'=>'longitude',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.longitude'),'style'=>'width:100%'])
-        !!}
-        @error('price')
+        {!!  Html::decode(Form::label('no_of_offices' ,__('general.shops_flats') ,['class'=>'form-label']))   !!}
+        {!!  Form::text('no_of_offices', 0,['id'=>'no_of_shops_flats', 'class'=>'form-control vertical-spin',])  !!}
+        @error('no_of_offices')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
 </div>
-@include('dashboard.working-spaces.components.services')
-@include('dashboard.working-spaces.components.images')

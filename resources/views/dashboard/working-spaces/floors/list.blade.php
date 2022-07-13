@@ -13,7 +13,7 @@
         <td>{{ $record->price }}</td>
         <td>{{ $record->area }}</td>
         <td class="text-center">
-            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                 @include('dashboard.components.general.table-actions', [
                     'edit' => route('dashboard.floors.edit', $record->id),
                     'delete' => route('dashboard.floors.destroy', $record->id),

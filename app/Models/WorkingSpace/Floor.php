@@ -58,7 +58,7 @@ class Floor extends Model
     }
     public function flats(): HasMany
     {
-        return $this->hasMany(Flat::class);
+        return $this->hasMany(Office::class);
     }
     public function building(): BelongsTo
     {
@@ -77,45 +77,5 @@ class Floor extends Model
                 'updated_by'
             )
             ->withTimestamps();
-    }
-    public function servicesCount()
-    {
-        return $this->services()->sum('floor_service.price');
-    }
-    public function services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::FLOOR_SERVICE)
-            ->withPivot(
-                'type',
-                'created_by',
-                'updated_by',
-                'price'
-            )
-            ->withTimestamps();
-    }
-    public function all_general_services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::FLOOR_SERVICE)
-            ->withPivot(
-                'type',
-                'created_by',
-                'updated_by',
-                'price'
-            )
-            ->withTimestamps()
-            ->where('floor_service.type',ServiceTypeEnum::GENERAL_SERVICE);
-    }
-
-    public function all_security_services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::FLOOR_SERVICE)
-            ->withPivot(
-                'type',
-                'created_by',
-                'updated_by',
-                'price'
-            )
-            ->withTimestamps()
-            ->where('floor_service.type',ServiceTypeEnum::SECURITY_SERVICE);
     }
 }

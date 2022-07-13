@@ -14,7 +14,7 @@
             @else
                 --
             @endisset
-            @if(auth()->user()->hasRole(\App\Enum\RoleEnum::ADMIN))
+            @if(auth()->user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                 <ul class="list-group list-group-flush bg-transparent">
                     @foreach($record->package->modules as $module)
                         <li class="list-group-item py-0 border-0  bg-transparent px-0">

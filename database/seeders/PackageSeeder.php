@@ -28,7 +28,8 @@ class PackageSeeder extends Seeder
 
         $building = Module::whereName(KeyWordEnum::BUILDING)->value('id');
         $floor = Module::whereName(KeyWordEnum::FLOOR)->value('id');
-        $flat = Module::whereName(KeyWordEnum::FLAT)->value('id');
+        $flat = Module::whereName(KeyWordEnum::OFFICE)->value('id');
+
         $freelancer = Module::whereName(KeyWordEnum::FREELANCER)->value('id');
 
         DB::table(TableEnum::PACKAGE_MODULE)->insert([

@@ -9,12 +9,13 @@ use App\Enum\AbstractEnum;
 class MediaTypeEnum extends AbstractEnum
 {
     public const BUILDING_DOCUMENT = 'building_document';
+
+    public const OFFICE_DOCUMENT = 'office_document';
     public const FLOOR_DOCUMENT = 'floor_document';
-    public const FLAT_DOCUMENT = 'flat_document';
 
     public const BUILDING_IMAGE = 'building_image';
     public const FLOOR_IMAGE = 'floor_image';
-    public const FLAT_IMAGE = 'flat_image';
+    public const OFFICE_IMAGE = 'office_image';
 
     public const HR_DOCUMENT = 'hr_document';
     public const HR_SIGNATURE = 'hr_signature';

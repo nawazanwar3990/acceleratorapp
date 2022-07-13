@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Enum\MediaTypeEnum;
 use App\Models\UserManagement\User;
 use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Flat;
+use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -51,6 +51,6 @@ class Media extends Model
 
     public function flat_images(): HasMany
     {
-        return $this->hasMany(Flat::class, 'record_id', 'id')->where('record_type', MediaTypeEnum::FLAT_IMAGE);
+        return $this->hasMany(Office::class, 'record_id', 'id')->where('record_type', MediaTypeEnum::FLAT_IMAGE);
     }
 }
