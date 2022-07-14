@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-class AdminServiceEnum extends AbstractEnum
+class AcceleratorServiceEnum extends AbstractEnum
 {
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const INVESTOR = KeyWordEnum::INVESTOR;
@@ -51,7 +51,7 @@ class AdminServiceEnum extends AbstractEnum
     public static function getRoute($key)
     {
         $images = array(
-            self::CO_WORKING_SPACE => route('website.buildings.index'),
+            self::CO_WORKING_SPACE => route('website.offices.index'),
             self::FREELANCER => route('website.freelancers.index'),
             self::INVESTOR => route('website.investors.index'),
         );

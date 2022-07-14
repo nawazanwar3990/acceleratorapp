@@ -1,6 +1,6 @@
 <?php
 
-use App\Enum\AdminServiceEnum;
+use App\Enum\AcceleratorServiceEnum;
 use App\Enum\PackageTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;

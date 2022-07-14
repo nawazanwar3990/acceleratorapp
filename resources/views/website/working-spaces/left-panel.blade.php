@@ -3,7 +3,7 @@
         @isset($for)
             {{ $for }}
         @else
-            {{  \App\Enum\AdminServiceEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::CO_WORKING_SPACE) }}
+            {{  \App\Enum\AcceleratorServiceEnum::getTranslationKeyBy(\App\Enum\KeyWordEnum::CO_WORKING_SPACE) }}
         @endisset
     </a>
     <ul class="list-group list-group-full">

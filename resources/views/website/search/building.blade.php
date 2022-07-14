@@ -58,7 +58,7 @@
              </div>
              <div class="col-12 mb-3">
                  {!!  Html::decode(Form::label('no_of_floors' ,__('general.no_of_floors') ,['class'=>'form-label']))   !!}
-                 {!!  Form::select('no_of_floors',\App\Services\BuildingService::buildingNoOfFloorsForDropdown(),null,['id'=>'no_of_floors',
+                 {!!  Form::select('no_of_floors',\App\Services\BuildingService::no_of_floors(),null,['id'=>'no_of_floors',
                      'class'=>'select2 form-control', 'placeholder'=>__('general.ph_no_of_floors'),'style'=>'width:100%;', 'required'])
                  !!}
                  @error('no_of_floors')

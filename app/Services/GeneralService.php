@@ -33,7 +33,7 @@ class GeneralService
         return match ($type) {
             CoWorkingSpaceNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
             CoWorkingSpaceNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
-            CoWorkingSpaceNavEnum::FLAT => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
+            CoWorkingSpaceNavEnum::OFFICE => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
             default => 0,
         };
     }

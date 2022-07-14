@@ -17,21 +17,21 @@
                     <div class="col-lg-9 col-md-8 bg-light border-start">
                         <div class="row">
                             <div class="col-12">
-                                @foreach($flats as $flat)
+                                @foreach($offices as $office)
                                     <div class="card overflow-hidden">
                                         <div class="row no-gutters">
                                             <div class="col-md-4 position-relative">
                                                 <div class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-inner">
-                                                        @if(count($flat->images)>0)
-                                                            @foreach($flat->images as $image)
+                                                        @if(count($office->images)>0)
+                                                            @foreach($office->images as $image)
                                                                 <div
                                                                     class="carousel-item flex-column carousel-item-next carousel-item-start">
                                                                     <img
                                                                         onerror="this.src='{{ asset('images/default_building.webp') }}'"
                                                                         src="{{ asset($image->filename) }}"
                                                                         class="img w-100"
-                                                                        alt="{{ $flat->name }}">
+                                                                        alt="{{ $office->name }}">
                                                                 </div>
                                                             @endforeach
                                                         @else
@@ -40,7 +40,7 @@
                                                                 <img
                                                                     src="{{ asset('images/default_building.webp') }}"
                                                                     class="img w-100"
-                                                                    alt="{{ $flat->name }}">
+                                                                    alt="{{ $office->name }}">
                                                             </div>
                                                         @endif
                                                     </div>
@@ -54,13 +54,13 @@
                                                     <div class="col-md-6 border-end border-bottom">
                                                         <div class="p-20">
                                                             <h4 class="card-title">{{ $flat->name }} in
-                                                                ({{ $flat->floor->name??'' }})
-                                                                of {{ $flat->building->name??'' }}</h4>
+                                                                ({{ $office->floor->name??'' }})
+                                                                of {{ $office->building->name??'' }}</h4>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.price') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->price }} {{ \App\Services\GeneralService::get_default_currency() }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $office->price }} {{ \App\Services\GeneralService::get_default_currency() }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
@@ -73,7 +73,7 @@
                                                                     class="p-10 text-muted">{{ trans('general.is_furnished') }}</span>
                                                                 <span
                                                                     class="badge rounded-pill bg-info ms-auto">
-                                                                    @if($flat->furnished)
+                                                                    @if($office->furnished)
                                                                         ✔
                                                                     @else
                                                                         ✘
@@ -84,13 +84,13 @@
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.latitude') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->latitude }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $office->latitude }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.longitude') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->longitude }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $office->longitude }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,13 +101,13 @@
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.area') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->area }} {{ trans('general.sqft') }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $office->area }} {{ trans('general.sqft') }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
                                                                     class="p-10 text-muted">{{ trans('general.flat_type') }}</span>
                                                                 <span
-                                                                    class="badge rounded-pill bg-info ms-auto">{{ $flat->type->name??'' }}</span>
+                                                                    class="badge rounded-pill bg-info ms-auto">{{ $office->type->name??'' }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span
@@ -124,7 +124,7 @@
                                                             <div
                                                                 class="d-flex no-block align-items-center justify-content-center mt-2 pt-3 border-top">
                                                                 <a class="btn btn-xs btn-success"
-                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::OFFICE,$flat->id]) }}">
+                                                                   href="{{ route('website.pricing-plans.index',[\App\Enum\KeyWordEnum::OFFICE,$office->id]) }}">
                                                                     {{ trans('general.book_now') }} <i
                                                                         class="bx bx-plus-circle"></i>
                                                                 </a>
@@ -141,7 +141,7 @@
                                                         <li class="nav-item">
                                                             <a class="nav-link active"
                                                                data-bs-toggle="tab"
-                                                               href="#general_service_{{ $flat->id }}"
+                                                               href="#general_service_{{ $office->id }}"
                                                                role="tab"
                                                                aria-selected="true">
                                                                 <span>{{ trans('general.general_services') }}</span>
@@ -150,7 +150,7 @@
                                                         <li class="nav-item">
                                                             <a class="nav-link"
                                                                data-bs-toggle="tab"
-                                                               href="#security_service_{{ $flat->id }}"
+                                                               href="#security_service_{{ $office->id }}"
                                                                role="tab"
                                                                aria-selected="false">
                                                                 <span>{{ trans('general.security_services') }}</span>
@@ -159,19 +159,19 @@
                                                     </ul>
                                                     <div class="tab-content tabcontent-border">
                                                         <div class="tab-pane active p-20"
-                                                             id="general_service_{{ $flat->id }}"
+                                                             id="general_service_{{ $office->id }}"
                                                              role="tabpanel">
-                                                            @if(count($flat->all_general_services)>0)
-                                                                @foreach($flat->all_general_services as $service)
+                                                            @if(count($office->all_general_services)>0)
+                                                                @foreach($office->all_general_services as $service)
                                                                     <a class="btn btn-xs btn-info">{{ $service->name }}</a>
                                                                 @endforeach
                                                             @endif
                                                         </div>
                                                         <div class="tab-pane p-20"
-                                                             id="security_service_{{ $flat->id }}"
+                                                             id="security_service_{{ $office->id }}"
                                                              role="tabpanel">
-                                                            @if(count($flat->all_security_services)>0)
-                                                                @foreach($flat->all_security_services as $service)
+                                                            @if(count($office->all_security_services)>0)
+                                                                @foreach($office->all_security_services as $service)
                                                                     <a class="btn btn-xs btn-info">{{ $service->name }}</a>
                                                                 @endforeach
                                                             @endif

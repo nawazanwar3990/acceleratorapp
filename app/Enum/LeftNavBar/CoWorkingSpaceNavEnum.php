@@ -81,7 +81,7 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
         $routes = array(
             self::BUILDING => ($params) ? route('website.buildings.index', $params) : route('website.buildings.index'),
             self::FLOOR => ($params) ? route('website.floors.index', $params) : route('website.floors.index'),
-            self::FLAT => ($params) ? route('website.flats.index', $params) : route('website.flats.index')
+            self::OFFICE => ($params) ? route('website.offices.index', $params) : route('website.offices.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
