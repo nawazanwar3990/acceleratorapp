@@ -26,10 +26,30 @@
                 </li>
             </ul>
         </td>
-        <td>{{ \App\Services\BuildingService::buildingTypesForDropdown( $record->building_type)  }}</td>
-        <td>{{ \App\Services\BuildingService::buildingEntryGatesForDropdown( $record->entry_gates)  }}</td>
-        <td>{{ \App\Services\BuildingService::buildingNoOfFloorsForDropdown( $record->no_of_floors)  }}</td>
-        <td>{{ \App\Services\BuildingService::buildingFacingsForDropdown( $record->facing)  }}</td>
+        <td>
+            @if($record->building_type)
+                {{ \App\Services\BuildingService::buildingTypesForDropdown($record->building_type)  }}
+            @else
+            @endif
+        </td>
+        <td>
+            @if($record->entry_gates)
+                {{ \App\Services\BuildingService::buildingEntryGatesForDropdown($record->entry_gates)  }}
+            @else
+            @endif
+        </td>
+        <td>
+            @if($record->no_of_floors)
+                {{ \App\Services\BuildingService::no_of_floors($record->no_of_floors)  }}
+            @else
+            @endif
+        </td>
+        <td>
+            @if($record->facing)
+                {{ \App\Services\BuildingService::buildingFacingsForDropdown($record->facing)  }}
+            @else
+            @endif
+        </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.buildings.edit', $record->id),

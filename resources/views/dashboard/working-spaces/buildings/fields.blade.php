@@ -4,33 +4,33 @@
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('length' ,__('general.length_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::number('length',null,['id'=>'length','class'=>'form-control ','placeholder'=>__('general.length'), 'required', 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();']) !!}
+        {!!  Html::decode(Form::label('length' ,__('general.length_ft') ,['class'=>'form-label']))   !!}
+        {!!  Form::number('length',null,['id'=>'length','class'=>'form-control ','placeholder'=>__('general.length'), 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();']) !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('width' ,__('general.width_ft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::number('width',null,['id'=>'width','class'=>'form-control ','placeholder'=>__('general.width'), 'required', 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();']) !!}
+        {!!  Html::decode(Form::label('width' ,__('general.width_ft') ,['class'=>'form-label']))   !!}
+        {!!  Form::number('width',null,['id'=>'width','class'=>'form-control ','placeholder'=>__('general.width'), 'onchange' => 'calculateArea();', 'onkeyup' => 'calculateArea();']) !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('area' ,__('general.saleable_area_sft').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-        {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'), 'required', 'readonly']) !!}
+        {!!  Html::decode(Form::label('area' ,__('general.saleable_area_sft') ,['class'=>'form-label']))   !!}
+        {!!  Form::text('area',null,['id'=>'area','class'=>'form-control ','placeholder'=>__('general.area'), 'readonly']) !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('building_type' ,__('general.building_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+        {!!  Html::decode(Form::label('building_type' ,__('general.building_type') ,['class'=>'form-label']))   !!}
         {!!  Form::select('building_type', \App\Services\BuildingService::buildingTypesForDropdown(),null,['id'=>'building_type',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_type'),'style'=>'width:100%;', 'required'])
+            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_building_type'),'style'=>'width:100%;'])
         !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('entry_gates' ,__('general.entry_gates').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+        {!!  Html::decode(Form::label('entry_gates' ,__('general.entry_gates') ,['class'=>'form-label']))   !!}
         {!!  Form::select('entry_gates', \App\Services\BuildingService::buildingEntryGatesForDropdown(),null,['id'=>'entry_gates',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_entry_gates'),'style'=>'width:100%;', 'required'])
+            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_entry_gates'),'style'=>'width:100%;'])
         !!}
     </div>
     <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('facing' ,__('general.facing').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
+        {!!  Html::decode(Form::label('facing' ,__('general.facing'),['class'=>'form-label']))   !!}
         {!!  Form::select('facing',\App\Services\BuildingService::buildingFacingsForDropdown(),null,['id'=>'facing',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_facing'),'style'=>'width:100%;', 'required'])
+            'class'=>'select2 form-control', 'placeholder'=>__('general.ph_facing'),'style'=>'width:100%;'])
         !!}
     </div>
     <div class="col-3 mb-3">

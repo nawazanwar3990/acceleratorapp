@@ -5,6 +5,7 @@ namespace App\Http\Requests\WorkingSpace;
 use App\Enum\MediaTypeEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Building;
+use App\Models\WorkingSpace\Floor;
 use App\Services\PersonService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -19,22 +20,8 @@ class BuildingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'area' => ['required'],
-            'length' => ['required'],
-            'width' => ['required'],
-            'building_type' => ['required'],
-            'entry_gates' => ['required'],
-            'no_of_floors' => ['required'],
-            'facing' => ['required'],
+            'name' => ['required']
         ];
-    }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'status' => $this->boolean('status'),
-        ]);
     }
 
     public function createData()
@@ -43,6 +30,7 @@ class BuildingRequest extends FormRequest
         if ($model) {
             $this->uploadMedia($model);
             $this->saveOwners($model);
+            $this->manageFloors($model);
         }
         return $model;
     }
@@ -105,5 +93,28 @@ class BuildingRequest extends FormRequest
             $model->delete();
         }
         return true;
+    }
+
+    private function manageFloors($model)
+    {
+        $floors = $this->input('floor', array());
+        if (count($floors) > 0) {
+            $count = count($floors['name']);
+            if ($count > 0) {
+                for ($i = 0; $i < $count; $i++) {
+                    $name = $floors['name'][$i];
+                    $number = $floors['number'][$i];
+                    $no_of_offices = $floors['no_of_offices'][$i];
+                    Floor::create(
+                        [
+                            'building_id' => $model->id,
+                            'name' => $name,
+                            'number' => $number,
+                            'no_of_offices' => $no_of_offices
+                        ]
+                    );
+                }
+            }
+        }
     }
 }

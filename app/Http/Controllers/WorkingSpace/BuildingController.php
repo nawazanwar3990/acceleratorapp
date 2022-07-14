@@ -62,7 +62,7 @@ class BuildingController extends Controller
             'pageTitle' => __('general.new_building'),
         ];
 
-         return view('dashboard.working-spaces.buildings.create', $params);
+        return view('dashboard.working-spaces.buildings.create', $params);
     }
 
     /**
@@ -78,10 +78,10 @@ class BuildingController extends Controller
                 ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
         }
         $has_package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::BUILDING);
-        if ($request->createData()) {
-            return redirect()->route('dashboard.buildings.create')
-                ->with('success', __('general.record_created_successfully'));
-        }
+         if ($request->createData()) {
+             return redirect()->route('dashboard.buildings.create')
+                 ->with('success', __('general.record_created_successfully'));
+         }
     }
 
     public function show($id)
@@ -147,6 +147,7 @@ class BuildingController extends Controller
     {
         return BuildingService::getFloorsOfBuildingForJS($request);
     }
+
     public function getBuildings(): Factory|View|Application
     {
         $buildings = $this->buildingService->listBuildingsByPagination();
