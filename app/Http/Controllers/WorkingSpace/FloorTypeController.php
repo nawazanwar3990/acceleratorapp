@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorTypeRequest;
 use App\Models\WorkingSpace\FloorType;
+use App\Services\FloorService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -15,7 +16,9 @@ use function view;
 
 class FloorTypeController extends Controller
 {
-    public function __construct()
+    public function __construct(
+        private FloorService $floorService
+    )
     {
         $this->middleware('auth');
     }
@@ -26,7 +29,7 @@ class FloorTypeController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', FloorType::class);
-        $records = FloorType::orderBy('name', 'ASC')->get();
+        $records = $this->floorService->listFloorTypeByPagination();
         $params = [
             'pageTitle' => __('general.floor_types'),
             'records' => $records,

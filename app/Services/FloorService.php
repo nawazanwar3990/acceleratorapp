@@ -87,4 +87,13 @@ class FloorService
     {
         return Floor::find($id);
     }
+
+    public function listFloorTypeByPagination()
+    {
+        $records = FloorType::orderBy('name', 'ASC');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
+            $records = $records->whereCreatedBy(Auth::id());
+        }
+        return $records->paginate(20);
+    }
 }

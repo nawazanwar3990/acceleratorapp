@@ -86,4 +86,13 @@ class OfficeService
     {
         return Office::find($id);
     }
+
+    public function listOfficeTypeByPagination()
+    {
+        $records = OfficeType::orderBy('name','ASC');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
+            $records = $records->whereCreatedBy(Auth::id());
+        }
+        return $records->paginate(20);
+    }
 }

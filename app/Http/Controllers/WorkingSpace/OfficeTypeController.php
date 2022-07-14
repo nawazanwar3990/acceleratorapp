@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\OfficeTypeRequest;
 use App\Models\WorkingSpace\OfficeType;
+use App\Services\OfficeService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -16,7 +17,9 @@ use function view;
 class OfficeTypeController extends Controller
 {
 
-    public function __construct()
+    public function __construct(
+        private OfficeService $officeService
+    )
     {
         $this->middleware('auth');
     }
@@ -27,9 +30,9 @@ class OfficeTypeController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize('view', OfficeType::class);
-        $records = OfficeType::orderBy('name', 'ASC')->get();
+        $records = $this->officeService->listOfficeTypeByPagination();
         $params = [
-            'pageTitle' => __('general.flat_types'),
+            'pageTitle' => __('general.office_types'),
             'records' => $records,
         ];
         return view('dashboard.working-spaces.office-types.index',$params);
