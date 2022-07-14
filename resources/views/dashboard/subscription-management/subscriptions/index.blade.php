@@ -10,7 +10,7 @@
                 @endif
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\PackageManagement\SubscriptionTableHeading::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\SubscriptionManagement\SubscriptionTableHeading::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.subscription-management.subscriptions.list')
                         </tbody>

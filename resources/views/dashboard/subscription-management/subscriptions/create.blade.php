@@ -23,9 +23,7 @@
                                 </td>
                                 <td>{{ $d->name }}</td>
                                 <td class="text-center">
-                                    <div class="form-check">
-                                        {!! Form::radio('package_id',$package->id,false,['class'=>'form-check-input']) !!}
-                                    </div>
+                                    {!! Form::radio('subscription_id',$d->id,false) !!}
                                 </td>
                             </tr>
                         @empty
@@ -97,7 +95,8 @@
                         let data = {
                             'payment_type': payment_type,
                             'transaction_id': result.value.transaction_id,
-                            'package_id': $("input[name='package_id']:checked").val(),
+                            'subscription_id': $("input[name='subscription_id']:checked").val(),
+                            'subscription_type': '{{ $type }}',
                             'subscribed_id': {{ request()->query('id') }}
                         }
                         $.ajax({

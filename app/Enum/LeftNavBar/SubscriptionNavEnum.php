@@ -1,10 +1,14 @@
 <?php
+
 namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
+use App\Enum\RoleEnum;
+use App\Enum\SubscriptionTypeEnum;
+use Illuminate\Support\Facades\Auth;
 
-class PackageNavEnum extends AbstractEnum
+class SubscriptionNavEnum extends AbstractEnum
 {
     public const DURATION = KeyWordEnum::DURATION;
     public const MODULE = KeyWordEnum::MODULE;
@@ -52,7 +56,7 @@ class PackageNavEnum extends AbstractEnum
             self::DURATION => route('dashboard.durations.index'),
             self::MODULE => route('dashboard.modules.index'),
             self::PACKAGE => route('dashboard.packages.index'),
-            self::SUBSCRIPTION => route('dashboard.subscriptions.index'),
+            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => Auth::user()->hasRole(RoleEnum::SUPER_ADMIN) ? SubscriptionTypeEnum::PACKAGE : SubscriptionTypeEnum::OFFICE]),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

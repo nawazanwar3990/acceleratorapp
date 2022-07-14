@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('subscribed_id')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('subscription_id')->nullable()->constrained(TableEnum::SUBSCRIPTIONS);
-            $table->foreignId('package_id')->nullable()->constrained(TableEnum::PACKAGES);
             $table->string('price')->nullable();
             $table->timestamps();
         });

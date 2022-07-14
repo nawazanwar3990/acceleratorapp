@@ -11,9 +11,8 @@ return new class extends Migration {
         Schema::create(TableEnum::SUBSCRIPTIONS, function (Blueprint $table) {
             $table->id();
             $table->foreignId('subscribed_id')->nullable()->constrained(TableEnum::USERS);
-            $table->foreignId('package_id')->nullable()->constrained(TableEnum::PACKAGES);
             $table->foreignId('subscription_id')->nullable();
-            $table->foreignId('subscription_type')->nullable();
+            $table->string('subscription_type')->nullable();
             $table->string('renewal_date')->nullable();
             $table->string('expire_date')->nullable();
             $table->string('price')->nullable();

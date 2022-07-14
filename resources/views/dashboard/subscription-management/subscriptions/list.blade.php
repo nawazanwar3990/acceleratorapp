@@ -9,33 +9,17 @@
             @endisset
         </td>
         <td>
-            @isset($record->package)
-                <strong class="text-center">{{ $record->package->name }}</strong>
+            {{ \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy($record->subscription_type) }}
+        </td>
+        <td>
+            @if($record->subscription_type==\App\Enum\SubscriptionTypeEnum::OFFICE)
+                {{ $record->office->name??null}}
             @else
-                --
-            @endisset
-            @if(auth()->user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                <ul class="list-group list-group-flush bg-transparent">
-                    @foreach($record->package->modules as $module)
-                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                            <i class="bx bx-check text-success"></i> <small><strong
-                                    class="text-infogit ">{{ $module->pivot->limit }}</strong> {{ str_replace('_',' ',$module->name) }}
-                            </small>
-                        </li>
-                    @endforeach
-                </ul>
+                {{ $record->package->name??null}}
             @endif
         </td>
         <td>
-            {{ $record->price }}
-        </td>
-        <td>
-            @isset($record->package->duration_type)
-                {{ $record->package->duration_limit }}
-                {{ \App\Services\GeneralService::get_duration_name($record->package->duration_type->slug) }}
-            @else
-                --
-            @endisset
+            {{ $record->price }} {{ \App\Services\GeneralService::get_default_currency() }}
         </td>
         <td>
             {{ $record->expire_date }}
@@ -43,7 +27,7 @@
         <td>
             {{ $record->renewal_date }}
         </td>
-        <td class="text-center">
+        <td class="text-center d-flex">
             @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
                 @if(\App\Services\GeneralService::is_expire_package(\Carbon\Carbon::now(),$record->expire_date))
                     <a class="btn btn-xs btn-warning mx-1"

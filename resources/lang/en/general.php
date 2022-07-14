@@ -1,7 +1,8 @@
 <?php
 return [
     'subscription_management' => 'Subscriptions',
-
+    'subscription_type' => 'Subscription Type',
+    'subscription_for' => "Subscription For",
     'customers' => 'Customers',
     'new_customer' => 'New Customer',
     'accelerators' => 'Accelerators',

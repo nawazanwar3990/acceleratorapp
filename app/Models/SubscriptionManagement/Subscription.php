@@ -5,6 +5,7 @@ namespace App\Models\SubscriptionManagement;
 use App\Enum\TableEnum;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
+use App\Models\WorkingSpace\Office;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -32,9 +33,12 @@ class Subscription extends Model
 
     public function package(): BelongsTo
     {
-        return $this->belongsTo(Package::class, 'package_id');
+        return $this->belongsTo(Package::class, 'subscription_id');
     }
-
+    public function office(): BelongsTo
+    {
+        return $this->belongsTo(Office::class, 'subscription_id');
+    }
     public function updated_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');

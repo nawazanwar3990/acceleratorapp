@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\PackageManagement;
+namespace App\Enum\TableHeadings\SubscriptionManagement;
 
 use App\Enum\AbstractEnum;
 use function __;
