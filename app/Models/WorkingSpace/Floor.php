@@ -22,17 +22,16 @@ class Floor extends Model
 
     protected $fillable = [
         'building_id',
-        'type_id',
         'name',
         'number',
+        'type_id',
+        'no_of_offices',
         'length',
         'width',
-        'area',
         'height',
-        'price',
-        'longitude',
-        'latitude',
-        'no_of_shops_flats',
+        'area',
+        'images',
+        'documents',
         'created_by',
         'updated_by',
     ];
@@ -56,19 +55,23 @@ class Floor extends Model
     {
         return $this->belongsTo(FloorType::class, 'type_id');
     }
-    public function flats(): HasMany
+
+    public function offices(): HasMany
     {
         return $this->hasMany(Office::class);
     }
+
     public function building(): BelongsTo
     {
         return $this->belongsTo(Building::class, 'building_id');
     }
+
     public function images(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id')
-            ->where('record_type',MediaTypeEnum::FLOOR_IMAGE);
+        return $this->hasMany(Media::class, 'record_id')
+            ->where('record_type', MediaTypeEnum::FLOOR_IMAGE);
     }
+
     public function owners(): BelongsToMany
     {
         return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER, 'floor_id', 'hr_id')

@@ -19,50 +19,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Building extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $casts = [
-        'general_services' => 'array',
-        'security_services' => 'array',
-    ];
-
     protected $fillable = [
         'name',
         'area',
         'length',
         'width',
-        'building_corners',
         'building_type',
         'entry_gates',
-        'property_type',
         'no_of_floors',
         'facing',
-        'price',
-        'status',
-        'longitude',
-        'latitude',
-        'd1',
-        'd2',
-        'd3',
-        'd4',
-        'd5',
-        'd6',
-        'street1',
-        'street2',
-        'street3',
-        'street4',
-        'street5',
-        'street6',
-        'x1',
-        'x2',
-        'x3',
-        'x4',
-        'x5',
-        'x6',
-        'y1',
-        'y2',
-        'y3',
-        'y4',
-        'y5',
-        'y6',
+        'documents',
+        'images',
         'created_by',
         'updated_by',
     ];
@@ -100,55 +67,6 @@ class Building extends Model
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::BUILDING_OWNER)
-            ->withPivot(
-                'created_by',
-                'updated_by'
-            )
-            ->withTimestamps();
+        return $this->belongsToMany(Hr::class, TableEnum::BUILDING_OWNER)->withTimestamps();
     }
-
-    public function servicesCount()
-    {
-        return $this->services()->sum('building_service.price');
-    }
-
-    public function services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
-            ->withPivot(
-                'type',
-                'price',
-                'created_by',
-                'updated_by'
-            )
-            ->withTimestamps();
-    }
-
-    public function all_general_services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
-            ->withPivot(
-                'type',
-                'price',
-                'created_by',
-                'updated_by'
-            )
-            ->withTimestamps()
-            ->where('building_service.type', ServiceTypeEnum::GENERAL_SERVICE);
-    }
-
-    public function all_security_services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::BUILDING_SERVICE)
-            ->withPivot(
-                'type',
-                'price',
-                'created_by',
-                'updated_by'
-            )
-            ->withTimestamps()
-            ->where('building_service.type', ServiceTypeEnum::SECURITY_SERVICE);
-    }
-
 }

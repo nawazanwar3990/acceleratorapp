@@ -64,5 +64,5 @@
         @enderror
     </div>
 </div>
-
+@include('dashboard.working-spaces.components.images')
 

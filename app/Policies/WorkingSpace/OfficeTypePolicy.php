@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies\FlatManagement;
+namespace App\Policies\WorkingSpace;
 
 use App\Enum\KeyWordEnum;
 use App\Policies\AbstractDefaultPolicy;

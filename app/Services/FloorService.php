@@ -76,8 +76,8 @@ class FloorService
 
     public function listFloorByPagination(): LengthAwarePaginator
     {
-        $floors = Floor::with('all_general_services', 'all_security_services', 'flats', 'type', 'images');
-        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::ADMIN)) {
+        $floors = Floor::with('offices', 'type', 'images');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $floors = $floors->whereCreatedBy(Auth::id());
         }
         return $floors->paginate(20);

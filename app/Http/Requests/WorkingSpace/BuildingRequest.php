@@ -3,17 +3,11 @@
 namespace App\Http\Requests\WorkingSpace;
 
 use App\Enum\MediaTypeEnum;
-use App\Enum\ServiceTypeEnum;
-use App\Enum\TableEnum;
 use App\Models\Media;
-use App\Models\UserManagement\Hr;
 use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\BuildingService;
 use App\Services\PersonService;
-use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class BuildingRequest extends FormRequest
 {
@@ -29,9 +23,7 @@ class BuildingRequest extends FormRequest
             'area' => ['required'],
             'length' => ['required'],
             'width' => ['required'],
-            'building_corners' => ['required'],
             'building_type' => ['required'],
-            'property_type' => ['required'],
             'entry_gates' => ['required'],
             'no_of_floors' => ['required'],
             'facing' => ['required'],
@@ -50,7 +42,6 @@ class BuildingRequest extends FormRequest
         $model = Building::create($this->all());
         if ($model) {
             $this->uploadMedia($model);
-            $this->saveServices($model);
             $this->saveOwners($model);
         }
         return $model;
@@ -93,55 +84,10 @@ class BuildingRequest extends FormRequest
         }
     }
 
-    private function saveServices($model)
-    {
-        $general = $this->input('general', []);
-        if (count($general)>0){
-            $general_count = count($general['id']);
-            if ($general_count > 0) {
-                for ($i = 0; $i < $general_count; $i++) {
-                    $id = $general['id'][$i];
-                    $price = $general['price'][$i];
-                    BuildingService::create([
-                        'service_id' => $id,
-                        'building_id' => $model->id,
-                        'price' => $price,
-                        'type' => ServiceTypeEnum::GENERAL_SERVICE,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]);
-                }
-            }
-        }
-        $security = $this->input('security', []);
-        if (count($security)>0) {
-            $security_count = count($security['id']);
-            if ($security_count > 0) {
-                for ($i = 0; $i < $security_count; $i++) {
-                    $id = $security['id'][$i];
-                    $price = $security['price'][$i];
-                    BuildingService::create([
-                        'service_id' => $id,
-                        'building_id' => $model->id,
-                        'price' => $price,
-                        'type' => ServiceTypeEnum::SECURITY_SERVICE,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]);
-                }
-            }
-        }
-    }
 
     private function saveOwners($model)
     {
-        $model->owners()->syncWithPivotValues(
-            [PersonService::getCurrentHrId()],
-            [
-                'created_by' => Auth::id(),
-                'updated_by' => Auth::id()
-            ]
-        );
+        $model->owners()->sync([PersonService::getCurrentHrId()]);
     }
 
     public function updateData($id)

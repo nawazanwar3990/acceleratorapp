@@ -119,8 +119,8 @@ class BuildingService
 
     public function listBuildingsByPagination(): LengthAwarePaginator
     {
-        $buildings = Building::with('all_general_services', 'all_security_services', 'flats', 'floors', 'images');
-        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::ADMIN)) {
+        $buildings = Building::with('flats', 'floors', 'images');
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $buildings = $buildings->whereCreatedBy(Auth::id());
         }
         return $buildings->paginate(20);

@@ -22,24 +22,14 @@ class FloorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'status' => 'boolean',
+            'name' => 'required'
         ];
     }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'status' => $this->boolean('status'),
-        ]);
-    }
-
     public function createData()
     {
         $model = Floor::create($this->all());
         if ($model) {
             $this->uploadMedia($model);
-            $this->saveServices($model);
             $this->saveOwners($model);
         }
         return $model;
@@ -81,56 +71,9 @@ class FloorRequest extends FormRequest
             }
         }
     }
-
-    private function saveServices($model)
-    {
-        $general = $this->input('general', []);
-        if (count($general)>0){
-            $general_count = count($general['id']);
-            if ($general_count > 0) {
-                for ($i = 0; $i < $general_count; $i++) {
-                    $id = $general['id'][$i];
-                    $price = $general['price'][$i];
-                    FloorService::create([
-                        'service_id' => $id,
-                        'floor_id' => $model->id,
-                        'price' => $price,
-                        'type' => ServiceTypeEnum::GENERAL_SERVICE,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]);
-                }
-            }
-        }
-        $security = $this->input('security', []);
-        if (count($security)>0) {
-            $security_count = count($security['id']);
-            if ($security_count > 0) {
-                for ($i = 0; $i < $security_count; $i++) {
-                    $id = $security['id'][$i];
-                    $price = $security['price'][$i];
-                    FloorService::create([
-                        'service_id' => $id,
-                        'floor_id' => $model->id,
-                        'price' => $price,
-                        'type' => ServiceTypeEnum::SECURITY_SERVICE,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]);
-                }
-            }
-        }
-    }
-
     private function saveOwners($model)
     {
-        $model->owners()->syncWithPivotValues(
-            [PersonService::getCurrentHrId()],
-            [
-                'created_by' => Auth::id(),
-                'updated_by' => Auth::id()
-            ]
-        );
+        $model->owners()->sync([PersonService::getCurrentHrId()],);
     }
 
     public function updateData($id)

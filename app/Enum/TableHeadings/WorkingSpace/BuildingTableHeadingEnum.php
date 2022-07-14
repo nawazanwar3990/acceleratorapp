@@ -8,13 +8,12 @@ use App\Enum\AbstractEnum;
 class BuildingTableHeadingEnum extends AbstractEnum
 {
     public const NAME = 'name';
-    public const AREA = 'area';
+    public const DIMENSION = 'dimension';
     public const BUILDING_TYPE = 'building_type';
+    public const ENTRY_GATES = 'entry_gates';
     public const FLOORS = 'floors';
-    public const PRICE = 'price';
-    public const latitude = 'latitude';
-    public const longitude = 'longitude';
-    public const STATUS = 'status';
+    public const FACING = 'facing';
+
 
     /**
      * @inheritDoc
@@ -31,13 +30,12 @@ class BuildingTableHeadingEnum extends AbstractEnum
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::AREA => __(sprintf('%s.%s', 'general', self::AREA)),
+            self::DIMENSION => __(sprintf('%s.%s', 'general', self::DIMENSION)),
             self::BUILDING_TYPE => __(sprintf('%s.%s', 'general', self::BUILDING_TYPE)),
+            self::ENTRY_GATES => __(sprintf('%s.%s', 'general', self::ENTRY_GATES)),
             self::FLOORS => __(sprintf('%s.%s', 'general', self::FLOORS)),
-            self::PRICE => __(sprintf('%s.%s', 'general', self::PRICE)),
-           /* self::latitude => __(sprintf('%s.%s', 'general', self::latitude)),
-            self::longitude => __(sprintf('%s.%s', 'general', self::longitude)),*/
-            self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
+            self::FACING => __(sprintf('%s.%s', 'general', self::FACING)),
+
         ];
     }
 }

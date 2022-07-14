@@ -9,15 +9,10 @@ use App\Models\PackageManagement\Module;
 use App\Models\PackageManagement\Package;
 use App\Models\PackageManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
-use App\Models\PlanManagement\Plan;
 use App\Models\PlanManagement\InstallmentTerm;
+use App\Models\PlanManagement\Plan;
 use App\Models\SaleManagement\Installment;
 use App\Models\SaleManagement\Sale;
-use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Office;
-use App\Models\WorkingSpace\OfficeType;
-use App\Models\WorkingSpace\Floor;
-use App\Models\WorkingSpace\FloorType;
 use App\Models\ServiceManagement\Service;
 use App\Models\SystemConfiguration\Setting;
 use App\Models\UserManagement\Country;
@@ -32,24 +27,28 @@ use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Province;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\User;
-use App\Policies\FlatManagement\OfficePolicy;
+use App\Models\WorkingSpace\Building;
+use App\Models\WorkingSpace\Floor;
+use App\Models\WorkingSpace\FloorType;
+use App\Models\WorkingSpace\Office;
+use App\Models\WorkingSpace\OfficeType;
 use App\Policies\FreelancerManagement\FreelancerPolicy;
 use App\Policies\ModulePolicy;
 use App\Policies\PackageManagement\DurationPolicy;
 use App\Policies\PackageManagement\PackagePolicy;
 use App\Policies\PackageManagement\SubscriptionPolicy;
 use App\Policies\PaymentManagement\PaymentPolicy;
-use App\Policies\PlanManagement\PlanPolicy;
 use App\Policies\PlanManagement\InstallmentTermPolicy;
+use App\Policies\PlanManagement\PlanPolicy;
 use App\Policies\SaleManagement\InstallmentPolicy;
 use App\Policies\SaleManagement\SalePolicy;
 use App\Policies\ServiceManagement\ServicePolicy;
 use App\Policies\SystemConfiguration\SettingPolicy;
+use App\Policies\UserManagement\AdminPolicy;
 use App\Policies\UserManagement\CountryPolicy;
 use App\Policies\UserManagement\DepartmentPolicy;
 use App\Policies\UserManagement\DesignationPolicy;
 use App\Policies\UserManagement\DistrictPolicy;
-use App\Policies\UserManagement\AdminPolicy;
 use App\Policies\UserManagement\OrganizationPolicy;
 use App\Policies\UserManagement\PermissionPolicy;
 use App\Policies\UserManagement\ProfessionPolicy;
@@ -58,6 +57,9 @@ use App\Policies\UserManagement\RelationPolicy;
 use App\Policies\UserManagement\RolePolicy;
 use App\Policies\UserManagement\UserPolicy;
 use App\Policies\WorkingSpace\BuildingPolicy;
+use App\Policies\WorkingSpace\FloorPolicy;
+use App\Policies\WorkingSpace\FloorTypePolicy;
+use App\Policies\WorkingSpace\OfficePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -75,8 +77,8 @@ class AuthServiceProvider extends ServiceProvider
         Permission::class => PermissionPolicy::class,
         Service::class => ServicePolicy::class,
 
-        Floor::class => SalePolicy::class,
-        FloorType::class => InstallmentPolicy::class,
+        Floor::class => FloorPolicy::class,
+        FloorType::class => FloorTypePolicy::class,
         OfficeType::class => PlanPolicy::class,
 
 
@@ -104,12 +106,7 @@ class AuthServiceProvider extends ServiceProvider
         Package::class => PackagePolicy::class,
 
         Building::class => BuildingPolicy::class,
-
         Plan::class => PlanPolicy::class,
-        InstallmentTerm::class => InstallmentTermPolicy::class,
-
-        Sale::class => SalePolicy::class,
-        Installment::class => InstallmentPolicy::class,
     ];
 
     public function boot()
