@@ -26,12 +26,12 @@
             <a href="javascript:void(0);"
                onclick="cloneRow(this);"
                class="btn btn-xs btn-info">
-                <i class="bx bx-plus-circle"></i>
+                <i class="bx bx-plus"></i>
             </a>
             <a href="javascript:void(0);" tabindex = "18"
                onclick="removeClonedRow(this);"
                class="btn btn-xs btn-danger">
-                <i class="bx bx-minus-circle"></i>
+                <i class="bx bx-minus"></i>
             </a>
         </td>
     </tr>
