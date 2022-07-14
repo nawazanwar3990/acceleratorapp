@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WorkingSpace;
 use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorRequest;
+use App\Http\Requests\WorkingSpace\OfficeRequest;
 use App\Models\WorkingSpace\Office;
 use App\Services\OfficeService;
 use App\Services\GeneralService;
@@ -67,7 +68,7 @@ class OfficeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(FloorRequest $request)
+    public function store(OfficeRequest $request)
     {
         $this->authorize('create', Office::class);
         $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::OFFICE);
@@ -100,7 +101,7 @@ class OfficeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(FloorRequest $request, $id)
+    public function update(OfficeRequest $request, $id)
     {
         $this->authorize('update', Office::class);
         if ($request->updateData($id)) {
@@ -112,7 +113,7 @@ class OfficeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function destroy(FloorRequest $request, $id)
+    public function destroy(OfficeRequest $request, $id)
     {
         $this->authorize('delete', Office::class);
         if ($request->deleteData($id)) {

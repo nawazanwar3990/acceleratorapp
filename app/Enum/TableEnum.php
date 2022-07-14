@@ -37,10 +37,8 @@ class TableEnum extends AbstractEnum
     public const HR_SERVICE = 'hr_service';
     public const PLAN_SERVICE = 'plan_service';
 
-    public const BUILDING_MEDIA = 'building_media';
     public const FLOOR_OWNER = 'floor_owner';
-    public const FLOOR_MEDIA = 'floor_media';
-    public const OFFICE_MEDIA = 'office_media';
+    public const OFFICE_PLAN = 'office_plan';
 
     public static function getValues(): array
     {

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\WorkingSpace;
+
 use App\Enum\MediaTypeEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Models\Media;
@@ -16,18 +17,21 @@ class OfficeRequest extends FormRequest
     {
         return true;
     }
+
     public function rules(): array
     {
         return [
 
         ];
     }
+
     public function createData()
     {
         $model = Office::create($this->all());
         if ($model) {
             $this->uploadMedia($model);
-            $this->saveOwners($model);
+            $this->saveOwner($model);
+            $this->savePlan($model);
         }
         return $model;
     }
@@ -68,15 +72,18 @@ class OfficeRequest extends FormRequest
             }
         }
     }
-    private function saveOwners($model)
+
+    private function saveOwner($model)
     {
-        $model->owners()->syncWithPivotValues(
-            [PersonService::getCurrentHrId()],
-            [
-                'created_by' => Auth::id(),
-                'updated_by' => Auth::id()
-            ]
-        );
+        $model->owners()->sync(PersonService::getCurrentHrId());
+    }
+
+    private function savePlan($model)
+    {
+        $plans = $this->input('plans', array());
+        if (count($plans)) {
+            $model->plans()->sync($plans);
+        }
     }
 
     public function updateData($id)

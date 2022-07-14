@@ -4,6 +4,7 @@ namespace App\Models\WorkingSpace;
 use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
+use App\Models\PlanManagement\Plan;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -70,17 +71,16 @@ class Office extends Model
     public function images(): HasMany
     {
         return $this->hasMany(Media::class,'record_id')
-            ->where('record_type',MediaTypeEnum::FLAT_IMAGE);
+            ->where('record_type',MediaTypeEnum::OFFICE_IMAGE);
     }
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::OFFICE_OWNER)
-            ->withPivot(
-                'created_by',
-                'updated_by'
-            )
-            ->withTimestamps();
+        return $this->belongsToMany(Hr::class, TableEnum::OFFICE_OWNER)->withTimestamps();
+    }
+    public function plans(): BelongsToMany
+    {
+        return $this->belongsToMany(Plan::class, TableEnum::OFFICE_PLAN)->withTimestamps();
     }
     public function getNameNumberAttribute()
     {

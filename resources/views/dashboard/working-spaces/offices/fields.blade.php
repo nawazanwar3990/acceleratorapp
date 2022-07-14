@@ -7,13 +7,13 @@
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('building_id' ,__('general.building'),['class'=>'col-form-label']))   !!}
                 {!!  Form::select('building_id',\App\Services\BuildingService::getBuildingDropdown(),null,['id'=>'building_id',
-                    'class'=>'select2 form-control form-select', 'placeholder'=>__('general.building'),'style'=>'width:100%', 'required'])
+                    'class'=>'select2 form-control form-select', 'placeholder'=>__('general.select'),'style'=>'width:100%'])
                 !!}
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('floor_id' ,__('general.floor'),['class'=>'col-form-label']))   !!}
                 {!!  Form::select('floor_id',array(),null,['id'=>'floor_id',
-                    'class'=>'form-control form-select','style'=>'width:100%', 'required'])
+                    'class'=>'form-control form-select','style'=>'width:100%'])
                 !!}
             </div>
         </div>
@@ -27,14 +27,14 @@
         <div class="row mb-2">
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
-                {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.flat_name'), 'required']) !!}
+                {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','required']) !!}
                 @error('name')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('number' ,__('general.number') ,['class'=>'col-form-label']))   !!}
-                {!!  Form::number('number',null,['id'=>'number','class'=>'form-control ','placeholder'=>__('general.flat_number')]) !!}
+                {!!  Form::number('number',null,['id'=>'number','class'=>'form-control']) !!}
                 @error('number')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -42,7 +42,7 @@
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('type_id' ,__('general.office_type').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
                 {!!  Form::select('type_id', \App\Services\OfficeService::getOfficeTypesForDropdown(),null,['id'=>'type_id',
-                    'class'=>'select2 form-control form-select', 'placeholder'=>__('general.office_type'),'style'=>'width:100%', 'required'])
+                    'class'=>'select2 form-control form-select', 'placeholder'=>__('general.select'),'style'=>'width:100%', 'required'])
                 !!}
                 @error('type_id')
                 <span class="text-danger">{{ $message }}</span>

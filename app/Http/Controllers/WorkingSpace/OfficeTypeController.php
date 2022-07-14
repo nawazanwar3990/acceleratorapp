@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\WorkingSpace;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\WorkingSpace\FlatTypeRequest;
+use App\Http\Requests\WorkingSpace\OfficeTypeRequest;
 use App\Models\WorkingSpace\OfficeType;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -13,7 +13,7 @@ use function __;
 use function redirect;
 use function view;
 
-class FlatTypeController extends Controller
+class OfficeTypeController extends Controller
 {
 
     public function __construct()
@@ -51,7 +51,7 @@ class FlatTypeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(FlatTypeRequest $request)
+    public function store(OfficeTypeRequest $request)
     {
         $this->authorize('create', OfficeType::class);
         if ($request->createData()) {
@@ -79,7 +79,7 @@ class FlatTypeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(FlatTypeRequest $request, $id)
+    public function update(OfficeTypeRequest $request, $id)
     {
         $this->authorize('update', OfficeType::class);
         if ($request->updateData($id)) {
@@ -91,7 +91,7 @@ class FlatTypeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function destroy(FlatTypeRequest $request, $id)
+    public function destroy(OfficeTypeRequest $request, $id)
     {
         $this->authorize('delete', OfficeType::class);
         if ($request->deleteData($id)) {
