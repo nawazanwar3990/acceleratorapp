@@ -4,7 +4,7 @@
         <div class="col-12">
             <div class="card shadow-none pt-0">
                 @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
-                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.durations.create','is_create'=>false])
+                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.business-accelerators.index','is_create'=>true])
                 @endif
                 <div class="card-body">
                     <table class="table table-bordered table-hover">

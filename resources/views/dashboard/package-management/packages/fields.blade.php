@@ -40,9 +40,14 @@
                 <th>{{ trans('general.limit') }}</th>
             </tr>
             </thead>
-            @foreach(\App\Enum\ModuleEnum::get_package_modules() as $moduleSlug)
-                @if(!is_array($moduleSlug))
-                    @php  $module = \App\Models\PackageManagement\Module::where('name',$moduleSlug)->first(); @endphp
+            @foreach(\App\Enum\ModuleEnum::get_package_modules() as $module_key =>$moduleSlug)
+                <tr>
+                    <td colspan="4">
+                        <h6 class="card-title mb-0">{{ ucwords(str_replace('_',' ',$module_key)) }}</h6>
+                    </td>
+                </tr>
+                @foreach($moduleSlug as $mSlug)
+                    @php  $module = \App\Models\PackageManagement\Module::where('name',$mSlug)->first(); @endphp
                     <tr>
                         <td>
                             {!!  Form::hidden('module[id][]',$module->id) !!}
@@ -52,20 +57,7 @@
                             {!!  Form::number('module[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
                         </td>
                     </tr>
-                @else
-                    @foreach($moduleSlug as $mSlug)
-                        @php  $module = \App\Models\PackageManagement\Module::where('name',$mSlug)->first(); @endphp
-                        <tr>
-                            <td>
-                                {!!  Form::hidden('module[id][]',$module->id) !!}
-                                {!!  Form::text('module[name][]',ucwords(str_replace('_',' ',$module->name)),['id'=>'module_name','class'=>'form-control','readonly']) !!}
-                            </td>
-                            <td>
-                                {!!  Form::number('module[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
+                @endforeach
             @endforeach
         </table>
     </div>

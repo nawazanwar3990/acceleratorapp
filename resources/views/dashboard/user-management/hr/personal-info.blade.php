@@ -1,5 +1,9 @@
 <div class="row">
     <div class="col-md-3 mb-3">
+        {!!  Html::decode(Form::label('email' ,__('general.email'),['class'=>'col-form-label']))   !!}
+        {!!  Form::text('email',null,['id'=>'email','class'=>'form-control','required']) !!}
+    </div>
+    <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('first_name' ,__('general.first_name') ,['class'=>'col-form-label']))   !!}
         {!!  Form::text('first_name',null,['id'=>'first_name','class'=>'form-control ']) !!}
     </div>
@@ -10,10 +14,6 @@
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('last_name' ,__('general.last_name') ,['class'=>'col-form-label']))   !!}
         {!!  Form::text('last_name',null,['id'=>'last_name','class'=>'form-control ']) !!}
-    </div>
-    <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('email' ,__('general.email'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('email',null,['id'=>'email','class'=>'form-control ']) !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('cnic' ,__('general.cnic'),['class'=>'col-form-label']))   !!}
@@ -34,14 +34,6 @@
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('web_portfolio' ,__('general.web_portfolio') ,['class'=>'col-form-label']))   !!}
         {!!  Form::text('web_portfolio',null,['id'=>'web_portfolio','class'=>'form-control ']) !!}
-    </div>
-    <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('longitude' ,__('general.longitude'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('longitude',null,['id'=>'longitude','class'=>'form-control ']) !!}
-    </div>
-    <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('latitude' ,__('general.latitude'),['class'=>'col-form-label']))   !!}
-        {!!  Form::text('latitude',null,['id'=>'latitude','class'=>'form-control ']) !!}
     </div>
     <div class="col-12 mb-3">
         {!!  Html::decode(Form::label('remarks' ,__('general.remarks'),['class'=>'col-form-label']))   !!}

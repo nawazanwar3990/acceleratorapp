@@ -69,12 +69,6 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR,
                 KeyWordEnum::OFFICE
-            ),
-            KeyWordEnum::FREELANCER_MANAGEMENT => array(
-                KeyWordEnum::FREELANCER
-            ),
-            KeyWordEnum::INVESTOR_MANAGEMENT => array(
-                KeyWordEnum::INVESTOR
             )
         );
     }

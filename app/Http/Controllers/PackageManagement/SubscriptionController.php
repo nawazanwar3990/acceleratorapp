@@ -51,10 +51,7 @@ class SubscriptionController extends Controller
     {
         $user_id = $request->get('id');
         $user = User::find($user_id);
-        $packages = Package::with('duration_type');
-        if ($user->hasRole(RoleEnum::ADMIN)) {
-            $packages = $packages->where('created_by', 1)->get();
-        }
+        $packages = Package::with('duration_type')->get();
         $params = [
             'pageTitle' => __('general.apply_subscription'),
             'packages' => $packages

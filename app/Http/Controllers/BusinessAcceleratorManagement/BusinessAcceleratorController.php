@@ -42,7 +42,7 @@ class BusinessAcceleratorController extends Controller
             $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
         })->get();
         $params = [
-            'pageTitle' => __('general.admins'),
+            'pageTitle' => __('general.accelerators'),
             'records' => $records,
         ];
 
@@ -58,7 +58,7 @@ class BusinessAcceleratorController extends Controller
         $type = $request->get('type');
         $lastId = Hr::orderBy('id', 'DESC')->value('id');
         $params = [
-            'pageTitle' => __('general.new_admin'),
+            'pageTitle' => __('general.new_accelerator'),
             'lastId' => (is_null($lastId) ? '1' : $lastId),
             'type' => $type
         ];

@@ -37,8 +37,6 @@ class Hr extends Model
         'cell_2',
         'web_portfolio',
         'remarks',
-        'longitude',
-        'latitude',
         'address',
         'created_by',
         'updated_by',
