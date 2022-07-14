@@ -1,5 +1,7 @@
 <?php
 return [
+    'building_info' => 'Building Info',
+
     'offices' => 'Offices',
     'new_office' => 'New Office',
     'sitting_capacity' => 'Sitting Capacity',
@@ -277,7 +279,7 @@ return [
     'flat_shop_name' => 'Flat/Shop Name',
     'flat_number' => 'Flat Number',
     'flat_shop_number' => 'Flat/Shop Number',
-    'flat_type' => 'Flat Type',
+    'office_type' => 'Office Type',
     'creation_date' => 'Creation Date',
     'flat_status' => 'Flat Status',
     'view_location' => 'View/Location',

@@ -9,24 +9,12 @@ use App\Models\PlanManagement\Plan;
 class PlanService
 {
 
-    public function listPlans(mixed $type, $model)
+    public static function listPlans()
     {
-        $plans = Plan::OrderBy('name', 'ASC');
-        $plans = match ($type) {
-            KeyWordEnum::BUILDING => $plans->whereHas(TableEnum::BUILDINGS, function ($q) use ($model) {
-                $q->whereIn(TableEnum::BUILDINGS . '.id', [$model->id]);
-            }),
-            KeyWordEnum::FLOOR => $plans->whereHas(TableEnum::FLOORS, function ($q) use ($model) {
-                $q->whereIn(TableEnum::FLOORS . '.id', [$model->id]);
-            }),
-            KeyWordEnum::FLAT => $plans->whereHas(TableEnum::FLATS, function ($q) use ($model) {
-                $q->whereIn(TableEnum::FLATS . '.id', [$model->id]);
-            }),
-        };
-        return $plans->paginate(20);
+        return Plan::OrderBy('name', 'ASC')->get();
     }
 
-    public function findById(mixed $planId)
+    public static function findById(mixed $planId)
     {
         return Plan::find($planId);
     }

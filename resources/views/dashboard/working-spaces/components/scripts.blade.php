@@ -1,8 +1,35 @@
 @section('inner-script-files')
 @endsection
 @section('innerScript')
-    @include('dashboard.working-spaces.components.hr-picker-script')
     <script>
+
+        $("#building_id").on('change', function () {
+            let holder = $("#floor_id");
+            let value = $(this).val();
+            if (value === '') {
+                $.toast({
+                    heading: 'Alert',
+                    icon: 'danger',
+                    text: 'First Choose building',
+                    position: 'top-right',
+                    hideAfter: false,
+                    bgColor: '#FF1356',
+                    textColor: 'white'
+                });
+                holder.empty();
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('api.building.floors') }}",
+                    data: {
+                        'building_id': value,
+                    },
+                    success: function (data) {
+                        holder.empty().html(data);
+                    }
+                });
+            }
+        });
         $(function () {
             $('.select2').select2();
             initDropify();
@@ -57,6 +84,14 @@
         function removeImageField(rid) {
             $('.img-remove-class' + rid).remove();
         }
+
+        $("#furnished").on('click', function () {
+            if ($(this).is(":checked")) {
+                $("#furnished_details").show();
+            } else {
+                $("#furnished_details").hide();
+            }
+        });
 
         function cloneRow(cElement) {
             let clone = $(cElement).closest('tr').clone();
