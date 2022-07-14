@@ -47,11 +47,11 @@ class MainNavEnum extends AbstractEnum
             self::BUSINESS_ACCELERATOR => '<i class="bx bx-chart-bar"></i>',
             self::CUSTOMER_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
             self::INVESTOR_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
-            self::FREELANCER_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
-            self::PLAN_MANAGEMENT => '<i class="bx bx-info"></i>',
+            self::FREELANCER_MANAGEMENT => '<i class="bx bxs-face"></i>',
+            self::PLAN_MANAGEMENT => '<i class="bx bx-book-bookmark"></i>',
             self::SYSTEM_CONFIGURATION => '<i class="bx bx-briefcase"></i>',
-            self::USER_MANAGEMENT => '<i class="bx bx-shopping-cart"></i>',
-            self::CO_WORKING_SPACE => '<i class="bx bx-chart-bar"></i>',
+            self::USER_MANAGEMENT => '<i class="bx bx-user"></i>',
+            self::CO_WORKING_SPACE => '<i class="bx bxs-business"></i>',
             self::SALE_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
