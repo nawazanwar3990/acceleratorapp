@@ -6,6 +6,7 @@ use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorRequest;
 use App\Http\Requests\WorkingSpace\OfficeRequest;
+use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\Office;
 use App\Services\OfficeService;
 use App\Services\GeneralService;
@@ -90,12 +91,14 @@ class OfficeController extends Controller
     {
         $this->authorize('update', Office::class);
         $model = Office::findorFail($id);
+        $floors = Floor::where('building_id', $model->building_id)->pluck('name','id');
         $params = [
             'pageTitle' => __('general.edit_office'),
             'model' => $model,
+            'floors' => $floors
         ];
 
-        return view('dashboard.working-spaces.office.edit', $params);
+        return view('dashboard.working-spaces.offices.edit', $params);
     }
 
     /**

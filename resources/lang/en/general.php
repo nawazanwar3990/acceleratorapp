@@ -1,7 +1,9 @@
 <?php
 return [
+    'edit_office' => 'Edit Office',
+    'sqft' => 'sqft',
     'building_info' => 'Building Info',
-
+    'dimension' => 'Dimension',
     'offices' => 'Offices',
     'new_office' => 'New Office',
     'sitting_capacity' => 'Sitting Capacity',

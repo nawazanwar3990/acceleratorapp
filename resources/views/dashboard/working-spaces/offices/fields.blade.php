@@ -12,7 +12,7 @@
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('floor_id' ,__('general.floor'),['class'=>'col-form-label']))   !!}
-                {!!  Form::select('floor_id',array(),null,['id'=>'floor_id',
+                {!!  Form::select('floor_id',isset($floors)?$floors:array(),null,['id'=>'floor_id',
                     'class'=>'form-control form-select','style'=>'width:100%'])
                 !!}
             </div>
