@@ -36,7 +36,7 @@ class SubscriptionController extends Controller
     {
         $this->authorize('view', Subscription::class);
         $records = Subscription::with(['subscribed', 'package']);
-        if (Auth::user()->hasRole(RoleEnum::ADMIN)) {
+        if (Auth::user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $records = $records->where('subscribed_id',auth()->id());
         }
         $records = $records->paginate(20);

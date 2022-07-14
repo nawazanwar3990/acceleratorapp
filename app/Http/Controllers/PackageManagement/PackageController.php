@@ -33,7 +33,7 @@ class PackageController extends Controller
     {
         $this->authorize('view', Package::class);
         $records = Package::with('duration_type', 'modules');
-        if (Auth::user()->hasRole(RoleEnum::ADMIN)) {
+        if (Auth::user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $records = $records->whereHas('subscriptions', function ($q) {
                 $q->subscribed_id = Auth::id();
             });
