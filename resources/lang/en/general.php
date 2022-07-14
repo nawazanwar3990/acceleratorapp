@@ -1,6 +1,7 @@
 <?php
 return [
-    'no_of_offices'=>'No Of Offices',
+    'floor_info' => 'Floor Info',
+    'no_of_offices' => 'No Of Offices',
     'edit_office' => 'Edit Office',
     'sqft' => 'sqft',
     'building_info' => 'Building Info',

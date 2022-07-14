@@ -2,7 +2,55 @@
 @endsection
 @section('innerScript')
     <script>
+        function show_floor_offices(cElement) {
+            let value = $(cElement).val();
+            if (value === '') {
+                $.toast({
+                    heading: 'Alert',
+                    icon: 'danger',
+                    text: 'First Choose Office',
+                    position: 'top-right',
+                    hideAfter: false,
+                    bgColor: '#FF1356',
+                    textColor: 'white'
+                });
+                $(cElement).closest('td').find('.offices_holder').empty();
+            } else {
+                let table = '<table class="table table-bordered mt-2"><thead><tr><th class="fs-13">{{__('general.name')}}</th><th class="fs-13">{{__('general.number')}}</th><th class="fs-13">{{ __('general.sitting_capacity') }}</th><th class="fs-13">{{__('general.plans')}}</th></thead><tbody>';
+                for ($i = 0; $i < value; $i++) {
+                    table += '<tr><td><input class="form-control form-control-sm" required="" name="office_name[]" type="text"></td><td><input  class="form-control form-control-sm" required="" name="office_number[]" type="text"></td><td><select class="form-control form-control-sm" required="" name="office_sitting_capacity[]"><option selected="selected" value="">__Select__</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option></select></td><td>  {!!  Form::select('office_plans[][]', \App\Services\PlanService::pluckPlans(),null,[
+                    'class'=>'form-control','style'=>'width:100%','multiple'])
+                !!}</td></tr>';
+                }
+                table += "</tbody></table>";
+                $(cElement).closest('td').find('.offices_holder').empty().html(table);
+                $(cElement).closest('td').find('.offices_holder').find('select').select2();
+            }
+        }
 
+        $("#no_of_floors").on('change', function () {
+            let value = $(this).val();
+            let floor_holder = $("#floor_holder");
+            if (value === '') {
+                $.toast({
+                    heading: 'Alert',
+                    icon: 'danger',
+                    text: 'First Choose No Of Floors',
+                    position: 'top-right',
+                    hideAfter: false,
+                    bgColor: '#FF1356',
+                    textColor: 'white'
+                });
+                floor_holder.hide().find('.card-body').empty();
+            } else {
+                let table = '<table class="table table-bordered"><thead><tr><th>{{__('general.name')}}</th><th>{{__('general.number')}}</th><th>{{__('general.offices')}}</th></tr></thead><tbody>';
+                for ($i = 0; $i < value; $i++) {
+                    table += '<tr><td><input class="form-control form-control-sm" required="" name="floor_name[]" type="text"></td><td><input  class="form-control form-control-sm" required="" name="floor_number[]" type="text"></td><td><select onchange="show_floor_offices(this);" class="form-control form-control-sm" required="" name="floor_no_of_offices[]"><option selected="selected" value="">__Select__</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option></select><div class="offices_holder"></td></tr>';
+                }
+                table += "</tbody></table>";
+                floor_holder.show().find('.card-body').empty().html(table);
+            }
+        });
         $("#building_id").on('change', function () {
             let holder = $("#floor_id");
             let value = $(this).val();

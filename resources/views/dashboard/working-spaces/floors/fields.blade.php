@@ -35,7 +35,7 @@
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('no_of_offices' ,__('general.no_of_offices').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-                {!!  Form::text('no_of_offices',null,['id'=>'no_of_offices', 'class'=>'form-control vertical-spin','required'])  !!}
+                {!!  Form::select('no_of_offices',\App\Services\BuildingService::no_of_offices(),null,['id'=>'no_of_offices', 'class'=>'form-control vertical-spin','required','placeholder'=>trans('general.select')])  !!}
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('length' ,__('general.length'),['class'=>'form-label']))   !!}

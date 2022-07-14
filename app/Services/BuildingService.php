@@ -57,7 +57,7 @@ class BuildingService
         return $data;
     }
 
-    public static function buildingNoOfFloorsForDropdown($id = null)
+    public static function no_of_floors($id = null)
     {
         for ($i = 1; $i < 30; $i++) {
             $data[$i] = $i;
@@ -67,7 +67,16 @@ class BuildingService
         }
         return $data;
     }
-
+    public static function no_of_offices($id = null)
+    {
+        for ($i = 1; $i < 30; $i++) {
+            $data[$i] = $i;
+        }
+        if (!is_null($id)) {
+            $data = $data[$id];
+        }
+        return $data;
+    }
     public static function buildingFacingsForDropdown($id = null)
     {
         $data = [
