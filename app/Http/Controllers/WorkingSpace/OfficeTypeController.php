@@ -32,7 +32,7 @@ class OfficeTypeController extends Controller
             'pageTitle' => __('general.flat_types'),
             'records' => $records,
         ];
-        return view('dashboard.working-spaces.flat-types.index',$params);
+        return view('dashboard.working-spaces.office-types.index',$params);
     }
 
     /**
@@ -42,10 +42,10 @@ class OfficeTypeController extends Controller
     {
         $this->authorize('create', OfficeType::class);
         $params = [
-            'pageTitle' => __('general.new_flat_types'),
+            'pageTitle' => __('general.new_office_type'),
         ];
 
-        return view('dashboard.working-spaces.flat-types.create', $params);
+        return view('dashboard.working-spaces.office-types.create', $params);
     }
 
     /**
@@ -69,11 +69,11 @@ class OfficeTypeController extends Controller
         $model = OfficeType::findorFail($id);
 
         $params = [
-            'pageTitle' => __('general.edit_flat_types'),
+            'pageTitle' => __('general.edit_office_type'),
             'model' => $model,
         ];
 
-        return view('dashboard.working-spaces.flat-types.edit', $params);
+        return view('dashboard.working-spaces.office-types.edit', $params);
     }
 
     /**

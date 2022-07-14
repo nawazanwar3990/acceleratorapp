@@ -78,10 +78,10 @@ class BuildingController extends Controller
                 ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
         }
         $has_package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::BUILDING);
-         if ($request->createData()) {
-             return redirect()->route('dashboard.buildings.create')
-                 ->with('success', __('general.record_created_successfully'));
-         }
+        if ($request->createData()) {
+            return redirect()->route('dashboard.buildings.create')
+                ->with('success', __('general.record_created_successfully'));
+        }
     }
 
     public function show($id)

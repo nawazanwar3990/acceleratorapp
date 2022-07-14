@@ -15,14 +15,6 @@
 </div>
 <div class="mb-3 row">
     <div class="col-md-3">
-        {!!  Html::decode(Form::label('parent_id' ,__('general.parent') ,['class'=>'col-form-label']))   !!}
-    </div>
-    <div class="col-md-5">
-        {!!  Form::select('parent_id',\App\Services\ServiceData::getParentFreelancerServicesDropdown(),null,['id'=>'parent_id','class'=>'form-control ','placeholder'=>__('general.parent')]) !!}
-    </div>
-</div>
-<div class="mb-3 row">
-    <div class="col-md-3">
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'col-form-label']))   !!}
     </div>
     <div class="col-md-5">
@@ -34,10 +26,10 @@
 </div>
 <div class="mb-3 row">
     <div class="col-md-3">
-        {!!  Html::decode(Form::label('price' ,__('general.price').' (optional)' ,['class'=>'col-form-label']))   !!}
+        {!!  Html::decode(Form::label('parent_id' ,__('general.parent')."(Optional)" ,['class'=>'col-form-label']))   !!}
     </div>
     <div class="col-md-5">
-        {!!  Form::number('price',null,['id'=>'type','class'=>'form-control'])!!}
+        {!!  Form::select('parent_id',\App\Services\ServiceData::getParentFreelancerServicesDropdown(),null,['id'=>'parent_id','class'=>'form-control ','placeholder'=>__('general.parent')]) !!}
     </div>
 </div>
 <div class="mb-3 row">

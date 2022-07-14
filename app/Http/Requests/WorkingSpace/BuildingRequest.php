@@ -6,6 +6,7 @@ use App\Enum\MediaTypeEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Floor;
+use App\Models\WorkingSpace\Office;
 use App\Services\PersonService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -105,14 +106,39 @@ class BuildingRequest extends FormRequest
                     $name = $floors['name'][$i];
                     $number = $floors['number'][$i];
                     $no_of_offices = $floors['no_of_offices'][$i];
-                    Floor::create(
+                    $floor = Floor::create(
                         [
                             'building_id' => $model->id,
                             'name' => $name,
                             'number' => $number,
-                            'no_of_offices' => $no_of_offices
+                            'no_of_offices' => $no_of_offices,
+                            'created_by' => Auth::id()
                         ]
                     );
+                    $offices = $floors[$i]['offices'];
+                    if (count($offices) > 0) {
+                        $floor_name_count = count($offices['name']);
+                        if ($floor_name_count > 0) {
+                            for ($j = 0; $j < $floor_name_count; $j++) {
+                                $office_name = $offices['name'][$j];
+                                $office_number = $offices['number'][$j];
+                                $capacity = $offices['capacity'][$j];
+                                $office = Office::create(
+                                    [
+                                        'building_id' => $model->id,
+                                        'floor_id' => $floor->id,
+                                        'name' => $office_name,
+                                        'number' => $office_number,
+                                        'sitting_capacity' => $capacity,
+                                        'created_by' => Auth::id()
+                                    ]
+                                );
+                                if ($offices['plan'][$j]) {
+                                    $office->plans()->sync([$offices['plan'][$j]]);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

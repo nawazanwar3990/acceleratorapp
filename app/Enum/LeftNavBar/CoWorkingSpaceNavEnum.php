@@ -64,7 +64,7 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
     {
         $routes = array(
             self::BUILDING => route('dashboard.buildings.index'),
-            self::FLOOR_TYPE => route('dashboard.office-types.index'),
+            self::FLOOR_TYPE => route('dashboard.floor-types.index'),
             self::FLOOR => route('dashboard.floors.index'),
             self::OFFICE_TYPE => route('dashboard.office-types.index'),
             self::OFFICE => route('dashboard.offices.index')

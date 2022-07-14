@@ -51,10 +51,12 @@
             @endif
         </td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.buildings.edit', $record->id),
-                'delete' => route('dashboard.buildings.destroy', $record->id),
-            ])
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
+                @include('dashboard.components.general.table-actions', [
+                    'edit' => route('dashboard.buildings.edit', $record->id),
+                    'delete' => route('dashboard.buildings.destroy', $record->id),
+                ])
+            @endif
         </td>
     </tr>
 @empty

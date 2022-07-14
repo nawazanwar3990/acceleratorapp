@@ -4,7 +4,12 @@
         <td>{{ $record->name }}</td>
         <td>{{ $record->number }}</td>
         <td>{{ $record->type->name ?? '' }}</td>
-        <td>{{ \App\Services\OfficeService::getOfficeViewsForDropdown($record->view)}}</td>
+        <td>
+            @if($record->view)
+                {{ \App\Services\OfficeService::getOfficeViewsForDropdown($record->view)}}
+            @else
+            @endif
+        </td>
         <td>{{ $record->sitting_capacity }}</td>
         <td>
             <ul class="list-group list-group-flush bg-transparent">
@@ -46,10 +51,12 @@
             @endif
         </td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                    'edit' => route('dashboard.offices.edit', $record->id),
-                    'delete' => route('dashboard.offices.destroy', $record->id),
-            ])
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
+                @include('dashboard.components.general.table-actions', [
+                        'edit' => route('dashboard.offices.edit', $record->id),
+                        'delete' => route('dashboard.offices.destroy', $record->id),
+                ])
+            @endif
         </td>
     </tr>
 @empty

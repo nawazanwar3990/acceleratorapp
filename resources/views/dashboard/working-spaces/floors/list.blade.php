@@ -28,7 +28,13 @@
                 </li>
             </ul>
         </td>
-        <td>{{ \App\Services\BuildingService::buildingTypesForDropdown( $record->type_id)  }}</td>
+        <td>
+            @if($record->type_id)
+                {{ \App\Services\BuildingService::buildingTypesForDropdown($record->type_id)  }}
+            @else
+                --
+            @endif
+        </td>
         <td>{{ $record->no_of_offices}}</td>
         <td class="text-center">
             @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
