@@ -3,7 +3,7 @@
 namespace App\Http\Requests\PackageManagement;
 
 use App\Enum\TableEnum;
-use App\Models\PackageManagement\Package;
+use App\Models\SubscriptionManagement\Package;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

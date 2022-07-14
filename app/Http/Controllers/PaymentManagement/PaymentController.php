@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\DurationRequest;
 use App\Http\Requests\PackageManagement\PackageRequest;
 use App\Http\Requests\WorkingSpace\FloorRequest;
-use App\Models\PackageManagement\Duration;
-use App\Models\PackageManagement\Package;
-use App\Models\PackageManagement\Subscription;
+use App\Models\SubscriptionManagement\Duration;
+use App\Models\SubscriptionManagement\Package;
+use App\Models\SubscriptionManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
 use App\Models\WorkingSpace\Office;
 use App\Services\GeneralService;
@@ -96,7 +96,7 @@ class PaymentController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.package-management.durations.edit', $params);
+        return view('dashboard.subscription-management.durations.edit', $params);
     }
 
     /**

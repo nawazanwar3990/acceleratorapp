@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-use App\Models\PackageManagement\Module;
+use App\Models\SubscriptionManagement\Module;
 use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Role;
 use App\Models\UserManagement\RolePermission;
@@ -23,13 +23,11 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
-            KeyWordEnum::PACKAGE_MANAGEMENT => array(
-                $ability . KeyWordEnum::MODULE,
-                $ability . KeyWordEnum::DURATION,
+            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
                 $ability . KeyWordEnum::PACKAGE,
                 $ability . KeyWordEnum::SUBSCRIPTION,
                 $ability . KeyWordEnum::SUBSCRIPTION_LOG,
-                $ability . KeyWordEnum::PAYMENT,
+                $ability . KeyWordEnum::PAYMENT
             ),
             KeyWordEnum::USER_MANAGEMENT => array(
                 $ability . KeyWordEnum::ROLE,
@@ -44,7 +42,7 @@ class ModuleEnum extends AbstractEnum
                 $ability . KeyWordEnum::FREELANCER
             ),
             KeyWordEnum::BUSINESS_ACCELERATOR => array(
-                $ability . KeyWordEnum::BUSINESS_ACCELERATOR
+                $ability . KeyWordEnum::BA
             ),
             KeyWordEnum::CUSTOMER_MANAGEMENT => array(
                 $ability . KeyWordEnum::CUSTOMER
@@ -171,8 +169,10 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::SERVICE_MANAGEMENT => array(
                 KeyWordEnum::SERVICE
             ),
-            KeyWordEnum::PACKAGE_MANAGEMENT => array(
-                KeyWordEnum::PACKAGE,
+            KeyWordEnum::PLAN_MANAGEMENT => array(
+                KeyWordEnum::PLAN
+            ),
+            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
                 KeyWordEnum::SUBSCRIPTION,
                 KeyWordEnum::SUBSCRIPTION_LOG,
                 KeyWordEnum::PAYMENT
@@ -184,9 +184,9 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::OFFICE_TYPE,
                 KeyWordEnum::OFFICE
             ),
-            KeyWordEnum::PLAN_MANAGEMENT => array(
-                KeyWordEnum::PLAN
-            )
+            KeyWordEnum::CUSTOMER_MANAGEMENT => array(
+                 KeyWordEnum::CUSTOMER
+            ),
         );
     }
 

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Enum\KeyWordEnum;
 use App\Enum\TableEnum;
-use App\Models\PackageManagement\Module;
+use App\Models\SubscriptionManagement\Module;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

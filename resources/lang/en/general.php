@@ -1,9 +1,13 @@
 <?php
 return [
-    'accelerators'=>'Accelerators',
-    'new_accelerator'=>'New Accelerator',
-    'new_office_type'=>'New Office Type',
-    'office_types'=>'Office Types',
+    'subscription_management' => 'Subscriptions',
+
+    'customers' => 'Customers',
+    'new_customer' => 'New Customer',
+    'accelerators' => 'Accelerators',
+    'new_accelerator' => 'New Accelerator',
+    'new_office_type' => 'New Office Type',
+    'office_types' => 'Office Types',
     'floor_info' => 'Floor Info',
     'no_of_offices' => 'No Of Offices',
     'edit_office' => 'Edit Office',

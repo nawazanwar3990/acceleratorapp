@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Enum\KeyWordEnum;
-use App\Models\PackageManagement\Duration;
-use App\Models\PackageManagement\Module;
-use App\Models\PackageManagement\Package;
+use App\Models\SubscriptionManagement\Duration;
+use App\Models\SubscriptionManagement\Module;
+use App\Models\SubscriptionManagement\Package;
 use Illuminate\Database\Eloquent\Collection;
 use PhpParser\Lexer\TokenEmulator\KeywordEmulator;
 

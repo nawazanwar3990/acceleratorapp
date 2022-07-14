@@ -40,8 +40,8 @@ class BusinessAcceleratorNavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::LIST => route('dashboard.business-accelerators.index'),
-            self::CREATE => route('dashboard.business-accelerators.create'),
+            self::LIST => route('dashboard.ba.index'),
+            self::CREATE => route('dashboard.ba.create'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

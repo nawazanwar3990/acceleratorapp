@@ -3,10 +3,11 @@
 namespace App\Models\UserManagement;
 
 use App\Enum\RoleEnum;
+use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Enum\TableHeadings\UserManagement\AdminTableHeadingEnum;
 use App\Models\Building;
-use App\Models\PackageManagement\Subscription;
+use App\Models\SubscriptionManagement\Subscription;
 use App\Models\PlanManagement\Plan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -84,11 +85,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Subscription::class, 'subscribed_id', 'id');
     }
 
-    public function alreadySubscribed($id)
+    public function already_subscription($id,$type)
     {
-        return Subscription::where('subscribed_id',$id)->exists();
+        return Subscription::where('subscribed_id',$id)->where('subscription_type',$type)->exists();
     }
-
     public function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id');

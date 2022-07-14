@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\PackageManagement;
 
-use App\Models\PackageManagement\Duration;
+use App\Models\SubscriptionManagement\Duration;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 

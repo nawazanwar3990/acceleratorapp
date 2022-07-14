@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\BusinessAcceleratorManagement\BusinessAcceleratorController;
-use App\Http\Controllers\FreelancerManagement\FreelancerController;
-use App\Http\Controllers\InvestorManagement\InvestorController;
+use App\Http\Controllers\UserManagement\BAController;
 use App\Http\Controllers\UserManagement\CustomerController;
+use App\Http\Controllers\UserManagement\FreelancerController;
+use App\Http\Controllers\UserManagement\InvestorController;
 use App\Http\Controllers\UserManagement\PermissionController;
 use App\Http\Controllers\UserManagement\RoleController;
 use App\Http\Controllers\UserManagement\RolePermissionController;
@@ -25,8 +25,8 @@ Route::get('/sync-modules', [PermissionController::class, 'syncPermission'])
     ->middleware('has_package');
 
 Route::resource('/freelancers', FreelancerController::class, ['names' => 'freelancers'])->middleware('has_package');
-Route::resource('/business-accelerators', BusinessAcceleratorController::class, ['names' => 'business-accelerators'])->middleware('has_package');
+Route::resource('/ba', BAController::class, ['names' => 'ba'])->middleware('has_package');
 Route::resource('/investors', InvestorController::class, ['names' => 'investors'])->middleware('has_package');
 Route::resource('/customer', CustomerController::class, ['names' => 'customers'])->middleware('has_package');
 
-Route::post('/add-hr-ajax', [BusinessAcceleratorController::class, 'addHrAjax'])->name('add.hr-ajax')->middleware('has_package');
+Route::post('/add-hr-ajax', [BAController::class, 'addHrAjax'])->name('add.hr-ajax')->middleware('has_package');

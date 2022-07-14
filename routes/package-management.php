@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\PackageManagement\DurationController;
-use App\Http\Controllers\PackageManagement\ModuleController;
-use App\Http\Controllers\PackageManagement\PackageController;
-use App\Http\Controllers\PackageManagement\SubscriptionController;
+use App\Http\Controllers\SubscriptionManagement\DurationController;
+use App\Http\Controllers\SubscriptionManagement\ModuleController;
+use App\Http\Controllers\SubscriptionManagement\PackageController;
+use App\Http\Controllers\SubscriptionManagement\SubscriptionController;
 use App\Http\Controllers\PaymentManagement\PaymentController;
 use Illuminate\Support\Facades\Route;
 

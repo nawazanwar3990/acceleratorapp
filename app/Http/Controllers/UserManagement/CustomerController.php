@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\UserManagement;
 
-use App\Enum\ModuleEnum;
+use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserManagement\VendorRequest;
+use App\Http\Requests\UserManagement\CustomerRequest;
+use App\Http\Requests\UserManagement\UserRequest;
+use App\Models\UserManagement\Customer;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\Role;
+use App\Models\UserManagement\User;
 use App\Services\PersonService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -36,46 +39,45 @@ class CustomerController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', Hr::class);
-        $records = Hr::orderBy('first_name', 'ASC')
-            ->get();
+        $this->authorize(AbilityEnum::VIEW, Customer::class);
+        $records = User::whereHas('roles', function($q){
+            $q->where('slug', '=', RoleEnum::CUSTOMER);
+        })->get();
         $params = [
-            'pageTitle' => __('general.vendors'),
+            'pageTitle' => __('general.customers'),
             'records' => $records,
         ];
-
-        return view('dashboard.user-management.vendors.index', $params);
+        return view('dashboard.user-management.customers.index', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function create(VendorRequest $request): Factory|View|Application
+    public function create(UserRequest $request): Factory|View|Application
     {
-        $this->authorize('create', Hr::class);
+        $this->authorize(AbilityEnum::CREATE, Customer::class);
         $type = $request->get('type');
         $lastId = Hr::orderBy('id', 'DESC')->value('id');
         $params = [
-            'pageTitle' => __('general.new_vendor'),
+            'pageTitle' => __('general.new_customer'),
             'lastId' => (is_null($lastId) ? '1' : $lastId),
             'type' => $type
         ];
 
-        return view('dashboard.user-management.vendors.create', $params);
+        return view('dashboard.user-management.customers.create', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function store(VendorRequest $request)
+    public function store(UserRequest $request)
     {
-        $this->authorize('create', Hr::class);
+        $this->authorize(AbilityEnum::CREATE, Customer::class);
         $data = $request->all();
         if ($user = $this->personService->store($data)) {
-            $role = Role::whereSlug(RoleEnum::VENDOR)->value('id');
+            $role = Role::whereSlug(RoleEnum::CUSTOMER)->value('id');
             $user->roles()->sync([$role]);
-            ModuleEnum::add_permissions_to_vendor();
-            return redirect()->route('dashboard.business-accelerators.index')
+            return redirect()->route('dashboard.customers.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
@@ -83,11 +85,11 @@ class CustomerController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function destroy(VendorRequest $request, $id)
+    public function destroy(UserRequest $request, $id)
     {
         $this->authorize('delete', Hr::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.business-accelerators.index')
+            return redirect()->route('dashboard.customers.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

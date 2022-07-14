@@ -8,7 +8,7 @@ use App\Enum\KeyWordEnum;
 class MainNavEnum extends AbstractEnum
 {
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
-    public const PACKAGE_MANAGEMENT = KeyWordEnum::PACKAGE_MANAGEMENT;
+    public const SUBSCRIPTION_MANAGEMENT = KeyWordEnum::SUBSCRIPTION_MANAGEMENT;
     public const USER_MANAGEMENT = KeyWordEnum::USER_MANAGEMENT;
     public const BUSINESS_ACCELERATOR = KeyWordEnum::BUSINESS_ACCELERATOR;
     public const INVESTOR_MANAGEMENT = KeyWordEnum::INVESTOR_MANAGEMENT;
@@ -24,7 +24,7 @@ class MainNavEnum extends AbstractEnum
     {
         return [
             self::DASHBOARD,
-            self::PACKAGE_MANAGEMENT,
+            self::SUBSCRIPTION_MANAGEMENT,
             self::SERVICE_MANAGEMENT,
             self::BUSINESS_ACCELERATOR,
             self::CUSTOMER_MANAGEMENT,
@@ -42,7 +42,7 @@ class MainNavEnum extends AbstractEnum
     {
         $routes = [
             self::DASHBOARD => '<i class="bx bxs-dashboard"></i>',
-            self::PACKAGE_MANAGEMENT => '<i class="bx bx-info"></i>',
+            self::SUBSCRIPTION_MANAGEMENT => '<i class="bx bx-info"></i>',
             self::SERVICE_MANAGEMENT => '<i class="bx bx-info"></i>',
             self::BUSINESS_ACCELERATOR => '<i class="bx bx-chart-bar"></i>',
             self::CUSTOMER_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
@@ -65,7 +65,7 @@ class MainNavEnum extends AbstractEnum
     {
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general', self::DASHBOARD)),
-            self::PACKAGE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PACKAGE_MANAGEMENT)),
+            self::SUBSCRIPTION_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_MANAGEMENT)),
             self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
             self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general', self::BUSINESS_ACCELERATOR)),

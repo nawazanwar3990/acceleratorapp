@@ -4,10 +4,10 @@ namespace App\Providers;
 
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
-use App\Models\PackageManagement\Duration;
-use App\Models\PackageManagement\Module;
-use App\Models\PackageManagement\Package;
-use App\Models\PackageManagement\Subscription;
+use App\Models\SubscriptionManagement\Duration;
+use App\Models\SubscriptionManagement\Module;
+use App\Models\SubscriptionManagement\Package;
+use App\Models\SubscriptionManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
 use App\Models\PlanManagement\InstallmentTerm;
 use App\Models\PlanManagement\Plan;
@@ -15,7 +15,9 @@ use App\Models\SaleManagement\Installment;
 use App\Models\SaleManagement\Sale;
 use App\Models\ServiceManagement\Service;
 use App\Models\SystemConfiguration\Setting;
+use App\Models\UserManagement\BA;
 use App\Models\UserManagement\Country;
+use App\Models\UserManagement\Customer;
 use App\Models\UserManagement\District;
 use App\Models\UserManagement\Hr;
 use App\Models\UserManagement\HrDepartment;
@@ -45,7 +47,9 @@ use App\Policies\SaleManagement\SalePolicy;
 use App\Policies\ServiceManagement\ServicePolicy;
 use App\Policies\SystemConfiguration\SettingPolicy;
 use App\Policies\UserManagement\AdminPolicy;
+use App\Policies\UserManagement\BAPolicy;
 use App\Policies\UserManagement\CountryPolicy;
+use App\Policies\UserManagement\CustomerPolicy;
 use App\Policies\UserManagement\DepartmentPolicy;
 use App\Policies\UserManagement\DesignationPolicy;
 use App\Policies\UserManagement\DistrictPolicy;
@@ -94,7 +98,8 @@ class AuthServiceProvider extends ServiceProvider
         Office::class => OfficePolicy::class,
 
         Hr::class => AdminPolicy::class,
-        Hr::class => FreelancerPolicy::class,
+        Customer::class => CustomerPolicy::class,
+        BA::class => BAPolicy::class,
 
         Payment::class => PaymentPolicy::class,
 

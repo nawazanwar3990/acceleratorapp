@@ -2,6 +2,9 @@
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('email' ,__('general.email'),['class'=>'col-form-label']))   !!}
         {!!  Form::text('email',null,['id'=>'email','class'=>'form-control','required']) !!}
+        @error('email')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('first_name' ,__('general.first_name') ,['class'=>'col-form-label']))   !!}

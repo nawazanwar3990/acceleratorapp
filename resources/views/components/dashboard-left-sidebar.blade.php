@@ -23,8 +23,8 @@
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
                                 @switch($key)
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::PACKAGE_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.package-management')
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SUBSCRIPTION_MANAGEMENT)
+                                        @include('dashboard.components.left-nav-bar.subscription-management')
                                         @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
                                         @include('dashboard.components.left-nav-bar.user-management')

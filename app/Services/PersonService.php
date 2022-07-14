@@ -4,8 +4,8 @@ namespace App\Services;
 
 use App\Enum\MediaTypeEnum;
 use App\Models\Media;
-use App\Models\PackageManagement\Package;
-use App\Models\PackageManagement\Subscription;
+use App\Models\SubscriptionManagement\Package;
+use App\Models\SubscriptionManagement\Subscription;
 use App\Models\UserManagement\Country;
 use App\Models\UserManagement\District;
 use App\Models\UserManagement\Hr;
@@ -231,7 +231,7 @@ class PersonService
 
     private function makeItUser($model, $data): User
     {
-        $password = $data['password'] ?? "user1234";
+        $password = $data['password'] ?? "user123";
         $user = new User();
         $user->hr_id = $model->id;
         $user->first_name = $model->first_name;

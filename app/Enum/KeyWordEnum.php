@@ -72,7 +72,9 @@ class KeyWordEnum extends AbstractEnum
     public const CREATE = 'create';
 
     public const BASIC_SERVICE = 'basic_service';
-    public const ADDITIONAL_SERVICE ='additional_service' ;
+    public const ADDITIONAL_SERVICE = 'additional_service';
+    public const SUBSCRIPTION_MANAGEMENT = 'subscription_management';
+    public const BA = 'ba';
 
 
     static function getConstants()
