@@ -1,7 +1,7 @@
 <?php
 return [
     'new_office_type'=>'New Office Type',
-
+    'office_types'=>'Office Types',
     'floor_info' => 'Floor Info',
     'no_of_offices' => 'No Of Offices',
     'edit_office' => 'Edit Office',
