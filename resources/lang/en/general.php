@@ -1,6 +1,9 @@
 <?php
 return [
-    'edit_accelerator'=>'Edit Accelerator',
+    'package_subscriptions'=>'Package Subscriptions',
+    'plan_subscriptions' => 'Plan Subscriptions',
+    'total_offices' => 'Total Offices',
+    'edit_accelerator' => 'Edit Accelerator',
     'subscription_management' => 'Subscriptions',
     'subscription_type' => 'Subscription Type',
     'subscription_for' => "Subscription For",
