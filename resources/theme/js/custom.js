@@ -90,3 +90,25 @@ function removeClonedRow(cElement) {
         alert("At least one row is Required")
     }
 }
+
+function showError(errorMsg) {
+    $.toast({
+        heading: "Error",
+        text: errorMsg,
+        position: 'top-right',
+        icon: 'error',
+        hideAfter: 3000,
+        stack: 6
+    });
+}
+
+function showMessage(message) {
+    $.toast({
+        heading: "Success",
+        text: message,
+        position: 'top-right',
+        icon: 'success',
+        hideAfter: 3000,
+        stack: 6
+    });
+}

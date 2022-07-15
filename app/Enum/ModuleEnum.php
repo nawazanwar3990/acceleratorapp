@@ -7,7 +7,6 @@ namespace App\Enum;
 use App\Models\SubscriptionManagement\Module;
 use App\Models\UserManagement\Permission;
 use App\Models\UserManagement\Role;
-use App\Models\UserManagement\RolePermission;
 
 class ModuleEnum extends AbstractEnum
 {
@@ -49,6 +48,9 @@ class ModuleEnum extends AbstractEnum
             ),
             KeyWordEnum::PLAN_MANAGEMENT => array(
                 $ability . KeyWordEnum::PLAN
+            ),
+            KeyWordEnum::INVESTOR_MANAGEMENT => array(
+                $ability . KeyWordEnum::INVESTOR
             ),
             KeyWordEnum::CO_WORKING_SPACE => array(
                 $ability . KeyWordEnum::BUILDING,
@@ -112,6 +114,7 @@ class ModuleEnum extends AbstractEnum
             }
         }
         self::add_permissions_to_super_admin();
+        self::$permissions = array();
         self::add_admin_permissions();
         self::$permissions = array();
         self::add_customer_permissions();
@@ -149,16 +152,30 @@ class ModuleEnum extends AbstractEnum
             }
         }
         $role->permissions()->sync(self::$permissions);
+    }
 
+    private static function add_permissions_to_super_admin()
+    {
+        $permissions = self::super_admin_permissions();
+        $role = Role::where('slug', RoleEnum::SUPER_ADMIN)->first();
+        foreach ($permissions as $parent_key => $parent_value) {
+            if (is_array($parent_value)) {
+                self::get_view_permission_by_slug($parent_key);
+                foreach ($parent_value as $value) {
+                    self::get_permissions_by_slug($value);
+                }
+            } else {
+                self::get_permissions_by_slug($parent_value);
+            }
+        }
+        $role->permissions()->sync(self::$permissions);
     }
 
     public static function customer_permissions()
     {
         return array(
-            KeyWordEnum::CO_WORKING_SPACE => array(
-                KeyWordEnum::BUILDING,
-                KeyWordEnum::FLOOR,
-                KeyWordEnum::OFFICE
+            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
+                KeyWordEnum::SUBSCRIPTION
             ),
         );
     }
@@ -185,23 +202,44 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::OFFICE
             ),
             KeyWordEnum::CUSTOMER_MANAGEMENT => array(
-                 KeyWordEnum::CUSTOMER
+                KeyWordEnum::CUSTOMER
+            ),
+            KeyWordEnum::FREELANCER_MANAGEMENT => array(
+               KeyWordEnum::FREELANCER
+            ),
+            KeyWordEnum::INVESTOR_MANAGEMENT => array(
+                KeyWordEnum::INVESTOR
             ),
         );
     }
 
-    private static function add_permissions_to_super_admin()
+    public static function super_admin_permissions()
     {
-        foreach (Permission::all() as $permission) {
-
-            RolePermission::updateOrCreate([
-                'permission_id' => $permission->id,
-                'role_id' => 1
-            ], [
-                'permission_id' => $permission->id,
-                'role_id' => 1
-            ]);
-        }
+        return array(
+            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
+                KeyWordEnum::SUBSCRIPTION,
+                KeyWordEnum::SUBSCRIPTION_LOG,
+                KeyWordEnum::PAYMENT
+            ),
+            KeyWordEnum::BUSINESS_ACCELERATOR => array(
+                KeyWordEnum::BA
+            ),
+            KeyWordEnum::USER_MANAGEMENT => array(
+                KeyWordEnum::ROLE,
+                KeyWordEnum::PERMISSION,
+                KeyWordEnum::USER,
+                KeyWordEnum::SYNC_PERMISSION
+            ),
+            KeyWordEnum::CUSTOMER_MANAGEMENT => array(
+                KeyWordEnum::CUSTOMER
+            ),
+            KeyWordEnum::FREELANCER_MANAGEMENT => array(
+                KeyWordEnum::FREELANCER
+            ),
+            KeyWordEnum::INVESTOR_MANAGEMENT => array(
+                KeyWordEnum::INVESTOR
+            ),
+        );
     }
 
     private static function make_module($outer_key, $inner_key, $value)

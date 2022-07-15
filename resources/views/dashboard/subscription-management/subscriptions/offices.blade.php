@@ -29,17 +29,10 @@
                         @empty
                             <tr>
                                 <td colspan="9" class="text-center p-5">
-                                    @if($type==\App\Enum\SubscriptionTypeEnum::OFFICE)
-                                        <a href="{{ route('dashboard.offices.create') }}"
-                                           class="btn btn-info">
-                                            {{ trans('general.new_office') }} <i class="bx bx-plus-circle"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('dashboard.packages.create') }}"
-                                           class="btn btn-info">
-                                            {{ trans('general.new_package') }} <i class="bx bx-plus-circle"></i>
-                                        </a>
-                                    @endif
+                                    <a href="{{ route('dashboard.offices.create') }}"
+                                       class="btn btn-info">
+                                        {{ trans('general.new_office') }} <i class="bx bx-plus-circle"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforelse

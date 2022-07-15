@@ -38,7 +38,7 @@ class SubscriptionController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Subscription::class);
-        $records = Subscription::where('created_by',Auth::id());
+        $records = Subscription::where('created_by', Auth::id());
         $type = $request->query('type');
         if ($type) {
             $records = $records->where('subscription_type', $type);
@@ -55,18 +55,15 @@ class SubscriptionController extends Controller
     {
         $user_id = $request->get('id');
         $type = $request->get('type');
-        $user = User::find($user_id);
         if ($type == SubscriptionTypeEnum::OFFICE) {
             $data = Office::where('created_by', Auth::id())->get();
+            $params['data'] = $data;
+            return view('dashboard.subscription-management.subscriptions.offices', compact(''));
         } else {
-            $data = Package::where('created_by', Auth::id())->get();
+            $records = Package::where('created_by', Auth::id())->get();
+            $pageTitle = 'Apply Subscription For Packages';
+            return view('dashboard.subscription-management.subscriptions.packages', compact('records', 'type','pageTitle'));
         }
-        $params = [
-            'pageTitle' => __('general.apply_subscription'),
-            'type' => $type,
-            'data' => $data
-        ];
-        return view('dashboard.subscription-management.subscriptions.create', $params);
     }
 
     public function store(Request $request): JsonResponse
