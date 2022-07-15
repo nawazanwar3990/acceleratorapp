@@ -36,7 +36,7 @@
     <div class="col-3 mb-3">
         {!!  Html::decode(Form::label('no_of_floors' ,__('general.no_of_floors').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::select('no_of_floors',\App\Services\BuildingService::no_of_floors(),null,['id'=>'no_of_floors',
-            'class'=>'select2 form-control', 'placeholder'=>__('general.select'),'style'=>'width:100%;', 'required'])
+            'class'=>'select2 form-control', 'placeholder'=>__('general.select'),'style'=>'width:100%;',])
         !!}
     </div>
 </div>
