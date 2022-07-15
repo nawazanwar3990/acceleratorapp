@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlanManagement\PlanRequest;
-use App\Models\PlanManagement\Plan;
+use App\Models\Plans\Plan;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

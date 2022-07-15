@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\UserManagement;
 
-use App\Models\UserManagement\HrCast;
+use App\Models\Users\HrCast;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

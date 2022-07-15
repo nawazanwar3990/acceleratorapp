@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\PlanManagement;
-use App\Models\PlanManagement\InstallmentTerm;
+use App\Models\Plans\InstallmentTerm;
 use Illuminate\Foundation\Http\FormRequest;
 
 class InstallmentTermRequest extends FormRequest

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Enum\ServiceTypeEnum;
 use App\Enum\TableEnum;
-use App\Models\ServiceManagement\Service;
+use App\Models\Services\Service;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

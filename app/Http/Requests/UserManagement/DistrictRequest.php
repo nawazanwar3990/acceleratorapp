@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\UserManagement;
 
-use App\Models\UserManagement\District;
+use App\Models\Users\District;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

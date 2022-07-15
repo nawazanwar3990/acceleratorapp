@@ -2,6 +2,9 @@
     <tr>
         <td>{{ $loop->iteration }}</td>
         <td>
+            {{ \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy($record->subscription_type) }}
+        </td>
+        <td>
             @isset($record->subscribed)
                 {{ $record->subscribed->getFullName() }}
             @else
@@ -9,11 +12,8 @@
             @endisset
         </td>
         <td>
-            {{ \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy($record->subscription_type) }}
-        </td>
-        <td>
             @if($record->subscription_type==\App\Enum\SubscriptionTypeEnum::PLAN)
-                {{ $record->office->name??null}}
+                {{ $record->plan->name??null}}
             @else
                 {{ $record->package->name??null}}
             @endif
@@ -34,11 +34,11 @@
                     {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
                 </a>
             @endif
-            <a class="btn btn-xs btn-info mx-1" href="{{ route('dashboard.payments.index',['type'=>$type]) }}">
+            <a class="btn btn-xs btn-info mx-1" href="{{ route('dashboard.payments.index') }}">
                 {{ trans('general.payments') }}
             </a>
             <a class="btn btn-xs btn-info mx-1"
-               href="{{ route('dashboard.subscription-logs.index',['type'=>$type]) }}">
+               href="{{ route('dashboard.subscription-logs.index') }}">
                 {{ trans('general.logs') }}
             </a>
         </td>

@@ -6,7 +6,7 @@ use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\PackageRequest;
 use App\Http\Requests\WorkingSpace\FloorRequest;
-use App\Models\SubscriptionManagement\Package;
+use App\Models\Subscriptions\Package;
 use App\Models\WorkingSpace\Office;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;

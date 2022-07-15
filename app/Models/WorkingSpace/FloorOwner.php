@@ -3,8 +3,8 @@
 namespace App\Models\WorkingSpace;
 
 use App\Enum\TableEnum;
-use App\Models\UserManagement\Hr;
-use App\Models\UserManagement\User;
+use App\Models\Users\Hr;
+use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -9,10 +9,10 @@ class PaymentTableHeadingEnum extends AbstractEnum
 {
     public const SUBSCRIBED = 'subscribed';
     public const SUBSCRIPTION = 'subscription';
-    public const PACKAGE = 'package';
+    public const SUBSCRIPTION_TYPE = 'subscription_type';
     public const PAYMENT_TYPE = 'payment_type';
     public const TRANSACTION = 'transaction';
-
+    public const PRICE = 'price';
     public static function getValues(): array
     {
         return [];
@@ -20,9 +20,9 @@ class PaymentTableHeadingEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
+            self::SUBSCRIPTION_TYPE => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_TYPE)),
             self::SUBSCRIBED => __(sprintf('%s.%s', 'general', self::SUBSCRIBED)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION)),
-            self::PACKAGE => __(sprintf('%s.%s', 'general', self::PACKAGE)),
             self::PAYMENT_TYPE => __(sprintf('%s.%s', 'general', self::PAYMENT_TYPE)),
             self::TRANSACTION => __(sprintf('%s.%s', 'general', self::TRANSACTION)),
         ];

@@ -4,7 +4,7 @@ namespace App\Http\Requests\PlanManagement;
 
 use App\Enum\PlanForEnum;
 use App\Enum\ServiceTypeEnum;
-use App\Models\PlanManagement\Plan;
+use App\Models\Plans\Plan;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

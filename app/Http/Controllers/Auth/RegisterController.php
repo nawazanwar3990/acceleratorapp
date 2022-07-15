@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
-use App\Models\UserManagement\Role;
+use App\Models\Users\Role;
 use App\Providers\RouteServiceProvider;
 use App\Services\PersonService;
 use Illuminate\Auth\Events\Registered;

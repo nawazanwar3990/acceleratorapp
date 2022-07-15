@@ -47,7 +47,7 @@
                     </td>
                 </tr>
                 @foreach($moduleSlug as $mSlug)
-                    @php  $module = \App\Models\SubscriptionManagement\Module::where('name',$mSlug)->first(); @endphp
+                    @php  $module = \App\Models\Subscriptions\Module::where('name',$mSlug)->first(); @endphp
                     <tr>
                         <td>
                             {!!  Form::hidden('module[id][]',$module->id) !!}

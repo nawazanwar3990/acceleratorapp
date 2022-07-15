@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\RoleRequest;
-use App\Models\UserManagement\Role;
+use App\Models\Users\Role;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

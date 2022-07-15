@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use App\Enum\RoleEnum;
-use App\Models\SubscriptionManagement\Package;
-use App\Models\SubscriptionManagement\Subscription;
+use App\Models\Subscriptions\Package;
+use App\Models\Subscriptions\Subscription;
 use App\Providers\RouteServiceProvider;
 use App\Services\GeneralService;
 use Closure;

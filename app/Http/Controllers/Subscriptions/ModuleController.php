@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Subscriptions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\ModuleRequest;
-use App\Models\SubscriptionManagement\Module;
+use App\Models\Subscriptions\Module;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

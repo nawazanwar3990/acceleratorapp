@@ -6,10 +6,10 @@ use App\Enum\PaymentTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\DurationRequest;
-use App\Models\PaymentManagement\Payment;
-use App\Models\SubscriptionManagement\Duration;
-use App\Models\SubscriptionManagement\Package;
-use App\Models\SubscriptionManagement\Subscription;
+use App\Models\Subscriptions\Duration;
+use App\Models\Subscriptions\Package;
+use App\Models\Subscriptions\Payment;
+use App\Models\Subscriptions\Subscription;
 use App\Services\GeneralService;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -18,6 +18,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function __;
 use function redirect;
@@ -38,7 +39,9 @@ class PaymentController extends Controller
     {
         $type = $request->query('type');
         $this->authorize('view', Payment::class);
-        $records = Payment::with('subscribed','subscription','package')->paginate(20);
+        $records = Payment::with('subscribed','subscription')
+            ->where('subscribed_id',Auth::id())
+            ->paginate(20);
         $params = [
             'pageTitle' => __('general.payments'),
             'records' => $records,

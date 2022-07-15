@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Enum\NotificationTypeEnum;
-use App\Models\UserManagement\User;
+use App\Models\Users\User;
 use App\Models\Notification;
 use App\Notifications\PendingInstallmentNotification;
 use Illuminate\Console\Command;

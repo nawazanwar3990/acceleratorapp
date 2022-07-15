@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
-use App\Models\UserManagement\Role;
+use App\Models\Users\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

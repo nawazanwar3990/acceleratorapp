@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Enum\MediaTypeEnum;
-use App\Models\UserManagement\User;
+use App\Models\Users\User;
 use App\Models\WorkingSpace\Building;
 use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\Floor;

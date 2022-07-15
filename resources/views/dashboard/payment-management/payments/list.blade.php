@@ -2,6 +2,9 @@
     <tr>
         <td>{{ $loop->iteration }}</td>
         <td>
+            {{ \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy($record->subscription->subscription_type) }}
+        </td>
+        <td>
             @isset($record->subscribed)
                 {{ $record->subscribed->getFullName() }}
             @else
@@ -9,26 +12,26 @@
             @endisset
         </td>
         <td>
-            @isset($record->subscription)
-                {{ $record->subscription->price }}
+            @if($record->subscription->subscription_type==\App\Enum\SubscriptionTypeEnum::PLAN)
+                @isset($record->subscription)
+                    {{ $record->subscription->plan->name??null }}
+                @else
+                    --
+                @endisset
             @else
-                --
-            @endisset
-        </td>
-        <td>
-            @isset($record->package)
-                {{ $record->package->name }}
-            @else
-                --
-            @endisset
+                @isset($record->subscription)
+                    {{ $record->subscription->package->name??null }}
+                @else
+                    --
+                @endisset
+            @endif
         </td>
         <td>{{ $record->payment_type }}</td>
-        <td>{{ $record->transaction_id }}</td>
+        <td>
+            {{ $record->transaction_id }}
+        </td>
         <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-                'edit' => route('dashboard.payments.edit', $record->id),
-                'delete' => route('dashboard.payments.destroy', $record->id),
-            ])
+
         </td>
     </tr>
 @empty

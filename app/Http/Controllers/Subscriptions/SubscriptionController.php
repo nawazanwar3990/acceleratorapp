@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Subscriptions;
 
 use App\Enum\DurationEnum;
-use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Models\PlanManagement\Plan;
-use App\Models\SubscriptionManagement\Package;
-use App\Models\SubscriptionManagement\Subscription;
-use App\Models\PaymentManagement\Payment;
-use App\Models\UserManagement\User;
+use App\Models\Plans\Plan;
+use App\Models\Subscriptions\Package;
+use App\Models\Subscriptions\Payment;
+use App\Models\Subscriptions\Subscription;
 use App\Models\WorkingSpace\Office;
 use App\Services\GeneralService;
 use Carbon\Carbon;
@@ -24,7 +22,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function __;
-use function redirect;
 use function view;
 
 class SubscriptionController extends Controller

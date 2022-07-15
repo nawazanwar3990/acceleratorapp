@@ -4,8 +4,8 @@ namespace App\Http\Requests\UserManagement;
 
 use App\Enum\MethodEnum;
 use App\Enum\TableEnum;
-use App\Models\UserManagement\Hr;
-use App\Models\UserManagement\User;
+use App\Models\Users\Hr;
+use App\Models\Users\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

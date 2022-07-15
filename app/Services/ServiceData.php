@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Enum\ServiceTypeEnum;
-use App\Models\ServiceManagement\Service;
+use App\Models\Services\Service;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceData

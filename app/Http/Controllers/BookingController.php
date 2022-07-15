@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\KeyWordEnum;
-use App\Models\PlanManagement\Plan;
+use App\Models\Plans\Plan;
 use App\Services\BuildingService;
 use App\Services\OfficeService;
 use App\Services\FloorService;

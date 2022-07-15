@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Policies;
 
 use App\Enum\AbilityEnum;
-use App\Models\UserManagement\User;
+use App\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 abstract class AbstractDefaultPolicy

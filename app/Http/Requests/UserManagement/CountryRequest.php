@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\UserManagement;
-use App\Models\UserManagement\Country;
+use App\Models\Users\Country;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\UserManagement;
 
-use App\Models\UserManagement\HrDepartment;
+use App\Models\Users\HrDepartment;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

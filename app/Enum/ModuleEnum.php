@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-use App\Models\SubscriptionManagement\Module;
-use App\Models\UserManagement\Permission;
-use App\Models\UserManagement\Role;
+use App\Models\Subscriptions\Module;
+use App\Models\Users\Permission;
+use App\Models\Users\Role;
 
 class ModuleEnum extends AbstractEnum
 {

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\PackageManagement;
-use App\Models\SubscriptionManagement\Package;
+use App\Models\Subscriptions\Package;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

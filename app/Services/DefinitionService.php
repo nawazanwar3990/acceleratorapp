@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
-use App\Models\UserManagement\Role;
+use App\Models\Users\Role;
 use App\Models\Devices\DeviceClass;
 use App\Models\Devices\DeviceLocation;
 use App\Models\Devices\DeviceMake;

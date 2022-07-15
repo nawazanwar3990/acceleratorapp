@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Services;
 use App\Enum\AbilityEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceManagement\ServiceRequest;
-use App\Models\ServiceManagement\Service;
+use App\Models\Services\Service;
 use App\Services\ServiceData;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
