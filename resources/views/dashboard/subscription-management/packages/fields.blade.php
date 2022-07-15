@@ -17,11 +17,11 @@
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('price' ,__('general.price').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::text('price',null,['id'=>'price','class'=>'form-control ']) !!}
+        {!!  Form::number('price',null,['id'=>'price','class'=>'form-control ']) !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('reminder_days' ,__('general.reminder_days').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::text('reminder_days',null,['id'=>'reminder_days','class'=>'form-control ']) !!}
+        {!!  Form::number('reminder_days',null,['id'=>'reminder_days','class'=>'form-control ']) !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('trail_expire_date' ,__('general.trail_expire_date') ,['class'=>'form-label'])) !!}
