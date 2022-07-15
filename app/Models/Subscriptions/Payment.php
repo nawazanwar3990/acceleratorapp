@@ -18,7 +18,8 @@ class Payment extends Model
         'subscription_id',
         'package_id',
         'payment_type',
-        'transaction_id'
+        'transaction_id',
+        'price',
     ];
 
     public function subscription(): BelongsTo

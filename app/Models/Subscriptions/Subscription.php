@@ -24,7 +24,9 @@ class Subscription extends Model
         'package_id',
         'renewal_date',
         'expire_date',
-        'price'
+        'price',
+        'model_id',
+        'model_type'
     ];
 
     public function subscribed(): BelongsTo

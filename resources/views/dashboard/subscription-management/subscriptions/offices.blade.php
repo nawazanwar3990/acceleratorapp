@@ -66,7 +66,7 @@
                                 <td class="text-center">
                                     <div class="my-3 text-center">
                                         <a class="btn btn-info"
-                                           onclick="apply_subscription('{{ $record->plans}}');">{{ trans('general.apply_subscription') }}</a>
+                                           onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}');">{{ trans('general.apply_subscription') }}</a>
                                     </div>
                                 </td>
                             </tr>
@@ -86,7 +86,7 @@
 @endsection
 @section('innerScript')
     <script>
-        function apply_subscription(object) {
+        function apply_subscription(object,model_id) {
             object = JSON.parse(object);
             let html = "<table class='table table-bordered'><thead><tr><th>{{__('general.name')}}</th><th>{{__('general.price')}}</th><th>{{__('general.basic_service')}}</th><th>{{__('general.additional_service')}}</th><th>{{__('general.action')}}</th></tr></thead><tbody>";
             object.forEach((value, index) => {
@@ -200,7 +200,8 @@
                                 'transaction_id': transaction_id,
                                 'subscription_id': subscription_id,
                                 'subscription_type': '{{ $type }}',
-                                'subscribed_id': {{ request()->query('id') }}
+                                'subscribed_id': {{ request()->query('id') }},
+                                'model_id': model_id,
                             }
                             $.ajax({
                                 url: "{{ route('dashboard.subscriptions.store') }}",

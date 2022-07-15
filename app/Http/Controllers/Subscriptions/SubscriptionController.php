@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Subscriptions;
 
 use App\Enum\DurationEnum;
+use App\Enum\KeyWordEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
@@ -110,6 +111,8 @@ class SubscriptionController extends Controller
             $price = $plan->price;
             $limit = $plan->duration;
             $subscription->price = $price;
+            $subscription->model_id = $request->input('model_id');
+            $subscription->model_type=KeyWordEnum::FLOOR;
             $subscription->is_payed = true;
             $subscription->created_by = auth()->id();
             $subscription->renewal_date = Carbon::now();
@@ -127,7 +130,8 @@ class SubscriptionController extends Controller
                 'subscribed_id' => $subscribed_id,
                 'subscription_id' => $subscription->id,
                 'payment_type' => $payment_type,
-                'transaction_id' => $transaction_id
+                'transaction_id' => $transaction_id,
+                'price' => $price
             ]);
         }
         return response()->json([
