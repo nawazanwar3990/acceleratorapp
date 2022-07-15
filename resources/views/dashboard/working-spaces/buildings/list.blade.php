@@ -16,11 +16,6 @@
                 </li>
                 <li class="list-group-item py-0 border-0  bg-transparent px-0">
                     <small>
-                        <strong>{{ __('general.height') }}</strong>: {{ $record->height }}
-                    </small>
-                </li>
-                <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                    <small>
                         <strong>{{ __('general.area') }}</strong>: {{ $record->area }}
                     </small>
                 </li>
