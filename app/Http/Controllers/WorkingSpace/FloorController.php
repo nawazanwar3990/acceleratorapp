@@ -53,7 +53,7 @@ class FloorController extends Controller
     public function create(): View|Factory|RedirectResponse|Application
     {
         $this->authorize('create', Floor::class);
-        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::FLOOR);
+        $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::FLOOR);
         $existing_limit = FLOOR::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
             return redirect()
@@ -72,7 +72,7 @@ class FloorController extends Controller
     public function store(FloorRequest $request)
     {
         $this->authorize('create', Floor::class);
-        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::FLOOR);
+        $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::FLOOR);
         $existing_limit = FLOOR::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
             return redirect()

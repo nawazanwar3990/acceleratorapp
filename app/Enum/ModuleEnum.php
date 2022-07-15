@@ -217,6 +217,7 @@ class ModuleEnum extends AbstractEnum
     {
         return array(
             KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
+                KeyWordEnum::PACKAGE,
                 KeyWordEnum::SUBSCRIPTION,
                 KeyWordEnum::SUBSCRIPTION_LOG,
                 KeyWordEnum::PAYMENT

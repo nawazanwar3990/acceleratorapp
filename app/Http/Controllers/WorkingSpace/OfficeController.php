@@ -54,16 +54,15 @@ class OfficeController extends Controller
     public function create(): View|Factory|RedirectResponse|Application
     {
         $this->authorize('create', Office::class);
-        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::OFFICE);
+        $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
         $existing_limit = Office::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
             return redirect()
                 ->route('dashboard.offices.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
         }
-        $params = [
-            'pageTitle' => __('general.new_office'),
-        ];
-        return view('dashboard.working-spaces.offices.create', $params);
+        $remainingLimit = intval($package_limit) - intval($existing_limit);
+        $pageTitle = __('general.new_office');
+        return view('dashboard.working-spaces.offices.create', compact('remainingLimit', 'pageTitle'));
     }
 
     /**
@@ -72,7 +71,7 @@ class OfficeController extends Controller
     public function store(OfficeRequest $request)
     {
         $this->authorize('create', Office::class);
-        $package_limit = GeneralService::hasSubscriptionLimit(KeyWordEnum::OFFICE);
+        $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
         $existing_limit = Office::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
             return redirect()
@@ -91,7 +90,7 @@ class OfficeController extends Controller
     {
         $this->authorize('update', Office::class);
         $model = Office::findorFail($id);
-        $floors = Floor::where('building_id', $model->building_id)->pluck('name','id');
+        $floors = Floor::where('building_id', $model->building_id)->pluck('name', 'id');
         $params = [
             'pageTitle' => __('general.edit_office'),
             'model' => $model,

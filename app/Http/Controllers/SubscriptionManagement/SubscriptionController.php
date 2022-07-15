@@ -53,16 +53,26 @@ class SubscriptionController extends Controller
 
     public function create(Request $request): Factory|View|Application
     {
-        $user_id = $request->get('id');
         $type = $request->get('type');
+        $id = $request->get('id');
         if ($type == SubscriptionTypeEnum::OFFICE) {
-            $data = Office::where('created_by', Auth::id())->get();
-            $params['data'] = $data;
-            return view('dashboard.subscription-management.subscriptions.offices', compact(''));
+            $records = Office::where('created_by', Auth::id())->get();
+            $pageTitle = 'Apply Subscription For Office';
+            return view('dashboard.subscription-management.subscriptions.offices', compact(
+                'records',
+                'type',
+                'pageTitle',
+                'id'
+            ));
         } else {
             $records = Package::where('created_by', Auth::id())->get();
             $pageTitle = 'Apply Subscription For Packages';
-            return view('dashboard.subscription-management.subscriptions.packages', compact('records', 'type','pageTitle'));
+            return view('dashboard.subscription-management.subscriptions.packages', compact(
+                'records',
+                'type',
+                'pageTitle',
+                'id'
+            ));
         }
     }
 

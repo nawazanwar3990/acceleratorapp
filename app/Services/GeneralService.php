@@ -1002,13 +1002,13 @@ class GeneralService
         }
     }
 
-    public static function hasSubscriptionLimit(string $type)
+    public static function hasPackageSubscriptionLimit(string $type)
     {
         $module_id = Module::where('name', $type)->value('id');
         $subscriptionQuery = Subscription::where('subscribed_id', Auth::id());
         if ($subscriptionQuery->exists()) {
             $subscription = $subscriptionQuery->first();
-            $package_id = $subscription->package_id;
+            $package_id = $subscription->subscription_id;
             return DB::table(TableEnum::PACKAGE_MODULE)
                 ->where('package_id', $package_id)
                 ->where('module_id', $module_id)
