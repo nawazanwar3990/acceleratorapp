@@ -3,7 +3,6 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ \App\Enum\PackageTypeEnum::getTranslationKeyBy($record->type) }}</td>
         <td>{{ $record->name }}</td>
-        <td>{{ $record->slug }}</td>
         <td>
             @isset($record->duration_type)
                 {{ $record->duration_type->name }}
