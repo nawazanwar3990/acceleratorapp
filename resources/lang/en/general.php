@@ -1,5 +1,6 @@
 <?php
 return [
+    'edit_accelerator'=>'Edit Accelerator',
     'subscription_management' => 'Subscriptions',
     'subscription_type' => 'Subscription Type',
     'subscription_for' => "Subscription For",

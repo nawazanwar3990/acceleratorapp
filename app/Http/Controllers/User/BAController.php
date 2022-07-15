@@ -85,6 +85,26 @@ class BAController extends Controller
     /**
      * @throws AuthorizationException
      */
+    public function edit($id): Factory|View|Application
+    {
+        $this->authorize('update', BA::class);
+        $model = User::findorFail($id);
+        $params = [
+            'pageTitle' => __('general.edit_accelerator'),
+            'model' => $model,
+        ];
+
+        return view('dashboard.user-management.ba.edit', $params);
+    }
+
+    public function update(UserRequest $request, $id)
+    {
+        echo "under process";
+    }
+
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(UserRequest $request, $id)
     {
         $this->authorize(AbilityEnum::DELETE, BA::class);
