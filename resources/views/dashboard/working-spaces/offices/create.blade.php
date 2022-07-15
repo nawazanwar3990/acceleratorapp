@@ -3,11 +3,11 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-12">
+        {{--<div class="col-12">
             <p>
                 <strong class="text-info">Remaining Package Limit:</strong>  {{ $remainingLimit }} offices
             </p>
-        </div>
+        </div>--}}
         <div class="col-12">
             <div class="card card-shadow pt-0">
                 @include('dashboard.components.general.form-list-header')

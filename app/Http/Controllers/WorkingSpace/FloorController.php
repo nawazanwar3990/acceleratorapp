@@ -53,12 +53,12 @@ class FloorController extends Controller
     public function create(): View|Factory|RedirectResponse|Application
     {
         $this->authorize('create', Floor::class);
-        $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::FLOOR);
+       /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::FLOOR);
         $existing_limit = FLOOR::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
             return redirect()
                 ->route('dashboard.floors.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
-        }
+        }*/
         $params = [
             'pageTitle' => __('general.new_floor'),
         ];
@@ -71,13 +71,13 @@ class FloorController extends Controller
      */
     public function store(FloorRequest $request)
     {
-        $this->authorize('create', Floor::class);
+      /*  $this->authorize('create', Floor::class);
         $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::FLOOR);
         $existing_limit = FLOOR::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
             return redirect()
                 ->route('dashboard.floors.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
-        }
+        }*/
         if ($request->createData()) {
             return redirect()->route('dashboard.floors.index')
                 ->with('success', __('general.record_created_successfully'));
