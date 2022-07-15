@@ -34,13 +34,13 @@
                     {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
                 </a>
             @endif
-            <a class="btn btn-xs btn-info mx-1" href="{{ route('dashboard.payments.index') }}">
+            {{--<a class="btn btn-xs btn-info mx-1" href="{{ route('dashboard.payments.index') }}">
                 {{ trans('general.payments') }}
             </a>
             <a class="btn btn-xs btn-info mx-1"
                href="{{ route('dashboard.subscription-logs.index') }}">
                 {{ trans('general.logs') }}
-            </a>
+            </a>--}}
         </td>
     </tr>
 @empty
