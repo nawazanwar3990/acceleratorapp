@@ -7,6 +7,7 @@ use App\Enum\ServiceTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\Services\Service;
+use App\Models\Subscriptions\Subscription;
 use App\Models\Users\Hr;
 use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -65,7 +66,6 @@ class Floor extends Model
     {
         return $this->belongsTo(Building::class, 'building_id');
     }
-
     public function images(): HasMany
     {
         return $this->hasMany(Media::class, 'record_id')

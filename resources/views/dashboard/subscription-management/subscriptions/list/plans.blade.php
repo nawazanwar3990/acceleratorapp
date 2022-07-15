@@ -29,7 +29,7 @@
                                     @endisset
                                 </td>
                                 <td>
-                                    {{ $subscription->plan->name??null}}
+                                    <strong class="text-info">{{ $subscription->plan->name??null}}</strong> for <strong class="text-info">{{ $subscription->office->name??null }}</strong>
                                 </td>
                                 <td>
                                     {{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}
@@ -48,7 +48,12 @@
                                     @endif
                                 </td>
                                 <td class="text-center d-flex">
-
+                                    {{-- @if(\App\Services\GeneralService::isExpireSubscription(\Carbon\Carbon::now(),$record->expire_date))
+                                         <a class="btn btn-xs btn-warning mx-1"
+                                            onclick="renew_package('{{ $record->id }}','{{ $record->subscription_id }}','{{ $record->subscribed_id }}')">
+                                             {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
+                                         </a>
+                                     @endif--}}
                                 </td>
                             </tr>
                         @empty

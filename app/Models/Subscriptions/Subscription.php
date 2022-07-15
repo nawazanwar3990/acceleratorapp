@@ -21,7 +21,6 @@ class Subscription extends Model
         'subscribed_id',
         'subscription_id',
         'subscription_type',
-        'package_id',
         'renewal_date',
         'expire_date',
         'price',
@@ -37,6 +36,10 @@ class Subscription extends Model
     public function package(): BelongsTo
     {
         return $this->belongsTo(Package::class, 'subscription_id');
+    }
+    public function office(): BelongsTo
+    {
+        return $this->belongsTo(Office::class, 'model_id');
     }
     public function plan(): BelongsTo
     {

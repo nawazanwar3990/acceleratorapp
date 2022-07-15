@@ -64,10 +64,25 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    <div class="my-3 text-center">
-                                        <a class="btn btn-info"
-                                           onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}');">{{ trans('general.apply_subscription') }}</a>
-                                    </div>
+                                    @php
+                                        $subscription = \App\Models\Subscriptions\Subscription::where('model_id',$record->id);
+                                    @endphp
+                                    @if($subscription->exists())
+                                        <div class="my-3 text-center">
+                                            <a href="{{ route('dashboard.subscriptions.index',['id'=>$subscription->value('model_id'),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
+                                               class="btn btn-danger">
+                                                {{ trans('general.view_subscription') }}
+                                            </a>
+                                        </div>
+                                    @else
+                                        <div class="my-3 text-center">
+                                            <a class="btn btn-info"
+                                               onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}');">
+                                                {{ trans('general.apply_subscription') }} <i
+                                                    class="bx bx-plus-circle"></i>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
@@ -86,7 +101,7 @@
 @endsection
 @section('innerScript')
     <script>
-        function apply_subscription(object,model_id) {
+        function apply_subscription(object, model_id) {
             object = JSON.parse(object);
             let html = "<table class='table table-bordered'><thead><tr><th>{{__('general.name')}}</th><th>{{__('general.price')}}</th><th>{{__('general.basic_service')}}</th><th>{{__('general.additional_service')}}</th><th>{{__('general.action')}}</th></tr></thead><tbody>";
             object.forEach((value, index) => {

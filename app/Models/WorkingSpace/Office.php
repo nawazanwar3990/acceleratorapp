@@ -5,6 +5,7 @@ use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
 use App\Models\Plans\Plan;
+use App\Models\Subscriptions\Subscription;
 use App\Models\Users\Hr;
 use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,9 +37,6 @@ class Office extends Model
         'created_by',
         'updated_by',
     ];
-
-
-
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
