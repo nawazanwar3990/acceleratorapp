@@ -66,14 +66,14 @@ class MainNavEnum extends AbstractEnum
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general', self::DASHBOARD)),
             self::SUBSCRIPTION_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_MANAGEMENT)),
-            self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
+            self::PLAN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PLAN_MANAGEMENT)),
+            self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
+            self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general', self::BUSINESS_ACCELERATOR)),
             self::CUSTOMER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::CUSTOMER_MANAGEMENT)),
             self::FREELANCER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::FREELANCER_MANAGEMENT)),
             self::INVESTOR_MANAGEMENT => __(sprintf('%s.%s', 'general', self::INVESTOR_MANAGEMENT)),
-            self::PLAN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PLAN_MANAGEMENT)),
-            self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
             self::SALE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SALE_MANAGEMENT)),
             self::SYSTEM_CONFIGURATION => __(sprintf('%s.%s', 'general', self::SYSTEM_CONFIGURATION)),
         ];
