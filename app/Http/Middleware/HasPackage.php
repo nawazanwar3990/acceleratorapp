@@ -25,7 +25,7 @@ class HasPackage
                     $subscriptionQuery = Subscription::where('subscribed_id', $userId);
                     if ($subscriptionQuery->exists()) {
                         $subscription = $subscriptionQuery->first();
-                        if (GeneralService::is_expire_package(\Carbon\Carbon::now(), $subscription->expire_date)) {
+                        if (GeneralService::isExpireSubscription(\Carbon\Carbon::now(), $subscription->expire_date)) {
                             return redirect()->route('package.expire');
                         }
                     }

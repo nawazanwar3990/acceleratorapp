@@ -993,7 +993,7 @@ class GeneralService
         return $data;
     }
 
-    public static function is_expire_package($date1, $date2): bool
+    public static function isExpireSubscription($date1, $date2): bool
     {
         if ($date1->gt($date2)) {
             return true;

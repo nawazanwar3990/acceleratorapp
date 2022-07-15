@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SubscriptionManagement\PackageController;
+use App\Http\Controllers\Subscriptions\PackageController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\UserManagement\FreelancerController;
-use App\Http\Controllers\UserManagement\InvestorController;
+use App\Http\Controllers\User\FreelancerController;
+use App\Http\Controllers\User\InvestorController;
 use App\Http\Controllers\WorkingSpace\BuildingController;
 use App\Http\Controllers\WorkingSpace\FloorController;
 use App\Http\Controllers\WorkingSpace\OfficeController;
