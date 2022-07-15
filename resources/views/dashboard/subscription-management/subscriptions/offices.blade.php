@@ -55,7 +55,8 @@
                                                     <i class="bx bx-check text-success"></i>
                                                     <small>
                                                         <strong class="text-infogit ">{{ $plan->name }}</strong>
-                                                        ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }})
+                                                        ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                                        )
                                                     </small>
                                                 </li>
                                             @endforeach
@@ -64,7 +65,8 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="my-3 text-center">
-                                        <a class="btn btn-info" onclick="apply_subscription('{{ $record->plans }}');">{{ trans('general.apply_subscription') }}</a>
+                                        <a class="btn btn-info"
+                                           onclick="apply_subscription('{{ $record->plans}}');">{{ trans('general.apply_subscription') }}</a>
                                     </div>
                                 </td>
                             </tr>
@@ -85,10 +87,40 @@
 @section('innerScript')
     <script>
 
-        function apply_subscription() {
+        function apply_subscription(object) {
+            object = JSON.parse(object);
+            let html = "<table class='table table-bordered'><thead><tr><th>{{__('general.name')}}</th><th>{{__('general.price')}}</th><th>{{__('general.basic_service')}}</th><th>{{__('general.additional_service')}}</th><th>{{__('general.action')}}</th></tr></thead><tbody>";
+            object.forEach((value, index) => {
+                let row = "<tr>";
+                row += "<td>" + value.name + "</td>";
+                row += "<td>" + value.price + " {{ \App\Services\GeneralService::get_default_currency() }}</td>";
+                let basic_services = value.basic_services;
+                if (basic_services.length > 0) {
+                    let basic_html = '<ul class="list-group list-group-flush bg-transparent">'
+                    basic_services.forEach((basic_value, basic_index) => {
+                        basic_html += '<li class="list-group-item py-0 border-0  bg-transparent px-0"> <i class="bx bx-check text-success"></i> <small><strong class="text-infogit">' + basic_value.name + '</small></li>';
+                    });
+                    basic_html += "</ul>";
+                    row += "<td>" + basic_html + "</td>";
+                }
+                let additional_services = value.additional_services;
+                if (additional_services.length > 0) {
+                    let additional_html = '<ul class="list-group list-group-flush bg-transparent">'
+                    additional_services.forEach((additional_value, additional_index) => {
+                        additional_html += '<li class="list-group-item py-0 border-0  bg-transparent px-0"> <i class="bx bx-check text-success"></i> <small><strong class="text-infogit">' + additional_value.name + '</small></li>';
+                    });
+                    additional_html += "</ul>";
+                    row += "<td>" + additional_html + "</td>";
+                }
+                row += "<td><input type='radio' name='subscription_id' value=" + value.id + "></td>";
+                row += "</tr>";
+                html += row;
+            });
+            html += "</tbody></table>";
             Swal.fire({
-                title: 'Apply Subscription',
-                html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
+                title: 'Select Plan',
+                html: html,
+                width: 900,
                 confirmButtonText: 'Next',
                 focusConfirm: false,
                 preConfirm: () => {

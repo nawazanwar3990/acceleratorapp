@@ -56,7 +56,9 @@ class SubscriptionController extends Controller
         $type = $request->get('type');
         $id = $request->get('id');
         if ($type == SubscriptionTypeEnum::OFFICE) {
-            $records = Office::where('created_by', Auth::id())->get();
+            $records = Office::with(['plans'=>function($q){
+                $q->with('basic_services','additional_services');
+            }])->where('created_by', Auth::id())->get();
             $pageTitle = 'Apply Subscription For Office';
             return view('dashboard.subscription-management.subscriptions.offices', compact(
                 'records',
