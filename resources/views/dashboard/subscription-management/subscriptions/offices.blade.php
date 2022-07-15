@@ -86,7 +86,6 @@
 @endsection
 @section('innerScript')
     <script>
-
         function apply_subscription(object) {
             object = JSON.parse(object);
             let html = "<table class='table table-bordered'><thead><tr><th>{{__('general.name')}}</th><th>{{__('general.price')}}</th><th>{{__('general.basic_service')}}</th><th>{{__('general.additional_service')}}</th><th>{{__('general.action')}}</th></tr></thead><tbody>";
@@ -112,7 +111,16 @@
                     additional_html += "</ul>";
                     row += "<td>" + additional_html + "</td>";
                 }
-                row += "<td><input type='radio' name='subscription_id' value=" + value.id + "></td>";
+                let checked = '';
+                if (index === 0) {
+                    checked = 'checked';
+                }
+                row += "<td><input type='radio' name='subscription_id'" +
+                    " class='subscription_id' " +
+                    " value=" + value.id + " " + checked + "" +
+                    " data-price=" + value.price +
+                    " data-name=" + value.name +
+                    "></td>";
                 row += "</tr>";
                 html += row;
             });
@@ -124,61 +132,97 @@
                 confirmButtonText: 'Next',
                 focusConfirm: false,
                 preConfirm: () => {
-                    const payment_type = Swal.getPopup().querySelector('#payment_type').value
-                    if (!payment_type) {
-                        Swal.showValidationMessage(`First Choose Payment Type`)
+                    const subscription_id = Swal.getPopup().querySelector("input[name=subscription_id]:checked").value;
+                    const price = Swal.getPopup().querySelector("input[name=subscription_id]:checked").getAttribute('data-price');
+                    const name = Swal.getPopup().querySelector("input[name=subscription_id]:checked").getAttribute('data-name');
+                    return {
+                        subscription_id: subscription_id,
+                        price: price,
+                        name: name
                     }
-                    return {payment_type: payment_type}
                 }
             }).then((result) => {
-                let payment_type = result.value.payment_type;
-                if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
-                    Swal.fire({
-                        title: 'Manage Payment',
-                        html: `{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}`,
-                        confirmButtonText: 'Submit',
-                        focusConfirm: false,
-                        preConfirm: () => {
-                            const transaction_id = Swal.getPopup().querySelector('#transaction_id').value
-                            if (!transaction_id) {
-                                Swal.showValidationMessage(`First Enter Transaction ID`)
-                            }
-                            return {transaction_id: transaction_id}
+                let subscription_id = result.value.subscription_id;
+                let price = result.value.price;
+                let name = result.value.name;
+                let html = "<table class='table table-bordered my-2'><thead><tr><th class='fs-13' style='padding:5px; !important'>{{ __('general.plan') }}</th><th class='fs-13' style='padding:5px; !important'>{{ __('general.price') }}</th></tr></thead>";
+                html += "<tbody><tr><td class='fs-13' style='padding:5px; !important' >" + name + "</td><td class='fs-13' style='padding:5px; !important'>" + price + " {{ \App\Services\GeneralService::get_default_currency() }}</td></tr></tbody></table>";
+                Swal.fire({
+                    title: 'Apply Subscription',
+                    html: html + `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
+                    confirmButtonText: 'Next',
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        const payment_type = Swal.getPopup().querySelector('#payment_type').value
+                        if (!payment_type) {
+                            Swal.showValidationMessage(`First Choose Payment Type`)
                         }
-                    }).then((result) => {
+                        return {
+                            payment_type: payment_type,
+                            subscription_id: subscription_id,
+                            price: price,
+                        }
+                    }
+                }).then((result) => {
+                    let payment_type = result.value.payment_type;
+                    let subscription_id = result.value.subscription_id;
+                    let price = result.value.price;
+                    if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                         Swal.fire({
-                            html: '{!! __('general.request_wait') !!}',
-                            allowOutsideClick: () => !Swal.isLoading()
-                        });
-                        Swal.showLoading();
-                        let data = {
-                            'payment_type': payment_type,
-                            'transaction_id': result.value.transaction_id,
-                            'subscription_id': $("input[name='subscription_id']:checked").val(),
-                            'subscription_type': '{{ $type }}',
-                            'subscribed_id': {{ request()->query('id') }}
-                        }
-                        $.ajax({
-                            url: "{{ route('dashboard.subscriptions.store') }}",
-                            method: 'POST',
-                            data: data,
-                            success: function (response) {
-                                if (response.status === true) {
-                                    location.assign(response.route);
+                            title: 'Manage Payment',
+                            html: `{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}`,
+                            confirmButtonText: 'Submit',
+                            focusConfirm: false,
+                            preConfirm: () => {
+                                const transaction_id = Swal.getPopup().querySelector('#transaction_id').value
+                                if (!transaction_id) {
+                                    Swal.showValidationMessage(`First Enter Transaction ID`)
                                 }
-                            },
-                            error: function (response) {
+                                return {
+                                    transaction_id: transaction_id,
+                                    payment_type: payment_type,
+                                    subscription_id: subscription_id,
+                                    price: price,
+                                }
                             }
+                        }).then((result) => {
+                            let payment_type = result.value.payment_type;
+                            let subscription_id = result.value.subscription_id;
+                            let price = result.value.price;
+                            let transaction_id = result.value.transaction_id;
+                            Swal.fire({
+                                html: '{!! __('general.request_wait') !!}',
+                                allowOutsideClick: () => !Swal.isLoading()
+                            });
+                            Swal.showLoading();
+                            let data = {
+                                'payment_type': payment_type,
+                                'transaction_id': transaction_id,
+                                'subscription_id': subscription_id,
+                                'subscription_type': '{{ $type }}',
+                                'subscribed_id': {{ request()->query('id') }}
+                            }
+                            $.ajax({
+                                url: "{{ route('dashboard.subscriptions.store') }}",
+                                method: 'POST',
+                                data: data,
+                                success: function (response) {
+                                    if (response.status === true) {
+                                        location.assign(response.route);
+                                    }
+                                },
+                                error: function (response) {
+                                }
+                            });
                         });
-                        console.log(data);
-                    });
-                } else {
-                    Swal.fire(
-                        'Pending!',
-                        'This will be don later!',
-                        'pending'
-                    )
-                }
+                    } else {
+                        Swal.fire(
+                            'Pending!',
+                            'This will be don later!',
+                            'pending'
+                        )
+                    }
+                });
             });
         }
     </script>

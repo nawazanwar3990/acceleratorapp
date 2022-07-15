@@ -9,13 +9,13 @@ use App\Enum\AbstractEnum;
 class SubscriptionTypeEnum extends AbstractEnum
 {
     public const PACKAGE = KeyWordEnum::PACKAGE;
-    public const OFFICE = KeyWordEnum::OFFICE;
+    public const PLAN = KeyWordEnum::PLAN;
 
     public static function getValues(): array
     {
         return array(
             self::PACKAGE,
-            self::OFFICE
+            self::PLAN
         );
     }
 
@@ -23,7 +23,7 @@ class SubscriptionTypeEnum extends AbstractEnum
     {
         return array(
             self::PACKAGE => __(sprintf('%s.%s', 'general', self::PACKAGE)),
-            self::OFFICE => __(sprintf('%s.%s', 'general', self::OFFICE)),
+            self::PLAN => __(sprintf('%s.%s', 'general', self::PLAN)),
         );
     }
 }

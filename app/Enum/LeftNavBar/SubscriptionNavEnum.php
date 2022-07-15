@@ -56,7 +56,7 @@ class SubscriptionNavEnum extends AbstractEnum
             self::DURATION => route('dashboard.durations.index'),
             self::MODULE => route('dashboard.modules.index'),
             self::PACKAGE => route('dashboard.packages.index'),
-            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => Auth::user()->hasRole(RoleEnum::SUPER_ADMIN) ? SubscriptionTypeEnum::PACKAGE : SubscriptionTypeEnum::OFFICE]),
+            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => Auth::user()->hasRole(RoleEnum::SUPER_ADMIN) ? SubscriptionTypeEnum::PACKAGE : SubscriptionTypeEnum::PLAN]),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

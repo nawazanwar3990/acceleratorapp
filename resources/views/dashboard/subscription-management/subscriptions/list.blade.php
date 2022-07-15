@@ -12,7 +12,7 @@
             {{ \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy($record->subscription_type) }}
         </td>
         <td>
-            @if($record->subscription_type==\App\Enum\SubscriptionTypeEnum::OFFICE)
+            @if($record->subscription_type==\App\Enum\SubscriptionTypeEnum::PLAN)
                 {{ $record->office->name??null}}
             @else
                 {{ $record->package->name??null}}

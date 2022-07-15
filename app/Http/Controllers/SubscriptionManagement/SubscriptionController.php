@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\SubscriptionManagement;
 
+use App\Enum\DurationEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
+use App\Models\PlanManagement\Plan;
 use App\Models\SubscriptionManagement\Package;
 use App\Models\SubscriptionManagement\Subscription;
 use App\Models\PaymentManagement\Payment;
@@ -55,7 +57,7 @@ class SubscriptionController extends Controller
     {
         $type = $request->get('type');
         $id = $request->get('id');
-        if ($type == SubscriptionTypeEnum::OFFICE) {
+        if ($type == SubscriptionTypeEnum::PLAN) {
             $records = Office::with(['plans'=>function($q){
                 $q->with('basic_services','additional_services');
             }])->where('created_by', Auth::id())->get();
@@ -89,6 +91,7 @@ class SubscriptionController extends Controller
 
         $subscription = new Subscription();
         $subscription->subscribed_id = $subscribed_id;
+        $subscription->subscription_id = $subscription_id;
         $subscription->subscription_type = $subscription_type;
         $price = 0;
         if ($subscription_type == SubscriptionTypeEnum::PACKAGE) {
@@ -96,13 +99,23 @@ class SubscriptionController extends Controller
             $limit = $package->duration_limit;
             $from_date = Carbon::now();
             $duration_type = $package->duration_type->slug;
-            $subscription->subscription_id = $package->id;
             $price = $package->price;
             $subscription->price = $price;
             $subscription->is_payed = true;
             $subscription->created_by = auth()->id();
             $subscription->renewal_date = Carbon::now();
             $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+        }
+        if ($subscription_type == SubscriptionTypeEnum::PLAN) {
+            $plan = Plan::find($subscription_id);
+            $from_date = Carbon::now();
+            $price = $plan->price;
+            $limit = $plan->duration;
+            $subscription->price = $price;
+            $subscription->is_payed = true;
+            $subscription->created_by = auth()->id();
+            $subscription->renewal_date = Carbon::now();
+            $subscription->expire_date = GeneralService::get_remaining_time(DurationEnum::MONTHLY, $limit, $from_date);
         }
         if ($subscription->save()) {
             DB::table(TableEnum::SUBSCRIPTION_LOGS)->insert([
