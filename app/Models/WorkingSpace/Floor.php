@@ -31,8 +31,6 @@ class Floor extends Model
         'width',
         'height',
         'area',
-        'images',
-        'documents',
         'created_by',
         'updated_by',
     ];

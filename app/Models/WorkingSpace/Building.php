@@ -28,8 +28,6 @@ class Building extends Model
         'entry_gates',
         'no_of_floors',
         'facing',
-        'documents',
-        'images',
         'created_by',
         'updated_by',
     ];

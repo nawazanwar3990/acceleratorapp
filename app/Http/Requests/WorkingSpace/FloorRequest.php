@@ -3,10 +3,8 @@
 namespace App\Http\Requests\WorkingSpace;
 
 use App\Enum\MediaTypeEnum;
-use App\Enum\ServiceTypeEnum;
 use App\Models\Media;
 use App\Models\WorkingSpace\Floor;
-use App\Models\WorkingSpace\FloorService;
 use App\Services\GeneralService;
 use App\Services\PersonService;
 use Illuminate\Foundation\Http\FormRequest;
