@@ -74,7 +74,7 @@
                                     @else
                                         <div class="my-3 text-center">
                                             <a class="btn btn-info"
-                                               onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}');">
+                                               onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
                                                 {{ trans('general.apply_subscription') }} <i
                                                     class="bx bx-plus-circle"></i>
                                             </a>
@@ -98,7 +98,7 @@
 @endsection
 @section('innerScript')
     <script>
-        function apply_subscription(object, model_id) {
+        function apply_subscription(object, model_id, sitting_capacity) {
             object = JSON.parse(object);
             let html = "<table class='table table-bordered'><thead><tr><th>{{__('general.name')}}</th><th>{{__('general.price')}}</th><th>{{__('general.basic_service')}}</th><th>{{__('general.additional_service')}}</th><th>{{__('general.action')}}</th></tr></thead><tbody>";
             object.forEach((value, index) => {
@@ -155,7 +155,7 @@
                 }
             }).then((result) => {
                 let subscription_id = result.value.subscription_id;
-                let price = result.value.price;
+                let price = parseFloat(result.value.price) * parseFloat(sitting_capacity);
                 let name = result.value.name;
                 let html = "<table class='table table-bordered my-2'><thead><tr><th class='fs-13' style='padding:5px; !important'>{{ __('general.plan') }}</th><th class='fs-13' style='padding:5px; !important'>{{ __('general.price') }}</th></tr></thead>";
                 html += "<tbody><tr><td class='fs-13' style='padding:5px; !important' >" + name + "</td><td class='fs-13' style='padding:5px; !important'>" + price + " {{ \App\Services\GeneralService::get_default_currency() }}</td></tr></tbody></table>";
