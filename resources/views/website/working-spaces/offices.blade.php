@@ -48,8 +48,32 @@
                                                                     <div class="d-flex no-block align-items-center">
                                                                         <span
                                                                             class="p-10 text-muted">{{ $plan->name }}</span>
-                                                                        <span
-                                                                            class="badge rounded-pill bg-secondary ms-auto">2</span>
+                                                                        <div class="ms-auto">
+                                                                            @if(count($plan->basic_services))
+                                                                                <ul class="list-group list-group-flush bg-transparent">
+                                                                                    @foreach($plan->basic_services as $service)
+                                                                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                                            <i class="bx bx-check text-success"></i>
+                                                                                            <small><strong
+                                                                                                    class="text-infogit ">{{ $service->name }}
+                                                                                            </small>
+                                                                                        </li>
+                                                                                    @endforeach
+                                                                                </ul>
+                                                                            @endif
+                                                                            @if(count($plan->additional_services))
+                                                                                <ul class="list-group list-group-flush bg-transparent">
+                                                                                    @foreach($plan->additional_services as $service)
+                                                                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                                            <i class="bx bx-check text-success"></i>
+                                                                                            <small><strong
+                                                                                                    class="text-infogit ">{{ $service->name }}
+                                                                                            </small>
+                                                                                        </li>
+                                                                                    @endforeach
+                                                                                </ul>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 @endforeach
                                                             @endif
@@ -74,7 +98,8 @@
                                                                         </a>
                                                                         <div>
                                                                             <h5 class="card-title m-b-0">Ali</h5>
-                                                                            <h6 class="text-muted">5 {{__('general.offices')}}</h6>
+                                                                            <h6 class="text-muted">
+                                                                                5 {{__('general.offices')}}</h6>
                                                                         </div>
                                                                         <div class="ms-auto text-muted text-end">
                                                                             <i class="fa fa-map-marker text-danger m-r-10"></i>
