@@ -46,9 +46,12 @@
                                                             @if(count($office->plans)>0)
                                                                 @foreach($office->plans as $plan)
                                                                     <div class="col-12">
-                                                                        <h5 class="text-center fw-bold text-center">
+                                                                        <h5 class="text-center fw-bold text-center text-info">
                                                                             {{ ucwords(str_replace('_',' ',$plan->name)) }}
                                                                         </h5>
+                                                                        <button class="badge bg-info btn-xs">
+                                                                            {{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                                                        </button>
                                                                     </div>
                                                                     <div
                                                                         class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
@@ -56,7 +59,7 @@
                                                                         @if(count($plan->basic_services))
                                                                             <ul class="list-group list-group-flush bg-transparent text-center">
                                                                                 @foreach($plan->basic_services as $service)
-                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
+                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-center">
                                                                                         <i class="bx bx-check text-success"></i> {{ $service->name }}
                                                                                     </li>
                                                                                 @endforeach
@@ -69,7 +72,7 @@
                                                                         @if(count($plan->additional_services))
                                                                             <ul class="list-group list-group-flush bg-transparent text-center">
                                                                                 @foreach($plan->additional_services as $service)
-                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
+                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-center">
                                                                                         <i class="bx bx-check text-success"></i> {{ $service->name }}
                                                                                     </li>
                                                                                 @endforeach
