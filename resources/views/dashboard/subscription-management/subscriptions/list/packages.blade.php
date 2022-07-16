@@ -48,7 +48,12 @@
                                     @endif
                                 </td>
                                 <td class="text-center d-flex">
-
+                                    @if(\App\Services\GeneralService::isExpireSubscription(\Carbon\Carbon::now(),$subscription->expire_date))
+                                        <a class="btn btn-xs btn-warning mx-1"
+                                           onclick="renew_package('{{ $subscription->id }}')">
+                                            {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
@@ -62,7 +67,7 @@
 @endsection
 @section('innerScript')
     <script>
-        function renew_package(subscription_id, package_id, subscribed_id) {
+        function renew_package(subscription_id) {
             Swal.fire({
                 title: 'Renewal Package',
                 html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
@@ -99,9 +104,7 @@
                         let data = {
                             'subscription_id': subscription_id,
                             'payment_type': payment_type,
-                            'transaction_id': result.value.transaction_id,
-                            'package_id': package_id,
-                            'subscribed_id': subscribed_id
+                            'transaction_id': result.value.transaction_id
                         }
                         $.ajax({
                             url: "{{ route('dashboard.payments.store') }}",

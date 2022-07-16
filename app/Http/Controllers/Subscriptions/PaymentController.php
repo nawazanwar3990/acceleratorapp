@@ -95,7 +95,7 @@ class PaymentController extends Controller
                     'subscription_id' => $subscription_id,
                     'price' => $subscription->price,
                     'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
+                                        'updated_at' => Carbon::now()
                 ]);
             }
         }
