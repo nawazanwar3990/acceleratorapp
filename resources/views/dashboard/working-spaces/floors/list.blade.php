@@ -1,6 +1,9 @@
 @forelse($records as $record)
     <tr>
-        <td class="text-center">{{ $loop->iteration }}</td>
+        <td class="text-center">
+            {{ $loop->iteration }}
+        </td>
+
         <td>{{ $record->building->name??null  }}</td>
         <td>{{ $record->name}}</td>
         <td>{{ $record->number}}</td>

@@ -10,17 +10,17 @@
                 </a>
             </li>
         @endif
-{{--        @if(isset($delete))--}}
-{{--            <li>--}}
-{{--                <form action="{{ $delete }}" method="POST">--}}
-{{--                    @csrf--}}
-{{--                    @method('DELETE')--}}
-{{--                    <button type="submit" class="dropdown-item text-black-50">--}}
-{{--                        {{__('general.delete')}}--}}
-{{--                    </button>--}}
-{{--                </form>--}}
-{{--            </li>--}}
-{{--        @endif--}}
+       {{-- @if(isset($delete))
+            <li>
+                <form action="{{ $delete }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="dropdown-item text-black-50">
+                        {{__('general.delete')}}
+                    </button>
+                </form>
+            </li>
+        @endif--}}
         @if (isset($show))
             <div class="dropdown-divider"></div>
             <li>

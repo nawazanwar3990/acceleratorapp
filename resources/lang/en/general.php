@@ -1032,7 +1032,7 @@ return [
     'ph_floor_type' => 'Select Floor Type',
     'ph_shops_flats' => 'Select No. of PackageTableHeading/Shops',
     'ph_floor_name' => 'Select Floor',
-    'ph_view_location' => 'Select View/Location',
+    'ph_view_location' => 'Select View',
     'ph_number_of_accommodation' => 'Select No. of Accommodation',
     'ph_expense_head' => 'Select Expense Head',
     'nominee_registration' => 'Nominee Registration',

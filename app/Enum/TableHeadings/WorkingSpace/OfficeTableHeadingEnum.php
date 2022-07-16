@@ -8,10 +8,11 @@ use function __;
 
 class OfficeTableHeadingEnum extends AbstractEnum
 {
+    public const LOCATION = 'location';
     public const NAME = 'name';
     public const NUMBER = 'number';
     public const TYPE = 'type';
-    public const VIEW = 'view_location';
+    public const VIEW ='view';
     public const SITTING_CAPACITY = 'sitting_capacity';
     public const DIMENSION = 'dimension';
     public const PLANS = 'plans';
@@ -23,6 +24,7 @@ class OfficeTableHeadingEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
+            self::LOCATION => __(sprintf('%s.%s', 'general', self::LOCATION))."(optional)",
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
             self::NUMBER => __(sprintf('%s.%s', 'general', self::NUMBER)),
             self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),

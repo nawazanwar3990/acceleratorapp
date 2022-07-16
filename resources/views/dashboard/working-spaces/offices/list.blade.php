@@ -1,6 +1,13 @@
 @forelse($records as $record)
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
+        <td>
+            @if($record->building  AND $record->floor)
+                <strong>{{ $record->floor->name }}</strong> of <strong>{{ $record->building->name }}</strong>
+            @elseif($record->building  AND !$record->floor)
+                {{ $record->building->name }}
+            @endif
+        </td>
         <td>{{ $record->name }}</td>
         <td>{{ $record->number }}</td>
         <td>{{ $record->type->name ?? '' }}</td>
@@ -35,7 +42,7 @@
                 </li>
             </ul>
         </td>
-        <td>
+        <td style="width: 300px;">
             @if(count($record->plans)>0)
                 <ul class="list-group list-group-flush bg-transparent">
                     @foreach($record->plans as $plan)
