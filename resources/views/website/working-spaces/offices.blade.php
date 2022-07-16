@@ -41,38 +41,36 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 border-bottom">
-                                                        <div class="p-20">
-                                                            <h6>{{__('general.available_plans')}}</h6>
-                                                            @if(count($office->plans)>0)
-                                                                @foreach($office->plans as $plan)
-                                                                    <div class="d-flex no-block align-items-center">
-                                                                        <h4 class="p-10 text-muted">{{ ucwords(str_replace('_',' ',$plan->name)) }}</h4>
-                                                                        <div class="ms-auto">
-                                                                            @if(count($plan->basic_services))
-                                                                                <h6 class="p-10 text-muted">{{ __('general.basic_service') }}</h6>
-                                                                                <ul class="list-group list-group-flush bg-transparent">
-                                                                                    @foreach($plan->basic_services as $service)
-                                                                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                                            <i class="bx bx-check text-success"></i> {{ $service->name }}
-                                                                                        </li>
-                                                                                    @endforeach
-                                                                                </ul>
-                                                                            @endif
-                                                                            @if(count($plan->additional_services))
-                                                                                <h6 class="p-10 text-muted">{{ __('general.additional_service') }}</h6>
-                                                                                <ul class="list-group list-group-flush bg-transparent">
-                                                                                    @foreach($plan->additional_services as $service)
-                                                                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                                            <i class="bx bx-check text-success"></i> {{ $service->name }}
-                                                                                        </li>
-                                                                                    @endforeach
-                                                                                </ul>
-                                                                            @endif
-                                                                        </div>
+                                                        <h4 class="text-center fw-bold">{{__('general.available_plans')}}</h4>
+                                                        @if(count($office->plans)>0)
+                                                            @foreach($office->plans as $plan)
+                                                                <div class="d-flex no-block align-items-center">
+                                                                    <h4 class="p-10 text-muted">{{ ucwords(str_replace('_',' ',$plan->name)) }}</h4>
+                                                                    <div class="ms-auto">
+                                                                        @if(count($plan->basic_services))
+                                                                            <h6 class="mb-0 text-muted">{{ __('general.basic_service') }}</h6>
+                                                                            <ul class="list-group list-group-flush bg-transparent">
+                                                                                @foreach($plan->basic_services as $service)
+                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                                        <i class="bx bx-check text-success"></i> {{ $service->name }}
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        @endif
+                                                                        @if(count($plan->additional_services))
+                                                                            <h6 class="mb-0 text-muted">{{ __('general.additional_service') }}</h6>
+                                                                            <ul class="list-group list-group-flush bg-transparent">
+                                                                                @foreach($plan->additional_services as $service)
+                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                                        <i class="bx bx-check text-success"></i> {{ $service->name }}
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        @endif
                                                                     </div>
-                                                                @endforeach
-                                                            @endif
-                                                        </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                     <!-- column -->
                                                     <div class="col-md-12">
