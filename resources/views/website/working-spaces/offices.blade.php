@@ -44,30 +44,29 @@
                                                         <h4 class="text-center fw-bold">{{__('general.available_plans')}}</h4>
                                                         @if(count($office->plans)>0)
                                                             @foreach($office->plans as $plan)
-                                                                <div class="d-flex no-block align-items-center">
-                                                                    <h4 class="p-10 text-muted">{{ ucwords(str_replace('_',' ',$plan->name)) }}</h4>
-                                                                    <div class="ms-auto">
+                                                                <div class="row">
+                                                                    <div class="col-md-9 col-xl-9 col-xxl-9 col-9 align-self-center">
+                                                                        {{ ucwords(str_replace('_',' ',$plan->name)) }}
                                                                         @if(count($plan->basic_services))
-                                                                            <h6 class="mb-0 text-muted">{{ __('general.basic_service') }}</h6>
                                                                             <ul class="list-group list-group-flush bg-transparent">
                                                                                 @foreach($plan->basic_services as $service)
-                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
                                                                                         <i class="bx bx-check text-success"></i> {{ $service->name }}
                                                                                     </li>
                                                                                 @endforeach
                                                                             </ul>
                                                                         @endif
                                                                         @if(count($plan->additional_services))
-                                                                            <h6 class="mb-0 text-muted">{{ __('general.additional_service') }}</h6>
                                                                             <ul class="list-group list-group-flush bg-transparent">
                                                                                 @foreach($plan->additional_services as $service)
-                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
                                                                                         <i class="bx bx-check text-success"></i> {{ $service->name }}
                                                                                     </li>
                                                                                 @endforeach
                                                                             </ul>
                                                                         @endif
                                                                     </div>
+                                                                    <div class="col-md-3 col-xl-3 col-xxl-3 col-3 align-self-center"></div>
                                                                 </div>
                                                             @endforeach
                                                         @endif
