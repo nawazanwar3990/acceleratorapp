@@ -40,13 +40,19 @@
                                                             <h5 class="text-danger">{{ $office->number }}</h5>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 border-bottom">
+                                                    <div class="col-md-6 border-bottom py-2">
                                                         <h4 class="text-center fw-bold">{{__('general.available_plans')}}</h4>
-                                                        @if(count($office->plans)>0)
-                                                            @foreach($office->plans as $plan)
-                                                                <div class="row">
-                                                                    <div class="col-md-9 col-xl-9 col-xxl-9 col-9 align-self-center">
-                                                                        {{ ucwords(str_replace('_',' ',$plan->name)) }}
+                                                        <div class="row">
+                                                            @if(count($office->plans)>0)
+                                                                @foreach($office->plans as $plan)
+                                                                    <div class="col-12">
+                                                                        <h5 class="text-center fw-bold text-center">
+                                                                            {{ ucwords(str_replace('_',' ',$plan->name)) }}
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
+                                                                        <h6 class="text-center fw-bold">{{__('general.basic_services')}}</h6>
                                                                         @if(count($plan->basic_services))
                                                                             <ul class="list-group list-group-flush bg-transparent">
                                                                                 @foreach($plan->basic_services as $service)
@@ -56,6 +62,10 @@
                                                                                 @endforeach
                                                                             </ul>
                                                                         @endif
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
+                                                                        <h6 class="text-center fw-bold">{{__('general.additional_service')}}</h6>
                                                                         @if(count($plan->additional_services))
                                                                             <ul class="list-group list-group-flush bg-transparent">
                                                                                 @foreach($plan->additional_services as $service)
@@ -66,10 +76,9 @@
                                                                             </ul>
                                                                         @endif
                                                                     </div>
-                                                                    <div class="col-md-3 col-xl-3 col-xxl-3 col-3 align-self-center"></div>
-                                                                </div>
-                                                            @endforeach
-                                                        @endif
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                     <!-- column -->
                                                     <div class="col-md-12">
