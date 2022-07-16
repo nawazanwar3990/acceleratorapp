@@ -10,9 +10,7 @@
             <div class="card card-shadow pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body" style="padding-top: 0;">
-                    {!! Form::model($office, ['url' =>route('office-plans.store', $office->id), 'method' => 'POST','files' => true, 'class' => 'solid-validation']) !!}
-                    @method('PUT')
-                    <x-created-by-field></x-created-by-field>
+                    {!! Form::model($office, ['url' =>route('dashboard.office-plans.store', $office->id), 'method' => 'POST','files' => true, 'class' => 'solid-validation']) !!}
                     <div class="row">
                         @foreach($plans as $plan)
                             <div class="col-md-4 mb-3">
