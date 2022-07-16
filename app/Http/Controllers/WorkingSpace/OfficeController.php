@@ -151,7 +151,7 @@ class OfficeController extends Controller
     public function storePlans(Request $request, $office_id): RedirectResponse
     {
         $office = Office::find($office_id);
-        $plans = $request->input('plan', array());
+        $plans = $request->input('plans', array());
         if (count($plans) > 0) {
             $office->plans()->sync($plans);
         }
