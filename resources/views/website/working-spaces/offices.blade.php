@@ -22,7 +22,7 @@
                                         <div class="row no-gutters">
                                             <div class="col-md-4"
                                                  style="background: url('http://eliteadmin.themedesigner.in/demos/bt4/assets/images/property/prop1.jpeg') center center / cover no-repeat; min-height:250px;">
-                                                @if(\App\Services\OfficeService::already_subscribed($record->id))
+                                                @if(\App\Services\OfficeService::already_subscribed($office->id))
                                                     <span class="pull-right label label-danger">
                                                         {{__('general.sold')}}
                                                     </span>
