@@ -36,7 +36,7 @@
                                                 <div class="row no-gutters">
                                                     <div class="col-md-6 border-end border-bottom">
                                                         <div class="p-20">
-                                                            <h5 class="card-title">{{ $office->name }}</h5>
+                                                            <h5 class="card-title">{{ ucwords(str_replace('_',' ',$office->name)) }}</h5>
                                                             <h5 class="text-danger">{{ $office->number }}</h5>
                                                         </div>
                                                     </div>
@@ -46,29 +46,24 @@
                                                             @if(count($office->plans)>0)
                                                                 @foreach($office->plans as $plan)
                                                                     <div class="d-flex no-block align-items-center">
-                                                                        <span
-                                                                            class="p-10 text-muted">{{ $plan->name }}</span>
+                                                                        <h4 class="p-10 text-muted">{{ ucwords(str_replace('_',' ',$plan->name)) }}</h4>
                                                                         <div class="ms-auto">
                                                                             @if(count($plan->basic_services))
+                                                                                <h6 class="p-10 text-muted">{{ __('general.basic_service') }}</h6>
                                                                                 <ul class="list-group list-group-flush bg-transparent">
                                                                                     @foreach($plan->basic_services as $service)
                                                                                         <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                                            <i class="bx bx-check text-success"></i>
-                                                                                            <small><strong
-                                                                                                    class="text-infogit ">{{ $service->name }}
-                                                                                            </small>
+                                                                                            <i class="bx bx-check text-success"></i> {{ $service->name }}
                                                                                         </li>
                                                                                     @endforeach
                                                                                 </ul>
                                                                             @endif
                                                                             @if(count($plan->additional_services))
+                                                                                <h6 class="p-10 text-muted">{{ __('general.additional_service') }}</h6>
                                                                                 <ul class="list-group list-group-flush bg-transparent">
                                                                                     @foreach($plan->additional_services as $service)
                                                                                         <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                                            <i class="bx bx-check text-success"></i>
-                                                                                            <small><strong
-                                                                                                    class="text-infogit ">{{ $service->name }}
-                                                                                            </small>
+                                                                                            <i class="bx bx-check text-success"></i> {{ $service->name }}
                                                                                         </li>
                                                                                     @endforeach
                                                                                 </ul>
