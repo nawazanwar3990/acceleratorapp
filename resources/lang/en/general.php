@@ -1,5 +1,9 @@
 <?php
 return [
+
+    'sold' => "Sold",
+    'for_rent' => 'For Rent',
+
     'created_at' => 'Created At',
 
     'view_subscription' => 'View Subscription',
@@ -45,7 +49,6 @@ return [
     'floor_detail' => 'Floor Detail',
     'investor_management' => 'Investors',
     'freelancer_management' => 'Freelancers',
-    'for_rent' => 'For Rent',
     'plan_detail' => 'Plan Detail',
     'plan_holder_name' => 'Plan Holder Name',
     'bookings' => 'Bookings',
@@ -914,7 +917,7 @@ return [
     'commodity_value' => 'Commodity Value',
     'available' => 'Available',
     'in_execution' => 'In Execution',
-    'sold' => 'Sold',
+
     'update_commodity_value' => 'Update Commodity Value',
     'total_saleable_area' => 'Total Saleable Area',
     'available_area' => 'Available Area',

@@ -18,13 +18,21 @@
                             <div class="col-12">
                                 @foreach($offices as $office)
                                     <div class="card overflow-hidden">
-                                        <!-- row -->
+
                                         <div class="row no-gutters">
                                             <div class="col-md-4"
                                                  style="background: url('http://eliteadmin.themedesigner.in/demos/bt4/assets/images/property/prop1.jpeg') center center / cover no-repeat; min-height:250px;">
-                                                <span class="pull-right label label-danger">For Rent</span>
+                                                @if(\App\Services\OfficeService::already_subscribed($record->id))
+                                                    <span class="pull-right label label-danger">
+                                                        {{__('general.sold')}}
+                                                    </span>
+                                                @else
+                                                    <span class="pull-right label label-success">
+                                                        {{__('general.for_rent')}}
+                                                    </span>
+                                                @endif
                                             </div>
-                                            <!-- column -->
+
                                             <div class="col-md-8">
                                                 <!-- Row -->
                                                 <div class="row no-gutters">

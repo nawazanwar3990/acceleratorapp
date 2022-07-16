@@ -64,10 +64,7 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    @php
-                                        $subscription = \App\Models\Subscriptions\Subscription::where('model_id',$record->id);
-                                    @endphp
-                                    @if($subscription->exists())
+                                    @if(\App\Services\OfficeService::already_subscribed($record->id))
                                         <div class="my-3 text-center">
                                             <a href="{{ route('dashboard.subscriptions.index',['id'=>$subscription->value('model_id'),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
                                                class="btn btn-danger">

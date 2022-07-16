@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
+use App\Models\Subscriptions\Subscription;
 use App\Models\WorkingSpace\Office;
 use App\Models\WorkingSpace\OfficeOwner;
 use App\Models\WorkingSpace\OfficeType;
@@ -14,6 +15,17 @@ use function view;
 
 class OfficeService
 {
+
+    public static function already_subscribed($office_id): bool
+    {
+        $query = Subscription::where('model_id', $office_id);
+        if ($query->exists()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function getOfficeForDropdown()
     {
         return Office::where('created_by', Auth::id())->orderBy('name', 'ASC')->pluck('name', 'id');
@@ -89,7 +101,7 @@ class OfficeService
 
     public function listOfficeTypeByPagination()
     {
-        $records = OfficeType::orderBy('name','ASC');
+        $records = OfficeType::orderBy('name', 'ASC');
         if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $records = $records->whereCreatedBy(Auth::id());
         }
