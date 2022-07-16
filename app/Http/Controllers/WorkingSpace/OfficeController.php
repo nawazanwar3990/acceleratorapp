@@ -71,12 +71,12 @@ class OfficeController extends Controller
     public function store(OfficeRequest $request)
     {
         $this->authorize('create', Office::class);
-       /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
-        $existing_limit = Office::where('created_by', Auth::id())->count();
-        if ($existing_limit >= $package_limit) {
-            return redirect()
-                ->route('dashboard.offices.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
-        }*/
+        /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
+         $existing_limit = Office::where('created_by', Auth::id())->count();
+         if ($existing_limit >= $package_limit) {
+             return redirect()
+                 ->route('dashboard.offices.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
+         }*/
         if ($request->createData()) {
             return redirect()->route('dashboard.offices.index')
                 ->with('success', __('general.record_created_successfully'));
@@ -132,5 +132,15 @@ class OfficeController extends Controller
             'offices' => $offices,
         ];
         return view('website.working-spaces.offices', $params);
+    }
+
+    public function listPlans($office_id): Factory|View|Application
+    {
+        $office = Office::find($office_id);
+        $params = [
+            'pageTitle' => __('general.office_plans'),
+            'office' => $office
+        ];
+        return view('dashboard.working-spaces.offices.plans', $params);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 return [
+    'office_plans' => 'Office Plans',
     'available_plans' => 'Available Plans',
     'sold' => "Sold",
     'for_rent' => 'For Rent',
