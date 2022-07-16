@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Subscriptions;
 
+use App\Enum\DurationEnum;
 use App\Enum\PaymentTypeEnum;
+use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageManagement\DurationRequest;
+use App\Models\Plans\Plan;
 use App\Models\Subscriptions\Duration;
 use App\Models\Subscriptions\Package;
 use App\Models\Subscriptions\Payment;
@@ -20,6 +23,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Monolog\Handler\IFTTTHandler;
 use function __;
 use function redirect;
 use function response;
@@ -39,42 +43,57 @@ class PaymentController extends Controller
     {
         $type = $request->query('type');
         $this->authorize('view', Payment::class);
-        $records = Payment::with('subscribed','subscription')
-            ->where('subscribed_id',Auth::id())
+        $records = Payment::with('subscribed', 'subscription')
+            ->where('subscribed_id', Auth::id())
             ->paginate(20);
         $params = [
             'pageTitle' => __('general.payments'),
             'records' => $records,
-            'type'=>$type
+            'type' => $type
         ];
         return view('dashboard.payment-management.payments.index', $params);
     }
 
     public function store(Request $request): JsonResponse
     {
-        $payment_type = $request->payment_type;
+        $payment_type = $request->input('payment_type');
+        $subscription_id = $request->input('subscription_id');
+        $transaction_id = $request->input('transaction_id');
 
-        $subscription_id = $request->subscription_id;
+        $subscription = Subscription::find($subscription_id);
 
         if ($payment_type == PaymentTypeEnum::OFFLINE) {
-            $model = Payment::create($request->all());
-            if ($model) {
 
-                $package_id = $model->package_id;
-                $package = Package::find($package_id);
-                $limit = $package->duration_limit;
-                $from_date = Carbon::now();
-                $duration_type = $package->duration_type->slug;
-                $subscription = Subscription::find($subscription_id);
+            $payment = new Payment();
+            $payment->subscribed_id = $subscription->subscribed_id;
+            $payment->subscription_id = $subscription_id;
+            $payment->transaction_id = $transaction_id;
+            $payment->payment_type = $payment_type;
+            $payment->price = $subscription->price;
+
+            if ($payment->save()) {
+
+                $subscription_type = $subscription->subscription_type;
+
+                $duration_type = DurationEnum::MONTHLY;
+                $limit = 1;
+                if ($subscription_type == SubscriptionTypeEnum::PLAN) {
+                    $model = Plan::find($subscription->subscription_id);
+                    $limit = $model->duration;
+                } else if ($subscription_type == SubscriptionTypeEnum::PACKAGE) {
+                    $model = Package::find($subscription->subscription_id);
+                    $limit = $model->duration_limit;
+                    $duration_type = $model->duration_type->slug;
+                }
                 $subscription->renewal_date = Carbon::now();
+                $from_date = Carbon::now();
                 $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
                 $subscription->save();
 
                 DB::table(TableEnum::SUBSCRIPTION_LOGS)->insert([
-                    'subscribed_id' => $model->subscribed_id,
+                    'subscribed_id' => $subscription->subscribed_id,
                     'subscription_id' => $subscription_id,
-                    'package_id' => $model->package_id,
-                    'price' => $package->price,
+                    'price' => $subscription->price,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ]);

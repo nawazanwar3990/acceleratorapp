@@ -16,7 +16,6 @@ class Payment extends Model
     protected $fillable = [
         'subscribed_id',
         'subscription_id',
-        'package_id',
         'payment_type',
         'transaction_id',
         'price',
