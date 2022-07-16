@@ -17,7 +17,7 @@
                                 <div class="form-check form-switch">
                                     {!! Form::checkbox('plans[]',$plan->id,null,['class'=>'form-check-input align-self-center']) !!}
                                     <label class="form-check-label">
-                                        <strong class="text-capitalize"> {{ $plan->name }}</strong>
+                                        <strong class="text-capitalize"> {{ ucwords(str_replace('_',' ',$plan->name)) }}</strong>
                                         ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }})
                                         <br>
                                         <small class="text-info">{{__('general.basic_service')}}</small>
