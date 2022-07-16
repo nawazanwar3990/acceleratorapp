@@ -7,7 +7,7 @@
     <div class="row" style="position: relative;">
         @include('website.components.home.banner')
         @include('website.components.home.what-you-are')
-        <div class="col-md-12">
+        <div class="col-md-12 p-0">
             <div class="fix-width">
                 <div class="row location pb-5">
                     <div class="col-lg-3 col-md-4">
@@ -32,58 +32,58 @@
                                                     </span>
                                                 @endif
                                             </div>
-
                                             <div class="col-md-8">
-                                                <!-- Row -->
                                                 <div class="row no-gutters">
-                                                    <!-- column -->
                                                     <div class="col-md-6 border-end border-bottom">
                                                         <div class="p-20">
-                                                            <h5 class="card-title">Florida 5, Pinecrest, FL</h5>
-                                                            <h5 class="text-danger">$ 220,000</h5>
+                                                            <h5 class="card-title">{{ $office->name }}</h5>
+                                                            <h5 class="text-danger">{{ $office->number }}</h5>
                                                         </div>
                                                     </div>
-                                                    <!-- column -->
                                                     <div class="col-md-6 border-bottom">
                                                         <div class="p-20">
-                                                            <div class="d-flex no-block align-items-center">
-                                                                <span><img src="../assets/images/property/pro-bath.png"></span>
-                                                                <span class="p-10 text-muted">Bathrooms</span>
-                                                                <span
-                                                                    class="badge rounded-pill bg-secondary ms-auto">2</span>
-                                                            </div>
-                                                            <div class="d-flex no-block align-items-center">
-                                                                <span><img src="../assets/images/property/pro-bed.png"></span>
-                                                                <span class="p-10 text-muted">Beds</span>
-                                                                <span
-                                                                    class="badge rounded-pill bg-secondary ms-auto">2</span>
-                                                            </div>
-                                                            <div class="d-flex no-block align-items-center">
-                                                                <span><img
-                                                                        src="../assets/images/property/pro-garage.png"></span>
-                                                                <span class="p-10 text-muted">Garages</span>
-                                                                <span
-                                                                    class="badge rounded-pill bg-secondary ms-auto">1</span>
-                                                            </div>
+                                                            <h6>{{__('general.available_plans')}}</h6>
+                                                            @if(count($office->plans)>0)
+                                                                @foreach($office->plans as $plan)
+                                                                    <div class="d-flex no-block align-items-center">
+                                                                        <span
+                                                                            class="p-10 text-muted">{{ $plan->name }}</span>
+                                                                        <span
+                                                                            class="badge rounded-pill bg-secondary ms-auto">2</span>
+                                                                    </div>
+                                                                @endforeach
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <!-- column -->
                                                     <div class="col-md-12">
-                                                        <div class="p-20">
-                                                            <div class="d-flex no-block align-items-center">
-                                                                <a href="javascript:void(0)"><img alt="img"
-                                                                                                  class="thumb-md img-circle m-r-10"
-                                                                                                  src="../public/images/users/img.jpg "></a>
-                                                                <div>
-                                                                    <h5 class="card-title m-b-0">Ali</h5>
-                                                                    <h6 class="text-muted">5 Property</h6>
+                                                        @if(count($office->owners)>0)
+                                                            @foreach($office->owners as $owner)
+                                                                <div class="p-20">
+                                                                    <div class="d-flex no-block align-items-center">
+                                                                        <a href="javascript:void(0)">
+                                                                            @isset($owner->first_image)
+                                                                                <img alt="img"
+                                                                                     class="thumb-md img-circle m-r-10"
+                                                                                     src="{{ asset($owner->first_image->filemane) }}">
+                                                                            @else
+                                                                                <img alt="img"
+                                                                                     class="thumb-md img-circle m-r-10"
+                                                                                     src="{{ asset('images/users/1.jpg') }}">
+                                                                            @endif
+                                                                        </a>
+                                                                        <div>
+                                                                            <h5 class="card-title m-b-0">Ali</h5>
+                                                                            <h6 class="text-muted">5 {{__('general.offices')}}</h6>
+                                                                        </div>
+                                                                        <div class="ms-auto text-muted text-end">
+                                                                            <i class="fa fa-map-marker text-danger m-r-10"></i>
+                                                                            Faislabad
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="ms-auto text-muted text-end">
-                                                                    <i class="fa fa-map-marker text-danger m-r-10"></i>
-                                                                    Faislabad
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                     <!-- column -->
                                                 </div>
