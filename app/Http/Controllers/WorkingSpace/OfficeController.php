@@ -6,6 +6,7 @@ use App\Enum\KeyWordEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkingSpace\FloorRequest;
 use App\Http\Requests\WorkingSpace\OfficeRequest;
+use App\Models\Plans\Plan;
 use App\Models\WorkingSpace\Floor;
 use App\Models\WorkingSpace\Office;
 use App\Services\OfficeService;
@@ -16,6 +17,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function __;
 use function redirect;
@@ -137,10 +139,23 @@ class OfficeController extends Controller
     public function listPlans($office_id): Factory|View|Application
     {
         $office = Office::find($office_id);
+        $plans = Plan::where('no_of_persons', $office->sitting_capacity)->get();
         $params = [
             'pageTitle' => __('general.office_plans'),
-            'office' => $office
+            'office' => $office,
+            'plans' => $plans
         ];
         return view('dashboard.working-spaces.offices.plans', $params);
+    }
+
+    public function storePlans(Request $request, $office_id): RedirectResponse
+    {
+        $office = Office::find($office_id);
+        $plans = $request->input('plan', array());
+        if (count($plans) > 0) {
+            $office->plans()->sync($plans);
+        }
+        return redirect()->route('dashboard.offices.index')
+            ->with('success', 'Plan Updated Successfully');
     }
 }

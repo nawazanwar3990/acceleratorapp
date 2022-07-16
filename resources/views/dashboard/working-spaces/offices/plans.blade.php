@@ -4,14 +4,17 @@
 @section('content')
     <div class="row">
         <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                List of all Plans for Sitting Capacity of <strong>{{ $office->sitting_capacity }}</strong> Persons
+            </div>
             <div class="card card-shadow pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body" style="padding-top: 0;">
-                    {!! Form::model($office, ['url' =>route('dashboard.offices.update', $office->id), 'method' => 'POST','files' => true, 'class' => 'solid-validation']) !!}
+                    {!! Form::model($office, ['url' =>route('office-plans.store', $office->id), 'method' => 'POST','files' => true, 'class' => 'solid-validation']) !!}
                     @method('PUT')
                     <x-created-by-field></x-created-by-field>
                     <div class="row">
-                        @foreach(\App\Services\PlanService::listPlans() as $plan)
+                        @foreach($plans as $plan)
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
                                     {!! Form::checkbox('plans[]',$plan->id,null,['class'=>'form-check-input align-self-center']) !!}
@@ -23,7 +26,8 @@
                                         <br>
                                         @if(count($plan->basic_services))
                                             @foreach($plan->basic_services as $service)
-                                                <small> <i class="bx bx-check text-success"></i>{{ $service->name }}</small>
+                                                <small> <i class="bx bx-check text-success"></i>{{ $service->name }}
+                                                </small>
                                             @endforeach
                                         @endif
                                         <br>
@@ -31,7 +35,8 @@
                                         <br>
                                         @if(count($plan->additional_services))
                                             @foreach($plan->additional_services as $service)
-                                                <small> <i class="bx bx-check text-success"></i>{{ $service->name }}</small>
+                                                <small> <i class="bx bx-check text-success"></i>{{ $service->name }}
+                                                </small>
                                             @endforeach
                                         @endif
                                     </label>
