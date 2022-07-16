@@ -54,7 +54,7 @@
                                                                         class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
                                                                         <h6 class="text-center fw-bold">{{__('general.basic_service')}}</h6>
                                                                         @if(count($plan->basic_services))
-                                                                            <ul class="list-group list-group-flush bg-transparent">
+                                                                            <ul class="list-group list-group-flush bg-transparent text-center">
                                                                                 @foreach($plan->basic_services as $service)
                                                                                     <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
                                                                                         <i class="bx bx-check text-success"></i> {{ $service->name }}
@@ -67,7 +67,7 @@
                                                                         class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
                                                                         <h6 class="text-center fw-bold">{{__('general.additional_service')}}</h6>
                                                                         @if(count($plan->additional_services))
-                                                                            <ul class="list-group list-group-flush bg-transparent">
+                                                                            <ul class="list-group list-group-flush bg-transparent text-center">
                                                                                 @foreach($plan->additional_services as $service)
                                                                                     <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
                                                                                         <i class="bx bx-check text-success"></i> {{ $service->name }}
