@@ -66,7 +66,7 @@
                                 <td class="text-center">
                                     @if(\App\Services\OfficeService::already_subscribed($record->id))
                                         <div class="my-3 text-center">
-                                            <a href="{{ route('dashboard.subscriptions.index',['id'=>$subscription->value('model_id'),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
+                                            <a href="{{ route('dashboard.subscriptions.index',['id'=>\App\Services\OfficeService::get_subscribed_id($record->id),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
                                                class="btn btn-danger">
                                                 {{ trans('general.view_subscription') }}
                                             </a>

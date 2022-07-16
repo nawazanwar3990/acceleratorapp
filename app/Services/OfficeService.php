@@ -16,6 +16,14 @@ use function view;
 class OfficeService
 {
 
+    public static function get_subscribed_id($office_id): bool
+    {
+        $query = Subscription::where('model_id', $office_id);
+        if ($query->exists()) {
+            return $query->value('model_id');
+        }
+    }
+
     public static function already_subscribed($office_id): bool
     {
         $query = Subscription::where('model_id', $office_id);
