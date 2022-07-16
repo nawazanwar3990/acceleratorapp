@@ -11,7 +11,7 @@
             <div class="fix-width">
                 <div class="row location pb-5">
                     <div class="col-lg-3 col-md-4">
-                        @include('website.search.investor')
+                        @include('website.working-spaces.search.investor')
                     </div>
                     <div class="col-lg-9 col-md-8 bg-light border-start pt-4">
                         <div class="row">

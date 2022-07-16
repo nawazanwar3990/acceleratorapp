@@ -13,7 +13,7 @@
         <td>{{ $record->type->name ?? '' }}</td>
         <td>
             @if($record->view)
-                {{ \App\Services\OfficeService::getOfficeViewsForDropdown($record->view)}}
+                {{ \App\Services\OfficeService::office_views_dropdown($record->view)}}
             @else
             @endif
         </td>

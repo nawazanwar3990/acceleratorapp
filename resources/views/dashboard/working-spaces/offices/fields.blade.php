@@ -41,7 +41,7 @@
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('type_id' ,__('general.office_type').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-                {!!  Form::select('type_id', \App\Services\OfficeService::getOfficeTypesForDropdown(),null,['id'=>'type_id',
+                {!!  Form::select('type_id', \App\Services\OfficeService::office_types_dropdown(),null,['id'=>'type_id',
                     'class'=>'select2 form-control form-select', 'placeholder'=>__('general.select'),'style'=>'width:100%', 'required'])
                 !!}
                 @error('type_id')
@@ -50,7 +50,7 @@
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('view' ,__('general.view_location'),['class'=>'col-form-label']))   !!}
-                {!!  Form::select('view', \App\Services\OfficeService::getOfficeViewsForDropdown(),null,['id'=>'view',
+                {!!  Form::select('view', \App\Services\OfficeService::office_views_dropdown(),null,['id'=>'view',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_view_location'),'style'=>'width:100%'])
                 !!}
                 @error('view')
@@ -59,7 +59,7 @@
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('sitting_capacity' ,__('general.sitting_capacity'),['class'=>'col-form-label']))   !!}
-                {!!  Form::select('sitting_capacity', \App\Services\OfficeService::OfficeSittingCapacityForDropdown(),null,['id'=>'accommodation',
+                {!!  Form::select('sitting_capacity', \App\Services\OfficeService::office_stitting_capacity_dropdown(),null,['id'=>'accommodation',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_sitting_capacity'),'style'=>'width:100%'])
                 !!}
                 @error('sitting_capacity')

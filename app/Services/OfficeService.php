@@ -19,12 +19,12 @@ class OfficeService
         return Office::where('created_by', Auth::id())->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getOfficeTypesForDropdown()
+    public static function office_types_dropdown()
     {
         return OfficeType::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getOfficeViewsForDropdown($id = null)
+    public static function office_views_dropdown($id = null)
     {
         $data = [
             1 => __('general.front_view'),
@@ -39,7 +39,7 @@ class OfficeService
         return $data;
     }
 
-    public static function OfficeSittingCapacityForDropdown($id = null)
+    public static function office_stitting_capacity_dropdown($id = null)
     {
         for ($i = 1; $i < 50; $i++) {
             $data[$i] = $i;
