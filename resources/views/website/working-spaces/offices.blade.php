@@ -44,11 +44,8 @@
                                                         @foreach($office->plans as $plan)
                                                             <div class="col-12 text-center">
                                                                 <h5 class="text-center fw-bold text-info">
-                                                                    {{ ucwords(str_replace('_',' ',$plan->name)) }}
+                                                                    {{ ucwords(str_replace('_',' ',$plan->name)) }} ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }})
                                                                 </h5>
-                                                                <span class="badge rounded-pill bg-secondary text-black">
-                                                                            {{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
-                                                                        </span>
                                                             </div>
                                                             <div
                                                                 class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
