@@ -7,7 +7,7 @@
     <div class="row" style="position: relative;">
         @include('website.components.home.banner')
         @include('website.components.home.what-you-are')
-        <div class="col-md-12 p-0">
+        <div class="col-md-12 p-3">
             <div class="fix-width">
                 <div class="row location pb-5">
                     <div class="col-lg-3 col-md-4">
