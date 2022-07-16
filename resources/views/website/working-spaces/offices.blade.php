@@ -45,13 +45,13 @@
                                                         <div class="row">
                                                             @if(count($office->plans)>0)
                                                                 @foreach($office->plans as $plan)
-                                                                    <div class="col-12">
-                                                                        <h5 class="text-center fw-bold text-center text-info">
+                                                                    <div class="col-12 text-center">
+                                                                        <h5 class="text-center fw-bold text-info">
                                                                             {{ ucwords(str_replace('_',' ',$plan->name)) }}
                                                                         </h5>
-                                                                        <button class="badge bg-info btn-xs">
+                                                                        <span class="badge rounded-pill bg-secondary text-black">
                                                                             {{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
-                                                                        </button>
+                                                                        </span>
                                                                     </div>
                                                                     <div
                                                                         class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
