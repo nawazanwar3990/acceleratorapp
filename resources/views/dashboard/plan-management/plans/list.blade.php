@@ -3,9 +3,6 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ $record->name }}</td>
         <td>
-            {{ $record->no_of_persons }}
-        </td>
-        <td>
             {{ $record->duration }} {{trans('general.months')}}
         </td>
         <td>

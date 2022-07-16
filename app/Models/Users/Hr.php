@@ -90,7 +90,7 @@ class Hr extends Model
     public function first_image(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'id', 'record_id')
-            ->where('type',MediaTypeEnum::HR_FIRST_IMAGE);
+            ->where('record_type',MediaTypeEnum::HR_FIRST_IMAGE);
     }
     public function second_image(): BelongsTo
     {
