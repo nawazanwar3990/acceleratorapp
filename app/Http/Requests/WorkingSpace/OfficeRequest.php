@@ -87,8 +87,12 @@ class OfficeRequest extends FormRequest
 
     public function updateData($id)
     {
-        return Office::findorFail($id)->update($this->all());
-
+        $model = Office::findorFail($id);
+        $model->update($this->all());
+        $this->uploadMedia($model);
+        $this->saveOwner($model);
+        $this->savePlan($model);
+        return $model;
     }
 
     public function deleteData($id): bool
