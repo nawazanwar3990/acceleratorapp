@@ -52,12 +52,12 @@ class BuildingController extends Controller
     public function create(): View|Factory|RedirectResponse|Application
     {
         $this->authorize('create', Building::class);
-       /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);
-        $existing_buildings = Building::where('created_by', Auth::id())->count();
-        if ($existing_buildings >= $package_limit) {
-            return redirect()
-                ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
-        }*/
+        /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);
+         $existing_buildings = Building::where('created_by', Auth::id())->count();
+         if ($existing_buildings >= $package_limit) {
+             return redirect()
+                 ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
+         }*/
         $params = [
             'pageTitle' => __('general.new_building'),
         ];
@@ -71,6 +71,7 @@ class BuildingController extends Controller
     public function store(BuildingRequest $request)
     {
         $this->authorize('create', Building::class);
+
        /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);
         $existing_buildings = Building::where('created_by', Auth::id())->count();
         if ($existing_buildings >= $package_limit) {
@@ -78,6 +79,7 @@ class BuildingController extends Controller
                 ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
         }
         $has_package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);*/
+
         if ($request->createData()) {
             return redirect()->route('dashboard.buildings.create')
                 ->with('success', __('general.record_created_successfully'));

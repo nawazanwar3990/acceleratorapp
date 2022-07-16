@@ -134,9 +134,9 @@ class BuildingRequest extends FormRequest
                                         'created_by' => Auth::id()
                                     ]
                                 );
-                                if ($offices['plan'][$j]) {
-                                    $office->plans()->sync([$offices['plan'][$j]]);
-                                }
+                                /*if ($offices['plan'][$j]) {
+                                    $office->plans()->sync($offices['plan'][$j]);
+                                }*/
                             }
                         }
                     }
