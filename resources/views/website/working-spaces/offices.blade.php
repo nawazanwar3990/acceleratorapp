@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-9 col-md-8 bg-light border-start">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 p-3">
                                 @foreach($offices as $office)
                                     <div class="card overflow-hidden">
 
