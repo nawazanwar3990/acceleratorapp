@@ -2,9 +2,6 @@
     <tr>
         <td>{{ $loop->iteration }}</td>
         <td>
-            {{ \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy($record->subscription->subscription_type) }}
-        </td>
-        <td>
             @isset($record->subscribed)
                 {{ $record->subscribed->getFullName() }}
             @else
@@ -29,6 +26,12 @@
         <td>{{ $record->payment_type }}</td>
         <td>
             {{ $record->transaction_id }}
+        </td>
+        <td>
+            {{ $record->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+        </td>
+        <td>
+            {{ $record->created_at }}
         </td>
         <td class="text-center">
 

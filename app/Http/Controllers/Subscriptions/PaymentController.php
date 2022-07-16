@@ -41,15 +41,14 @@ class PaymentController extends Controller
      */
     public function index(Request $request): Factory|View|Application
     {
-        $type = $request->query('type');
         $this->authorize('view', Payment::class);
+        $id = $request->query('id');
         $records = Payment::with('subscribed', 'subscription')
-            ->where('subscribed_id', Auth::id())
+            ->where('subscription_id',$id)
             ->paginate(20);
         $params = [
             'pageTitle' => __('general.payments'),
-            'records' => $records,
-            'type' => $type
+            'records' => $records
         ];
         return view('dashboard.payment-management.payments.index', $params);
     }

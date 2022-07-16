@@ -53,6 +53,10 @@
                                             onclick="renew_package('{{ $subscription->id }}')">
                                              {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
                                          </a>
+                                    @else
+                                        <a class="btn btn-xs btn-warning mx-1" href="{{ route('dashboard.payments.index',['id'=>$subscription->id]) }}">
+                                            {{ trans('general.payment_logs') }}
+                                        </a>
                                      @endif
                                 </td>
                             </tr>

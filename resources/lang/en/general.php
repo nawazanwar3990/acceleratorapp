@@ -1,5 +1,7 @@
 <?php
 return [
+    'created_at' => 'Created At',
+
     'view_subscription' => 'View Subscription',
     'package_subscriptions' => 'Package Subscriptions',
     'plan_subscriptions' => 'Plan Subscriptions',
@@ -131,7 +133,7 @@ return [
     'prev' => 'Prev',
     'plan' => 'Plan',
     'new_plan' => 'New Plan',
-    'payments' => 'Plans',
+    'payments' => 'Payments',
     'register' => 'Register',
     'service_list' => 'Services List',
     'new_service' => 'New ServiceTableHeading',
@@ -1033,6 +1035,7 @@ return [
     'ph_shops_flats' => 'Select No. of PackageTableHeading/Shops',
     'ph_floor_name' => 'Select Floor',
     'ph_view_location' => 'Select View',
+    'payment_logs' => 'Payment logs',
     'ph_number_of_accommodation' => 'Select No. of Accommodation',
     'ph_expense_head' => 'Select Expense Head',
     'nominee_registration' => 'Nominee Registration',
