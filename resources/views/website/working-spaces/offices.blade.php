@@ -34,13 +34,13 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="row no-gutters">
-                                                    <div class="col-md-6 border-end border-bottom">
+                                                    <div class="col-md-4 border-end border-bottom">
                                                         <div class="p-20">
                                                             <h5 class="card-title">{{ ucwords(str_replace('_',' ',$office->name)) }}</h5>
                                                             <h5 class="text-danger">{{ $office->number }}</h5>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 border-bottom py-2">
+                                                    <div class="col-md-8 border-bottom py-2">
                                                         <h4 class="text-center fw-bold">{{__('general.available_plans')}}</h4>
                                                         <div class="row">
                                                             @if(count($office->plans)>0)
@@ -52,7 +52,7 @@
                                                                     </div>
                                                                     <div
                                                                         class="col-md-6 col-xl-6 col-xxl-6 col-6 align-self-center">
-                                                                        <h6 class="text-center fw-bold">{{__('general.basic_services')}}</h6>
+                                                                        <h6 class="text-center fw-bold">{{__('general.basic_service')}}</h6>
                                                                         @if(count($plan->basic_services))
                                                                             <ul class="list-group list-group-flush bg-transparent">
                                                                                 @foreach($plan->basic_services as $service)
