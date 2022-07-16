@@ -16,6 +16,6 @@ Route::resource('/offices', OfficeController::class, ['names' => 'offices'])->mi
 Route::get('/office-plans/{office_id}', [OfficeController::class, 'listPlans'])
     ->name('office-plans.index')
     ->middleware('has_package');
-Route::get('/store/office-plans/{office_id}', [OfficeController::class, 'storePlans'])
+Route::post('/store/office-plans/{office_id}', [OfficeController::class, 'storePlans'])
     ->name('office-plans.store')
     ->middleware('has_package');
