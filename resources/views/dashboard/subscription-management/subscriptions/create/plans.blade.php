@@ -14,7 +14,6 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $record->name }}</td>
-                                <td>{{ $record->number }}</td>
                                 <td>{{ $record->type->name ?? '' }}</td>
                                 <td>
                                     @if($record->view)
@@ -22,7 +21,7 @@
                                     @else
                                     @endif
                                 </td>
-                                <td>{{ $record->sitting_capacity }}</td>
+                                <td>{{ $record->sitting_capacity }} persons</td>
                                 <td>
                                     <ul class="list-group list-group-flush bg-transparent">
                                         <li class="list-group-item py-0 border-0  bg-transparent px-0">
