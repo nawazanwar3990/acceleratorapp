@@ -68,7 +68,7 @@ class BuildingController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(BuildingRequest $request)
+    public function store(BuildingRequest $request): RedirectResponse
     {
         $this->authorize('create', Building::class);
 
@@ -82,6 +82,9 @@ class BuildingController extends Controller
 
         if ($request->createData()) {
             return redirect()->route('dashboard.buildings.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
+            return redirect()->route('dashboard.buildings.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
@@ -110,10 +113,13 @@ class BuildingController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(BuildingRequest $request, $id)
+    public function update(BuildingRequest $request, $id): RedirectResponse
     {
         $this->authorize('update', Building::class);
         if ($request->updateData($id)) {
+            return redirect()->route('dashboard.buildings.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.buildings.index')
                 ->with('success', __('general.record_updated_successfully'));
         }

@@ -52,8 +52,13 @@ class PlanController extends Controller
     {
         $this->authorize('create', Plan::class);
         if ($request->createData()) {
-            return redirect()->route('dashboard.plans.create')
-                ->with('success', __('general.record_created_successfully'));
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.plans.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.plans.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
     }
 
@@ -79,8 +84,13 @@ class PlanController extends Controller
     {
         $this->authorize('update', Plan::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.plans.index')
-                ->with('success', __('general.record_updated_successfully'));
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.plans.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.plans.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
         }
     }
 

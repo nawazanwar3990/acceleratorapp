@@ -11,6 +11,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use function __;
 use function redirect;
 use function view;
@@ -54,10 +55,13 @@ class ServiceController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(ServiceRequest $request)
+    public function store(ServiceRequest $request): RedirectResponse
     {
          $this->authorize('create', Service::class);
-        if ($request->createData()) {
+        if ($request->saveNew) {
+            return redirect()->route('dashboard.services.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
             return redirect()->route('dashboard.services.index')
                 ->with('success', __('general.record_created_successfully'));
         }
@@ -83,10 +87,13 @@ class ServiceController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(ServiceRequest $request, $id)
+    public function update(ServiceRequest $request, $id): RedirectResponse
     {
          $this->authorize('update', Service::class);
         if ($request->updateData($id)) {
+            return redirect()->route('dashboard.services.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.services.index')
                 ->with('success', __('general.record_updated_successfully'));
         }

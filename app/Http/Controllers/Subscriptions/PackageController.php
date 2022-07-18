@@ -67,6 +67,9 @@ class PackageController extends Controller
     {
         $this->authorize('create', Package::class);
         if ($request->createData()) {
+            return redirect()->route('dashboard.packages.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
             return redirect()->route('dashboard.packages.index')
                 ->with('success', __('general.record_created_successfully'));
         }
@@ -90,10 +93,13 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(PackageRequest $request, $id)
+    public function update(PackageRequest $request, $id): RedirectResponse
     {
         $this->authorize('update', Package::class);
-        if ($request->updateData($id)) {
+        if ($request->createData()) {
+            return redirect()->route('dashboard.packages.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.packages.index')
                 ->with('success', __('general.record_updated_successfully'));
         }

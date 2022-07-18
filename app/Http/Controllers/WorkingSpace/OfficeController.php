@@ -70,7 +70,7 @@ class OfficeController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(OfficeRequest $request)
+    public function store(OfficeRequest $request): RedirectResponse
     {
         $this->authorize('create', Office::class);
         /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
@@ -80,6 +80,9 @@ class OfficeController extends Controller
                  ->route('dashboard.offices.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
          }*/
         if ($request->createData()) {
+            return redirect()->route('dashboard.offices.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
             return redirect()->route('dashboard.offices.index')
                 ->with('success', __('general.record_created_successfully'));
         }
@@ -109,6 +112,9 @@ class OfficeController extends Controller
     {
         $this->authorize('update', Office::class);
         if ($request->updateData($id)) {
+            return redirect()->route('dashboard.offices.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.offices.index')
                 ->with('success', __('general.record_updated_successfully'));
         }

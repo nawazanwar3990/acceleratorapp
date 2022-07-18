@@ -56,7 +56,10 @@ class DurationController extends Controller
     public function store(DurationRequest $request)
     {
         $this->authorize('create', Duration::class);
-        if ($request->createData()) {
+        if ($request->saveNew) {
+            return redirect()->route('dashboard.durations.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
             return redirect()->route('dashboard.durations.index')
                 ->with('success', __('general.record_created_successfully'));
         }
@@ -84,6 +87,9 @@ class DurationController extends Controller
     {
         $this->authorize('update', Duration::class);
         if ($request->updateData($id)) {
+            return redirect()->route('dashboard.durations.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.durations.index')
                 ->with('success', __('general.record_updated_successfully'));
         }

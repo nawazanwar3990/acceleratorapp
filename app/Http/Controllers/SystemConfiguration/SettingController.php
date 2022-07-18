@@ -42,10 +42,13 @@ class SettingController extends Controller
     public function store(SystemSettingsRequest $request)
     {
         $this->authorize('create', Setting::class);
-        if ($request->createData()) {
-            return redirect()->route('dashboard.settings.index')
-                ->with('success', __('general.record_updated_successfully'));
-        }
+            if ($request->createData()) {
+                return redirect()->route('dashboard.settings.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.settings.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
     }
 
 }

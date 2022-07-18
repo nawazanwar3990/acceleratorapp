@@ -50,9 +50,13 @@ class ModuleController extends Controller
     {
         $this->authorize('create', Module::class);
         if ($request->createData()) {
+            return redirect()->route('dashboard.modules.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
             return redirect()->route('dashboard.modules.index')
                 ->with('success', __('general.record_created_successfully'));
         }
+
     }
 
     /**
@@ -77,6 +81,9 @@ class ModuleController extends Controller
     {
         $this->authorize('update', Module::class);
         if ($request->updateData($id)) {
+            return redirect()->route('dashboard.modules.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.modules.index')
                 ->with('success', __('general.record_updated_successfully'));
         }

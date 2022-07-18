@@ -125,9 +125,12 @@ class PaymentController extends Controller
     {
         $this->authorize('update', Duration::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.durations.index')
-                ->with('success', __('general.record_updated_successfully'));
-        }
+                return redirect()->route('dashboard.durations.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.durations.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
     }
 
     /**

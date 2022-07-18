@@ -35,7 +35,7 @@ class OfficeTypeController extends Controller
             'pageTitle' => __('general.office_types'),
             'records' => $records,
         ];
-        return view('dashboard.working-spaces.office-types.index',$params);
+        return view('dashboard.working-spaces.office-types.index', $params);
     }
 
     /**
@@ -58,6 +58,9 @@ class OfficeTypeController extends Controller
     {
         $this->authorize('create', OfficeType::class);
         if ($request->createData()) {
+            return redirect()->route('dashboard.office-types.create')
+                ->with('success', __('general.record_created_successfully'));
+        } else {
             return redirect()->route('dashboard.office-types.index')
                 ->with('success', __('general.record_created_successfully'));
         }
@@ -86,6 +89,9 @@ class OfficeTypeController extends Controller
     {
         $this->authorize('update', OfficeType::class);
         if ($request->updateData($id)) {
+            return redirect()->route('dashboard.office-types.create')
+                ->with('success', __('general.record_updated_successfully'));
+        } else {
             return redirect()->route('dashboard.office-types.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
