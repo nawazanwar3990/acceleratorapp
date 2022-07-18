@@ -214,6 +214,7 @@
                                 'subscription_type': '{{ $type }}',
                                 'subscribed_id': {{ request()->query('id') }},
                                 'model_id': model_id,
+                                'price': price,
                             }
                             $.ajax({
                                 url: "{{ route('dashboard.subscriptions.store') }}",

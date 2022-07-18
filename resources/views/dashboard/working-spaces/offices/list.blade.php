@@ -10,12 +10,6 @@
         </td>
         <td>{{ $record->name }}</td>
         <td>{{ $record->type->name ?? '' }}</td>
-        <td>
-            @if($record->view)
-                {{ \App\Services\OfficeService::office_views_dropdown($record->view)}}
-            @else
-            @endif
-        </td>
         <td>{{ $record->sitting_capacity }}</td>
         <td>
             <ul class="list-group list-group-flush bg-transparent">
@@ -49,9 +43,14 @@
                 @endif
             </ul>
         </td>
-        <td>
+        <td class="text-center">
             <a class="btn btn-xs btn-info" href="{{ route('dashboard.office-plans.index',[$record->id]) }}">
-                {{ __('general.plans') }} <i class="bx bxs-eyedropper"></i>
+                {{ __('general.view') }}
+            </a>
+        </td>
+        <td class="text-center">
+            <a class="btn btn-xs btn-info" href="{{ route('dashboard.subscriptions.index',['type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}">
+                {{ __('general.view') }}
             </a>
         </td>
         <td class="text-center">

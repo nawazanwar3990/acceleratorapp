@@ -46,14 +46,14 @@ class SubscriptionController extends Controller
             $subscriptions = $subscriptions->where('subscription_type', $type);
         }
         $subscriptions = $subscriptions->paginate(20);
-        if ($type==SubscriptionTypeEnum::PLAN){
+        if ($type == SubscriptionTypeEnum::PLAN) {
             $pageTitle = __('general.plan_subscriptions');
             return view('dashboard.subscription-management.subscriptions.list.plans', compact(
                 'subscriptions',
                 'pageTitle',
                 'type'
             ));
-        }else if ($type==SubscriptionTypeEnum::PACKAGE){
+        } else if ($type == SubscriptionTypeEnum::PACKAGE) {
             $pageTitle = __('general.package_subscriptions');
             return view('dashboard.subscription-management.subscriptions.list.packages', compact(
                 'subscriptions',
@@ -92,6 +92,9 @@ class SubscriptionController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+
+        $request_price = $request->input('price', 0);
+
         $subscription_id = $request->subscription_id;
         $subscribed_id = $request->subscribed_id;
         $payment_type = $request->payment_type;
@@ -117,13 +120,13 @@ class SubscriptionController extends Controller
             $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
         }
         if ($subscription_type == SubscriptionTypeEnum::PLAN) {
+            $price = $request_price;
             $plan = Plan::find($subscription_id);
             $from_date = Carbon::now();
-            $price = $plan->price;
             $limit = $plan->duration;
             $subscription->price = $price;
             $subscription->model_id = $request->input('model_id');
-            $subscription->model_type=KeyWordEnum::FLOOR;
+            $subscription->model_type = KeyWordEnum::FLOOR;
             $subscription->is_payed = true;
             $subscription->created_by = auth()->id();
             $subscription->renewal_date = Carbon::now();

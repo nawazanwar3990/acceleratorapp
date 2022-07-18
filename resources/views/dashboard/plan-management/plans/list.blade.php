@@ -36,12 +36,7 @@
             @endif
         </td>
         <td class="text-center">
-            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                @include('dashboard.components.general.table-actions', [
-                    'edit' => route('dashboard.plans.edit', $record->id),
-                    'delete' => route('dashboard.plans.destroy', $record->id),
-                ])
-            @endif
+            Readonly
         </td>
     </tr>
 @empty
