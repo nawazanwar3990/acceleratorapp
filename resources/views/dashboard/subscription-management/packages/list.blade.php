@@ -36,12 +36,7 @@
             </UL>
         </td>
         <td class="text-center">
-            @if(auth()->user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
-                @include('dashboard.components.general.table-actions', [
-                    'edit' => route('dashboard.packages.edit', $record->id),
-                    'delete' => route('dashboard.packages.destroy', $record->id),
-                ])
-            @endif
+         Readonly
         </td>
     </tr>
 @empty
