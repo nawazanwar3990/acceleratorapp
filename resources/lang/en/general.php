@@ -4,6 +4,7 @@ return [
     'available_plans' => 'Available Plans',
     'sold' => "Sold",
     'for_rent' => 'For Rent',
+    'new_investor'=>'New Investor',
 
     'created_at' => 'Created At',
 

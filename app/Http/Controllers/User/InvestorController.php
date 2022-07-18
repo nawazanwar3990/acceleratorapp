@@ -5,8 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserManagement\CustomerRequest;
+use App\Http\Requests\UserManagement\UserRequest;
 use App\Models\Users\Hr;
+use App\Models\Users\Investor;
 use App\Models\Users\Role;
 use App\Models\Users\User;
 use App\Services\PersonService;
@@ -36,7 +37,7 @@ class InvestorController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize(AbilityEnum::VIEW, Hr::class);
+        $this->authorize(AbilityEnum::VIEW, Investor::class);
         $records = User::whereHas('roles', function ($q) {
             $q->where('slug', RoleEnum::INVESTOR);
         })->get();
@@ -45,15 +46,15 @@ class InvestorController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.investor-management.index', $params);
+        return view('dashboard.user-management.investors.index', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function create(CustomerRequest $request): Factory|View|Application
+    public function create(UserRequest $request): Factory|View|Application
     {
-        $this->authorize(AbilityEnum::CREATE, Hr::class);
+        $this->authorize(AbilityEnum::CREATE, Investor::class);
         $type = $request->get('type');
         $lastId = Hr::orderBy('id', 'DESC')->value('id');
         $params = [
@@ -62,15 +63,15 @@ class InvestorController extends Controller
             'type' => $type
         ];
 
-        return view('dashboard.investor-management.create', $params);
+        return view('dashboard.user-management.investors.create', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function store(CustomerRequest $request)
+    public function store(UserRequest $request)
     {
-        $this->authorize(AbilityEnum::CREATE, Hr::class);
+        $this->authorize(AbilityEnum::CREATE, Investor::class);
         $data = $request->all();
         if ($user = $this->personService->store($data)) {
             $role = Role::where('slug', RoleEnum::INVESTOR)->value('id');
@@ -83,11 +84,11 @@ class InvestorController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function destroy(CustomerRequest $request, $id)
+    public function destroy(UserRequest $request, $id)
     {
-        $this->authorize(AbilityEnum::DELETE, Hr::class);
+        $this->authorize(AbilityEnum::DELETE, Investor::class);
         if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.ba.index')
+            return redirect()->route('dashboard.investors.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

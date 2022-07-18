@@ -24,6 +24,7 @@ use App\Models\Users\HrDesignation;
 use App\Models\Users\HrOrganization;
 use App\Models\Users\HrProfession;
 use App\Models\Users\HrRelation;
+use App\Models\Users\Investor;
 use App\Models\Users\Permission;
 use App\Models\Users\Province;
 use App\Models\Users\Role;
@@ -52,6 +53,7 @@ use App\Policies\Users\DepartmentPolicy;
 use App\Policies\Users\DesignationPolicy;
 use App\Policies\Users\DistrictPolicy;
 use App\Policies\Users\FreelancerPolicy;
+use App\Policies\Users\InvestorPolicy;
 use App\Policies\Users\OrganizationPolicy;
 use App\Policies\Users\PermissionPolicy;
 use App\Policies\Users\ProfessionPolicy;
@@ -106,6 +108,7 @@ class AuthServiceProvider extends ServiceProvider
         Building::class => BuildingPolicy::class,
         Plan::class => PlanPolicy::class,
         Freelancer::class => FreelancerPolicy::class,
+        Investor::class => InvestorPolicy::class,
     ];
 
     public function boot()

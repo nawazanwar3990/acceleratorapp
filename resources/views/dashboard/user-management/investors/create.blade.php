@@ -1,6 +1,5 @@
 @extends('layouts.dashboard')
 @section('css-before')
-
 @endsection
 @section('content')
     <div class="row">
@@ -21,8 +20,6 @@
     </div>
 @endsection
 @section('inner-script-files')
-    <script src="{{ asset('plugins/dropify/dist/js/dropify.min.js') }}"></script>
 @endsection
 @section('innerScript')
-    @include('dashboard.freelancer-management.components.script')
 @endsection
