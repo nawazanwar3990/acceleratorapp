@@ -11,76 +11,78 @@
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\OfficeTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @forelse($records as $record)
-                            <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $record->name }}</td>
-                                <td>{{ $record->type->name ?? '' }}</td>
-                                <td>
-                                    @if($record->view)
-                                        {{ \App\Services\OfficeService::office_views_dropdown($record->view)}}
-                                    @else
-                                    @endif
-                                </td>
-                                <td>{{ $record->sitting_capacity }} persons</td>
-                                <td>
-                                    <ul class="list-group list-group-flush bg-transparent">
-                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                            <small>
-                                                <strong>{{ __('general.length') }}</strong>: {{ $record->length }}
-                                            </small>
-                                        </li>
-                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                            <small>
-                                                <strong>{{ __('general.width') }}</strong>: {{ $record->width }}
-                                            </small>
-                                        </li>
-                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                            <small>
-                                                <strong>{{ __('general.height') }}</strong>: {{ $record->height }}
-                                            </small>
-                                        </li>
-                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                            <small>
-                                                <strong>{{ __('general.area') }}</strong>: {{ $record->area }}
-                                            </small>
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    @if(count($record->plans)>0)
+                            @if($record->plans)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $record->name }}</td>
+                                    <td>{{ $record->type->name ?? '' }}</td>
+                                    <td>
+                                        @if($record->view)
+                                            {{ \App\Services\OfficeService::office_views_dropdown($record->view)}}
+                                        @else
+                                        @endif
+                                    </td>
+                                    <td>{{ $record->sitting_capacity }} persons</td>
+                                    <td>
                                         <ul class="list-group list-group-flush bg-transparent">
-                                            @foreach($record->plans as $plan)
-                                                <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                    <i class="bx bx-check text-success"></i>
-                                                    <small>
-                                                        <strong class="text-infogit ">{{ $plan->name }}</strong>
-                                                        ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
-                                                        )
-                                                    </small>
-                                                </li>
-                                            @endforeach
+                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                <small>
+                                                    <strong>{{ __('general.length') }}</strong>: {{ $record->length }}
+                                                </small>
+                                            </li>
+                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                <small>
+                                                    <strong>{{ __('general.width') }}</strong>: {{ $record->width }}
+                                                </small>
+                                            </li>
+                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                <small>
+                                                    <strong>{{ __('general.height') }}</strong>: {{ $record->height }}
+                                                </small>
+                                            </li>
+                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                <small>
+                                                    <strong>{{ __('general.area') }}</strong>: {{ $record->area }}
+                                                </small>
+                                            </li>
                                         </ul>
-                                    @endif
-                                </td>
-                                <td class="text-center">
-                                    @if(\App\Services\OfficeService::already_subscribed($record->id))
-                                        <div class="my-3 text-center">
-                                            <a href="{{ route('dashboard.subscriptions.index',['id'=>\App\Services\OfficeService::get_subscribed_id($record->id),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
-                                               class="btn btn-danger">
-                                                {{ trans('general.view_subscription') }}
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="my-3 text-center">
-                                            <a class="btn btn-info"
-                                               onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
-                                                {{ trans('general.apply_subscription') }} <i
-                                                    class="bx bx-plus-circle"></i>
-                                            </a>
-                                        </div>
-                                    @endif
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        @if(count($record->plans)>0)
+                                            <ul class="list-group list-group-flush bg-transparent">
+                                                @foreach($record->plans as $plan)
+                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                        <i class="bx bx-check text-success"></i>
+                                                        <small>
+                                                            <strong class="text-infogit ">{{ $plan->name }}</strong>
+                                                            ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                                            )
+                                                        </small>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if(\App\Services\OfficeService::already_subscribed($record->id))
+                                            <div class="my-3 text-center">
+                                                <a href="{{ route('dashboard.subscriptions.index',['id'=>\App\Services\OfficeService::get_subscribed_id($record->id),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
+                                                   class="btn btn-danger">
+                                                    {{ trans('general.view_subscription') }}
+                                                </a>
+                                            </div>
+                                        @else
+                                            <div class="my-3 text-center">
+                                                <a class="btn btn-info"
+                                                   onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
+                                                    {{ trans('general.apply_subscription') }} <i
+                                                        class="bx bx-plus-circle"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endif
                         @empty
                             <tr>
                                 <td colspan="100%" class="text-center">
