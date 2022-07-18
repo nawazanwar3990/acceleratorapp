@@ -4,31 +4,55 @@
             {{ $loop->iteration }}
         </td>
 
-        <td>{{ $record->building->name??null  }}</td>
+        <td>
+            @isset($record->building)
+                {{ $record->building->name  }}
+            @else
+                --
+            @endif
+        </td>
         <td>{{ $record->name}}</td>
-        <td>{{ $record->number}}</td>
+        <td>
+            @if($record->offices)
+                <a class="btn btn-xs btn-warning mx-1"
+                   href="{{route('dashboard.offices.index',['fId'=>$record->id])}}">
+                    {{ trans('general.view') }}
+                </a>
+            @else
+                0
+            @endif
+        </td>
+
         <td>
             <ul class="list-group list-group-flush bg-transparent">
-                <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                    <small>
-                        <strong>{{ __('general.length') }}</strong>: {{ $record->length }}
-                    </small>
-                </li>
+                @if($record->length)
+                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                        <small>
+                            <strong>{{ __('general.length') }}</strong>: {{ $record->length }}
+                        </small>
+                    </li>
+                @endif
+                @if($record->width)
                 <li class="list-group-item py-0 border-0  bg-transparent px-0">
                     <small>
                         <strong>{{ __('general.width') }}</strong>: {{ $record->width }}
                     </small>
                 </li>
+                    @endif
+                    @if($record->height)
                 <li class="list-group-item py-0 border-0  bg-transparent px-0">
                     <small>
                         <strong>{{ __('general.height') }}</strong>: {{ $record->height }}
                     </small>
                 </li>
+                    @endif
+                    @if($record->area)
                 <li class="list-group-item py-0 border-0  bg-transparent px-0">
                     <small>
                         <strong>{{ __('general.area') }}</strong>: {{ $record->area }}
                     </small>
                 </li>
+                    @endif
             </ul>
         </td>
         <td>
@@ -38,7 +62,6 @@
                 --
             @endif
         </td>
-        <td>{{ $record->no_of_offices}}</td>
         <td class="text-center">
             @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                 @include('dashboard.components.general.table-actions', [

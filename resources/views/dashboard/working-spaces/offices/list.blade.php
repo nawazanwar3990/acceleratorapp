@@ -9,7 +9,6 @@
             @endif
         </td>
         <td>{{ $record->name }}</td>
-        <td>{{ $record->number }}</td>
         <td>{{ $record->type->name ?? '' }}</td>
         <td>
             @if($record->view)

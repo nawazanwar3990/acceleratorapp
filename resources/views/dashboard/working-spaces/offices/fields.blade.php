@@ -50,7 +50,7 @@
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('sitting_capacity' ,__('general.sitting_capacity'),['class'=>'col-form-label']))   !!}
-                {!!  Form::select('sitting_capacity', \App\Services\OfficeService::office_stitting_capacity_dropdown(),null,['id'=>'accommodation',
+                {!!  Form::select('sitting_capacity', \App\Services\OfficeService::sitting_capacity_dropdown(),null,['id'=>'accommodation',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_sitting_capacity'),'style'=>'width:100%'])
                 !!}
             </div>

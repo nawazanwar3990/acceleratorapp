@@ -105,13 +105,13 @@ class BuildingRequest extends FormRequest
             if ($count > 0) {
                 for ($i = 0; $i < $count; $i++) {
                     $name = $floors['name'][$i];
-                    $number = $floors['number'][$i];
+                    $type = $floors['type'][$i];
                     $no_of_offices = $floors['no_of_offices'][$i];
                     $floor = Floor::create(
                         [
                             'building_id' => $model->id,
                             'name' => $name,
-                            'number' => $number,
+                            'type_id' => $type,
                             'no_of_offices' => $no_of_offices,
                             'created_by' => Auth::id()
                         ]
@@ -122,21 +122,18 @@ class BuildingRequest extends FormRequest
                         if ($floor_name_count > 0) {
                             for ($j = 0; $j < $floor_name_count; $j++) {
                                 $office_name = $offices['name'][$j];
-                                $office_number = $offices['number'][$j];
+                                $office_type = $offices['type'][$j];
                                 $capacity = $offices['capacity'][$j];
                                 $office = Office::create(
                                     [
                                         'building_id' => $model->id,
                                         'floor_id' => $floor->id,
                                         'name' => $office_name,
-                                        'number' => $office_number,
+                                        'type_id' => $office_type,
                                         'sitting_capacity' => $capacity,
                                         'created_by' => Auth::id()
                                     ]
                                 );
-                                /*if ($offices['plan'][$j]) {
-                                    $office->plans()->sync($offices['plan'][$j]);
-                                }*/
                             }
                         }
                     }

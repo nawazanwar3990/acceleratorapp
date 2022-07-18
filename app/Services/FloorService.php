@@ -12,12 +12,12 @@ use function __;
 
 class FloorService
 {
-    public static function getFloorTypesForDropdown()
+    public static function floor_types()
     {
         return FloorType::orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
-    public static function getNoOfShopsForDropdown($id = null)
+    public static function no_of_offices_dropdown($id = null)
     {
         for ($i = 1; $i <= 100; $i++) {
             $data[$i] = $i;
@@ -76,7 +76,13 @@ class FloorService
 
     public function listFloorByPagination(): LengthAwarePaginator
     {
-        $floors = Floor::with('offices', 'type', 'images');
+        $floors = Floor::with('building','offices', 'type', 'images');
+        if (request()->has('bId')) {
+            $floors->whereHas('building',function ($q){
+                $building_id = request()->query('bId');
+                $q->where('buildings.id',$building_id);
+            });
+        }
         if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $floors = $floors->whereCreatedBy(Auth::id());
         }

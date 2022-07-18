@@ -34916,3 +34916,11 @@ a.ui-button:active,
 .fs-13 {
   font-size: 13px !important;
 }
+
+.parsley-errors-list {
+  list-style-type: none;
+  font-size: 13px;
+  padding-top: 8px;
+  color: red;
+  padding-left: 0;
+}

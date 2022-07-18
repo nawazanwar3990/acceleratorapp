@@ -59,7 +59,7 @@ class OfficeService
         return $data;
     }
 
-    public static function office_stitting_capacity_dropdown($id = null)
+    public static function sitting_capacity_dropdown($id = null)
     {
         for ($i = 1; $i < 50; $i++) {
             $data[$i] = $i;
@@ -95,11 +95,23 @@ class OfficeService
 
     public function listOfficesByPagination(): LengthAwarePaginator
     {
-        $flats = Office::with('images');
-        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
-            $flats = $flats->whereCreatedBy(Auth::id());
+        $offices = Office::with('building', 'floor', 'images');
+        if (request()->has('bId')) {
+            $offices = $offices->whereHas('building', function ($q) {
+                $building_id = request()->query('bId');
+                $q->where('buildings.id', $building_id);
+            });
         }
-        return $flats->paginate(20);
+        if (request()->has('fId')) {
+            $offices = $offices->whereHas('floor', function ($q) {
+                $floor_id = request()->query('fId');
+                $q->where('floors.id', $floor_id);
+            });
+        }
+        if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
+            $offices = $offices->whereCreatedBy(Auth::id());
+        }
+        return $offices->paginate(20);
     }
 
     public function findById($id)

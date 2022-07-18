@@ -24,12 +24,12 @@
                 {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ', 'required']) !!}
             </div>
             <div class="col-3 mb-3">
-                {!!  Html::decode(Form::label('number' ,__('general.floor_number').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-                {!!  Form::text('number',null,['id'=>'number','class'=>'form-control ', 'required']) !!}
+                {!!  Html::decode(Form::label('number' ,__('general.floor_number'),['class'=>'form-label']))   !!}
+                {!!  Form::text('number',null,['id'=>'number','class'=>'form-control']) !!}
             </div>
             <div class="col-3 mb-3">
                 {!!  Html::decode(Form::label('type_id' ,__('general.floor_type').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
-                {!!  Form::select('type_id', \App\Services\FloorService::getFloorTypesForDropdown(),null,['id'=>'type_id',
+                {!!  Form::select('type_id', \App\Services\FloorService::floor_types(),null,['id'=>'type_id',
                     'class'=>'select2 form-control', 'placeholder'=>__('general.ph_floor_type'),'required','style'=>'width:100%'])
                 !!}
             </div>
