@@ -11,7 +11,7 @@
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\OfficeTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @forelse($records as $record)
-                            @if($record->plans)
+                            @if(isset($record->plans) && count($record->plans)>0)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $record->name }}</td>
