@@ -54,9 +54,16 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $this->authorize(AbilityEnum::CREATE, Role::class);
+
         if ($request->createData()) {
-            return redirect()->route('dashboard.roles.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.roles.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.roles.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
     }
 
@@ -80,8 +87,16 @@ class RoleController extends Controller
     {
         $this->authorize(AbilityEnum::UPDATE, Role::class);
         if ($request->updateData($role)) {
-            return redirect()->route('dashboard.roles.index')
-                ->with('success', __('general.record_updated_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.roles.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.roles.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
+
+
         }
     }
 

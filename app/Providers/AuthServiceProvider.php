@@ -17,6 +17,7 @@ use App\Models\Users\BA;
 use App\Models\Users\Country;
 use App\Models\Users\Customer;
 use App\Models\Users\District;
+use App\Models\Users\Freelancer;
 use App\Models\Users\Hr;
 use App\Models\Users\HrDepartment;
 use App\Models\Users\HrDesignation;
@@ -50,6 +51,7 @@ use App\Policies\Users\CustomerPolicy;
 use App\Policies\Users\DepartmentPolicy;
 use App\Policies\Users\DesignationPolicy;
 use App\Policies\Users\DistrictPolicy;
+use App\Policies\Users\FreelancerPolicy;
 use App\Policies\Users\OrganizationPolicy;
 use App\Policies\Users\PermissionPolicy;
 use App\Policies\Users\ProfessionPolicy;
@@ -83,15 +85,9 @@ class AuthServiceProvider extends ServiceProvider
         OfficeType::class => PlanPolicy::class,
 
 
-        HrRelation::class => RelationPolicy::class,
-        Country::class => CountryPolicy::class,
-        Province::class => ProvincePolicy::class,
-        District::class => DistrictPolicy::class,
 
-        HrDepartment::class => DepartmentPolicy::class,
-        HrDesignation::class => DesignationPolicy::class,
-        HrProfession::class => ProfessionPolicy::class,
-        HrOrganization::class => OrganizationPolicy::class,
+        Province::class => ProvincePolicy::class,
+
         Office::class => OfficePolicy::class,
 
         Hr::class => AdminPolicy::class,
@@ -109,6 +105,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Building::class => BuildingPolicy::class,
         Plan::class => PlanPolicy::class,
+        Freelancer::class => FreelancerPolicy::class,
     ];
 
     public function boot()

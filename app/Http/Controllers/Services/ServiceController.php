@@ -51,19 +51,20 @@ class ServiceController extends Controller
         return view('dashboard.service-management.services.create',compact('params'));
     }
 
-
     /**
      * @throws AuthorizationException
      */
-    public function store(ServiceRequest $request): RedirectResponse
+    public function store(ServiceRequest $request)
     {
          $this->authorize('create', Service::class);
-        if ($request->saveNew) {
-            return redirect()->route('dashboard.services.create')
-                ->with('success', __('general.record_created_successfully'));
-        } else {
-            return redirect()->route('dashboard.services.index')
-                ->with('success', __('general.record_created_successfully'));
+        if ($request->createData()) {
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.services.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.services.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
     }
 
@@ -83,19 +84,20 @@ class ServiceController extends Controller
         return view('dashboard.service-management.services.edit', $params);
     }
 
-
     /**
      * @throws AuthorizationException
      */
-    public function update(ServiceRequest $request, $id): RedirectResponse
+    public function update(ServiceRequest $request, $id)
     {
          $this->authorize('update', Service::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.services.create')
-                ->with('success', __('general.record_updated_successfully'));
-        } else {
-            return redirect()->route('dashboard.services.index')
-                ->with('success', __('general.record_updated_successfully'));
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.services.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.services.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
         }
     }
 

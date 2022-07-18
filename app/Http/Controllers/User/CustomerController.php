@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserManagement\CustomerRequest;
 use App\Http\Requests\UserManagement\UserRequest;
 use App\Models\Users\Customer;
 use App\Models\Users\Hr;
@@ -77,8 +76,15 @@ class CustomerController extends Controller
         if ($user = $this->personService->store($data)) {
             $role = Role::whereSlug(RoleEnum::CUSTOMER)->value('id');
             $user->roles()->sync([$role]);
-            return redirect()->route('dashboard.customers.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.customers.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.customers.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
+
         }
     }
 

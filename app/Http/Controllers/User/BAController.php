@@ -77,8 +77,14 @@ class BAController extends Controller
         if ($user = $this->personService->store($data)) {
             $role = Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->value('id');
             $user->roles()->sync([$role]);
-            return redirect()->route('dashboard.ba.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.ba.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.ba.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
     }
 

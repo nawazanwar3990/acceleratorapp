@@ -79,11 +79,14 @@ class FloorController extends Controller
                 ->route('dashboard.floors.index')->with('error', 'Your Package limit has Exceeded.Please contact with admin for renew');
         }*/
         if ($request->createData()) {
-            return redirect()->route('dashboard.floors.create')
-                ->with('success', __('general.record_created_successfully'));
-        } else {
-            return redirect()->route('dashboard.floors.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.floors.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.floors.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
     }
 
@@ -109,13 +112,20 @@ class FloorController extends Controller
     public function update(FloorRequest $request, $id)
     {
         $this->authorize('update', Floor::class);
+
+
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.floors.create')
-                ->with('success', __('general.record_updated_successfully'));
-        } else {
-            return redirect()->route('dashboard.floors.index')
-                ->with('success', __('general.record_updated_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.floors.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.floors.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
+
         }
+
     }
 
     /**

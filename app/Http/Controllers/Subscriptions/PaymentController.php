@@ -7,9 +7,7 @@ use App\Enum\PaymentTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PackageManagement\DurationRequest;
 use App\Models\Plans\Plan;
-use App\Models\Subscriptions\Duration;
 use App\Models\Subscriptions\Package;
 use App\Models\Subscriptions\Payment;
 use App\Models\Subscriptions\Subscription;
@@ -21,9 +19,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Monolog\Handler\IFTTTHandler;
 use function __;
 use function redirect;
 use function response;
@@ -44,7 +40,7 @@ class PaymentController extends Controller
         $this->authorize('view', Payment::class);
         $id = $request->query('id');
         $records = Payment::with('subscribed', 'subscription')
-            ->where('subscription_id',$id)
+            ->where('subscription_id', $id)
             ->paginate(20);
         $params = [
             'pageTitle' => __('general.payments'),
@@ -94,54 +90,12 @@ class PaymentController extends Controller
                     'subscription_id' => $subscription_id,
                     'price' => $subscription->price,
                     'created_at' => Carbon::now(),
-                                        'updated_at' => Carbon::now()
+                    'updated_at' => Carbon::now()
                 ]);
             }
         }
         return response()->json([
             'status' => true
         ]);
-    }
-
-    /**
-     * @throws AuthorizationException
-     */
-    public function edit($id): Factory|View|Application
-    {
-        $this->authorize('update', Duration::class);
-        $model = Duration::findorFail($id);
-        $params = [
-            'pageTitle' => __('general.edit_duration'),
-            'model' => $model,
-        ];
-
-        return view('dashboard.subscription-management.durations.edit', $params);
-    }
-
-    /**
-     * @throws AuthorizationException
-     */
-    public function update(DurationRequest $request, $id)
-    {
-        $this->authorize('update', Duration::class);
-        if ($request->updateData($id)) {
-                return redirect()->route('dashboard.durations.create')
-                    ->with('success', __('general.record_updated_successfully'));
-            } else {
-                return redirect()->route('dashboard.durations.index')
-                    ->with('success', __('general.record_updated_successfully'));
-            }
-    }
-
-    /**
-     * @throws AuthorizationException
-     */
-    public function destroy(DurationRequest $request, $id)
-    {
-        $this->authorize('delete', Duration::class);
-        if ($request->deleteData($id)) {
-            return redirect()->route('dashboard.durations.index')
-                ->with('success', __('general.record_deleted_successfully'));
-        }
     }
 }

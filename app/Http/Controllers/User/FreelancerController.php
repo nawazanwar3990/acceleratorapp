@@ -6,7 +6,8 @@ use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserManagement\CustomerRequest;
+use App\Http\Requests\UserManagement\UserRequest;
+use App\Models\Users\Freelancer;
 use App\Models\Users\Hr;
 use App\Models\Users\Role;
 use App\Models\Users\User;
@@ -39,7 +40,7 @@ class FreelancerController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize(AbilityEnum::VIEW, Hr::class);
+        $this->authorize(AbilityEnum::VIEW, Freelancer::class);
         $records = User::whereHas('roles', function ($q) {
             $q->where('slug', RoleEnum::FREELANCER);
         })->get();
@@ -54,9 +55,9 @@ class FreelancerController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function create(CustomerRequest $request): Factory|View|Application
+    public function create(UserRequest $request): Factory|View|Application
     {
-        $this->authorize(AbilityEnum::CREATE, Hr::class);
+        $this->authorize(AbilityEnum::CREATE, Freelancer::class);
         $type = $request->get('type');
         $lastId = Hr::orderBy('id', 'DESC')->value('id');
         $params = [
@@ -71,9 +72,9 @@ class FreelancerController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(CustomerRequest $request)
+    public function store(UserRequest $request)
     {
-        $this->authorize(AbilityEnum::CREATE, Hr::class);
+        $this->authorize(AbilityEnum::CREATE, Freelancer::class);
         $data = $request->all();
         if ($user = $this->personService->store($data)) {
             $role = Role::where('slug', RoleEnum::FREELANCER)->value('id');
@@ -82,7 +83,6 @@ class FreelancerController extends Controller
             DB::table(TableEnum::HR_SERVICE)->insert([
                 'service_id' => $request->input('parent_service_id'),
                 'hr_id' => $hr->id,
-                'created_by' => $user->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
@@ -92,23 +92,30 @@ class FreelancerController extends Controller
                     DB::table(TableEnum::HR_SERVICE)->insert([
                         'service_id' => $serviceId,
                         'hr_id' => $hr->id,
-                        'created_by' => $user->id,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()
                     ]);
                 }
             }
-            return redirect()->route('dashboard.freelancers.index')
-                ->with('success', __('general.record_created_successfully'));
+
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.freelancers.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.freelancers.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
+
         }
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function destroy(CustomerRequest $request, $id)
+    public function destroy(UserRequest $request, $id)
     {
-        $this->authorize(AbilityEnum::DELETE, Hr::class);
+        $this->authorize(AbilityEnum::DELETE, Freelancer::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.freelancers.index')
                 ->with('success', __('general.record_deleted_successfully'));

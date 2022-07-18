@@ -68,7 +68,7 @@ class BuildingController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(BuildingRequest $request): RedirectResponse
+    public function store(BuildingRequest $request)
     {
         $this->authorize('create', Building::class);
 
@@ -81,12 +81,16 @@ class BuildingController extends Controller
         $has_package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);*/
 
         if ($request->createData()) {
-            return redirect()->route('dashboard.buildings.create')
-                ->with('success', __('general.record_created_successfully'));
-        } else {
-            return redirect()->route('dashboard.buildings.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.buildings.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.buildings.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
+
     }
 
     public function show($id)
@@ -113,15 +117,19 @@ class BuildingController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(BuildingRequest $request, $id): RedirectResponse
+    public function update(BuildingRequest $request, $id)
     {
         $this->authorize('update', Building::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.buildings.create')
-                ->with('success', __('general.record_updated_successfully'));
-        } else {
-            return redirect()->route('dashboard.buildings.index')
-                ->with('success', __('general.record_updated_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.buildings.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.buildings.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
+
         }
     }
 

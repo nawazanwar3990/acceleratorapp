@@ -62,8 +62,15 @@ class PermissionController extends Controller
     {
         $this->authorize(AbilityEnum::CREATE, Permission::class);
         if ($request->createData()) {
-            return redirect()->route('dashboard.permissions.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.permissions.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.permissions.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
+
         }
     }
 
@@ -87,8 +94,16 @@ class PermissionController extends Controller
     {
         $this->authorize(AbilityEnum::UPDATE, Permission::class);
         if ($request->updateData($permission)) {
-            return redirect()->route('dashboard.permissions.index')
-                ->with('success', __('general.record_updated_successfully'));
+
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.permissions.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.permissions.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
+
         }
     }
 

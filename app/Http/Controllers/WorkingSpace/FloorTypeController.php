@@ -57,11 +57,15 @@ class FloorTypeController extends Controller
     {
         $this->authorize('create', FloorType::class);
         if ($request->createData()) {
-            return redirect()->route('dashboard.floor-types.create')
-                ->with('success', __('general.record_created_successfully'));
-        } else {
-            return redirect()->route('dashboard.floor-types.index')
-                ->with('success', __('general.record_created_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.floor-types.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.floor-types.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
+
         }
     }
 
@@ -88,11 +92,15 @@ class FloorTypeController extends Controller
     {
         $this->authorize('update', FloorType::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.floor-types.create')
-                ->with('success', __('general.record_updated_successfully'));
-        } else {
-            return redirect()->route('dashboard.floor-types.index')
-                ->with('success', __('general.record_updated_successfully'));
+
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.floor-types.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.floor-types.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
+
         }
     }
 

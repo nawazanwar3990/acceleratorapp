@@ -66,12 +66,14 @@ class PackageController extends Controller
     public function store(PackageRequest $request)
     {
         $this->authorize('create', Package::class);
-        if ($request->createData()) {
-            return redirect()->route('dashboard.packages.create')
-                ->with('success', __('general.record_created_successfully'));
-        } else {
-            return redirect()->route('dashboard.packages.index')
-                ->with('success', __('general.record_created_successfully'));
+        if ($request->createData()){
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.packages.create')
+                    ->with('success', __('general.record_created_successfully'));
+            } else {
+                return redirect()->route('dashboard.packages.index')
+                    ->with('success', __('general.record_created_successfully'));
+            }
         }
     }
 
@@ -93,15 +95,17 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function update(PackageRequest $request, $id): RedirectResponse
+    public function update(PackageRequest $request, $id)
     {
         $this->authorize('update', Package::class);
-        if ($request->createData()) {
-            return redirect()->route('dashboard.packages.create')
-                ->with('success', __('general.record_updated_successfully'));
-        } else {
-            return redirect()->route('dashboard.packages.index')
-                ->with('success', __('general.record_updated_successfully'));
+        if ($request->updateData($id)) {
+            if ($request->saveNew) {
+                return redirect()->route('dashboard.services.create')
+                    ->with('success', __('general.record_updated_successfully'));
+            } else {
+                return redirect()->route('dashboard.services.index')
+                    ->with('success', __('general.record_updated_successfully'));
+            }
         }
     }
 
