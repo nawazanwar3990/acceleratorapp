@@ -24,6 +24,9 @@
                                                 {{ $floor->name }}
                                             </td>
                                             <td>
+                                                @php
+                                                   $offices = \App\Models\WorkingSpace\Office::where('floor_id',$floor->id)->get();
+                                                @endphp
                                                 @if(count($floor->offices)>0)
                                                     <div class="offices_holder">
                                                         <table class="table table-bordered mt-2">
@@ -55,10 +58,10 @@
                                                                                 {{ trans('general.view_subscription') }}
                                                                             </a>
                                                                         @else
-                                                                            @if(count($office->plans)>1)
+                                                                            @if(count($office->plans)>0)
                                                                                 <a class="btn btn-xs btn-info"
                                                                                    onclick="apply_subscription('{{ $office->plans}}','{{$office->id}}','{{ $office->sitting_capacity }}');">
-                                                                                    {{ trans('general.subscription') }}
+                                                                                    {{ trans('general.subscription') }} <i class="bx bx-plus-circle"></i>
                                                                                 </a>
                                                                             @endif
                                                                         @endif

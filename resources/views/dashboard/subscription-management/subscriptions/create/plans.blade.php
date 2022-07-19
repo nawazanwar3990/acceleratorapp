@@ -72,7 +72,7 @@
                                                 </a>
                                             </div>
                                         @else
-                                            @if(count($record->plans)>1)
+                                            @if(count($record->plans)>0)
                                                 <div class="my-3 text-center">
                                                     <a class="btn btn-info"
                                                        onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">

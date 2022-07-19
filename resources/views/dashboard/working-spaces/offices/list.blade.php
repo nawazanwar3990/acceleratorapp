@@ -23,10 +23,10 @@
                     {{ trans('general.view_subscription') }}
                 </a>
             @else
-                @if(count($record->plans)>1)
+                @if(count($record->plans)>0)
                     <a class="btn btn-xs btn-info"
                        onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
-                        {{ trans('general.subscription') }}
+                        {{ trans('general.subscription') }} <i class="bx bx-plus-circle"></i>
                     </a>
                 @endif
             @endif
