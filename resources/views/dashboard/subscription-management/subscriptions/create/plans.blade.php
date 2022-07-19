@@ -8,78 +8,44 @@
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\OfficeTableHeadingEnum::getTranslationKeys()])
+                        <thead>
+                        <tr>
+                            <th scope="col">Location(optional)</th>
+                            <th scope="col">Office Name</th>
+                            <th scope="col">Sitting Capacity</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        @forelse($records as $record)
-                            @if(isset($record->plans) && count($record->plans)>0)
+                        @forelse($records as $office)
+                            @if(isset($office->plans) && count($office->plans)>0)
                                 <tr>
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $record->name }}</td>
-                                    <td>{{ $record->type->name ?? '' }}</td>
                                     <td>
-                                        @if($record->view)
-                                            {{ \App\Services\OfficeService::office_views_dropdown($record->view)}}
-                                        @else
+                                        @if($office->building  AND $office->floor)
+                                            <strong>{{ $office->floor->name }}</strong> of <strong>{{ $office->building->name }}</strong>
+                                        @elseif($office->building  AND !$office->floor)
+                                            {{ $office->building->name }}
                                         @endif
                                     </td>
-                                    <td>{{ $record->sitting_capacity }} persons</td>
-                                    <td>
-                                        <ul class="list-group list-group-flush bg-transparent">
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                <small>
-                                                    <strong>{{ __('general.length') }}</strong>: {{ $record->length }}
-                                                </small>
-                                            </li>
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                <small>
-                                                    <strong>{{ __('general.width') }}</strong>: {{ $record->width }}
-                                                </small>
-                                            </li>
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                <small>
-                                                    <strong>{{ __('general.height') }}</strong>: {{ $record->height }}
-                                                </small>
-                                            </li>
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                <small>
-                                                    <strong>{{ __('general.area') }}</strong>: {{ $record->area }}
-                                                </small>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        @if(count($record->plans)>0)
-                                            <ul class="list-group list-group-flush bg-transparent">
-                                                @foreach($record->plans as $plan)
-                                                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                        <i class="bx bx-check text-success"></i>
-                                                        <small>
-                                                            <strong class="text-infogit ">{{ $plan->name }}</strong>
-                                                            ({{ $plan->price }} {{ \App\Services\GeneralService::get_default_currency() }}
-                                                            )
-                                                        </small>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </td>
+                                    <td>{{ $office->name }}</td>
+                                    <td>{{ $office->sitting_capacity }}</td>
                                     <td class="text-center">
-                                        @if(\App\Services\OfficeService::already_subscribed($record->id))
-                                            <div class="my-3 text-center">
-                                                <a href="{{ route('dashboard.subscriptions.index',['id'=>\App\Services\OfficeService::get_subscribed_id($record->id),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
-                                                   class="btn btn-danger">
-                                                    {{ trans('general.view_subscription') }}
-                                                </a>
-                                            </div>
+                                        <a class="btn btn-xs btn-info"
+                                           href="{{ route('dashboard.office-plans.index',[$office->id,'type'=>'office']) }}">
+                                            {{ __('general.plans') }}
+                                            ({{ count($office->plans) }})
+                                        </a>
+                                        @if(\App\Services\OfficeService::already_subscribed($office->id))
+                                            <a href="{{ route('dashboard.subscriptions.index',['id'=>\App\Services\OfficeService::get_subscribed_id($office->id),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
+                                               class="btn btn-xs btn-info">
+                                                {{ trans('general.view_subscription') }}
+                                            </a>
                                         @else
-                                            @if(count($record->plans)>0)
-                                                <div class="my-3 text-center">
-                                                    <a class="btn btn-info"
-                                                       onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
-                                                        {{ trans('general.apply_subscription') }} <i
-                                                            class="bx bx-plus-circle"></i>
-                                                    </a>
-                                                </div>
+                                            @if(count($office->plans)>0)
+                                                <a class="btn btn-xs btn-info"
+                                                   onclick="apply_subscription('{{ $office->plans}}','{{$office->id}}','{{ $office->sitting_capacity }}');">
+                                                    {{ trans('general.subscription') }} <i class="bx bx-plus-circle"></i>
+                                                </a>
                                             @endif
                                         @endif
                                     </td>

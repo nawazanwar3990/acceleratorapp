@@ -71,7 +71,7 @@ class SubscriptionController extends Controller
             $records = Office::with(['plans' => function ($q) {
                 $q->with('basic_services', 'additional_services');
             }])->where('created_by', Auth::id())->get();
-            $pageTitle = 'Apply Subscription For Plans';
+            $pageTitle = 'Offices Subscription';
             return view('dashboard.subscription-management.subscriptions.create.plans', compact(
                 'records',
                 'type',
@@ -80,7 +80,7 @@ class SubscriptionController extends Controller
             ));
         } else {
             $records = Package::where('created_by', Auth::id())->get();
-            $pageTitle = 'Apply Subscription For Packages';
+            $pageTitle = 'Packages Subscriptions';
             return view('dashboard.subscription-management.subscriptions.create.packages', compact(
                 'records',
                 'type',
