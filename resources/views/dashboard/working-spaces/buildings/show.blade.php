@@ -55,10 +55,12 @@
                                                                                 {{ trans('general.view_subscription') }}
                                                                             </a>
                                                                         @else
-                                                                            <a class="btn btn-xs btn-info"
-                                                                               onclick="apply_subscription('{{ $office->plans}}','{{$office->id}}','{{ $office->sitting_capacity }}');">
-                                                                                {{ trans('general.subscription') }}
-                                                                            </a>
+                                                                            @if(count($office->plans)>1)
+                                                                                <a class="btn btn-xs btn-info"
+                                                                                   onclick="apply_subscription('{{ $office->plans}}','{{$office->id}}','{{ $office->sitting_capacity }}');">
+                                                                                    {{ trans('general.subscription') }}
+                                                                                </a>
+                                                                            @endif
                                                                         @endif
                                                                     </td>
                                                                 </tr>

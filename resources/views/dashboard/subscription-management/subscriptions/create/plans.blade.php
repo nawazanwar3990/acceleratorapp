@@ -72,13 +72,15 @@
                                                 </a>
                                             </div>
                                         @else
-                                            <div class="my-3 text-center">
-                                                <a class="btn btn-info"
-                                                   onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
-                                                    {{ trans('general.apply_subscription') }} <i
-                                                        class="bx bx-plus-circle"></i>
-                                                </a>
-                                            </div>
+                                            @if(count($record->plans)>1)
+                                                <div class="my-3 text-center">
+                                                    <a class="btn btn-info"
+                                                       onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
+                                                        {{ trans('general.apply_subscription') }} <i
+                                                            class="bx bx-plus-circle"></i>
+                                                    </a>
+                                                </div>
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>
