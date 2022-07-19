@@ -95,7 +95,7 @@ class OfficeService
 
     public function listOfficesByPagination(): LengthAwarePaginator
     {
-        $offices = Office::with('building', 'floor', 'images');
+        $offices = Office::with('building', 'floor', 'images','plans','plans.basic_services','plans.additional_services');
         if (request()->has('bId')) {
             $offices = $offices->whereHas('building', function ($q) {
                 $building_id = request()->query('bId');

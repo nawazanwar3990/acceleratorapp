@@ -11,54 +11,22 @@
         <td>{{ $record->name }}</td>
         <td>{{ $record->type->name ?? '' }}</td>
         <td>{{ $record->sitting_capacity }}</td>
-        <td>
-            <ul class="list-group list-group-flush bg-transparent">
-                @if($record->length)
-                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                        <small>
-                            <strong>{{ __('general.length') }}</strong>: {{ $record->length }}
-                        </small>
-                    </li>
-                @endif
-                @if($record->width)
-                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                        <small>
-                            <strong>{{ __('general.width') }}</strong>: {{ $record->width }}
-                        </small>
-                    </li>
-                @endif
-                @if($record->height)
-                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                        <small>
-                            <strong>{{ __('general.height') }}</strong>: {{ $record->height }}
-                        </small>
-                    </li>
-                @endif
-                @if($record->area)
-                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                        <small>
-                            <strong>{{ __('general.area') }}</strong>: {{ $record->area }}
-                        </small>
-                    </li>
-                @endif
-            </ul>
-        </td>
         <td class="text-center">
-            <a class="btn btn-xs btn-info" href="{{ route('dashboard.office-plans.index',[$record->id]) }}">
-                {{ __('general.view') }}
+            <a class="btn btn-xs btn-info"
+               href="{{ route('dashboard.office-plans.index',[$record->id,'type'=>'office']) }}">
+                {{ __('general.plans') }}
+                ({{ count($record->plans) }})
             </a>
-        </td>
-        <td class="text-center">
-            <a class="btn btn-xs btn-info" href="{{ route('dashboard.subscriptions.index',['type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}">
-                {{ __('general.view') }}
-            </a>
-        </td>
-        <td class="text-center">
-            @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                @include('dashboard.components.general.table-actions', [
-                         'edit' => route('dashboard.offices.edit', $record->id),
-                         'delete' => route('dashboard.offices.destroy', $record->id),
-                ])
+            @if(\App\Services\OfficeService::already_subscribed($record->id))
+                <a href="{{ route('dashboard.subscriptions.index',['id'=>\App\Services\OfficeService::get_subscribed_id($record->id),'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}"
+                   class="btn btn-xs btn-info">
+                    {{ trans('general.view_subscription') }}
+                </a>
+            @else
+                <a class="btn btn-xs btn-info"
+                   onclick="apply_subscription('{{ $record->plans}}','{{$record->id}}','{{ $record->sitting_capacity }}');">
+                    {{ trans('general.subscription') }}
+                </a>
             @endif
         </td>
     </tr>

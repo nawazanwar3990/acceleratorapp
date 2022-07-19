@@ -168,12 +168,18 @@ class OfficeController extends Controller
         if (count($plans) > 0) {
             $office->plans()->sync($plans);
         }
-        if ($office->building_id) {
-            return redirect()->route('dashboard.buildings.show', $office->building_id)
-                ->with('success', 'Plan Updated Successfully');
-        } else {
+        $type = $request->input('type');
+        if ($type){
             return redirect()->route('dashboard.offices.index')
                 ->with('success', 'Plan Updated Successfully');
+        }else{
+            if ($office->building_id) {
+                return redirect()->route('dashboard.buildings.show', $office->building_id)
+                    ->with('success', 'Plan Updated Successfully');
+            } else {
+                return redirect()->route('dashboard.offices.index')
+                    ->with('success', 'Plan Updated Successfully');
+            }
         }
 
     }
