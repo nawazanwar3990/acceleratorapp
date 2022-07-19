@@ -12,8 +12,9 @@
                             <th scope="col">{{ __('general.customer') }}</th>
                             <th scope="col">{{__('general.plan')}}</th>
                             <th scope="col">{{__('general.price')}}</th>
-                            <th scope="col">{{__('general.expire_date')}}</th>
-                            <th scope="col">{{__('general.renewal_data')}}</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Expire At</th>
+                            <th scope="col">Renew At</th>
                             <th class="text-center">{{__('general.action')}}</th>
                         </tr>
                         </thead>
@@ -33,6 +34,9 @@
                                 </td>
                                 <td>
                                     {{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                </td>
+                                <td>
+                                    {{ $subscription->created_at }}
                                 </td>
                                 <td>
                                     {{ $subscription->expire_date }}
