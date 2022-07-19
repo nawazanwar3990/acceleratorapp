@@ -3,10 +3,11 @@
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
     </div>
-    <div class="col-md-3 mb-3">
+    {!!  Form::hidden('no_of_persons','1') !!}
+    {{--<div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('no_of_persons' ,__('general.sitting_capacity')." (".trans('general.no_of_persons').") ".'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::number('no_of_persons',1,['id'=>'no_of_persons','class'=>'form-control ','placeholder'=>__('general.no_of_persons'), 'required']) !!}
-    </div>
+    </div>--}}
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('duration' ,__('general.duration')." (".__('general.months').") ".'<i class="text-danger">*</i>',['class'=>'form-label']))   !!}
         {!!  Form::number('duration',1,['id'=>'duration','class'=>'form-control ','placeholder'=>'0','required']) !!}

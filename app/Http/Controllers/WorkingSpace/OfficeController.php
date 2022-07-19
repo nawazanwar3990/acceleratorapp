@@ -152,7 +152,7 @@ class OfficeController extends Controller
     public function listPlans($office_id): Factory|View|Application
     {
         $office = Office::find($office_id);
-        $plans = Plan::where('no_of_persons', '<=', $office->sitting_capacity)->get();
+        $plans = Plan::where('created_by',Auth::id())->get();
         $params = [
             'pageTitle' => __('general.office_plans'),
             'office' => $office,
