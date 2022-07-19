@@ -8,7 +8,7 @@
             <td class="text-center">
                 <a class="btn btn-sm btn-success"
                    href="{{ route('dashboard.subscriptions.create',['id'=>$record->id,'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}">
-                    {{__('general.apply_subscription')}} <i class="bx bx-plus-circle"></i>
+                    {{__('general.subscriptions')}}
                 </a>
             </td>
         @endif
