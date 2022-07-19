@@ -6,7 +6,7 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('general.floors') }}</h3>
+                            <h5 class="card-title">All Floors of {{ $building->name }}</h5>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -24,9 +24,6 @@
                                                 {{ $floor->name }}
                                             </td>
                                             <td>
-                                                @php
-                                                   $offices = \App\Models\WorkingSpace\Office::where('floor_id',$floor->id)->get();
-                                                @endphp
                                                 @if(count($floor->offices)>0)
                                                     <div class="offices_holder">
                                                         <table class="table table-bordered mt-2">
