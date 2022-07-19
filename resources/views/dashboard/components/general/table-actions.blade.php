@@ -25,7 +25,7 @@
             <div class="dropdown-divider"></div>
             <li>
                 <a class="dropdown-item text-black-50" href="{{ $show }}" target="_blank">
-                    {{__('general.view_details')}}
+                    {{__('general.show')}}
                 </a>
             </li>
         @endif

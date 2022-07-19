@@ -95,7 +95,9 @@ class BuildingController extends Controller
 
     public function show($id)
     {
-        //
+       $building = Building::with('floors','floors.offices')->find($id);
+       return view('dashboard.working-spaces.buildings.show',compact('building'));
+
     }
 
     /**

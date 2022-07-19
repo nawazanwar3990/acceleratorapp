@@ -5,6 +5,7 @@ return [
     'sold' => "Sold",
     'for_rent' => 'For Rent',
     'new_investor'=>'New Investor',
+    'show'=>'Show',
 
     'created_at' => 'Created At',
 
