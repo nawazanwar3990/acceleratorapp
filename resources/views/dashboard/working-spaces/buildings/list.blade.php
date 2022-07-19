@@ -2,7 +2,7 @@
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
         <td>{{ $record->name }}</td>
-        <td>
+      {{--  <td>
             @if($record->no_of_floors)
                 <a class="btn btn-xs btn-warning mx-1"
                    href="{{route('dashboard.floors.index',['bId'=>$record->id])}}">
@@ -21,7 +21,7 @@
             @else
                 0
             @endif
-        </td>
+        </td>--}}
         <td>
             <ul class="list-group list-group-flush bg-transparent">
                 <li class="list-group-item py-0 border-0  bg-transparent px-0">

@@ -152,7 +152,7 @@ class OfficeController extends Controller
     public function listPlans($office_id): Factory|View|Application
     {
         $office = Office::find($office_id);
-        $plans = Plan::where('created_by',Auth::id())->get();
+        $plans = Plan::where('created_by', Auth::id())->get();
         $params = [
             'pageTitle' => __('general.office_plans'),
             'office' => $office,
@@ -168,7 +168,13 @@ class OfficeController extends Controller
         if (count($plans) > 0) {
             $office->plans()->sync($plans);
         }
-        return redirect()->route('dashboard.offices.index')
-            ->with('success', 'Plan Updated Successfully');
+        if ($office->building_id) {
+            return redirect()->route('dashboard.buildings.show', $office->building_id)
+                ->with('success', 'Plan Updated Successfully');
+        } else {
+            return redirect()->route('dashboard.offices.index')
+                ->with('success', 'Plan Updated Successfully');
+        }
+
     }
 }

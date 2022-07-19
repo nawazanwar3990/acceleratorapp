@@ -24,7 +24,7 @@
         @if (isset($show))
             <div class="dropdown-divider"></div>
             <li>
-                <a class="dropdown-item text-black-50" href="{{ $show }}" target="_blank">
+                <a class="dropdown-item text-black-50" href="{{ $show }}">
                     {{__('general.show')}}
                 </a>
             </li>

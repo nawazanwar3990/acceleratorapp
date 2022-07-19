@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enum\MediaTypeEnum;
+use App\Enum\RoleEnum;
 use App\Models\Media;
 use App\Models\Subscriptions\Package;
 use App\Models\Subscriptions\Subscription;
@@ -215,6 +216,13 @@ class PersonService
     public static function getCurrentHrId()
     {
         return Auth::user()->hr_id;
+    }
+
+    public static function pluck_customers()
+    {
+        return User::whereHas('roles', function($q){
+            $q->where('slug', '=', RoleEnum::CUSTOMER);
+        })->pluck('first_name','id');
     }
 
     public function store($data): User
