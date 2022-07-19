@@ -4,8 +4,9 @@ return [
     'available_plans' => 'Available Plans',
     'sold' => "Sold",
     'for_rent' => 'For Rent',
-    'new_investor'=>'New Investor',
-    'show'=>'Show',
+    'new_investor' => 'New Business Provider',
+    'investors' => 'Business Provider',
+    'show' => 'Show',
 
     'created_at' => 'Created At',
 
@@ -50,7 +51,7 @@ return [
     'default_price' => 'Default Price',
     'building_detail' => 'Building Detail',
     'floor_detail' => 'Floor Detail',
-    'investor_management' => 'Investors',
+    'investor_management' => 'Business Provider',
     'freelancer_management' => 'Freelancers',
     'plan_detail' => 'Plan Detail',
     'plan_holder_name' => 'Plan Holder Name',

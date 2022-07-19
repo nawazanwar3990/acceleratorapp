@@ -16,6 +16,7 @@ class RoleEnum extends AbstractEnum
     public const CUSTOMER = KeyWordEnum::CUSTOMER;
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const INVESTOR = KeyWordEnum::INVESTOR;
+
     public static function getValues(): array
     {
         return [
