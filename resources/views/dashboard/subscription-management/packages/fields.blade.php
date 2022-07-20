@@ -1,8 +1,8 @@
 <div class="row mb-3">
-    <div class="col-md-3 mb-3">
+   {{-- <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('type' ,__('general.type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::select('type',\App\Enum\PackageTypeEnum::getTranslationKeys(),null,['id'=>'package_type','class'=>'form-control ','placeholder'=>__('general.type'), 'required']) !!}
-    </div>
+    </div>--}}
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
@@ -23,12 +23,12 @@
         {!!  Html::decode(Form::label('reminder_days' ,__('general.reminder_days').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::number('reminder_days',null,['id'=>'reminder_days','class'=>'form-control ']) !!}
     </div>
-    <div class="col-md-3 mb-3">
+    {{--<div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('trail_expire_date' ,__('general.trail_expire_date') ,['class'=>'form-label'])) !!}
         {!!  Form::text('trail_expire_date',null,['id'=>'trail_expire_date','class'=>'form-control datepicker ']) !!}
-    </div>
+    </div>--}}
 </div>
-<div class="card">
+{{--<div class="card">
     <div class="card-header">
         <h5 class="card-title mb-0">{{ trans('general.modules') }}</h5>
     </div>
@@ -61,5 +61,5 @@
             @endforeach
         </table>
     </div>
-</div>
+</div>--}}
 
