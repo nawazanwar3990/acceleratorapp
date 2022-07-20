@@ -19,7 +19,7 @@
                                         <th scope="col">{{__('general.expire_date')}}</th>
                                     </tr>
                                     </thead>
-                                    @foreach($ba->subsciptions as $subscription)
+                                    @foreach($ba->subscriptions as $subscription)
                                         <tr>
                                             <td>
                                                 {{ $subscription->package->name??null}}
