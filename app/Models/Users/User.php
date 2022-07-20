@@ -85,10 +85,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Subscription::class, 'subscribed_id', 'id');
     }
 
-    public function already_subscription($id,$type)
+    public function already_subscription($id, $type)
     {
-        return Subscription::where('subscribed_id',$id)->where('subscription_type',$type)->exists();
+        return Subscription::where('subscribed_id', $id)->where('subscription_type', $type)->exists();
     }
+
     public function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
@@ -97,5 +98,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function updated_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class, 'subscribed_id', 'id');
     }
 }

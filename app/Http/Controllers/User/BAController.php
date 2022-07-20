@@ -103,6 +103,14 @@ class BAController extends Controller
         return view('dashboard.user-management.ba.edit', $params);
     }
 
+    public function show($id): Factory|View|Application
+    {
+        $ba = User::with('subscriptions')->whereHas('roles', function ($q) {
+            $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
+        })->find($id);
+        return view('dashboard.user-management.ba.show', compact('ba'));
+    }
+
     public function update(UserRequest $request, $id)
     {
         echo "under process";
