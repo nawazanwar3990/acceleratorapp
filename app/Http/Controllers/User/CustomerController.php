@@ -39,7 +39,7 @@ class CustomerController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize(AbilityEnum::VIEW, Customer::class);
-        $records = User::whereHas('roles', function($q){
+        $records = User::whereHas('roles', function ($q) {
             $q->where('slug', '=', RoleEnum::CUSTOMER);
         })->get();
         $params = [
@@ -86,6 +86,14 @@ class CustomerController extends Controller
             }
 
         }
+    }
+
+    public function show($id): Factory|View|Application
+    {
+        $customer = User::with('subscriptions')->whereHas('roles', function ($q) {
+            $q->where('slug', RoleEnum::CUSTOMER);
+        })->find($id);
+        return view('dashboard.user-management.customers.show', compact('customer'));
     }
 
     /**

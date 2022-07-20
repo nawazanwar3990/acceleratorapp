@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            @if(count($ba->subscriptions))
+            @if(count($customer->subscriptions))
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{ __('general.subscription') }}</h5>
@@ -17,7 +17,7 @@
                                 <th scope="col">{{__('general.expire_date')}}</th>
                             </tr>
                             </thead>
-                            @foreach($ba->subscriptions as $subscription)
+                            @foreach($customer->subscriptions as $subscription)
                                 <tr>
                                     <td>
                                         {{ $subscription->package->name??null}}
