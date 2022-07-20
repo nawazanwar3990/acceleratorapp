@@ -1250,7 +1250,7 @@ return [
     'daily' => 'Daily',
     'is_expire' => 'Is Expire',
 
-    'duration_type' => 'Duration Type',
+    'duration_type' => 'Duration',
     'duration_limit' => 'Duration Limit',
     'vendor' => 'Vendor',
     'client' => 'Client',
