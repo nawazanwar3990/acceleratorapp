@@ -1,17 +1,14 @@
-@forelse($records as $record)
+@forelse($records as $customer)
     <tr>
         <td>{{ $loop->iteration }}</td>
-        <td>{{ $record->id }}</td>
-        <td>{{ $record->getFullName() }}</td>
-        <td>{{ $record->email }}</td>
-        @if( auth()->user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-            <td class="text-center">
-                <a class="btn btn-sm btn-success"
-                   href="{{ route('dashboard.subscriptions.create',['id'=>$record->id,'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}">
-                    {{__('general.subscriptions')}}
-                </a>
-            </td>
-        @endif
+        <td>{{ $customer->id }}</td>
+        <td>{{ $customer->getFullName() }}</td>
+        <td>{{ $customer->email }}</td>
+        <td class="text-center">
+            @if( auth()->user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
+                @include('dashboard.user-management.components.customer-action')
+            @endif
+        </td>
     </tr>
 @empty
 
