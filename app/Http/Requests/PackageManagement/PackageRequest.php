@@ -29,7 +29,7 @@ class PackageRequest extends FormRequest
         $model->created_by = \auth()->id();
         $model->updated_by = \auth()->id();
         $model->save();
-        $this->manageModules($model);
+        //$this->manageModules($model);
         return $model;
     }
 
