@@ -11,7 +11,6 @@ class AdminTableHeadingEnum extends AbstractEnum
     public const HR_NO = 'hr_no';
     public const NAME = 'name';
     public const EMAIL = 'email';
-    public const ALREADY_SUBSCRIPTION = 'subscription';
 
     public static function getValues(): array
     {
@@ -24,7 +23,6 @@ class AdminTableHeadingEnum extends AbstractEnum
             self::HR_NO => __(sprintf('%s.%s', 'general', self::HR_NO)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
             self::EMAIL => __(sprintf('%s.%s', 'general', self::EMAIL)),
-            self::ALREADY_SUBSCRIPTION => __(sprintf('%s.%s', 'general', self::ALREADY_SUBSCRIPTION))
         ];
     }
 }
