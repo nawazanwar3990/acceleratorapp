@@ -3,6 +3,14 @@
             aria-expanded="false" aria-haspopup="true">Action
     </button>
     <ul class="dropdown-menu">
+        @if(!$ba->already_subscription($ba->id,\App\Enum\SubscriptionTypeEnum::PACKAGE))
+            <li>
+                <a class="dropdown-item text-black-50"
+                   href="{{ route('dashboard.subscriptions.create',['id'=>$ba->id,'type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE]) }}">
+                    {{__('general.apply_subscription')}}
+                </a>
+            </li>
+        @endif
         <li>
             <a class="dropdown-item text-black-50" href="{{ route('dashboard.ba.edit',$ba->id) }}">
                 {{__('general.edit')}}
@@ -13,20 +21,5 @@
                 {{__('general.show')}}
             </a>
         </li>
-        @if(!$ba->already_subscription($ba->id,\App\Enum\SubscriptionTypeEnum::PACKAGE))
-            <li>
-                <a class="dropdown-item text-black-50"
-                   href="{{ route('dashboard.subscriptions.create',['id'=>$ba->id,'type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE]) }}">
-                    {{__('general.apply_subscription')}}
-                </a>
-            </li>
-        @else
-            <li>
-                <a class="dropdown-item text-black-50"
-                   href="{{ route('dashboard.subscriptions.index',['id'=>$ba->id,'type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE]) }}">
-                    {{__('general.subscriptions')}}
-                </a>
-            </li>
-        @endif
     </ul>
 </div>
