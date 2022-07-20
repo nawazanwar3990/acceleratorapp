@@ -3,12 +3,8 @@
 namespace App\Models\Users;
 
 use App\Enum\RoleEnum;
-use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
-use App\Enum\TableHeadings\UserManagement\AdminTableHeadingEnum;
-use App\Models\Building;
 use App\Models\Subscriptions\Subscription;
-use App\Models\Plans\Plan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

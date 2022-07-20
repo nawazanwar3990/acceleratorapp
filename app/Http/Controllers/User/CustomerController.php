@@ -93,7 +93,8 @@ class CustomerController extends Controller
         $customer = User::with('subscriptions')->whereHas('roles', function ($q) {
             $q->where('slug', RoleEnum::CUSTOMER);
         })->find($id);
-        return view('dashboard.user-management.customers.show', compact('customer'));
+        $pageTitle ="All Subscription of ".$customer->getFullName();
+        return view('dashboard.user-management.customers.show', compact('customer','pageTitle'));
     }
 
     /**
