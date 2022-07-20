@@ -108,7 +108,7 @@ class BAController extends Controller
         $ba = User::with('subscriptions')->whereHas('roles', function ($q) {
             $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
         })->find($id);
-        echo "pre";
+        echo "<pre>";
         print_r($ba);
        // return view('dashboard.user-management.ba.show', compact('ba'));
     }
