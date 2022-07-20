@@ -22,6 +22,7 @@ use App\Models\Users\User;
 use App\Traits\General;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Intervention\Image\Facades\Image;
@@ -222,7 +223,7 @@ class PersonService
     {
         return User::whereHas('roles', function($q){
             $q->where('slug', '=', RoleEnum::CUSTOMER);
-        })->pluck('first_name','id');
+        })->pluck(DB::raw("CONCAT(first_name,' ',last_name) AS name"),'id');
     }
 
     public function store($data): User
