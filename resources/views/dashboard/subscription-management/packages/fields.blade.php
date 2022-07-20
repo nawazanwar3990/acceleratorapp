@@ -49,10 +49,10 @@
                 @foreach($moduleSlug as $mSlug)
                     @php  $module = \App\Models\Subscriptions\Module::where('name',$mSlug)->first(); @endphp
                     <tr>
-                        <td>
+                        <th>
                             {!!  Form::hidden('module[id][]',$module->id) !!}
-                            {!!  Form::text('module[name][]',ucwords(str_replace('_',' ',$module->name)),['id'=>'module_name','class'=>'form-control','readonly']) !!}
-                        </td>
+                            {{ ucwords(str_replace('_',' ',$module->name))}}
+                        </th>
                         <td>
                             {!!  Form::number('module[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
                         </td>
