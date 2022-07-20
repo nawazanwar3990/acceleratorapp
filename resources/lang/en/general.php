@@ -1249,6 +1249,7 @@ return [
     'reminder_days' => 'Reminder Days',
     'daily' => 'Daily',
     'is_expire' => 'Is Expire',
+    'package_name'=>'Package Name',
 
     'duration_type' => 'Duration',
     'duration_limit' => 'Duration Limit',
