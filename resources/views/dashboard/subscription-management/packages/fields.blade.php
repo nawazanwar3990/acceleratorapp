@@ -9,18 +9,18 @@
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('duration_type_id' ,__('general.duration_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::select('duration_type_id',\App\Services\PackageService::pluck_duration(),null,['id'=>'duration_type_id','class'=>'form-control ','placeholder'=>__('general.duration_type'), 'required']) !!}
+        {!!  Form::select('duration_type_id',\App\Services\PackageService::pluck_duration(),\App\Enum\DurationEnum::MONTHLY,['id'=>'duration_type_id','class'=>'form-control ','placeholder'=>__('general.duration_type'), 'required']) !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('duration_limit' ,__('general.duration_limit').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::number('duration_limit',null,['id'=>'duration_limit','class'=>'form-control ','placeholder'=>__('general.duration_limit'), 'required']) !!}
+        {!!  Form::number('duration_limit',1,['id'=>'duration_limit','class'=>'form-control ','placeholder'=>__('general.duration_limit'), 'required']) !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('price' ,__('general.price').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
         {!!  Form::number('price',null,['id'=>'price','class'=>'form-control ']) !!}
     </div>
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('reminder_days' ,__('general.reminder_days').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
+        {!!  Html::decode(Form::label('reminder_days' ,__('general.reminder_days') ,['class'=>'form-label'])) !!}
         {!!  Form::number('reminder_days',null,['id'=>'reminder_days','class'=>'form-control ']) !!}
     </div>
     {{--<div class="col-md-3 mb-3">
