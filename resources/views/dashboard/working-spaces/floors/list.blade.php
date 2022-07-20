@@ -66,6 +66,7 @@
             @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                 @include('dashboard.components.general.table-actions', [
                     'edit' => route('dashboard.floors.edit', $record->id),
+                    'show' => route('dashboard.floors.show', $record->id),
                     'delete' => route('dashboard.floors.destroy', $record->id),
                 ])
             @endif

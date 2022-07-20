@@ -106,6 +106,13 @@ class FloorController extends Controller
         return view('dashboard.working-spaces.floors.edit', $params);
     }
 
+    public function show($id)
+    {
+        $floor = Floor::with('offices','offices.plans.basic_services','offices.plans.additional_services')->find($id);
+        return view('dashboard.working-spaces.floors.show',compact('floor'));
+
+    }
+
     /**
      * @throws AuthorizationException
      */
