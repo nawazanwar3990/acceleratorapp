@@ -1,7 +1,6 @@
 @forelse($records as $record)
     <tr>
         <td>{{ $loop->iteration }}</td>
-        <td>{{ \App\Enum\PackageTypeEnum::getTranslationKeyBy($record->type) }}</td>
         <td>{{ $record->name }}</td>
         <td>
             @isset($record->duration_type)
@@ -24,7 +23,7 @@
         </td>
         <td>{{ $record->price }}</td>
         <td>{{ $record->reminder_days }}</td>
-        <td style="width: 230px;">
+       {{-- <td style="width: 230px;">
             <UL class="list-group list-group-flush bg-transparent">
                 @foreach($record->modules as $module)
                     <li class="list-group-item py-0 border-0  bg-transparent px-0">
@@ -34,7 +33,7 @@
                     </li>
                 @endforeach
             </UL>
-        </td>
+        </td>--}}
         <td class="text-center">
          Readonly
         </td>
