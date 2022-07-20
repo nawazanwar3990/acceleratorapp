@@ -13,9 +13,7 @@
                         @forelse($records as $record)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ \App\Enum\PackageTypeEnum::getTranslationKeyBy($record->type) }}</td>
                                 <td>{{ $record->name }}</td>
-                                <td>{{ $record->slug }}</td>
                                 <td>
                                     @isset($record->duration_type)
                                         {{ $record->duration_type->name }}
@@ -37,17 +35,6 @@
                                 </td>
                                 <td>{{ $record->price }}</td>
                                 <td>{{ $record->reminder_days }}</td>
-                                <td style="width: 230px;">
-                                    <UL class="list-group list-group-flush bg-transparent">
-                                        @foreach($record->modules as $module)
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                <i class="bx bx-check text-success"></i> <small><strong
-                                                        class="text-infogit ">{{ $module->pivot->limit }}</strong> {{ str_replace('_',' ',$module->name) }}
-                                                </small>
-                                            </li>
-                                        @endforeach
-                                    </UL>
-                                </td>
                                 <td class="text-center">
                                     {!! Form::radio('subscription_id',$record->id,false) !!}
                                 </td>
@@ -60,7 +47,7 @@
                 @if(count($records)>0)
                     <div class="my-3 text-center">
                         <a class="btn btn-info"
-                           onclick="apply_subscription();">{{ trans('general.apply_subscription') }}</a>
+                           onclick="apply_subscription();">{{ trans('general.save') }}</a>
                     </div>
                 @endif
             </div>
@@ -74,7 +61,7 @@
             let subscription_id = $("input[name='subscription_id']:checked").val();
             if (subscription_id === undefined) {
                 showError("First Choose Package for Subscription")
-            }else{
+            } else {
                 Swal.fire({
                     title: 'Apply Subscription',
                     html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
