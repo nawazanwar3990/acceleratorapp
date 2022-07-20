@@ -61,7 +61,7 @@
             let subscription_id = $("input[name='subscription_id']:checked").val();
             if (subscription_id === undefined) {
                 showError("First Choose Package for Subscription")
-            } else {
+            }else{
                 Swal.fire({
                     title: 'Apply Subscription',
                     html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,

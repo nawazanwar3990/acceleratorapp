@@ -42,12 +42,16 @@ class SubscriptionController extends Controller
         $this->authorize('view', Subscription::class);
         $subscriptions = Subscription::where('created_by', Auth::id());
         $type = $request->query('type');
+        $id = $request->query('id');
         if ($type) {
             $subscriptions = $subscriptions->where('subscription_type', $type);
         }
+        if ($id) {
+            $subscriptions = $subscriptions->where('subscribed_id', $id);
+        }
         $subscriptions = $subscriptions->paginate(20);
         if ($type == SubscriptionTypeEnum::PLAN) {
-            $pageTitle = __('general.plan_subscriptions');
+            $pageTitle = 'Office Subscriptions';
             return view('dashboard.subscription-management.subscriptions.list.plans', compact(
                 'subscriptions',
                 'pageTitle',
