@@ -23,7 +23,7 @@
         @else
             <li>
                 <a class="btn btn-sm btn-info"
-                   href="{{ route('dropdown-item text-black-50',['id'=>$ba->id,'type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE]) }}">
+                   href="{{ route('dashboard.subscriptions.index',['id'=>$ba->id,'type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE]) }}">
                     {{__('general.subscriptions')}} <i class="bx bx-arrow-to-right"></i>
                 </a>
             </li>
