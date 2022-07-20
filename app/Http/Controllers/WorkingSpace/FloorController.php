@@ -109,7 +109,8 @@ class FloorController extends Controller
     public function show($id)
     {
         $floor = Floor::with('offices','offices.plans.basic_services','offices.plans.additional_services')->find($id);
-        return view('dashboard.working-spaces.floors.show',compact('floor'));
+        $pageTitle = "Detail of ".$floor->name;
+        return view('dashboard.working-spaces.floors.show',compact('floor','pageTitle'));
 
     }
 

@@ -96,7 +96,8 @@ class BuildingController extends Controller
     public function show($id)
     {
        $building = Building::with('floors','floors.offices','floors.offices.plans.basic_services','floors.offices.plans.additional_services')->find($id);
-       return view('dashboard.working-spaces.buildings.show',compact('building'));
+       $pageTitle = "Detail of ".$building->name;
+       return view('dashboard.working-spaces.buildings.show',compact('building','pageTitle'));
 
     }
 

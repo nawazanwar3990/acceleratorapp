@@ -28,7 +28,7 @@ class BuildingTableHeadingEnum extends AbstractEnum
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::DIMENSION => __(sprintf('%s.%s', 'general', self::DIMENSION)),
+          /*  self::DIMENSION => __(sprintf('%s.%s', 'general', self::DIMENSION)),*/
             self::BUILDING_TYPE => __(sprintf('%s.%s', 'general', self::BUILDING_TYPE)),
             self::ENTRY_GATES => __(sprintf('%s.%s', 'general', self::ENTRY_GATES)),
         ];

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\WorkingSpace;
+
 use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Media;
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Office extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $dates = ['creation_date'];
     protected $fillable = [
         'building_id',
@@ -37,6 +39,7 @@ class Office extends Model
         'created_by',
         'updated_by',
     ];
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -56,6 +59,7 @@ class Office extends Model
     {
         return $this->belongsTo(Floor::class);
     }
+
     public function building(): BelongsTo
     {
         return $this->belongsTo(Building::class);
@@ -63,23 +67,30 @@ class Office extends Model
 
     public function type(): BelongsTo
     {
-        return $this->belongsTo(OfficeType::class,'type_id');
+        return $this->belongsTo(OfficeType::class, 'type_id');
     }
 
     public function images(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id')
-            ->where('record_type',MediaTypeEnum::OFFICE_IMAGE);
+        return $this->hasMany(Media::class, 'record_id')
+            ->where('record_type', MediaTypeEnum::OFFICE_IMAGE);
     }
 
     public function owners(): BelongsToMany
     {
         return $this->belongsToMany(Hr::class, TableEnum::OFFICE_OWNER)->withTimestamps();
     }
+
     public function plans(): BelongsToMany
     {
         return $this->belongsToMany(Plan::class, TableEnum::OFFICE_PLAN)->withTimestamps();
     }
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class, 'model_id', 'id');
+    }
+
     public function getNameNumberAttribute()
     {
         return ($this->name . ' [' . $this->number . ']');

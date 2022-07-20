@@ -107,6 +107,12 @@ class OfficeController extends Controller
 
         return view('dashboard.working-spaces.offices.edit', $params);
     }
+    public function show($id): Factory|View|Application
+    {
+        $office = Office::with('type','subscriptions','building','floor','plans')->find($id);
+        $pageTitle = "Detail of ".$office->name;
+        return view('dashboard.working-spaces.offices.show',compact('office','pageTitle'));
+    }
 
     /**
      * @throws AuthorizationException
@@ -125,6 +131,7 @@ class OfficeController extends Controller
             }
 
         }
+
     }
 
     /**

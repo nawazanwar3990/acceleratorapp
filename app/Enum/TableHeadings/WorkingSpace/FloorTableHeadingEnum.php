@@ -32,11 +32,7 @@ class FloorTableHeadingEnum extends AbstractEnum
         return [
             self::BUILDING => __(sprintf('%s.%s', 'general', self::BUILDING)),
             self::FLOOR_NAME => __(sprintf('%s.%s', 'general', self::FLOOR_NAME)),
-            self::OFFICES => __(sprintf('%s.%s', 'general', self::OFFICES)),
-            self::DIMENSION => __(sprintf('%s.%s', 'general', self::DIMENSION)),
             self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
-
-
         ];
     }
 }

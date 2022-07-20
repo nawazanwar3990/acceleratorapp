@@ -46,17 +46,14 @@ class Building extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by');
     }
-
-    public function flats(): HasMany
-    {
-        return $this->hasMany(Office::class);
-    }
-
     public function floors(): HasMany
     {
         return $this->hasMany(Floor::class);
     }
-
+    public function offices(): HasMany
+    {
+        return $this->hasMany(Office::class);
+    }
     public function images(): HasMany
     {
         return $this->hasMany(Media::class, 'record_id')
