@@ -113,50 +113,48 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Essential Information</h5>
-                            <div class="table-responsive">
-                                <table class="table no-border">
-                                    <tbody class="text-dark">
-                                    <tr>
-                                        @isset($office->building)
-                                            <td>{{__('general.building_name')}}</td>
-                                            <td>
-                                                {{ $office->building->name  }}
-                                            </td>
-                                        @endisset
-                                    </tr>
-                                    <tr>
-                                        @isset($office->floor)
-                                            <td>{{__('general.floor_name')}}</td>
-                                            <td>
-                                                {{ $office->floor->name  }}
-                                            </td>
-                                        @endisset
-                                    </tr>
-                                    <tr>
-                                        <td>{!!__('general.office_type') !!}</td>
+                            <table class="table no-border">
+                                <tbody class="text-dark">
+                                <tr>
+                                    @isset($office->building)
+                                        <td>{{__('general.building_name')}}</td>
                                         <td>
-                                            {{ $office->type->name??'' }}
+                                            {{ $office->building->name  }}
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.sitting_capacity') !!}</td>
-                                        <td>{{$office->sitting_capacity}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.length_ft') !!}</td>
-                                        <td>{{$office->length}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!!__('general.width_ft') !!}</td>
-                                        <td>{{$office->width}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.saleable_area_sft') !!}</td>
-                                        <td>{{$office->area}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    @endisset
+                                </tr>
+                                <tr>
+                                    @isset($office->floor)
+                                        <td>{{__('general.floor_name')}}</td>
+                                        <td>
+                                            {{ $office->floor->name  }}
+                                        </td>
+                                    @endisset
+                                </tr>
+                                <tr>
+                                    <td>{!!__('general.office_type') !!}</td>
+                                    <td>
+                                        {{ $office->type->name??'' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.sitting_capacity') !!}</td>
+                                    <td>{{$office->sitting_capacity}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.length_ft') !!}</td>
+                                    <td>{{$office->length}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!!__('general.width_ft') !!}</td>
+                                    <td>{{$office->width}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.saleable_area_sft') !!}</td>
+                                    <td>{{$office->area}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -65,46 +65,44 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Essential Information</h5>
-                            <div class="table-responsive">
-                                <table class="table no-border">
-                                    <tbody class="text-dark">
-                                    <tr>
-                                        <td>{{__('general.name')}}</td>
-                                        <td>{{$building->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.length_ft') !!}</td>
-                                        <td>{{$building->length}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!!__('general.width_ft') !!}</td>
-                                        <td>{{$building->width}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.saleable_area_sft') !!}</td>
-                                        <td>{{$building->area}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{__('general.building_type')}}</td>
-                                        <td> @if($building->building_type)
-                                                {{ \App\Services\BuildingService::buildingTypesForDropdown($building->building_type)  }}
-                                            @else
-                                            @endif</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{__('general.entry_gates')}}</td>
-                                        <td> @if($building->entry_gates)
-                                                {{ \App\Services\BuildingService::buildingEntryGatesForDropdown($building->entry_gates)  }}
-                                            @else
-                                            @endif</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{__('general.no_of_floors')}}</td>
-                                        <td>{{$building->no_of_floors}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table class="table no-border">
+                                <tbody class="text-dark">
+                                <tr>
+                                    <td>{{__('general.name')}}</td>
+                                    <td>{{$building->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.length_ft') !!}</td>
+                                    <td>{{$building->length}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!!__('general.width_ft') !!}</td>
+                                    <td>{{$building->width}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.saleable_area_sft') !!}</td>
+                                    <td>{{$building->area}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{__('general.building_type')}}</td>
+                                    <td> @if($building->building_type)
+                                            {{ \App\Services\BuildingService::buildingTypesForDropdown($building->building_type)  }}
+                                        @else
+                                        @endif</td>
+                                </tr>
+                                <tr>
+                                    <td>{{__('general.entry_gates')}}</td>
+                                    <td> @if($building->entry_gates)
+                                            {{ \App\Services\BuildingService::buildingEntryGatesForDropdown($building->entry_gates)  }}
+                                        @else
+                                        @endif</td>
+                                </tr>
+                                <tr>
+                                    <td>{{__('general.no_of_floors')}}</td>
+                                    <td>{{$building->no_of_floors}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

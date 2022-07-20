@@ -9,14 +9,12 @@
                     @include('dashboard.components.general.form-list-header',['url'=>'dashboard.offices.create','is_create'=>true])
                 @endif
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\OfficeTableHeadingEnum::getTranslationKeys()])
-                            <tbody>
-                            @include('dashboard.working-spaces.offices.list')
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table table-bordered table-hover">
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\OfficeTableHeadingEnum::getTranslationKeys()])
+                        <tbody>
+                        @include('dashboard.working-spaces.offices.list')
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

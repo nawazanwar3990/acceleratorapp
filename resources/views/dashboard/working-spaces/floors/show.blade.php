@@ -40,48 +40,46 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Essential Information</h5>
-                            <div class="table-responsive">
-                                <table class="table no-border">
-                                    <tbody class="text-dark">
-                                    <tr>
-                                        <td>{{__('general.building_name')}}</td>
-                                        <td>
-                                            @isset($floor->building)
-                                                {{ $floor->building->name  }}
-                                            @else
-                                                --
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{__('general.floor_name')}}</td>
-                                        <td>{{$floor->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!!__('general.floor_type') !!}</td>
-                                        <td>
-                                            {{ $floor->type->name??'' }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.no_of_offices') !!}</td>
-                                        <td>{{$floor->no_of_offices}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.length_ft') !!}</td>
-                                        <td>{{$floor->length}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!!__('general.width_ft') !!}</td>
-                                        <td>{{$floor->width}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{!! __('general.saleable_area_sft') !!}</td>
-                                        <td>{{$floor->area}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table class="table no-border">
+                                <tbody class="text-dark">
+                                <tr>
+                                    <td>{{__('general.building_name')}}</td>
+                                    <td>
+                                        @isset($floor->building)
+                                            {{ $floor->building->name  }}
+                                        @else
+                                            --
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{__('general.floor_name')}}</td>
+                                    <td>{{$floor->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!!__('general.floor_type') !!}</td>
+                                    <td>
+                                        {{ $floor->type->name??'' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.no_of_offices') !!}</td>
+                                    <td>{{$floor->no_of_offices}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.length_ft') !!}</td>
+                                    <td>{{$floor->length}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!!__('general.width_ft') !!}</td>
+                                    <td>{{$floor->width}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{!! __('general.saleable_area_sft') !!}</td>
+                                    <td>{{$floor->area}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
