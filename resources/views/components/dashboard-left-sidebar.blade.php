@@ -3,17 +3,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 @foreach(\App\Enum\LeftNavBar\MainNavEnum::getTranslationKeys() as $key=>$value)
-                    @if($key==\App\Enum\KeyWordEnum::DASHBOARD)
-                        @can('hasModuleAccess',$key)
-                            <li>
-                                <a class="waves-effect waves-dark"
-                                   href="{{ \App\Enum\LeftNavBar\MainNavEnum::getRoute($key) }}">
-                                    {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
-                                    {{ $value }}
-                                </a>
-                            </li>
-                        @endcan
-                    @else
+                    @if($key===\App\Enum\KeyWordEnum::INCUBATOR)
                         @can('hasModuleAccess',$key)
                             <li>
                                 <a class="has-arrow waves-effect waves-dark"
@@ -22,38 +12,17 @@
                                     {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!}
                                     <span class="hide-menu">{{ $value }}</span>
                                 </a>
-                                @switch($key)
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SUBSCRIPTION_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.subscription-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::USER_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.user-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::BUSINESS_ACCELERATOR)
-                                        @include('dashboard.components.left-nav-bar.admin-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::CUSTOMER_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.customer-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::INVESTOR_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.investor-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SERVICE_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.service-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::FREELANCER_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.freelancer-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
-                                        @include('dashboard.components.left-nav-bar.plan-management')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::INCUBATOR)
-                                        @include('dashboard.components.left-nav-bar.working-spaces')
-                                        @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)
-                                        @include('dashboard.components.left-nav-bar.system-configuration')
-                                        @break
-                                @endswitch
+                                @include('dashboard.components.left-nav-bar.working-spaces')
+                            </li>
+                        @endcan
+                    @else
+                        @can('hasModuleAccess',$key)
+                            <li>
+                                <a class="waves-effect waves-dark"
+                                   href="{{ \App\Enum\LeftNavBar\MainNavEnum::getRoute($key) }}">
+                                    {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
+                                    {{ $value }}
+                                </a>
                             </li>
                         @endcan
                     @endif

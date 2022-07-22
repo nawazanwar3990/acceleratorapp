@@ -31,7 +31,7 @@ class DurationController extends Controller
             'pageTitle' => __('general.durations'),
             'records' => $records,
         ];
-        return view('dashboard.subscription-management.durations.index', $params);
+        return view('dashboard.subscriptions.durations.index', $params);
     }
 
     /**
@@ -43,7 +43,7 @@ class DurationController extends Controller
         $params = [
             'pageTitle' => __('general.new_duration'),
         ];
-        return view('dashboard.subscription-management.durations.create', $params);
+        return view('dashboard.subscriptions.durations.create', $params);
     }
 
     /**
@@ -75,7 +75,7 @@ class DurationController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.subscription-management.durations.edit', $params);
+        return view('dashboard.subscriptions.durations.edit', $params);
     }
 
     /**

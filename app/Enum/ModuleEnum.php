@@ -22,36 +22,13 @@ class ModuleEnum extends AbstractEnum
     {
         return [
             KeyWordEnum::DASHBOARD,
-            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
-                $ability . KeyWordEnum::PACKAGE,
-                $ability . KeyWordEnum::SUBSCRIPTION,
-                $ability . KeyWordEnum::SUBSCRIPTION_LOG,
-                $ability . KeyWordEnum::PAYMENT
-            ),
-            KeyWordEnum::USER_MANAGEMENT => array(
-                $ability . KeyWordEnum::ROLE,
-                $ability . KeyWordEnum::PERMISSION,
-                $ability . KeyWordEnum::USER,
-                $ability . KeyWordEnum::SYNC_PERMISSION
-            ),
-            KeyWordEnum::SERVICE_MANAGEMENT => array(
-                $ability . KeyWordEnum::SERVICE
-            ),
-            KeyWordEnum::FREELANCER_MANAGEMENT => array(
-                $ability . KeyWordEnum::FREELANCER
-            ),
-            KeyWordEnum::BUSINESS_ACCELERATOR => array(
-                $ability . KeyWordEnum::BA
-            ),
-            KeyWordEnum::CUSTOMER_MANAGEMENT => array(
-                $ability . KeyWordEnum::CUSTOMER
-            ),
-            KeyWordEnum::PLAN_MANAGEMENT => array(
-                $ability . KeyWordEnum::PLAN
-            ),
-            KeyWordEnum::INVESTOR_MANAGEMENT => array(
-                $ability . KeyWordEnum::INVESTOR
-            ),
+            $ability . KeyWordEnum::SERVICE,
+            $ability . KeyWordEnum::PACKAGE,
+            $ability . KeyWordEnum::PLAN,
+            $ability . KeyWordEnum::SUBSCRIPTION,
+            $ability . KeyWordEnum::BA,
+            $ability . KeyWordEnum::FREELANCER,
+            $ability . KeyWordEnum::CUSTOMER,
             KeyWordEnum::INCUBATOR => array(
                 $ability . KeyWordEnum::BUILDING,
                 $ability . KeyWordEnum::FLOOR_TYPE,
@@ -61,25 +38,6 @@ class ModuleEnum extends AbstractEnum
             )
         ];
     }
-
-    public static function get_package_modules()
-    {
-        return array(
-            KeyWordEnum::INCUBATOR => array(
-                KeyWordEnum::BUILDING,
-                KeyWordEnum::FLOOR,
-                KeyWordEnum::OFFICE
-            )
-        );
-    }
-
-    public static function get_all_custom_permissions(): array
-    {
-        return [
-
-        ];
-    }
-
     public static function getTranslationKeys(): array
     {
         return array();
@@ -110,7 +68,7 @@ class ModuleEnum extends AbstractEnum
                 }
             } else {
                 self::make_module($outer_key, null, $outer_value);
-                self::add_permission($outer_value, 'parent');
+                self::add_permission($outer_value,null);
             }
         }
         self::add_permissions_to_super_admin();
@@ -174,26 +132,16 @@ class ModuleEnum extends AbstractEnum
     public static function customer_permissions()
     {
         return array(
-            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
-                KeyWordEnum::SUBSCRIPTION
-            ),
+            KeyWordEnum::SUBSCRIPTION
         );
     }
 
     public static function admin_permissions()
     {
         return array(
-            KeyWordEnum::SERVICE_MANAGEMENT => array(
-                KeyWordEnum::SERVICE
-            ),
-            KeyWordEnum::PLAN_MANAGEMENT => array(
-                KeyWordEnum::PLAN
-            ),
-            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
-                KeyWordEnum::SUBSCRIPTION,
-                KeyWordEnum::SUBSCRIPTION_LOG,
-                KeyWordEnum::PAYMENT
-            ),
+            KeyWordEnum::SERVICE,
+            KeyWordEnum::PLAN,
+            KeyWordEnum::SUBSCRIPTION,
             KeyWordEnum::INCUBATOR => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR_TYPE,
@@ -201,48 +149,27 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::OFFICE_TYPE,
                 KeyWordEnum::OFFICE
             ),
-            KeyWordEnum::CUSTOMER_MANAGEMENT => array(
-                KeyWordEnum::CUSTOMER
-            ),
-            KeyWordEnum::FREELANCER_MANAGEMENT => array(
-               KeyWordEnum::FREELANCER
-            ),
-            KeyWordEnum::INVESTOR_MANAGEMENT => array(
-                KeyWordEnum::INVESTOR
-            ),
+            KeyWordEnum::CUSTOMER,
+            KeyWordEnum::FREELANCER
         );
     }
 
     public static function super_admin_permissions()
     {
         return array(
-            KeyWordEnum::SERVICE_MANAGEMENT => array(
-                KeyWordEnum::SERVICE
+            KeyWordEnum::SERVICE,
+            KeyWordEnum::PACKAGE,
+            KeyWordEnum::SUBSCRIPTION,
+            KeyWordEnum::BA,
+            KeyWordEnum::CUSTOMER,
+            KeyWordEnum::INCUBATOR => array(
+                KeyWordEnum::BUILDING,
+                KeyWordEnum::FLOOR_TYPE,
+                KeyWordEnum::FLOOR,
+                KeyWordEnum::OFFICE_TYPE,
+                KeyWordEnum::OFFICE
             ),
-            KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
-                KeyWordEnum::PACKAGE,
-                KeyWordEnum::SUBSCRIPTION,
-                KeyWordEnum::SUBSCRIPTION_LOG,
-                KeyWordEnum::PAYMENT
-            ),
-            KeyWordEnum::BUSINESS_ACCELERATOR => array(
-                KeyWordEnum::BA
-            ),
-            KeyWordEnum::USER_MANAGEMENT => array(
-                KeyWordEnum::ROLE,
-                KeyWordEnum::PERMISSION,
-                KeyWordEnum::USER,
-                KeyWordEnum::SYNC_PERMISSION
-            ),
-            KeyWordEnum::CUSTOMER_MANAGEMENT => array(
-                KeyWordEnum::CUSTOMER
-            ),
-            KeyWordEnum::FREELANCER_MANAGEMENT => array(
-                KeyWordEnum::FREELANCER
-            ),
-            KeyWordEnum::INVESTOR_MANAGEMENT => array(
-                KeyWordEnum::INVESTOR
-            ),
+            KeyWordEnum::FREELANCER
         );
     }
 

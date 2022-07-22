@@ -43,11 +43,11 @@ class CoWorkingSpaceNavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::BUILDING => __(sprintf('%s.%s', 'general.left_bar', self::BUILDING)),
-            self::FLOOR_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR_TYPE)),
-            self::FLOOR => __(sprintf('%s.%s', 'general.left_bar', self::FLOOR)),
-            self::OFFICE_TYPE => __(sprintf('%s.%s', 'general.left_bar', self::OFFICE_TYPE)),
-            self::OFFICE => __(sprintf('%s.%s', 'general.left_bar', self::OFFICE))
+            self::BUILDING => __(sprintf('%s.%s', 'general.left-bar', self::BUILDING)),
+            self::FLOOR_TYPE => __(sprintf('%s.%s', 'general.left-bar', self::FLOOR_TYPE)),
+            self::FLOOR => __(sprintf('%s.%s', 'general.left-bar', self::FLOOR)),
+            self::OFFICE_TYPE => __(sprintf('%s.%s', 'general.left-bar', self::OFFICE_TYPE)),
+            self::OFFICE => __(sprintf('%s.%s', 'general.left-bar', self::OFFICE))
         ];
     }
 

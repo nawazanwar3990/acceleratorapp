@@ -27,7 +27,7 @@ class ModuleController extends Controller
             'pageTitle' => __('general.modules'),
             'records' => $records,
         ];
-        return view('dashboard.subscription-management.modules.index', $params);
+        return view('dashboard.subscriptions.modules.index', $params);
     }
 
     /**
@@ -39,7 +39,7 @@ class ModuleController extends Controller
         $params = [
             'pageTitle' => __('general.new_module'),
         ];
-        return view('dashboard.subscription-management.modules.create', $params);
+        return view('dashboard.subscriptions.modules.create', $params);
     }
 
     /**
@@ -70,7 +70,7 @@ class ModuleController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.subscription-management.modules.edit', $params);
+        return view('dashboard.subscriptions.modules.edit', $params);
     }
 
     /**

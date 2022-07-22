@@ -54,14 +54,14 @@ class SubscriptionController extends Controller
         $subscriptions = $subscriptions->paginate(20);
         if ($type == SubscriptionTypeEnum::PLAN) {
             $pageTitle = 'Office Subscriptions';
-            return view('dashboard.subscription-management.subscriptions.list.plans', compact(
+            return view('dashboard.subscriptions.list.plans', compact(
                 'subscriptions',
                 'pageTitle',
                 'type'
             ));
         } else if ($type == SubscriptionTypeEnum::PACKAGE) {
             $pageTitle = __('general.package_subscriptions');
-            return view('dashboard.subscription-management.subscriptions.list.packages', compact(
+            return view('dashboard.subscriptions.list.packages', compact(
                 'subscriptions',
                 'pageTitle',
                 'type'
@@ -78,7 +78,7 @@ class SubscriptionController extends Controller
                 $q->with('basic_services', 'additional_services');
             }])->where('created_by', Auth::id())->get();
             $pageTitle = 'Offices Subscription';
-            return view('dashboard.subscription-management.subscriptions.create.plans', compact(
+            return view('dashboard.subscriptions.create.plans', compact(
                 'records',
                 'type',
                 'pageTitle',
@@ -87,7 +87,7 @@ class SubscriptionController extends Controller
         } else {
             $records = Package::where('created_by', Auth::id())->get();
             $pageTitle = 'Packages Subscriptions';
-            return view('dashboard.subscription-management.subscriptions.create.packages', compact(
+            return view('dashboard.subscriptions.create.packages', compact(
                 'records',
                 'type',
                 'pageTitle',

@@ -31,7 +31,7 @@ class PlanController extends Controller
             'records' => $records
         ];
 
-        return view('dashboard.plan-management.plans.index', $params);
+        return view('dashboard.plans.index', $params);
     }
 
     /**
@@ -44,7 +44,7 @@ class PlanController extends Controller
             'pageTitle' => __('general.new_plan'),
         ];
 
-        return view('dashboard.plan-management.plans.create', $params);
+        return view('dashboard.plans.create', $params);
     }
 
     /**
@@ -76,7 +76,7 @@ class PlanController extends Controller
             'model' => $model
         ];
 
-        return view('dashboard.plan-management.plans.edit', $params);
+        return view('dashboard.plans.edit', $params);
     }
 
     /**
