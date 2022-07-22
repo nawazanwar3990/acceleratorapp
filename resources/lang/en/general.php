@@ -1,5 +1,8 @@
 <?php
 return [
+    'company_service' => "Company Service",
+    'package_service'=>'Package Service',
+
     'office_plans' => 'Office Plans',
     'available_plans' => 'Available Plans',
     'sold' => "Sold",
@@ -70,7 +73,7 @@ return [
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',
-    'co_working_space' => 'Co Working Space',
+    'INCUBATOR' => 'Co Working Space',
     'plan_for' => 'Plan For',
     'admins' => "Admins",
     'new_admin' => 'New Admin',
@@ -1249,7 +1252,7 @@ return [
     'reminder_days' => 'Reminder Days',
     'daily' => 'Daily',
     'is_expire' => 'Is Expire',
-    'package_name'=>'Package Name',
+    'package_name' => 'Package Name',
 
     'duration_type' => 'Duration',
     'duration_limit' => 'Duration Limit',

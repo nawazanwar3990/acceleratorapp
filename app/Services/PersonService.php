@@ -4,12 +4,14 @@ namespace App\Services;
 
 use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
+use App\Models\Hr;
 use App\Models\Media;
-use App\Models\Subscriptions\Package;
-use App\Models\Subscriptions\Subscription;
+use App\Models\Package;
+use App\Models\Province;
+use App\Models\Subscription;
+use App\Models\User;
 use App\Models\Users\Country;
 use App\Models\Users\District;
-use App\Models\Users\Hr;
 use App\Models\Users\HrCast;
 use App\Models\Users\HrDepartment;
 use App\Models\Users\HrDesignation;
@@ -17,14 +19,10 @@ use App\Models\Users\HrNationality;
 use App\Models\Users\HrOrganization;
 use App\Models\Users\HrProfession;
 use App\Models\Users\HrRelation;
-use App\Models\Users\Province;
-use App\Models\Users\User;
-use App\Traits\General;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
 use Intervention\Image\Facades\Image;
 use function __;
 use function url;
@@ -221,11 +219,11 @@ class PersonService
 
     public static function pluck_customers()
     {
-        return User::whereHas('roles', function($q){
+        return User::whereHas('roles', function ($q) {
             $q->where('slug', '=', RoleEnum::CUSTOMER);
         })
             ->select(DB::raw('CONCAT(first_name, " ", last_name) AS name, id'))
-            ->pluck('name','id');
+            ->pluck('name', 'id');
     }
 
     public function store($data): User
@@ -366,5 +364,10 @@ class PersonService
                 'updated_by' => Auth::id()
             ]);
         }
+    }
+
+    public static function hasRole($role)
+    {
+        return Auth::user()->hasRole($role);
     }
 }

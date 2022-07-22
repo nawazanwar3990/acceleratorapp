@@ -47,7 +47,7 @@
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::PLAN_MANAGEMENT)
                                         @include('dashboard.components.left-nav-bar.plan-management')
                                         @break
-                                    @case(\App\Enum\LeftNavBar\MainNavEnum::CO_WORKING_SPACE)
+                                    @case(\App\Enum\LeftNavBar\MainNavEnum::INCUBATOR)
                                         @include('dashboard.components.left-nav-bar.working-spaces')
                                         @break
                                     @case(\App\Enum\LeftNavBar\MainNavEnum::SYSTEM_CONFIGURATION)

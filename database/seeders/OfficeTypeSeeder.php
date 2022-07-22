@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Enum\OfficeTypeEnum;
 use App\Enum\TableEnum;
-use App\Models\WorkingSpace\OfficeType;
+use App\Models\OfficeType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

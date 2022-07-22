@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\SystemConfiguration;
 
-use App\Models\SystemConfiguration\Setting;
+use App\Models\Setting;
 use App\Services\GeneralService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Session;

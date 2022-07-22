@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enum\KeyWordEnum;
-use App\Models\Plans\Plan;
 use App\Services\BuildingService;
-use App\Services\OfficeService;
 use App\Services\FloorService;
+use App\Services\OfficeService;
 use App\Services\PlanService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

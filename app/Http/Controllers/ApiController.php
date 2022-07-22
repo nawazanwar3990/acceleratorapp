@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WorkingSpace\Floor;
+use App\Models\Floor;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller

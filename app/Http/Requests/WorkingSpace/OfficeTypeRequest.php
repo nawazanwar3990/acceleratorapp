@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\WorkingSpace;
-use App\Models\WorkingSpace\OfficeType;
+use App\Models\OfficeType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

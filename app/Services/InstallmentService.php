@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Plan;
 use App\Models\Plans\InstallmentTerm;
-use App\Models\Plans\Plan;
 use App\Models\SaleManagement\Installment;
 use function __;
 

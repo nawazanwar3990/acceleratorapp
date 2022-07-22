@@ -23,19 +23,19 @@
         </td>
         <td>{{ $record->price }}</td>
         <td>{{ $record->reminder_days }}</td>
-       {{-- <td style="width: 230px;">
+        <td style="width: 230px;">
             <UL class="list-group list-group-flush bg-transparent">
-                @foreach($record->modules as $module)
+                @foreach($record->services as $service)
                     <li class="list-group-item py-0 border-0  bg-transparent px-0">
                         <i class="bx bx-check text-success"></i> <small><strong
-                                class="text-infogit ">{{ $module->pivot->limit }}</strong> {{ str_replace('_',' ',$module->name) }}
+                                class="text-infogit ">{{ $service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
                         </small>
                     </li>
                 @endforeach
             </UL>
-        </td>--}}
+        </td>
         <td class="text-center">
-         Readonly
+            Readonly
         </td>
     </tr>
 @empty

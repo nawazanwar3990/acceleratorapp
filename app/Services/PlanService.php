@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\Enum\KeyWordEnum;
-use App\Enum\TableEnum;
-use App\Models\Plans\Plan;
+use App\Models\Plan;
 
 class PlanService
 {

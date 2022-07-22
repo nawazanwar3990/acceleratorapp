@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
-use App\Models\Users\Role;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Services\PersonService;
 use Illuminate\Auth\Events\Registered;

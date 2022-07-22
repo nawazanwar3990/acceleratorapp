@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\WorkingSpace;
 
-use App\Models\WorkingSpace\FloorType;
+use App\Models\FloorType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

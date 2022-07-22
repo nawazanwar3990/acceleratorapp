@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\ServiceManagement;
 
-use App\Models\Services\Service;
+use App\Models\Service;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;

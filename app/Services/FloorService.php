@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
-use App\Models\WorkingSpace\Office;
-use App\Models\WorkingSpace\Floor;
-use App\Models\WorkingSpace\FloorType;
+use App\Models\Floor;
+use App\Models\FloorType;
+use App\Models\Office;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use function __;

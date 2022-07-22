@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Services\PackageService;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(OfficeTypeSeeder::class);
         $this->call(FloorTypeSeeder::class);
+        $this->call(PackageSeeder::class);
     }
 }

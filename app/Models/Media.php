@@ -3,10 +3,6 @@
 namespace App\Models;
 
 use App\Enum\MediaTypeEnum;
-use App\Models\Users\User;
-use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Office;
-use App\Models\WorkingSpace\Floor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

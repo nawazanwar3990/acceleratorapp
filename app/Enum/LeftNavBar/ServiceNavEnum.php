@@ -3,6 +3,7 @@ namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
+use App\Enum\ServiceTypeEnum;
 
 class ServiceNavEnum extends AbstractEnum
 {
@@ -40,8 +41,8 @@ class ServiceNavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::LIST => route('dashboard.services.index'),
-            self::CREATE => route('dashboard.services.create'),
+            self::LIST => route('dashboard.services.index',['type'=>ServiceTypeEnum::BASIC_SERVICE]),
+            self::CREATE => route('dashboard.services.create',['type'=>ServiceTypeEnum::BASIC_SERVICE]),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

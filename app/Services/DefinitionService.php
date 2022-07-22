@@ -3,13 +3,13 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
-use App\Models\Users\Role;
 use App\Models\Devices\DeviceClass;
 use App\Models\Devices\DeviceLocation;
 use App\Models\Devices\DeviceMake;
 use App\Models\Devices\DeviceModel;
 use App\Models\Devices\DeviceOperatingSystem;
 use App\Models\Devices\DeviceType;
+use App\Models\Role;
 
 class DefinitionService
 {

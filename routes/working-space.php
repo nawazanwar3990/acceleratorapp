@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\WorkingSpace\BuildingController;
-use App\Http\Controllers\WorkingSpace\OfficeController;
-use App\Http\Controllers\WorkingSpace\OfficeTypeController;
-use App\Http\Controllers\WorkingSpace\FloorController;
-use App\Http\Controllers\WorkingSpace\FloorTypeController;
+use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\FloorController;
+use App\Http\Controllers\FloorTypeController;
+use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\OfficeTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/buildings', BuildingController::class, ['names' => 'buildings'])->middleware('has_package');

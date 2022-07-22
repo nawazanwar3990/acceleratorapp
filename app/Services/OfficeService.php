@@ -3,15 +3,12 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
-use App\Models\Subscriptions\Subscription;
-use App\Models\WorkingSpace\Office;
-use App\Models\WorkingSpace\OfficeOwner;
-use App\Models\WorkingSpace\OfficeType;
+use App\Models\Office;
+use App\Models\OfficeType;
+use App\Models\Subscription;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use function __;
-use function response;
-use function view;
 
 class OfficeService
 {

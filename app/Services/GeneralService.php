@@ -6,14 +6,13 @@ use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
 use App\Enum\LeftNavBar\CoWorkingSpaceNavEnum;
 use App\Enum\TableEnum;
+use App\Models\Building;
+use App\Models\Floor;
 use App\Models\Media;
-use App\Models\Subscriptions\Module;
-use App\Models\Subscriptions\Package;
-use App\Models\Subscriptions\Subscription;
-use App\Models\Services\Service;
-use App\Models\WorkingSpace\Building;
-use App\Models\WorkingSpace\Office;
-use App\Models\WorkingSpace\Floor;
+use App\Models\Module;
+use App\Models\Office;
+use App\Models\Service;
+use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Translation\Translator;
@@ -1009,7 +1008,7 @@ class GeneralService
         if ($subscriptionQuery->exists()) {
             $subscription = $subscriptionQuery->first();
             $package_id = $subscription->subscription_id;
-            return DB::table(TableEnum::PACKAGE_MODULE)
+            return DB::table(TableEnum::PACKAGE_SERVICE)
                 ->where('package_id', $package_id)
                 ->where('module_id', $module_id)
                 ->value('limit');

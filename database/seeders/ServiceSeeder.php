@@ -4,9 +4,7 @@ namespace Database\Seeders;
 
 use App\Enum\ServiceTypeEnum;
 use App\Enum\TableEnum;
-use App\Models\Services\Service;
-use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -65,6 +63,78 @@ class ServiceSeeder extends Seeder
                 'type' => ServiceTypeEnum::ADDITIONAL_SERVICE,
                 'status' => true,
                 'created_by' => 2,
+            ],
+            [
+                'name' => 'Incubators',
+                'slug' => 'incubators',
+                'type' => ServiceTypeEnum::COMPANY_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Freelancers',
+                'slug' => 'freelancers',
+                'type' => ServiceTypeEnum::COMPANY_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Meeting Rooms',
+                'slug' => 'meeting-rooms',
+                'type' => ServiceTypeEnum::COMPANY_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Mentorship',
+                'slug' => 'mentorship',
+                'type' => ServiceTypeEnum::COMPANY_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Only Investment',
+                'slug' => 'only-investment',
+                'type' => ServiceTypeEnum::COMPANY_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+
+
+            [
+                'name' => 'Incubator',
+                'slug' => 'incubator',
+                'type' => ServiceTypeEnum::PACKAGE_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Freelancer',
+                'slug' => 'freelancer',
+                'type' => ServiceTypeEnum::PACKAGE_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Per Week Meeting',
+                'slug' => 'per-week-meeting',
+                'type' => ServiceTypeEnum::PACKAGE_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Mentorship',
+                'slug' => 'mentorship',
+                'type' => ServiceTypeEnum::PACKAGE_SERVICE,
+                'status' => true,
+                'created_by' => 1,
+            ],
+            [
+                'name' => 'Investment',
+                'slug' => 'investment',
+                'type' => ServiceTypeEnum::PACKAGE_SERVICE,
+                'status' => true,
+                'created_by' => 1,
             ]
         ];
 
@@ -107,7 +177,7 @@ class ServiceSeeder extends Seeder
                 'created_by' => 2,
             ]
         );
-        foreach ($childServices as $service){
+        foreach ($childServices as $service) {
             Service::create($service);
         }
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\EventManagement;
 
-use App\Models\Events\Event;
+use App\Models\Event;
 use App\Models\Media;
 use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;

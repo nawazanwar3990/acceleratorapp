@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Plans\PlanController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\Plans\InstallmentTermController;
 use Illuminate\Support\Facades\Route;
 

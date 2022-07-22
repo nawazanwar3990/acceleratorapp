@@ -3,9 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Enum\RoleEnum;
-use App\Models\Subscriptions\Package;
-use App\Models\Subscriptions\Subscription;
-use App\Providers\RouteServiceProvider;
+use App\Models\Subscription;
 use App\Services\GeneralService;
 use Closure;
 use Illuminate\Http\Request;

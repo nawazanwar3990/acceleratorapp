@@ -39,6 +39,7 @@ class TableEnum extends AbstractEnum
 
     public const FLOOR_OWNER = 'floor_owner';
     public const OFFICE_PLAN = 'office_plan';
+    public const PACKAGE_SERVICE = 'package_service';
 
     public static function getValues(): array
     {

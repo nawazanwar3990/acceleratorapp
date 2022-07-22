@@ -17,7 +17,7 @@ class MainNavEnum extends AbstractEnum
     public const FREELANCER_MANAGEMENT = KeyWordEnum::FREELANCER_MANAGEMENT;
     public const PLAN_MANAGEMENT = KeyWordEnum::PLAN_MANAGEMENT;
     public const SYSTEM_CONFIGURATION = KeyWordEnum::SYSTEM_CONFIGURATION;
-    public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
+    public const INCUBATOR = KeyWordEnum::INCUBATOR;
     public const SALE_MANAGEMENT = KeyWordEnum::SALE_MANAGEMENT;
 
     public static function getValues(): array
@@ -33,7 +33,7 @@ class MainNavEnum extends AbstractEnum
             self::PLAN_MANAGEMENT,
             self::SYSTEM_CONFIGURATION,
             self::USER_MANAGEMENT,
-            self::CO_WORKING_SPACE,
+            self::INCUBATOR,
             self::SALE_MANAGEMENT
         ];
     }
@@ -51,7 +51,7 @@ class MainNavEnum extends AbstractEnum
             self::PLAN_MANAGEMENT => '<i class="bx bx-book-bookmark"></i>',
             self::SYSTEM_CONFIGURATION => '<i class="bx bx-briefcase"></i>',
             self::USER_MANAGEMENT => '<i class="bx bx-user"></i>',
-            self::CO_WORKING_SPACE => '<i class="bx bxs-business"></i>',
+            self::INCUBATOR => '<i class="bx bxs-business"></i>',
             self::SALE_MANAGEMENT => '<i class="bx bx-chart-bar"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
@@ -68,7 +68,7 @@ class MainNavEnum extends AbstractEnum
             self::SUBSCRIPTION_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_MANAGEMENT)),
             self::SERVICE_MANAGEMENT => __(sprintf('%s.%s', 'general', self::SERVICE_MANAGEMENT)),
             self::PLAN_MANAGEMENT => __(sprintf('%s.%s', 'general', self::PLAN_MANAGEMENT)),
-            self::CO_WORKING_SPACE => __(sprintf('%s.%s', 'general', self::CO_WORKING_SPACE)),
+            self::INCUBATOR => __(sprintf('%s.%s', 'general', self::INCUBATOR)),
             self::USER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::USER_MANAGEMENT)),
             self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general', self::BUSINESS_ACCELERATOR)),
             self::CUSTOMER_MANAGEMENT => __(sprintf('%s.%s', 'general', self::CUSTOMER_MANAGEMENT)),

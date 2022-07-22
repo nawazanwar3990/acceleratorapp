@@ -3,7 +3,7 @@
 namespace App\Http\Requests\PackageManagement;
 
 use App\Enum\TableEnum;
-use App\Models\Subscriptions\Package;
+use App\Models\Package;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -60,7 +60,7 @@ class PackageRequest extends FormRequest
                 $module_id = $modules['id'][$i];
                 $limit = $modules['limit'][$i];
                 if ($limit!=''){
-                    DB::table(TableEnum::PACKAGE_MODULE)->insert([
+                    DB::table(TableEnum::PACKAGE_SERVICE)->insert([
                         'package_id' => $model->id,
                         'module_id' => $module_id,
                         'limit' => $limit

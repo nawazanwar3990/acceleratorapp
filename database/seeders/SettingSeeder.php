@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 use App\Enum\PaymentTypeEnum;
 use App\Enum\TableEnum;
-use App\Models\SystemConfiguration\Setting;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

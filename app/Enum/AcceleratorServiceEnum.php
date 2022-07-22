@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-use App\Models\Users\User;
+use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -14,21 +14,21 @@ class AcceleratorServiceEnum extends AbstractEnum
 {
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const INVESTOR = KeyWordEnum::INVESTOR;
-    public const CO_WORKING_SPACE = KeyWordEnum::CO_WORKING_SPACE;
+    public const INCUBATOR = KeyWordEnum::INCUBATOR;
 
     public static function getValues(): array
     {
         return [
             self::FREELANCER,
             self::INVESTOR,
-            self::CO_WORKING_SPACE
+            self::INCUBATOR
         ];
     }
 
     public static function getTranslationKeys(): array
     {
         return [
-            self::CO_WORKING_SPACE => __('general.' . self::CO_WORKING_SPACE),
+            self::INCUBATOR => __('general.' . self::INCUBATOR),
             self::FREELANCER => __('general.' . self::FREELANCER),
             self::INVESTOR => __('general.' . self::INVESTOR)
         ];
@@ -37,7 +37,7 @@ class AcceleratorServiceEnum extends AbstractEnum
     public static function getImage($key)
     {
         $images = array(
-            self::CO_WORKING_SPACE => asset('images/screen2.jpg'),
+            self::INCUBATOR => asset('images/screen2.jpg'),
             self::FREELANCER => asset('images/screen3.jpg'),
             self::INVESTOR => asset('images/screen4.jpg')
         );
@@ -51,7 +51,7 @@ class AcceleratorServiceEnum extends AbstractEnum
     public static function getRoute($key)
     {
         $images = array(
-            self::CO_WORKING_SPACE => route('website.offices.index'),
+            self::INCUBATOR => route('website.offices.index'),
             self::FREELANCER => route('website.freelancers.index'),
             self::INVESTOR => route('website.investors.index'),
         );
@@ -65,7 +65,7 @@ class AcceleratorServiceEnum extends AbstractEnum
     public static function getRouteName($key): ?string
     {
         $routes = array(
-            self::CO_WORKING_SPACE => 'website.co-working-spaces.index',
+            self::INCUBATOR => 'website.co-working-spaces.index',
             self::FREELANCER => 'website.freelancers.index',
             self::INVESTOR => 'website.investors.index',
         );

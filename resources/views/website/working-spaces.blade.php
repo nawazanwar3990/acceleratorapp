@@ -14,7 +14,7 @@
                         <div class="card-body inbox-panel">
                             <a href="{{ route('website.co-working-spaces.index') }}"
                                class="btn btn-danger m-b-20 p-10 w-100 waves-effect waves-light text-white">
-                                {{  \App\Enum\AcceleratorServiceEnum::getTranslationKeyBy(\App\Enum\AcceleratorServiceEnum::CO_WORKING_SPACE) }}
+                                {{  \App\Enum\AcceleratorServiceEnum::getTranslationKeyBy(\App\Enum\AcceleratorServiceEnum::INCUBATOR) }}
                             </a>
                             <ul class="list-group list-group-full">
                                 @foreach(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getAdminWorkingSpaces() as $workingKey=>$workingValue)

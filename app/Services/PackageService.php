@@ -3,11 +3,10 @@
 namespace App\Services;
 
 use App\Enum\KeyWordEnum;
-use App\Models\Subscriptions\Duration;
-use App\Models\Subscriptions\Module;
-use App\Models\Subscriptions\Package;
+use App\Models\Duration;
+use App\Models\Module;
+use App\Models\Package;
 use Illuminate\Database\Eloquent\Collection;
-use PhpParser\Lexer\TokenEmulator\KeywordEmulator;
 
 class PackageService
 {
@@ -24,7 +23,7 @@ class PackageService
     public static function pluck_module_for_super()
     {
         return Module::whereIn('name', [
-            KeyWordEnum::CO_WORKING_SPACE,
+            KeyWordEnum::INCUBATOR,
             KeyWordEnum::FREELANCER,
             KeyWordEnum::SERVICE_PROVIDER,
             KeyWordEnum::INVESTOR

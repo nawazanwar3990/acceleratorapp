@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-use App\Models\Subscriptions\Module;
-use App\Models\Users\Permission;
-use App\Models\Users\Role;
+use App\Models\Module;
+use App\Models\Permission;
+use App\Models\Role;
 
 class ModuleEnum extends AbstractEnum
 {
@@ -52,7 +52,7 @@ class ModuleEnum extends AbstractEnum
             KeyWordEnum::INVESTOR_MANAGEMENT => array(
                 $ability . KeyWordEnum::INVESTOR
             ),
-            KeyWordEnum::CO_WORKING_SPACE => array(
+            KeyWordEnum::INCUBATOR => array(
                 $ability . KeyWordEnum::BUILDING,
                 $ability . KeyWordEnum::FLOOR_TYPE,
                 $ability . KeyWordEnum::FLOOR,
@@ -65,7 +65,7 @@ class ModuleEnum extends AbstractEnum
     public static function get_package_modules()
     {
         return array(
-            KeyWordEnum::CO_WORKING_SPACE => array(
+            KeyWordEnum::INCUBATOR => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR,
                 KeyWordEnum::OFFICE
@@ -194,7 +194,7 @@ class ModuleEnum extends AbstractEnum
                 KeyWordEnum::SUBSCRIPTION_LOG,
                 KeyWordEnum::PAYMENT
             ),
-            KeyWordEnum::CO_WORKING_SPACE => array(
+            KeyWordEnum::INCUBATOR => array(
                 KeyWordEnum::BUILDING,
                 KeyWordEnum::FLOOR_TYPE,
                 KeyWordEnum::FLOOR,
@@ -216,6 +216,9 @@ class ModuleEnum extends AbstractEnum
     public static function super_admin_permissions()
     {
         return array(
+            KeyWordEnum::SERVICE_MANAGEMENT => array(
+                KeyWordEnum::SERVICE
+            ),
             KeyWordEnum::SUBSCRIPTION_MANAGEMENT => array(
                 KeyWordEnum::PACKAGE,
                 KeyWordEnum::SUBSCRIPTION,

@@ -4,7 +4,7 @@ namespace App\Http\Requests\UserManagement;
 
 use App\Enum\MethodEnum;
 use App\Enum\TableEnum;
-use App\Models\Users\Permission;
+use App\Models\Permission;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;

@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Enum\RoleEnum;
-use App\Models\WorkingSpace\Building;
+use App\Models\Building;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 

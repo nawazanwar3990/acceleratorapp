@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\WorkingSpace\Office;
-use App\Models\WorkingSpace\Floor;
+use App\Models\Floor;
+use App\Models\Office;
 use App\Models\Sales\Installment;
 use Carbon\Carbon;
 
