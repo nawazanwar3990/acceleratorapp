@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\WorkingSpace\OfficeTypeRequest;
+use App\Http\Requests\OfficeTypeRequest;
 use App\Models\OfficeType;
 use App\Services\OfficeService;
 use Illuminate\Auth\Access\AuthorizationException;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SystemConfiguration\SystemSettingsRequest;
+use App\Http\Requests\SystemSettingsRequest;
 use App\Models\Setting;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;

@@ -65,5 +65,5 @@
 @section('inner-script-files')
 @endsection
 @section('innerScript')
-    @include('dashboard.plan-management.plans.components.scripts')
+    @include('dashboard.plans.components.scripts')
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\AbilityEnum;
 use App\Enum\RoleEnum;
-use App\Http\Requests\UserManagement\UserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\Customer;
 use App\Models\Hr;
 use App\Models\Role;

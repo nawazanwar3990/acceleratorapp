@@ -2,12 +2,26 @@
 
 namespace App\Services;
 
+use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceData
 {
+    public static function get_package_services_range($id = null)
+    {
+        $data = array();
+        $data['∞'] = 'Un Limited';
+        for ($i = 1; $i < 1000; $i++) {
+            $data[$i] = $i;
+        }
+        if (!is_null($id)) {
+            $data = $data[$id];
+        }
+        return $data;
+    }
+
     public static function getServiceTypeDropdown($id = null)
     {
         $data = [
@@ -21,18 +35,10 @@ class ServiceData
         return $data;
     }
 
-    public static function getGeneralServicesForDropdown()
+    public static function get_package_services()
     {
-        return Service::where('type', ServiceTypeEnum::GENERAL_SERVICE)
-            ->whereCreatedBy(Auth::id())
-            ->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function getSecurityServicesForDropdown()
-    {
-        return Service::where('type', ServiceTypeEnum::SECURITY_SERVICE)
-            ->whereCreatedBy(Auth::id())
-            ->orderBy('name', 'ASC')->pluck('name', 'id');
+        return Service::where('type', ServiceTypeEnum::PACKAGE_SERVICE)
+            ->orderBy('name', 'ASC')->get();
     }
 
     public static function getBasicServices()
@@ -56,7 +62,12 @@ class ServiceData
 
     public function listServicesByPagination()
     {
-        return Service::where('created_by', Auth::id())->paginate(20);
+        $type = request()->query('type');
+        $services = Service::where('type', $type);
+        if (!PersonService::hasRole(RoleEnum::SUPER_ADMIN)) {
+            $services = Service::where('created_by', Auth::id());
+        }
+        return $services->orderBy('id', 'DESC')->paginate(20);
     }
 
     public static function getParentFreelancerServicesDropdown()

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\AbilityEnum;
 use App\Enum\ModuleEnum;
-use App\Http\Requests\UserManagement\PermissionRequest;
+use App\Http\Requests\PermissionRequest;
 use App\Models\Permission;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;

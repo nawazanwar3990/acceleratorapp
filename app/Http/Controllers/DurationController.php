@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PackageManagement\DurationRequest;
+use App\Http\Requests\DurationRequest;
 use App\Models\Duration;
 use App\Models\Office;
 use Illuminate\Auth\Access\AuthorizationException;

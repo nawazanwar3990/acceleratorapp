@@ -1,8 +1,12 @@
 <?php
 return [
+    'types'=>'types',
+    'company'=>'Company',
+    'individual'=>'Individual',
+    'services_limit'=>'Limit of Services',
     'company_service' => "Company Service",
     'package_service'=>'Package Service',
-
+    'package_types'=>'Package Types',
     'office_plans' => 'Office Plans',
     'available_plans' => 'Available Plans',
     'sold' => "Sold",

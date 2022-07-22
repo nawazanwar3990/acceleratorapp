@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Enum\AbilityEnum;
-use App\Http\Requests\ServiceManagement\ServiceRequest;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use App\Services\ServiceData;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use function __;
 use function redirect;
 use function view;
@@ -34,19 +35,21 @@ class ServiceController extends Controller
             'pageTitle' => __('general.services'),
             'records' => $records,
         ];
-        return view('dashboard.service-management.services.index',$params);
+        return view('dashboard.services.index', $params);
     }
 
     /**
      * @throws AuthorizationException
      */
-    public function create(): Factory|View|Application
+    public function create(Request $request): Factory|View|Application
     {
-       $this->authorize(AbilityEnum::CREATE, Service::class);
+        $this->authorize(AbilityEnum::CREATE, Service::class);
+        $type = $request->query('type');
         $params = [
             'pageTitle' => __('general.new_service'),
+            'type' => $type
         ];
-        return view('dashboard.service-management.services.create',compact('params'));
+        return view('dashboard.services.create', compact('params'));
     }
 
     /**
@@ -54,13 +57,13 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-         $this->authorize('create', Service::class);
-        if ($request->createData()) {
+        $this->authorize('create', Service::class);
+        if ($model = $request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.services.create')
+                return redirect()->route('dashboard.services.create',['type'=>$model->type])
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.services.index')
+                return redirect()->route('dashboard.services.index',['type'=>$model->type])
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -72,14 +75,14 @@ class ServiceController extends Controller
      */
     public function edit($id): Factory|View|Application
     {
-         $this->authorize('update', Service::class);
+        $this->authorize('update', Service::class);
         $model = Service::findorFail($id);
         $params = [
             'pageTitle' => __('general.edit_service'),
             'model' => $model,
         ];
 
-        return view('dashboard.service-management.services.edit', $params);
+        return view('dashboard.services.edit', $params);
     }
 
     /**
@@ -87,15 +90,10 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
-         $this->authorize('update', Service::class);
-        if ($request->updateData($id)) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.services.create')
-                    ->with('success', __('general.record_updated_successfully'));
-            } else {
-                return redirect()->route('dashboard.services.index')
-                    ->with('success', __('general.record_updated_successfully'));
-            }
+        $this->authorize('update', Service::class);
+        if ($model = $request->updateData($id)) {
+           return redirect()->route('dashboard.services.index',['type'=>$model->type])
+                ->with('success', __('general.record_updated_successfully'));
         }
     }
 
@@ -104,7 +102,7 @@ class ServiceController extends Controller
      */
     public function destroy(ServiceRequest $request, $id)
     {
-         $this->authorize('delete', Service::class);
+        $this->authorize('delete', Service::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.services.index')
                 ->with('success', __('general.record_deleted_successfully'));

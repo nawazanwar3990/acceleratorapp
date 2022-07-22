@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\WorkingSpace\OfficeRequest;
+use App\Http\Requests\OfficeRequest;
 use App\Models\Floor;
 use App\Models\Office;
 use App\Models\Plan;

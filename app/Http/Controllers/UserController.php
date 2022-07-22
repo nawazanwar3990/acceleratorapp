@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\AbilityEnum;
-use App\Http\Requests\UserManagement\UserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\Hr;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;

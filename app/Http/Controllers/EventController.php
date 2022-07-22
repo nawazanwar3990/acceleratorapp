@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EventManagement\EventRequest;
+use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Traits\General;
 use Illuminate\Contracts\Foundation\Application;

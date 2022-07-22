@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PackageManagement\ModuleRequest;
+use App\Http\Requests\ModuleRequest;
 use App\Models\Module;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;

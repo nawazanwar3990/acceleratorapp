@@ -19,7 +19,7 @@ class PackageSeeder extends Seeder
 
         DB::table(TableEnum::PACKAGES)->insert([
             array(
-                'type' => PackageTypeEnum::COMPANY,
+                'types' => json_encode([PackageTypeEnum::COMPANY]),
                 'name' => 'Free',
                 'duration_type_id' => '3',
                 'duration_limit' => '1',
@@ -33,7 +33,7 @@ class PackageSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ),
             array(
-                'type' => PackageTypeEnum::COMPANY,
+                'type' => json_encode([PackageTypeEnum::COMPANY]),
                 'name' => 'Basic',
                 'duration_type_id' => '3',
                 'duration_limit' => '1',
@@ -47,7 +47,7 @@ class PackageSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ),
             array(
-                'type' => PackageTypeEnum::COMPANY,
+                'type' => json_encode([PackageTypeEnum::COMPANY]),
                 'name' => 'Premium',
                 'duration_type_id' => '3',
                 'duration_limit' => '1',

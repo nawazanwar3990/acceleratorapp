@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\WorkingSpace\BuildingRequest;
+use App\Http\Requests\BuildingRequest;
 use App\Models\Building;
 use App\Services\BuildingService;
 use App\Traits\General;

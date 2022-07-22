@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\WorkingSpace\FloorRequest;
+use App\Http\Requests\FloorRequest;
 use App\Models\Floor;
 use App\Services\FloorService;
 use App\Traits\General;

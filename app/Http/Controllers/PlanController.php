@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PlanManagement\PlanRequest;
+use App\Http\Requests\PlanRequest;
 use App\Models\Plan;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\WorkingSpace\FloorTypeRequest;
+use App\Http\Requests\FloorTypeRequest;
 use App\Models\FloorType;
 use App\Services\FloorService;
 use Illuminate\Auth\Access\AuthorizationException;

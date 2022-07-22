@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\RoleEnum;
-use App\Http\Requests\PackageManagement\PackageRequest;
+use App\Http\Requests\PackageRequest;
 use App\Models\Package;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -42,7 +42,7 @@ class PackageController extends Controller
             'pageTitle' => __('general.packages'),
             'records' => $records,
         ];
-        return view('dashboard.subscription-management.packages.index', $params);
+        return view('dashboard.packages.index', $params);
     }
 
     /**
@@ -54,7 +54,7 @@ class PackageController extends Controller
         $params = [
             'pageTitle' => __('general.new_package'),
         ];
-        return view('dashboard.subscription-management.packages.create', $params);
+        return view('dashboard.packages.create', $params);
     }
 
     /**
@@ -80,13 +80,13 @@ class PackageController extends Controller
     public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Package::class);
-        $model = Package::findorFail($id);
+        $model = Package::with('services')->findorFail($id);
         $params = [
             'pageTitle' => __('general.edit_package'),
             'model' => $model,
         ];
 
-        return view('dashboard.subscription-management.packages.edit', $params);
+        return view('dashboard.packages.edit', $params);
     }
 
     /**
@@ -96,13 +96,8 @@ class PackageController extends Controller
     {
         $this->authorize('update', Package::class);
         if ($request->updateData($id)) {
-            if ($request->saveNew) {
-                return redirect()->route('dashboard.services.create')
-                    ->with('success', __('general.record_updated_successfully'));
-            } else {
-                return redirect()->route('dashboard.services.index')
-                    ->with('success', __('general.record_updated_successfully'));
-            }
+            return redirect()->route('dashboard.packages.index')
+                ->with('success', __('general.record_updated_successfully'));
         }
     }
 

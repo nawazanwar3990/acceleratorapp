@@ -17,7 +17,7 @@ class Package extends Model
     protected $table = TableEnum::PACKAGES;
 
     protected $fillable = [
-        'type',
+        'types',
         'duration_type_id',
         'duration_limit',
         'trail_expire_date',
@@ -26,6 +26,10 @@ class Package extends Model
         'price',
         'reminder_days'
     ];
+    public function getTypesAttribute($value)
+    {
+        return json_decode($value);
+    }
 
     public function duration_type(): BelongsTo
     {
