@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
-use App\Enum\LeftNavBar\CoWorkingSpaceNavEnum;
+use App\Enum\LeftNavBar\AccubatorNavEnum;
 use App\Enum\TableEnum;
 use App\Models\Building;
 use App\Models\Floor;
@@ -30,9 +30,9 @@ class GeneralService
     public static function get_working_space_count($type, $user = null): int
     {
         return match ($type) {
-            CoWorkingSpaceNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
-            CoWorkingSpaceNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
-            CoWorkingSpaceNavEnum::OFFICE => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
+            AccubatorNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
+            AccubatorNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
+            AccubatorNavEnum::OFFICE => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
             default => 0,
         };
     }

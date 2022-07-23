@@ -1,14 +1,8 @@
 <?php
 
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\BuildingController;
-use App\Http\Controllers\FloorController;
-use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InvestorController;
-use App\Http\Controllers\OfficeController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\Website\BAController;
+use App\Http\Controllers\Website\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', [HomeController::class, 'index'])
@@ -17,30 +11,7 @@ Route::get('', [HomeController::class, 'index'])
 Route::get('/verify-user-email-success', [PageController::class, 'verifyUserEmailSuccess'])
     ->name('verify-user-email-success');
 
-
-Route::get('/co-working-spaces', [HomeController::class, 'getCoWorkingSpaces'])
-    ->name('co-working-spaces.index');
-
-Route::get('/freelancers', [FreelancerController::class, 'getFreelancers'])
-    ->name('freelancers.index');
-Route::get('/investors', [InvestorController::class, 'getInvestors'])
-    ->name('investors.index');
-
-
-Route::get('/buildings', [BuildingController::class, 'getBuildings'])
-    ->name('buildings.index');
-Route::get('/floors', [FloorController::class, 'getFloors'])
-    ->name('floors.index');
-Route::get('/offices', [OfficeController::class, 'getOffices'])
-    ->name('offices.index');
-
-Route::get('/pricing-plans/{type?}/{id?}', [BookingController::class, 'pricingPlans'])
-    ->name('pricing-plans.index');
-Route::get('/bookings/{type?}/{id?}/{plan?}', [BookingController::class, 'showBookingForm'])
-    ->name('bookings.index');
-
-Route::post('/booking/store', [BookingController::class, 'storeBooking'])
-    ->name('booking.store');
-
-Route::get('/package/renewal', [PackageController::class, 'sendRenewalRequest'])
-    ->name('package.renewal');
+Route::get('/ba/create/{step}/{id?}', [BAController::class, 'create'])
+    ->name('ba.create');
+Route::post('/ba/create/{step}/{id?}', [BAController::class, 'store'])
+    ->name('ba.store');

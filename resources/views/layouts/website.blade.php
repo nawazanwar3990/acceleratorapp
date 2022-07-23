@@ -12,12 +12,9 @@
 <body class="bg-white">
 <div class="container">
     <x-website-header></x-website-header>
-{{--    @include('website.components.home.banner')--}}
-    {{--<x-website-breadcrumb :title="$pageTitle"></x-website-breadcrumb>--}}
     <main>
         @yield('content')
     </main>
-    <x-website-footer></x-website-footer>
 </div>
 <script src="{{ asset('js/website.min.js') }}"></script>
 @include('includes.global-scripts')

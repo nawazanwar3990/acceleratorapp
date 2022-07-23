@@ -51,9 +51,9 @@ class AcceleratorServiceEnum extends AbstractEnum
     public static function getRoute($key)
     {
         $images = array(
-            self::INCUBATOR => route('website.offices.index'),
-            self::FREELANCER => route('website.freelancers.index'),
-            self::INVESTOR => route('website.investors.index'),
+            self::INCUBATOR => null,
+            self::FREELANCER => null,
+            self::INVESTOR => null,
         );
         if (!is_null($key) && array_key_exists($key, $images)) {
             return $images[$key];

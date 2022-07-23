@@ -17,9 +17,9 @@
                                 {{  \App\Enum\AcceleratorServiceEnum::getTranslationKeyBy(\App\Enum\AcceleratorServiceEnum::INCUBATOR) }}
                             </a>
                             <ul class="list-group list-group-full">
-                                @foreach(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getAdminWorkingSpaces() as $workingKey=>$workingValue)
+                                @foreach(\App\Enum\LeftNavBar\AccubatorNavEnum::getAdminWorkingSpaces() as $workingKey=>$workingValue)
                                     <li class="list-group-item d-flex no-block align-items-center  @if($loop->first) active  @endif">
-                                        <a href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute($workingKey) }}"
+                                        <a href="{{ \App\Enum\LeftNavBar\AccubatorNavEnum::getWebsiteRoute($workingKey) }}"
                                            class="d-flex no-block align-items-center @if($loop->first) text-white  @endif">
                                             <i class="mdi mdi-gmail fs-4 me-2 d-flex align-items-center"></i> {{ $workingValue }}
                                         </a>
@@ -50,21 +50,21 @@
                                                 </td>
                                                 <td class="max-texts">
                                                     <a class="btn btn-success btn-sm"
-                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::BUILDING) }}">
-                                                        {{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::BUILDING) }}
-                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::BUILDING,$admin) }}</strong>)
+                                                       href="{{ \App\Enum\LeftNavBar\AccubatorNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\AccubatorNavEnum::BUILDING) }}">
+                                                        {{ \App\Enum\LeftNavBar\AccubatorNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\AccubatorNavEnum::BUILDING) }}
+                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\AccubatorNavEnum::BUILDING,$admin) }}</strong>)
                                                         <i class="bx bx-buildings"></i>
                                                     </a>
                                                     <a class="btn btn-info btn-sm"
-                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLOOR) }}">
-                                                        {{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLOOR) }}
-                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLOOR,$admin) }}</strong>)
+                                                       href="{{ \App\Enum\LeftNavBar\AccubatorNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\AccubatorNavEnum::FLOOR) }}">
+                                                        {{ \App\Enum\LeftNavBar\AccubatorNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\AccubatorNavEnum::FLOOR) }}
+                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\AccubatorNavEnum::FLOOR,$admin) }}</strong>)
                                                         <i class="bx bxs-building"></i>
                                                     </a>
                                                     <a class="btn btn-primary btn-sm"
-                                                       href="{{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLAT) }}">
-                                                        {{ \App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLAT) }}
-                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\CoWorkingSpaceNavEnum::FLAT,$admin) }}</strong>)
+                                                       href="{{ \App\Enum\LeftNavBar\AccubatorNavEnum::getWebsiteRoute(\App\Enum\LeftNavBar\AccubatorNavEnum::FLAT) }}">
+                                                        {{ \App\Enum\LeftNavBar\AccubatorNavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\AccubatorNavEnum::FLAT) }}
+                                                        (<strong>{{ \App\Services\GeneralService::get_working_space_count(\App\Enum\LeftNavBar\AccubatorNavEnum::FLAT,$admin) }}</strong>)
                                                         <i class="bx bxs-building-house"></i>
                                                     </a>
                                                 </td>

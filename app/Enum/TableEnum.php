@@ -41,6 +41,9 @@ class TableEnum extends AbstractEnum
     public const OFFICE_PLAN = 'office_plan';
     public const PACKAGE_SERVICE = 'package_service';
 
+    public const BA = 'ba';
+    public const BA_SERVICE = 'ba_service';
+
     public static function getValues(): array
     {
         return [];

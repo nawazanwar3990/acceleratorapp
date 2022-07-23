@@ -17,44 +17,11 @@
                         @guest
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.home') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.locations') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.solutions') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.gallery') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.business_services') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.franchise') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.contact_us') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <a href="#"
-                                       class="btn text-dark"><b>{{ trans('general.book_a_tour') }}</b></a>
-                                </li>
-                                <li class="nav-item mx-1">
                                     <a href="{{ route('login') }}"
                                        class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.login') }}</a>
                                 </li>
                                 <li class="nav-item mx-1">
-                                    <a href="{{ route('register') }}"
-                                       class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.register') }}</a>
+                                    <button onclick="applyLogin('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}');" class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.get_started') }}</button>
                                 </li>
                             </ul>
                         @else

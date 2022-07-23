@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PackageService
 {
-    public static function get_vendor_packages(): Collection|array
+    public static function list_packages(): Collection|array
     {
-        return Package::with('modules')->where('created_by', '1')->get();
+        return Package::with('services')->get();
     }
 
     public static function pluck_duration()

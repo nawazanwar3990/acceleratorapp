@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\DurationController;
-use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Dashboard\DurationController;
+use App\Http\Controllers\Dashboard\ModuleController;
+use App\Http\Controllers\Dashboard\PackageController;
+use App\Http\Controllers\Dashboard\PaymentController;
+use App\Http\Controllers\Dashboard\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/durations', DurationController::class, ['names' => 'durations'])->middleware('has_package');

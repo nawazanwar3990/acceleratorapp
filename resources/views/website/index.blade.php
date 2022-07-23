@@ -14,7 +14,9 @@
                     <div class="col-md-6 pb-4">
                         <h1 class="card-heading">Amenities</h1>
                         <p class="text-justify">
-                            Find your desired work placeFind your desired work placeFind your desired work placeFind your desireFind your desired work placed work placeFind your desired work placeFind your desired work place.
+                            Find your desired work placeFind your desired work placeFind your desired work placeFind
+                            your desireFind your desired work placed work placeFind your desired work placeFind your
+                            desired work place.
                         </p>
                     </div>
                     <div class="row pb-5">
@@ -22,11 +24,12 @@
                             <div class="row">
                                 <div class="col-3">
                                     <img src='{{asset('images/icon/staff.png')}}' alt="">
-{{--                                    <i class="far fa-archive"></i>--}}
+                                    {{--                                    <i class="far fa-archive"></i>--}}
                                 </div>
                                 <div class="col-8">
                                     <h4>RFID Access</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +41,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>RFID Access</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +54,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>RFID Access</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +69,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>Unlimited Coffee</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +82,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>Unlimited Coffee</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +95,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>Unlimited Coffee</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +110,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>Air Conditioned Spaces</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +123,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>Air Conditioned Spaces</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +136,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>Air Conditioned Spaces</h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +151,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>24/7 access </h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +164,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>24/7 access </h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +177,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h4>24/7 access </h4>
-                                    <p>Find your desired work placeFind your desired work placeFind your desired work place.</p>
+                                    <p>Find your desired work placeFind your desired work placeFind your desired work
+                                        place.</p>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +192,9 @@
                     <div class="col-md-6 pb-4">
                         <h1 class="card-heading">Our Clients</h1>
                         <p class="text-justify">
-                            Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
+                            Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk
+                            into work tomorrow knowing that your utilities, security, housekeeping, and secure
+                            technology are all taken care of, allowing you to concentrate on your core business.
                         </p>
                     </div>
                     <div class="row">
@@ -210,7 +226,9 @@
                     <div class="col-md-6 pb-4">
                         <h1 class="card-heading">Testimonials</h1>
                         <p class="text-justify">
-                            Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
+                            Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk
+                            into work tomorrow knowing that your utilities, security, housekeeping, and secure
+                            technology are all taken care of, allowing you to concentrate on your core business.
                         </p>
                     </div>
                     <div class="row">
@@ -219,7 +237,10 @@
                             <div class="testimonials-desc">
                                 <h4>Testimonials</h4>
                                 <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
+                                    Every aspect of our workspace is taken care of, from the furniture to the amenities.
+                                    Walk into work tomorrow knowing that your utilities, security, housekeeping, and
+                                    secure technology are all taken care of, allowing you to concentrate on your core
+                                    business.
                                 </p>
                             </div>
                         </div>
@@ -228,7 +249,10 @@
                             <div class="testimonials-desc">
                                 <h4>Testimonials</h4>
                                 <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
+                                    Every aspect of our workspace is taken care of, from the furniture to the amenities.
+                                    Walk into work tomorrow knowing that your utilities, security, housekeeping, and
+                                    secure technology are all taken care of, allowing you to concentrate on your core
+                                    business.
                                 </p>
                             </div>
                         </div>
@@ -237,7 +261,10 @@
                             <div class="testimonials-desc">
                                 <h4>Testimonials</h4>
                                 <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
+                                    Every aspect of our workspace is taken care of, from the furniture to the amenities.
+                                    Walk into work tomorrow knowing that your utilities, security, housekeeping, and
+                                    secure technology are all taken care of, allowing you to concentrate on your core
+                                    business.
                                 </p>
                             </div>
                         </div>
@@ -246,7 +273,10 @@
                             <div class="testimonials-desc">
                                 <h4>Testimonials</h4>
                                 <p>
-                                    Every aspect of our workspace is taken care of, from the furniture to the amenities. Walk into work tomorrow knowing that your utilities, security, housekeeping, and secure technology are all taken care of, allowing you to concentrate on your core business.
+                                    Every aspect of our workspace is taken care of, from the furniture to the amenities.
+                                    Walk into work tomorrow knowing that your utilities, security, housekeeping, and
+                                    secure technology are all taken care of, allowing you to concentrate on your core
+                                    business.
                                 </p>
                             </div>
                         </div>
@@ -267,32 +297,32 @@
                                     <h4><b>Private Office</b></h4>
                                     <h3><b>Room B12 | E-11</b></h3>
                                     <img src='{{ asset('images/users/2.jpg') }}' class="offer-user-img" alt="">
-                                        <div class="row py-4 text-center">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                                </div>
-                                                <div>
-                                                    <p>13 Member</p>
-                                                </div>
+                                    <div class="row py-4 text-center">
+                                        <div class="col-md-4">
+                                            <div>
+                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
                                             </div>
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                                </div>
-                                                <div>
-                                                    <p>Air Conditioned</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <img src='{{asset('images/icon/staff.png')}}' alt="">
-                                                </div>
-                                                <div >
-                                                    <p>Storage Space</p>
-                                                </div>
+                                            <div>
+                                                <p>13 Member</p>
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div>
+                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
+                                            </div>
+                                            <div>
+                                                <p>Air Conditioned</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div>
+                                                <img src='{{asset('images/icon/staff.png')}}' alt="">
+                                            </div>
+                                            <div>
+                                                <p>Storage Space</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="pb-3">
                                         <h2>
                                             80,000PKR
@@ -333,7 +363,7 @@
                                             <div>
                                                 <img src='{{asset('images/icon/staff.png')}}' alt="">
                                             </div>
-                                            <div >
+                                            <div>
                                                 <p>Storage Space</p>
                                             </div>
                                         </div>
@@ -378,7 +408,7 @@
                                             <div>
                                                 <img src='{{asset('images/icon/staff.png')}}' alt="">
                                             </div>
-                                            <div >
+                                            <div>
                                                 <p>Storage Space</p>
                                             </div>
                                         </div>

@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\BAController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\FreelancerController;
-use App\Http\Controllers\InvestorController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\RolePermissionController;
-use App\Http\Controllers\RoleUserController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Dashboard\BAController;
+use App\Http\Controllers\Dashboard\CustomerController;
+use App\Http\Controllers\Dashboard\FreelancerController;
+use App\Http\Controllers\Dashboard\InvestorController;
+use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\RolePermissionController;
+use App\Http\Controllers\Dashboard\RoleUserController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('users', UserController::class, ['names' => 'users'])->middleware('has_package');
