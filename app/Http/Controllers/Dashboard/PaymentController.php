@@ -12,6 +12,8 @@ use App\Models\Package;
 use App\Models\Payment;
 use App\Models\Plan;
 use App\Models\Subscription;
+use App\Models\User;
+use App\Notifications\ApprovedSubscription;
 use App\Services\GeneralService;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -56,6 +58,7 @@ class PaymentController extends Controller
         $transaction_id = $request->input('transaction_id');
 
         $subscription = Subscription::find($subscription_id);
+        $user = User::find($subscription->subscribed_id);
 
         if ($payment_type == PaymentTypeEnum::OFFLINE) {
 
@@ -68,10 +71,10 @@ class PaymentController extends Controller
 
             if ($payment->save()) {
                 $type  = $request->input('type');
-
                 if ($type==SubscriptionStatusEnum::APPROVED){
                    $subscription->status = SubscriptionStatusEnum::APPROVED;
                    $subscription->save();
+                    $user->notify(new ApprovedSubscription());
                     return response()->json([
                         'status' => true
                     ]);

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -58,5 +59,9 @@ class Subscription extends Model
     public function deleted_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'deleted_by');
+    }
+    public function receipt(): BelongsTo
+    {
+        return $this->belongsTo(Media::class)->where('record_type',MediaTypeEnum::SUBSCRIPTION_RECEIPT);
     }
 }

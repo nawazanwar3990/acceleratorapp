@@ -31,9 +31,14 @@
                                 </table>
                             </div>
                         </div>
-                        @if(\Illuminate\Support\Facades\Session::has('upload_receipt_success'))
+                        @if(\Illuminate\Support\Facades\Session::has('upload_receipt_success') OR $media)
                             <div class="alert alert-info alert-dismissible show" role="info">
-                                <strong>info!! </strong> {{ \Illuminate\Support\Facades\Session::get('upload_receipt_success') }}
+                                <strong>info!! </strong>
+                                @if($media)
+                                   Wait, Your Request is under processed and let you while Approving Your Subscription
+                                @else
+                                    {{ \Illuminate\Support\Facades\Session::get('upload_receipt_success') }}
+                                @endif
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                             </div>

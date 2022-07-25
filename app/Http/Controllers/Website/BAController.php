@@ -80,7 +80,7 @@ class BAController extends Controller
         }
     }
 
-    public function storePaymentSnippet(Request $request)
+    public function storePaymentSnippet(Request $request): \Illuminate\Http\RedirectResponse
     {
         $subscription_id = $request->input('subscription_id');
         if (request()->file('receipt')) {

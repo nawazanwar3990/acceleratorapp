@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enum\MediaTypeEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Media;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
@@ -34,6 +36,7 @@ class PageController extends Controller
         $subscribed_id = $request->query('subscribed_id');
         $user = User::find($subscribed_id);
         $subscription = Subscription::where('subscribed_id',$subscribed_id)->first();
-        return view('website.pages.ba-pending-subscription', compact('pageTitle','subscription','user'));
+        $media = Media::where('record_id',$subscription->id)->whereRecordType(MediaTypeEnum::SUBSCRIPTION_RECEIPT)->exists();
+        return view('website.pages.ba-pending-subscription', compact('pageTitle','subscription','user','media'));
     }
 }
