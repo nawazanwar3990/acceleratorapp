@@ -17,3 +17,6 @@ Route::post('/ba/create/{step}/{id?}', [BAController::class, 'store'])
     ->name('ba.store');
 Route::get('/ba-pending-subscription', [PageController::class, 'baPendingSubscription'])
     ->name('ba-pending-subscription');
+
+Route::post('/ba/payment-snippet/store', [BAController::class, 'storePaymentSnippet'])
+    ->name('ba.payment-snippet-store');

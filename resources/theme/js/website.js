@@ -1,5 +1,6 @@
 "use strict";
 $(function () {
+    $('.dropify').dropify();
     $(document).on("change", "#is_register_company", function () {
         let institute_holder = $("#institute_holder");
         let value = $(this).find('option:selected').val();
@@ -33,7 +34,6 @@ function applyLogin(types) {
     Swal.fire({
         title: 'Registration Type',
         html: html,
-        width: 900,
         confirmButtonText: 'Next',
         focusConfirm: false,
         preConfirm: () => {

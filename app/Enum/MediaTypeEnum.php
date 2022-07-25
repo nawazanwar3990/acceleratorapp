@@ -25,6 +25,8 @@ class MediaTypeEnum extends AbstractEnum
     public const  HR_THIRD_IMAGE = 'hr_third_image';
     public const  HR_FOURTH_IMAGE = 'hr_fourth_image';
 
+    public const  SUBSCRIPTION_RECEIPT = 'subscription_receipt';
+
     public static function getValues(): array
     {
         return array();

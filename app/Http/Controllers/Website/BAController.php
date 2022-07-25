@@ -2,21 +2,30 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
+use App\Models\Media;
 use App\Services\BaService;
+use App\Services\GeneralService;
+use App\Traits\General;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class BAController extends Controller
 {
+    use General;
+
     public function __construct(
         private BaService $baService
     )
     {
+        $this->makeMultipleDirectories('subscription', ['receipts']);
     }
 
     public function index()
@@ -71,48 +80,19 @@ class BAController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function storePaymentSnippet(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $subscription_id = $request->input('subscription_id');
+        if (request()->file('receipt')) {
+            $uploadedFile = request()->file('receipt');
+            $path = 'uploads/subscription/receipts/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $subscription_id,
+                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT
+            ]);
+        }
+        return redirect()->back('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
     }
 }

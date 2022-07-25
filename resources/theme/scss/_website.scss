@@ -7,13 +7,16 @@
 @import 'widgets/widgets';
 @import "pages/pricing-page";
 @import "pages/error-pages";
-
-@import 'responsive';
 @import 'plugins/owl.carousel.min';
 @import 'plugins/owl.theme.default';
 @import 'plugins/bootstrap-datepicker.min';
 @import 'plugins/sweetalert2.min';
 @import 'plugins/jquery.toast';
+
+@import 'plugins/select2.min';
+@import 'plugins/dropify';
+
+@import 'responsive';
 
 .form-control {
     background-color: white !important;

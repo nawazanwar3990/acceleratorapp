@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -31,7 +32,8 @@ class PageController extends Controller
     {
         $pageTitle = 'Pending Subscription';
         $subscribed_id = $request->query('subscribed_id');
+        $user = User::find($subscribed_id);
         $subscription = Subscription::where('subscribed_id',$subscribed_id)->first();
-        return view('website.pages.ba-pending-subscription', compact('pageTitle','subscription'));
+        return view('website.pages.ba-pending-subscription', compact('pageTitle','subscription','user'));
     }
 }
