@@ -20,7 +20,7 @@
             <tbody>
             <tr>
                 <td>
-                    {!!  Form::text('company_institutes[]',null,['id'=>'company_institutes[]','class'=>'form-control form-control-sm','autocomplete'=>'off', 'required']) !!}
+                    {!!  Form::text('company_institutes[]',null,['id'=>'company_institutes[]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                 </td>
                 <td class="text-center">
                     <a href="javascript:void(0);"

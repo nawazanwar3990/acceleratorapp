@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('active')->default(true);
             $table->boolean('first_password')->default(true);
+            $table->string('security_question_name')->nullable();
+            $table->string('security_question_value')->nullable();
+            $table->string('know_about_us')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();

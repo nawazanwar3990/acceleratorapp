@@ -29,7 +29,13 @@
                             @endforeach
                             <div class="price-row justify-content-center">
                                 <div class="form-check form-switch d-inline-block">
-                                    {!! Form::radio('subscription_id',$package->id,false,['id'=>$package->id,'class'=>'form-check-input','required']) !!}
+                                    {!! Form::radio('subscription_id',$package->id,false,['id'=>$package->id,'class'=>'form-check-input',
+                                        'data-name'=>$package->name,
+                                        'data-price'=>$package->price,
+                                         'data-expiry'=>\App\Services\GeneralService::get_remaining_time($package->duration_type->slug,$package->duration_limit, \Carbon\Carbon::now()),
+                                        'required'
+                                        ])
+                                    !!}
                                     <label class="form-check-label" for="{{ $package->id }}"></label>
                                 </div>
                             </div>

@@ -23,10 +23,6 @@ return new class extends Migration
             $table->longText('company_address')->nullable();
             $table->string('company_contact_no')->nullable();
             $table->string('company_email')->nullable();
-
-            $table->string('security_question_name')->nullable();
-            $table->string('security_question_value')->nullable();
-            $table->string('know_about_us')->nullable();
             $table->timestamps();
         });
     }

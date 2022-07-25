@@ -3,13 +3,24 @@
 namespace App\Services;
 
 use App\Enum\AcceleratorTypeEnum;
+use App\Enum\RoleEnum;
+use App\Enum\SubscriptionTypeEnum;
 use App\Models\BA;
-use App\Models\Hr;
+use App\Models\Package;
+use App\Models\Subscription;
 use App\Models\User;
+use App\Services\RoleService;
+use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
 class BaService
 {
+    public function __construct(
+        private RoleService $roleService
+    )
+    {
+    }
 
     public function saveStep1($type): BA
     {
@@ -60,11 +71,49 @@ class BaService
         $user->email = $email;
         $user->normal_password = $password;
         $user->password = Hash::make($password);
+        $user->security_question_name = request()->input('security_question_name');
+        $user->security_question_value = request()->input('security_question_value');
+        $user->know_about_us = request()->input('know_about_us');
 
         if ($user->save()) {
+            $user->roles()->sync($this->roleService->findBySlug(RoleEnum::BUSINESS_ACCELERATOR));
             $model->user_id = $user->id;
             $model->save();
         }
+        event(new Registered($user));
         return $model;
+    }
+
+    public function saveStep5($type): bool
+    {
+        $subscription_id = request()->input('subscription_id');
+        $subscribed_id = request()->input('subscribed_id');
+        $payment_token_number = request()->input('payment_token_number');
+        $payment_addition_information = request()->input('payment_addition_information');
+
+        $subscription = new Subscription();
+
+        $subscription->subscribed_id = $subscribed_id;
+        $subscription->subscription_id = $subscription_id;
+        $subscription->subscription_type = SubscriptionTypeEnum::PACKAGE;
+
+        $package = Package::find($subscription_id);
+        $limit = $package->duration_limit;
+        $from_date = Carbon::now();
+        $duration_type = $package->duration_type->slug;
+        $price = $package->price;
+        $subscription->price = $price;
+        $subscription->created_by = auth()->id();
+        $subscription->renewal_date = Carbon::now();
+        $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+        $subscription->status = 'pending';
+        $subscription->payment_token_number = $payment_token_number;
+        $subscription->payment_addition_information = $payment_addition_information;
+        if ($subscription->save()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

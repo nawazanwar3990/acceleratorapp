@@ -21,7 +21,11 @@ class Subscription extends Model
         'expire_date',
         'price',
         'model_id',
-        'model_type'
+        'model_type',
+
+        'payment_token_number',
+        'payment_addition_information',
+        'status'
     ];
 
     public function subscribed(): BelongsTo

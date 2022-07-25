@@ -61,8 +61,14 @@ class BAController extends Controller
                 $model = $this->baService->saveStep4($model->type, $model);
                 return redirect()->route('website.ba.create', [StepEnum::STEP5, $model->id]);
                 break;
+            case StepEnum::STEP5;
+                $response = $this->baService->saveStep5($model->type);
+                return response()->json([
+                    'status' => $response,
+                    'url' => route('website.ba.create', [StepEnum::PRINT, $model->id])
+                ]);
+                break;
         }
-
     }
 
     /**
