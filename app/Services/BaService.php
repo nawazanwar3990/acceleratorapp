@@ -61,14 +61,21 @@ class BaService
         return $model;
     }
 
-    public function saveStep4($type, $model)
+    public function saveStep4($type, $model, $user_id)
     {
-        $user = new User();
+        $user = ($user_id) ? User::find($user_id) : new User();
 
         $password = request()->input('password', null);
         $email = request()->input('email', null);
 
+        $first_name = request()->input('first_name', null);
+        $last_name = request()->input('last_name', null);
+
         $user->email = $email;
+
+        $user->first_name = $first_name;
+        $user->last_name = $last_name;
+
         $user->normal_password = $password;
         $user->password = Hash::make($password);
         $user->security_question_name = request()->input('security_question_name');

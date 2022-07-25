@@ -75,11 +75,21 @@ class BAController extends Controller
                 return redirect()->route('website.ba.create', [StepEnum::STEP4, $model->id]);
                 break;
             case StepEnum::STEP4;
-                $request->validate([
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                    'password' => ['required', 'string', 'min:8', 'confirmed']
-                ]);
-                $model = $this->baService->saveStep4($model->type, $model);
+
+                $user_id = $request->input('user_id', null);
+                if ($user_id) {
+                    $request->validate([
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
+                        'password' => ['required', 'string', 'min:8', 'confirmed']
+                    ]);
+                } else {
+                    $request->validate([
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                        'password' => ['required', 'string', 'min:8', 'confirmed']
+                    ]);
+                }
+
+                $model = $this->baService->saveStep4($model->type, $model,$user_id);
                 return redirect()->route('website.ba.create', [StepEnum::STEP5, $model->id]);
                 break;
             case StepEnum::STEP5;
