@@ -1,9 +1,13 @@
 <?php
 return [
+    'your_services'=>'Your Services',
+    'subscription_status'=>'Subscription Status',
+    'addition_info'=>'Additional Info',
     'submit_payment_receipt'=>'Submit Payment Receipt',
     'package_info'=>'Package Info',
     'payment_token_number'=>'Payment Token Number',
     'pending_subscription'=>'Pending Subscription',
+    'invoice_date'=>'Invoice Date',
     'please_enter_your_valid_answer' => 'Please Enter your Valid Security Answer',
     'please_enter_your_valid_security_question' => 'Enter Valid Security Question',
     'what_is_your_date_of_birth' => 'What is your date of birth?',

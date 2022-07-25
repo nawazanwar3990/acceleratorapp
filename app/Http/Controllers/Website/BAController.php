@@ -7,6 +7,7 @@ use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
 use App\Models\Media;
+use App\Models\Subscription;
 use App\Services\BaService;
 use App\Services\GeneralService;
 use App\Traits\General;
@@ -36,6 +37,7 @@ class BAController extends Controller
     public function create(Request $request, $step, $id = null): Factory|View|Application
     {
         $model = null;
+        $subscription= null;
         if ($id) {
             $model = BA::find($id);
         }
@@ -49,9 +51,10 @@ class BAController extends Controller
         } else if ($step == StepEnum::STEP5) {
             $prev_step = route('website.ba.create', [StepEnum::STEP4, $model->id]);
         } else if ($step == StepEnum::PRINT) {
+            $subscription = Subscription::where('subscribed_id',$model->user->id)->first();
             $prev_step = route('website.ba.create', [StepEnum::STEP5, $model->id]);
         }
-        return view('website.ba.create', compact('step', 'model', 'prev_step'));
+        return view('website.ba.create', compact('step', 'model', 'prev_step','subscription'));
     }
 
     public function store(Request $request, $step, $id = null)
