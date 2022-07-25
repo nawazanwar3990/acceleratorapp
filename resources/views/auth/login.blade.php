@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="col-xs-12">
-                            {!!  Form::select('security_question_name',\App\Enum\SecurityQuestionEnum::getTranslationKeys(),null,['id'=>'security_question_name','class'=>'form-control','placeholder'=>'Security Question', 'required']) !!}
+                            {!!  Form::select('security_question_name',\App\Enum\SecurityQuestionEnum::getTranslationKeys(),null,['id'=>'security_question_name','class'=>'form-control','placeholder'=>'Security Question']) !!}
                         </div>
                         @error('security_question_name')
                         <small class="form-control-feedback text-danger"> {{ $message }} </small>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="col-xs-12">
-                            {!!  Form::text('security_question_value',null,['id'=>'security_question_value','class'=>'form-control','required','placeholder'=>'Security Answer']) !!}
+                            {!!  Form::text('security_question_value',null,['id'=>'security_question_value','class'=>'form-control','placeholder'=>'Security Answer']) !!}
                         </div>
                         @error('security_question_value')
                         <small class="form-control-feedback text-danger"> {{ $message }} </small>

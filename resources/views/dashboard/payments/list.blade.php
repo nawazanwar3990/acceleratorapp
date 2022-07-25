@@ -3,7 +3,7 @@
         <td>{{ $loop->iteration }}</td>
         <td>
             @isset($record->subscribed)
-                {{ $record->subscribed->getFullName() }}
+                {{ $record->subscribed->email }}
             @else
                 --
             @endisset

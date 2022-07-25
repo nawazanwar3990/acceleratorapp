@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.ba.index','is_create'=>true])
+                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.ba.index','is_create'=>false])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -12,6 +12,7 @@
                             <th scope="col">{{ __('general.business_accelerator') }}</th>
                             <th scope="col">{{__('general.package')}}</th>
                             <th scope="col">{{__('general.price')}}</th>
+                            <th scope="col">{{__('general.status')}}</th>
                             <th scope="col">{{__('general.expire_date')}}</th>
                             <th scope="col">{{__('general.renewal_data')}}</th>
                             <th class="text-center">{{__('general.action')}}</th>
@@ -23,16 +24,28 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @isset($subscription->subscribed)
-                                        {{ $subscription->subscribed->getFullName() }}
+                                        {{ $subscription->subscribed->email }}
                                     @else
                                         --
                                     @endisset
                                 </td>
                                 <td>
                                     {{ $subscription->package->name??null}}
+                                    <UL class="list-group list-group-flush bg-transparent">
+                                        @foreach($subscription->package->services as $service)
+                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                <i class="bx bx-check text-success"></i> <small><strong
+                                                        class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                                                </small>
+                                            </li>
+                                        @endforeach
+                                    </UL>
                                 </td>
                                 <td>
                                     {{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                </td>
+                                <td>
+                                    {{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}
                                 </td>
                                 <td>
                                     {{ $subscription->expire_date }}
@@ -47,16 +60,24 @@
                                         --
                                     @endif
                                 </td>
-                                <td class="text-center d-flex">
+                                <td class="text-center">
                                     @if(\App\Services\GeneralService::isExpireSubscription(\Carbon\Carbon::now(),$subscription->expire_date))
                                         <a class="btn btn-xs btn-warning mx-1"
-                                           onclick="renew_package('{{ $subscription->id }}')">
+                                           onclick="apply_package_action('{{ $subscription->id }}','Renew')">
                                             {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
                                         </a>
                                     @else
-                                        <a class="btn btn-xs btn-warning mx-1" href="{{ route('dashboard.payments.index',['id'=>$subscription->id]) }}">
-                                            {{ trans('general.payment_logs') }}
-                                        </a>
+                                        @if($subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
+                                            <a class="btn btn-xs btn-warning mx-1"
+                                               onclick="apply_package_action('{{ $subscription->id }}','{{ \App\Enum\SubscriptionStatusEnum::APPROVED }}')">
+                                                {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
+                                            </a>
+                                        @else
+                                            <a class="btn btn-xs btn-warning mx-1"
+                                               href="{{ route('dashboard.payments.index',['id'=>$subscription->id]) }}">
+                                                {{ trans('general.payment_logs') }}
+                                            </a>
+                                        @endif
                                     @endif
                                 </td>
                             </tr>
@@ -71,21 +92,25 @@
 @endsection
 @section('innerScript')
     <script>
-        function renew_package(subscription_id) {
+        function apply_package_action(subscription_id, type) {
             Swal.fire({
-                title: 'Renewal Package',
+                title: type + ' Package',
                 html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
-                confirmButtonText: 'Submit',
+                confirmButtonText: 'Next',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_type = Swal.getPopup().querySelector('#payment_type').value
                     if (!payment_type) {
                         Swal.showValidationMessage(`First Choose Payment Type`)
                     }
-                    return {payment_type: payment_type}
+                    return {
+                        payment_type: payment_type,
+                        type:type
+                    }
                 }
             }).then((result) => {
                 let payment_type = result.value.payment_type;
+                let type = result.value.type;
                 if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                     Swal.fire({
                         title: 'Manage Payment',
@@ -97,7 +122,9 @@
                             if (!transaction_id) {
                                 Swal.showValidationMessage(`First Enter Transaction ID`)
                             }
-                            return {transaction_id: transaction_id}
+                            return {
+                                transaction_id: transaction_id
+                            }
                         }
                     }).then((result) => {
                         Swal.fire({
@@ -108,7 +135,8 @@
                         let data = {
                             'subscription_id': subscription_id,
                             'payment_type': payment_type,
-                            'transaction_id': result.value.transaction_id
+                            'transaction_id': result.value.transaction_id,
+                            'type':type
                         }
                         $.ajax({
                             url: "{{ route('dashboard.payments.store') }}",
@@ -122,7 +150,6 @@
                             error: function (response) {
                             }
                         });
-                        console.log(data);
                     });
                 } else {
                     Swal.fire(

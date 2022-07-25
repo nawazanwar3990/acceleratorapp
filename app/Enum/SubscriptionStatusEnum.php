@@ -18,6 +18,9 @@ class SubscriptionStatusEnum extends AbstractEnum
 
     public static function getTranslationKeys(): array
     {
-        return array();
+        return array(
+            self::PENDING => 'Pending',
+            self::APPROVED => 'Approved'
+        );
     }
 }

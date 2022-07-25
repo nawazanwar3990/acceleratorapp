@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Enum\DurationEnum;
 use App\Enum\PaymentTypeEnum;
+use App\Enum\SubscriptionStatusEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
@@ -36,7 +37,7 @@ class PaymentController extends Controller
      */
     public function index(Request $request): Factory|View|Application
     {
-        $this->authorize('view', Payment::class);
+      //  $this->authorize('view', Payment::class);
         $id = $request->query('id');
         $records = Payment::with('subscribed', 'subscription')
             ->where('subscription_id', $id)
@@ -45,7 +46,7 @@ class PaymentController extends Controller
             'pageTitle' => __('general.payments'),
             'records' => $records
         ];
-        return view('dashboard.payment-management.payments.index', $params);
+        return view('dashboard.payments.index', $params);
     }
 
     public function store(Request $request): JsonResponse
@@ -66,9 +67,17 @@ class PaymentController extends Controller
             $payment->price = $subscription->price;
 
             if ($payment->save()) {
+                $type  = $request->input('type');
+
+                if ($type==SubscriptionStatusEnum::APPROVED){
+                   $subscription->status = SubscriptionStatusEnum::APPROVED;
+                   $subscription->save();
+                    return response()->json([
+                        'status' => true
+                    ]);
+                }
 
                 $subscription_type = $subscription->subscription_type;
-
                 $duration_type = DurationEnum::MONTHLY;
                 $limit = 1;
                 if ($subscription_type == SubscriptionTypeEnum::PLAN) {
@@ -83,14 +92,6 @@ class PaymentController extends Controller
                 $from_date = Carbon::now();
                 $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
                 $subscription->save();
-
-                DB::table(TableEnum::SUBSCRIPTION_LOGS)->insert([
-                    'subscribed_id' => $subscription->subscribed_id,
-                    'subscription_id' => $subscription_id,
-                    'price' => $subscription->price,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
-                ]);
             }
         }
         return response()->json([

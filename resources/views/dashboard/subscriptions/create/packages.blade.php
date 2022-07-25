@@ -13,6 +13,11 @@
                         @forelse($records as $record)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    @foreach($record->types as $type)
+                                        <button class="btn btn-xs btn-info mx-1">{{ $type }}</button>
+                                    @endforeach
+                                </td>
                                 <td>{{ $record->name }}</td>
                                 <td>
                                     @isset($record->duration_type)
@@ -35,6 +40,17 @@
                                 </td>
                                 <td>{{ $record->price }}</td>
                                 <td>{{ $record->reminder_days }}</td>
+                                <td style="width: 230px;">
+                                    <UL class="list-group list-group-flush bg-transparent">
+                                        @foreach($record->services as $service)
+                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                <i class="bx bx-check text-success"></i> <small><strong
+                                                        class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                                                </small>
+                                            </li>
+                                        @endforeach
+                                    </UL>
+                                </td>
                                 <td class="text-center">
                                     {!! Form::radio('subscription_id',$record->id,false) !!}
                                 </td>

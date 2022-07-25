@@ -76,6 +76,7 @@ class MainNavEnum extends AbstractEnum
         $routes = array(
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC_SERVICE]),
             self::PACKAGE => route('dashboard.packages.index'),
+            self::BA => route('dashboard.ba.index'),
             self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => Auth::user()->hasRole(RoleEnum::SUPER_ADMIN) ? SubscriptionTypeEnum::PACKAGE : SubscriptionTypeEnum::PLAN]),
             self::CUSTOMER => route('dashboard.customers.index'),
             self::FREELANCER => route('dashboard.freelancers.index'),

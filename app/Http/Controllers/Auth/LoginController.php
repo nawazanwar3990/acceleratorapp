@@ -49,6 +49,19 @@ class LoginController extends Controller
         $user = $this->personService->findByEmail($email);
 
         if ($user) {
+            if ($user->hasRole(RoleEnum::SUPER_ADMIN)) {
+                if (!Auth::attempt([
+                    'email' => $email,
+                    'password' => $password
+                ], $request->boolean('remember')
+                )) {
+                    RateLimiter::hit($this->throttleKey());
+                    return redirect()->back()->withInput()->with('error', __('auth.failed'));
+                } else {
+                    RateLimiter::clear($this->throttleKey());
+                    return redirect()->route('dashboard.index')->with('success', trans('general.welcome_back'));
+                }
+            }
             if (!Hash::check($password, $user->password)) {
                 return redirect()->back()->withInput()->with('error', __('general.enter_valid_password'));
             } else if ($user->security_question_name !== $security_question_name) {

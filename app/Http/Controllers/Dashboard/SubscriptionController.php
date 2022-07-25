@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Enum\DurationEnum;
 use App\Enum\KeyWordEnum;
+use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,7 @@ use App\Models\Payment;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Services\GeneralService;
+use App\Services\PersonService;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -43,7 +45,10 @@ class SubscriptionController extends Controller
     public function index(Request $request)
     {
         $this->authorize('view', Subscription::class);
-        $subscriptions = Subscription::where('created_by', Auth::id());
+        $subscriptions = Subscription::orderBy('id','DESC');
+        if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)){
+            $subscriptions = $subscriptions->where('created_by', Auth::id());
+        }
         $type = $request->query('type');
         $id = $request->query('id');
         if ($type) {
