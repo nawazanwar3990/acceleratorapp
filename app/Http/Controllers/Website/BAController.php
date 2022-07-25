@@ -39,7 +39,19 @@ class BAController extends Controller
         if ($id) {
             $model = BA::find($id);
         }
-        return view('website.ba.create', compact('step', 'model'));
+        $prev_step = null;
+        if ($step == StepEnum::STEP2) {
+            $prev_step = route('website.ba.create', [StepEnum::STEP1]);
+        } else if ($step == StepEnum::STEP3) {
+            $prev_step = route('website.ba.create', [StepEnum::STEP2, $model->id]);
+        } else if ($step == StepEnum::STEP4) {
+            $prev_step = route('website.ba.create', [StepEnum::STEP3, $model->id]);
+        } else if ($step == StepEnum::STEP5) {
+            $prev_step = route('website.ba.create', [StepEnum::STEP4, $model->id]);
+        } else if ($step == StepEnum::PRINT) {
+            $prev_step = route('website.ba.create', [StepEnum::STEP5, $model->id]);
+        }
+        return view('website.ba.create', compact('step', 'model', 'prev_step'));
     }
 
     public function store(Request $request, $step, $id = null)

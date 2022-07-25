@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row">
                             @if($step==\App\Enum\StepEnum::PRINT)
-                              @include('website.ba.components.print')
+                                @include('website.ba.components.print')
                             @else
                                 @include('website.ba.components.steps')
                                 <div class="col-lg-8 col-md-8 border-start">
@@ -24,9 +24,11 @@
                                     {!! Form::open(['url' =>route('website.ba.store',[$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                                     @include(sprintf('%s.%s', 'website.ba.components', $step))
                                     <div class="card-footer bg-transparent text-center">
-                                        <button class="btn btn-primary btn-rounded cs-btn text-white">
-                                            <i class="bx bx-arrow-to-left"></i> {{ trans('general.prev') }}
-                                        </button>
+                                        @if($prev_step)
+                                            <a href="{{ $prev_step }}" class="btn btn-primary btn-rounded cs-btn text-white">
+                                                <i class="bx bx-arrow-to-left"></i> {{ trans('general.prev') }}
+                                            </a>
+                                        @endif
                                         @if($step==\App\Enum\StepEnum::STEP5)
                                             <a onclick="apply_ba_subscription();"
                                                class="btn btn-primary btn-rounded cs-btn text-white">
