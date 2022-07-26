@@ -43,6 +43,7 @@ class TableEnum extends AbstractEnum
 
     public const BA = 'ba';
     public const BA_SERVICE = 'ba_service';
+    public const VERIFY_USERS = 'verify_users';
 
     public static function getValues(): array
     {

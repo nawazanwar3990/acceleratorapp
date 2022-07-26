@@ -7,16 +7,20 @@ use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
+use App\Mail\VerifyMail;
 use App\Models\BA;
 use App\Models\Package;
 use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\VerifyUser;
+use App\Notifications\VerifyEmailLink;
 use App\Services\RoleService;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class BaService
 {
@@ -96,7 +100,11 @@ class BaService
             $model->user_id = $user->id;
             $model->save();
         }
-        event(new Registered($user));
+        $verifyUser = VerifyUser::create([
+            'user_id' => $user->id,
+            'token' => sha1(time())
+        ]);
+        $user->notify(new VerifyEmailLink());
         return $model;
     }
 

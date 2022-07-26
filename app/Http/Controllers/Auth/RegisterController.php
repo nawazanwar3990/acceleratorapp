@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use App\Models\VerifyUser;
 use App\Providers\RouteServiceProvider;
 use App\Services\PersonService;
 use Illuminate\Auth\Events\Registered;
@@ -13,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class RegisterController extends Controller
 {
@@ -52,5 +54,24 @@ class RegisterController extends Controller
         $user = $this->personService->store($data);
         event(new Registered($user));
         return redirect()->route('login')->with('success', trans('general.verify_email_address_message'));
+    }
+    public function verifyUser($token): Redirector|Application|RedirectResponse
+    {
+        $verifyUser = VerifyUser::where('token', $token)->first();
+        if(isset($verifyUser) ){
+            $user = $verifyUser->user;
+            if(!$user->verified) {
+                $verifyUser->user->verified = 1;
+                $date = date("Y-m-d g:i:s");
+                $verifyUser->user->email_verified_at = $date;
+                $verifyUser->user->save();
+                $status = "Your e-mail is verified. You can now login.";
+            } else {
+                $status = "Your e-mail is already verified. You can now login.";
+            }
+        } else {
+            return redirect('/login')->with('error', "Sorry your email cannot be identified.");
+        }
+        return redirect('/login')->with('success', $status);
     }
 }

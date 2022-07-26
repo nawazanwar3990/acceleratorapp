@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create(TableEnum::USERS, function (Blueprint $table) {
@@ -35,17 +30,12 @@ class CreateUsersTable extends Migration
             $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();
+            $table->boolean('verified')->default(false);
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists(TableEnum::USERS);

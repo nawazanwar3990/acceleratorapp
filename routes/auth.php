@@ -22,3 +22,6 @@ Route::get('email/resend', [VerificationController::class,'resend'])
     ->name('verification.resend');
 Route::post('email/resend/post', [VerificationController::class,'postResend'])
     ->name('verification.resend.post');
+
+
+Route::get('/user/verify/{token}', [RegisterController::class, 'verifyUser']);
