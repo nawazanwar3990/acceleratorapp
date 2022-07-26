@@ -269,7 +269,7 @@ class PersonService
         return User::where('active', 1)->orderBy('first_name', 'ASC')->pluck('first_name', 'id');
     }
 
-    public function findByEmail(mixed $email)
+    public function findByEmail($email)
     {
         return User::whereEmail($email)->first();
     }

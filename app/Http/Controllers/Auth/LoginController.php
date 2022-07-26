@@ -41,8 +41,8 @@ class LoginController extends Controller
      */
     public function apply(LoginRequest $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $email = $request->input('email', null);
+        $password = $request->input('password', null);
         $security_question_name = $request->input('security_question_name', null);
         $security_question_value = $request->input('security_question_value', null);
 
@@ -75,11 +75,11 @@ class LoginController extends Controller
                     ]);
                 } else {
                     if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
-                        $subscription_status = Subscription::where('subscribed_id',$user->id)->value('status');
+                        $subscription_status = Subscription::where('subscribed_id', $user->id)->value('status');
                         echo $subscription_status;
-                        if ($subscription_status==SubscriptionStatusEnum::PENDING){
-                            return  redirect()->route('website.ba-pending-subscription',['subscribed_id'=>$user->id]);
-                        }else{
+                        if ($subscription_status == SubscriptionStatusEnum::PENDING) {
+                            return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
+                        } else {
                             if (!Auth::attempt([
                                 'email' => $email,
                                 'password' => $password
@@ -96,9 +96,7 @@ class LoginController extends Controller
                 }
             }
         } else {
-            throw ValidationException::withMessages([
-                'login' => __('auth.failed'),
-            ]);
+            return redirect()->back()->withInput()->with('error', __('auth.failed'));
         }
     }
 
