@@ -29,8 +29,13 @@
                             @endforeach
                         </div>
                         <div class="price-row justify-content-center">
+                            @if(isset($model->user))
+                                @php $selected = \App\Models\Subscription::where('subscribed_id',$model->user->id)->exists() @endphp
+                            @else
+                                @php $selected =0; @endphp
+                            @endif
                             <div class="form-check form-switch d-inline-block">
-                                {!! Form::radio('subscription_id',$package->id,false,['id'=>$package->id,'class'=>'form-check-input',
+                                {!! Form::radio('subscription_id',$package->id,$selected,['id'=>$package->id,'class'=>'form-check-input',
                                     'data-name'=>$package->name,
                                     'data-price'=>$package->price,
                                      'data-expiry'=>\App\Services\GeneralService::get_remaining_time($package->duration_type->slug,$package->duration_limit, \Carbon\Carbon::now()),

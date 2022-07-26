@@ -118,6 +118,12 @@ class BaService
     {
         $subscription_id = request()->input('subscription_id');
         $subscribed_id = request()->input('subscribed_id');
+
+        $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
+        if ($alreadySubscription->exists()){
+            $alreadySubscription->delete();
+        }
+
         $payment_token_number = request()->input('payment_token_number');
         $payment_addition_information = request()->input('payment_addition_information');
 
