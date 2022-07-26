@@ -14,6 +14,7 @@ use App\Traits\General;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -37,7 +38,7 @@ class BAController extends Controller
     public function create(Request $request, $step, $id = null): Factory|View|Application
     {
         $model = null;
-        $subscription= null;
+        $subscription = null;
         if ($id) {
             $model = BA::find($id);
         }
@@ -51,10 +52,10 @@ class BAController extends Controller
         } else if ($step == StepEnum::STEP5) {
             $prev_step = route('website.ba.create', [StepEnum::STEP4, $model->id]);
         } else if ($step == StepEnum::PRINT) {
-            $subscription = Subscription::where('subscribed_id',$model->user->id)->first();
+            $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             $prev_step = route('website.ba.create', [StepEnum::STEP5, $model->id]);
         }
-        return view('website.ba.create', compact('step', 'model', 'prev_step','subscription'));
+        return view('website.ba.create', compact('step', 'model', 'prev_step', 'subscription'));
     }
 
     public function store(Request $request, $step, $id = null)
@@ -92,7 +93,7 @@ class BAController extends Controller
                     ]);
                 }
 
-                $model = $this->baService->saveStep4($model->type, $model,$user_id);
+                $model = $this->baService->saveStep4($model->type, $model, $user_id);
                 return redirect()->route('website.ba.create', [StepEnum::STEP5, $model->id]);
                 break;
             case StepEnum::STEP5;
@@ -105,7 +106,11 @@ class BAController extends Controller
         }
     }
 
-    public function storePaymentSnippet(Request $request): \Illuminate\Http\RedirectResponse
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function storePaymentSnippet(Request $request): RedirectResponse
     {
         $subscription_id = $request->input('subscription_id');
         if (request()->file('receipt')) {
@@ -115,7 +120,8 @@ class BAController extends Controller
             Media::create([
                 'filename' => $path,
                 'record_id' => $subscription_id,
-                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT
+                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT,
+                'created_by' => $subscription_id
             ]);
         }
         return redirect()->back('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
