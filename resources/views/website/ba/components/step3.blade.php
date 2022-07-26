@@ -29,7 +29,7 @@
             <div class="card-body">
                 <table class="table table-sm table-bordered">
                     <tbody>
-                    @if(isset($model) && count($model->other_services)>0)
+                    @if(isset($model) &&  $model->other_services && count($model->other_services)>0)
                         @foreach($model->other_services as $service)
                             <tr>
                                 <th class="py-2">
