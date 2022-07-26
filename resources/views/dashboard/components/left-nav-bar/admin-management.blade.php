@@ -1,7 +1,7 @@
 <ul aria-expanded="false" class="collapse">
-    @foreach(\App\Enum\LeftNavBar\BusinessAcceleratorNavEnum::getTranslationKeys() as $key=>$value)
+    @foreach(\App\Enum\LeftNavBar\BANavEnum::getTranslationKeys() as $key=>$value)
         <li>
-            <a href="{{ \App\Enum\LeftNavBar\BusinessAcceleratorNavEnum::getRoute($key) }}">
+            <a href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
                 {!! $value !!}
             </a>
         </li>

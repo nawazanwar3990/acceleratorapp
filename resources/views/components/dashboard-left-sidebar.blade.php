@@ -2,31 +2,28 @@
     <div class="scroll-sidebar">
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                @foreach(\App\Enum\LeftNavBar\MainNavEnum::getTranslationKeys() as $key=>$value)
-                    @if($key===\App\Enum\KeyWordEnum::INCUBATOR)
-                        @can('hasModuleAccess',$key)
-                            <li>
-                                <a class="has-arrow waves-effect waves-dark"
-                                   href="javascript:void(0)"
-                                   aria-expanded="false">
-                                    {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!}
-                                    <span class="hide-menu">{{ $value }}</span>
-                                </a>
-                                @include('dashboard.components.left-nav-bar.working-spaces')
-                            </li>
-                        @endcan
-                    @else
-                        @can('hasModuleAccess',$key)
-                            <li>
-                                <a class="waves-effect waves-dark"
-                                   href="{{ \App\Enum\LeftNavBar\MainNavEnum::getRoute($key) }}">
-                                    {!! \App\Enum\LeftNavBar\MainNavEnum::getIcon($key) !!} <span class="hide-menu">
-                                    {{ $value }}
-                                </a>
-                            </li>
-                        @endcan
-                    @endif
-                @endforeach
+                @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
+                    @foreach(\App\Enum\LeftNavBar\AdminNavEnum::getTranslationKeys() as $key=>$value)
+                        <li>
+                            <a class="waves-effect waves-dark"
+                               href="{{ \App\Enum\LeftNavBar\AdminNavEnum::getRoute($key) }}">
+                                {!! \App\Enum\LeftNavBar\AdminNavEnum::getIcon($key) !!} <span class="hide-menu">
+                                {{ $value }}
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
+                @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
+                    @foreach(\App\Enum\LeftNavBar\BANavEnum::getTranslationKeys() as $key=>$value)
+                        <li>
+                            <a class="waves-effect waves-dark"
+                               href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
+                                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
+                                {{ $value }}
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </nav>
     </div>

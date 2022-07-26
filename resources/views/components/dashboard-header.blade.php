@@ -19,13 +19,8 @@
                     <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
                         href="javascript:void(0)"><i class="icon-menu"></i></a>
                 </li>
-                <li class="nav-item mt-2">
-                    <form action="" class="app-search d-none d-md-block d-lg-block">
-                        <label>
-                            <input type="text" name="search" class="form-control"
-                                   placeholder="Services, Co-Working Space....">
-                        </label>
-                    </form>
+                <li class="nav-item mt-2 text-white fw-bold">
+                    {{ \Illuminate\Support\Facades\Auth::user()->roles[0]->name }}
                 </li>
             </ul>
             <ul class="navbar-nav my-lg-0">
@@ -37,13 +32,6 @@
                         <span class="hidden-md-down">{{ \Illuminate\Support\Facades\Auth::user()->full_name }} <i
                                 class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-end animated flipInY">
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account
-                            Setting</a>
-                        <div class="dropdown-divider"></div>
                         <button class="dropdown-item" href="javascript:void(0);" onclick="LogoutConfirm();">
                             <i class="fa fa-power-off"></i> <span>{{__('general.logout')}}</span>
                         </button>

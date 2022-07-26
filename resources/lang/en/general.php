@@ -1,6 +1,6 @@
 <?php
 return [
-    'created_date'=>'Created At',
+    'created_date' => 'Created At',
     'edit_steps' => 'Edit Steps',
     'create_user_information' => 'Create User Information',
     'business_accelerator_service' => 'Business Accelerator Service',
@@ -127,6 +127,7 @@ return [
     'floor_information' => 'Floor Info',
     'days_reminder_notice' => 'Days Reminder Notice',
     'left-bar' => [
+        'dashboard' => 'Dashboard',
         'service' => 'Services',
         'package' => 'Packages',
         'subscription' => 'Subscriptions',
@@ -140,6 +141,10 @@ return [
         'office_type' => "Office Types",
         'ba' => 'Business Accelerators',
         'plan' => 'Plans',
+        'meeting_room' => 'Meeting Rooms',
+        'mentorship_with_investment'=>'Mentorship/Investment',
+        'mentorship_without_investment'=>'Mentorship',
+        'only_investment'=>'Only Investment',
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',
