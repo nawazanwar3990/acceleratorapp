@@ -74,7 +74,7 @@ class PaymentController extends Controller
                 if ($type==SubscriptionStatusEnum::APPROVED){
                    $subscription->status = SubscriptionStatusEnum::APPROVED;
                    $subscription->save();
-                    $user->notify(new ApprovedSubscription());
+                    /*$user->notify(new ApprovedSubscription());*/
                     return response()->json([
                         'status' => true
                     ]);
