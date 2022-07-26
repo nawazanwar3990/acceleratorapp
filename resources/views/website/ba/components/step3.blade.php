@@ -29,26 +29,28 @@
             <div class="card-body">
                 <table class="table table-sm table-bordered">
                     <tbody>
-                    @if(isset($model) &&  $model->other_services && count($model->other_services)>0)
-                        @foreach($model->other_services as $service)
-                            <tr>
-                                <th class="py-2">
-                                    {!! Form::text('other_services[]',$service,['id'=>'other_services[]','class'=>'form-control form-control-sm"']) !!}
-                                </th>
-                                <td class="text-center pt-2">
-                                    <a href="javascript:void(0);"
-                                       onclick="cloneRow(this);"
-                                       class="btn btn-xs btn-info">
-                                        <i class="bx bx-plus"></i>
-                                    </a>
-                                    <a href="javascript:void(0);" tabindex="18"
-                                       onclick="removeClonedRow(this);"
-                                       class="btn btn-xs btn-danger">
-                                        <i class="bx bx-minus"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
+                    @if(isset($model) AND  $model->other_services)
+                        @if(count($model->other_services)>0)
+                            @foreach($model->other_services as $service)
+                                <tr>
+                                    <th class="py-2">
+                                        {!! Form::text('other_services[]',$service,['id'=>'other_services[]','class'=>'form-control form-control-sm"']) !!}
+                                    </th>
+                                    <td class="text-center pt-2">
+                                        <a href="javascript:void(0);"
+                                           onclick="cloneRow(this);"
+                                           class="btn btn-xs btn-info">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+                                        <a href="javascript:void(0);" tabindex="18"
+                                           onclick="removeClonedRow(this);"
+                                           class="btn btn-xs btn-danger">
+                                            <i class="bx bx-minus"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     @else
                         <tr>
                             <th class="py-2">
