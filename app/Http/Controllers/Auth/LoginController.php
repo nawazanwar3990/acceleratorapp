@@ -78,7 +78,7 @@ class LoginController extends Controller
                     if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
                         $subscription = Subscription::where('subscribed_id', $user->id);
                         if (!$subscription->exists()) {
-                            return redirect()->route('website.ba.create', [StepEnum::STEP4, $user->ba->id]);
+                            return redirect()->route('website.ba.create', [StepEnum::STEP5, $user->ba->id]);
                         } else {
                             $subscription_status = $subscription->value('status');
                             if ($subscription_status == SubscriptionStatusEnum::PENDING) {
