@@ -10,15 +10,6 @@ use App\Models\Package;
 use App\Models\Province;
 use App\Models\Subscription;
 use App\Models\User;
-use App\Models\Users\Country;
-use App\Models\Users\District;
-use App\Models\Users\HrCast;
-use App\Models\Users\HrDepartment;
-use App\Models\Users\HrDesignation;
-use App\Models\Users\HrNationality;
-use App\Models\Users\HrOrganization;
-use App\Models\Users\HrProfession;
-use App\Models\Users\HrRelation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,26 +38,6 @@ class PersonService
         return Hr::orderBy('first_name', 'ASC')->pluck('first_name', 'id');
     }
 
-    public static function relationsForDropdown()
-    {
-        return HrRelation::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function castsForDropdown()
-    {
-        return HrCast::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function nationalitiesForDropdown()
-    {
-        return HrNationality::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function countriesForDropdown()
-    {
-        return Country::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
     public static function provincesForDropdown($countryID = null)
     {
         if (is_null($countryID)) {
@@ -74,11 +45,6 @@ class PersonService
         } else {
             return Province::where('status', true)->where('country_id', $countryID)->orderBy('name', 'ASC')->pluck('name', 'id');
         }
-    }
-
-    public static function districtsForDropdown()
-    {
-        return District::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function genderForDropdown($id = null)
@@ -108,20 +74,6 @@ class PersonService
         return $data;
     }
 
-    public static function organizationsForDropdown($id = null)
-    {
-        return HrOrganization::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function departmentForDropdown($id = null)
-    {
-        return HrDepartment::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-
-    public static function designationForDropdown($id = null)
-    {
-        return HrDesignation::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
 
     public static function gradesForDropdown($id = null)
     {
@@ -132,11 +84,6 @@ class PersonService
             $data = $data[$id];
         }
         return $data;
-    }
-
-    public static function professionsForDropdown($id = null)
-    {
-        return HrProfession::where('status', true)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 
     public static function serviceOrRetiredForDropdown($id = null)
@@ -272,6 +219,11 @@ class PersonService
     public function findByEmail($email)
     {
         return User::whereEmail($email)->first();
+    }
+
+    public function findByEmailOrToken($value)
+    {
+        return User::where('email', $value)->orWhere('payment_token_number',$value)->first();
     }
 
     private function addSubscription($user, $package_id): void

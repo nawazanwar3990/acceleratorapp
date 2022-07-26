@@ -46,7 +46,7 @@ class LoginController extends Controller
         $security_question_name = $request->input('security_question_name', null);
         $security_question_value = $request->input('security_question_value', null);
 
-        $user = $this->personService->findByEmail($email);
+        $user = $this->personService->findByEmailOrToken($email);
 
         if ($user) {
             if ($user->hasRole(RoleEnum::SUPER_ADMIN)) {
