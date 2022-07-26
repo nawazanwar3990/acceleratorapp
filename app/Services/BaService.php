@@ -65,8 +65,8 @@ class BaService
         if ($type == AcceleratorTypeEnum::COMPANY) {
             $services = request()->input('services');
             $model->services()->sync($services);
-            $other_services =request()->input('other_services',array());
-            if (count($other_services)>0){
+            $other_services = request()->input('other_services', array());
+            if (count($other_services) > 0) {
                 $model->other_services = json_encode($other_services);
                 $model->save();
             }
@@ -104,7 +104,13 @@ class BaService
             'user_id' => $user->id,
             'token' => sha1(time())
         ]);
-        $user->notify(new VerifyEmailLink());
+
+        $verifyUser->user->verified = 1;
+        $date = date("Y-m-d g:i:s");
+        $verifyUser->user->email_verified_at = $date;
+        $verifyUser->user->save();
+
+        //$user->notify(new VerifyEmailLink());
         return $model;
     }
 
