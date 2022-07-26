@@ -142,9 +142,10 @@ return [
         'ba' => 'Business Accelerators',
         'plan' => 'Plans',
         'meeting_room' => 'Meeting Rooms',
-        'mentorship_with_investment'=>'Mentorship/Investment',
-        'mentorship_without_investment'=>'Mentorship',
-        'only_investment'=>'Only Investment',
+        'mentorship-with-investment' => 'Mentorship/Investment',
+        'mentorship-without-investment' => 'Mentorship',
+        'only-investment' => 'Only Investment',
+        'meeting-room' => 'Meeting Rooms'
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

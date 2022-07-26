@@ -223,7 +223,7 @@ class PersonService
 
     public function findByEmailOrToken($value)
     {
-        return User::where('email', $value)->orWhere('payment_token_number',$value)->first();
+        return User::where('email', $value)->orWhere('payment_token_number', $value)->first();
     }
 
     private function addSubscription($user, $package_id): void
@@ -321,5 +321,17 @@ class PersonService
     public static function hasRole($role)
     {
         return Auth::user()->hasRole($role);
+    }
+
+    public static function getBaServices(): array
+    {
+        $data = array();
+        $services = Auth::user()->ba->services;
+        if (count($services) > 0) {
+            foreach ($services as $service) {
+                $data[] = $service->slug;
+            }
+        }
+        return $data;
     }
 }

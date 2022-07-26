@@ -15,13 +15,25 @@
                 @endif
                 @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                     @foreach(\App\Enum\LeftNavBar\BANavEnum::getTranslationKeys() as $key=>$value)
-                        <li>
-                            <a class="waves-effect waves-dark"
-                               href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
-                                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
-                                {{ $value }}
-                            </a>
-                        </li>
+                        @if(in_array($key,[\App\Enum\LeftNavBar\BANavEnum::PACKAGE,\App\Enum\LeftNavBar\BANavEnum::SERVICE,\App\Enum\LeftNavBar\BANavEnum::SUBSCRIPTION]))
+                            <li>
+                                <a class="waves-effect waves-dark"
+                                   href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
+                                    {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
+                                    {{ $value }}
+                                </a>
+                            </li>
+                        @else
+                            @if(in_array($key,\App\Services\PersonService::getBaServices()))
+                                <li>
+                                    <a class="waves-effect waves-dark"
+                                       href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
+                                        {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
+                                        {{ $value }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endif
                     @endforeach
                 @endif
             </ul>

@@ -94,7 +94,7 @@ class BANavEnum extends AbstractEnum
     {
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
-            self::PACKAGE => route('dashboard.buildings.index'),
+            self::PACKAGE => route('dashboard.plans.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC_SERVICE]),
             self::SUBSCRIPTION => route('dashboard.buildings.index', [SubscriptionTypeEnum::PLAN]),
             self::INCUBATOR => route('dashboard.buildings.index'),
