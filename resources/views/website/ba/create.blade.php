@@ -15,10 +15,9 @@
                             @else
                                 @include('website.ba.components.steps')
                                 <div class="col-lg-8 col-md-8 border-start">
-                                    @if($model)
+                                    @if($model AND $model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
                                         <h2 class="text-center fw-bold">
-                                            Business
-                                            For {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($model->type) }}
+                                            {{ trans('general.company_profile') }}
                                         </h2>
                                     @endif
                                     {!! Form::open(['url' =>route('website.ba.store',[$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
