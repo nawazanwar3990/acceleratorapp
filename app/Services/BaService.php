@@ -4,14 +4,18 @@ namespace App\Services;
 
 use App\Enum\AcceleratorTypeEnum;
 use App\Enum\RoleEnum;
+use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
+use App\Enum\TableEnum;
 use App\Models\BA;
 use App\Models\Package;
+use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Services\RoleService;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class BaService
@@ -36,7 +40,7 @@ class BaService
             $model->company_name = request()->input('company_name', null);
             $model->is_register_company = request()->input('is_register_company', null);
             $model->company_no_of_emp = request()->input('company_no_of_emp', null);
-            $model->company_rate_of_initiation = request()->input('company_rate_of_initiation', null);
+            $model->company_date_of_initiation = request()->input('company_date_of_initiation', null);
             $model->company_contact_no = request()->input('company_contact_no', null);
             $model->company_email = request()->input('company_email', null);
             $model->company_address = request()->input('company_address', null);
@@ -57,6 +61,11 @@ class BaService
         if ($type == AcceleratorTypeEnum::COMPANY) {
             $services = request()->input('services');
             $model->services()->sync($services);
+            $other_services =request()->input('other_services',array());
+            if (count($other_services)>0){
+                $model->other_services = json_encode($other_services);
+                $model->save();
+            }
         }
         return $model;
     }
@@ -98,8 +107,11 @@ class BaService
         $payment_token_number = request()->input('payment_token_number');
         $payment_addition_information = request()->input('payment_addition_information');
 
-        $subscription = new Subscription();
+        $subscribed = User::find($subscribed_id);
+        $subscribed->payment_token_number = $payment_token_number;
+        $subscribed->save();
 
+        $subscription = new Subscription();
         $subscription->subscribed_id = $subscribed_id;
         $subscription->subscription_id = $subscription_id;
         $subscription->subscription_type = SubscriptionTypeEnum::PACKAGE;

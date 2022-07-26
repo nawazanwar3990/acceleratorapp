@@ -17,14 +17,16 @@ class BA extends Model
         'is_register_company',
         'company_institutes',
         'company_no_of_emp',
-        'company_rate_of_initiation',
+        'company_date_of_initiation',
         'company_address',
         'company_contact_no',
         'company_email',
-        'security_question_name',
-        'security_question_value',
-        'know_about_us'
+        'other_services'
     ];
+    public function getOtherServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
 
     public function user(): BelongsTo
     {

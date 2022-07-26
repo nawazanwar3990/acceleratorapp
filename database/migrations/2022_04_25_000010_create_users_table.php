@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->boolean('first_password')->default(true);
             $table->string('security_question_name')->nullable();
             $table->string('security_question_value')->nullable();
+            $table->string('payment_token_number')->nullable();
             $table->string('know_about_us')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();

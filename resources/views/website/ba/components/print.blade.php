@@ -16,8 +16,8 @@
                 <div class="pl-2">
                     <p class="mb-1"><strong>{{__('general.company_no_of_emp')}}
                             : </strong>{{ $model->company_no_of_emp }}</p>
-                    <p class="mb-1"><strong>{{__('general.company_rate_of_initiation')}}
-                            : </strong>{{ $model->company_rate_of_initiation }}</p>
+                    <p class="mb-1"><strong>{{__('general.company_date_of_initiation')}}
+                            : </strong>{{ $model->company_date_of_initiation }}</p>
                     <p class="mb-1"><strong>{{__('general.company_address')}} : </strong>{{ $model->company_address }}
                     </p>
                     <p class="mb-1"><strong>{{__('general.company_contact_no')}}
@@ -49,6 +49,25 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $service->name }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title pb-0 mb-0">{{ trans('general.other_services') }}</h4>
+                </div>
+                <div class="card-body p-1">
+                    <div class="table-responsive" style="clear: both;">
+                        <table class="table table-hover">
+                            <tbody>
+                            @foreach($model->other_services as $service)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $service}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

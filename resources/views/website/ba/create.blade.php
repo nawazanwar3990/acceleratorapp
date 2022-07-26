@@ -25,7 +25,8 @@
                                     @include(sprintf('%s.%s', 'website.ba.components', $step))
                                     <div class="card-footer bg-transparent text-center">
                                         @if($prev_step)
-                                            <a href="{{ $prev_step }}" class="btn btn-primary btn-rounded cs-btn text-white">
+                                            <a href="{{ $prev_step }}"
+                                               class="btn btn-primary btn-rounded cs-btn text-white">
                                                 <i class="bx bx-arrow-to-left"></i> {{ trans('general.prev') }}
                                             </a>
                                         @endif
@@ -88,7 +89,7 @@
                         'payment_addition_information': payment_addition_information,
                         'subscription_id': $("input[name='subscription_id']:checked").val(),
                         'subscription_type': '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}',
-                        'subscribed_id': {{ isset($model)?$model->user_id:'' }}
+                        'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                     }
                     $.ajax({
                         url: "{{ route('website.ba.store',[$step,($model)?$model->id:null]) }}",
@@ -138,11 +139,25 @@
                 confirmButtonText: 'Add',
                 focusConfirm: false,
                 preConfirm: () => {
-                    let values = [];
-                    let elements = Swal.getPopup().querySelector("input[name=service_name]");
+                    let elements = Swal.getPopup().querySelectorAll("input[name=service_name]");
+                    return {
+                        elements: elements
+                    }
                 }
             }).then((result) => {
-
+                let other_service_holder = $(".other_services_holder");
+                other_service_holder.removeClass('d-block d-none');
+                let elements = result.value.elements;
+                if (elements.length > 0) {
+                    let html = '<table class="table table-sm table-bordered"><tbody>';
+                    for (let i = 0; i < elements.length; i++) {
+                        html += '<tr><th class="py-2"><input type="text" class="form-control form-control-sm" name="other_services[]" value=' + elements[i].value + '></th></tr>';
+                    }
+                    html += '</table>';
+                    other_service_holder.addClass('d-block').find('.card-body').empty().html(html);
+                } else {
+                    other_service_holder.addClass('d-none').find('.card-body').empty();
+                }
             });
         }
 

@@ -1,5 +1,6 @@
 <?php
 return [
+    'other_services'=>'Other Services',
     'your_services'=>'Your Services',
     'subscription_status'=>'Subscription Status',
     'addition_info'=>'Additional Info',
@@ -44,7 +45,7 @@ return [
     'company_name' => 'Company Name',
     'is_register_company' => 'Is Register Company',
     'company_no_of_emp' => 'No Of Employees',
-    'company_rate_of_initiation' => 'Rate of Initiation',
+    'company_date_of_initiation' => 'Date of Initiation',
     'get_started' => 'Get Started',
     'types' => 'types',
     'company_contact_no' => 'Contact No',
