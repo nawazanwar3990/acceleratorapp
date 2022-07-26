@@ -124,6 +124,6 @@ class BAController extends Controller
                 'created_by' => $subscription_id
             ]);
         }
-        return redirect()->back('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
+        return redirect()->back()->with('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
     }
 }
