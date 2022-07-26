@@ -51,14 +51,14 @@
                     </tr>
                 @endforeach
             @else
-                @foreach(\App\Services\ServiceData::get_package_services() as $service)
+                @foreach(\App\Services\ServiceData::get_business_accelerator_services() as $service)
                     <tr>
                         <th>
                             {!!  Form::hidden('services[id][]',$service->id) !!}
                             {{ ucwords(str_replace('_',' ',$service->name))}}
                         </th>
                         <td>
-                            {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),null,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                            {!!  Form::text('services[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
                         </td>
                     </tr>
                 @endforeach

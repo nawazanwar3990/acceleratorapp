@@ -2,9 +2,9 @@
     <div class="row pricing-plan">
         @foreach(\App\Services\PackageService::list_packages() as $package)
             <div class="col-md-4 col-xs-12 col-sm-4 no-padding">
-                <div class="pricing-box @if($loop->first) featured-plan @endif">
-                    <div class="pricing-body b-l">
-                        <div class="pricing-header">
+                <div class="pricing-box border">
+                    <div class="pricing-body border-0">
+                        <div class="pricing-header border-0">
                             <h4 class="text-center">{{ $package->name }}</h4>
                             <h2 class="text-center"><span
                                     class="price-sign">{{ \App\Services\GeneralService::get_default_currency() }}</span>{{ $package->price }}
@@ -22,22 +22,22 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="price-table-content">
+                        <div class="price-table-content" style="height: 350px;">
                             @foreach($package->services as $service)
-                                <div class="price-row" style=";padding: 10px 0;font-size: 13px;"><i
+                                <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;"><i
                                         class="bx bx-check text-success"></i> 3 {{ $service->name }}</div>
                             @endforeach
-                            <div class="price-row justify-content-center">
-                                <div class="form-check form-switch d-inline-block">
-                                    {!! Form::radio('subscription_id',$package->id,false,['id'=>$package->id,'class'=>'form-check-input',
-                                        'data-name'=>$package->name,
-                                        'data-price'=>$package->price,
-                                         'data-expiry'=>\App\Services\GeneralService::get_remaining_time($package->duration_type->slug,$package->duration_limit, \Carbon\Carbon::now()),
-                                        'required'
-                                        ])
-                                    !!}
-                                    <label class="form-check-label" for="{{ $package->id }}"></label>
-                                </div>
+                        </div>
+                        <div class="price-row justify-content-center">
+                            <div class="form-check form-switch d-inline-block">
+                                {!! Form::radio('subscription_id',$package->id,false,['id'=>$package->id,'class'=>'form-check-input',
+                                    'data-name'=>$package->name,
+                                    'data-price'=>$package->price,
+                                     'data-expiry'=>\App\Services\GeneralService::get_remaining_time($package->duration_type->slug,$package->duration_limit, \Carbon\Carbon::now()),
+                                    'required'
+                                    ])
+                                !!}
+                                <label class="form-check-label" for="{{ $package->id }}"></label>
                             </div>
                         </div>
                     </div>

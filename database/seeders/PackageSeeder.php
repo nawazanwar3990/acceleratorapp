@@ -66,31 +66,35 @@ class PackageSeeder extends Seeder
         DB::table(TableEnum::PACKAGE_SERVICE)->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $incubator_id = Service::whereSlug('incubator')->whereType(ServiceTypeEnum::PACKAGE_SERVICE)->value('id');
-        $freelancer_id = Service::whereSlug('freelancer')->whereType(ServiceTypeEnum::PACKAGE_SERVICE)->value('id');
-        $per_week_meeting_id = Service::whereSlug('per-week-meeting')->whereType(ServiceTypeEnum::PACKAGE_SERVICE)->value('id');
-        $mentorship_id = Service::whereName('mentorship')->whereType(ServiceTypeEnum::PACKAGE_SERVICE)->value('id');
-        $investment_id = Service::whereName('investment')->whereType(ServiceTypeEnum::PACKAGE_SERVICE)->value('id');
+        $incubator_id = Service::whereSlug('incubator')->whereType(ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->value('id');
+        $freelancer_id = Service::whereSlug('freelancer')->whereType(ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->value('id');
+        $meeting_room_id = Service::whereSlug('meeting-room')->whereType(ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->value('id');
+        $mentorship_with_investment_id = Service::whereSlug('mentorship-with-investment')->whereType(ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->value('id');
+        $mentorship_with_out_investment_id = Service::whereSlug('mentorship-with-out-investment')->whereType(ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->value('id');
+        $only_investment_id = Service::whereSlug('only-investment')->whereType(ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->value('id');
 
         DB::table(TableEnum::PACKAGE_SERVICE)->insert(
            [
                array('package_id' => '1', 'service_id' => $incubator_id, 'limit' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
                array('package_id' => '1', 'service_id' => $freelancer_id, 'limit' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '1', 'service_id' => $per_week_meeting_id, 'limit' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '1', 'service_id' => $mentorship_id, 'limit' => '0', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '1', 'service_id' => $investment_id, 'limit' => '0', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '1', 'service_id' => $meeting_room_id, 'limit' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '1', 'service_id' => $mentorship_with_investment_id, 'limit' => '0', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '1', 'service_id' => $mentorship_with_out_investment_id, 'limit' => '0', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '1', 'service_id' => $only_investment_id, 'limit' => '0', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
 
                array('package_id' => '2', 'service_id' => $incubator_id, 'limit' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
                array('package_id' => '2', 'service_id' => $freelancer_id, 'limit' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '2', 'service_id' => $per_week_meeting_id, 'limit' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '2', 'service_id' => $mentorship_id, 'limit' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '2', 'service_id' => $investment_id, 'limit' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '2', 'service_id' => $meeting_room_id, 'limit' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '2', 'service_id' => $mentorship_with_investment_id, 'limit' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '2', 'service_id' => $mentorship_with_out_investment_id, 'limit' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '1', 'service_id' => $only_investment_id, 'limit' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
 
                array('package_id' => '3', 'service_id' => $incubator_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
                array('package_id' => '3', 'service_id' => $freelancer_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '3', 'service_id' => $per_week_meeting_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '3', 'service_id' => $mentorship_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
-               array('package_id' => '3', 'service_id' => $investment_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '3', 'service_id' => $meeting_room_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '3', 'service_id' => $mentorship_with_investment_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '3', 'service_id' => $mentorship_with_out_investment_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
+               array('package_id' => '3', 'service_id' => $only_investment_id, 'limit' => '∞', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
            ]
         );
     }

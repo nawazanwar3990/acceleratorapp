@@ -6,10 +6,10 @@
             {{ trans('general.accelerator_type') }}
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP2?'active':'' }}">
-            {{ trans('general.company_info') }}
+            {{ trans('general.company_profile') }}
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP3?'active':'' }}">
-            {{ trans('general.company_services') }}
+            {{ trans('general.services_of_business_accelerator') }}
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP4?'active':'' }}">
             {{ trans('general.user_info') }}

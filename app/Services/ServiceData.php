@@ -34,17 +34,12 @@ class ServiceData
 
         return $data;
     }
+    public static function get_business_accelerator_services()
+    {
+        return Service::where('type', ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)
+            ->orderBy('name', 'ASC')->get();
+    }
 
-    public static function get_package_services()
-    {
-        return Service::where('type', ServiceTypeEnum::PACKAGE_SERVICE)
-            ->orderBy('name', 'ASC')->get();
-    }
-    public static function get_company_services()
-    {
-        return Service::where('type', ServiceTypeEnum::COMPANY_SERVICE)
-            ->orderBy('name', 'ASC')->get();
-    }
     public static function getBasicServices()
     {
         return Service::where('type', ServiceTypeEnum::BASIC_SERVICE)
