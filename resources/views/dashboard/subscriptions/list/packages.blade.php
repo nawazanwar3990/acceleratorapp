@@ -31,15 +31,6 @@
                                 </td>
                                 <td>
                                     {{ $subscription->package->name??null}}
-                                    <UL class="list-group list-group-flush bg-transparent">
-                                        @foreach($subscription->package->services as $service)
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                <i class="bx bx-check text-success"></i> <small><strong
-                                                        class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
-                                                </small>
-                                            </li>
-                                        @endforeach
-                                    </UL>
                                 </td>
                                 <td>
                                     {{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}
@@ -48,7 +39,11 @@
                                     {{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}
                                 </td>
                                 <td>
-                                    {{ $subscription->expire_date }}
+                                    @if($subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
+                                        {{ $subscription->expire_date }}
+                                    @else
+                                        1 Month After Approved
+                                    @endif
                                 </td>
                                 <td>
                                     @php

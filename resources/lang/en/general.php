@@ -1,5 +1,6 @@
 <?php
 return [
+    'create_user_information'=>'Create User Information',
     'business_accelerator_service' => 'Business Accelerator Service',
     'company_profile' => 'Company Profile',
     'services_of_business_accelerator' => 'Services of Business Accelerator',
