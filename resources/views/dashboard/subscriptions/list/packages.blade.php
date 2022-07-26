@@ -24,16 +24,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @isset($subscription->subscribed)
-                                        <ul class="list-group list-group-flush bg-transparent">
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
-                                                <strong>{{ trans('general.email') }}
-                                                    : </strong> {{ $subscription->subscribed->email }}
-                                            </li>
-                                            <li class="list-group-item py-0 border-0  bg-transparent px-0 text-sm-start">
-                                                <strong>{{ trans('general.name') }}
-                                                    : </strong> {{ $subscription->subscribed->getFullName() }}
-                                            </li>
-                                        </ul>
+                                        {{ $subscription->subscribed->getFullName()  }}
                                     @else
                                         --
                                     @endisset
