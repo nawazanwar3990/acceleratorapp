@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enum\RoleEnum;
+use App\Enum\StepEnum;
 use App\Enum\SubscriptionStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -75,21 +76,25 @@ class LoginController extends Controller
                     ]);
                 } else {
                     if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
-                        $subscription_status = Subscription::where('subscribed_id', $user->id)->value('status');
-                        echo $subscription_status;
-                        if ($subscription_status == SubscriptionStatusEnum::PENDING) {
-                            return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
+                        $subscription = Subscription::where('subscribed_id', $user->id);
+                        if (!$subscription->exists()) {
+                            return redirect()->route('website.ba.create', [StepEnum::STEP4, $user->ba->id]);
                         } else {
-                            if (!Auth::attempt([
-                                'email' => $email,
-                                'password' => $password
-                            ], $request->boolean('remember')
-                            )) {
-                                RateLimiter::hit($this->throttleKey());
-                                return redirect()->back()->withInput()->with('error', __('auth.failed'));
+                            $subscription_status = $subscription->value('status');
+                            if ($subscription_status == SubscriptionStatusEnum::PENDING) {
+                                return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
                             } else {
-                                RateLimiter::clear($this->throttleKey());
-                                return redirect()->route('dashboard.index')->with('success', trans('general.welcome_back'));
+                                if (!Auth::attempt([
+                                    'email' => $email,
+                                    'password' => $password
+                                ], $request->boolean('remember')
+                                )) {
+                                    RateLimiter::hit($this->throttleKey());
+                                    return redirect()->back()->withInput()->with('error', __('auth.failed'));
+                                } else {
+                                    RateLimiter::clear($this->throttleKey());
+                                    return redirect()->route('dashboard.index')->with('success', trans('general.welcome_back'));
+                                }
                             }
                         }
                     }
