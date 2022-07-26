@@ -24,7 +24,12 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @isset($subscription->subscribed)
-                                        {{ $subscription->subscribed->email }}
+                                        <p><strong>{{ trans('general.email') }}
+                                                : </strong> {{ $subscription->subscribed->email }}</p>
+                                        <p><strong>{{ trans('general.name') }}
+                                                : </strong> {{ $subscription->subscribed->getFullName() }}</p>
+                                        <p><strong>{{ trans('general.type') }}
+                                                : </strong> {{ $subscription->subscribed->ba->type }}</p>
                                     @else
                                         --
                                     @endisset
@@ -105,7 +110,7 @@
                     }
                     return {
                         payment_type: payment_type,
-                        type:type
+                        type: type
                     }
                 }
             }).then((result) => {
@@ -136,7 +141,7 @@
                             'subscription_id': subscription_id,
                             'payment_type': payment_type,
                             'transaction_id': result.value.transaction_id,
-                            'type':type
+                            'type': type
                         }
                         $.ajax({
                             url: "{{ route('dashboard.payments.store') }}",
