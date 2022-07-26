@@ -23,7 +23,7 @@
                     @enderror
                     <div class="mb-3 m-t-40">
                         <div class="col-xs-12">
-                            {!! Form::email('email',old('email'),['id'=>'email','class'=>'form-control','placeholder'=>'Email/Token']) !!}
+                            {!! Form::text('email',old('email'),['id'=>'email','class'=>'form-control','placeholder'=>'Email/Token']) !!}
                         </div>
                         @error('email')
                         <small class="form-control-feedback text-danger"> {{ $message }} </small>
