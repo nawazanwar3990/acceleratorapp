@@ -5,14 +5,20 @@ namespace App\Services;
 use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
 use App\Enum\LeftNavBar\AccubatorNavEnum;
+use App\Enum\MediaTypeEnum;
+use App\Enum\RoleEnum;
+use App\Enum\ServiceTypeEnum;
+use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\Building;
 use App\Models\Floor;
 use App\Models\Media;
 use App\Models\Module;
 use App\Models\Office;
+use App\Models\Package;
 use App\Models\Service;
 use App\Models\Subscription;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Translation\Translator;
@@ -1013,5 +1019,32 @@ class GeneralService
                 ->where('module_id', $module_id)
                 ->value('limit');
         }
+    }
+
+    public static function count_ba_services()
+    {
+        return Service::where('type', ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->count();
+    }
+
+    public static function count_ba_packages()
+    {
+        return Package::count();
+    }
+
+    public static function count_ba_receipts()
+    {
+        return Media::where('record_type', MediaTypeEnum::SUBSCRIPTION_RECEIPT)->count();
+    }
+
+    public static function count_ba_subscriptions()
+    {
+        return Subscription::where('subscription_type', SubscriptionTypeEnum::PACKAGE)->count();
+    }
+
+    public static function count_ba_accelerator()
+    {
+        return User::whereHas('roles', function ($q) {
+            $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
+        })->count();
     }
 }
