@@ -1,5 +1,7 @@
 <?php
 return [
+    'receipts'=>'Receipts',
+    'receipt'=>'Receipt',
     'affiliate_with' => 'Affiliate With',
     'secret_question' => 'Secret Question',
     'answer' => 'Answer',
@@ -131,6 +133,7 @@ return [
     'floor_information' => 'Floor Info',
     'days_reminder_notice' => 'Days Reminder Notice',
     'left-bar' => [
+        'payment-receipt'=>'Payment Receipts',
         'setting' => 'Setting',
         'dashboard' => 'Dashboard',
         'service' => 'Services',

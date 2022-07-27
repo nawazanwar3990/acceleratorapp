@@ -14,3 +14,7 @@ Route::resource('/subscriptions', SubscriptionController::class, ['names' => 'su
 
 Route::resource('/payments', PaymentController::class, ['names' => 'payments'])->middleware('has_package');
 Route::get('/subscription/logs', [SubscriptionController::class, 'logs'])->name('subscription-logs.index')->middleware('has_package');
+
+Route::get('/payment/receipts', [SubscriptionController::class, 'paymentReceipt'])
+    ->name('payment-receipts.index')
+    ->middleware('has_package');

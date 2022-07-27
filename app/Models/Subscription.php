@@ -62,6 +62,7 @@ class Subscription extends Model
     }
     public function receipt(): BelongsTo
     {
-        return $this->belongsTo(Media::class)->where('record_type',MediaTypeEnum::SUBSCRIPTION_RECEIPT);
+        return $this->belongsTo(Media::class,'id','record_id')
+            ->where('media.record_type',MediaTypeEnum::SUBSCRIPTION_RECEIPT);
     }
 }

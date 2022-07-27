@@ -14,6 +14,7 @@ class AdminNavEnum extends AbstractEnum
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
     public const SERVICE = KeyWordEnum::SERVICE;
     public const PACKAGE = KeyWordEnum::PACKAGE;
+    public const PAYMENT_RECEIPT = KeyWordEnum::PAYMENT_RECEIPT;
     public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
     public const BA = KeyWordEnum::BA;
     public const SETTING = KeyWordEnum::SETTING;
@@ -23,6 +24,7 @@ class AdminNavEnum extends AbstractEnum
             self::DASHBOARD,
             self::SERVICE,
             self::PACKAGE,
+            self::PAYMENT_RECEIPT,
             self::SUBSCRIPTION,
             self::BA,
             self::SETTING
@@ -35,6 +37,7 @@ class AdminNavEnum extends AbstractEnum
             self::DASHBOARD => '<i></i>',
             self::SERVICE => '<i></i>',
             self::PACKAGE => '<i></i>',
+            self::PAYMENT_RECEIPT => '<i></i>',
             self::SUBSCRIPTION => '<i></i>',
             self::BA => '<i></i>',
             self::SETTING => '<i></i>'
@@ -53,6 +56,7 @@ class AdminNavEnum extends AbstractEnum
             self::DASHBOARD => __(sprintf('%s.%s', 'general.left-bar', self::DASHBOARD)),
             self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
             self::PACKAGE => __(sprintf('%s.%s', 'general.left-bar', self::PACKAGE)),
+            self::PAYMENT_RECEIPT => __(sprintf('%s.%s', 'general.left-bar', self::PAYMENT_RECEIPT)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
             self::BA => __(sprintf('%s.%s', 'general.left-bar', self::BA)),
             self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING)),
@@ -66,6 +70,7 @@ class AdminNavEnum extends AbstractEnum
             self::DASHBOARD => route('dashboard.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE]),
             self::PACKAGE => route('dashboard.packages.index'),
+            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index'),
             self::BA => route('dashboard.ba.index'),
             self::SETTING => route('dashboard.settings.index'),
             self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' =>SubscriptionTypeEnum::PACKAGE]),

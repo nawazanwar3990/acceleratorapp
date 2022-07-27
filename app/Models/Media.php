@@ -25,6 +25,11 @@ class Media extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class, 'record_id', 'id');
+    }
+
     public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');

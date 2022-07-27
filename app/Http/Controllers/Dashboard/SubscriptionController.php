@@ -8,6 +8,7 @@ use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Media;
 use App\Models\Office;
 use App\Models\Package;
 use App\Models\Payment;
@@ -45,8 +46,8 @@ class SubscriptionController extends Controller
     public function index(Request $request)
     {
         $this->authorize('view', Subscription::class);
-        $subscriptions = Subscription::orderBy('id','DESC');
-        if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)){
+        $subscriptions = Subscription::orderBy('id', 'DESC');
+        if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $subscriptions = $subscriptions->where('created_by', Auth::id());
         }
         $type = $request->query('type');
@@ -55,7 +56,7 @@ class SubscriptionController extends Controller
             $subscriptions = $subscriptions->where('subscription_type', $type);
         }
         if ($id) {
-            $subscriptions = $subscriptions->where('subscribed_id', $id);
+            $subscriptions = $subscriptions->where('id', $id);
         }
         $subscriptions = $subscriptions->paginate(20);
         if ($type == SubscriptionTypeEnum::PLAN) {
@@ -169,5 +170,16 @@ class SubscriptionController extends Controller
     public function logs(Request $request)
     {
         echo "under process";
+    }
+
+    public function paymentReceipt(Request $request): Factory|View|Application
+    {
+
+        $records = Subscription::with('receipt')->whereHas('receipt')->get();
+        $params = [
+            'pageTitle' => __('general.receipts'),
+            'records' => $records,
+        ];
+        return view('dashboard.subscriptions.receipts', $params);
     }
 }
