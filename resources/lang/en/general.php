@@ -131,6 +131,7 @@ return [
     'floor_information' => 'Floor Info',
     'days_reminder_notice' => 'Days Reminder Notice',
     'left-bar' => [
+        'setting' => 'Setting',
         'dashboard' => 'Dashboard',
         'service' => 'Services',
         'package' => 'Packages',

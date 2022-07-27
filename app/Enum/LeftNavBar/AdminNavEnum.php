@@ -16,6 +16,7 @@ class AdminNavEnum extends AbstractEnum
     public const PACKAGE = KeyWordEnum::PACKAGE;
     public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
     public const BA = KeyWordEnum::BA;
+    public const SETTING = KeyWordEnum::SETTING;
     public static function getValues(): array
     {
         return [
@@ -23,7 +24,8 @@ class AdminNavEnum extends AbstractEnum
             self::SERVICE,
             self::PACKAGE,
             self::SUBSCRIPTION,
-            self::BA
+            self::BA,
+            self::SETTING
         ];
     }
 
@@ -34,7 +36,8 @@ class AdminNavEnum extends AbstractEnum
             self::SERVICE => '<i></i>',
             self::PACKAGE => '<i></i>',
             self::SUBSCRIPTION => '<i></i>',
-            self::BA => '<i></i>'
+            self::BA => '<i></i>',
+            self::SETTING => '<i></i>'
 
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
@@ -51,7 +54,8 @@ class AdminNavEnum extends AbstractEnum
             self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
             self::PACKAGE => __(sprintf('%s.%s', 'general.left-bar', self::PACKAGE)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
-            self::BA => __(sprintf('%s.%s', 'general.left-bar', self::BA))
+            self::BA => __(sprintf('%s.%s', 'general.left-bar', self::BA)),
+            self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING)),
 
         ];
     }
@@ -63,6 +67,7 @@ class AdminNavEnum extends AbstractEnum
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE]),
             self::PACKAGE => route('dashboard.packages.index'),
             self::BA => route('dashboard.ba.index'),
+            self::SETTING => route('dashboard.settings.index'),
             self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' =>SubscriptionTypeEnum::PACKAGE]),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
