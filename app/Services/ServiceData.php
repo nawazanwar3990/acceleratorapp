@@ -13,7 +13,7 @@ class ServiceData
     {
         $data = array();
         $data['∞'] = 'Un Limited';
-        for ($i = 1; $i < 1000; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $data[$i] = $i;
         }
         if (!is_null($id)) {

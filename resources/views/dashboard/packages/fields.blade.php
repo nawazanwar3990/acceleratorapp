@@ -26,6 +26,14 @@
         {!!  Form::number('reminder_days',null,['id'=>'reminder_days','class'=>'form-control ']) !!}
     </div>
 </div>
+<div class="row">
+    <div class="col-12 mb-3">
+        <div class="form-check form-switch">
+            {!!  Html::decode(Form::label('status' ,'Enable/Disable' ,['class'=>'col-form-label pt-0']))   !!}
+            {!! Form::checkbox('status', true, isset($for) ? $model->status : true,['class'=>'form-check-input']) !!}
+        </div>
+    </div>
+</div>
 <div class="card">
     <div class="card-header">
         <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>

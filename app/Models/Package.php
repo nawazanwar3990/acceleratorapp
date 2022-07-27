@@ -24,6 +24,7 @@ class Package extends Model
         'name',
         'slug',
         'price',
+        'status',
         'reminder_days'
     ];
     public function getTypesAttribute($value)

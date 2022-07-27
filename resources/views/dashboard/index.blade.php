@@ -59,7 +59,7 @@
                                 <div class="card">
                                     <div class="box bg-dark text-center">
                                         <h1 class="font-light text-white">964</h1>
-                                        <h6 class="text-white">Total Client Dealing With</h6>
+                                        <h6 class="text-white">Per Month Collectable Cash</h6>
                                     </div>
                                 </div>
                             </div>

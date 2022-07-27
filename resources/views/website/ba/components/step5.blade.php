@@ -24,8 +24,8 @@
                         </div>
                         <div class="price-table-content" style="height: 350px;">
                             @foreach($package->services as $service)
-                                <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;"><i
-                                        class="bx bx-check text-success"></i> 3 {{ $service->name }}</div>
+                                <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;">
+                                    <i class="bx bx-check text-success"></i> {{ $service->pivot->limit }} {{ $service->name }}</div>
                             @endforeach
                         </div>
                         <div class="price-row justify-content-center">
