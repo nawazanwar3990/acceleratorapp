@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Enum\RoleEnum;
+use App\Enum\SubscriptionStatusEnum;
 use App\Models\Subscription;
 use App\Services\GeneralService;
 use Closure;
@@ -25,6 +26,8 @@ class HasPackage
                         $subscription = $subscriptionQuery->first();
                         if (GeneralService::isExpireSubscription(\Carbon\Carbon::now(), $subscription->expire_date)) {
                             return redirect()->route('package.expire');
+                        }else if ($subscription->status==SubscriptionStatusEnum::PENDING){
+                            return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
                         }
                     }
                 }
