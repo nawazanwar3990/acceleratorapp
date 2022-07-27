@@ -74,7 +74,19 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title">Current Dealing</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-transparent border-bottom">
+                        <div class="card-title">
+                            <h4 class="card-title mb-0">Current Dealing</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table id="demo-foo-addrow"
                                    class="table m-t-30 table-hover no-wrap contact-list footable footable-1 footable-paging footable-paging-center breakpoint-lg"
@@ -92,9 +104,12 @@
                                 </thead>
                             </table>
                         </div>
+
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 @endsection
