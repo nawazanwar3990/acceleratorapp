@@ -10,79 +10,38 @@
                 <h3 class="text-center fw-bold">{{__('general.pending_subscription')}}</h3>
                 <div class="row justify-content-center mt-3 pt-3">
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                <div class="card  bg-white">
-                                    <div class="card-header">
-                                        <h4 class="fw-bold mb-0">{{__('general.package_info')}}</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th>{{__('general.package_name')}}</th>
-                                                <td>{{ $subscription->package->name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>{{__('general.price')}}</th>
-                                                <td>{{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>{{__('general.payment_token_number')}}</th>
-                                                <td>{{ $subscription->payment_token_number }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>{{__('general.created_date')}}</th>
-                                                <td>{{ $subscription->created_at }}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                        <div class="card  bg-white mb-0">
+                            <div class="card-header">
+                                <h4 class="fw-bold mb-0">{{__('general.package_info')}}</h4>
                             </div>
-                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                <div class="card  bg-white">
-                                    <div class="card-header">
-                                        <h4 class="fw-bold mb-0">{{__('general.edit_steps')}}</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th>{{ trans('general.company_profile') }}</th>
-                                                <td>
-                                                    <a class="btn btn-sm  btn-info" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
-                                                        {{ trans('general.edit') }}
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>{{ trans('general.services_of_business_accelerator') }}</th>
-                                                <td>
-                                                    <a class="btn btn-sm btn-info" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP3,$user->ba->id]) }}">
-                                                        {{ trans('general.edit') }}
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>{{ trans('general.user_info') }}</th>
-                                                <td>
-                                                    <a class="btn btn-sm btn-info" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP4,$user->ba->id]) }}">
-                                                        {{ trans('general.edit') }}
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>{{ trans('general.packages') }}</th>
-                                                <td>
-                                                    <a class="btn btn-sm btn-info" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP5,$user->ba->id]) }}">
-                                                        {{ trans('general.edit') }}
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="card-body px-0">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>{{__('general.package_name')}}</th>
+                                        <td>{{ $subscription->package->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('general.price')}}</th>
+                                        <td>{{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('general.payment_token_number')}}</th>
+                                        <td>{{ $subscription->payment_token_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('general.created_date')}}</th>
+                                        <td>{{ $subscription->created_at }}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-info btn-sm mb-4" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
+                            Edit Profile
+                        </a>
+                    </div>
+                    <div class="col-12">
                         @if(\Illuminate\Support\Facades\Session::has('upload_receipt_success') OR $media)
                             <div class="alert alert-info alert-dismissible show" role="info">
                                 <strong>info!! </strong>
