@@ -1,5 +1,9 @@
 <?php
 return [
+    'affiliate_with' => 'Affiliate With',
+    'secret_question' => 'Secret Question',
+    'answer' => 'Answer',
+    'how_did_you_hear_about_us' => 'How Did You Hear About Us',
     'created_date' => 'Created At',
     'edit_steps' => 'Edit Steps',
     'create_user_information' => 'Create User Information',

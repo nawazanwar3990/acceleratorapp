@@ -14,7 +14,7 @@
         <table class="table table-bordered table-hover table-sm">
             <thead class="thead-light">
             <tr>
-                <th class="text-center">{{ __('general.institute_name') }}</th>
+                <th class="text-center">{{ __('general.affiliate_with') }}</th>
                 <th class="text-center">{{ __('general.add_remove') }}</th>
             </tr>
             </thead>

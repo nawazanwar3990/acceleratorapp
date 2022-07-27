@@ -22,8 +22,8 @@ class KnowAboutUsEnum extends AbstractEnum
     public const TV = 'tv';
     public const NEWSPAPER = 'newspaper';
     public const WORD_OF_MOUTH = 'word_of-mouth';
-    public const OTHER = 'other';
     public const FRIENDS = 'friends';
+    public const OTHER = 'other';
 
     public static function getValues(): array
     {
@@ -42,8 +42,8 @@ class KnowAboutUsEnum extends AbstractEnum
             self::TV,
             self::NEWSPAPER,
             self::WORD_OF_MOUTH,
-            self::OTHER,
-            self::FRIENDS
+            self::FRIENDS,
+            self::OTHER
         );
     }
 
@@ -64,8 +64,8 @@ class KnowAboutUsEnum extends AbstractEnum
             self::TV => __(sprintf('%s.%s', 'general', self::TV)),
             self::NEWSPAPER => __(sprintf('%s.%s', 'general', self::NEWSPAPER)),
             self::WORD_OF_MOUTH => __(sprintf('%s.%s', 'general', self::WORD_OF_MOUTH)),
-            self::OTHER => __(sprintf('%s.%s', 'general', self::OTHER)),
             self::FRIENDS => __(sprintf('%s.%s', 'general', self::FRIENDS)),
+            self::OTHER => __(sprintf('%s.%s', 'general', self::OTHER)),
 
 
         );
