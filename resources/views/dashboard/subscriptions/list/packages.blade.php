@@ -42,7 +42,16 @@
                                     @if($subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
                                         {{ $subscription->expire_date }}
                                     @else
-                                        1 Month After Approved
+                                        {{ $subscription->package->duration_limit }}
+                                        @if($subscription->package->duration_type->slug===\App\Enum\DurationEnum::Daily)
+                                            Days
+                                        @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::MONTHLY)
+                                            Months
+                                        @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::WEEKLY)
+                                            Weeks
+                                        @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::YEARLY)
+                                            Years
+                                        @endif After Approved
                                     @endif
                                 </td>
                                 <td>

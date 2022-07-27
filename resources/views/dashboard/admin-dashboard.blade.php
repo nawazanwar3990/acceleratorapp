@@ -70,29 +70,71 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="demo-foo-addrow"
-                               class="table m-t-30 table-hover no-wrap contact-list footable footable-1 footable-paging footable-paging-center breakpoint-lg"
-                               data-paging="true" data-paging-size="7" style="">
+                        <table class="table table-bordered table-hover">
                             <thead>
-                            <tr class="footable-header">
-                                <th class="footable-first-visible" style="display: table-cell;">Sr #</th>
-                                <th style="display: table-cell;">Customer Name</th>
-                                <th style="display: table-cell;">Service Asked</th>
-                                <th style="display: table-cell;">Package Detail</th>
-                                <th style="display: table-cell;">Opening Date</th>
-                                <th style="display: table-cell;">Expiry Date</th>
-                                <th style="display: table-cell;">Status</th>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th scope="col">Business Accelerator</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Expire Date</th>
+                                <th scope="col">Renewal Date</th>
                             </tr>
                             </thead>
+                            @forelse($subscriptions as $subscription)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        @isset($subscription->subscribed)
+                                            {{ $subscription->subscribed->getFullName()  }}
+                                        @else
+                                            --
+                                        @endisset
+                                    </td>
+                                    <td>
+                                        {{ $subscription->package->name??null}}
+                                    </td>
+                                    <td>
+                                        {{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}
+                                    </td>
+                                    <td>
+                                        {{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}
+                                    </td>
+                                    <td>
+                                        @if($subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
+                                            {{ $subscription->expire_date }}
+                                        @else
+                                            {{ $subscription->package->duration_limit }}
+                                            @if($subscription->package->duration_type->slug===\App\Enum\DurationEnum::Daily)
+                                                Days
+                                            @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::MONTHLY)
+                                                Months
+                                            @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::WEEKLY)
+                                                Weeks
+                                            @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::YEARLY)
+                                                Years
+                                            @endif After Approved
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @php
+                                            $is_renew = \Illuminate\Support\Facades\DB::table(\App\Enum\TableEnum::SUBSCRIPTION_LOGS)->where('subscription_id',$subscription->id)->count();
+                                        @endphp
+                                        @if($is_renew>1)
+                                            {{ $subscription->renewal_date }}
+                                        @else
+                                            --
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
                         </table>
                     </div>
-
                 </div>
             </div>
-
         </div>
-
-    </div>
     </div>
 @endsection
 
