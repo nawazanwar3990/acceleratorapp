@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-6 col-lg-3 col-xlg-3">
                                 <div class="card">
-                                    <div class="box bg-info text-center">
+                                    <div class="box bg-danger text-center">
                                         <h1 class="font-light text-white">964</h1>
                                         <h6 class="text-white">Per Month Collectable Cash</h6>
                                     </div>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-md-6 col-lg-3 col-xlg-3">
                                 <div class="card">
-                                    <div class="box bg-primary text-center">
+                                    <div class="box bg-warning text-center">
                                         <h1 class="font-light text-white">964</h1>
                                         <h6 class="text-white">This Month Receiving Amount</h6>
                                     </div>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-md-6 col-lg-3 col-xlg-3">
                                 <div class="card">
-                                    <div class="box bg-success text-center">
+                                    <div class="box bg-megna text-center">
                                         <h1 class="font-light text-white">964</h1>
                                         <h6 class="text-white">This Month Pending Amount</h6>
                                     </div>

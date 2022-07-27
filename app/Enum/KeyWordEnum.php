@@ -86,7 +86,6 @@ class KeyWordEnum extends AbstractEnum
     public const PAYMENT_RECEIPT = 'payment-receipt';
 
 
-
     static function getConstants()
     {
         $oClass = new \ReflectionClass(__CLASS__);

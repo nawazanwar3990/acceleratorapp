@@ -153,7 +153,9 @@ return [
         'mentorship-with-investment' => 'Mentorship/Investment',
         'mentorship-without-investment' => 'Mentorship',
         'only-investment' => 'Only Investment',
-        'meeting-room' => 'Meeting Rooms'
+        'meeting-room' => 'Meeting Rooms',
+        'business_accelerator_services'=>'BA Services',
+        'client_service'=>'Client Services',
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

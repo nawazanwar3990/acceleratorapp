@@ -6,12 +6,15 @@
                 @include('dashboard.components.general.form-list-header',['url'=>'dashboard.services.create','is_create'=>true,'extra'=>['type'=>request()->query('type')]])
                 <div class="card-body">
                     <ul class="nav nav-tabs" role="tablist">
-                        @foreach(\App\Enum\ServiceTypeEnum::getTranslationKeys() as  $key=>$value)
+                        @php
+                           $services = \App\Services\PersonService::hasRole(\App\Enum\RoleEnum::SUPER_ADMIN)?\App\Enum\ServiceTypeEnum::getBAServices():\App\Enum\ServiceTypeEnum::getClientServices();
+                        @endphp
+                        @foreach($services as  $service)
                             <li class="nav-item">
-                                <a class="nav-link {{$key==request()->query('type')?'active':''}}"
-                                   href="{{ route('dashboard.services.index',['type'=>$key]) }}"
+                                <a class="nav-link {{$service==request()->query('type')?'active':''}}"
+                                   href="{{ route('dashboard.services.index',['type'=>$service]) }}"
                                    aria-selected="true">
-                                    {{ $value }}
+                                    {{ \App\Enum\ServiceTypeEnum::getTranslationKeyBy($service) }}
                                 </a>
                             </li>
                         @endforeach

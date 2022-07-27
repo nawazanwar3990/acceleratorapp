@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3 col-xlg-3">
                             <div class="card">
-                                <div class="box bg-success text-center">
+                                <div class="box bg-warning text-center">
                                     <h1 class="font-light text-white">{{\App\Services\GeneralService::count_ba_accelerator()}}</h1>
                                     <h6 class="text-white">Business Accelerator</h6>
                                 </div>

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class AdminNavEnum extends AbstractEnum
 {
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
-    public const SERVICE = KeyWordEnum::SERVICE;
+    public const BUSINESS_ACCELERATOR_SERVICE ='business_accelerator_services';
     public const PACKAGE = KeyWordEnum::PACKAGE;
     public const PAYMENT_RECEIPT = KeyWordEnum::PAYMENT_RECEIPT;
     public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
@@ -22,7 +22,7 @@ class AdminNavEnum extends AbstractEnum
     {
         return [
             self::DASHBOARD,
-            self::SERVICE,
+            self::BUSINESS_ACCELERATOR_SERVICE,
             self::PACKAGE,
             self::PAYMENT_RECEIPT,
             self::SUBSCRIPTION,
@@ -35,7 +35,7 @@ class AdminNavEnum extends AbstractEnum
     {
         $routes = [
             self::DASHBOARD => '<i></i>',
-            self::SERVICE => '<i></i>',
+            self::BUSINESS_ACCELERATOR_SERVICE => '<i></i>',
             self::PACKAGE => '<i></i>',
             self::PAYMENT_RECEIPT => '<i></i>',
             self::SUBSCRIPTION => '<i></i>',
@@ -54,7 +54,7 @@ class AdminNavEnum extends AbstractEnum
     {
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general.left-bar', self::DASHBOARD)),
-            self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
+            self::BUSINESS_ACCELERATOR_SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::BUSINESS_ACCELERATOR_SERVICE)),
             self::PACKAGE => __(sprintf('%s.%s', 'general.left-bar', self::PACKAGE)),
             self::PAYMENT_RECEIPT => __(sprintf('%s.%s', 'general.left-bar', self::PAYMENT_RECEIPT)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
@@ -68,7 +68,7 @@ class AdminNavEnum extends AbstractEnum
     {
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
-            self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE]),
+            self::BUSINESS_ACCELERATOR_SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE]),
             self::PACKAGE => route('dashboard.packages.index'),
             self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index'),
             self::BA => route('dashboard.ba.index'),

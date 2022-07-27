@@ -15,7 +15,11 @@
                 @endif
                 @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                     @foreach(\App\Enum\LeftNavBar\BANavEnum::getTranslationKeys() as $key=>$value)
-                        @if(in_array($key,[\App\Enum\LeftNavBar\BANavEnum::PACKAGE,\App\Enum\LeftNavBar\BANavEnum::SERVICE,\App\Enum\LeftNavBar\BANavEnum::SUBSCRIPTION]))
+                        @if(in_array($key,[
+                                \App\Enum\LeftNavBar\BANavEnum::PLAN,
+                                \App\Enum\LeftNavBar\BANavEnum::CLIENT_SERVICE,
+                                \App\Enum\LeftNavBar\BANavEnum::SUBSCRIPTION
+                         ]))
                             <li>
                                 <a class="waves-effect waves-dark"
                                    href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
