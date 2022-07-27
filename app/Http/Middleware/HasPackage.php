@@ -9,6 +9,7 @@ use App\Services\GeneralService;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class HasPackage
 {
@@ -27,6 +28,8 @@ class HasPackage
                         if (GeneralService::isExpireSubscription(\Carbon\Carbon::now(), $subscription->expire_date)) {
                             return redirect()->route('package.expire');
                         }else if ($subscription->status==SubscriptionStatusEnum::PENDING){
+                            $currentGuard->logout();
+                            Cache::flush();
                             return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
                         }
                     }
