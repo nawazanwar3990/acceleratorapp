@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <a class="btn btn-info btn-sm mb-4" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
+                        <a class="btn btn-info btn-sm mb-4" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$user->ba->id]) }}">
                             Edit Profile
                         </a>
                     </div>

@@ -55,7 +55,13 @@ class BAController extends Controller
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             $prev_step = route('website.ba.create', [StepEnum::STEP5, $model->id]);
         }
-        return view('website.ba.create', compact('step', 'model', 'prev_step', 'subscription'));
+        return view('website.ba.create', compact(
+            'step',
+            'model',
+            'prev_step',
+            'subscription',
+            'id'
+        ));
     }
 
     public function store(Request $request, $step, $id = null)
@@ -67,7 +73,7 @@ class BAController extends Controller
         switch ($step) {
             case StepEnum::STEP1;
                 $type = $request->input('type');
-                $model = $this->baService->saveStep1($type);
+                $model = $this->baService->saveStep1($type, $model);
                 return redirect()->route('website.ba.create', [StepEnum::STEP2, $model->id]);
                 break;
             case StepEnum::STEP2;

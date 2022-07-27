@@ -33426,6 +33426,14 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   color: #fb9678;
 }
 
+.active-link a {
+  color: #fb9678 !important;
+}
+
+.in-active-link a {
+  color: black !important;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel

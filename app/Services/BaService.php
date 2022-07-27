@@ -30,9 +30,9 @@ class BaService
     {
     }
 
-    public function saveStep1($type): BA
+    public function saveStep1($type, $model): BA
     {
-        $model = new BA();
+        $model = $model ?? new BA();
         $model->type = $type;
         $model->save();
         return $model;
@@ -120,7 +120,7 @@ class BaService
         $subscribed_id = request()->input('subscribed_id');
 
         $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
-        if ($alreadySubscription->exists()){
+        if ($alreadySubscription->exists()) {
             $alreadySubscription->delete();
         }
 

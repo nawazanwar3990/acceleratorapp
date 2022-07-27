@@ -4,7 +4,7 @@
             <div class="card border position-relative">
                 <div class="radio-holder position-absolute" style="right:0;top:9px;">
                     <div class="form-check form-switch">
-                        {!! Form::radio('type',$key,false,['id'=>$key,'class'=>'form-check-input','required']) !!}
+                        {!! Form::radio('type',$key,(isset($model) && $model->type==$key)?true:false,['id'=>$key,'class'=>'form-check-input','required']) !!}
                         <label class="form-check-label" for="{{ $key }}"></label>
                     </div>
                 </div>
