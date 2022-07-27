@@ -24,7 +24,7 @@ class GeneralService
 
     public static function get_default_currency(): string
     {
-        return CurrencyEnum::UAE;
+        return CurrencyEnum::SAR;
     }
 
     public static function get_working_space_count($type, $user = null): int

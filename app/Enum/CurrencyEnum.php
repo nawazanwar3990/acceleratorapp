@@ -9,11 +9,13 @@ use App\Enum\AbstractEnum;
 class CurrencyEnum extends AbstractEnum
 {
     public const UAE = 'DHS';
+    public const SAR = 'SAR';
 
     public static function getValues(): array
     {
         return array(
-            self::UAE
+            self::UAE,
+            self::SAR
         );
     }
 
@@ -21,6 +23,7 @@ class CurrencyEnum extends AbstractEnum
     {
         return array(
             self::UAE => 'DHS',
+            self::SAR => 'SAR',
         );
     }
 }

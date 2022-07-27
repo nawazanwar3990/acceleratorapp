@@ -1,3 +1,4 @@
+
 <html lang="en" dir="{{ session()->get('app_locale') == 'ur' ? 'rtl':'' }}">
 <head>
     <meta charset="utf-8">
