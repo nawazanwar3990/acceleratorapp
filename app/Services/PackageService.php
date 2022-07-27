@@ -12,7 +12,7 @@ class PackageService
 {
     public static function list_packages(): Collection|array
     {
-        return Package::with('services')->get();
+        return Package::where('status',true)->with('services')->get();
     }
 
     public static function pluck_duration()

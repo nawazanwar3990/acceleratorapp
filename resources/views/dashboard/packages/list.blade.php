@@ -39,6 +39,11 @@
                 @endforeach
             </UL>
         </td>
+        <td>
+            <span class="badge bg-{{ $record->status === 1 ? "success" : "danger" }}">
+                {{ $record->status === 1 ? "Active" : "Deactivate" }}
+            </span>
+        </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
                'edit' => route('dashboard.packages.edit', $record->id),

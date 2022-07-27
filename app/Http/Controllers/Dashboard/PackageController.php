@@ -64,7 +64,7 @@ class PackageController extends Controller
     public function store(PackageRequest $request)
     {
         $this->authorize('create', Package::class);
-        if ($request->createData()){
+        if ($request->createData()) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.packages.create')
                     ->with('success', __('general.record_created_successfully'));

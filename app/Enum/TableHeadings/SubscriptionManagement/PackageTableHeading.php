@@ -15,6 +15,7 @@ class PackageTableHeading extends AbstractEnum
     public const PRICE = 'price';
     public const REMINDER_DAYS = 'reminder_days';
     public const SERVICES = 'services';
+    public const STATUS = 'status';
 
     public static function getValues(): array
     {
@@ -30,6 +31,7 @@ class PackageTableHeading extends AbstractEnum
             self::PRICE => __(sprintf('%s.%s', 'general', self::PRICE)),
             self::REMINDER_DAYS => __(sprintf('%s.%s', 'general', self::REMINDER_DAYS)),
             self::SERVICES => __(sprintf('%s.%s', 'general', self::SERVICES)),
+            self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
         ];
     }
 }
