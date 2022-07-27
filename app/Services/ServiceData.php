@@ -37,6 +37,7 @@ class ServiceData
     public static function get_business_accelerator_services()
     {
         return Service::where('type', ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)
+            ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
     }
 
@@ -44,6 +45,7 @@ class ServiceData
     {
         return Service::where('type', ServiceTypeEnum::BASIC_SERVICE)
             ->whereCreatedBy(Auth::id())
+            ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
     }
 
@@ -51,12 +53,15 @@ class ServiceData
     {
         return Service::where('type', ServiceTypeEnum::ADDITIONAL_SERVICE)
             ->whereCreatedBy(Auth::id())
+            ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
     }
 
     public static function getAllServicesForDropdown()
     {
-        return Service::orderBy('name', 'ASC')->pluck('name', 'id');
+        return Service::orderBy('name', 'ASC')
+            ->whereStatus(true)
+            ->pluck('name', 'id');
     }
 
     public function listServicesByPagination()
