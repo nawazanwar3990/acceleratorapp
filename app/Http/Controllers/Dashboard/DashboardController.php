@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
+use App\Services\PersonService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function __;
@@ -16,7 +18,7 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)/*: View|Factory|Redirector|RedirectResponse|Application*/
+    public function index(Request $request)
     {
         if (Auth::user() == null) {
             return redirect('login');
@@ -24,6 +26,12 @@ class DashboardController extends Controller
         $params = [
             'pageTitle' => __('general.dashboard'),
         ];
-        return view('dashboard.index', $params);
+        if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)){
+            return view('dashboard.ba-dashboard', $params);
+        }else if (PersonService::hasRole(RoleEnum::SUPER_ADMIN)){
+            return view('dashboard.admin-dashboard', $params);
+        }else if (PersonService::hasRole(RoleEnum::CUSTOMER)){
+            return view('dashboard.customer-dashboard', $params);
+        }
     }
 }
