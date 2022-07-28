@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class FloorTypeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -23,13 +18,11 @@ class FloorTypeSeeder extends Seeder
         DB::table(TableEnum::FLOOR_TYPES)->insert([
             [
                 'name' => 'Residential',
-                'created_by' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Commercial',
-                'created_by' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

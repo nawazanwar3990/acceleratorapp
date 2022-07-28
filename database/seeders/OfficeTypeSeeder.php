@@ -18,8 +18,7 @@ class OfficeTypeSeeder extends Seeder
         foreach (OfficeTypeEnum::getTranslationKeys() as $key => $value) {
             OfficeType::create([
                 'name' => $value,
-                'status' => 1,
-                'created_by' => 2
+                'status' => 1
             ]);
         }
     }
