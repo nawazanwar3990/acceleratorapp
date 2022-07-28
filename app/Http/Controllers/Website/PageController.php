@@ -11,6 +11,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use function __;
 use function session;
 use function view;
@@ -35,8 +36,13 @@ class PageController extends Controller
         $pageTitle = 'Pending Subscription';
         $subscribed_id = $request->query('subscribed_id');
         $user = User::find($subscribed_id);
-        $subscription = Subscription::where('subscribed_id',$subscribed_id)->first();
-        $media = Media::where('record_id',$subscription->id)->whereRecordType(MediaTypeEnum::SUBSCRIPTION_RECEIPT)->exists();
-        return view('website.pages.ba-pending-subscription', compact('pageTitle','subscription','user','media'));
+        $subscription = Subscription::where('subscribed_id', $subscribed_id)->first();
+        $media = Media::where('record_id', $subscription->id)->whereRecordType(MediaTypeEnum::SUBSCRIPTION_RECEIPT)->exists();
+        if ($media) {
+            Session::put('info', "Your Receipt has Received By Super admin and let you know after approved your Subscription");
+        } else {
+            Session::put('info', $user->payment_token_number . "  is your payment code please Summit your payment receipt for approved you Subscription");
+        }
+        return view('website.pages.ba-pending-subscription', compact('pageTitle', 'subscription', 'user', 'media'));
     }
 }

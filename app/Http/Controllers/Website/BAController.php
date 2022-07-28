@@ -17,6 +17,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
 class BAController extends Controller
@@ -110,9 +111,16 @@ class BAController extends Controller
                 break;
             case StepEnum::STEP5;
                 $response = $this->baService->saveStep5($model->type);
+                $payment_type = $request->input('payment_type');
+                if ($payment_type == 'pre_apply') {
+                    $url = route('website.index');
+                    Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
+                } else {
+                    $url = route('website.ba.create', [StepEnum::PRINT, $model->id]);
+                }
                 return response()->json([
                     'status' => $response,
-                    'url' => route('website.ba.create', [StepEnum::PRINT, $model->id])
+                    'url' => $url
                 ]);
                 break;
         }

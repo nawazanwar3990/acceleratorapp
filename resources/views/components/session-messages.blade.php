@@ -11,6 +11,22 @@
             });
         });
     </script>
+    {{ \Illuminate\Support\Facades\Session::forget('success') }}
+@endif
+@if ($message = \Illuminate\Support\Facades\Session::get('info'))
+    <script>
+        $(document).ready(function() {
+            $.toast({
+                heading: "Info",
+                text: "{{ $message }}",
+                position: 'top-right',
+                icon: 'info',
+                hideAfter: 3000,
+                stack: 6
+            });
+        });
+    </script>
+    {{ \Illuminate\Support\Facades\Session::forget('info') }}
 @endif
 @if ($error = \Illuminate\Support\Facades\Session::get('error'))
     <script>
@@ -25,4 +41,5 @@
             });
         });
     </script>
+    {{ \Illuminate\Support\Facades\Session::forget('error') }}
 @endif

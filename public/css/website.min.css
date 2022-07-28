@@ -33434,6 +33434,11 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   color: black !important;
 }
 
+.jq-icon-info {
+  color: white !important;
+  border-color: #bce8f1;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel
