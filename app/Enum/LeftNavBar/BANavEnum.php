@@ -11,7 +11,7 @@ class BANavEnum extends AbstractEnum
 {
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
     public const PLAN = KeyWordEnum::PLAN;
-    public const CLIENT_SERVICE = 'client_service';
+    public const SERVICE = KeyWordEnum::SERVICE;
     public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
     public const INCUBATOR = KeyWordEnum::INCUBATOR;
     public const FREELANCER = KeyWordEnum::FREELANCER;
@@ -27,7 +27,7 @@ class BANavEnum extends AbstractEnum
         return [
             self::DASHBOARD,
             self::PLAN,
-            self::CLIENT_SERVICE,
+            self::SERVICE,
             self::SUBSCRIPTION,
             self::INCUBATOR,
             self::FREELANCER,
@@ -44,7 +44,7 @@ class BANavEnum extends AbstractEnum
         $routes = [
             self::DASHBOARD => '<i class="mdi mdi-account"></i>',
             self::PLAN => '<i class="mdi mdi-account"></i>',
-            self::CLIENT_SERVICE => '<i class="mdi mdi-account"></i>',
+            self::SERVICE => '<i class="mdi mdi-account"></i>',
             self::SUBSCRIPTION => '<i class="mdi mdi-account"></i>',
             self::INCUBATOR => '<i class="mdi mdi-account"></i>',
             self::FREELANCER => '<i class="mdi mdi-account"></i>',
@@ -65,7 +65,7 @@ class BANavEnum extends AbstractEnum
     {
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general.left-bar', self::DASHBOARD)),
-            self::CLIENT_SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::CLIENT_SERVICE)),
+            self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
             self::PLAN => __(sprintf('%s.%s', 'general.left-bar', self::PLAN)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
             self::INCUBATOR => __(sprintf('%s.%s', 'general.left-bar', self::INCUBATOR)),
@@ -83,7 +83,7 @@ class BANavEnum extends AbstractEnum
         return [
             self::DASHBOARD => __(sprintf('%s.%s', 'general.left_bar', self::DASHBOARD)),
             self::PLAN => __(sprintf('%s.%s', 'general.left_bar', self::PLAN)),
-            self::CLIENT_SERVICE => __(sprintf('%s.%s', 'general.left_bar', self::CLIENT_SERVICE)),
+            self::SERVICE => __(sprintf('%s.%s', 'general.left_bar', self::SERVICE)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left_bar', self::SUBSCRIPTION)),
             self::INCUBATOR => __(sprintf('%s.%s', 'general.left_bar', self::INCUBATOR)),
             self::MEETING_ROOM => __(sprintf('%s.%s', 'general.left_bar', self::MEETING_ROOM)),
@@ -101,7 +101,7 @@ class BANavEnum extends AbstractEnum
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
             self::PLAN => route('dashboard.plans.index'),
-            self::CLIENT_SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC_SERVICE]),
+            self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC_SERVICE]),
             self::SUBSCRIPTION => route('dashboard.buildings.index', [SubscriptionTypeEnum::PLAN]),
             self::INCUBATOR => route('dashboard.buildings.index'),
             self::MEETING_ROOM => route('dashboard.offices.index'),

@@ -1,11 +1,6 @@
 @forelse($records as $record)
     <tr>
         <td>{{ $loop->iteration }}</td>
-        <td>
-            @foreach($record->types as $type)
-                <button class="btn btn-xs btn-info mx-1">{{ $type }}</button>
-            @endforeach
-        </td>
         <td>{{ $record->name }}</td>
         <td>
             @isset($record->duration_type)

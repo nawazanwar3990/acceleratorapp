@@ -3,16 +3,29 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
-                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.packages.create','is_create'=>true])
-                @endif
+                @include('dashboard.components.general.form-list-header',['url'=>'dashboard.packages.create','is_create'=>true,'extra'=>['type'=>request()->query('type')]])
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\SubscriptionManagement\PackageTableHeading::getTranslationKeys()])
-                        <tbody>
-                        @include('dashboard.packages.list')
-                        </tbody>
-                    </table>
+                    <ul class="nav nav-tabs" role="tablist">
+                        @foreach(\App\Enum\PackageTypeEnum::getTranslationKeys() as  $key=>$value)
+                            <li class="nav-item">
+                                <a class="nav-link {{$key==request()->query('type')?'active':''}}"
+                                   href="{{ route('dashboard.packages.index',['type'=>$key]) }}"
+                                   aria-selected="true">
+                                    {{ $value }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content tabcontent-border">
+                        <div class="tab-pane active p-3">
+                            <table class="table table-bordered table-hover">
+                                @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\SubscriptionManagement\PackageTableHeading::getTranslationKeys()])
+                                <tbody>
+                                @include('dashboard.packages.list')
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

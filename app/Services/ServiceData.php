@@ -40,7 +40,12 @@ class ServiceData
             ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
     }
-
+    public static function get_freelancer_services()
+    {
+        return Service::where('type', ServiceTypeEnum::FREELANCER_SERVICE)
+            ->whereStatus(true)
+            ->orderBy('name', 'ASC')->get();
+    }
     public static function getBasicServices()
     {
         return Service::where('type', ServiceTypeEnum::BASIC_SERVICE)

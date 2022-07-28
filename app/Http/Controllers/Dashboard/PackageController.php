@@ -11,6 +11,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function __;
 use function auth;
@@ -27,16 +28,17 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function index(): Factory|View|Application
+    public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Package::class);
         $records = Package::with('duration_type', 'services');
+        if ($request->query('type')) {
+            $records->where('type', $request->query('type'));
+        }
         if (Auth::user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $records = $records->whereHas('subscriptions', function ($q) {
                 $q->subscribed_id = Auth::id();
             });
-        } else {
-            $records = $records->where('created_by', auth()->id());
         }
         $records = $records->paginate(20);
         $params = [
@@ -49,11 +51,13 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function create(): Factory|View|Application
+    public function create(Request $request): Factory|View|Application
     {
         $this->authorize('create', Package::class);
+        $type = $request->input('type');
         $params = [
             'pageTitle' => __('general.new_package'),
+            'type'=>$type
         ];
         return view('dashboard.packages.create', $params);
     }

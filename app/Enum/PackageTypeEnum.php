@@ -6,22 +6,29 @@ namespace App\Enum;
 
 class PackageTypeEnum extends AbstractEnum
 {
-    public const COMPANY = 'company';
-    public const INDIVIDUAL = 'individual';
+    public const BUSINESS_ACCELERATOR ='business_accelerator';
+    public const FREELANCER = KeyWordEnum::FREELANCER;
 
     public static function getValues(): array
     {
         return array(
-            self::COMPANY,
-            self::INDIVIDUAL
+            self::BUSINESS_ACCELERATOR,
+            self::FREELANCER
         );
     }
 
     public static function getTranslationKeys(): array
     {
         return array(
-            self::COMPANY => __(sprintf('%s.%s', 'general', self::COMPANY)),
-            self::INDIVIDUAL => __(sprintf('%s.%s', 'general', self::INDIVIDUAL))
+            self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general.package_types', self::BUSINESS_ACCELERATOR)),
+            self::FREELANCER => __(sprintf('%s.%s', 'general.package_types', self::FREELANCER))
+        );
+    }
+    public static function getDropDownKey(): array
+    {
+        return array(
+            self::BUSINESS_ACCELERATOR => 'Business Accelerator',
+            self::FREELANCER =>'Freelancer'
         );
     }
 }

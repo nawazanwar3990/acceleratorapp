@@ -111,43 +111,63 @@ class ServiceSeeder extends Seeder
         foreach ($services as $service) {
             Service::create($service);
         }
-
-        $parentService = Service::create(
+        $freelancerServices = array(
             [
-                'name' => 'Web Development',
-                'slug' => 'web-development',
+                'name' => 'IT Services',
+                'slug' => 'it-service',
                 'type' => ServiceTypeEnum::FREELANCER_SERVICE,
-                'status' => true,
-                'created_by' => 2,
-            ]
-        );
-        $childServices = array(
-            [
-                'parent_id' => $parentService->id,
-                'name' => 'Laravel',
-                'slug' => 'laravel',
-                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
-                'status' => true,
-                'created_by' => 2,
+                'status' => true
             ],
             [
-                'parent_id' => $parentService->id,
-                'name' => 'Node Js',
-                'slug' => 'nodejs',
+                'name' => 'Designing Services',
+                'slug' => 'designing-service',
                 'type' => ServiceTypeEnum::FREELANCER_SERVICE,
                 'status' => true,
-                'created_by' => 2,
             ],
             [
-                'parent_id' => $parentService->id,
-                'name' => 'Express Js',
-                'slug' => 'express-js',
+                'name' => 'Manufacturing Services',
+                'slug' => 'manufacturing-services',
                 'type' => ServiceTypeEnum::FREELANCER_SERVICE,
                 'status' => true,
-                'created_by' => 2,
-            ]
+            ],
+            [
+                'name' => 'Training Services',
+                'slug' => 'training-services',
+                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Electrical & Electronic Services',
+                'slug' => 'electrical-and-electronic-services',
+                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Mason And Labor Class Services',
+                'slug' => 'mason-and-labor-class-service',
+                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Driving Service',
+                'slug' => 'driving-service',
+                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Carpenter Service',
+                'slug' => 'carpenter-service',
+                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Logistic Service',
+                'slug' => 'logistic-service',
+                'type' => ServiceTypeEnum::FREELANCER_SERVICE,
+                'status' => true,
+            ],
         );
-        foreach ($childServices as $service) {
+        foreach ($freelancerServices as $service) {
             Service::create($service);
         }
     }

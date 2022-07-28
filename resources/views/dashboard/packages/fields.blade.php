@@ -1,8 +1,8 @@
 <div class="row mb-3">
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('types' ,__('general.types'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('types[]',\App\Enum\PackageTypeEnum::getTranslationKeys(),null,['id'=>'types[]',
-            'class'=>'select2 form-control form-select','multiple','style'=>'width:100%'])
+        {!!  Html::decode(Form::label('types' ,__('general.type'),['class'=>'col-form-label']))   !!}
+        {!!  Form::select('type',\App\Enum\PackageTypeEnum::getDropDownKey(),$type,['id'=>'type',
+            'class'=>'select2 form-control form-select','style'=>'width:100%'])
         !!}
     </div>
     <div class="col-md-3 mb-3">
@@ -34,44 +34,87 @@
         </div>
     </div>
 </div>
-<div class="card">
-    <div class="card-header">
-        <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
+@if($type==\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR)
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{ trans('general.name') }}</th>
+                    <th>{{ trans('general.limit') }}</th>
+                </tr>
+                </thead>
+                @if( isset($model) &&  count($model->services)>0)
+                    @foreach($model->services as $service)
+                        <tr>
+                            <th>
+                                {!!  Form::hidden('services[id][]',$service->id) !!}
+                                {{ ucwords(str_replace('_',' ',$service->name))}}
+                            </th>
+                            <td>
+                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$service->pivot->limit,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach(\App\Services\ServiceData::get_business_accelerator_services() as $service)
+                        <tr>
+                            <th>
+                                {!!  Form::hidden('services[id][]',$service->id) !!}
+                                {{ ucwords(str_replace('_',' ',$service->name))}}
+                            </th>
+                            <td>
+                                {!!  Form::text('services[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </table>
+        </div>
     </div>
-    <div class="card-body">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{{ trans('general.name') }}</th>
-                <th>{{ trans('general.limit') }}</th>
-            </tr>
-            </thead>
-            @if( isset($model) &&  count($model->services)>0)
-                @foreach($model->services as $service)
-                    <tr>
-                        <th>
-                            {!!  Form::hidden('services[id][]',$service->id) !!}
-                            {{ ucwords(str_replace('_',' ',$service->name))}}
-                        </th>
-                        <td>
-                            {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$service->pivot->limit,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                        </td>
-                    </tr>
-                @endforeach
-            @else
-                @foreach(\App\Services\ServiceData::get_business_accelerator_services() as $service)
-                    <tr>
-                        <th>
-                            {!!  Form::hidden('services[id][]',$service->id) !!}
-                            {{ ucwords(str_replace('_',' ',$service->name))}}
-                        </th>
-                        <td>
-                            {!!  Form::text('services[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
-        </table>
+@else
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{ trans('general.name') }}</th>
+                    <th>{{ trans('general.limit') }}</th>
+                </tr>
+                </thead>
+                @if( isset($model) &&  count($model->services)>0)
+                    @foreach($model->services as $service)
+                        <tr>
+                            <th>
+                                {!!  Form::hidden('services[id][]',$service->id) !!}
+                                {{ ucwords(str_replace('_',' ',$service->name))}}
+                            </th>
+                            <td>
+                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$service->pivot->limit,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach(\App\Services\ServiceData::get_freelancer_services() as $service)
+                        <tr>
+                            <th>
+                                {!!  Form::hidden('services[id][]',$service->id) !!}
+                                {{ ucwords(str_replace('_',' ',$service->name))}}
+                            </th>
+                            <td>
+                                {!!  Form::text('services[limit][]',null,['id'=>'module_limit','class'=>'form-control']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </table>
+        </div>
     </div>
-</div>
+@endif
 

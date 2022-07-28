@@ -1,5 +1,11 @@
 <?php
 return [
+    'package_type'=>"Package Type",
+    'package_types' => array(
+        'business_accelerator' => 'Business Accelerator Packages',
+        'freelancer' => 'Freelancer Packages'
+    ),
+    'freelancer' => 'Freelancer',
     'receipts' => 'Receipts',
     'receipt' => 'Receipt',
     'affiliate_with' => 'Affiliate With',
@@ -70,7 +76,6 @@ return [
     'services_limit' => 'Limit of Services',
     'company_service' => "Company Service",
     'package_service' => 'Package Service',
-    'package_types' => 'Package Types',
     'office_plans' => 'Office Plans',
     'available_plans' => 'Available Plans',
     'sold' => "Sold",

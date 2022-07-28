@@ -23,18 +23,18 @@ class ServiceTypeEnum extends AbstractEnum
         );
     }
 
+    public static function getAdminServices(): array
+    {
+        return array(
+            self::BUSINESS_ACCELERATOR_SERVICE,
+            self::FREELANCER_SERVICE
+        );
+    }
     public static function getBAServices(): array
     {
         return array(
-            self::BUSINESS_ACCELERATOR_SERVICE
-        );
-    }
-    public static function getClientServices(): array
-    {
-        return array(
             self::BASIC_SERVICE,
-            self::ADDITIONAL_SERVICE,
-            self::FREELANCER_SERVICE
+            self::ADDITIONAL_SERVICE
         );
     }
     public static function getTranslationKeys(): array

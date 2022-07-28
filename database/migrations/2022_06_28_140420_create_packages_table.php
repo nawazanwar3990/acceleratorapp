@@ -13,7 +13,7 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::PACKAGES, function (Blueprint $table) {
             $table->id();
-            $table->json('types')->nullable();
+            $table->string('type')->nullable();
             $table->string('name')->nullable();
             $table->foreignId('duration_type_id')->nullable()->constrained(TableEnum::DURATIONS);
             $table->string('duration_limit')->nullable();

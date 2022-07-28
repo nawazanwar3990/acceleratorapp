@@ -19,7 +19,7 @@ class PackageSeeder extends Seeder
 
         DB::table(TableEnum::PACKAGES)->insert([
             array(
-                'types' => json_encode([PackageTypeEnum::COMPANY]),
+                'type' =>PackageTypeEnum::BUSINESS_ACCELERATOR,
                 'name' => 'Free',
                 'duration_type_id' => '3',
                 'duration_limit' => '1',
@@ -27,13 +27,11 @@ class PackageSeeder extends Seeder
                 'slug' => 'free',
                 'price' => '0',
                 'reminder_days' => '3',
-                'created_by' => '1',
-                'updated_by' => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
             array(
-                'type' => json_encode([PackageTypeEnum::COMPANY]),
+                'type' => PackageTypeEnum::BUSINESS_ACCELERATOR,
                 'name' => 'Basic',
                 'duration_type_id' => '3',
                 'duration_limit' => '1',
@@ -41,13 +39,11 @@ class PackageSeeder extends Seeder
                 'slug' => 'basic',
                 'price' => '2',
                 'reminder_days' => '3',
-                'created_by' => '1',
-                'updated_by' => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
             array(
-                'type' => json_encode([PackageTypeEnum::COMPANY]),
+                'type' => PackageTypeEnum::BUSINESS_ACCELERATOR,
                 'name' => 'Premium',
                 'duration_type_id' => '3',
                 'duration_limit' => '1',
@@ -55,8 +51,6 @@ class PackageSeeder extends Seeder
                 'slug' => 'premium',
                 'price' => '3',
                 'reminder_days' => '3',
-                'created_by' => '1',
-                'updated_by' => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),

@@ -17,7 +17,7 @@ class Package extends Model
     protected $table = TableEnum::PACKAGES;
 
     protected $fillable = [
-        'types',
+        'type',
         'duration_type_id',
         'duration_limit',
         'trail_expire_date',
@@ -27,20 +27,18 @@ class Package extends Model
         'status',
         'reminder_days'
     ];
-    public function getTypesAttribute($value)
-    {
-        return json_decode($value);
-    }
 
     public function duration_type(): BelongsTo
     {
         return $this->belongsTo(Duration::class, 'duration_type_id');
     }
+
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::PACKAGE_SERVICE)
             ->withPivot('limit');
     }
+
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);
