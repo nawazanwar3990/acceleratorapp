@@ -150,10 +150,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-6 ">
-                                <button class="btn btn-success" id="invoice-print"><i class="fa fa-print"></i> Print
+                                <button class="btn btn-success" onclick="printMe()">
+                                    <i class="fa fa-print"></i> Print
                                     Invoice
                                 </button>
-                                <a class="btn btn-primary text-white" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
+                                <a class="btn btn-primary text-white"
+                                   href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
                                     <i class="fa fa-edit"></i> Edit Profile
                                 </a>
                             </div>
@@ -205,7 +207,18 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </div>
+    </div>
 @endsection
 @section('innerScript')
+    <script>
+        function printMe() {
+            let print_window = window.open("");
+            print_window.document.write(document.getElementById("invoice").innerHTML);
+            print_window.stop();
+            print_window.print();
+            print_window.close();
+        }
+    </script>
 @endsection

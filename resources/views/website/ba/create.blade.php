@@ -125,59 +125,5 @@
                 });
             }
         }
-
-        function create_other_company_services() {
-            let html = '<table class="table table-bordered table-hover table-sm">' +
-                '<thead class="thead-light">' +
-                '<tr>' +
-                '<th class="text-center">Service Name</th>' +
-                '<th class="text-center">Add/Remove</th>' +
-                '</tr>' +
-                '</thead>' +
-                '<tbody>' +
-                '<tr>' +
-                '<td>' +
-                '<input class="form-control form-control-sm" autocomplete="off" required="" name="service_name" type="text">' +
-                '</td>' +
-                '<td class="text-center">' +
-                '<a href="javascript:void(0);" onclick="cloneRow(this);" class="btn btn-xs btn-info mx-1">' +
-                ' <i class="bx bx-plus"></i>' +
-                '</a>' +
-                '<a href="javascript:void(0);" tabindex="18" onclick="removeClonedRow(this);" class="btn btn-xs btn-danger mx-1">' +
-                ' <i class="bx bx-minus"></i>' +
-                '</a>' +
-                '</td>' +
-                '</tr>' +
-                '</tbody>' +
-                '</table>';
-            Swal.fire({
-                title: 'Add Custom Services',
-                html: html,
-                width: 900,
-                confirmButtonText: 'Add',
-                focusConfirm: false,
-                preConfirm: () => {
-                    let elements = Swal.getPopup().querySelectorAll("input[name=service_name]");
-                    return {
-                        elements: elements
-                    }
-                }
-            }).then((result) => {
-                let other_service_holder = $(".other_services_holder");
-                other_service_holder.removeClass('d-block d-none');
-                let elements = result.value.elements;
-                if (elements.length > 0) {
-                    let html = '<table class="table table-sm table-bordered"><tbody>';
-                    for (let i = 0; i < elements.length; i++) {
-                        html += '<tr><th class="py-2"><input type="text" class="form-control form-control-sm" name="other_services[]" value=' + elements[i].value + '></th></tr>';
-                    }
-                    html += '</table>';
-                    other_service_holder.addClass('d-block').find('.card-body').empty().html(html);
-                } else {
-                    other_service_holder.addClass('d-none').find('.card-body').empty();
-                }
-            });
-        }
-
     </script>
 @endsection

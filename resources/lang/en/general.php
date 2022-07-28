@@ -1,7 +1,7 @@
 <?php
 return [
-    'receipts'=>'Receipts',
-    'receipt'=>'Receipt',
+    'receipts' => 'Receipts',
+    'receipt' => 'Receipt',
     'affiliate_with' => 'Affiliate With',
     'secret_question' => 'Secret Question',
     'answer' => 'Answer',
@@ -132,8 +132,17 @@ return [
     'building_information' => 'Building Info',
     'floor_information' => 'Floor Info',
     'days_reminder_notice' => 'Days Reminder Notice',
+
+    'register_types' => [
+        'business_accelerator' => 'Business Accelerator',
+        'freelancer' => 'Freelancer',
+        'customer' => 'Customer',
+        'mentor' => 'Mentor'
+    ],
+
+
     'left-bar' => [
-        'payment-receipt'=>'Payment Receipts',
+        'payment-receipt' => 'Payment Receipts',
         'setting' => 'Setting',
         'dashboard' => 'Dashboard',
         'service' => 'Services',
@@ -154,8 +163,8 @@ return [
         'mentorship-without-investment' => 'Mentorship',
         'only-investment' => 'Only Investment',
         'meeting-room' => 'Meeting Rooms',
-        'business_accelerator_services'=>'BA Services',
-        'client_service'=>'Client Services',
+        'business_accelerator_services' => 'BA Services',
+        'client_service' => 'Client Services',
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

@@ -12,6 +12,8 @@
 <body>
 @yield('content')
 <script src="{{ asset('js/website.min.js') }}"></script>
+@yield('inner-script-files')
+@yield('innerScript')
 <x-session-messages></x-session-messages>
 </body>
 </html>
