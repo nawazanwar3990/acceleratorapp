@@ -10,9 +10,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PackageService
 {
-    public static function list_packages(): Collection|array
+    public static function list_packages($type, $services): Collection|array
     {
-        return Package::where('status',true)->with('services')->get();
+        return Package::where('status', true)
+            ->where('type', $type)
+            ->whereHas('services', function ($q) use ($services) {
+                $q->whereIn('services.id', $services);
+            })
+            ->with('services')
+            ->get();
     }
 
     public static function pluck_duration()

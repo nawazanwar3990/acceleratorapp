@@ -68,12 +68,13 @@ class PackageController extends Controller
     public function store(PackageRequest $request)
     {
         $this->authorize('create', Package::class);
+        $type = $request->input('type');
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.packages.create')
+                return redirect()->route('dashboard.packages.create',['type'=>$type])
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.packages.index')
+                return redirect()->route('dashboard.packages.index',['type'=>$type])
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -99,9 +100,10 @@ class PackageController extends Controller
      */
     public function update(PackageRequest $request, $id)
     {
+        $type = $request->input('type');
         $this->authorize('update', Package::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.packages.index')
+            return redirect()->route('dashboard.packages.index',['type'=>$type])
                 ->with('success', __('general.record_updated_successfully'));
         }
     }

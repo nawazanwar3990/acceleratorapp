@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Enum\MediaTypeEnum;
+use App\Enum\PackageTypeEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
@@ -10,6 +11,7 @@ use App\Models\Media;
 use App\Models\Subscription;
 use App\Services\BaService;
 use App\Services\GeneralService;
+use App\Services\PackageService;
 use App\Traits\General;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -43,7 +45,9 @@ class BAController extends Controller
         if ($id) {
             $model = BA::find($id);
         }
+        $services = array();
         $prev_step = null;
+        $packages = null;
         if ($step == StepEnum::STEP2) {
             $prev_step = route('website.ba.create', [StepEnum::STEP1]);
         } else if ($step == StepEnum::STEP3) {
@@ -51,6 +55,10 @@ class BAController extends Controller
         } else if ($step == StepEnum::STEP4) {
             $prev_step = route('website.ba.create', [StepEnum::STEP3, $model->id]);
         } else if ($step == StepEnum::STEP5) {
+            foreach ($model->services as $service) {
+                $services[] = $service->id;
+            }
+            $packages = PackageService::list_packages(PackageTypeEnum::BUSINESS_ACCELERATOR,$services);
             $prev_step = route('website.ba.create', [StepEnum::STEP4, $model->id]);
         } else if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
@@ -59,7 +67,8 @@ class BAController extends Controller
                 'model',
                 'prev_step',
                 'subscription',
-                'id'
+                'id',
+                'packages'
             ));
         }
         return view('website.ba.create', compact(

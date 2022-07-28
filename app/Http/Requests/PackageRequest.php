@@ -28,7 +28,7 @@ class PackageRequest extends FormRequest
         $model->slug = Str::slug($model->name, '-');
         $model->created_by = \auth()->id();
         $model->updated_by = \auth()->id();
-        $model->types = json_encode($this->input('types',array()));
+        $model->type = $this->input('type');
         if ($this->has('status')){
             $model->status=true;
         }else{
@@ -43,7 +43,7 @@ class PackageRequest extends FormRequest
     {
         $model =  Package::findorFail($id);
         $model->update($this->all());
-        $model->types = json_encode($this->input('types',array()));
+        $model->type = $this->input('type');
         if ($this->has('status')){
             $model->status=true;
         }else{

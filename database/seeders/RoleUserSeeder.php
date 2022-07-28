@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class RoleUserSeeder extends Seeder
 {
-    /**
-     * Run the database seeders.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -24,18 +19,6 @@ class RoleUserSeeder extends Seeder
             [
                 'role_id' => Role::whereSlug(RoleEnum::SUPER_ADMIN)->value('id'),
                 'user_id' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'role_id' => Role::whereSlug(RoleEnum::BUSINESS_ACCELERATOR)->value('id'),
-                'user_id' => 2,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'role_id' => Role::whereSlug(RoleEnum::CUSTOMER)->value('id'),
-                'user_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]

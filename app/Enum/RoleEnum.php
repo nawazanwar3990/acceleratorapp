@@ -15,7 +15,7 @@ class RoleEnum extends AbstractEnum
     public const BUSINESS_ACCELERATOR = KeyWordEnum::BUSINESS_ACCELERATOR;
     public const CUSTOMER = KeyWordEnum::CUSTOMER;
     public const FREELANCER = KeyWordEnum::FREELANCER;
-    public const INVESTOR = KeyWordEnum::INVESTOR;
+    public const MENTOR = KeyWordEnum::MENTOR;
 
     public static function getValues(): array
     {
@@ -24,7 +24,7 @@ class RoleEnum extends AbstractEnum
             self::BUSINESS_ACCELERATOR,
             self::CUSTOMER,
             self::FREELANCER,
-            self::INVESTOR
+            self::MENTOR
         ];
     }
 
@@ -35,7 +35,7 @@ class RoleEnum extends AbstractEnum
             self::BUSINESS_ACCELERATOR => __('general.' . self::BUSINESS_ACCELERATOR),
             self::CUSTOMER => __('general.' . self::CUSTOMER),
             self::FREELANCER => __('general.' . self::FREELANCER),
-            self::INVESTOR => __('general.' . self::INVESTOR),
+            self::MENTOR => __('general.' . self::MENTOR),
         ];
     }
     public static function check_permission($user, $permission): bool

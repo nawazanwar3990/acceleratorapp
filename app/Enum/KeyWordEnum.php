@@ -80,10 +80,11 @@ class KeyWordEnum extends AbstractEnum
     public const PACKAGE_SERVICE = 'package_service';
 
     public const MEETING_ROOM = 'meeting-room';
-    public const MENTORSHIP_WITH_INVESTMENT ='mentorship-with-investment' ;
-    public const MENTORSHIP_WITHOUT_INVESTMENT ='mentorship-without-investment' ;
+    public const MENTORSHIP_WITH_INVESTMENT = 'mentorship-with-investment';
+    public const MENTORSHIP_WITHOUT_INVESTMENT = 'mentorship-without-investment';
     public const ONLY_INVESTMENT = 'only-investment';
     public const PAYMENT_RECEIPT = 'payment-receipt';
+    public const MENTOR = 'mentor';
 
 
     static function getConstants()
