@@ -53,7 +53,13 @@ class BAController extends Controller
             $prev_step = route('website.ba.create', [StepEnum::STEP4, $model->id]);
         } else if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
-            $prev_step = route('website.ba.create', [StepEnum::STEP5, $model->id]);
+            return view('website.ba.print', compact(
+                'step',
+                'model',
+                'prev_step',
+                'subscription',
+                'id'
+            ));
         }
         return view('website.ba.create', compact(
             'step',

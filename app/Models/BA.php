@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enum\TableEnum;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,7 +28,10 @@ class BA extends Model
     {
         return json_decode($values);
     }
-
+    public function getCompanyDateOfInitiationAttribute($value)
+    {
+        return Carbon::parse($value)->format('d M Y');
+    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

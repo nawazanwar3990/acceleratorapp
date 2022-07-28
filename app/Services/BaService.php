@@ -121,9 +121,10 @@ class BaService
 
         $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
         if ($alreadySubscription->exists()) {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
             $alreadySubscription->delete();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
-
         $payment_token_number = request()->input('payment_token_number');
         $payment_addition_information = request()->input('payment_addition_information');
 
