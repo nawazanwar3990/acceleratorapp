@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Customer extends Model
+class FreelancerJob extends Model
 {
     use HasFactory;
 
-    protected $table = TableEnum::CUSTOMERS;
+    protected $table = TableEnum::FREELANCER_JOB;
 
-    public function user(): BelongsTo
+    public function freelancer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Freelancer::class, 'freelancer_id');
     }
 }

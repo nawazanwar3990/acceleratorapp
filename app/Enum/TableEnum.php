@@ -45,6 +45,14 @@ class TableEnum extends AbstractEnum
     public const BA_SERVICE = 'ba_service';
     public const VERIFY_USERS = 'verify_users';
 
+    public const FREELANCERS = 'freelancers';
+    public const CUSTOMERS = 'customers';
+    public const MENTORS = 'mentors';
+
+    public const FREELANCER_JOB = 'freelancer_job';
+    public const FREELANCER_EDUCATION = 'freelancer_education';
+    public const FREELANCER_SERVICE = 'freelancer_service';
+
     public static function getValues(): array
     {
         return [];
