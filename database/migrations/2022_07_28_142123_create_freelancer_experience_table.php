@@ -9,18 +9,18 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create(TableEnum::FREELANCER_JOB, function (Blueprint $table) {
+        Schema::create(TableEnum::FREELANCER_EXPERIENCE, function (Blueprint $table) {
             $table->id();
             $table->foreignId('freelancer_id')->nullable()->constrained(TableEnum::FREELANCERS);
+            $table->string('company_name')->nullable();
             $table->string('designation')->nullable();
-            $table->string('from')->nullable();
-            $table->string('till')->nullable();
-            $table->string('expertise')->nullable();
+            $table->string('duration')->nullable();
+            $table->text('any_achievement')->nullable();
             $table->timestamps();
         });
     }
     public function down()
     {
-        Schema::dropIfExists(TableEnum::FREELANCER_JOB);
+        Schema::dropIfExists(TableEnum::FREELANCER_EXPERIENCE);
     }
 };

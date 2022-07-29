@@ -9,18 +9,18 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create(TableEnum::FREELANCER_EDUCATION, function (Blueprint $table) {
+        Schema::create(TableEnum::FREELANCER_QUALIFICATION, function (Blueprint $table) {
             $table->id();
             $table->foreignId('freelancer_id')->nullable()->constrained(TableEnum::FREELANCERS);
             $table->string('degree')->nullable();
             $table->string('institute')->nullable();
-            $table->string('session_start')->nullable();
-            $table->string('session_end')->nullable();
+            $table->string('year_of_passing')->nullable();
+            $table->string('grade')->nullable();
             $table->timestamps();
         });
     }
     public function down()
     {
-        Schema::dropIfExists(TableEnum::FREELANCER_EDUCATION);
+        Schema::dropIfExists(TableEnum::FREELANCER_QUALIFICATION);
     }
 };

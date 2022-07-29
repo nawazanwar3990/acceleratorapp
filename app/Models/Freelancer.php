@@ -21,12 +21,12 @@ class Freelancer extends Model
 
     public function jobs(): HasMany
     {
-        return $this->hasMany(FreelancerJob::class, 'freelancer_id');
+        return $this->hasMany(FreelancerExperience::class, 'freelancer_id');
     }
 
     public function educations(): HasMany
     {
-        return $this->hasMany(FreelancerEducation::class, 'freelancer_id');
+        return $this->hasMany(FreelancerQualification::class, 'freelancer_id');
     }
     public function services(): BelongsToMany
     {

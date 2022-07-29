@@ -49,9 +49,13 @@ class TableEnum extends AbstractEnum
     public const CUSTOMERS = 'customers';
     public const MENTORS = 'mentors';
 
-    public const FREELANCER_JOB = 'freelancer_job';
-    public const FREELANCER_EDUCATION = 'freelancer_education';
+    public const FREELANCER_EXPERIENCE = 'freelancer_experience';
+
+    public const FREELANCER_QUALIFICATION = 'freelancer_qualification';
     public const FREELANCER_SERVICE = 'freelancer_service';
+
+    public const FREELANCER_FOCAL_PERSON = 'freelancer_focal_person';
+    public const FREELANCER_CERTIFICATION = 'freelancer_certification';
 
     public static function getValues(): array
     {
