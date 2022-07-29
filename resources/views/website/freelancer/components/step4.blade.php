@@ -35,11 +35,24 @@
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('confirm_password' ,__('general.confirm_password').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         @if(isset($model->user))
-            <input type="password" name="password_confirmation" class="form-control" value="{{$model->user->normal_password}}"/>
+            <input type="password" name="password_confirmation" class="form-control"
+                   value="{{$model->user->normal_password}}"/>
         @else
             {!!  Form::password('password_confirmation',['id'=>'confirm_password','class'=>'form-control','required']) !!}
         @endif
     </div>
+</div>
+@if(isset($model) AND $model->type== \App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+    <div class="row">
+        <div class="col-12">
+            @include('website.components.fields.qualification')
+        </div>
+        <div class="col-12">
+            @include('website.components.fields.experience')
+        </div>
+    </div>
+@endif
+<div class="row">
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('security_question_name' ,__('general.secret_question').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
         {!!  Form::select('security_question_name',\App\Enum\SecurityQuestionEnum::getTranslationKeys(),isset($model->user)?$model->user->security_question_name:null,['id'=>'security_question_name','class'=>'form-control','placeholder'=>__('general.select'), 'required']) !!}

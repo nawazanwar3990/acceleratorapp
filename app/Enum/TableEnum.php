@@ -44,7 +44,7 @@ class TableEnum extends AbstractEnum
     public const BA = 'ba';
     public const BA_SERVICE = 'ba_service';
     public const VERIFY_USERS = 'verify_users';
-    public const BA_QUALIFICATION = 'bar_qualification';
+    public const BA_QUALIFICATION = 'ba_qualification';
     public const BA_CERTIFICATION = 'ba_certification';
     public const BA_EXPERIENCE = 'ba_experience';
 
