@@ -17,7 +17,12 @@
             @break
         @case(\App\Enum\StepEnum::STEP4)
             <h2 class="text-center fw-bold">
-                {{ trans('general.packages') }}
+                {{ trans('general.create_user_information') }}
+            </h2>
+            @break
+        @case(\App\Enum\StepEnum::STEP5)
+            <h2 class="text-center fw-bold">
+                {{ trans('general.package') }}
             </h2>
             @break
     @endswitch

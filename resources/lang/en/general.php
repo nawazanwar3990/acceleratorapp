@@ -2,7 +2,7 @@
 return [
 
     'employment_type'=>'Employment Type',
-
+    'create_user_info'=>'Create User Info',
     'package_type' => "Package Type",
     'mentor' => 'Mentor',
     'package_types' => array(

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enum\FreelancerTypeEnum;
 use App\Enum\MediaTypeEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
@@ -82,7 +83,11 @@ class FreelancerController extends Controller
                     break;
                 case StepEnum::STEP2;
                     $model = $this->freelancerService->saveServices($model->type, $model);
-                    return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
+                    if ($model->type == FreelancerTypeEnum::INDIVIDUAL) {
+                        return redirect()->route('website.freelancers.create', [StepEnum::STEP4, $model->id]);
+                    } else {
+                        return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
+                    }
                     break;
                 case StepEnum::STEP3;
                     $model = $this->freelancerService->saveFocalPersonInfo($model->type, $model);
@@ -123,7 +128,12 @@ class FreelancerController extends Controller
         } else {
             $type = $request->input('type');
             $model = $this->freelancerService->saveStep1($type, $model);
-            return redirect()->route('website.freelancers.create', [StepEnum::STEP1, $model->id]);
+            if ($model->type == FreelancerTypeEnum::INDIVIDUAL) {
+                return redirect()->route('website.freelancers.create', [StepEnum::STEP2, $model->id]);
+            } else {
+                return redirect()->route('website.freelancers.create', [StepEnum::STEP1, $model->id]);
+            }
+
         }
     }
 
