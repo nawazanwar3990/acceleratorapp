@@ -25,13 +25,13 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-6 text-md-start">
-                                <h3>{{ $model->company_name }}</h3>
-                                <p>{{__('general.company_no_of_emp')}} : {{ $model->company_no_of_emp }}</p>
-                                <p>{{__('general.company_date_of_initiation')}}
-                                    : {{ $model->company_date_of_initiation }}</p>
-                                <p>{{__('general.company_address')}} : {{ $model->company_address }}</p>
-                                <p>{{__('general.company_contact_no')}} : {{ $model->company_contact_no }}</p>
-                                <p>{{__('general.company_email')}} : {{ $model->company_email }}</p>
+                                <h3>{{ $model->sp_name }}</h3>
+                                <p>{{__('general.sp_no_of_emp')}} : {{ $model->sp_no_of_emp }}</p>
+                                <p>{{__('general.sp_date_of_initiation')}}
+                                    : {{ $model->sp_date_of_initiation }}</p>
+                                <p>{{__('general.sp_address')}} : {{ $model->sp_address }}</p>
+                                <p>{{__('general.sp_contact_no')}} : {{ $model->sp_contact_no }}</p>
+                                <p>{{__('general.sp_email')}} : {{ $model->sp_email }}</p>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-md-end">
@@ -126,7 +126,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    @if($model->other_services AND count($model->other_services)>0)
+                                    @if($model->other_services AND is_array($model->other_services))
                                         <table class="table table-hover table-striped mt-md-5">
                                             <thead>
                                             <tr class="text-center">
@@ -155,7 +155,7 @@
                                     Invoice
                                 </button>
                                 <a class="btn btn-primary text-white"
-                                   href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
+                                   href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
                                     <i class="fa fa-edit"></i> Edit Profile
                                 </a>
                             </div>
@@ -167,7 +167,7 @@
                         </div>
 
                         <div class="mt-md-4">
-                            <p class="footer">Company Information</p>
+                            <p class="footer">Service Provider Information</p>
                             <hr>
                         </div>
 
