@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enum\AcceleratorTypeEnum;
 use App\Enum\MediaTypeEnum;
 use App\Enum\PackageTypeEnum;
 use App\Enum\StepEnum;
@@ -125,7 +126,11 @@ class BAController extends Controller
         } else {
             $type = $request->input('type');
             $model = $this->baService->saveStep1($type, $model);
-            return redirect()->route('website.ba.create', [StepEnum::STEP1, $model->id]);
+            if ($model->type == AcceleratorTypeEnum::INDIVIDUAL) {
+                return redirect()->route('website.ba.create', [StepEnum::STEP2, $model->id]);
+            } else {
+                return redirect()->route('website.ba.create', [StepEnum::STEP1, $model->id]);
+            }
         }
     }
 

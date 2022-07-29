@@ -2,11 +2,13 @@
     <h4 class="fw-bold">{{ trans('general.business_accelerator') }}</h4>
     <h6 class="fw-bold text-muted">{{ $step }}</h6>
     <ul class="progress-bar text-left">
-        <li class="{{ $step==\App\Enum\StepEnum::STEP1?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
-                {{ trans('general.company_profile') }}
-            </a>
-        </li>
+        @if(isset($model) AND $model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
+            <li class="{{ $step==\App\Enum\StepEnum::STEP1?'active-link':'in-active-link' }}">
+                <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
+                    {{ trans('general.company_profile') }}
+                </a>
+            </li>
+        @endif
         <li class="{{ $step==\App\Enum\StepEnum::STEP2?'active-link':'in-active-link' }}">
             <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP3,$id]) }}">
                 {{ trans('general.services_of_business_accelerator') }}
