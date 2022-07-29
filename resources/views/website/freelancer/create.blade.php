@@ -114,7 +114,7 @@
                         'payment_type':payment_type,
                     }
                     $.ajax({
-                        url: "{{ route('website.ba.store',[$step,($model)?$model->id:null]) }}",
+                        url: "{{ route('website.freelancers.store',[$step,($model)?$model->id:null]) }}",
                         method: 'POST',
                         data: data,
                         success: function (response) {
