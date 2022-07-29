@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('is_register_sp' ,__('general.is_register_sp'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('is_register_sp',\App\Services\GeneralService::yesOrNoForDropdown(),isset($model)?$model->is_register_sp:null,['id'=>'is_register_sp','class'=>'form-control','required','placeholder'=>trans('general.select')]) !!}
+        {!!  Form::select('is_register_sp',\App\Services\GeneralService::yesOrNoForDropdown(),isset($model)?$model->is_register_sp:null,['id'=>'is_register_company','class'=>'form-control','required','placeholder'=>trans('general.select')]) !!}
     </div>
 </div>
 <div class="row @if(isset($model) AND $model->is_register_sp=='yes') d-block @else d-none @endif"

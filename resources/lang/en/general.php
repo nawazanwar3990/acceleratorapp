@@ -128,6 +128,7 @@ return [
     'meeting_room' => 'Meeting Room',
     'dedicated_room' => 'Dedicated Room',
     'shared_office' => "Shared Office",
+    'service_provider_company_profile'=>'Service Provider Company Profile',
 
     'renewal_request' => 'Renewal Request',
     'basic_service' => 'Basic Service',
@@ -151,7 +152,7 @@ return [
 
     'register_types' => [
         'business_accelerator' => 'Business Accelerator',
-        'freelancer' => 'Freelancer',
+        'freelancer' => 'Freelancer/Service Provider Company',
         'customer' => 'Customer',
         'mentor' => 'Mentor'
     ],

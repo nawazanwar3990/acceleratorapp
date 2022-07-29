@@ -21,7 +21,7 @@ class FreelancerTypeEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::SERVICE_PROVIDER => 'Service Provider',
+            self::SERVICE_PROVIDER => 'Service provider company',
             self::INDIVIDUAL => 'Freelancer'
         ];
     }

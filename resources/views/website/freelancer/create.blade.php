@@ -19,7 +19,7 @@
                                         @switch($step)
                                             @case(\App\Enum\StepEnum::STEP2)
                                                 <h2 class="text-center fw-bold">
-                                                    {{ trans('general.service_provider_profile') }}
+                                                    {{ trans('general.service_provider_company_profile') }}
                                                 </h2>
                                                 @break
                                             @case(\App\Enum\StepEnum::STEP3)
