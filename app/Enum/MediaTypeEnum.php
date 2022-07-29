@@ -27,6 +27,10 @@ class MediaTypeEnum extends AbstractEnum
 
     public const  SUBSCRIPTION_RECEIPT = 'subscription_receipt';
 
+    public const  SP_LOGO = 'sp_logo';
+    public const  SP_REGISTERED_CERTIFICATE = 'sp_registered_certificate';
+    public const  SP_PROVED_DOCUMENTS = 'sp_proved_documents';
+
     public static function getValues(): array
     {
         return array();

@@ -89,3 +89,46 @@ function removeClonedRow(cElement) {
         alert("At least one row is Required");
     }
 }
+
+let doc = 1;
+let img = 1;
+function addDocumentField() {
+    doc++;
+    let objTo = document.getElementById('documents')
+    let divDoc = document.createElement("div");
+    divDoc.setAttribute("class", "mb-3 doc-remove-class" + doc);
+    divDoc.innerHTML = '<div class="row">' +
+        '<div class="col-sm-10">' +
+        '<input type="file" class="form-control dropify" name="documents[]" data-height="75" data-allowed-file-extensions="doc docx pdf">' +
+        '</div>' +
+        '<div class="col-sm-2">' +
+        '<button class="btn btn-danger" type="button" onclick="removeDocumentField(' + doc + ');"> <i class="bx  bx-trash"></i> </button>' +
+        '</div>' +
+        '</div><div class="clear"></div>';
+
+    objTo.appendChild(divDoc)
+    initDropify();
+}
+function removeDocumentField(rid) {
+    $('.doc-remove-class' + rid).remove();
+}
+function addImageField() {
+    img++;
+    let objTo = document.getElementById('images')
+    let divDoc = document.createElement("div");
+    divDoc.setAttribute("class", "mb-3 img-remove-class" + img);
+    divDoc.innerHTML = '<div class="row">' +
+        '<div class="col-sm-10">' +
+        '<input type="file" class="form-control dropify" name="images[]" data-height="75" data-allowed-file-extensions="jpg jpeg png bmp">' +
+        '</div>' +
+        '<div class="col-sm-2">' +
+        '<button class="btn btn-danger" type="button" onclick="removeImageField(' + img + ');"> <i class="bx  bx-trash"></i> </button>' +
+        '</div>' +
+        '</div><div class="clear"></div>';
+
+    objTo.appendChild(divDoc)
+    initDropify();
+}
+function removeImageField(rid) {
+    $('.img-remove-class' + rid).remove();
+}

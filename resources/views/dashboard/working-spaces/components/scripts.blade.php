@@ -233,7 +233,6 @@
 
         let doc = 1;
         let img = 1;
-
         function addDocumentField() {
             doc++;
             let objTo = document.getElementById('documents')
@@ -251,11 +250,9 @@
             objTo.appendChild(divDoc)
             initDropify();
         }
-
         function removeDocumentField(rid) {
             $('.doc-remove-class' + rid).remove();
         }
-
         function addImageField() {
             img++;
             let objTo = document.getElementById('images')
@@ -273,7 +270,6 @@
             objTo.appendChild(divDoc)
             initDropify();
         }
-
         function removeImageField(rid) {
             $('.img-remove-class' + rid).remove();
         }

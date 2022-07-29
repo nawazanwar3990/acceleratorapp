@@ -84,4 +84,10 @@
         {!!  Html::decode(Form::label('sp_address' ,__('general.sp_address').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
         {!!  Form::textarea('sp_address',isset($model)?$model->sp_address:null,['id'=>'sp_address','class'=>'form-control','required','rows'=>3]) !!}
     </div>
+    <div class="row">
+        <div class="col-12 mb-3">
+            @include('website.freelancer.components.media')
+        </div>
+
+    </div>
 </div>
