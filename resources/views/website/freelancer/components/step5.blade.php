@@ -1,6 +1,6 @@
 <div class="row pt-3 justify-content-center">
     <div class="row pricing-plan">
-        @foreach($packages as $package)
+        @foreach(\App\Services\PackageService::list_packages($model->services,\App\Enum\PackageTypeEnum::FREELANCER) as $package)
             <div class="col-md-4 col-xs-12 col-sm-4 no-padding">
                 <div class="pricing-box border">
                     <div class="pricing-body border-0">
@@ -22,7 +22,7 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="price-table-content" style="height: 350px;">
+                        <div class="price-table-content">
                             @foreach($package->services as $service)
                                 <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;">
                                     <i class="bx bx-check text-success"></i> {{ $service->pivot->limit }} {{ $service->name }}</div>

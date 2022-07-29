@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Services;
-use App\Enum\FreelancerTypeEnum;
+
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
+use App\Models\BA;
 use App\Models\Freelancer;
 use App\Models\Package;
 use App\Models\Subscription;
@@ -29,43 +30,39 @@ class FreelancerService
         return $model;
     }
 
-    public function saveStep2($type, $model)
+    public function saveCompanyProfile($type, $model)
     {
-        if ($type == FreelancerTypeEnum::SERVICE_PROVIDER) {
-            $model->sp_name = request()->input('sp_name', null);
-            $model->is_register_sp = request()->input('is_register_sp', null);
-            $model->sp_no_of_emp = request()->input('sp_no_of_emp', null);
-            $model->sp_date_of_initiation = request()->input('sp_date_of_initiation', null);
-            $model->sp_contact_no = request()->input('sp_contact_no', null);
-            $model->sp_email = request()->input('sp_email', null);
-            $model->sp_address = request()->input('sp_address', null);
-            if ($model->save()) {
-                if ($model->is_register_sp == 'yes') {
-                    $sp_institutes = request()->input('sp_institutes', array());
-                    $model->sp_institutes = json_encode($sp_institutes);
-                    $model->save();
-                }
-                return $model;
-            }
-        }
-        return $model;
-    }
-
-    public function saveStep3($type, $model)
-    {
-        if ($type == FreelancerTypeEnum::SERVICE_PROVIDER) {
-            $services = request()->input('services');
-            $model->services()->sync($services);
-            $other_services = request()->input('other_services', array());
-            if (count($other_services) > 0) {
-                $model->other_services = json_encode($other_services);
+        $model->sp_name = request()->input('sp_name', null);
+        $model->is_register_sp = request()->input('is_register_sp', null);
+        $model->sp_no_of_emp = request()->input('sp_no_of_emp', null);
+        $model->sp_date_of_initiation = request()->input('sp_date_of_initiation', null);
+        $model->sp_contact_no = request()->input('sp_contact_no', null);
+        $model->sp_email = request()->input('sp_email', null);
+        $model->sp_address = request()->input('sp_address', null);
+        if ($model->save()) {
+            if ($model->is_register_sp == 'yes') {
+                $sp_institutes = request()->input('sp_institutes', array());
+                $model->sp_institutes = json_encode($sp_institutes);
                 $model->save();
             }
+            return $model;
         }
         return $model;
     }
 
-    public function saveStep4($type, $model, $user_id)
+    public function saveServices($type, $model)
+    {
+        $services = request()->input('services');
+        $model->services()->sync($services);
+        $other_services = request()->input('other_services', array());
+        if (count($other_services) > 0) {
+            $model->other_services = json_encode($other_services);
+            $model->save();
+        }
+        return $model;
+    }
+
+    public function saveUseInfo($type, $model, $user_id)
     {
         $user = ($user_id) ? User::find($user_id) : new User();
 
@@ -105,7 +102,7 @@ class FreelancerService
         return $model;
     }
 
-    public function saveStep5($type): bool
+    public function applySubscription($type): bool
     {
         $subscription_id = request()->input('subscription_id');
         $subscribed_id = request()->input('subscribed_id');
@@ -146,5 +143,28 @@ class FreelancerService
             return false;
         }
 
+    }
+
+    public function saveFocalPersonInfo($type, $model)
+    {
+        $count = request()->input('fp_name', array());
+        $data = request()->all();
+        $records = array();
+        if (count($count) > 0) {
+            $model->focal_persons()->delete();
+            for ($i = 0; $i < count($count); $i++) {
+                $records[] = [
+                    'fp_name' => $data['fp_name'][$i],
+                    'fp_designation' => $data['fp_designation'][$i],
+                    'fp_emp_type' => $data['fp_emp_type'][$i],
+                    'fp_contact' => $data['fp_contact'][$i],
+                    'fp_email' => $data['fp_email'][$i],
+                ];
+            }
+        }
+        if (count($records) > 0) {
+            $model->focal_persons()->createMany($records);
+        }
+        return $model;
     }
 }

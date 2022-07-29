@@ -38,40 +38,34 @@ class BAController extends Controller
         //
     }
 
-    public function create(Request $request, $step, $id = null): Factory|View|Application
+    public function create(
+        Request $request,
+                $step,
+                $id = null
+    )
     {
+
+        if (!$step) {
+            return view('website.ba.create');
+        }
+
         $model = null;
         $subscription = null;
+        $prev_step = null;
         if ($id) {
             $model = BA::find($id);
         }
-        $services = array();
-        $prev_step = null;
-        $packages = null;
-        if ($step == StepEnum::STEP2) {
-            $prev_step = route('website.ba.create', [StepEnum::STEP1]);
-        } else if ($step == StepEnum::STEP3) {
-            $prev_step = route('website.ba.create', [StepEnum::STEP2, $model->id]);
-        } else if ($step == StepEnum::STEP4) {
-            $prev_step = route('website.ba.create', [StepEnum::STEP3, $model->id]);
-        } else if ($step == StepEnum::STEP5) {
-            foreach ($model->services as $service) {
-                $services[] = $service->id;
-            }
-            $packages = PackageService::list_packages(PackageTypeEnum::BUSINESS_ACCELERATOR,$services);
-            $prev_step = route('website.ba.create', [StepEnum::STEP4, $model->id]);
-        } else if ($step == StepEnum::PRINT) {
+        if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             return view('website.ba.print', compact(
                 'step',
                 'model',
                 'prev_step',
                 'subscription',
-                'id',
-                'packages'
+                'id'
             ));
         }
-        return view('website.ba.create', compact(
+        return view('website.ba.step', compact(
             'step',
             'model',
             'prev_step',
@@ -86,52 +80,52 @@ class BAController extends Controller
         if ($id) {
             $model = BA::find($id);
         }
-        switch ($step) {
-            case StepEnum::STEP1;
-                $type = $request->input('type');
-                $model = $this->baService->saveStep1($type, $model);
-                return redirect()->route('website.ba.create', [StepEnum::STEP2, $model->id]);
-                break;
-            case StepEnum::STEP2;
-                $model = $this->baService->saveStep2($model->type, $model);
-                return redirect()->route('website.ba.create', [StepEnum::STEP3, $model->id]);
-                break;
-            case StepEnum::STEP3;
-                $model = $this->baService->saveStep3($model->type, $model);
-                return redirect()->route('website.ba.create', [StepEnum::STEP4, $model->id]);
-                break;
-            case StepEnum::STEP4;
+        if ($step) {
+            switch ($step) {
+                case StepEnum::STEP1;
+                    $model = $this->baService->saveCompanyProfile($model->type, $model);
+                    return redirect()->route('website.ba.create', [StepEnum::STEP2, $model->id]);
+                    break;
+                case StepEnum::STEP2;
+                    $model = $this->baService->saveServices($model->type, $model);
+                    return redirect()->route('website.ba.create', [StepEnum::STEP3, $model->id]);
+                    break;
+                case StepEnum::STEP3;
+                    $user_id = $request->input('user_id', null);
+                    if ($user_id) {
+                        $request->validate([
+                            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
+                            'password' => ['required', 'string', 'min:8', 'confirmed']
+                        ]);
+                    } else {
+                        $request->validate([
+                            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                            'password' => ['required', 'string', 'min:8', 'confirmed']
+                        ]);
+                    }
 
-                $user_id = $request->input('user_id', null);
-                if ($user_id) {
-                    $request->validate([
-                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
-                        'password' => ['required', 'string', 'min:8', 'confirmed']
+                    $model = $this->baService->saveUseInfo($model->type, $model, $user_id);
+                    return redirect()->route('website.ba.create', [StepEnum::STEP4, $model->id]);
+                    break;
+                case StepEnum::STEP4;
+                    $response = $this->baService->applySubscription($model->type);
+                    $payment_type = $request->input('payment_type');
+                    if ($payment_type == 'pre_apply') {
+                        $url = route('website.index');
+                        Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
+                    } else {
+                        $url = route('website.ba.create', [StepEnum::PRINT, $model->id]);
+                    }
+                    return response()->json([
+                        'status' => $response,
+                        'url' => $url
                     ]);
-                } else {
-                    $request->validate([
-                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                        'password' => ['required', 'string', 'min:8', 'confirmed']
-                    ]);
-                }
-
-                $model = $this->baService->saveStep4($model->type, $model, $user_id);
-                return redirect()->route('website.ba.create', [StepEnum::STEP5, $model->id]);
-                break;
-            case StepEnum::STEP5;
-                $response = $this->baService->saveStep5($model->type);
-                $payment_type = $request->input('payment_type');
-                if ($payment_type == 'pre_apply') {
-                    $url = route('website.index');
-                    Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
-                } else {
-                    $url = route('website.ba.create', [StepEnum::PRINT, $model->id]);
-                }
-                return response()->json([
-                    'status' => $response,
-                    'url' => $url
-                ]);
-                break;
+                    break;
+            }
+        } else {
+            $type = $request->input('type');
+            $model = $this->baService->saveStep1($type, $model);
+            return redirect()->route('website.ba.create', [StepEnum::STEP1, $model->id]);
         }
     }
 

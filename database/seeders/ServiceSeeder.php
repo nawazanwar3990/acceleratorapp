@@ -75,5 +75,47 @@ class ServiceSeeder extends Seeder
         foreach ($freelancerServices as $service) {
             Service::create($service);
         }
+
+        $baServices = array(
+            [
+                'name' => 'Incubator',
+                'slug' => 'incubator',
+                'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
+                'status' => true
+            ],
+            [
+                'name' => 'Freelancer',
+                'slug' => 'freelancer',
+                'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Meeting Room',
+                'slug' => 'meeting-room',
+                'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'MentorShip with Investment',
+                'slug' => 'mentorship-with-investment',
+                'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Mentorship with out Investment',
+                'slug' => 'mentorship-with-out-investment',
+                'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
+                'status' => true,
+            ],
+            [
+                'name' => 'Only Investment',
+                'slug' => 'only-investment',
+                'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
+                'status' => true,
+            ]
+        );
+        foreach ($baServices as $service) {
+            Service::create($service);
+        }
     }
 }

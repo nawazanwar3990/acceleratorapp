@@ -26,12 +26,12 @@
                         <div class="row">
                             <div class="col-sm-6 text-md-start">
                                 <h3>{{ $model->sp_name }}</h3>
-                                <p>{{__('general.sp_no_of_emp')}} : {{ $model->sp_no_of_emp }}</p>
-                                <p>{{__('general.sp_date_of_initiation')}}
+                                <p>{{__('general.company_no_of_emp')}} : {{ $model->sp_no_of_emp }}</p>
+                                <p>{{__('general.company_date_of_initiation')}}
                                     : {{ $model->sp_date_of_initiation }}</p>
-                                <p>{{__('general.sp_address')}} : {{ $model->sp_address }}</p>
-                                <p>{{__('general.sp_contact_no')}} : {{ $model->sp_contact_no }}</p>
-                                <p>{{__('general.sp_email')}} : {{ $model->sp_email }}</p>
+                                <p>{{__('general.company_address')}} : {{ $model->sp_address }}</p>
+                                <p>{{__('general.company_contact_no')}} : {{ $model->sp_contact_no }}</p>
+                                <p>{{__('general.company_email')}} : {{ $model->sp_email }}</p>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-md-end">
@@ -126,7 +126,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    @if($model->other_services AND is_array($model->other_services))
+                                    @if($model->other_services AND is_array($model->other_services)>0)
                                         <table class="table table-hover table-striped mt-md-5">
                                             <thead>
                                             <tr class="text-center">
@@ -167,7 +167,7 @@
                         </div>
 
                         <div class="mt-md-4">
-                            <p class="footer">Service Provider Information</p>
+                            <p class="footer">Company Information</p>
                             <hr>
                         </div>
 

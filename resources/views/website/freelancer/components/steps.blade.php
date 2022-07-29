@@ -3,18 +3,18 @@
     <h6 class="fw-bold text-muted">{{ $step }}</h6>
     <ul class="progress-bar text-left">
         <li class="{{ $step==\App\Enum\StepEnum::STEP1?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP1,$id]) }}">
-                {{ trans('general.freelancer_type') }}
+            <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
+                {{ trans('general.company_profile') }}
             </a>
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP2?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
-                {{ trans('general.service_provider_profile') }}
+            <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP3,$id]) }}">
+                {{ trans('general.services_of_freelancers') }}
             </a>
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP3?'active-link':'in-active-link' }}">
             <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP3,$id]) }}">
-                {{ trans('general.services_of_freelancer') }}
+                {{ trans('general.focal_person_detail') }}
             </a>
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP4?'active-link':'in-active-link' }}">

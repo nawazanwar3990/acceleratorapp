@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\EmployeeTypeEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -24,6 +25,25 @@ return new class extends Migration
             $table->string('company_email')->nullable();
 
             $table->json('other_services')->nullable();
+
+
+            $table->string('ba_full_name')->nullable();
+            $table->string('ba_father_name')->nullable();
+            $table->string('ba_contact')->nullable();
+            $table->string('ba_emergency_contact')->nullable();
+            $table->string('ba_email')->nullable();
+            $table->string('ba_postal_code')->nullable();
+
+
+            $table->enum('ba_already_emp',['yes','no'])->default('no');
+            $table->enum('ba_emp_type', EmployeeTypeEnum::getValues())->default(EmployeeTypeEnum::ONLINE);
+
+
+            $table->string('ba_emp_location')->nullable();
+            $table->string('ba_emp_timing')->nullable();
+            $table->string('ba_emp_designation')->nullable();
+            $table->text('ba_description')->nullable();
+
 
             $table->timestamps();
         });

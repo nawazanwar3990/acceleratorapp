@@ -18,13 +18,16 @@ class Freelancer extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public function jobs(): HasMany
+    public function focal_persons(): HasMany
+    {
+        return $this->hasMany(FreelancerFocalPerson::class, 'freelancer_id','id');
+    }
+    public function experiences(): HasMany
     {
         return $this->hasMany(FreelancerExperience::class, 'freelancer_id');
     }
 
-    public function educations(): HasMany
+    public function qualifications(): HasMany
     {
         return $this->hasMany(FreelancerQualification::class, 'freelancer_id');
     }

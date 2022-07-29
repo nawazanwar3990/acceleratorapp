@@ -1,93 +1,78 @@
-<div class="row">
-    <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('sp_name' ,__('general.company_name').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::text('sp_name',isset($model)?$model->sp_name:null,['id'=>'sp_name','class'=>'form-control','required']) !!}
-    </div>
-    <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('is_register_sp' ,__('general.is_register_sp'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('is_register_sp',\App\Services\GeneralService::yesOrNoForDropdown(),isset($model)?$model->is_register_sp:null,['id'=>'is_register_company','class'=>'form-control','required','placeholder'=>trans('general.select')]) !!}
-    </div>
-</div>
-<div class="row @if(isset($model) AND $model->is_register_sp=='yes') d-block @else d-none @endif"
-     id="institute_holder">
-    <div class="col-12 mb-3">
-        <table class="table table-bordered table-hover table-sm">
-            <thead class="thead-light">
-            <tr>
-                <th class="text-center">{{ __('general.affiliate_with') }}</th>
-                <th class="text-center">{{ __('general.add_remove') }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            @if(isset($model) AND $model->is_register_sp=='yes' AND count($model->sp_institutes)>0)
-                @foreach($model->sp_institutes as $sp_institute)
-                    <tr>
-                        <td>
-                            {!!  Form::text('sp_institutes[]',$sp_institute,['id'=>'sp_institutes[]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
-                        </td>
-                        <td class="text-center">
-                            <a href="javascript:void(0);"
-                               onclick="cloneRow(this);"
-                               class="btn btn-xs btn-info">
-                                <i class="bx bx-plus"></i>
-                            </a>
-                            <a href="javascript:void(0);" tabindex="18"
-                               onclick="removeClonedRow(this);"
-                               class="btn btn-xs btn-danger">
-                                <i class="bx bx-minus"></i>
-                            </a>
-                        </td>
-                    </tr>
+<div class="row pt-4 justify-content-center">
+    <div class="col-12">
+        <table class="table table-sm table-bordered">
+            @php $selected_services = array() @endphp
+            @if(isset($model) AND count($model->services)>0)
+                @foreach($model->services as $service)
+                    @php  $selected_services[]=$service->id @endphp
                 @endforeach
-            @else
+            @endif
+            @foreach(\App\Services\ServiceData::get_freelancer_services() as $service)
                 <tr>
-                    <td>
-                        {!!  Form::text('sp_institutes[]',null,['id'=>'sp_institutes[]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
-                    </td>
-                    <td class="text-center">
-                        <a href="javascript:void(0);"
-                           onclick="cloneRow(this);"
-                           class="btn btn-xs btn-info">
-                            <i class="bx bx-plus"></i>
-                        </a>
-                        <a href="javascript:void(0);" tabindex="18"
-                           onclick="removeClonedRow(this);"
-                           class="btn btn-xs btn-danger">
-                            <i class="bx bx-minus"></i>
-                        </a>
+                    <th class="py-2">
+                        {{ $service->name }}
+                    </th>
+                    <td class="py-2 justify-content-center">
+                        <div class="form-check form-switch">
+                            {!! Form::checkbox('services[]',$service->id,in_array($service->id,$selected_services)?true:false,['class'=>'form-check-input align-self-center']) !!}
+                            <label class="form-check-label"></label>
+                        </div>
                     </td>
                 </tr>
-            @endif
-            </tbody>
+            @endforeach
         </table>
-
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('sp_no_of_emp' ,__('general.sp_no_of_emp').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::number('sp_no_of_emp',isset($model)?$model->sp_no_of_emp:null,['id'=>'sp_no_of_emp','class'=>'form-control','required']) !!}
-    </div>
-    <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('sp_date_of_initiation' ,__('general.sp_date_of_initiation').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::date('sp_date_of_initiation',isset($model)?$model->sp_date_of_initiation:null,['id'=>'sp_date_of_initiation','class'=>'form-control','required']) !!}
-    </div>
-    <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('sp_contact_no' ,__('general.sp_contact_no').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::text('sp_contact_no',isset($model)?$model->sp_contact_no:null,['id'=>'sp_contact_no','class'=>'form-control','required']) !!}
-    </div>
-    <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('sp_email' ,__('general.sp_email').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::email('sp_email',isset($model)?$model->sp_email:null,['id'=>'sp_email','class'=>'form-control','required']) !!}
-    </div>
-    <div class="col-12 mb-3">
-        {!!  Html::decode(Form::label('sp_address' ,__('general.sp_address').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::textarea('sp_address',isset($model)?$model->sp_address:null,['id'=>'sp_address','class'=>'form-control','required','rows'=>3]) !!}
-    </div>
-    <div class="row">
-        <div class="col-12 mb-3">
-            @include('website.freelancer.components.media')
+        <div
+            class="card other_services_holder">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ trans('general.other_services') }}</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm table-bordered">
+                    <tbody>
+                    @if(isset($model) AND (is_array($model->other_services) AND count($model->other_services)>0))
+                        @if(count($model->other_services)>0)
+                            @foreach($model->other_services as $service)
+                                <tr>
+                                    <th class="py-2">
+                                        {!! Form::text('other_services[]',$service,['id'=>'other_services[]','class'=>'form-control form-control-sm"']) !!}
+                                    </th>
+                                    <td class="text-center pt-2">
+                                        <a href="javascript:void(0);"
+                                           onclick="cloneRow(this);"
+                                           class="btn btn-xs btn-info">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+                                        <a href="javascript:void(0);" tabindex="18"
+                                           onclick="removeClonedRow(this);"
+                                           class="btn btn-xs btn-danger">
+                                            <i class="bx bx-minus"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    @else
+                        <tr>
+                            <th class="py-2">
+                                {!! Form::text('other_services[]',null,['id'=>'other_services[]','class'=>'form-control form-control-sm"']) !!}
+                            </th>
+                            <td class="text-center pt-2">
+                                <a href="javascript:void(0);"
+                                   onclick="cloneRow(this);"
+                                   class="btn btn-xs btn-info">
+                                    <i class="bx bx-plus"></i>
+                                </a>
+                                <a href="javascript:void(0);" tabindex="18"
+                                   onclick="removeClonedRow(this);"
+                                   class="btn btn-xs btn-danger">
+                                    <i class="bx bx-minus"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
-
     </div>
 </div>

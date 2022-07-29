@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Website;
 
 use App\Enum\MediaTypeEnum;
-use App\Enum\PackageTypeEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Freelancer;
@@ -11,11 +10,7 @@ use App\Models\Media;
 use App\Models\Subscription;
 use App\Services\FreelancerService;
 use App\Services\GeneralService;
-use App\Services\PackageService;
 use App\Traits\General;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -37,46 +32,39 @@ class FreelancerController extends Controller
         //
     }
 
-    public function create(Request $request, $step, $id = null): Factory|View|Application
+    public function create(
+        Request $request,
+                $step,
+                $id = null
+    )
     {
+
+        if (!$step) {
+            return view('website.freelancer.create');
+        }
+
         $model = null;
         $subscription = null;
-        if ($id) {
-            $model = Freelancer::find($id);
-        }
-        $services = array();
         $prev_step = null;
-        $packages = null;
-        if ($step == StepEnum::STEP2) {
-            $prev_step = route('website.freelancers.create', [StepEnum::STEP1]);
-        } else if ($step == StepEnum::STEP3) {
-            $prev_step = route('website.freelancers.create', [StepEnum::STEP2, $model->id]);
-        } else if ($step == StepEnum::STEP4) {
-            $prev_step = route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
-        } else if ($step == StepEnum::STEP5) {
-            foreach ($model->services as $service) {
-                $services[] = $service->id;
-            }
-            $packages = PackageService::list_packages(PackageTypeEnum::FREELANCER,$services);
-            $prev_step = route('website.freelancers.create', [StepEnum::STEP4, $model->id]);
-        } else if ($step == StepEnum::PRINT) {
+        if ($id) {
+            $model = Freelancer::with('focal_persons')->find($id);
+        }
+        if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             return view('website.freelancer.print', compact(
                 'step',
                 'model',
                 'prev_step',
                 'subscription',
-                'id',
-                'packages'
+                'id'
             ));
         }
-        return view('website.freelancer.create', compact(
+        return view('website.freelancer.step', compact(
             'step',
             'model',
             'prev_step',
             'subscription',
-            'id',
-            'packages'
+            'id'
         ));
     }
 
@@ -84,54 +72,58 @@ class FreelancerController extends Controller
     {
         $model = null;
         if ($id) {
-            $model = Freelancer::find($id);
+            $model = Freelancer::with('focal_persons')->find($id);
         }
-        switch ($step) {
-            case StepEnum::STEP1;
-                $type = $request->input('type');
-                $model = $this->freelancerService->saveStep1($type, $model);
-                return redirect()->route('website.freelancers.create', [StepEnum::STEP2, $model->id]);
-                break;
-            case StepEnum::STEP2;
-                $model = $this->freelancerService->saveStep2($model->type, $model);
-                return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
-                break;
-            case StepEnum::STEP3;
-                $model = $this->freelancerService->saveStep3($model->type, $model);
-                return redirect()->route('website.freelancers.create', [StepEnum::STEP4, $model->id]);
-                break;
-            case StepEnum::STEP4;
+        if ($step) {
+            switch ($step) {
+                case StepEnum::STEP1;
+                    $model = $this->freelancerService->saveCompanyProfile($model->type, $model);
+                    return redirect()->route('website.freelancers.create', [StepEnum::STEP2, $model->id]);
+                    break;
+                case StepEnum::STEP2;
+                    $model = $this->freelancerService->saveServices($model->type, $model);
+                    return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
+                    break;
+                case StepEnum::STEP3;
+                    $model = $this->freelancerService->saveFocalPersonInfo($model->type, $model);
+                    return redirect()->route('website.freelancers.create', [StepEnum::STEP4, $model->id]);
+                    break;
+                case StepEnum::STEP4;
+                    $user_id = $request->input('user_id', null);
+                    if ($user_id) {
+                        $request->validate([
+                            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
+                            'password' => ['required', 'string', 'min:8', 'confirmed']
+                        ]);
+                    } else {
+                        $request->validate([
+                            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                            'password' => ['required', 'string', 'min:8', 'confirmed']
+                        ]);
+                    }
 
-                $user_id = $request->input('user_id', null);
-                if ($user_id) {
-                    $request->validate([
-                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
-                        'password' => ['required', 'string', 'min:8', 'confirmed']
+                    $model = $this->freelancerService->saveUseInfo($model->type, $model, $user_id);
+                    return redirect()->route('website.freelancers.create', [StepEnum::STEP5, $model->id]);
+                    break;
+                case StepEnum::STEP5;
+                    $response = $this->freelancerService->applySubscription($model->type);
+                    $payment_type = $request->input('payment_type');
+                    if ($payment_type == 'pre_apply') {
+                        $url = route('website.index');
+                        Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
+                    } else {
+                        $url = route('website.freelancers.create', [StepEnum::PRINT, $model->id]);
+                    }
+                    return response()->json([
+                        'status' => $response,
+                        'url' => $url
                     ]);
-                } else {
-                    $request->validate([
-                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                        'password' => ['required', 'string', 'min:8', 'confirmed']
-                    ]);
-                }
-
-                $model = $this->freelancerService->saveStep4($model->type, $model, $user_id);
-                return redirect()->route('website.freelancers.create', [StepEnum::STEP5, $model->id]);
-                break;
-            case StepEnum::STEP5;
-                $response = $this->freelancerService->saveStep5($model->type);
-                $payment_type = $request->input('payment_type');
-                if ($payment_type == 'pre_apply') {
-                    $url = route('website.index');
-                    Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
-                } else {
-                    $url = route('website.freelancers.create', [StepEnum::PRINT, $model->id]);
-                }
-                return response()->json([
-                    'status' => $response,
-                    'url' => $url
-                ]);
-                break;
+                    break;
+            }
+        } else {
+            $type = $request->input('type');
+            $model = $this->freelancerService->saveStep1($type, $model);
+            return redirect()->route('website.freelancers.create', [StepEnum::STEP1, $model->id]);
         }
     }
 

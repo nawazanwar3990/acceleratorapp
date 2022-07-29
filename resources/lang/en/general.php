@@ -1,11 +1,16 @@
 <?php
 return [
+
+    'employment_type'=>'Employment Type',
+
     'package_type' => "Package Type",
     'mentor' => 'Mentor',
     'package_types' => array(
         'business_accelerator' => 'Business Accelerator Packages',
         'freelancer' => 'Freelancer Packages'
     ),
+    'services_of_freelancers'=>'Services of Freelancers',
+    'focal_person_detail'=>'Focal Person detail',
     'freelancer_type'=>'Freelancer Type',
     'service_provider_profile'=>'Service Provider Profile',
     'services_of_freelancer'=>'Services Of Freelancer',

@@ -38,43 +38,39 @@ class BaService
         return $model;
     }
 
-    public function saveStep2($type, $model)
+    public function saveCompanyProfile($type, $model)
     {
-        if ($type == AcceleratorTypeEnum::COMPANY) {
-            $model->company_name = request()->input('company_name', null);
-            $model->is_register_company = request()->input('is_register_company', null);
-            $model->company_no_of_emp = request()->input('company_no_of_emp', null);
-            $model->company_date_of_initiation = request()->input('company_date_of_initiation', null);
-            $model->company_contact_no = request()->input('company_contact_no', null);
-            $model->company_email = request()->input('company_email', null);
-            $model->company_address = request()->input('company_address', null);
-            if ($model->save()) {
-                if ($model->is_register_company == 'yes') {
-                    $company_institutes = request()->input('company_institutes', array());
-                    $model->company_institutes = json_encode($company_institutes);
-                    $model->save();
-                }
-                return $model;
-            }
-        }
-        return $model;
-    }
-
-    public function saveStep3($type, $model)
-    {
-        if ($type == AcceleratorTypeEnum::COMPANY) {
-            $services = request()->input('services');
-            $model->services()->sync($services);
-            $other_services = request()->input('other_services', array());
-            if (count($other_services) > 0) {
-                $model->other_services = json_encode($other_services);
+        $model->company_name = request()->input('company_name', null);
+        $model->is_register_company = request()->input('is_register_company', null);
+        $model->company_no_of_emp = request()->input('company_no_of_emp', null);
+        $model->company_date_of_initiation = request()->input('company_date_of_initiation', null);
+        $model->company_contact_no = request()->input('company_contact_no', null);
+        $model->company_email = request()->input('company_email', null);
+        $model->company_address = request()->input('company_address', null);
+        if ($model->save()) {
+            if ($model->is_register_company == 'yes') {
+                $company_institutes = request()->input('company_institutes', array());
+                $model->company_institutes = json_encode($company_institutes);
                 $model->save();
             }
+            return $model;
         }
         return $model;
     }
 
-    public function saveStep4($type, $model, $user_id)
+    public function saveServices($type, $model)
+    {
+        $services = request()->input('services');
+        $model->services()->sync($services);
+        $other_services = request()->input('other_services', array());
+        if (count($other_services) > 0) {
+            $model->other_services = json_encode($other_services);
+            $model->save();
+        }
+        return $model;
+    }
+
+    public function saveUseInfo($type, $model, $user_id)
     {
         $user = ($user_id) ? User::find($user_id) : new User();
 
@@ -114,7 +110,7 @@ class BaService
         return $model;
     }
 
-    public function saveStep5($type): bool
+    public function applySubscription($type): bool
     {
         $subscription_id = request()->input('subscription_id');
         $subscribed_id = request()->input('subscribed_id');
