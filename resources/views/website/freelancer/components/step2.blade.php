@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 mb-3">
-        {!!  Html::decode(Form::label('sp_name' ,__('general.sp_name').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
+        {!!  Html::decode(Form::label('sp_name' ,__('general.company_name').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
         {!!  Form::text('sp_name',isset($model)?$model->sp_name:null,['id'=>'sp_name','class'=>'form-control','required']) !!}
     </div>
     <div class="col-md-6 mb-3">
