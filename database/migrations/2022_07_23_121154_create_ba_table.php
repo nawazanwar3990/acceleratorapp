@@ -27,11 +27,9 @@ return new class extends Migration
             $table->json('other_services')->nullable();
 
 
-            $table->string('ba_full_name')->nullable();
             $table->string('ba_father_name')->nullable();
             $table->string('ba_contact')->nullable();
             $table->string('ba_emergency_contact')->nullable();
-            $table->string('ba_email')->nullable();
             $table->string('ba_postal_code')->nullable();
 
 
@@ -42,7 +40,7 @@ return new class extends Migration
             $table->string('ba_emp_location')->nullable();
             $table->string('ba_emp_timing')->nullable();
             $table->string('ba_emp_designation')->nullable();
-            $table->text('ba_description')->nullable();
+            $table->text('ba_emp_description')->nullable();
 
 
             $table->timestamps();

@@ -27,7 +27,7 @@
             @endif
             <div class="col-12 mb-3">
                 {!!  Html::decode(Form::label('email' ,__('general.user_name').'(Email)'.'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-                {!!  Form::email('email',isset($model->user)?$model->user->email:null,['id'=>'email','class'=>'form-control','required','placeholder'=>'abc@gmail.com']) !!}
+                {!!  Form::email('email',$model->user->email??null,['id'=>'email','class'=>'form-control','required','placeholder'=>'abc@gmail.com']) !!}
                 @error('email')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -36,11 +36,11 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('first_name' ,__('general.first_name'),['class'=>'form-label']))   !!}
-                {!!  Form::text('first_name',isset($model->user)?$model->user->first_name:null,['id'=>'first_name','class'=>'form-control']) !!}
+                {!!  Form::text('first_name',$model->user->first_name??null,['id'=>'first_name','class'=>'form-control']) !!}
             </div>
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('last_name' ,__('general.last_name'),['class'=>'form-label']))   !!}
-                {!!  Form::text('last_name',isset($model->user)?$model->user->last_name:null,['id'=>'first_name','class'=>'form-control']) !!}
+                {!!  Form::text('last_name',$model->user->last_name??null,['id'=>'first_name','class'=>'form-control']) !!}
             </div>
             @if($model->type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
                 <div class="col-md-6 mb-3">
@@ -84,9 +84,50 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     {!!  Html::decode(Form::label('f_already_emp' ,__('general.already_employee'),['class'=>'form-label']))   !!}
-                    {!!  Form::select('f_already_emp',['yes'=>'Yes','no'=>'No'],$model->f_already_emp??null,['id'=>'f_already_emp','class'=>'form-control','placeholder'=>'select']) !!}
+                    {!!  Form::select('f_already_emp',['yes'=>'Yes','no'=>'No'],$model->f_already_emp??null,['id'=>'f_already_emp','class'=>'form-control','placeholder'=>'select','onchange'=>'already_employee();']) !!}
                 </div>
             @endif
+        </div>
+        @if($model->type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+            <div class="row justify-content-center">
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">{{ __('general.employee_information') }}</h4>
+                        </div>
+                        <div class="card-body">
+                           <div class="text-center">
+                               @foreach(\App\Enum\EmployeeTypeEnum::getTranslationKeys() as $emp_key=>$emp_value)
+                                   <div class="form-check form-switch form-check-inline">
+                                       {!! Form::radio('f_emp_type',$emp_value,false,['id'=>$emp_key,'class'=>'form-check-input']) !!}
+                                       {!! Form::label($emp_key,$emp_value,['class'=>'form-check-label']) !!}
+                                   </div>
+                               @endforeach
+                           </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6 mb-3">
+                                    {!!  Html::decode(Form::label('f_emp_location' ,__('general.employee_location'),['class'=>'form-label']))   !!}
+                                    {!!  Form::text('f_emp_location',$model->f_emp_location??null,['id'=>'f_emp_location','class'=>'form-control']) !!}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {!!  Html::decode(Form::label('f_emp_timing' ,__('general.employee_timing'),['class'=>'form-label']))   !!}
+                                    {!!  Form::text('f_emp_timing',$model->f_emp_timing??null,['id'=>'f_emp_timing','class'=>'form-control']) !!}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {!!  Html::decode(Form::label('f_emp_designation' ,__('general.employee_designation'),['class'=>'form-label']))   !!}
+                                    {!!  Form::text('f_emp_designation',$model->f_emp_designation??null,['id'=>'f_emp_designation','class'=>'form-control']) !!}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {!!  Html::decode(Form::label('f_emp_description' ,__('general.employee_description'),['class'=>'form-label']))   !!}
+                                    {!!  Form::text('f_emp_description',$model->f_emp_description??null,['id'=>'f_emp_description','class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        <div class="row">
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('security_question_name' ,__('general.secret_question').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 {!!  Form::select('security_question_name',\App\Enum\SecurityQuestionEnum::getTranslationKeys(),isset($model->user)?$model->user->security_question_name:null,['id'=>'security_question_name','class'=>'form-control','placeholder'=>__('general.select'), 'required']) !!}

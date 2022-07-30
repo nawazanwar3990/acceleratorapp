@@ -26,12 +26,10 @@ return new class extends Migration {
             $table->string('sp_email')->nullable();
             $table->json('other_services')->nullable();
 
-
-            $table->string('f_full_name')->nullable();
             $table->string('f_father_name')->nullable();
             $table->string('f_contact')->nullable();
             $table->string('f_emergency_contact')->nullable();
-            $table->string('f_email')->nullable();
+
             $table->string('f_postal_code')->nullable();
 
 
@@ -42,7 +40,7 @@ return new class extends Migration {
             $table->string('f_emp_location')->nullable();
             $table->string('f_emp_timing')->nullable();
             $table->string('f_emp_designation')->nullable();
-            $table->text('f_description')->nullable();
+            $table->text('f_emp_description')->nullable();
 
             $table->timestamps();
 

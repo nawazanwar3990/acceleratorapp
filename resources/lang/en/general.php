@@ -1,20 +1,26 @@
 <?php
 return [
 
+    'employee_location' => 'Employee Location',
+    'employee_timing' => 'Employee Timing',
+    'employee_designation' => 'Employee Designation',
+    'employee_description' => 'Employee Description',
 
-    'certificate_name'=>'Certificate Name',
-    'any_distinction'=>'Any Distinction',
+    'employee_information' => 'Employee Information',
 
-    'year'=>'Year',
+    'certificate_name' => 'Certificate Name',
+    'any_distinction' => 'Any Distinction',
 
-    'contact_number'=>'Contact No',
-    'emergency_contact_number'=>'Emergency Contact No',
+    'year' => 'Year',
+
+    'contact_number' => 'Contact No',
+    'emergency_contact_number' => 'Emergency Contact No',
 
 
-    'already_employee'=>'Already Employee',
+    'already_employee' => 'Already Employee',
 
 
-    'certifications'=>'Certifications',
+    'certifications' => 'Certifications',
 
     'qualifications' => 'Qualifications',
     'year_of_passing' => 'Year of Passing',
