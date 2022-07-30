@@ -4,23 +4,23 @@
     <ul class="progress-bar text-left">
         @if(isset($model) AND $model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
             <li class="{{ $step==\App\Enum\StepEnum::STEP1?'active-link':'in-active-link' }}">
-                <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
+                <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$id]) }}">
                     {{ trans('general.company_profile') }}
                 </a>
             </li>
         @endif
         <li class="{{ $step==\App\Enum\StepEnum::STEP2?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP3,$id]) }}">
+            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
                 {{ trans('general.services_of_business_accelerator') }}
             </a>
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP3?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP4,$id]) }}">
+            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP3,$id]) }}">
                 {{ trans('general.user_info') }}
             </a>
         </li>
         <li class="{{ $step==\App\Enum\StepEnum::STEP4?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP5,$id]) }}">
+            <a href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP4,$id]) }}">
                 {{ trans('general.packages') }}
             </a>
         </li>

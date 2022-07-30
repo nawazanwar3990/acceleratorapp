@@ -27,6 +27,7 @@ function already_employee(cElement) {
         $("input[name=f_emp_type]").prop("checked", false);
     }
 }
+
 function change_emp_type(cElement) {
 
     let employee_type_holder = $("#employee_type_holder");
@@ -34,7 +35,7 @@ function change_emp_type(cElement) {
 
     employee_type_holder.removeClass('d-block d-none');
 
-    if (value==='physical' || value==='remote' || value==='online') {
+    if (value === 'physical' || value === 'remote' || value === 'online') {
 
         employee_type_holder.addClass('d-block');
 
@@ -44,6 +45,7 @@ function change_emp_type(cElement) {
 
     }
 }
+
 function applyLogin(types) {
     types = JSON.parse(types);
     let html = '<div class="row justify-content-center">';
@@ -121,6 +123,16 @@ function removeClonedRow(cElement) {
     }
 }
 
+function clone_dropify(cElement) {
+    let closest_holder = $(cElement).closest('.dropify_parent_holder');
+    let clone = closest_holder.clone();
+    closest_holder.after(clone);
+    $('.dropify').dropify();
+}
+function remove_clone_dropify(cElement){
+    let closest_holder = $(cElement).closest('.dropify_parent_holder');
+    closest_holder.remove();
+}
 function clone_table_body(cElement) {
     let clone = $(cElement).closest('tbody').clone();
     $(clone).find('input[type=text]').val('');

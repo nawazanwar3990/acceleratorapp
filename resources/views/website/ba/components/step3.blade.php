@@ -1,6 +1,4 @@
-@if(isset($model) AND $model->type== \App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
-    @include('website.components.fields.user-tabs')
-@endif
+@include('website.components.fields.user-tabs')
 <div class="tab-content tabcontent-border p-3">
     <div class="tab-pane active" id="basic_info" role="tabpanel">
         <div class="row">

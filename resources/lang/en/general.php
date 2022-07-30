@@ -1,6 +1,12 @@
 <?php
 return [
 
+    'id_card_front' => 'CNIC Front',
+    'id_card_back' => 'CNIC Back',
+
+    'degrees'=>'Degrees',
+    'certificates'=>'Certificates',
+
     'employee_location' => 'Employee Location',
     'employee_timing' => 'Employee Timing',
     'employee_designation' => 'Employee Designation',
