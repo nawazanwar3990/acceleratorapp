@@ -12,13 +12,13 @@
                 </td>
                 <td>
                     {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label']) !!}
-                    {!!  Form::text('qualifications[institute][]',null,['id'=>'qualifications[institute][]','class'=>'form-control datepicker']) !!}
+                    {!!  Form::text('qualifications[institute][]',null,['id'=>'qualifications[institute][]','class'=>'form-control']) !!}
                 </td>
             </tr>
             <tr>
                 <td>
                     {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label']) !!}
-                    {!!  Form::text('qualifications[year_of_passing][]',null,['id'=>'qualifications[year_of_passing][]','class'=>'form-control datepicker']) !!}
+                    {!!  Form::text('qualifications[year_of_passing][]',null,['id'=>'qualifications[year_of_passing][]','class'=>'form-control']) !!}
                 </td>
                 <td>
                     {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label']) !!}

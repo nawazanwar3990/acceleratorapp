@@ -13,6 +13,10 @@
             <a class="nav-link" data-bs-toggle="tab" href="#experiences" role="tab" aria-selected="true">
                 <span class="hidden-xs-down">{{ trans('general.experiences') }}</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#certifications" role="tab" aria-selected="true">
+                <span class="hidden-xs-down">{{ trans('general.certifications') }}</span></a>
+        </li>
     </ul>
 @endif
 <div class="tab-content tabcontent-border p-3">
@@ -38,8 +42,12 @@
                 {!!  Html::decode(Form::label('last_name' ,__('general.last_name'),['class'=>'form-label']))   !!}
                 {!!  Form::text('last_name',isset($model->user)?$model->user->last_name:null,['id'=>'first_name','class'=>'form-control']) !!}
             </div>
-        </div>
-        <div class="row">
+            @if($model->type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+                <div class="col-md-6 mb-3">
+                    {!!  Html::decode(Form::label('f_father_name' ,__('general.father_name'),['class'=>'form-label']))   !!}
+                    {!!  Form::text('f_father_name',$model->f_father_name??null,['id'=>'f_father_name','class'=>'form-control']) !!}
+                </div>
+            @endif
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('password' ,__('general.password').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 @if(isset($model->user))
@@ -61,8 +69,24 @@
                     {!!  Form::password('password_confirmation',['id'=>'confirm_password','class'=>'form-control','required']) !!}
                 @endif
             </div>
-        </div>
-        <div class="row">
+            @if($model->type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+                <div class="col-md-6 mb-3">
+                    {!!  Html::decode(Form::label('f_contact' ,__('general.contact_number'),['class'=>'form-label']))   !!}
+                    {!!  Form::text('f_contact',$model->f_contact??null,['id'=>'f_contact','class'=>'form-control']) !!}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {!!  Html::decode(Form::label('f_emergency_contact' ,__('general.emergency_contact_number'),['class'=>'form-label']))   !!}
+                    {!!  Form::text('f_emergency_contact',$model->f_emergency_contact??null,['id'=>'f_emergency_contact','class'=>'form-control']) !!}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {!!  Html::decode(Form::label('f_postal_code' ,__('general.postal_code'),['class'=>'form-label']))   !!}
+                    {!!  Form::text('f_postal_code',$model->f_postal_code??null,['id'=>'f_postal_code','class'=>'form-control']) !!}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {!!  Html::decode(Form::label('f_already_emp' ,__('general.already_employee'),['class'=>'form-label']))   !!}
+                    {!!  Form::select('f_already_emp',['yes'=>'Yes','no'=>'No'],$model->f_already_emp??null,['id'=>'f_already_emp','class'=>'form-control','placeholder'=>'select']) !!}
+                </div>
+            @endif
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('security_question_name' ,__('general.secret_question').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 {!!  Form::select('security_question_name',\App\Enum\SecurityQuestionEnum::getTranslationKeys(),isset($model->user)?$model->user->security_question_name:null,['id'=>'security_question_name','class'=>'form-control','placeholder'=>__('general.select'), 'required']) !!}
@@ -71,7 +95,7 @@
                 {!!  Html::decode(Form::label('security_question_value' ,__('general.answer'),['class'=>'col-form-label']))   !!}
                 {!!  Form::text('security_question_value',isset($model->user)?$model->user->security_question_value:null,['id'=>'security_question_value','class'=>'form-control','required']) !!}
             </div>
-            <div class="col-12 mb-3">
+            <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('know_about_us' ,__('general.how_did_you_hear_about_us').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 {!!  Form::select('know_about_us',\App\Enum\KnowAboutUsEnum::getTranslationKeys(),isset($model->user)?$model->user->know_about_us:null,['id'=>'know_about_us','class'=>'form-control','placeholder'=>__('general.select'), 'required']) !!}
             </div>
@@ -88,6 +112,13 @@
         <div class="row">
             <div class="col-12">
                 @include('website.components.fields.experience')
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="certifications" role="tabpanel">
+        <div class="row">
+            <div class="col-12">
+                @include('website.components.fields.certifications')
             </div>
         </div>
     </div>

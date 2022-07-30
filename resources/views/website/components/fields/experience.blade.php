@@ -12,13 +12,13 @@
                 </td>
                 <td>
                     {!! Form::label('experiences[designation][]',__('general.designation'),['class'=>'form-label']) !!}
-                    {!!  Form::text('experiences[designation][]',null,['id'=>'experiences[designation][]','class'=>'form-control datepicker']) !!}
+                    {!!  Form::text('experiences[designation][]',null,['id'=>'experiences[designation][]','class'=>'form-control']) !!}
                 </td>
             </tr>
             <tr>
                 <td>
                     {!! Form::label('experiences[duration][]',__('general.duration'),['class'=>'form-label']) !!}
-                    {!!  Form::text('experiences[duration][]',null,['id'=>'experiences[duration][]','class'=>'form-control datepicker']) !!}
+                    {!!  Form::text('experiences[duration][]',null,['id'=>'experiences[duration][]','class'=>'form-control']) !!}
                 </td>
                 <td>
                     {!! Form::label('experiences[any_achievement][]',__('general.any_achievement'),['class'=>'form-label']) !!}

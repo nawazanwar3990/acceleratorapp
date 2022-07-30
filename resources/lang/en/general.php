@@ -1,6 +1,21 @@
 <?php
 return [
 
+
+    'certificate_name'=>'Certificate Name',
+    'any_distinction'=>'Any Distinction',
+
+    'year'=>'Year',
+
+    'contact_number'=>'Contact No',
+    'emergency_contact_number'=>'Emergency Contact No',
+
+
+    'already_employee'=>'Already Employee',
+
+
+    'certifications'=>'Certifications',
+
     'qualifications' => 'Qualifications',
     'year_of_passing' => 'Year of Passing',
     'experiences' => 'Experiences',
