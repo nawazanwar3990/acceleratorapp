@@ -18,7 +18,6 @@ class MentorProject extends Model
         'starting_date',
         'ending_date',
         'type',
-        'type',
         'further_remarks'
     ];
 
