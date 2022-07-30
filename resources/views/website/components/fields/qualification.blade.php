@@ -8,7 +8,7 @@
             <tr>
                 <td>
                     {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label']) !!}
-                    {!!  Form::text('qualifications[degree][]',null,['id'=>'qualifications[degree][]','class'=>'form-control','autocomplete'=>'off', 'required']) !!}
+                    {!!  Form::text('qualifications[degree][]',null,['id'=>'qualifications[degree][]','class'=>'form-control','autocomplete'=>'off']) !!}
                 </td>
                 <td>
                     {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label']) !!}

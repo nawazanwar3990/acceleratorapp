@@ -8,7 +8,7 @@
             <tr>
                 <td>
                     {!! Form::label('experiences[company_name][]',__('general.company_name'),['class'=>'form-label']) !!}
-                    {!!  Form::text('experiences[company_name][]',null,['id'=>'experiences[company_name][]','class'=>'form-control','autocomplete'=>'off', 'required']) !!}
+                    {!!  Form::text('experiences[company_name][]',null,['id'=>'experiences[company_name][]','class'=>'form-control','autocomplete'=>'off']) !!}
                 </td>
                 <td>
                     {!! Form::label('experiences[designation][]',__('general.designation'),['class'=>'form-label']) !!}

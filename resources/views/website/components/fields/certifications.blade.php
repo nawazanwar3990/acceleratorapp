@@ -8,7 +8,7 @@
             <tr>
                 <td>
                     {!! Form::label('certifications[certificate_name][]',__('general.certificate_name'),['class'=>'form-label']) !!}
-                    {!!  Form::text('certifications[certificate_name][]',null,['id'=>'certifications[certificate_name][]','class'=>'form-control','autocomplete'=>'off', 'required']) !!}
+                    {!!  Form::text('certifications[certificate_name][]',null,['id'=>'certifications[certificate_name][]','class'=>'form-control','autocomplete'=>'off']) !!}
                 </td>
                 <td>
                     {!! Form::label('certifications[institute][]',__('general.institute'),['class'=>'form-label']) !!}
