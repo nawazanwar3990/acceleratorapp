@@ -57,6 +57,7 @@ class TableEnum extends AbstractEnum
     public const FREELANCER_SERVICE = 'freelancer_service';
     public const FREELANCER_FOCAL_PERSON = 'freelancer_focal_person';
     public const FREELANCER_CERTIFICATION = 'freelancer_certification';
+    public const MENTOR_SERVICE = 'mentor_service';
 
     public static function getValues(): array
     {
