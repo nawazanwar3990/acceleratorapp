@@ -28,13 +28,15 @@ class ServiceController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function index(): Factory|View|Application
+    public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Service::class);
+        $type = $request->query('type');
         $records = $this->serviceData->listServicesByPagination();
         $params = [
             'pageTitle' => __('general.services'),
             'records' => $records,
+            'type' => $type
         ];
         return view('dashboard.services.index', $params);
     }
@@ -50,7 +52,7 @@ class ServiceController extends Controller
             'pageTitle' => __('general.new_service'),
             'type' => $type
         ];
-        return view('dashboard.services.create', compact('params'));
+        return view('dashboard.services.create', $params);
     }
 
     /**
@@ -61,10 +63,10 @@ class ServiceController extends Controller
         $this->authorize('create', Service::class);
         if ($model = $request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.services.create',['type'=>$model->type])
+                return redirect()->route('dashboard.services.create', ['type' => $model->type])
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.services.index',['type'=>$model->type])
+                return redirect()->route('dashboard.services.index', ['type' => $model->type])
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -93,7 +95,7 @@ class ServiceController extends Controller
     {
         $this->authorize('update', Service::class);
         if ($model = $request->updateData($id)) {
-           return redirect()->route('dashboard.services.index',['type'=>$model->type])
+            return redirect()->route('dashboard.services.index', ['type' => $model->type])
                 ->with('success', __('general.record_updated_successfully'));
         }
     }

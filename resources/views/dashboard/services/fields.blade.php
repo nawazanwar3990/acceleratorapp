@@ -17,13 +17,13 @@
         @enderror
     </div>
 </div>
-@if(request()->query('type')==\App\Enum\ServiceTypeEnum::FREELANCER_SERVICE)
+@if($type==\App\Enum\ServiceTypeEnum::MENTOR_SERVICE)
     <div class="mb-3 row">
         <div class="col-md-3">
             {!!  Html::decode(Form::label('parent_id' ,__('general.parent')."(Optional)" ,['class'=>'col-form-label']))   !!}
         </div>
         <div class="col-md-5">
-            {!!  Form::select('parent_id',\App\Services\ServiceData::getParentFreelancerServicesDropdown(),null,['id'=>'parent_id','class'=>'form-control ','placeholder'=>__('general.parent')]) !!}
+            {!!  Form::select('parent_id',\App\Services\ServiceData::getParentMentorServicesDropdown(),null,['id'=>'parent_id','class'=>'form-control ','placeholder'=>__('general.parent')]) !!}
         </div>
     </div>
 @endif

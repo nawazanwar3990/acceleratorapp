@@ -4,8 +4,9 @@ return [
     'id_card_front' => 'CNIC Front',
     'id_card_back' => 'CNIC Back',
 
-    'degrees'=>'Degrees',
-    'certificates'=>'Certificates',
+    'degrees' => 'Degrees',
+    'certificates' => 'Certificates',
+    'mentor_service' => 'Mentor Service',
 
     'employee_location' => 'Employee Location',
     'employee_timing' => 'Employee Timing',
