@@ -46,6 +46,12 @@ class ServiceData
             ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
     }
+    public static function get_mentor_services()
+    {
+        return Service::where('type', ServiceTypeEnum::MENTOR_SERVICE)
+            ->whereStatus(true)
+            ->orderBy('name', 'ASC')->get();
+    }
     public static function getBasicServices()
     {
         return Service::where('type', ServiceTypeEnum::BASIC_SERVICE)

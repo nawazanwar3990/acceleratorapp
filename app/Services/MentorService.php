@@ -29,7 +29,7 @@ class MentorService
     }
 
 
-    public function saveServices($type, $model)
+    public function saveServices($model)
     {
         $services = request()->input('services');
         $model->services()->sync($services);
@@ -41,7 +41,7 @@ class MentorService
         return $model;
     }
 
-    public function saveUseInfo($type, $model, $user_id)
+    public function saveUseInfo($model, $user_id)
     {
         $user = ($user_id) ? User::find($user_id) : new User();
 
@@ -81,7 +81,7 @@ class MentorService
         return $model;
     }
 
-    public function applySubscription($type): bool
+    public function applySubscription(): bool
     {
         $subscription_id = request()->input('subscription_id');
         $subscribed_id = request()->input('subscribed_id');

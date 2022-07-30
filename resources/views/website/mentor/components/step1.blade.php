@@ -7,7 +7,7 @@
                     @php  $selected_services[]=$service->id @endphp
                 @endforeach
             @endif
-            @foreach(\App\Services\ServiceData::get_freelancer_services() as $service)
+            @foreach(\App\Services\ServiceData::get_mentor_services() as $service)
                 <tr>
                     <th class="py-2">
                         {{ $service->name }}

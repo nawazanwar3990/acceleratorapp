@@ -36,5 +36,5 @@ Route::post('/customers/create/{step?}/{id?}', [CustomerController::class, 'stor
 
 Route::get('/mentors/create/{step?}/{id?}', [MentorController::class, 'create'])
     ->name('mentors.create');
-Route::post('/mentors/create/{step?}/{id?}', [MentorController::class, 'store'])
+Route::post('/mentors/store/{step?}/{id?}', [MentorController::class, 'store'])
     ->name('mentors.store');
