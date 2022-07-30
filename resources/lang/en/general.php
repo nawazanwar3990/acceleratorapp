@@ -3,6 +3,15 @@ return [
 
     'id_card_front' => 'CNIC Front',
     'id_card_back' => 'CNIC Back',
+    'mentor_services' => 'Mentor Services',
+    'mentor_detail' => 'Mentor Detail',
+    'projects' => 'Projects',
+    'project_title' => 'Project Title',
+    'starting_date' => 'Starting Date',
+    'ending_date' => 'Ending Date',
+    'project_type' => 'Project Type',
+    'further_remarks' => 'Further Remarks',
+
 
     'degrees' => 'Degrees',
     'certificates' => 'Certificates',

@@ -7,15 +7,15 @@
             <tbody>
             <tr>
                 <td>
-                    {!! Form::label('projects[project_title][]',__('general.project_title'),['class'=>'form-label']) !!}
-                    {!!  Form::text('projects[project_title][]',null,['id'=>'projects[project_title][]','class'=>'form-control','autocomplete'=>'off']) !!}
-                </td>
+
+                        {!! Form::label('projects[project_title][]',__('general.project_title'),['class'=>'form-label']) !!}
+                        {!!  Form::text('projects[project_title][]',null,['id'=>'projects[project_title][]','class'=>'form-control','autocomplete'=>'off']) !!}
+
+                    </td>
                 <td>
                     {!! Form::label('projects[starting_date][]',__('general.starting_date'),['class'=>'form-label']) !!}
                     {!!  Form::text('projects[starting_date][]',null,['id'=>'projects[starting_date][]','class'=>'form-control']) !!}
                 </td>
-            </tr>
-            <tr>
                 <td>
                     {!! Form::label('projects[ending_date][]',__('general.ending_date'),['class'=>'form-label']) !!}
                     {!!  Form::text('projects[ending_date][]',null,['id'=>'projects[ending_date][]','class'=>'form-control']) !!}
@@ -29,6 +29,7 @@
                     {!!  Form::textarea('projects[further_remarks][]',null,['id'=>'projects[further_remarks][]','class'=>'form-control']) !!}
                 </td>
             </tr>
+
             <td colspan="2" class="text-center">
                 <a href="javascript:void(0);"
                    onclick="clone_table_body(this);"
