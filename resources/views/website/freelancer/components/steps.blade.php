@@ -7,13 +7,13 @@
     <ul class="progress-bar text-left">
         @if(isset($model) AND $model->type==\App\Enum\FreelancerTypeEnum::SERVICE_PROVIDER)
             <li class="{{ $step==\App\Enum\StepEnum::STEP1?'active-link':'in-active-link' }}">
-                <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
+                <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP1,$id]) }}">
                     {{ trans('general.company_profile') }}
                 </a>
             </li>
         @endif
         <li class="{{ $step==\App\Enum\StepEnum::STEP2?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP3,$id]) }}">
+            <a href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP2,$id]) }}">
                 {{ trans('general.services_of_freelancers') }}
             </a>
         </li>
