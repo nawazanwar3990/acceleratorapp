@@ -50,6 +50,7 @@ class ServiceData
     {
         return Service::where('type', ServiceTypeEnum::MENTOR_SERVICE)
             ->whereStatus(true)
+            ->where('parent_id','!=',null)
             ->orderBy('name', 'ASC')->get();
     }
     public static function getBasicServices()

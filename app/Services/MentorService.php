@@ -20,17 +20,10 @@ class MentorService
     )
     {
     }
-
-    public function saveStep1($model): Mentor
+    public function saveServices($model): Mentor
     {
         $model = $model ?? new Mentor();
         $model->save();
-        return $model;
-    }
-
-
-    public function saveServices($model)
-    {
         $services = request()->input('services');
         $model->services()->sync($services);
         $other_services = request()->input('other_services', array());

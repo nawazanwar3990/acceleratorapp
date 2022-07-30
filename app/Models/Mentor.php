@@ -27,4 +27,8 @@ class Mentor extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::MENTOR_SERVICE);
+    }
 }

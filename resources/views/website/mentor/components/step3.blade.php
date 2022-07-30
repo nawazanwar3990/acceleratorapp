@@ -1,6 +1,6 @@
 <div class="row pt-3 justify-content-center">
     <div class="row pricing-plan">
-        @foreach(\App\Services\PackageService::list_packages($model->services,\App\Enum\PackageTypeEnum::FREELANCER) as $package)
+        @foreach(\App\Services\PackageService::list_packages($model->services,\App\Enum\PackageTypeEnum::MENTOR) as $package)
             <div class="col-md-4 col-xs-12 col-sm-4 no-padding">
                 <div class="pricing-box border">
                     <div class="pricing-body border-0">

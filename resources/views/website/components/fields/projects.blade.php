@@ -8,25 +8,29 @@
             <tr>
                 <td>
 
-                        {!! Form::label('projects[project_title][]',__('general.project_title'),['class'=>'form-label']) !!}
-                        {!!  Form::text('projects[project_title][]',null,['id'=>'projects[project_title][]','class'=>'form-control','autocomplete'=>'off']) !!}
+                    {!! Form::label('projects[project_title][]',__('general.project_title'),['class'=>'form-label']) !!}
+                    {!!  Form::text('projects[project_title][]',null,['id'=>'projects[project_title][]','class'=>'form-control','autocomplete'=>'off']) !!}
 
-                    </td>
+                </td>
                 <td>
                     {!! Form::label('projects[starting_date][]',__('general.starting_date'),['class'=>'form-label']) !!}
                     {!!  Form::text('projects[starting_date][]',null,['id'=>'projects[starting_date][]','class'=>'form-control']) !!}
                 </td>
+            </tr>
+            <tr>
                 <td>
                     {!! Form::label('projects[ending_date][]',__('general.ending_date'),['class'=>'form-label']) !!}
                     {!!  Form::text('projects[ending_date][]',null,['id'=>'projects[ending_date][]','class'=>'form-control']) !!}
                 </td>
                 <td>
                     {!! Form::label('projects[type][]',__('general.project_type'),['class'=>'form-label']) !!}
-                    {!!  Form::select('projects[type][]',\App\Enum\ProjectTypeEnum::getTranslationKeys(),['id'=>'projects[type][]','class'=>'form-control']) !!}
+                    {!!  Form::select('projects[type][]',\App\Enum\ProjectTypeEnum::getTranslationKeys(),null,['id'=>'projects[type][]','class'=>'form-control']) !!}
                 </td>
-                <td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     {!! Form::label('projects[further_remarks][]',__('general.further_remarks'),['class'=>'form-label']) !!}
-                    {!!  Form::textarea('projects[further_remarks][]',null,['id'=>'projects[further_remarks][]','class'=>'form-control']) !!}
+                    {!!  Form::textarea('projects[further_remarks][]',null,['id'=>'projects[further_remarks][]','class'=>'form-control','rows'=>'2']) !!}
                 </td>
             </tr>
 

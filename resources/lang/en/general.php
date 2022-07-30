@@ -11,6 +11,7 @@ return [
     'ending_date' => 'Ending Date',
     'project_type' => 'Project Type',
     'further_remarks' => 'Further Remarks',
+    'package_types.mentor'=>'Mentor Packages',
 
 
     'degrees' => 'Degrees',

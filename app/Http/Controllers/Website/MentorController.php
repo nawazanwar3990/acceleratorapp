@@ -67,7 +67,7 @@ class MentorController extends Controller
             switch ($step) {
                 case StepEnum::STEP1;
                     $model = $this->mentorService->saveServices($model);
-                    return redirect()->route('website.freelancers.create', [StepEnum::STEP2, $model->id]);
+                    return redirect()->route('website.mentors.create', [StepEnum::STEP2, $model->id]);
                     break;
                 case StepEnum::STEP2;
                     $user_id = $request->input('user_id', null);
@@ -83,7 +83,7 @@ class MentorController extends Controller
                         ]);
                     }
                     $model = $this->mentorService->saveUseInfo($model, $user_id);
-                    return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
+                    return redirect()->route('website.mentors.create', [StepEnum::STEP3, $model->id]);
                     break;
                 case StepEnum::STEP5;
                     $response = $this->mentorService->applySubscription();
@@ -92,7 +92,7 @@ class MentorController extends Controller
                         $url = route('website.index');
                         Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
                     } else {
-                        $url = route('website.freelancers.create', [StepEnum::PRINT, $model->id]);
+                        $url = route('website.mentors.create', [StepEnum::PRINT, $model->id]);
                     }
                     return response()->json([
                         'status' => $response,
