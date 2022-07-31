@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\DB;
 
 class AcceleratorTypeEnum extends AbstractEnum
 {
-    public const COMPANY ='company';
-    public const INDIVIDUAL ='individual';
+    public const COMPANY =KeyWordEnum::COMPANY;
+    public const INDIVIDUAL =KeyWordEnum::INDIVIDUAL;
 
     public static function getValues(): array
     {
