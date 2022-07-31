@@ -101,6 +101,8 @@ class KeyWordEnum extends AbstractEnum
     public const FREE = 'free';
     public const PAID = 'paid';
 
+    public const PHYSICAL = 'physical';
+    public const ONLINE = 'online';
 
     static function getConstants()
     {

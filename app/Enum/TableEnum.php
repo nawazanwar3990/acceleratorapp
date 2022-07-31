@@ -61,7 +61,9 @@ class TableEnum extends AbstractEnum
     public const MENTOR_CERTIFICATION = 'mentor_certification';
     public const MENTOR_QUALIFICATION = 'mentor_qualification';
     public const MENTOR_PROJECT = 'mentor_project';
+
     public const EVENT_TYPES = 'event_types';
+    public const MEETINGS = 'meetings';
 
     public static function getValues(): array
     {
