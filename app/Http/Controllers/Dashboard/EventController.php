@@ -38,7 +38,7 @@ class EventController extends Controller
         $params = [
             'pageTitle' => __('general.new_event'),
         ];
-        return view('dashboard.event-management.events.create', $params);
+        return view('dashboard.events.create', $params);
     }
 
     public function store(EventRequest $request)
@@ -55,7 +55,7 @@ class EventController extends Controller
             'pageTitle' => __('general.edit') . " " . ucwords($event->name),
             'model' => $event
         ];
-        return view('dashboard.event-management.events.edit', $params);
+        return view('dashboard.events.edit', $params);
     }
     public function update(EventRequest $request)
     {

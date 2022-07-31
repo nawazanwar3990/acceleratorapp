@@ -165,8 +165,8 @@ class ServiceTypeEnum extends AbstractEnum
                 'status' => true,
             ],
             [
-                'name' => 'Only Investment',
-                'slug' => 'only-investment',
+                'name' => 'Event Management',
+                'slug' => 'event-management',
                 'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE,
                 'status' => true,
             ]

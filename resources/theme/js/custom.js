@@ -1,6 +1,9 @@
 $(function () {
     $('.select2').select2();
     $('.dropify').dropify();
+
+    $('.timepicker').timepicker('showWidget');
+
     $(function () {
         $(".preloader").fadeOut()
     }), jQuery(document).on("click", ".mega-dropdown", function (e) {
@@ -90,7 +93,6 @@ function removeClonedRow(cElement) {
         alert("At least one row is Required")
     }
 }
-
 function showError(errorMsg) {
     $.toast({
         heading: "Error",
