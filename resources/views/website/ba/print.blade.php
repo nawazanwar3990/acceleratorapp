@@ -38,7 +38,7 @@
                                     <h3>To,</h3>
                                     <p>{{ $model->user->email }}</p>
                                     <p>{{__('general.first_name')}} : {{ $model->user->first_name }}</p>
-                                    <p>{{__('general.last_name')}} : {{ $model->user->first_name }}</p>
+                                    <p>{{__('general.last_name')}} : {{ $model->user->last_name }}</p>
                                     <p>{{__('general.invoice_date')}} : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
                                 </div>
                             </div>
