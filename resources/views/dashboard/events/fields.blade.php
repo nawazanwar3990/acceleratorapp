@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('is_applied_ticker' ,__('general.is_applied_ticker') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('is_applied_ticker',['yes','no'],null,['id'=>'is_applied_ticker','class'=>'form-control ','required']) !!}
+                {!!  Form::select('is_applied_ticker',['yes','no'],null,['id'=>'is_applied_ticker','class'=>'form-control ','required','onChange'=>'isAppliedTicket(this);']) !!}
             </div>
         </div>
     </div>
