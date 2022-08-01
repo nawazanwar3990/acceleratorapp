@@ -14,14 +14,14 @@ return new class extends Migration {
         Schema::create(TableEnum::MEETINGS, function (Blueprint $table) {
             $table->id();
 
-            $table->enum('arranged_for', MeetingArrangedForEnum::getValues())
+            $table->enum('meeting_arranged_for', MeetingArrangedForEnum::getValues())
                 ->default(MeetingArrangedForEnum::INDIVIDUAL);
-            $table->enum('type', MeetingTypeEnum::getValues())
+            $table->enum('meeting_type', MeetingTypeEnum::getValues())
                 ->default(MeetingTypeEnum::ONLINE);
-            $table->string('held_date')->nullable();
-            $table->string('start_time')->nullable();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->string('meeting_held_date')->nullable();
+            $table->string('meeting_start_time')->nullable();
+            $table->string('meeting_name')->nullable();
+            $table->string('meeting_description')->nullable();
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);

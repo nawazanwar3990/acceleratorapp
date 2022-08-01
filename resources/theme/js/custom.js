@@ -2,7 +2,7 @@ $(function () {
     $('.select2').select2();
     $('.dropify').dropify();
 
-    $('.timepicker').timepicker('showWidget');
+    $('.timepicker').timepicker();
 
     $(function () {
         $(".preloader").fadeOut()

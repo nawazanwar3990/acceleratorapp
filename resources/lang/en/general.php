@@ -1,5 +1,25 @@
 <?php
 return [
+    'held_date'=>'Held date',
+    'new_meeting'=>'New Meeting',
+    'arranged_for'=>'Arrange For',
+    'meetings'=>'Meetings',
+    'public'=>'Public',
+    'physical'=>'Physical',
+    'target_audience'=>'Target Audience',
+    'management'=>'Management',
+    'individual_person'=>'Individual Person',
+    'event_sub_type'=>'Sub Type',
+    'event_name'=>"Name",
+    'event_start_date'=>'Start Date',
+    'no_of_days'=>'No of Days',
+    'event_end_date'=>'End Date',
+    'event_start_time'=>'Start Time',
+    'event_end_time'=>'End Time',
+    'event_organized_by'=>'Organized By',
+    'event_organized_for'=>'Organized For',
+    'is_applied_ticker'=>'Is Applied Ticket',
+    'event_social_media_url'=>'Social Media Url',
 
     'id_card_front' => 'CNIC Front',
     'id_card_back' => 'CNIC Back',
@@ -11,7 +31,7 @@ return [
     'ending_date' => 'Ending Date',
     'project_type' => 'Project Type',
     'further_remarks' => 'Further Remarks',
-    'package_types.mentor'=>'Mentor Packages',
+    'package_types.mentor' => 'Mentor Packages',
 
 
     'degrees' => 'Degrees',
@@ -233,6 +253,7 @@ return [
         'meeting-room' => 'Meeting Rooms',
         'business_accelerator_services' => 'BA Services',
         'client_service' => 'Client Services',
+        'event_management' => 'Event Management'
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

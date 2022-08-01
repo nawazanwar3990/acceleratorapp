@@ -33472,6 +33472,12 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   padding: 3px 2px 1px 1px;
 }
 
+.bootstrap-timepicker-widget table td input {
+  width: 58px !important;
+  font-size: 11px !important;
+  border: 1px solid #e9ecef !important;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel
