@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
@@ -32,6 +35,19 @@ class Event extends Model
         'updated_by',
         'deleted_by'
     ];
+    public function getEventStartDateAttribute($value): string
+    {
+        return  Carbon::parse($value)->format('d-M-Y');
+    }
+    public function getEventEndDateAttribute($value): string
+    {
+        return  Carbon::parse($value)->format('d-M-Y');
+    }
+    public function images(): HasMany
+    {
+        return $this->hasMany(Media::class, 'record_id','id')
+            ->where('record_type',MediaTypeEnum::EVENT_IMAGE);
+    }
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

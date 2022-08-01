@@ -25,7 +25,9 @@ class EventController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $records = Event::orderBy('id', 'DESC')->get();
+        $records = Event::with('images')
+            ->orderBy('id', 'DESC')
+            ->get();
         $params = [
             'pageTitle' => __('general.events'),
             'records' => $records,

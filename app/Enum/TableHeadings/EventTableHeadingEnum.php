@@ -25,9 +25,9 @@ class EventTableHeadingEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
+            self::EVENT_NAME => __(sprintf('%s.%s', 'general', self::EVENT_NAME)),
             self::EVENT_TYPE => __(sprintf('%s.%s', 'general', self::EVENT_TYPE)),
             self::EVENT_SUB_TYPE => __(sprintf('%s.%s', 'general', self::EVENT_SUB_TYPE)),
-            self::EVENT_NAME => __(sprintf('%s.%s', 'general', self::EVENT_NAME)),
             self::EVENT_START_DATE => __(sprintf('%s.%s', 'general', self::EVENT_START_DATE)),
             self::MO_OF_DAYS => __(sprintf('%s.%s', 'general', self::MO_OF_DAYS)),
             self::EVENT_END_DATE => __(sprintf('%s.%s', 'general', self::EVENT_END_DATE)),

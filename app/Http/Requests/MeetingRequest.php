@@ -6,7 +6,6 @@ use App\Enum\MediaTypeEnum;
 use App\Models\Media;
 use App\Models\Meeting;
 use App\Services\GeneralService;
-use App\Traits\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use function auth;
