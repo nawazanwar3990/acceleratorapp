@@ -17,6 +17,23 @@
             }
         }
     };
+
+    function manage_meeting_type(cElement) {
+        let value = $(cElement).find('option:selected').val();
+        let holder = $("#meeting_type_description_holder");
+
+        holder.removeClass('d-none d-block');
+        if (value === 'physical') {
+            holder.addClass('d-block');
+            holder.find('label').text('Description');
+            holder.find('input').removeAttr('type').attr('type', 'text');
+        } else {
+            holder.addClass('d-block');
+            holder.find('label').text('Paste Url');
+            holder.find('input').removeAttr('type').attr('type', 'url');
+        }
+    }
+
     let Ajax = new function () {
         let parent = this;
         this.call = function (url, data, method = 'GET', callback) {
