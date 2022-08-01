@@ -2,20 +2,48 @@
 
 namespace App\Models;
 
+use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Event extends Model
 {
     use HasFactory;
-    protected $dates = ['start_date', 'end_date', 'start_time', 'end_time'];
+    protected $table=TableEnum::EVENTS;
     protected $fillable = [
-        'name',
-        'start_date',
-        'end_date',
-        'start_time',
-        'end_time',
         'event_type',
-        'desc',
+        'event_sub_type',
+        'event_name',
+        'event_description',
+        'event_start_date',
+        'no_of_days',
+        'event_end_date',
+        'event_start_time',
+        'event_end_time',
+        'event_organized_by',
+        'event_organized_for',
+        'is_applied_ticker',
+        'ticket_type',
+        'per_person_cost',
+        'event_image',
+        'event_social_media_url',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'deleted_by');
+    }
+
+    public function deletedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }

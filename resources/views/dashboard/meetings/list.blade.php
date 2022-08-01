@@ -1,14 +1,30 @@
 @forelse($records as $record)
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
-        <td>{{ $record->name}}</td>
-       <td>{{ \App\Services\EventService::eventType($record->event_type)}}</td>
-       <td>{{ \Carbon\Carbon::parse($record->start_date)->format('d-M-Y')}}</td>
-       <td>{{ \Carbon\Carbon::parse($record->end_date)->format('d-M-Y')}}</td>
-       <td>{{ \Carbon\Carbon::parse($record->start_time)->format('g:i A')}}</td>
-       <td>{{ \Carbon\Carbon::parse($record->end_time)->format('g:i A')}}</td>
-       <td>{{ $record->desc}}</td>
-       <td><img src='{{ asset(\App\Services\EventService::getEventImage($record->id)) }}' width="100px" alt=""></td>
+        <td>
+            {{ $record->meeting_name}} <br>
+            @include('components.view-images-model',['model_id'=>$record->id,'images'=>$record->images])
+        </td>
+        <td>
+            @if($record->meeting_arranged_for)
+                {{ \App\Enum\MeetingArrangedForEnum::getTranslationKeyBy($record->meeting_arranged_for) }}
+            @else
+                --
+            @endif
+        </td>
+        <td>
+            @if($record->meeting_type)
+                {{ \App\Enum\MeetingTypeEnum::getTranslationKeyBy($record->meeting_type) }}
+            @else
+                --
+            @endif
+        </td>
+        <td>
+            {{ $record->meeting_held_date }}
+        </td>
+        <td>
+            {{ $record->meeting_start_time }}
+        </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
                 'edit' => route('dashboard.meeting-rooms.edit', $record->id),

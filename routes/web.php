@@ -4,7 +4,7 @@ use App\Http\Controllers\Dashboard\BAController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\FreelancerController;
-use App\Http\Controllers\Dashboard\MeetingRoomController;
+use App\Http\Controllers\Dashboard\MeetingController;
 use App\Http\Controllers\Website\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 
     Route::resource('/events', EventController::class, ['names' => 'events'])
         ->middleware('has_package');
-    Route::resource('/meeting-rooms', MeetingRoomController::class, ['names' => 'meeting-rooms'])
+    Route::resource('/meeting-rooms', MeetingController::class, ['names' => 'meeting-rooms'])
         ->middleware('has_package');
 });
 require __DIR__ . '/auth.php';

@@ -15,7 +15,7 @@ use function __;
 use function redirect;
 use function view;
 
-class MeetingRoomController extends Controller
+class MeetingController extends Controller
 {
     use General;
     public function __construct()
@@ -27,7 +27,7 @@ class MeetingRoomController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $records = Meeting::orderBy('id', 'DESC')->get();
+        $records = Meeting::with('images')->orderBy('id', 'DESC')->get();
         $params = [
             'pageTitle' => __('general.meetings'),
             'records' => $records,
@@ -43,10 +43,10 @@ class MeetingRoomController extends Controller
         return view('dashboard.meetings.create', $params);
     }
 
-    public function store(EventRequest $request)
+    public function store(MeetingRequest $request)
     {
         if ($request->createData()) {
-            return redirect()->route('dashboard.meetings.index')
+            return redirect()->route('dashboard.meeting-rooms.index')
                 ->with('success', __('general.record_created_successfully'));
         }
     }
@@ -62,14 +62,14 @@ class MeetingRoomController extends Controller
     public function update(MeetingRequest $request)
     {
         if ($request->updateData()) {
-            return redirect()->route('dashboard.meetings.index')
+            return redirect()->route('dashboard.meeting-rooms.index')
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
     public function destroy(MeetingRequest $request)
     {
         if ($request->deleteData()) {
-            return redirect()->route('dashboard.meetings.index')
+            return redirect()->route('dashboard.meeting-rooms.index')
                 ->with('success', __('general.record_deleted_successfully'));
         }
     }

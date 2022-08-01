@@ -26,7 +26,7 @@ class EventRequest extends FormRequest
 
     public function createData()
     {
-        $model = Event::create($this->all());
+        $model = Meeting::create($this->all());
         if ($model) {
             $this->saveMedia($model);
             $model->save();
