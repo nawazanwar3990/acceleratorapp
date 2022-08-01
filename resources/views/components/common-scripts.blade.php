@@ -20,14 +20,10 @@
 
     function applyEventType(cElement) {
         let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
-        let options = "<option value='' selected>{{ trans('general.select') }}</option>";
+        let options = "<option value='' selected><?php echo e(trans('general.select')); ?></option>";
         if (sub_types.length > 0) {
-            $.each(sub_types, function (key, value) {
-                if (value.length > 0) {
-                    $.each(value, function (inner_key, inner_value) {
-                        options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
-                    });
-                }
+            $.each(sub_types, function (inner_key, inner_value) {
+                options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
             });
         }
         $(cElement)
