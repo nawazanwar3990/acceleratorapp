@@ -4,7 +4,7 @@
         <div class="col-12">
             <div class="card shadow-none pt-0">
                 @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.freelancers.create','is_create'=>true])
+                    @include('dashboard.components.general.form-list-header',['url'=>'website.freelancers.create','is_create'=>true])
                 @endif
                 <div class="card-body">
                     <table class="table table-bordered table-hover">

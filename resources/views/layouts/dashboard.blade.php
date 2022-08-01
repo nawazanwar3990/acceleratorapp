@@ -1,15 +1,15 @@
-
 <html lang="en" dir="{{ session()->get('app_locale') == 'ur' ? 'rtl':'' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('css-before')
-        <link href="{{ asset('css/dashboard.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/purple.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/dashboard-custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/purple.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard-custom.css') }}" rel="stylesheet">
     @yield('css-after')
     <title>{{ $pageTitle??null }}</title>
+    @yield('innerCSS')
 </head>
 <body class="fixed-layout skin-purple">
 {{--<x-preloader></x-preloader>--}}

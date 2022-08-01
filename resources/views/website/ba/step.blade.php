@@ -1,35 +1,36 @@
-@extends('layouts.website')
-@section('css-before')
+@extends((auth()->user())?'layouts.dashboard':'layouts.website')
+@section('innerCSS')
+    <style>
+        .card {
+            border-top: 1px solid #edf1f5 !important;
+        }
+    </style>
 @endsection
 @section('css-after')
 @endsection
 @section('content')
     <div class="container p-4">
         <div class="row justify-content-center">
-            <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            @include('website.ba.components.steps')
-                            <div class="col-lg-8 col-md-8 border-start">
-                                @include('website.ba.components.step-heading')
-                                {!! Form::open(['url' =>route('website.ba.store',[$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
-                                @include(sprintf('%s.%s', 'website.ba.components', $step))
-                                <div class="text-center mt-4">
-                                    @if($step==\App\Enum\StepEnum::STEP4)
-                                        <a onclick="apply_ba_subscription();"
-                                           class="btn btn-primary btn-rounded cs-btn text-white">
-                                            {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                        </a>
-                                    @else
-                                        <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
-                                            {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                        </button>
-                                    @endif
-                                </div>
-                                {!! Form::close() !!}
-                            </div>
+            <div class="{{ auth()->user()?'col-12':'col-xxl-9 col-xl-9 col-lg-9 col-md-9' }}">
+                <div class="row bg-white p-3">
+                    @include('website.ba.components.steps')
+                    <div class="col-lg-8 col-md-8 border-start">
+                        @include('website.ba.components.step-heading')
+                        {!! Form::open(['url' =>route('website.ba.store',[$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        @include(sprintf('%s.%s', 'website.ba.components', $step))
+                        <div class="text-center mt-4">
+                            @if($step==\App\Enum\StepEnum::STEP4)
+                                <a onclick="apply_ba_subscription();"
+                                   class="btn btn-primary btn-rounded cs-btn text-white">
+                                    {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                </a>
+                            @else
+                                <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                    {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                </button>
+                            @endif
                         </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

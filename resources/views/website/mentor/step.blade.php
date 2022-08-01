@@ -1,5 +1,14 @@
-@extends('layouts.website')
+@auth
+    @extends('layouts.dashboard')
+@else
+    @extends('layouts.website')
+@endauth
 @section('css-before')
+    <style>
+        .card {
+            border-top: none !important;
+        }
+    </style>
 @endsection
 @section('css-after')
 @endsection
