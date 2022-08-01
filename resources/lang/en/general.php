@@ -1,5 +1,7 @@
 <?php
 return [
+
+    'per_person_cost'=>'Per Person Cost',
     'held_date'=>'Held date',
     'new_meeting'=>'New Meeting',
     'arranged_for'=>'Arrange For',

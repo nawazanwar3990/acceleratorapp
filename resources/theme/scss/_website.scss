@@ -205,44 +205,5 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
     color: white !important;
     border-color: #bce8f1;
 }
-
-.dropify-wrapper {
-    font-size: 13px !important;
-    border: 1px solid #e5e5e58c !important;
-}
-
-.dropify-add-clone-btn {
-    right: 0;
-    top: 2px;
-    z-index: 1000;
-    background-color: green;
-    width: 25px;
-    height: 25px;
-    color: white;
-    text-align: center;
-    border-radius: 100%;
-    cursor: pointer;
-    padding: 3px 2px 1px 1px;
-}
-.dropify-remove-clone-btn{
-    right: 27px;
-    top: 2px;
-    z-index: 1000;
-    background-color: red;
-    width: 25px;
-    height: 25px;
-    color: white;
-    text-align: center;
-    border-radius: 100%;
-    cursor: pointer;
-    padding: 3px 2px 1px 1px;
-}
-.bootstrap-timepicker-widget table td input {
-    width: 58px !important;
-    font-size: 11px !important;
-    border: 1px solid #e9ecef !important;
-}
-.border-left{
-    border-left: 1px solid #eeeeee6b;
-}
+@import "common";
 @import 'responsive';

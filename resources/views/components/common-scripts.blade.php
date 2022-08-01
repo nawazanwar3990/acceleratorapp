@@ -4,6 +4,7 @@
         date.setDate(date.getDate() + days);
         return date;
     }
+
     function toSlug(str) {
         str = str.replace(/^\s+|\s+$/g, ""); // trim
         str = str.toLowerCase();
@@ -131,21 +132,29 @@
             holder.find('input').removeAttr('type').attr('type', 'url');
         }
     }
+
     function isAppliedTicket(cElement) {
         let value = $(cElement).find('option:selected').val();
-        let holder = $("#meeting_type_description_holder");
-
-       /* holder.removeClass('d-none d-block');
+        let holder = $("#is_applied_holder");
+        holder.removeClass('d-none d-block');
         if (value === 'yes') {
             holder.addClass('d-block');
-            holder.find('label').text('Description');
-            holder.find('input').removeAttr('type').attr('type', 'text');
         } else {
-            holder.addClass('d-block');
-            holder.find('label').text('Paste Url');
-            holder.find('input').removeAttr('type').attr('type', 'url');
-        }*/
+            holder.addClass('d-none');
+        }
     }
+
+    function changeTicketType(cElement) {
+        let value = $(cElement).val();
+        let holder = $("#per_person_cost_holder");
+        holder.removeClass('d-none d-block');
+        if (value === 'paid') {
+            holder.addClass('d-block');
+        } else {
+            holder.addClass('d-none');
+        }
+    }
+
     let Ajax = new function () {
         let parent = this;
         this.call = function (url, data, method = 'GET', callback) {

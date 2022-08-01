@@ -33439,6 +33439,15 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   border-color: #bce8f1;
 }
 
+.bootstrap-timepicker-widget table td input {
+  width: 59px !important;
+  height: 30px !important;
+  font-size: 13px !important;
+  font-weight: normal !important;
+  border: 1px solid rgba(222, 226, 230, 0.5490196078) !important;
+  padding: 4px !important;
+}
+
 .dropify-wrapper {
   font-size: 13px !important;
   border: 1px solid rgba(229, 229, 229, 0.5490196078) !important;
@@ -33470,12 +33479,6 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   border-radius: 100%;
   cursor: pointer;
   padding: 3px 2px 1px 1px;
-}
-
-.bootstrap-timepicker-widget table td input {
-  width: 58px !important;
-  font-size: 11px !important;
-  border: 1px solid #e9ecef !important;
 }
 
 .border-left {
