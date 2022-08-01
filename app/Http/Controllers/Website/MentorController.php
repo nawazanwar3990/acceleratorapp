@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Website;
+
 use App\Enum\MediaTypeEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
@@ -25,6 +26,7 @@ class MentorController extends Controller
     {
         $this->makeMultipleDirectories('subscription', ['receipts']);
     }
+
     public function create(
         Request $request,
                 $step,
@@ -37,6 +39,11 @@ class MentorController extends Controller
         $prev_step = null;
         if ($id) {
             $model = Mentor::with('services')->find($id);
+        }
+        if ($step == StepEnum::STEP3 && is_null($model)) {
+            return redirect()
+                ->route('website.mentors.create', [StepEnum::STEP1])
+                ->with('error', 'First Choose the Services');
         }
         if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
