@@ -27,18 +27,16 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 border-start">
-        <div class="col-md-12 mb-3">
-            {!!  Html::decode(Form::label('images' ,__('general.images') ,['class'=>'form-label']))   !!}
-            <div class="py-3 px-1 position-relative dropify_parent_holder">
-                <a onclick="clone_dropify(this);" class="position-absolute dropify-add-clone-btn">
-                    <i class="bx bx-plus"></i>
-                </a>
-                <a onclick="remove_clone_dropify(this);" class="position-absolute dropify-remove-clone-btn">
-                    <i class="bx bx-trash"></i>
-                </a>
-                {!! Form::file('images[]',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp']) !!}
-            </div>
+    <div class="col-md-4">
+        {!!  Html::decode(Form::label('images' ,__('general.images') ,['class'=>'form-label']))   !!}
+        <div class="py-3 px-1 position-relative dropify_parent_holder">
+            <a onclick="clone_dropify(this);" class="position-absolute dropify-add-clone-btn">
+                <i class="bx bx-plus"></i>
+            </a>
+            <a onclick="remove_clone_dropify(this);" class="position-absolute dropify-remove-clone-btn">
+                <i class="bx bx-trash"></i>
+            </a>
+            {!! Form::file('images[]',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp']) !!}
         </div>
     </div>
 </div>

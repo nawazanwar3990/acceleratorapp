@@ -7,7 +7,6 @@
                 <div class="card-body" style="padding-top: 0;">
                     {!! Form::open(['url' => route('dashboard.meeting-rooms.store'), 'method' => 'POST','files' => true,'id' =>'event_form', 'class' => 'solid-validation']) !!}
                         <x-created-by-field></x-created-by-field>
-
                         @include('dashboard.meetings.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
                                    formID="event_form" cancelRoute="dashboard.meeting-rooms.index"></x-buttons>

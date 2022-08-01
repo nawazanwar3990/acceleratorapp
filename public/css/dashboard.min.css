@@ -35061,6 +35061,10 @@ a.ui-button:active,
     transform: rotateZ(0deg);
   }
 }
+.border-left {
+  border-left: 1px solid rgba(238, 238, 238, 0.4196078431);
+}
+
 .sidebar-nav ul li a {
   padding: 10px 5px 10px 3px !important;
   font-size: 13px !important;

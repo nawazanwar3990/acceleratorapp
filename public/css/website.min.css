@@ -33478,6 +33478,10 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   border: 1px solid #e9ecef !important;
 }
 
+.border-left {
+  border-left: 1px solid rgba(238, 238, 238, 0.4196078431);
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel

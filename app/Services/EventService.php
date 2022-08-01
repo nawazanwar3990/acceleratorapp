@@ -4,14 +4,16 @@ namespace App\Services;
 
 use App\Models\EventType;
 use App\Models\Media;
+use Illuminate\Support\Collection;
 
 class EventService
 {
-    public static function pluck_event_types($id = null)
+    public static function getEventTypes($id = null): Collection
     {
-        return EventType::where('status', true)
+        return EventType::with('children')
+            ->where('status', true)
             ->where('parent_id', null)
-            ->pluck('name', 'name');
+            ->get();
     }
 
     public static function getEventImage($id = null)

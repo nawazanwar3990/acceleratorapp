@@ -18,6 +18,26 @@
         }
     };
 
+    function applyEventType(cElement) {
+        let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
+        let options = "<option value='' selected>{{ trans('general.select') }}</option>";
+        if (sub_types.length > 0) {
+            $.each(sub_types, function (key, value) {
+                if (value.length > 0) {
+                    $.each(value, function (inner_key, inner_value) {
+                        options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
+                    });
+                }
+            });
+        }
+        $(cElement)
+            .closest('.event_type_holder')
+            .next('.event_child_type_holder')
+            .find('select')
+            .empty()
+            .html(options);
+    }
+
     function manage_meeting_type(cElement) {
         let value = $(cElement).find('option:selected').val();
         let holder = $("#meeting_type_description_holder");

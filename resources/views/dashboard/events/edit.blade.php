@@ -17,3 +17,4 @@
         </div>
     </div>
 @endsection
+@include('components.common-scripts')

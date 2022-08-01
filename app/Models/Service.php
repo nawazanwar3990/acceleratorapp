@@ -29,7 +29,10 @@ class Service extends Model
     {
         return $this->belongsTo(Service::class, 'parent_id');
     }
-
+    public function children(): BelongsTo
+    {
+        return $this->belongsTo(Service::class, 'parent_id');
+    }
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
