@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-4 mb-3 event_child_type_holder">
                 {!!  Html::decode(Form::label('event_sub_type' ,__('general.event_sub_type') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('event_sub_type',array(),null,['id'=>'event_sub_type','class'=>'form-control ','required','placeholder'=>trans('general.select')]) !!}
+                {!!  Form::select('event_sub_type',array(),null,['id'=>'event_sub_type','class'=>'form-control ','required','placeholder'=>trans('general.select'),'onchange'=>'changeEventSubType(this);']) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('event_name' ,__('general.event_name') ,['class'=>'form-label']))   !!}

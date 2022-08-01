@@ -1,4 +1,20 @@
 <script>
+    function toSlug(str) {
+        str = str.replace(/^\s+|\s+$/g, ""); // trim
+        str = str.toLowerCase();
+        const from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+        const to = "aaaaeeeeiiiioooouuuunc------";
+        let i = 0, l = from.length;
+        for (; i < l; i++) {
+            str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+        }
+
+        str = str
+            .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+            .replace(/\s+/g, "-") // collapse whitespace and replace by -
+            .replace(/-+/g, "-"); // collapse dashes
+        return str;
+    }
     let Custom = new function () {
         this.makeUser = function (person_id) {
             if (confirm('are you ready to Create a new User')) {
@@ -32,6 +48,24 @@
             .find('select')
             .empty()
             .html(options);
+    }
+
+    function changeEventSubType(cElement) {
+        let value = $(cElement).find('option:selected').val();
+        if (value === 'other') {
+            Swal.fire({
+                title: 'Other Sub Type',
+                text: 'Enter Other Sub Type',
+                input: 'text',
+                inputPlaceholder: 'sub type',
+            }).then(({value}) => {
+                let holder = $("#event_sub_type");
+                let slug = toSlug(value);
+                let html = "<option value=" + slug + ">" + value + "</option>";
+                holder.append(html);
+                holder.val(slug);
+            });
+        }
     }
 
     function manage_meeting_type(cElement) {
