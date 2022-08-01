@@ -1,4 +1,9 @@
 <script>
+    Date.prototype.addDays = function (days) {
+        let date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    }
     function toSlug(str) {
         str = str.replace(/^\s+|\s+$/g, ""); // trim
         str = str.toLowerCase();
@@ -15,6 +20,7 @@
             .replace(/-+/g, "-"); // collapse dashes
         return str;
     }
+
     let Custom = new function () {
         this.makeUser = function (person_id) {
             if (confirm('are you ready to Create a new User')) {
@@ -50,6 +56,12 @@
             .html(options);
     }
 
+    function calculate_event_end_date(cElement) {
+        let start_date = $("#event_start_date").val();
+        let value = new Date($(cElement).val());
+        let end_date = new Date(start_date);
+    }
+
     function changeEventSubType(cElement) {
         let value = $(cElement).find('option:selected').val();
         if (value === 'other') {
@@ -60,6 +72,42 @@
                 inputPlaceholder: 'sub type',
             }).then(({value}) => {
                 let holder = $("#event_sub_type");
+                let slug = toSlug(value);
+                let html = "<option value=" + slug + ">" + value + "</option>";
+                holder.append(html);
+                holder.val(slug);
+            });
+        }
+    }
+
+    function addOtherOrganizedBy(cElement) {
+        let value = $(cElement).find('option:selected').val();
+        if (value === 'other') {
+            Swal.fire({
+                title: 'Other Organized By',
+                text: 'Enter Organized By',
+                input: 'text',
+                inputPlaceholder: 'Enter Value',
+            }).then(({value}) => {
+                let holder = $("#event_organized_by");
+                let slug = toSlug(value);
+                let html = "<option value=" + slug + ">" + value + "</option>";
+                holder.append(html);
+                holder.val(slug);
+            });
+        }
+    }
+
+    function addOtherOrganizedFor(cElement) {
+        let value = $(cElement).find('option:selected').val();
+        if (value === 'other') {
+            Swal.fire({
+                title: 'Other Organized For',
+                text: 'Enter Organized For',
+                input: 'text',
+                inputPlaceholder: 'Enter Value',
+            }).then(({value}) => {
+                let holder = $("#event_organized_for");
                 let slug = toSlug(value);
                 let html = "<option value=" + slug + ">" + value + "</option>";
                 holder.append(html);

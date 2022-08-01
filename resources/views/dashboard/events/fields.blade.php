@@ -43,11 +43,11 @@
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('event_organized_by' ,__('general.event_organized_by') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('event_organized_by',\App\Enum\EventOrganizedByEnum::getTranslationKeys(),null,['id'=>'event_organized_by','class'=>'form-control ','required']) !!}
+                {!!  Form::select('event_organized_by',\App\Enum\EventOrganizedByEnum::getTranslationKeys(),null,['id'=>'event_organized_by','class'=>'form-control ','required','onchange'=>'addOtherOrganizedBy(this);','placeholder'=>trans('general.select')]) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('event_organized_for' ,__('general.event_organized_for') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('event_organized_for',\App\Enum\EventOrganizedForEnum::getTranslationKeys(),null,['id'=>'event_organized_for','class'=>'form-control ','required']) !!}
+                {!!  Form::select('event_organized_for',\App\Enum\EventOrganizedForEnum::getTranslationKeys(),null,['id'=>'event_organized_for','class'=>'form-control ','required','onchange'=>'addOtherOrganizedFor(this);','placeholder'=>trans('general.select')]) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('is_applied_ticker' ,__('general.is_applied_ticker') ,['class'=>'form-label']))   !!}
