@@ -145,7 +145,7 @@
                         </tr>
                     @endforeach
                 @else
-                    @foreach(\App\Services\ServiceData::get_mentor_services() as $service)
+                    @foreach(\App\Services\ServiceData::get_mentor_package_services() as $service)
                         <tr>
                             <th>
                                 {!!  Form::hidden('services[id][]',$service->id) !!}

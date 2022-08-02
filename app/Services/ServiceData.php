@@ -53,6 +53,13 @@ class ServiceData
             ->where('parent_id',null)
             ->orderBy('name', 'ASC')->get();
     }
+    public static function get_mentor_package_services()
+    {
+        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
+            ->whereStatus(true)
+            ->where('parent_id','!=',null)
+            ->orderBy('name', 'ASC')->get();
+    }
     public static function get_mentor_child_services($parent_id)
     {
         return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
