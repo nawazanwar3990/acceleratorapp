@@ -9,7 +9,8 @@ use function __;
 class ReceiptTableHeading extends AbstractEnum
 {
     public const RECEIPT = 'receipt';
-    public const BUSINESS_ACCELERATOR = 'business_accelerator';
+    public const SENDER_NAME = 'sender_name';
+    public const SENDER_ROLE = 'sender_role';
 
     public static function getValues(): array
     {
@@ -20,8 +21,8 @@ class ReceiptTableHeading extends AbstractEnum
     {
         return [
             self::RECEIPT => __(sprintf('%s.%s', 'general', self::RECEIPT)),
-            self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general', self::BUSINESS_ACCELERATOR))
-
+            self::SENDER_NAME => __(sprintf('%s.%s', 'general', self::SENDER_NAME)),
+            self::SENDER_ROLE => __(sprintf('%s.%s', 'general', self::SENDER_ROLE))
         ];
     }
 }

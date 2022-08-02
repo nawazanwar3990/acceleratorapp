@@ -9,7 +9,7 @@
                         <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th scope="col">{{ __('general.business_accelerator') }}</th>
+                            <th scope="col">{{ __('general.subscribed_by') }}</th>
                             <th scope="col">{{__('general.package')}}</th>
                             <th scope="col">{{__('general.price')}}</th>
                             <th scope="col">{{__('general.status')}}</th>
@@ -25,6 +25,13 @@
                                 <td>
                                     @isset($subscription->subscribed)
                                         {{ $subscription->subscribed->getFullName()  }}
+                                    @else
+                                        --
+                                    @endisset
+                                    <br>
+                                    @isset($subscription->subscribed)
+                                        <small
+                                            class="text-muted">Role: {{ $subscription->subscribed->roles[0]->name  }} </small>
                                     @else
                                         --
                                     @endisset
@@ -117,7 +124,7 @@
                 let type = result.value.type;
                 if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                     Swal.fire({
-                        title: 'Manage Payment',
+                        title: 'Payment Transaction Id From Receipt',
                         html: `{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}`,
                         confirmButtonText: 'Submit',
                         focusConfirm: false,
