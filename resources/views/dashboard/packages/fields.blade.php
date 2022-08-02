@@ -1,7 +1,7 @@
 <div class="row mb-3">
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('type' ,__('general.type'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('type',\App\Enum\PackageTypeEnum::getDropDownKey(),$type,['id'=>'type','class'=>'form-control','readonly'])
+        {!!  Form::select('type',\App\Enum\PackageTypeEnum::getTranslationKeys(),$type,['id'=>'type','class'=>'form-control','readonly'])
         !!}
     </div>
     <div class="col-md-3 mb-3">
@@ -29,7 +29,7 @@
     <div class="col-12 mb-3">
         <div class="form-check form-switch">
             {!!  Html::decode(Form::label('status' ,'Enable/Disable' ,['class'=>'col-form-label pt-0']))   !!}
-            {!! Form::checkbox('status', true, isset($for) ? $model->status : true,['class'=>'form-check-input']) !!}
+            {!! Form::checkbox('status', true, $for=='edit' ? $model->status : true,['class'=>'form-check-input']) !!}
         </div>
     </div>
 </div>

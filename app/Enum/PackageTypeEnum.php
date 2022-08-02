@@ -6,15 +6,19 @@ namespace App\Enum;
 
 class PackageTypeEnum extends AbstractEnum
 {
-    public const BUSINESS_ACCELERATOR ='business_accelerator';
+    public const BUSINESS_ACCELERATOR = 'business_accelerator';
+    public const BUSINESS_ACCELERATOR_INDIVIDUAL = 'business_accelerator_individual';
     public const FREELANCER = KeyWordEnum::FREELANCER;
-    public const MENTOR ='mentor';
+    public const SERVICE_PROVIDER_COMPANY = 'service_provider_company';
+    public const MENTOR = 'mentor';
 
     public static function getValues(): array
     {
         return array(
             self::BUSINESS_ACCELERATOR,
+            self::BUSINESS_ACCELERATOR_INDIVIDUAL,
             self::FREELANCER,
+            self::SERVICE_PROVIDER_COMPANY,
             self::MENTOR
         );
     }
@@ -22,17 +26,20 @@ class PackageTypeEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return array(
-            self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general.package_types', self::BUSINESS_ACCELERATOR)),
-            self::FREELANCER => __(sprintf('%s.%s', 'general.package_types', self::FREELANCER)),
-            self::MENTOR => __(sprintf('%s.%s', 'general.package_types', self::MENTOR))
+            self::BUSINESS_ACCELERATOR => 'BA Company',
+            self::BUSINESS_ACCELERATOR_INDIVIDUAL => 'BA Individual',
+            self::FREELANCER => 'Freelancer',
+            self::SERVICE_PROVIDER_COMPANY => 'Service Provider Company',
+            self::MENTOR =>'Mentor'
         );
     }
+
     public static function getDropDownKey(): array
     {
         return array(
             self::BUSINESS_ACCELERATOR => 'Business Accelerator',
-            self::FREELANCER =>'Freelancer',
-            self::MENTOR =>'Mentor'
+            self::FREELANCER => 'Freelancer',
+            self::MENTOR => 'Mentor'
         );
     }
 }
