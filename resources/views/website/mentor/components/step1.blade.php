@@ -16,6 +16,6 @@
                 </div>
             @endforeach
         </div>
-        @include('website.components.fields.other-services')
     </div>
+    @include('website.components.fields.other-services')
 </div>

@@ -41,6 +41,11 @@ class MentorController extends Controller
         if ($id) {
             $model = Mentor::with('services')->find($id);
         }
+        if ($step == StepEnum::STEP2 && is_null($model)) {
+            return redirect()
+                ->route('website.mentors.create', [StepEnum::STEP1])
+                ->with('error', 'First Choose the Services');
+        }
         if ($step == StepEnum::STEP3 && is_null($model)) {
             return redirect()
                 ->route('website.mentors.create', [StepEnum::STEP1])
