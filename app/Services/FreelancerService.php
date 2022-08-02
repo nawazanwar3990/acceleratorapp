@@ -175,6 +175,7 @@ class FreelancerService
     {
 
         if (request()->has('logo')){
+            $model->logo()->delete();
             $logo = request()->file('logo');
             $logoName = GeneralService::generateFileName($logo);
             $logoPath = 'uploads/sp/images/' . $logoName;
@@ -190,6 +191,7 @@ class FreelancerService
             );
         }
         if (request()->has('id_card_front')){
+            $model->front_id_card()->delete();
             $id_card_front = request()->file('id_card_front');
             $id_card_front_name = GeneralService::generateFileName($id_card_front);
             $id_card_front_path = 'uploads/sp/images/' . $id_card_front_name;
@@ -205,6 +207,7 @@ class FreelancerService
             );
         }
         if (request()->has('id_card_back')){
+            $model->back_id_card()->delete();
             $id_card_back = request()->file('id_card_back');
             $id_card_back_name = GeneralService::generateFileName($id_card_back);
             $id_card_back_path = 'uploads/sp/images/' . $id_card_back_name;
@@ -254,6 +257,5 @@ class FreelancerService
                 );
             }
         }
-        return $model;
     }
 }
