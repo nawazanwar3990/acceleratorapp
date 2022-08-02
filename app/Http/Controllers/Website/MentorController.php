@@ -39,7 +39,7 @@ class MentorController extends Controller
         $subscription = null;
         $prev_step = null;
         if ($id) {
-            $model = Mentor::with('services')->find($id);
+            $model = Mentor::with('services','qualifications','certifications','projects')->find($id);
         }
         if ($step == StepEnum::STEP2 && is_null($model)) {
             return redirect()
