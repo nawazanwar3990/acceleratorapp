@@ -6,7 +6,7 @@
                 text: "{{ $message }}",
                 position: 'top-right',
                 icon: 'success',
-                hideAfter: 3000,
+                hideAfter: 15000,
                 stack: 6
             });
         });
@@ -21,7 +21,7 @@
                 text: "{{ $message }}",
                 position: 'top-right',
                 icon: 'info',
-                hideAfter: 3000,
+                hideAfter: 15000,
                 stack: 6
             });
         });
@@ -36,7 +36,7 @@
                 text: "{{ $error }}",
                 position: 'top-right',
                 icon: 'error',
-                hideAfter: 3000,
+                hideAfter: 15000,
                 stack: 6
             });
         });
