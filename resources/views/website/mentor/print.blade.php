@@ -84,14 +84,12 @@
                                                 <td>
                                                     <UL class="list-group list-group-flush bg-transparent">
                                                         @foreach($subscription->package->services as $service)
-                                                            @if($service->pivot->limit>0)
-                                                                <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                    <i class="bx bx-check text-success"></i>
-                                                                    <small><strong
-                                                                            class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
-                                                                    </small>
-                                                                </li>
-                                                            @endif
+                                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                <i class="bx bx-check text-success"></i>
+                                                                <small><strong
+                                                                        class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                                                                </small>
+                                                            </li>
                                                         @endforeach
                                                     </UL>
                                                 </td>
@@ -142,7 +140,8 @@
                         <hr>
                         <div class="row ignore_printing">
                             <div class="col-6">
-                                <button class="btn btn-success" onclick="printMe('print_holder','{{ route('website.index') }}')">
+                                <button class="btn btn-success"
+                                        onclick="printMe('print_holder','{{ route('website.index') }}')">
                                     <i class="fa fa-print"></i> Print
                                     Invoice
                                 </button>
