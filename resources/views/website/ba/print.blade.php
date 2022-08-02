@@ -24,24 +24,28 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-sm-6 text-md-start">
-                                <h3>{{ $model->company_name }}</h3>
-                                <p>{{__('general.company_no_of_emp')}} : {{ $model->company_no_of_emp }}</p>
-                                <p>{{__('general.company_date_of_initiation')}}
-                                    : {{ $model->company_date_of_initiation }}</p>
-                                <p>{{__('general.company_address')}} : {{ $model->company_address }}</p>
-                                <p>{{__('general.company_contact_no')}} : {{ $model->company_contact_no }}</p>
-                                <p>{{__('general.company_email')}} : {{ $model->company_email }}</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="text-md-end">
-                                    <h3>To,</h3>
-                                    <p>{{ $model->user->email }}</p>
-                                    <p>{{__('general.first_name')}} : {{ $model->user->first_name }}</p>
-                                    <p>{{__('general.last_name')}} : {{ $model->user->last_name }}</p>
-                                    <p>{{__('general.invoice_date')}} : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
+                            @if($model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
+                                <div class="col-sm-6 text-md-start">
+                                    <h3>{{ $model->company_name }}</h3>
+                                    <p>{{__('general.company_no_of_emp')}} : {{ $model->company_no_of_emp }}</p>
+                                    <p>{{__('general.company_date_of_initiation')}}
+                                        : {{ $model->company_date_of_initiation }}</p>
+                                    <p>{{__('general.company_address')}} : {{ $model->company_address }}</p>
+                                    <p>{{__('general.company_contact_no')}} : {{ $model->company_contact_no }}</p>
+                                    <p>{{__('general.company_email')}} : {{ $model->company_email }}</p>
                                 </div>
-                            </div>
+                            @endif
+                            <div class="col-sm-6">
+                                @if($model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
+                                    <div class="text-md-end"> @endif
+                                        <h3>To,</h3>
+                                        <p>{{ $model->user->email }}</p>
+                                        <p>{{__('general.first_name')}} : {{ $model->user->first_name }}</p>
+                                        <p>{{__('general.last_name')}} : {{ $model->user->last_name }}</p>
+                                        <p>{{__('general.invoice_date')}}
+                                            : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
+                                    </div>
+                                    @if($model->type==\App\Enum\AcceleratorTypeEnum::COMPANY) </div> @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8">

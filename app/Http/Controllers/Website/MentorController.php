@@ -102,7 +102,7 @@ class MentorController extends Controller
                     $model = $this->mentorService->saveUseInfo($model, $user_id);
                     return redirect()->route('website.mentors.create', [StepEnum::STEP3, $model->id]);
                     break;
-                case StepEnum::STEP5;
+                case StepEnum::STEP3;
                     $response = $this->mentorService->applySubscription();
                     $payment_type = $request->input('payment_type');
                     if ($payment_type == 'pre_apply') {

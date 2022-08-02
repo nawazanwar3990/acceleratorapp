@@ -24,23 +24,12 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-sm-6 text-md-start">
-                                <h3>{{ $model->sp_name }}</h3>
-                                <p>{{__('general.company_no_of_emp')}} : {{ $model->sp_no_of_emp }}</p>
-                                <p>{{__('general.company_date_of_initiation')}}
-                                    : {{ $model->sp_date_of_initiation }}</p>
-                                <p>{{__('general.company_address')}} : {{ $model->sp_address }}</p>
-                                <p>{{__('general.company_contact_no')}} : {{ $model->sp_contact_no }}</p>
-                                <p>{{__('general.company_email')}} : {{ $model->sp_email }}</p>
-                            </div>
                             <div class="col-sm-6">
-                                <div class="text-md-end">
-                                    <h3>To,</h3>
-                                    <p>{{ $model->user->email }}</p>
-                                    <p>{{__('general.first_name')}} : {{ $model->user->first_name }}</p>
-                                    <p>{{__('general.last_name')}} : {{ $model->user->first_name }}</p>
-                                    <p>{{__('general.invoice_date')}} : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
-                                </div>
+                                <h3>To,</h3>
+                                <p>{{ $model->user->email }}</p>
+                                <p>{{__('general.first_name')}} : {{ $model->user->first_name }}</p>
+                                <p>{{__('general.last_name')}} : {{ $model->user->first_name }}</p>
+                                <p>{{__('general.invoice_date')}} : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -95,11 +84,14 @@
                                                 <td>
                                                     <UL class="list-group list-group-flush bg-transparent">
                                                         @foreach($subscription->package->services as $service)
-                                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                <i class="bx bx-check text-success"></i> <small><strong
-                                                                        class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
-                                                                </small>
-                                                            </li>
+                                                            @if($service->pivot->limit>0)
+                                                                <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                                                                    <i class="bx bx-check text-success"></i>
+                                                                    <small><strong
+                                                                            class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                                                                    </small>
+                                                                </li>
+                                                            @endif
                                                         @endforeach
                                                     </UL>
                                                 </td>
@@ -155,7 +147,7 @@
                                     Invoice
                                 </button>
                                 <a class="btn btn-primary text-white"
-                                   href="{{ route('website.freelancers.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
+                                   href="{{ route('website.mentors.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
                                     <i class="fa fa-edit"></i> Edit Profile
                                 </a>
                             </div>
