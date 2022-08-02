@@ -78,6 +78,11 @@
                 </div>
             </div>
         </div>
+        <div class="row my-4">
+            <div class="col-12">
+                <div id="morris-area-chart" style="height: 340px;"></div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card">

@@ -34835,6 +34835,36 @@ a.ui-button:active,
     transform: rotateZ(0deg);
   }
 }
+.morris-hover {
+  position: absolute;
+  z-index: 1;
+}
+
+.morris-hover.morris-default-style .morris-hover-row-label {
+  font-weight: bold;
+  margin: 0.25em 0;
+}
+
+.morris-hover.morris-default-style .morris-hover-point {
+  white-space: nowrap;
+  margin: 0.1em 0;
+}
+
+.morris-hover.morris-default-style {
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #666;
+  background: #63676b;
+  border: none;
+  color: #fff !important;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.morris-hover-point {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
 .bootstrap-timepicker-widget table td input {
   width: 59px !important;
   height: 30px !important;

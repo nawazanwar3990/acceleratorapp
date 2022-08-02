@@ -16,6 +16,11 @@ mix.scripts([
     'resources/theme/js/plugins/select2.min.js',
     'resources/theme/js/plugins/dropify.js',
     'resources/theme/js/plugins/print.js',
+
+    'resources/theme/js/plugins/raphael-min.js',
+    'resources/theme/js/plugins/morris.js',
+    'resources/theme/js/plugins/jquery.sparkline.min.js',
+
     'resources/theme/js/waves.js',
     'resources/theme/js/sidebar.js',
     'resources/theme/js/search.js',
