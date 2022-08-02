@@ -44,6 +44,14 @@ class BuildingController extends Controller
         return view('dashboard.working-spaces.buildings.index', $params);
     }
 
+    public function view_incubators(): Factory|View|Application
+    {
+        $params = [
+            'pageTitle' => __('general.Incubators')
+        ];
+        return view('dashboard.working-spaces.index', $params);
+    }
+
     /**
      * @return Application|Factory|View|RedirectResponse
      * @throws AuthorizationException
@@ -71,13 +79,13 @@ class BuildingController extends Controller
     {
         $this->authorize('create', Building::class);
 
-       /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);
-        $existing_buildings = Building::where('created_by', Auth::id())->count();
-        if ($existing_buildings >= $package_limit) {
-            return redirect()
-                ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
-        }
-        $has_package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);*/
+        /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);
+         $existing_buildings = Building::where('created_by', Auth::id())->count();
+         if ($existing_buildings >= $package_limit) {
+             return redirect()
+                 ->route('dashboard.buildings.index')->with('error', 'Your Package limit has Exceeded.please contact with admin for renew');
+         }
+         $has_package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::BUILDING);*/
 
         if ($request->createData()) {
 
@@ -94,9 +102,9 @@ class BuildingController extends Controller
 
     public function show($id)
     {
-       $building = Building::with('floors','floors.offices','floors.offices.plans.basic_services','floors.offices.plans.additional_services')->find($id);
-       $pageTitle = "Detail of ".$building->name;
-       return view('dashboard.working-spaces.buildings.show',compact('building','pageTitle'));
+        $building = Building::with('floors', 'floors.offices', 'floors.offices.plans.basic_services', 'floors.offices.plans.additional_services')->find($id);
+        $pageTitle = "Detail of " . $building->name;
+        return view('dashboard.working-spaces.buildings.show', compact('building', 'pageTitle'));
 
     }
 

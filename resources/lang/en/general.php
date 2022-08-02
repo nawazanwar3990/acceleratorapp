@@ -6,6 +6,7 @@ return [
     'sender_role' => 'Sender Role',
     'do_you_have_other_services' => 'Have Some Other Services',
     'view_images' => "View Images",
+    'Incubators'=>'Incubators',
     'meeting_name' => "Title",
     'meeting_arranged_for' => 'Arranged For',
     'meeting_type' => 'Type',

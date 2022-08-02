@@ -13,6 +13,10 @@ Route::resource('/floor-types', FloorTypeController::class, ['names' => 'floor-t
 Route::resource('/office-types', OfficeTypeController::class, ['names' => 'office-types'])->middleware('has_package');
 Route::resource('/offices', OfficeController::class, ['names' => 'offices'])->middleware('has_package');
 
+Route::get('/incubators', [BuildingController::class, 'view_incubators'])
+    ->name('incubators.index')
+    ->middleware('has_package');
+
 Route::get('/office-plans/{office_id}', [OfficeController::class, 'listPlans'])
     ->name('office-plans.index')
     ->middleware('has_package');
