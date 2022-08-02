@@ -24,11 +24,9 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service)
-                                @if($service->pivot->limit>0)
-                                    <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;">
-                                        <i class="bx bx-check text-success"></i> {{ $service->pivot->limit }} {{ $service->name }}
-                                    </div>
-                                @endif
+                                <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;">
+                                    <i class="bx bx-check text-success"></i> {{ $service->pivot->limit }} {{ $service->name }}
+                                </div>
                             @endforeach
                         </div>
                         <div class="price-row justify-content-center">

@@ -26,13 +26,10 @@
         <td style="width: 230px;">
             <UL class="list-group list-group-flush bg-transparent">
                 @foreach($record->services as $service)
-                    @if($service->pivot->limit>0)
-                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                            <i class="bx bx-check text-success"></i> <small><strong
-                                    class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
-                            </small>
-                        </li>
-                    @endif
+                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
+                        <i class="bx bx-check text-success"></i> <small><strong
+                                class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                        </small>
                 @endforeach
             </UL>
         </td>
