@@ -18,9 +18,9 @@ class PackageService
         }
         return Package::where('status', true)
             ->where('type', $type)
-            ->whereHas('services', function ($q) use ($service_ids) {
+            /*->whereHas('services', function ($q) use ($service_ids) {
                 $q->whereIn('services.id', $service_ids);
-            })
+            })*/
             ->with('services')
             ->get();
     }
