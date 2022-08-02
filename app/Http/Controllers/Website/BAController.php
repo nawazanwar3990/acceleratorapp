@@ -89,7 +89,11 @@ class BAController extends Controller
                     break;
                 case StepEnum::STEP2;
                     $model = $this->baService->saveServices($model->type, $model);
-                    return redirect()->route('website.ba.create', [StepEnum::STEP3, $model->id]);
+                    if ($request->has('services')) {
+                        return redirect()->route('website.ba.create', [StepEnum::STEP3, $model->id]);
+                    } else {
+                        return redirect()->back()->withInput()->with('error', 'First Choose Services');
+                    }
                     break;
                 case StepEnum::STEP3;
                     $user_id = $request->input('user_id', null);

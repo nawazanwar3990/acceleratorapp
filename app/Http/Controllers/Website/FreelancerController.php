@@ -83,10 +83,14 @@ class FreelancerController extends Controller
                     break;
                 case StepEnum::STEP2;
                     $model = $this->freelancerService->saveServices($model->type, $model);
-                    if ($model->type == FreelancerTypeEnum::INDIVIDUAL) {
-                        return redirect()->route('website.freelancers.create', [StepEnum::STEP4, $model->id]);
+                    if ($request->has('services')) {
+                        if ($model->type == FreelancerTypeEnum::INDIVIDUAL) {
+                            return redirect()->route('website.freelancers.create', [StepEnum::STEP4, $model->id]);
+                        } else {
+                            return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
+                        }
                     } else {
-                        return redirect()->route('website.freelancers.create', [StepEnum::STEP3, $model->id]);
+                        return redirect()->back()->withInput()->with('error', 'First Choose Services');
                     }
                     break;
                 case StepEnum::STEP3;

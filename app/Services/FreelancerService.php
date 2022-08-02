@@ -54,8 +54,8 @@ class FreelancerService
     {
         $services = request()->input('services');
         $model->services()->sync($services);
-        $other_services = request()->input('other_services', array());
-        if (count($other_services) > 0) {
+        if (request()->has('other_services')) {
+            $other_services = request()->input('other_services', array());
             $model->other_services = json_encode($other_services);
             $model->save();
         }

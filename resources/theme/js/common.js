@@ -1,4 +1,4 @@
-(function (){
+(function () {
     $('.select2').select2();
     $('.dropify').dropify();
     $('.timepicker').timepicker();
@@ -7,6 +7,7 @@
     }), jQuery(document).on("click", ".mega-dropdown", function (e) {
         e.stopPropagation()
     });
+
     function e() {
         (0 < window.innerWidth ? window.innerWidth : this.screen.width) < 1170 ? ($("body").addClass("mini-sidebar"), $(".navbar-brand span").hide(), $(".sidebartoggler i").addClass("ti-menu")) : ($("body").removeClass("mini-sidebar"), $(".navbar-brand span").show());
         let e = (0 < window.innerHeight ? window.innerHeight : this.screen.height) - 1;
@@ -83,10 +84,31 @@
         }
     });
 })();
-function manageOtherServices(cElement){
- let value = $(cElement).val();
- console.log(value);
+
+function manageOtherServices(cElement) {
+    let holder = $("#other_services_holder");
+    let html = '<tr>\n' +
+        '                            <th class="py-2">\n' +
+        '                                <input id="other_services[]" class="form-control form-control-sm" name="other_services[]" type="text">\n' +
+        '                            </th>\n' +
+        '                            <td class="text-center pt-2">\n' +
+        '                                <a href="javascript:void(0);" onclick="clone_row(this);" class="btn btn-xs btn-info">\n' +
+        '                                    <i class="bx bx-plus"></i>\n' +
+        '                                </a>\n' +
+        '                                <a href="javascript:void(0);" tabindex="18" onclick="remove_clone_row(this);" class="btn btn-xs btn-danger">\n' +
+        '                                    <i class="bx bx-minus"></i>\n' +
+        '                                </a>\n' +
+        '                            </td>\n' +
+        '                        </tr>';
+    holder.removeClass('d-block d-none');
+    if ($(cElement).prop("checked") === true) {
+        holder.addClass('d-block');
+        holder.find('table').append(html);
+    } else {
+        holder.addClass('d-none');
+    }
 }
+
 function already_employee(cElement) {
     let employee_detail_holder = $("#employee_detail_holder");
     let employee_type_holder = $("#employee_type_holder");
@@ -101,6 +123,7 @@ function already_employee(cElement) {
         $("input[name=f_emp_type]").prop("checked", false);
     }
 }
+
 function change_emp_type(cElement) {
 
     let employee_type_holder = $("#employee_type_holder");
@@ -118,6 +141,7 @@ function change_emp_type(cElement) {
 
     }
 }
+
 function applyLogin(types) {
     types = JSON.parse(types);
     let html = '<div class="row justify-content-center">';
@@ -176,6 +200,7 @@ function applyLogin(types) {
     });
     return false;
 }
+
 function clone_dropify(cElement) {
     let closest_holder = $(cElement).closest('.dropify_parent_holder');
     let html = '<div class="py-3 px-1 position-relative dropify_parent_holder">\n' +
@@ -190,6 +215,7 @@ function clone_dropify(cElement) {
     closest_holder.after(html);
     $(".dropify").dropify();
 }
+
 function clone_row(cElement) {
     let clone = $(cElement).closest('tr').clone();
     $(clone).find('input[type=text]').val('');
@@ -231,6 +257,7 @@ function remove_table_body(cElement) {
         alert("At least one Body is Required");
     }
 }
+
 function showError(errorMsg) {
     $.toast({
         heading: "Error",
@@ -241,6 +268,7 @@ function showError(errorMsg) {
         stack: 6
     });
 }
+
 function showMessage(message) {
     $.toast({
         heading: "Success",

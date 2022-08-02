@@ -74,7 +74,11 @@ class MentorController extends Controller
             switch ($step) {
                 case StepEnum::STEP1;
                     $model = $this->mentorService->saveServices($model);
-                    return redirect()->route('website.mentors.create', [StepEnum::STEP2, $model->id]);
+                    if ($request->has('services')) {
+                        return redirect()->route('website.mentors.create', [StepEnum::STEP2, $model->id]);
+                    } else {
+                        return redirect()->back()->withInput()->with('error', 'First Choose Services');
+                    }
                     break;
                 case StepEnum::STEP2;
                     $user_id = $request->input('user_id', null);
