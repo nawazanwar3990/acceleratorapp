@@ -8,7 +8,6 @@
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     {!! Form::open(['url' =>route('dashboard.packages.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
-
                         <x-created-by-field></x-created-by-field>
                         @include('dashboard.packages.fields')
                         <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"

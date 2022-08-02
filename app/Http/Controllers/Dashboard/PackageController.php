@@ -57,7 +57,7 @@ class PackageController extends Controller
         $type = $request->input('type');
         $params = [
             'pageTitle' => __('general.new_package'),
-            'type'=>$type
+            'type' => $type
         ];
         return view('dashboard.packages.create', $params);
     }
@@ -71,10 +71,10 @@ class PackageController extends Controller
         $type = $request->input('type');
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.packages.create',['type'=>$type])
+                return redirect()->route('dashboard.packages.create', ['type' => $type])
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.packages.index',['type'=>$type])
+                return redirect()->route('dashboard.packages.index', ['type' => $type])
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -83,13 +83,15 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function edit($id): Factory|View|Application
+    public function edit(Request $request, $id): Factory|View|Application
     {
         $this->authorize('update', Package::class);
+        $type = $request->input('type');
         $model = Package::with('services')->findorFail($id);
         $params = [
             'pageTitle' => __('general.edit_package'),
             'model' => $model,
+            'type' => $type
         ];
 
         return view('dashboard.packages.edit', $params);
@@ -103,7 +105,7 @@ class PackageController extends Controller
         $type = $request->input('type');
         $this->authorize('update', Package::class);
         if ($request->updateData($id)) {
-            return redirect()->route('dashboard.packages.index',['type'=>$type])
+            return redirect()->route('dashboard.packages.index', ['type' => $type])
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
