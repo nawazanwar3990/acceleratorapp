@@ -31,6 +31,7 @@ class BAController extends Controller
         private BaService $baService
     )
     {
+        $this->makeMultipleDirectories('ba', ['images']);
         $this->makeMultipleDirectories('subscription', ['receipts']);
     }
 

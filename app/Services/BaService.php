@@ -3,12 +3,14 @@
 namespace App\Services;
 
 use App\Enum\AcceleratorTypeEnum;
+use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Mail\VerifyMail;
 use App\Models\BA;
+use App\Models\Media;
 use App\Models\Package;
 use App\Models\Service;
 use App\Models\Subscription;
@@ -18,6 +20,7 @@ use App\Notifications\VerifyEmailLink;
 use App\Services\RoleService;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -96,6 +99,7 @@ class BaService
             $model->user_id = $user->id;
             $model->save();
         }
+        $this->saveMedia($model);
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
@@ -151,5 +155,91 @@ class BaService
             return false;
         }
 
+    }
+
+    private function saveMedia($model)
+    {
+
+        if (request()->has('logo')){
+            $logo = request()->file('logo');
+            $logoName = GeneralService::generateFileName($logo);
+            $logoPath = 'uploads/ba/images/' . $logoName;
+            $logo->move('uploads/ba/images', $logoName);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::BA_LOGO,
+                    'filename' => $logoPath,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_front')){
+            $id_card_front = request()->file('id_card_front');
+            $id_card_front_name = GeneralService::generateFileName($id_card_front);
+            $id_card_front_path = 'uploads/ba/images/' . $id_card_front_name;
+            $id_card_front->move('uploads/ba/images', $id_card_front_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::BA_FRONT_ID_CARD,
+                    'filename' => $id_card_front_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_back')){
+            $id_card_back = request()->file('id_card_back');
+            $id_card_back_name = GeneralService::generateFileName($id_card_back);
+            $id_card_back_path = 'uploads/ba/images/' . $id_card_back_name;
+            $id_card_back->move('uploads/ba/images', $id_card_back_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::BA_BACK_ID_CARD,
+                    'filename' => $id_card_back_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        $images = request()->file('images', []);
+        if (count($images)>0) {
+            foreach ($images as $image) {
+                $imageName = GeneralService::generateFileName($image);
+                $imagePath = 'uploads/ba/images/' . $imageName;
+                $image->move('uploads/ba/images', $imageName);
+                Media::create(
+                    [
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::BA_DOCUMENT,
+                        'filename' => $imagePath,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]
+                );
+            }
+        }
+
+        $certificates = request()->file('certificates', []);
+        if (count($certificates)>0) {
+            foreach ($certificates as $certificate) {
+                $certificateName = GeneralService::generateFileName($certificate);
+                $certificatePath = 'uploads/ba/images/' . $certificateName;
+                $certificate->move('uploads/ba/images', $certificateName);
+                Media::create(
+                    [
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::BA_CERTIFICATE,
+                        'filename' => $certificatePath,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]
+                );
+            }
+        }
+        return $model;
     }
 }

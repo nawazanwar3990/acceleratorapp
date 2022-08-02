@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,31 @@ class Mentor extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function logo(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::MENTOR_LOGO);
+    }
+    public function front_id_card(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::MENTOR_FRONT_ID_CARD);
+    }
+    public function back_id_card(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::MENTOR_BACK_ID_CARD);
+    }
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::MENTOR_DOCUMENT);
+    }
+    public function certificates(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::MENTOR_CERTIFICATE);
     }
     public function services(): BelongsToMany
     {

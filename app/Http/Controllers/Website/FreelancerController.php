@@ -25,6 +25,7 @@ class FreelancerController extends Controller
         private FreelancerService $freelancerService
     )
     {
+        $this->makeMultipleDirectories('sp', ['images']);
         $this->makeMultipleDirectories('subscription', ['receipts']);
     }
 

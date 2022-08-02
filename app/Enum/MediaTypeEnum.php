@@ -28,11 +28,25 @@ class MediaTypeEnum extends AbstractEnum
     public const  SUBSCRIPTION_RECEIPT = 'subscription_receipt';
 
     public const  SP_LOGO = 'sp_logo';
-    public const  SP_REGISTERED_CERTIFICATE = 'sp_registered_certificate';
-    public const  SP_PROVED_DOCUMENTS = 'sp_proved_documents';
+    public const  SP_FRONT_ID_CARD = 'sp_front_id_card';
+    public const  SP_BACK_ID_CARD = 'sp_back_id_card';
+    public const  SP_DOCUMENT = 'sp_document';
+    public const  SP_CERTIFICATE = 'sp_certificate';
+
+    public const  BA_LOGO = 'ba_logo';
+    public const  BA_FRONT_ID_CARD = 'ba_front_id_card';
+    public const  BA_BACK_ID_CARD = 'ba_back_id_card';
+    public const  BA_DOCUMENT = 'ba_document';
+    public const  BA_CERTIFICATE = 'ba_certificate';
 
     public const MEETING_IMAGE = 'meeting_image';
     public const EVENT_IMAGE = 'event_image';
+
+    public const  MENTOR_LOGO = 'mentor_logo';
+    public const  MENTOR_FRONT_ID_CARD = 'mentor_front_id_card';
+    public const  MENTOR_BACK_ID_CARD = 'mentor_back_id_card';
+    public const  MENTOR_DOCUMENT = 'mentor_document';
+    public const  MENTOR_CERTIFICATE = 'mentor_certificate';
 
     public static function getValues(): array
     {

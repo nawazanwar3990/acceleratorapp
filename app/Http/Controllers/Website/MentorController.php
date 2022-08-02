@@ -24,6 +24,7 @@ class MentorController extends Controller
         private MentorService $mentorService
     )
     {
+        $this->makeMultipleDirectories('mentors', ['images']);
         $this->makeMultipleDirectories('subscription', ['receipts']);
     }
 

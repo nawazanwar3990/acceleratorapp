@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BA extends Model
 {
@@ -31,6 +33,31 @@ class BA extends Model
     public function getCompanyDateOfInitiationAttribute($value)
     {
         return Carbon::parse($value)->format('d M Y');
+    }
+    public function logo(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::BA_LOGO);
+    }
+    public function front_id_card(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::BA_FRONT_ID_CARD);
+    }
+    public function back_id_card(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::BA_BACK_ID_CARD);
+    }
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::BA_DOCUMENT);
+    }
+    public function certificates(): HasMany
+    {
+        return $this->hasMany(Media::class,'record_id','id')
+            ->where('record_type',MediaTypeEnum::BA_CERTIFICATE);
     }
     public function user(): BelongsTo
     {

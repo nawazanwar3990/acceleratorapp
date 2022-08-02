@@ -2,14 +2,17 @@
 
 namespace App\Services;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
+use App\Models\Media;
 use App\Models\Mentor;
 use App\Models\Package;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -116,5 +119,89 @@ class MentorService
         }
 
     }
+    private function saveMedia($model)
+    {
 
+        if (request()->has('logo')){
+            $logo = request()->file('logo');
+            $logoName = GeneralService::generateFileName($logo);
+            $logoPath = 'uploads/mentors/images/' . $logoName;
+            $logo->move('uploads/mentors/images', $logoName);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::MENTOR_LOGO,
+                    'filename' => $logoPath,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_front')){
+            $id_card_front = request()->file('id_card_front');
+            $id_card_front_name = GeneralService::generateFileName($id_card_front);
+            $id_card_front_path = 'uploads/mentors/images/' . $id_card_front_name;
+            $id_card_front->move('uploads/mentors/images', $id_card_front_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::MENTOR_FRONT_ID_CARD,
+                    'filename' => $id_card_front_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_back')){
+            $id_card_back = request()->file('id_card_back');
+            $id_card_back_name = GeneralService::generateFileName($id_card_back);
+            $id_card_back_path = 'uploads/mentors/images/' . $id_card_back_name;
+            $id_card_back->move('uploads/mentors/images', $id_card_back_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::MENTOR_BACK_ID_CARD,
+                    'filename' => $id_card_back_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        $images = request()->file('images', []);
+        if (count($images)>0) {
+            foreach ($images as $image) {
+                $imageName = GeneralService::generateFileName($image);
+                $imagePath = 'uploads/mentors/images/' . $imageName;
+                $image->move('uploads/mentors/images', $imageName);
+                Media::create(
+                    [
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::MENTOR_DOCUMENT,
+                        'filename' => $imagePath,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]
+                );
+            }
+        }
+
+        $certificates = request()->file('certificates', []);
+        if (count($certificates)>0) {
+            foreach ($certificates as $certificate) {
+                $certificateName = GeneralService::generateFileName($certificate);
+                $certificatePath = 'uploads/mentors/images/' . $certificateName;
+                $certificate->move('uploads/mentors/images', $certificateName);
+                Media::create(
+                    [
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::MENTOR_CERTIFICATE,
+                        'filename' => $certificatePath,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]
+                );
+            }
+        }
+        return $model;
+    }
 }

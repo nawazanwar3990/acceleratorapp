@@ -2,15 +2,18 @@
 
 namespace App\Services;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Models\BA;
 use App\Models\Freelancer;
+use App\Models\Media;
 use App\Models\Package;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -88,6 +91,7 @@ class FreelancerService
             $model->user_id = $user->id;
             $model->save();
         }
+        $this->saveMedia($model);
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
@@ -97,7 +101,6 @@ class FreelancerService
         $date = date("Y-m-d g:i:s");
         $verifyUser->user->email_verified_at = $date;
         $verifyUser->user->save();
-
         //$user->notify(new VerifyEmailLink());
         return $model;
     }
@@ -164,6 +167,92 @@ class FreelancerService
         }
         if (count($records) > 0) {
             $model->focal_persons()->createMany($records);
+        }
+        return $model;
+    }
+
+    private function saveMedia($model)
+    {
+
+        if (request()->has('logo')){
+            $logo = request()->file('logo');
+            $logoName = GeneralService::generateFileName($logo);
+            $logoPath = 'uploads/sp/images/' . $logoName;
+            $logo->move('uploads/sp/images', $logoName);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::SP_LOGO,
+                    'filename' => $logoPath,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_front')){
+            $id_card_front = request()->file('id_card_front');
+            $id_card_front_name = GeneralService::generateFileName($id_card_front);
+            $id_card_front_path = 'uploads/sp/images/' . $id_card_front_name;
+            $id_card_front->move('uploads/sp/images', $id_card_front_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::SP_FRONT_ID_CARD,
+                    'filename' => $id_card_front_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_back')){
+            $id_card_back = request()->file('id_card_back');
+            $id_card_back_name = GeneralService::generateFileName($id_card_back);
+            $id_card_back_path = 'uploads/sp/images/' . $id_card_back_name;
+            $id_card_back->move('uploads/sp/images', $id_card_back_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => MediaTypeEnum::SP_BACK_ID_CARD,
+                    'filename' => $id_card_back_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        $images = request()->file('images', []);
+        if (count($images)>0) {
+            foreach ($images as $image) {
+                $imageName = GeneralService::generateFileName($image);
+                $imagePath = 'uploads/sp/images/' . $imageName;
+                $image->move('uploads/sp/images', $imageName);
+                Media::create(
+                    [
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::SP_DOCUMENT,
+                        'filename' => $imagePath,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]
+                );
+            }
+        }
+
+        $certificates = request()->file('certificates', []);
+        if (count($certificates)>0) {
+            foreach ($certificates as $certificate) {
+                $certificateName = GeneralService::generateFileName($certificate);
+                $certificatePath = 'uploads/sp/images/' . $certificateName;
+                $certificate->move('uploads/sp/images', $certificateName);
+                Media::create(
+                    [
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::SP_CERTIFICATE,
+                        'filename' => $certificatePath,
+                        'created_by' => Auth::id(),
+                        'updated_by' => Auth::id()
+                    ]
+                );
+            }
         }
         return $model;
     }
