@@ -48,9 +48,16 @@ class ServiceData
     }
     public static function get_mentor_services()
     {
-        return Service::where('type', ServiceTypeEnum::MENTOR_SERVICE)
+        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
             ->whereStatus(true)
-            ->where('parent_id','!=',null)
+            ->where('parent_id',null)
+            ->orderBy('name', 'ASC')->get();
+    }
+    public static function get_mentor_child_services($parent_id)
+    {
+        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
+            ->whereStatus(true)
+            ->where('parent_id',$parent_id)
             ->orderBy('name', 'ASC')->get();
     }
     public static function getBasicServices()

@@ -1,6 +1,6 @@
 <div class="col-lg-4 col-md-4">
     @if(isset($model) AND $model->type==\App\Enum\FreelancerTypeEnum::SERVICE_PROVIDER)
-        <h4 class="fw-bold">{{ trans('general.service_provider') }}</h4>
+        <h4 class="fw-bold">{{ trans('general.service_provider_company') }}</h4>
     @else
         <h4 class="fw-bold">{{ trans('general.freelancer') }}</h4>
     @endif

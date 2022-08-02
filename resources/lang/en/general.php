@@ -1,5 +1,6 @@
 <?php
 return [
+    'service_provider_company'=>'Service Provider Company',
     'sender_name' => 'Sender Name',
     'sender_role' => 'Sender Role',
     'do_you_have_other_services' => 'Have Some Other Services',
