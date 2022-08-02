@@ -83,11 +83,11 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function edit(Request $request, $id): Factory|View|Application
+    public function edit($id): Factory|View|Application
     {
         $this->authorize('update', Package::class);
-        $type = $request->input('type');
         $model = Package::with('services')->findorFail($id);
+        $type = $model->type;
         $params = [
             'pageTitle' => __('general.edit_package'),
             'model' => $model,

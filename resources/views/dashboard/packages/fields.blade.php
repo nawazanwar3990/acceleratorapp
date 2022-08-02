@@ -1,7 +1,8 @@
 <div class="row mb-3">
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('type' ,__('general.type'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('type',\App\Enum\PackageTypeEnum::getDropDownKey(),$type,['id'=>'type','class'=>'form-control','readonly'])!!}
+        {!!  Form::select('type',\App\Enum\PackageTypeEnum::getDropDownKey(),$type,['id'=>'type','class'=>'form-control','readonly'])
+        !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
