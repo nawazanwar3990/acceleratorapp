@@ -100,7 +100,10 @@ class BaService
             $model->save();
         }
         $this->saveMedia($model);
+        $this->manageQualifications($model);
         $this->manageCertifications($model);
+        $this->manageExperiences($model);
+
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
@@ -246,33 +249,58 @@ class BaService
         }
     }
 
-    private function manageQualifications($model)
+    private function manageQualifications($model): void
     {
         $model->qualifications()->delete();
         $data = request()->input('qualifications', []);
         $count = $data['degree'];
         $final = array();
         if (count($count) > 0) {
-            for ($i = 0; $i < $count; $i++) {
+            for ($i = 0; $i < count($count); $i++) {
                 $final[] = [
-                    'degree' => $data['degree'][$i],
-                    'institute' => $data['institute'][$i],
-                    'year_of_passing' => $data['year_of_passing'][$i],
-                    'grade' => $data['grade'][$i],
+                    'degree' => $data['degree'][$i] ?? null,
+                    'institute' => $data['institute'][$i] ?? null,
+                    'year_of_passing' => $data['year_of_passing'][$i] ?? null,
+                    'grade' => $data['grade'][$i] ?? null,
                 ];
             }
         }
-        $model->qualifications()->create($final);
-        return $model;
+        $model->qualifications()->createMany($final);
     }
-
-    private function manageCertifications()
+    private function manageCertifications($model): void
     {
-        $data = request()->input('certifications');
+        $model->certifications()->delete();
+        $data = request()->input('certifications', []);
+        $count = $data['certificate_name'];
+        $final = array();
+        if (count($count) > 0) {
+            for ($i = 0; $i < count($count); $i++) {
+                $final[] = [
+                    'certificate_name' => $data['certificate_name'][$i] ?? null,
+                    'institute' => $data['institute'][$i] ?? null,
+                    'year' => $data['year'][$i] ?? null,
+                    'any_distinction' => $data['any_distinction'][$i] ?? null,
+                ];
+            }
+        }
+        $model->certifications()->createMany($final);
     }
-
-    private function manageExperience()
+    private function manageExperiences($model): void
     {
-        $data = request()->input('experiences');
+        $model->experiences()->delete();
+        $data = request()->input('experiences', []);
+        $count = $data['company_name'];
+        $final = array();
+        if (count($count) > 0) {
+            for ($i = 0; $i < count($count); $i++) {
+                $final[] = [
+                    'company_name' => $data['company_name'][$i] ?? null,
+                    'designation' => $data['designation'][$i] ?? null,
+                    'duration' => $data['duration'][$i] ?? null,
+                    'any_achievement' => $data['any_achievement'][$i] ?? null,
+                ];
+            }
+        }
+        $model->experiences()->createMany($final);
     }
 }
