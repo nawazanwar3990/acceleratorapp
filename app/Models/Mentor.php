@@ -57,4 +57,16 @@ class Mentor extends Model
     {
         return $this->belongsToMany(Service::class, TableEnum::MENTOR_SERVICE);
     }
+    public function qualifications(): HasMany
+    {
+        return $this->hasMany(MentorQualification::class,'mentor_id');
+    }
+    public function projects(): HasMany
+    {
+        return $this->hasMany(MentorProject::class,'mentor_id');
+    }
+    public function certifications(): HasMany
+    {
+        return $this->hasMany(MentorCertification::class,'mentor_id');
+    }
 }

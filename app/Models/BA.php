@@ -69,7 +69,18 @@ class BA extends Model
         return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE,'ba_id','service_id')
             ->withTimestamps();
     }
-
+    public function qualifications(): HasMany
+    {
+        return $this->hasMany(BaQualification::class,'ba_id');
+    }
+    public function experiences(): HasMany
+    {
+        return $this->hasMany(BaExperience::class,'ba_id');
+    }
+    public function certifications(): HasMany
+    {
+        return $this->hasMany(BaCertification::class,'ba_id');
+    }
     public function getCompanyInstitutesAttribute($value)
     {
         return json_decode($value, true);

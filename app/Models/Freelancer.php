@@ -48,17 +48,20 @@ class Freelancer extends Model
     {
         return $this->hasMany(FreelancerFocalPerson::class, 'freelancer_id','id');
     }
-    public function experiences(): HasMany
-    {
-        return $this->hasMany(FreelancerExperience::class, 'freelancer_id');
-    }
-
-    public function qualifications(): HasMany
-    {
-        return $this->hasMany(FreelancerQualification::class, 'freelancer_id');
-    }
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE,'freelancer_id');
+    }
+    public function qualifications(): HasMany
+    {
+        return $this->hasMany(FreelancerQualification::class,'freelancer_id');
+    }
+    public function experiences(): HasMany
+    {
+        return $this->hasMany(FreelancerExperience::class,'freelancer_id');
+    }
+    public function certifications(): HasMany
+    {
+        return $this->hasMany(FreelancerCertification::class,'freelancer_id');
     }
 }

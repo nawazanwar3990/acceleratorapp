@@ -100,6 +100,7 @@ class BaService
             $model->save();
         }
         $this->saveMedia($model);
+        $this->manageCertifications($model);
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
@@ -160,7 +161,7 @@ class BaService
     private function saveMedia($model)
     {
 
-        if (request()->has('logo')){
+        if (request()->has('logo')) {
             $model->logo()->delete();
             $logo = request()->file('logo');
             $logoName = GeneralService::generateFileName($logo);
@@ -176,7 +177,7 @@ class BaService
                 ]
             );
         }
-        if (request()->has('id_card_front')){
+        if (request()->has('id_card_front')) {
             $model->front_id_card()->delete();
             $id_card_front = request()->file('id_card_front');
             $id_card_front_name = GeneralService::generateFileName($id_card_front);
@@ -192,7 +193,7 @@ class BaService
                 ]
             );
         }
-        if (request()->has('id_card_back')){
+        if (request()->has('id_card_back')) {
             $model->back_id_card()->delete();
             $id_card_back = request()->file('id_card_back');
             $id_card_back_name = GeneralService::generateFileName($id_card_back);
@@ -209,7 +210,7 @@ class BaService
             );
         }
         $images = request()->file('images', []);
-        if (count($images)>0) {
+        if (count($images) > 0) {
             foreach ($images as $image) {
                 $imageName = GeneralService::generateFileName($image);
                 $imagePath = 'uploads/ba/images/' . $imageName;
@@ -227,7 +228,7 @@ class BaService
         }
 
         $certificates = request()->file('certificates', []);
-        if (count($certificates)>0) {
+        if (count($certificates) > 0) {
             foreach ($certificates as $certificate) {
                 $certificateName = GeneralService::generateFileName($certificate);
                 $certificatePath = 'uploads/ba/images/' . $certificateName;
@@ -243,5 +244,35 @@ class BaService
                 );
             }
         }
+    }
+
+    private function manageQualifications($model)
+    {
+        $model->qualifications()->delete();
+        $data = request()->input('qualifications', []);
+        $count = $data['degree'];
+        $final = array();
+        if (count($count) > 0) {
+            for ($i = 0; $i < $count; $i++) {
+                $final[] = [
+                    'degree' => $data['degree'][$i],
+                    'institute' => $data['institute'][$i],
+                    'year_of_passing' => $data['year_of_passing'][$i],
+                    'grade' => $data['grade'][$i],
+                ];
+            }
+        }
+        $model->qualifications()->create($final);
+        return $model;
+    }
+
+    private function manageCertifications()
+    {
+        $data = request()->input('certifications');
+    }
+
+    private function manageExperience()
+    {
+        $data = request()->input('experiences');
     }
 }
