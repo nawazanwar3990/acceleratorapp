@@ -38,12 +38,12 @@
                                     </th>
                                     <td class="text-center pt-2">
                                         <a href="javascript:void(0);"
-                                           onclick="cloneRow(this);"
+                                           onclick="clone_row(this);"
                                            class="btn btn-xs btn-info">
                                             <i class="bx bx-plus"></i>
                                         </a>
                                         <a href="javascript:void(0);" tabindex="18"
-                                           onclick="removeClonedRow(this);"
+                                           onclick="remove_clone_row(this);"
                                            class="btn btn-xs btn-danger">
                                             <i class="bx bx-minus"></i>
                                         </a>
@@ -58,12 +58,12 @@
                             </th>
                             <td class="text-center pt-2">
                                 <a href="javascript:void(0);"
-                                   onclick="cloneRow(this);"
+                                   onclick="clone_row(this);"
                                    class="btn btn-xs btn-info">
                                     <i class="bx bx-plus"></i>
                                 </a>
                                 <a href="javascript:void(0);" tabindex="18"
-                                   onclick="removeClonedRow(this);"
+                                   onclick="remove_clone_row(this);"
                                    class="btn btn-xs btn-danger">
                                     <i class="bx bx-minus"></i>
                                 </a>

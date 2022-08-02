@@ -27,12 +27,12 @@
                         </td>
                         <td class="text-center">
                             <a href="javascript:void(0);"
-                               onclick="cloneRow(this);"
+                               onclick="clone_row(this);"
                                class="btn btn-xs btn-info">
                                 <i class="bx bx-plus"></i>
                             </a>
                             <a href="javascript:void(0);" tabindex="18"
-                               onclick="removeClonedRow(this);"
+                               onclick="remove_clone_row(this);"
                                class="btn btn-xs btn-danger">
                                 <i class="bx bx-minus"></i>
                             </a>
@@ -46,12 +46,12 @@
                     </td>
                     <td class="text-center">
                         <a href="javascript:void(0);"
-                           onclick="cloneRow(this);"
+                           onclick="clone_row(this);"
                            class="btn btn-xs btn-info">
                             <i class="bx bx-plus"></i>
                         </a>
                         <a href="javascript:void(0);" tabindex="18"
-                           onclick="removeClonedRow(this);"
+                           onclick="remove_clone_row(this);"
                            class="btn btn-xs btn-danger">
                             <i class="bx bx-minus"></i>
                         </a>
@@ -70,7 +70,7 @@
     </div>
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('company_date_of_initiation' ,__('general.company_date_of_initiation').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::date('company_date_of_initiation',isset($model)?\Carbon\Carbon::parse($model->company_date_of_initiation)->format('Y-m-d'):null,['id'=>'company_date_of_initiation','class'=>'form-control','required']) !!}
+        {!!  Form::text('company_date_of_initiation',isset($model)?\Carbon\Carbon::parse($model->company_date_of_initiation)->format('Y-m-d'):null,['id'=>'company_date_of_initiation','class'=>'form-control datepicker','required']) !!}
     </div>
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('company_contact_no' ,__('general.company_contact_no').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}

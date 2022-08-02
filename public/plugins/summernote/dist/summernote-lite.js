@@ -4097,16 +4097,16 @@ var Table = /** @class */ (function () {
                     if (!nextRow) {
                         continue;
                     }
-                    var cloneRow = row[0].cells[cellPos];
+                    var clone_row = row[0].cells[cellPos];
                     if (hasRowspan) {
                         if (rowspanNumber > 2) {
                             rowspanNumber--;
-                            nextRow.insertBefore(cloneRow, nextRow.cells[cellPos]);
+                            nextRow.insertBefore(clone_row, nextRow.cells[cellPos]);
                             nextRow.cells[cellPos].setAttribute('rowSpan', rowspanNumber);
                             nextRow.cells[cellPos].innerHTML = '';
                         }
                         else if (rowspanNumber === 2) {
-                            nextRow.insertBefore(cloneRow, nextRow.cells[cellPos]);
+                            nextRow.insertBefore(clone_row, nextRow.cells[cellPos]);
                             nextRow.cells[cellPos].removeAttribute('rowSpan');
                             nextRow.cells[cellPos].innerHTML = '';
                         }

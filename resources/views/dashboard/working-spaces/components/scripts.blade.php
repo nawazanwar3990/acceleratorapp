@@ -282,7 +282,7 @@
             }
         });
 
-        function cloneRow(cElement) {
+        function clone_row(cElement) {
             let clone = $(cElement).closest('tr').clone();
             $(clone).find('input[type=text]').val('');
             $(clone).find('input[type=number]').val('');
@@ -291,7 +291,7 @@
             $(cElement).closest('tbody').append(clone);
         }
 
-        function removeClonedRow(cElement) {
+        function remove_clone_row(cElement) {
             let length = $(cElement).closest('tbody').find('tr').length;
             if (length > 1) {
                 $(cElement).closest('tr').remove();

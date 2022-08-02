@@ -3,15 +3,16 @@
 @import "bootstrap";
 @import 'icons/bx-font/icons.css';
 @import 'core/core';
-
 @import 'widgets/widgets';
 @import "pages/pricing-page";
 @import "pages/error-pages";
 @import 'plugins/owl.carousel.min';
 @import 'plugins/owl.theme.default';
-@import 'plugins/bootstrap-datepicker.min';
 @import 'plugins/sweetalert2.min';
 @import 'plugins/jquery.toast';
+@import 'plugins/jquery-ui';
+@import 'plugins/bootstrap-datepicker.min';
+@import 'plugins/bootstrap-timepicker.min';
 
 @import 'plugins/select2.min';
 @import 'plugins/dropify';

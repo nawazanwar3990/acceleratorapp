@@ -16,58 +16,6 @@
                 </div>
             @endforeach
         </div>
-        <div
-            class="card other_services_holder">
-            <div class="card-header">
-                <h5 class="card-title mb-0">{{ trans('general.other_services') }}</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-sm table-bordered">
-                    <tbody>
-                    @if(isset($model) AND (is_array($model->other_services) AND count($model->other_services)>0))
-                        @if(count($model->other_services)>0)
-                            @foreach($model->other_services as $service)
-                                <tr>
-                                    <th class="py-2">
-                                        {!! Form::text('other_services[]',$service,['id'=>'other_services[]','class'=>'form-control form-control-sm"']) !!}
-                                    </th>
-                                    <td class="text-center pt-2">
-                                        <a href="javascript:void(0);"
-                                           onclick="cloneRow(this);"
-                                           class="btn btn-xs btn-info">
-                                            <i class="bx bx-plus"></i>
-                                        </a>
-                                        <a href="javascript:void(0);" tabindex="18"
-                                           onclick="removeClonedRow(this);"
-                                           class="btn btn-xs btn-danger">
-                                            <i class="bx bx-minus"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @endif
-                    @else
-                        <tr>
-                            <th class="py-2">
-                                {!! Form::text('other_services[]',null,['id'=>'other_services[]','class'=>'form-control form-control-sm"']) !!}
-                            </th>
-                            <td class="text-center pt-2">
-                                <a href="javascript:void(0);"
-                                   onclick="cloneRow(this);"
-                                   class="btn btn-xs btn-info">
-                                    <i class="bx bx-plus"></i>
-                                </a>
-                                <a href="javascript:void(0);" tabindex="18"
-                                   onclick="removeClonedRow(this);"
-                                   class="btn btn-xs btn-danger">
-                                    <i class="bx bx-minus"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        @include('website.components.fields.other-services')
     </div>
 </div>

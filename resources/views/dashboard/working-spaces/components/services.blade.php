@@ -30,7 +30,7 @@
                                 {!! Form::text('general[price][]',$service->price,['class'=>'form-control']) !!}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-xs btn-danger " onclick="removeClonedRow(this);">
+                                <a class="btn btn-xs btn-danger " onclick="remove_clone_row(this);">
                                     <i class="bx bx-trash"></i>
                                 </a>
                             </td>
@@ -70,7 +70,7 @@
                                 {!! Form::text('security[price][]',$service->pivot->price,['class'=>'form-control']) !!}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-xs btn-danger " onclick="removeClonedRow(this);">
+                                <a class="btn btn-xs btn-danger " onclick="remove_clone_row(this);">
                                     <i class="bx bx-trash"></i>
                                 </a>
                             </td>

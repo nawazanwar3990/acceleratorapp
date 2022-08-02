@@ -22,7 +22,33 @@ class RegisterTypeEnum extends AbstractEnum
             self::MENTOR
         );
     }
-
+    public static function getRoute($key){
+        $images = array(
+            self::BUSINESS_ACCELERATOR => route('website.ba.create'),
+            self::FREELANCER_SERVICE_PROVIDER_COMPANY => route('website.freelancers.create'),
+            self::CUSTOMER => route('website.customers.create',[StepEnum::STEP1]),
+            self::MENTOR => route('website.mentors.create',[StepEnum::STEP1]),
+        );
+        if (!is_null($key) && array_key_exists($key, $images)) {
+            return $images[$key];
+        } else {
+            return null;
+        }
+    }
+    public static function getImage($key)
+    {
+        $images = array(
+            self::BUSINESS_ACCELERATOR => asset('images/icon/business_accelerator.png'),
+            self::FREELANCER_SERVICE_PROVIDER_COMPANY => asset('images/icon/freelancer.png'),
+            self::CUSTOMER => asset('images/icon/customer.png'),
+            self::MENTOR => asset('images/icon/mentor.png')
+        );
+        if (!is_null($key) && array_key_exists($key, $images)) {
+            return $images[$key];
+        } else {
+            return null;
+        }
+    }
     public static function getTranslationKeys(): array
     {
         return array(
