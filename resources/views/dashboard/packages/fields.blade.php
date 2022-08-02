@@ -33,7 +33,7 @@
         </div>
     </div>
 </div>
-@if($type==\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR)
+@if(in_array($type,[\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR,\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]))
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
@@ -75,7 +75,7 @@
         </div>
     </div>
 @endif
-@if($type==\App\Enum\PackageTypeEnum::FREELANCER)
+@if(in_array($type,[\App\Enum\PackageTypeEnum::FREELANCER,\App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY]))
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
