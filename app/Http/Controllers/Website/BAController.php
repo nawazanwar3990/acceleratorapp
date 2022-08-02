@@ -111,7 +111,7 @@ class BAController extends Controller
                     }
 
                     $model = $this->baService->saveUseInfo($model->type, $model, $user_id);
-                    //return redirect()->route('website.ba.create', [StepEnum::STEP4, $model->id]);
+                    return redirect()->route('website.ba.create', [StepEnum::STEP4, $model->id]);
                     break;
                 case StepEnum::STEP4;
                     $response = $this->baService->applySubscription($model->type);

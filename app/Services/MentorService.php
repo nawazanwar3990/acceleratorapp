@@ -63,6 +63,12 @@ class MentorService
             $model->user_id = $user->id;
             $model->save();
         }
+
+        $this->saveMedia($model);
+        $this->manageCertifications($model);
+        $this->manageQualifications($model);
+        $this->manageProjects($model);
+
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
@@ -205,5 +211,61 @@ class MentorService
                 );
             }
         }
+    }
+    private function manageQualifications($model): void
+    {
+        $model->qualifications()->delete();
+        $data = request()->input('qualifications', []);
+        $count = $data['degree'];
+        $final = array();
+        if (count($count) > 0) {
+            for ($i = 0; $i < count($count); $i++) {
+                $final[] = [
+                    'degree' => $data['degree'][$i] ?? null,
+                    'institute' => $data['institute'][$i] ?? null,
+                    'year_of_passing' => $data['year_of_passing'][$i] ?? null,
+                    'grade' => $data['grade'][$i] ?? null,
+                ];
+            }
+        }
+        $model->qualifications()->createMany($final);
+    }
+    private function manageCertifications($model): void
+    {
+        $model->certifications()->delete();
+        $data = request()->input('certifications', []);
+        $count = $data['certificate_name'];
+        $final = array();
+        if (count($count) > 0) {
+            for ($i = 0; $i < count($count); $i++) {
+                $final[] = [
+                    'certificate_name' => $data['certificate_name'][$i] ?? null,
+                    'institute' => $data['institute'][$i] ?? null,
+                    'year' => $data['year'][$i] ?? null,
+                    'any_distinction' => $data['any_distinction'][$i] ?? null,
+                ];
+            }
+        }
+        $model->certifications()->createMany($final);
+    }
+
+    private function manageProjects($model): void
+    {
+        $model->projects()->delete();
+        $data = request()->input('projects', []);
+        $count = $data['project_title'];
+        $final = array();
+        if (count($count) > 0) {
+            for ($i = 0; $i < count($count); $i++) {
+                $final[] = [
+                    'project_title' => $data['project_title'][$i] ?? null,
+                    'starting_date' => $data['starting_date'][$i] ?? null,
+                    'ending_date' => $data['ending_date'][$i] ?? null,
+                    'type' => $data['type'][$i] ?? null,
+                    'further_remarks' => $data['further_remarks'][$i] ?? null,
+                ];
+            }
+        }
+        $model->projects()->createMany($final);
     }
 }

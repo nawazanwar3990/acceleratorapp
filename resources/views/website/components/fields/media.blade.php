@@ -6,7 +6,7 @@
                     <h6 class="card-title mb-0">{{trans('general.id_card_front')}}</h6>
                 </div>
                 <div class="card-body py-3 px-1">
-                    {!! Form::file('id_card_front',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>count($model->front_id_card)?asset($model->front_id_card[0]->filename):'']) !!}
+                    {!! Form::file('id_card_front',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>(isset($model->front_id_card) && count($model->front_id_card))?asset($model->front_id_card[0]->filename):'']) !!}
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                     <h6 class="card-title mb-0">{{trans('general.id_card_back')}}</h6>
                 </div>
                 <div class="card-body py-3 px-1">
-                    {!! Form::file('id_card_back',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>count($model->back_id_card)?asset($model->back_id_card[0]->filename):'']) !!}
+                    {!! Form::file('id_card_back',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>(isset($model->back_id_card) && count($model->back_id_card))?asset($model->back_id_card[0]->filename):'']) !!}
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     <h6 class="card-title mb-0">{{trans('general.logo')}}</h6>
                 </div>
                 <div class="card-body py-3 px-1">
-                    {!! Form::file('logo',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>count($model->logo)?asset($model->logo[0]->filename):'']) !!}
+                    {!! Form::file('logo',['class'=>'dropify', 'data-height' => '75', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>(isset($model->logo) && count($model->logo))?asset($model->logo[0]->filename):'']) !!}
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="card-header">
                 <h6 class="card-title mb-0">{{trans('general.documents')}}</h6>
             </div>
-            @if(count($model->documents)>0)
+            @if(isset($model->docuements) AND count($model->documents)>0)
                 @foreach($model->documents as $document)
                     <div class="card-body py-3 px-1 position-relative dropify_parent_holder">
                         <a onclick="clone_dropify(this);" class="position-absolute dropify-add-clone-btn">
@@ -71,7 +71,7 @@
             <div class="card-header">
                 <h6 class="card-title mb-0">{{trans('general.certificates')}}</h6>
             </div>
-            @if(count($model->certificates)>0)
+            @if(isset($model->certificates) AND count($model->certificates)>0)
                 @foreach($model->certificates as $certificate)
                     <div class="card-body py-3 px-1  position-relative dropify_parent_holder">
                         <a onclick="clone_dropify(this);" class="position-absolute dropify-add-clone-btn">
