@@ -153,8 +153,7 @@ class BAController extends Controller
             Media::create([
                 'filename' => $path,
                 'record_id' => $subscription_id,
-                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT,
-                'created_by' => $subscription_id
+                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT
             ]);
         }
         return redirect()->back()->with('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
