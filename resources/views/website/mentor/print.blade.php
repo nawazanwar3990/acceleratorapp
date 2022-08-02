@@ -6,25 +6,25 @@
 @section('content')
     <div class="container ">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-default invoice" id="invoice">
+            <div class="col-12">
+                <div class="panel panel-default invoice" id="print_holder">
                     <div class="panel-body">
                         <div class="invoice-ribbon">
                             <div class="ribbon-inner">PAID</div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 top-right">
+                            <div class="col-6 top-right">
                                 <h3 class=""><u style="color: #212020; letter-spacing: 3px">INVOICE</u></h3>
                                 <span style="letter-spacing: 4px">No -{{ $model->id }}</span>
                             </div>
-                            <div class="col-sm-6 text-end">
+                            <div class="col-6 text-end">
                                 <img src="{{ asset('images/business/ot-logo.png') }}" alt="{{ $model->name }}"
                                      class="logo-img">
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-6">
                                 <h3>To,</h3>
                                 <p>{{ $model->user->email }}</p>
                                 <p>{{__('general.first_name')}} : {{ $model->user->first_name }}</p>
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-8">
                                 <div class="row table-row">
                                     <div class="col-md-12">
                                         <table class="table  table-hover table-responsive table-striped">
@@ -101,8 +101,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3">
+                            <div class="col-1"></div>
+                            <div class="col-3">
                                 <div class="row table-row">
                                     <table class="table  table-hover table-striped ">
                                         <thead>
@@ -140,9 +140,9 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-6 ">
-                                <button class="btn btn-success" onclick="printMe()">
+                        <div class="row ignore_printing">
+                            <div class="col-6">
+                                <button class="btn btn-success" onclick="printMe('print_holder','{{ route('website.index') }}')">
                                     <i class="fa fa-print"></i> Print
                                     Invoice
                                 </button>
@@ -157,14 +157,12 @@
                                 </a>
                             </div>
                         </div>
-
                         <div class="mt-md-4">
                             <p class="footer">Company Information</p>
                             <hr>
                         </div>
-
                         <div class="row">
-                            <div class="col-md-4 ">
+                            <div class="col-4 ">
                                 <div class="row">
                                     <div class="col-2">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
@@ -174,8 +172,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-4 ">
+                            <div class="col-4">
                                 <div class="row">
                                     <div class="col-2">
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -185,8 +182,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-4 ">
+                            <div class="col-4">
                                 <div class="row">
                                     <div class="col-2">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -204,13 +200,5 @@
     </div>
 @endsection
 @section('innerScript')
-    <script>
-        function printMe() {
-            let print_window = window.open("");
-            print_window.document.write(document.getElementById("invoice").innerHTML);
-            print_window.stop();
-            print_window.print();
-            print_window.close();
-        }
-    </script>
+
 @endsection

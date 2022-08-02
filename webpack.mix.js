@@ -15,6 +15,7 @@ mix.scripts([
     'resources/theme/js/plugins/perfect-scrollbar.jquery.min.js',
     'resources/theme/js/plugins/select2.min.js',
     'resources/theme/js/plugins/dropify.js',
+    'resources/theme/js/plugins/print.js',
     'resources/theme/js/waves.js',
     'resources/theme/js/sidebar.js',
     'resources/theme/js/search.js',
@@ -35,5 +36,6 @@ mix.scripts([
     'resources/theme/js/plugins/perfect-scrollbar.jquery.min.js',
     'resources/theme/js/plugins/select2.min.js',
     'resources/theme/js/plugins/dropify.js',
+    'resources/theme/js/plugins/print.js',
     'resources/theme/js/common.js',
 ], 'public/js/website.min.js');
