@@ -70,7 +70,7 @@
     </div>
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('sp_date_of_initiation' ,__('general.company_date_of_initiation').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
-        {!!  Form::string('sp_date_of_initiation',isset($model)?$model->sp_date_of_initiation:null,['id'=>'company_date_of_initiation','class'=>'form-control datepicker','required']) !!}
+        {!!  Form::text('sp_date_of_initiation',isset($model)?\Carbon\Carbon::parse()->format('Y-m-d'):null,['id'=>'company_date_of_initiation','class'=>'form-control datepicker','required']) !!}
     </div>
     <div class="col-md-6 mb-3">
         {!!  Html::decode(Form::label('sp_contact_no' ,__('general.company_contact_no').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
