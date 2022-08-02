@@ -34944,6 +34944,10 @@ a.ui-button:active,
   border-color: #bce8f1;
 }
 
+.fs-13 {
+  font-size: 13px !important;
+}
+
 .sidebar-nav ul li a {
   padding: 10px 5px 10px 3px !important;
   font-size: 13px !important;

@@ -9,22 +9,22 @@
                     <tbody>
                     <tr>
                         <td>
-                            {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label']) !!}
-                            {!!  Form::text('qualifications[degree][]',$qualification->degree,['id'=>'qualifications[degree][]','class'=>'form-control','autocomplete'=>'off']) !!}
+                            {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label fs-13']) !!}
+                            {!!  Form::text('qualifications[degree][]',$qualification->degree,['id'=>'qualifications[degree][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                         </td>
                         <td>
-                            {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label']) !!}
-                            {!!  Form::text('qualifications[institute][]',$qualification->institute,['id'=>'qualifications[institute][]','class'=>'form-control']) !!}
+                            {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
+                            {!!  Form::text('qualifications[institute][]',$qualification->institute,['id'=>'qualifications[institute][]','class'=>'form-control form-control-sm']) !!}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label']) !!}
-                            {!!  Form::text('qualifications[year_of_passing][]',$qualification->year_of_passing,['id'=>'qualifications[year_of_passing][]','class'=>'form-control']) !!}
+                            {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label fs-13']) !!}
+                            {!!  Form::text('qualifications[year_of_passing][]',$qualification->year_of_passing,['id'=>'qualifications[year_of_passing][]','class'=>'form-control form-control-sm']) !!}
                         </td>
                         <td>
-                            {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label']) !!}
-                            {!!  Form::text('qualifications[grade][]',$qualification->grade,['id'=>'qualifications[grade][]','class'=>'form-control']) !!}
+                            {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label fs-13']) !!}
+                            {!!  Form::text('qualifications[grade][]',$qualification->grade,['id'=>'qualifications[grade][]','class'=>'form-control form-control-sm']) !!}
                         </td>
                     </tr>
                     <tr>
@@ -49,22 +49,22 @@
                 <tbody>
                 <tr>
                     <td>
-                        {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label']) !!}
-                        {!!  Form::text('qualifications[degree][]',null,['id'=>'qualifications[degree][]','class'=>'form-control','autocomplete'=>'off']) !!}
+                        {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label fs-13']) !!}
+                        {!!  Form::text('qualifications[degree][]',null,['id'=>'qualifications[degree][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                     </td>
                     <td>
-                        {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label']) !!}
-                        {!!  Form::text('qualifications[institute][]',null,['id'=>'qualifications[institute][]','class'=>'form-control']) !!}
+                        {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
+                        {!!  Form::text('qualifications[institute][]',null,['id'=>'qualifications[institute][]','class'=>'form-control form-control-sm']) !!}
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label']) !!}
-                        {!!  Form::text('qualifications[year_of_passing][]',null,['id'=>'qualifications[year_of_passing][]','class'=>'form-control']) !!}
+                        {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label fs-13']) !!}
+                        {!!  Form::text('qualifications[year_of_passing][]',null,['id'=>'qualifications[year_of_passing][]','class'=>'form-control form-control-sm']) !!}
                     </td>
                     <td>
-                        {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label']) !!}
-                        {!!  Form::text('qualifications[grade][]',null,['id'=>'qualifications[grade][]','class'=>'form-control']) !!}
+                        {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label fs-13']) !!}
+                        {!!  Form::text('qualifications[grade][]',null,['id'=>'qualifications[grade][]','class'=>'form-control form-control-sm']) !!}
                     </td>
                 </tr>
                 <tr>
