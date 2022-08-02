@@ -18,8 +18,10 @@ Route::get('/ba/create/{step?}/{id?}', [BAController::class, 'create'])
     ->name('ba.create');
 Route::post('/ba/store/{step?}/{id?}', [BAController::class, 'store'])
     ->name('ba.store');
+
 Route::get('/ba-pending-subscription', [PageController::class, 'baPendingSubscription'])
-    ->name('ba-pending-subscription');
+    ->name('ba-pending-subscription')
+    ->middleware('has_package');
 
 Route::post('/ba/payment-snippet/store', [BAController::class, 'storePaymentSnippet'])
     ->name('ba.payment-snippet-store');

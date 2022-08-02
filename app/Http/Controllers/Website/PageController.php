@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Enum\MediaTypeEnum;
+use App\Enum\SubscriptionStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Subscription;
@@ -11,6 +12,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use function __;
 use function session;
@@ -31,12 +33,19 @@ class PageController extends Controller
         return view('website.pages.expire', compact('pageTitle'));
     }
 
-    public function baPendingSubscription(Request $request): Factory|View|Application
+    public function baPendingSubscription(Request $request)
     {
         $pageTitle = 'Pending Subscription';
         $subscribed_id = $request->query('subscribed_id');
         $user = User::find($subscribed_id);
         $subscription = Subscription::where('subscribed_id', $subscribed_id)->first();
+        if ($subscription->status == SubscriptionStatusEnum::APPROVED) {
+            Auth::attempt([
+                'email' => $user->email,
+                'password' => $user->normal_password
+            ]);
+            return redirect()->route('website.index')->with('success','Your Subscription has Approved');
+        }
         $media = Media::where('record_id', $subscription->id)->whereRecordType(MediaTypeEnum::SUBSCRIPTION_RECEIPT)->exists();
         if ($media) {
             Session::put('info', "Your Receipt has Received By Super admin and let you know after approved your Subscription");

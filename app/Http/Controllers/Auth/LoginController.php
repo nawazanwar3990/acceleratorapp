@@ -75,10 +75,17 @@ class LoginController extends Controller
                         'login' => __('general.your_account_is_not_activate_message'),
                     ]);
                 } else {
-                    if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
+                    if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR) || $user->hasRole(RoleEnum::MENTOR) || $user->hasRole(RoleEnum::FREELANCER)) {
                         $subscription = Subscription::where('subscribed_id', $user->id);
                         if (!$subscription->exists()) {
-                            return redirect()->route('website.ba.create', [StepEnum::STEP5, $user->ba->id]);
+                            if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)){
+                                return redirect()->route('website.ba.create', [StepEnum::STEP4, $user->ba->id]);
+                            }else  if ($user->hasRole(RoleEnum::FREELANCER)){
+                                return redirect()->route('website.freelancers.create', [StepEnum::STEP5, $user->ba->id]);
+                            }else  if ($user->hasRole(RoleEnum::MENTOR)){
+                                return redirect()->route('website.mentors.create', [StepEnum::STEP3, $user->ba->id]);
+                            }
+
                         } else {
                             $subscription_status = $subscription->value('status');
                             if ($subscription_status == SubscriptionStatusEnum::PENDING) {
