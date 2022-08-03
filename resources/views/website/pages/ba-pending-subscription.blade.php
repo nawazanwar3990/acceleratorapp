@@ -1,4 +1,11 @@
-@extends('layouts.website')
+@extends((auth()->user())?'layouts.dashboard':'layouts.website')
+@section('innerCSS')
+    <style>
+        .card {
+            border-top: 1px solid #edf1f5 !important;
+        }
+    </style>
+@endsection
 @section('css-before')
 @endsection
 @section('css-after')
@@ -14,8 +21,8 @@
                             <div class="card-header">
                                 <h4 class="fw-bold mb-0">{{__('general.package_info')}}</h4>
                             </div>
-                            <div class="card-body px-0">
-                                <table class="table table-bordered">
+                            <div class="card-body px-0 py-0">
+                                <table class="table table-bordered mb-0">
                                     <tr>
                                         <th>{{__('general.package_name')}}</th>
                                         <td>{{ $subscription->package->name }}</td>
@@ -36,8 +43,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <a class="btn btn-info btn-sm mb-4" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$user->ba->id]) }}">
+                    <div class="col-12 my-3 text-center">
+                        <a class="btn btn-info btn-sm" href="{{ route('website.ba.create',[$user->ba->type==\App\Enum\AcceleratorTypeEnum::COMPANY?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
                             Edit Profile
                         </a>
                     </div>

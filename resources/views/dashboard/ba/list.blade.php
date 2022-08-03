@@ -8,9 +8,17 @@
         </td>
         <td class="text-center">
             @if($ba->user->subscription)
-                {{ $ba->user->subscription->status }}
+                @if($ba->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
+                    $ba->user->subscription->status
+                @else
+                    <a class="btn btn-sm btn-success"
+                       href="{{ route('website.ba-pending-subscription',['subscribed_id'=>$ba->user->id]) }}">
+                        {{ trans('general.view') }}
+                    </a>
+                @endif
             @else
-                <a class="btn btn-sm btn-success" href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP4,$ba->id]) }}">
+                <a class="btn btn-sm btn-success"
+                   href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP4,$ba->id]) }}">
                     {{ trans('general.apply_subscription') }}
                 </a>
             @endif
