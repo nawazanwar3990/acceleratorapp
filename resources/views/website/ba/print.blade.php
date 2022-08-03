@@ -24,7 +24,7 @@
                         <i class="fa fa-print"></i> Print Invoice
                     </button>
                     <a class="btn btn-primary text-white"
-                       href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP1,$model->id]) }}">
+                       href="{{ route('website.ba.create',[$model->type ==\App\Enum\AcceleratorTypeEnum::COMPANY?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$model->id]) }}">
                         <i class="fa fa-edit"></i> Edit Profile
                     </a>
                     @guest
@@ -172,49 +172,6 @@
                                             </tbody>
                                         </table>
                                     @endif
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row mt-4">
-                                <div class="col-12">
-                                    <div class="footer">
-                                        <p class="mb-0">Company Information</p>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-4 ">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="col-10">
-                                                    <p>+92 301 000 0000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-4 ">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="col-10">
-                                                    <p>pofivy@mailinator.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-4">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="col-10">
-                                                    <p>Debitis sed impedit</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
