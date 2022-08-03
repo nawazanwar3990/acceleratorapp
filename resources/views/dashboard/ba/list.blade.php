@@ -9,7 +9,7 @@
         <td class="text-center">
             @if($ba->user->subscription)
                 @if($ba->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
-                    $ba->user->subscription->status
+                    {{ $ba->user->subscription->status}}
                 @else
                     <a class="btn btn-sm btn-success"
                        href="{{ route('website.ba-pending-subscription',['subscribed_id'=>$ba->user->id]) }}">

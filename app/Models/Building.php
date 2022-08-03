@@ -57,6 +57,6 @@ class Building extends Model
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::BUILDING_OWNER)->withTimestamps();
+        return $this->belongsToMany(User::class, TableEnum::BUILDING_OWNER)->withTimestamps();
     }
 }

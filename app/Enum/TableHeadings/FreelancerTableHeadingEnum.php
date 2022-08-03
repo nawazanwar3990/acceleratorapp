@@ -1,26 +1,29 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\UserManagement;
+namespace App\Enum\TableHeadings;
 
 use App\Enum\AbstractEnum;
 use function __;
 
 class FreelancerTableHeadingEnum extends AbstractEnum
 {
-    public const HR_NO = 'hr_no';
-    public const NAME = 'name';
     public const EMAIL = 'email';
+    public const NAME = 'name';
+    public const TYPE = 'type';
+    public const SUBSCRIPTION_STATUS = 'subscription_status';
     public static function getValues(): array
     {
         return [];
     }
+
     public static function getTranslationKeys(): array
     {
         return [
-            self::HR_NO => __(sprintf('%s.%s', 'general', self::HR_NO)),
+            self::EMAIL => __(sprintf('%s.%s', 'general', self::EMAIL)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::EMAIL => __(sprintf('%s.%s', 'general', self::EMAIL))
+            self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
+            self::SUBSCRIPTION_STATUS => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_STATUS)),
         ];
     }
 }
