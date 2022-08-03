@@ -43,7 +43,7 @@ class Building extends Model
     }
     public function floors(): HasMany
     {
-        return $this->hasMany(Floor::class);
+        return $this->hasMany(Floor::class,'building_id');
     }
     public function offices(): HasMany
     {

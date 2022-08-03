@@ -9,7 +9,7 @@ use function __;
 class OfficeTableHeadingEnum extends AbstractEnum
 {
     public const LOCATION = 'location';
-    public const NAME = 'name';
+    public const OFFICE_NAME = 'office_name';
     public const TYPE = 'type';
     public const SITTING_CAPACITY = 'sitting_capacity';
 
@@ -21,7 +21,7 @@ class OfficeTableHeadingEnum extends AbstractEnum
     {
         return [
             self::LOCATION => __(sprintf('%s.%s', 'general', self::LOCATION))."(optional)",
-            self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
+            self::OFFICE_NAME => __(sprintf('%s.%s', 'general', self::OFFICE_NAME)),
             self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
             self::SITTING_CAPACITY => __(sprintf('%s.%s', 'general', self::SITTING_CAPACITY)),
         ];

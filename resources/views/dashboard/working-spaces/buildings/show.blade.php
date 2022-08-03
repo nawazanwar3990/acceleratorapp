@@ -12,8 +12,8 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>{{__('general.name')}}</th>
-                                    <th>{{__('general.offices')}}</th>
+                                    <th>{{__('general.floor_name')}}</th>
+                                    <th>{{__('general.offices_detail')}}</th>
                                 </tr>
                                 </thead>
                                 @if(count($building->floors)>0)
@@ -29,7 +29,7 @@
                                                         <table class="table table-bordered mt-2">
                                                             <thead>
                                                             <tr>
-                                                                <th class="fs-13">{{__('general.name')}}</th>
+                                                                <th class="fs-13">{{__('general.office_name')}}</th>
                                                                 <th class="fs-13">{{__('general.sitting_capacity')}}</th>
                                                                 <th class="fs-13">{{__('general.action')}}</th>
                                                             </tr>

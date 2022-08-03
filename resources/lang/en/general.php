@@ -6,7 +6,7 @@ return [
     'sender_role' => 'Sender Role',
     'do_you_have_other_services' => 'Have Some Other Services',
     'view_images' => "View Images",
-    'Incubators'=>'Incubators',
+    'Incubators' => 'Incubators',
     'meeting_name' => "Title",
     'meeting_arranged_for' => 'Arranged For',
     'meeting_type' => 'Type',
@@ -34,6 +34,8 @@ return [
     'event_organized_for' => 'Organized For',
     'is_applied_ticker' => 'Is Applied Ticket',
     'event_social_media_url' => 'Social Media Url',
+    'offices_detail' => 'Offices Detail',
+    'office_name' => 'Office Name',
 
     'id_card_front' => 'CNIC Front',
     'id_card_back' => 'CNIC Back',
