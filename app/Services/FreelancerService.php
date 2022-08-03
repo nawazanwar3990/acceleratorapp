@@ -29,6 +29,9 @@ class FreelancerService
     {
         $model = $model ?? new Freelancer();
         $model->type = $type;
+        if (\auth()->user()) {
+            $model->created_by = Auth::id();
+        }
         $model->save();
         return $model;
     }
@@ -179,7 +182,7 @@ class FreelancerService
     private function saveMedia($model)
     {
 
-        if (request()->has('logo')){
+        if (request()->has('logo')) {
             $model->logo()->delete();
             $logo = request()->file('logo');
             $logoName = GeneralService::generateFileName($logo);
@@ -195,7 +198,7 @@ class FreelancerService
                 ]
             );
         }
-        if (request()->has('id_card_front')){
+        if (request()->has('id_card_front')) {
             $model->front_id_card()->delete();
             $id_card_front = request()->file('id_card_front');
             $id_card_front_name = GeneralService::generateFileName($id_card_front);
@@ -211,7 +214,7 @@ class FreelancerService
                 ]
             );
         }
-        if (request()->has('id_card_back')){
+        if (request()->has('id_card_back')) {
             $model->back_id_card()->delete();
             $id_card_back = request()->file('id_card_back');
             $id_card_back_name = GeneralService::generateFileName($id_card_back);
@@ -228,7 +231,7 @@ class FreelancerService
             );
         }
         $images = request()->file('images', []);
-        if (count($images)>0) {
+        if (count($images) > 0) {
             foreach ($images as $image) {
                 $imageName = GeneralService::generateFileName($image);
                 $imagePath = 'uploads/sp/images/' . $imageName;
@@ -246,7 +249,7 @@ class FreelancerService
         }
 
         $certificates = request()->file('certificates', []);
-        if (count($certificates)>0) {
+        if (count($certificates) > 0) {
             foreach ($certificates as $certificate) {
                 $certificateName = GeneralService::generateFileName($certificate);
                 $certificatePath = 'uploads/sp/images/' . $certificateName;
@@ -263,6 +266,7 @@ class FreelancerService
             }
         }
     }
+
     private function manageQualifications($model): void
     {
         $model->qualifications()->delete();
@@ -281,6 +285,7 @@ class FreelancerService
         }
         $model->qualifications()->createMany($final);
     }
+
     private function manageCertifications($model): void
     {
         $model->certifications()->delete();
@@ -299,6 +304,7 @@ class FreelancerService
         }
         $model->certifications()->createMany($final);
     }
+
     private function manageExperiences($model): void
     {
         $model->experiences()->delete();

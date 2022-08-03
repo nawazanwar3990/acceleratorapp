@@ -42,6 +42,10 @@ return new class extends Migration {
             $table->string('f_emp_designation')->nullable();
             $table->text('f_emp_description')->nullable();
 
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('updated_by')->nullable();
+            $table->foreignId('deleted_by')->nullable();
+
             $table->timestamps();
 
         });

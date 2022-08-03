@@ -26,6 +26,9 @@ class MentorService
     public function saveServices($model): Mentor
     {
         $model = $model ?? new Mentor();
+        if (\auth()->user()) {
+            $model->created_by = Auth::id();
+        }
         $model->save();
         $services = request()->input('services');
         $model->services()->sync($services);

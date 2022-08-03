@@ -26,9 +26,11 @@ class CreateUsersTable extends Migration
             $table->string('security_question_value')->nullable();
             $table->string('payment_token_number')->nullable();
             $table->string('know_about_us')->nullable();
+
             $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();
+
             $table->boolean('verified')->default(false);
             $table->softDeletes();
             $table->rememberToken();

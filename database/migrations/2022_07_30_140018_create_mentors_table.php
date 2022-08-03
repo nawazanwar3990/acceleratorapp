@@ -16,6 +16,10 @@ return new class extends Migration {
             $table->string('m_contact')->nullable();
             $table->string('m_emergency_contact')->nullable();
             $table->string('m_postal_code')->nullable();
+
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('updated_by')->nullable();
+            $table->foreignId('deleted_by')->nullable();
             $table->timestamps();
         });
     }

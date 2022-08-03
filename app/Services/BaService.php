@@ -37,6 +37,9 @@ class BaService
     {
         $model = $model ?? new BA();
         $model->type = $type;
+        if (\auth()->user()) {
+            $model->created_by = Auth::id();
+        }
         $model->save();
         return $model;
     }
