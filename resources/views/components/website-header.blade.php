@@ -1,4 +1,4 @@
-<header style="padding: 20px 0;" class="bg-dark-grey">
+<header class="bg-dark-grey">
     <div class="navbar-fixed">
         <div class="fix-width">
             <!-- Start Header -->

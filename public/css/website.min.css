@@ -35639,6 +35639,116 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   font-size: 13px !important;
 }
 
+.invoice_holder .position-relative {
+  background-color: #f9fafb;
+}
+.invoice_holder .footer {
+  font-size: 26px !important;
+  text-align: center !important;
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+  margin-left: 0 !important;
+  margin-bottom: 20px !important;
+  background-color: #e9ecef !important;
+}
+.invoice_holder .table-head {
+  font-size: 24px;
+}
+.invoice_holder .footer {
+  font-size: 26px !important;
+  text-align: center;
+  padding-top: 12px !important;
+  margin-left: 0 !important;
+  margin-bottom: 35px !important;
+  background-color: #e9ecef !important;
+}
+.invoice_holder .invoice .top-right {
+  text-align: left;
+  padding-right: 20px;
+}
+.invoice_holder .invoice .table-row {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 25px;
+}
+.invoice_holder .invoice {
+  font-weight: 500;
+}
+.invoice_holder .invoice .table-row .table > thead {
+  border-top: 1px solid #ddd;
+}
+.invoice_holder .invoice .table-row .table > thead > tr > th {
+  border-bottom: none;
+}
+.invoice_holder .invoice .table > tbody > tr > td {
+  padding: 8px 20px;
+  color: #484545;
+}
+.invoice_holder .main-table > tr > td {
+  text-align: right;
+}
+.invoice_holder .invoice .table > tbody > tr > td > ul {
+  list-style: none;
+}
+.invoice_holder tr i {
+  color: #299f29;
+  margin-right: 5px;
+}
+.invoice_holder .invoice {
+  margin-right: -10px;
+  font-size: 16px;
+}
+.invoice_holder .invoice .last-row {
+  border-bottom: 1px solid #ddd;
+}
+.invoice_holder .btn {
+  border-radius: 0;
+}
+.invoice_holder .fa-phone, .invoice_holder .fa-envelope, .invoice_holder .fa-map-marker {
+  font-size: 30px;
+  color: #484545;
+}
+.invoice_holder button > i {
+  color: #dddddd !important;
+}
+.invoice_holder .invoice-ribbon {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: -1px;
+}
+.invoice_holder .logo-img {
+  width: 100%;
+  max-width: 200px;
+}
+.invoice_holder .ribbon-inner {
+  text-align: center;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 11px;
+  width: 120px;
+  background-color: #66c591;
+  font-size: 15px;
+  color: #fff;
+}
+.invoice_holder .ribbon-inner:before, .invoice_holder .ribbon-inner:after {
+  content: "";
+  position: absolute;
+}
+.invoice_holder .ribbon-inner:before {
+  left: 0;
+}
+.invoice_holder .ribbon-inner:after {
+  right: 0;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel
