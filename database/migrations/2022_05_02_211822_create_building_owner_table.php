@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create(TableEnum::BUILDING_OWNER, function (Blueprint $table) {
             $table->id();
             $table->foreignId('building_id')->nullable()->constrained(TableEnum::BUILDINGS);
-            $table->foreignId('hr_id')->nullable()->constrained(TableEnum::HRS);
+            $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
             $table->timestamps();
         });
     }

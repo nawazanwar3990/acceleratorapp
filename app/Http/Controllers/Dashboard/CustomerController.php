@@ -46,7 +46,7 @@ class CustomerController extends Controller
             'pageTitle' => __('general.customers'),
             'records' => $records,
         ];
-        return view('dashboard.user-management.customers.index', $params);
+        return view('dashboard.customers.index', $params);
     }
 
     /**
@@ -63,7 +63,7 @@ class CustomerController extends Controller
             'type' => $type
         ];
 
-        return view('dashboard.user-management.customers.create', $params);
+        return view('dashboard.customers.create', $params);
     }
 
     /**
@@ -94,7 +94,7 @@ class CustomerController extends Controller
             $q->where('slug', RoleEnum::CUSTOMER);
         })->find($id);
         $pageTitle ="All Subscription of ".$customer->getFullName();
-        return view('dashboard.user-management.customers.show', compact('customer','pageTitle'));
+        return view('dashboard.customers.show', compact('customer','pageTitle'));
     }
 
     /**

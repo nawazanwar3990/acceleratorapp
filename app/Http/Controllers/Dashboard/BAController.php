@@ -38,15 +38,13 @@ class BAController extends Controller
     public function index(): Factory|View|Application
     {
         $this->authorize(AbilityEnum::VIEW, BA::class);
-        $records = User::whereHas('roles', function ($q) {
-            $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
-        })->get();
+        $records = BA::with('user')->paginate(20);
         $params = [
             'pageTitle' => __('general.accelerators'),
             'records' => $records,
         ];
 
-        return view('dashboard.user-management.ba.index', $params);
+        return view('dashboard.ba.index', $params);
     }
 
     /**
@@ -63,7 +61,7 @@ class BAController extends Controller
             'type' => $type
         ];
 
-        return view('dashboard.user-management.ba.create', $params);
+        return view('dashboard.ba.create', $params);
     }
 
     /**
@@ -99,7 +97,7 @@ class BAController extends Controller
             'model' => $model,
         ];
 
-        return view('dashboard.user-management.ba.edit', $params);
+        return view('dashboard.ba.edit', $params);
     }
 
     public function show($id)
@@ -108,7 +106,7 @@ class BAController extends Controller
             $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
         })->find($id);
         $pageTitle = "All Subscription of " . $ba->getFullName();
-        return view('dashboard.user-management.ba.show', compact('ba', 'pageTitle'));
+        return view('dashboard.ba.show', compact('ba', 'pageTitle'));
     }
 
     public function update(UserRequest $request, $id)

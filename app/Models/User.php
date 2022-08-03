@@ -82,9 +82,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return !is_null($permission) && RoleEnum::check_permission($this, $permission);
     }
 
-    public function subscription(): BelongsTo
+    public function subscription(): HasOne
     {
-        return $this->belongsTo(Subscription::class, 'subscribed_id', 'id');
+        return $this->hasOne(Subscription::class,'subscribed_id','id');
     }
 
     public function already_subscription($id, $type)

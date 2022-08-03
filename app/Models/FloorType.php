@@ -14,7 +14,6 @@ class FloorType extends Model
     protected $fillable = [
         'name',
         'status',
-
         'created_by',
         'updated_by',
         'deleted_by',

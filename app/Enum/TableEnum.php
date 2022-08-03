@@ -64,6 +64,7 @@ class TableEnum extends AbstractEnum
 
     public const EVENT_TYPES = 'event_types';
     public const MEETINGS = 'meetings';
+    const NOTIFICATIONS = 'notifications';
 
     public static function getValues(): array
     {

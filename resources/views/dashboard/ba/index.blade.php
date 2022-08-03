@@ -6,9 +6,9 @@
                 @include('dashboard.components.general.form-list-header',['url'=>'website.ba.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\AdminTableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\BATableHeadingEnum::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.user-management.ba.list')
+                        @include('dashboard.ba.list')
                         </tbody>
                     </table>
                 </div>

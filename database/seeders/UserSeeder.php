@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table(TableEnum::USERS)->insert([
             [
-                'hr_id' => '1',
                 'first_name' => 'Super',
                 'last_name' => 'Admin',
                 'user_name' => uniqid(),

@@ -11,7 +11,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create(TableEnum::USERS, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hr_id')->nullable();
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();

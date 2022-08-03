@@ -11,7 +11,7 @@ class OfficeOwner extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hr_id',
+        'user_id',
         'office_id',
         'percentage',
         'status',
@@ -38,9 +38,9 @@ class OfficeOwner extends Model
         return $this->belongsTo(Office::class);
     }
 
-    public function Hr(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Hr::class);
+        return $this->belongsTo(User::class);
     }
 
 }

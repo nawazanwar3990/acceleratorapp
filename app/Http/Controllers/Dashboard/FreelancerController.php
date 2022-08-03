@@ -49,7 +49,7 @@ class FreelancerController extends Controller
             'records' => $records,
         ];
 
-        return view('dashboard.user-management.freelancers.index', $params);
+        return view('dashboard.freelancers.index', $params);
     }
 
     /**
@@ -66,7 +66,7 @@ class FreelancerController extends Controller
             'type' => $type
         ];
 
-        return view('dashboard.user-management.freelancers.create', $params);
+        return view('dashboard.freelancers.create', $params);
     }
 
     /**

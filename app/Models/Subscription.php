@@ -23,7 +23,6 @@ class Subscription extends Model
         'price',
         'model_id',
         'model_type',
-
         'payment_token_number',
         'payment_addition_information',
         'status'
