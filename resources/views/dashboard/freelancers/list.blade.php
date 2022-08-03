@@ -13,13 +13,13 @@
                     {{ $freelancer->user->subscription->status}}
                 @else
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('website.ba-pending-subscription',['subscribed_id'=>$freelancer->user->id]) }}">
+                       href="{{ route('website.freelancer-pending-subscription',['subscribed_id'=>$freelancer->user->id]) }}">
                         {{ trans('general.view') }}
                     </a>
                 @endif
             @else
                 <a class="btn btn-sm btn-success"
-                   href="{{ route('website.ba.create',[\App\Enum\StepEnum::STEP4,$freelancer->id]) }}">
+                   href="{{ route('website.freelancer.create',[\App\Enum\StepEnum::STEP4,$freelancer->id]) }}">
                     {{ trans('general.apply_subscription') }}
                 </a>
             @endif
