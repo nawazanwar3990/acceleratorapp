@@ -30,6 +30,7 @@ class MentorController extends Controller
 
     public function create(
         Request $request,
+                $payment_type,
                 $step,
                 $id = null
     )
@@ -39,7 +40,7 @@ class MentorController extends Controller
         $subscription = null;
         $prev_step = null;
         if ($id) {
-            $model = Mentor::with('services','qualifications','certifications','projects')->find($id);
+            $model = Mentor::with('services', 'qualifications', 'certifications', 'projects')->find($id);
         }
         if ($step == StepEnum::STEP2 && is_null($model)) {
             return redirect()
@@ -70,7 +71,10 @@ class MentorController extends Controller
         ));
     }
 
-    public function store(Request $request, $step, $id = null)
+    public function store(Request $request,
+                                  $payment_type,
+                                  $step,
+                                  $id = null)
     {
         $model = null;
         if ($id) {

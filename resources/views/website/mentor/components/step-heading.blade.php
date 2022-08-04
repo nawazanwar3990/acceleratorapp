@@ -1,15 +1,15 @@
 @switch($step)
-    @case(\App\Enum\StepEnum::STEP1)
-        <h2 class="text-center fw-bold">
-            {{ trans('general.mentor_services') }}
-        </h2>
-        @break
-    @case(\App\Enum\StepEnum::STEP2)
+    @case(\App\Enum\StepEnum::USER_INFO)
         <h2 class="text-center fw-bold">
             {{ trans('general.mentor_detail') }}
         </h2>
         @break
-    @case(\App\Enum\StepEnum::STEP3)
+    @case(\App\Enum\StepEnum::SERVICES)
+        <h2 class="text-center fw-bold">
+            {{ trans('general.services') }}
+        </h2>
+        @break
+    @case(\App\Enum\StepEnum::PACKAGES)
         <h2 class="text-center fw-bold">
             {{ trans('general.packages') }}
         </h2>

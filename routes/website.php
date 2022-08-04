@@ -16,8 +16,12 @@ Route::get('/verify-user-email-success', [PageController::class, 'verifyUserEmai
 
 Route::get('/ba/create/{type?}/{payment?}/{step?}/{id?}', [BAController::class, 'create'])
     ->name('ba.create');
-Route::post('/ba/store/{step?}/{id?}', [BAController::class, 'store'])
+Route::post('/ba/store/{type?}/{payment?}/{step?}/{id?}', [BAController::class, 'store'])
     ->name('ba.store');
+Route::get('/freelancers/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'create'])
+    ->name('freelancers.create');
+Route::post('/freelancers/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'store'])
+    ->name('freelancers.store');
 
 Route::get('/ba-pending-subscription', [PageController::class, 'baPendingSubscription'])
     ->name('ba-pending-subscription')
@@ -26,17 +30,14 @@ Route::get('/ba-pending-subscription', [PageController::class, 'baPendingSubscri
 Route::post('/ba/payment-snippet/store', [BAController::class, 'storePaymentSnippet'])
     ->name('ba.payment-snippet-store');
 
-Route::get('/freelancers/create/{step?}/{id?}', [FreelancerController::class, 'create'])
-    ->name('freelancers.create');
-Route::post('/freelancers/create/{step?}/{id?}', [FreelancerController::class, 'store'])
-    ->name('freelancers.store');
+
 
 Route::get('/customers/create/{step?}/{id?}', [CustomerController::class, 'create'])
     ->name('customers.create');
 Route::post('/customers/create/{step?}/{id?}', [CustomerController::class, 'store'])
     ->name('customers.store');
 
-Route::get('/mentors/create/{step?}/{id?}', [MentorController::class, 'create'])
+Route::get('/mentors/create/{payment?}/{step?}/{id?}', [MentorController::class, 'create'])
     ->name('mentors.create');
-Route::post('/mentors/store/{step?}/{id?}', [MentorController::class, 'store'])
+Route::post('/mentors/store/{payment?}/{step?}/{id?}', [MentorController::class, 'store'])
     ->name('mentors.store');

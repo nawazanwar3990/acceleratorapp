@@ -1,5 +1,6 @@
 <?php
 return [
+    'mentor_packages' => 'Mentor Packages',
     'pre_apply' => 'Pre Apply',
     'direct_apply' => 'Direct Apply',
     'payment_process' => 'Payment Process',
