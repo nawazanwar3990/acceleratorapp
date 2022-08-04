@@ -14,7 +14,7 @@ Route::get('', [HomeController::class, 'index'])
 Route::get('/verify-user-email-success', [PageController::class, 'verifyUserEmailSuccess'])
     ->name('verify-user-email-success');
 
-Route::get('/ba/create/{step?}/{id?}', [BAController::class, 'create'])
+Route::get('/ba/create/{type?}/{payment?}/{step?}/{id?}', [BAController::class, 'create'])
     ->name('ba.create');
 Route::post('/ba/store/{step?}/{id?}', [BAController::class, 'store'])
     ->name('ba.store');

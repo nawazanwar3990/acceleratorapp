@@ -1,5 +1,11 @@
 <?php
 return [
+    'pre_apply' => 'Pre Apply',
+    'direct_apply' => 'Direct Apply',
+    'payment_process' => 'Payment Process',
+    'business_accelerator_types' => 'Business Accelerator Type',
+    'user_registration_type' => 'User Registration Type',
+    'signup' => 'SignUp',
     'create_building' => 'Create Building',
     'service_provider_company' => 'Service Provider Company',
     'sender_name' => 'Sender Name',

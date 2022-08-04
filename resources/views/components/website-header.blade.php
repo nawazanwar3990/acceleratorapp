@@ -21,7 +21,7 @@
                                        class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.login') }}</a>
                                 </li>
                                 <li class="nav-item mx-1">
-                                    <button onclick="applyLogin('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}');" class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.get_started') }}</button>
+                                    <button onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}');" class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.signup') }}</button>
                                 </li>
                             </ul>
                         @else

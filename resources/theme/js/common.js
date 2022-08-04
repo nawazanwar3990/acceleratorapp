@@ -170,66 +170,6 @@ function change_emp_type(cElement) {
 
     }
 }
-
-function applyLogin(types) {
-    types = JSON.parse(types);
-    let html = '<div class="row justify-content-center">';
-    $.each(types, function (index, value) {
-        let checked = (index === 'business_accelerator') ? 'checked' : '';
-        html += '<div class="col-sm-6 col-xs-6 col-md-3 col-lg-3 col-xl-3 copl-xxl-3">' +
-            ' <div class="card border position-relative">' +
-            '<div class="radio-holder position-absolute" style="right:0;top:9px;"> <div class="form-check form-switch">' +
-            '<input class="form-check-input" name="register_type" type="radio" id=' + index + ' value=' + index + ' ' + checked + '>' +
-            ' <label class="form-check-label" for=' + index + '></label>' +
-            ' </div></div>' +
-            '<img class="card-img-top p-5 pb-0" src="/images/icon/' + index + '.png" alt="Card image cap">' +
-            '<div class="card-body">' +
-            '<h6 class="card-title">' + value + '</h6>' +
-            ' </div>' +
-            '</div>' +
-            '</div>';
-    });
-    html += '</div>';
-    Swal.fire({
-        title: 'Registration Type',
-        html: html,
-        width: 900,
-        confirmButtonText: 'Next',
-        focusConfirm: false,
-        preConfirm: () => {
-            const register_type = Swal.getPopup().querySelector("input[name=register_type]:checked").value;
-            if (!register_type) {
-                Swal.showValidationMessage(`First Choose Register Type`)
-            }
-            return {
-                register_type: register_type
-            }
-        }
-    }).then((result) => {
-        let regType = result.value.register_type;
-        Swal.fire({
-            html: 'Processing...',
-            allowOutsideClick: () => !Swal.isLoading()
-        });
-        Swal.showLoading();
-        switch (regType) {
-            case 'business_accelerator':
-                location.assign('/ba/create');
-                break;
-            case 'customer':
-                location.assign('/customers/create');
-                break;
-            case 'mentor':
-                location.assign('/mentors/create/step1');
-                break;
-            case 'freelancer':
-                location.assign('/freelancers/create');
-                break;
-        }
-    });
-    return false;
-}
-
 function clone_dropify(cElement) {
     let closest_holder = $(cElement).closest('.dropify_parent_holder');
     let html = '<div class="py-3 px-1 position-relative dropify_parent_holder">\n' +

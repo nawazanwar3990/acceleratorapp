@@ -54,9 +54,8 @@ class RegisterTypeEnum extends AbstractEnum
         return array(
             self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general.register_types', self::BUSINESS_ACCELERATOR)),
             self::FREELANCER_SERVICE_PROVIDER_COMPANY => __(sprintf('%s.%s', 'general.register_types', self::FREELANCER_SERVICE_PROVIDER_COMPANY)),
-            self::CUSTOMER => __(sprintf('%s.%s', 'general.register_types', self::CUSTOMER)),
             self::MENTOR => __(sprintf('%s.%s', 'general.register_types', self::MENTOR)),
-
+            self::CUSTOMER => __(sprintf('%s.%s', 'general.register_types', self::CUSTOMER)),
         );
     }
 }

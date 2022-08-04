@@ -9,7 +9,7 @@
             {{ trans('general.services_of_business_accelerator') }}
         </h2>
         @break
-    @case(\App\Enum\StepEnum::STEP3)
+    @case(\App\Enum\StepEnum::USER_INFO)
         <h2 class="text-center fw-bold">
             {{ trans('general.create_user_information') }}
         </h2>

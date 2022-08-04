@@ -42,6 +42,8 @@ class BAController extends Controller
 
     public function create(
         Request $request,
+                $type,
+                $payment,
                 $step,
                 $id = null
     )
@@ -72,6 +74,8 @@ class BAController extends Controller
             'model',
             'prev_step',
             'subscription',
+            'type',
+            'payment',
             'id'
         ));
     }

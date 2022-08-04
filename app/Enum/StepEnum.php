@@ -14,9 +14,13 @@ class StepEnum extends AbstractEnum
     public const STEP4 = 'step4';
     public const STEP5 = 'step5';
     public const PRINT = 'print';
+
+    public const USER_INFO = 'user-info';
+
     public static function getValues(): array
     {
         return array(
+            self::USER_INFO,
             self::STEP1,
             self::STEP1,
             self::STEP3,
@@ -28,7 +32,6 @@ class StepEnum extends AbstractEnum
 
     public static function getTranslationKeys(): array
     {
-        return array(
-        );
+        return array();
     }
 }

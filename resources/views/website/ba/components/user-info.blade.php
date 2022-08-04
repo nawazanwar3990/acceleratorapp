@@ -22,7 +22,7 @@
                 {!!  Html::decode(Form::label('last_name' ,__('general.last_name'),['class'=>'form-label']))   !!}
                 {!!  Form::text('last_name',$model->user->last_name??null,['id'=>'first_name','class'=>'form-control']) !!}
             </div>
-            @if($model->type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+            @if($type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
                 <div class="col-md-6 mb-3">
                     {!!  Html::decode(Form::label('ba_father_name' ,__('general.father_name'),['class'=>'form-label']))   !!}
                     {!!  Form::text('ba_father_name',$model->ba_father_name??null,['id'=>'ba_father_name','class'=>'form-control']) !!}
@@ -49,7 +49,7 @@
                     {!!  Form::password('password_confirmation',['id'=>'confirm_password','class'=>'form-control','required']) !!}
                 @endif
             </div>
-            @if($model->type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
+            @if($type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
                 <div class="col-md-6 mb-3">
                     {!!  Html::decode(Form::label('ba_contact' ,__('general.contact_number'),['class'=>'form-label']))   !!}
                     {!!  Form::text('ba_contact',$model->ba_contact??null,['id'=>'ba_contact','class'=>'form-control']) !!}
@@ -68,7 +68,7 @@
                 </div>
             @endif
         </div>
-        @if($model->type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
+        @if($type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
             @include('website.components.fields.employee-detail-holder')
         @endif
         @include('website.components.fields.security-questions')
