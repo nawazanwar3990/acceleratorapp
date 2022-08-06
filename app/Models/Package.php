@@ -18,6 +18,7 @@ class Package extends Model
 
     protected $fillable = [
         'type',
+        'payment_process',
         'duration_type_id',
         'duration_limit',
         'trail_expire_date',

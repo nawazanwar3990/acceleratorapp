@@ -2,7 +2,7 @@
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
         <td>
-            @if($type==\App\Enum\ServiceTypeEnum::MENTOR_SERVICE)
+            @if($type==\App\Enum\ServiceTypeEnum::MENTOR)
                 @isset($record->parent)
                     {{ $record->parent->name }} >
                 @endisset

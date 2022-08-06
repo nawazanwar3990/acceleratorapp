@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\ServiceManagement;
+namespace App\Enum\TableHeadings;
 
 use App\Enum\AbstractEnum;
 use App\Enum\ServiceTypeEnum;
@@ -26,9 +26,6 @@ class ServiceTableHeading extends AbstractEnum
             self::SLUG => __(sprintf('%s.%s', 'general', self::SLUG)),
             self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
         ];
-        if (request()->query('type') == ServiceTypeEnum::FREELANCER_SERVICE) {
-            $data['parent'] = __(sprintf('%s.%s', 'general', self::PARENT));
-        }
         return $data;
     }
 }

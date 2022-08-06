@@ -1023,7 +1023,7 @@ class GeneralService
 
     public static function count_ba_services()
     {
-        return Service::where('type', ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)->count();
+        return Service::where('type', ServiceTypeEnum::BUSINESS_ACCELERATOR)->count();
     }
 
     public static function count_ba_packages()

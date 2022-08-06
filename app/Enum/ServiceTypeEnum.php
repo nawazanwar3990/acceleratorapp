@@ -52,7 +52,11 @@ class ServiceTypeEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return array(
-
+            self::BUSINESS_ACCELERATOR => 'BA Company',
+            self::BUSINESS_ACCELERATOR_INDIVIDUAL => 'BA Individual',
+            self::FREELANCER => 'Freelancer',
+            self::SERVICE_PROVIDER_COMPANY => 'Service Provider Company',
+            self::MENTOR =>'Mentor'
         );
     }
 

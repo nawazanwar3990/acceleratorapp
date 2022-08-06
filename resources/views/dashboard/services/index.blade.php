@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs" role="tablist">
                         @php
-                           $services = \App\Services\PersonService::hasRole(\App\Enum\RoleEnum::SUPER_ADMIN)?\App\Enum\ServiceTypeEnum::getAdminServices():\App\Enum\ServiceTypeEnum::getBAServices();
+                            $services = \App\Services\PersonService::hasRole(\App\Enum\RoleEnum::SUPER_ADMIN)?\App\Enum\ServiceTypeEnum::getAdminServices():\App\Enum\ServiceTypeEnum::getBAServices();
                         @endphp
                         @foreach($services as  $service)
                             <li class="nav-item">
@@ -22,7 +22,7 @@
                     <div class="tab-content tabcontent-border">
                         <div class="tab-pane active p-3">
                             <table class="table table-bordered table-hover">
-                                @include('dashboard.components.general.table-headings',['headings'=>App\Enum\TableHeadings\ServiceManagement\ServiceTableHeading::getTranslationKeys()])
+                                @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\ServiceTableHeading::getTranslationKeys()])
                                 <tbody>
                                 @include('dashboard.services.list')
                                 </tbody>

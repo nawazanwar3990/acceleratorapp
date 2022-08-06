@@ -31,19 +31,17 @@ class PackageController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Package::class);
-        $records = Package::with('duration_type', 'services');
-        if ($request->query('type')) {
-            $records->where('type', $request->query('type'));
-        }
-        if (Auth::user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
-            $records = $records->whereHas('subscriptions', function ($q) {
-                $q->subscribed_id = Auth::id();
-            });
-        }
-        $records = $records->paginate(20);
+        $payment = $request->query('payment');
+        $type = $request->query('type');
+        $records = Package::with('duration_type')
+            ->where('type', $type)
+            ->where('payment_process', $payment)
+            ->paginate(20);
         $params = [
             'pageTitle' => __('general.packages'),
             'records' => $records,
+            'type' => $type,
+            'payment' => $payment
         ];
         return view('dashboard.packages.index', $params);
     }

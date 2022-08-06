@@ -79,8 +79,8 @@ class AdminNavEnum extends AbstractEnum
     {
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
-            self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE]),
-            self::PACKAGE => route('dashboard.packages.index', ['type' => PackageTypeEnum::BUSINESS_ACCELERATOR]),
+            self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR]),
+            self::PACKAGE => route('dashboard.packages.index', ['payment' =>PaymentTypeProcessEnum::DIRECT_PAYMENT,'type'=>PackageTypeEnum::BUSINESS_ACCELERATOR]),
             self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index'),
             self::BA => route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),

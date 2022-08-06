@@ -92,7 +92,7 @@ class BAController extends Controller
                 return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
                 break;
             case StepEnum::SERVICES;
-                $model = $this->baService->saveServices($model->type, $model);
+                $model = $this->baService->saveServices($model);
                 if ($request->has('services')) {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                 } else {
