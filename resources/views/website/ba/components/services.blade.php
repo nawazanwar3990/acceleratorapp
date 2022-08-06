@@ -14,8 +14,13 @@
                     </th>
                     <td class="py-2 justify-content-center">
                         <div class="form-check form-switch">
-                            {!! Form::checkbox('services[]',$service->id,in_array($service->id,$selected_services)?true:false,['class'=>'form-check-input align-self-center']) !!}
-                            <label class="form-check-label"></label>
+                            @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
+                                {!! Form::checkbox('services[]',true,['class'=>'form-check-input align-self-center','readonly']) !!}
+                                <label class="form-check-label"> {{ $child_service->name }}</label>
+                            @else
+                                {!! Form::checkbox('services[]',$child_service->id,in_array($child_service->id,$selected_services)?true:false,['class'=>'form-check-input align-self-center']) !!}
+                                <label class="form-check-label"> {{ $child_service->name }}</label>
+                            @endif
                         </div>
                     </td>
                 </tr>
