@@ -24,5 +24,7 @@
             </div>
         @endforeach
     </div>
-    @include('website.components.fields.other-services')
+    @if($payment == \App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+        @include('website.components.fields.other-services')
+    @endif
 </div>
