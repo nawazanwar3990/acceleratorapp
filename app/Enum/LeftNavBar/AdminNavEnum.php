@@ -5,6 +5,7 @@ namespace App\Enum\LeftNavBar;
 use App\Enum\AbstractEnum;
 use App\Enum\KeyWordEnum;
 use App\Enum\PackageTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
@@ -13,12 +14,15 @@ use Illuminate\Support\Facades\Auth;
 class AdminNavEnum extends AbstractEnum
 {
     public const DASHBOARD = KeyWordEnum::DASHBOARD;
-    public const SERVICE =KeyWordEnum::SERVICE;
+    public const SERVICE = KeyWordEnum::SERVICE;
     public const PACKAGE = KeyWordEnum::PACKAGE;
     public const PAYMENT_RECEIPT = KeyWordEnum::PAYMENT_RECEIPT;
     public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
     public const BA = KeyWordEnum::BA;
+    public const FREELANCER = KeyWordEnum::FREELANCER;
+    public const MENTOR = KeyWordEnum::MENTOR;
     public const SETTING = KeyWordEnum::SETTING;
+
     public static function getValues(): array
     {
         return [
@@ -28,7 +32,9 @@ class AdminNavEnum extends AbstractEnum
             self::PAYMENT_RECEIPT,
             self::SUBSCRIPTION,
             self::BA,
-            self::SETTING
+            self::SETTING,
+            self::FREELANCER,
+            self::MENTOR
         ];
     }
 
@@ -41,6 +47,8 @@ class AdminNavEnum extends AbstractEnum
             self::PAYMENT_RECEIPT => '<i></i>',
             self::SUBSCRIPTION => '<i></i>',
             self::BA => '<i></i>',
+            self::FREELANCER => '<i></i>',
+            self::MENTOR => '<i></i>',
             self::SETTING => '<i></i>'
 
         ];
@@ -60,6 +68,8 @@ class AdminNavEnum extends AbstractEnum
             self::PAYMENT_RECEIPT => __(sprintf('%s.%s', 'general.left-bar', self::PAYMENT_RECEIPT)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
             self::BA => __(sprintf('%s.%s', 'general.left-bar', self::BA)),
+            self::FREELANCER => __(sprintf('%s.%s', 'general.left-bar', self::FREELANCER)),
+            self::MENTOR => __(sprintf('%s.%s', 'general.left-bar', self::MENTOR)),
             self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING)),
 
         ];
@@ -70,11 +80,13 @@ class AdminNavEnum extends AbstractEnum
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE]),
-            self::PACKAGE => route('dashboard.packages.index',['type'=>PackageTypeEnum::BUSINESS_ACCELERATOR]),
+            self::PACKAGE => route('dashboard.packages.index', ['type' => PackageTypeEnum::BUSINESS_ACCELERATOR]),
             self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index'),
-            self::BA => route('dashboard.ba.index'),
+            self::BA => route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
+            self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
+            self::MENTOR => route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::SETTING => route('dashboard.settings.index'),
-            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' =>SubscriptionTypeEnum::PACKAGE]),
+            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => SubscriptionTypeEnum::PACKAGE]),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

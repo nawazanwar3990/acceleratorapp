@@ -9,7 +9,7 @@
                         @foreach(\App\Enum\PaymentTypeProcessEnum::getTranslationKeys() as  $key=>$value)
                             <li class="nav-item">
                                 <a class="nav-link {{$key==$type?'active':''}}"
-                                   href="{{ route('dashboard.freelancers.index',['type'=>$key]) }}"
+                                   href="{{ route('dashboard.mentors.index',['type'=>$key]) }}"
                                    aria-selected="true">
                                     {{$value}}
                                 </a>
@@ -21,7 +21,7 @@
                             <table class="table table-bordered table-hover">
                                 @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\BATableHeadingEnum::getTranslationKeys()])
                                 <tbody>
-                                @include('dashboard.freelancers.list')
+                                @include('dashboard.mentors.list')
                                 </tbody>
                             </table>
                         </div>

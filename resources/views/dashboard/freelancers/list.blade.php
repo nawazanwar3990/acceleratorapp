@@ -1,36 +1,39 @@
-
-@forelse($records as $freelancer)
+@forelse($records as $record)
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
-        <td>{{ $freelancer->user->email }}</td>
-        <td>{{ $freelancer->user->getFullName() }}</td>
+        <td>{{ $record->user->email }}</td>
+        <td>{{ $record->user->getFullName() }}</td>
         <td>
-            {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($freelancer->type)  }}
+            {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($record->type)  }}
         </td>
         <td class="text-center">
-            @if($freelancer->user->subscription)
-                @if($freelancer->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
-                    {{ $freelancer->user->subscription->status}}
+            @if($record->user->subscription)
+                @if($record->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
+                    {{ $record->user->subscription->status}}
                 @else
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('website.freelancer-pending-subscription',['subscribed_id'=>$freelancer->user->id]) }}">
+                       href="{{ route('website.ba-pending-subscription',['subscribed_id'=>$record->user->id]) }}">
                         {{ trans('general.view') }}
                     </a>
                 @endif
             @else
                 <a class="btn btn-sm btn-success"
-                   href="{{ route('website.freelancer.create',[\App\Enum\StepEnum::STEP4,$freelancer->id]) }}">
+                   href="{{ route('website.ba.create',[\App\Enum\StepEnum::PACKAGES,$record->id]) }}">
                     {{ trans('general.apply_subscription') }}
                 </a>
             @endif
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-                 'edit' => route('website.freelancer.create',[$freelancer->type==\App\Enum\AcceleratorTypeEnum::COMPANY?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$freelancera->id]),
-                 'delete' => route('dashboard.events.destroy', $freelancer->id),
+                 'edit' => route('website.freelancers.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
+                 'delete' => route('dashboard.events.destroy', $record->id),
              ])
         </td>
     </tr>
 @empty
+    <tr>
+        <td colspan="6" class="text-center">
+            {{ trans('general.no_record_found') }}
+        </td>
+    </tr>
 @endforelse
-

@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\BAController;
 use App\Http\Controllers\Dashboard\CustomerController;
 use App\Http\Controllers\Dashboard\FreelancerController;
 use App\Http\Controllers\Dashboard\InvestorController;
+use App\Http\Controllers\Dashboard\MentorController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\RolePermissionController;
@@ -26,6 +27,7 @@ Route::get('/sync-modules', [PermissionController::class, 'syncPermission'])
 
 Route::resource('/freelancers', FreelancerController::class, ['names' => 'freelancers'])->middleware('has_package');
 Route::resource('/ba', BAController::class, ['names' => 'ba'])->middleware('has_package');
+Route::resource('/mentors', MentorController::class, ['names' => 'mentors'])->middleware('has_package');
 Route::resource('/investors', InvestorController::class, ['names' => 'investors'])->middleware('has_package');
 Route::resource('/customer', CustomerController::class, ['names' => 'customers'])->middleware('has_package');
 

@@ -25,7 +25,7 @@
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-                 'edit' => route('website.ba.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
+                 'edit' => route('website.mentors.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
                  'delete' => route('dashboard.events.destroy', $record->id),
              ])
         </td>
