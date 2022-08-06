@@ -13,13 +13,13 @@
         <div class="row justify-content-center">
             <div class="{{ auth()->user()?'col-12':'col-xxl-9 col-xl-9 col-lg-9 col-md-9' }}">
                 <div class="row bg-white p-3">
-                    @include('website.freelancer.components.steps')
+                    @include('website.freelancers.components.steps')
                     <div class="col-lg-8 col-md-8 border-start">
-                        @include('website.freelancer.components.step-heading')
-                        {!! Form::open(['url' =>route('website.freelancers.store',[$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
-                        @include(sprintf('%s.%s', 'website.freelancer.components', $step))
+                        @include('website.freelancers.components.step-heading')
+                        {!! Form::open(['url' =>route('website.freelancers.store',[$type,$payment,$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        @include(sprintf('%s.%s', 'website.freelancers.components', $step))
                         <div class="text-center mt-4">
-                            @if($step==\App\Enum\StepEnum::STEP5)
+                            @if($step==\App\Enum\StepEnum::PACKAGES)
                                 <a onclick="apply_ba_subscription();"
                                    class="btn btn-primary btn-rounded cs-btn text-white">
                                     {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>

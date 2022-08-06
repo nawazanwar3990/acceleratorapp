@@ -26,8 +26,8 @@ class RegisterTypeEnum extends AbstractEnum
         $images = array(
             self::BUSINESS_ACCELERATOR => route('website.ba.create'),
             self::FREELANCER_SERVICE_PROVIDER_COMPANY => route('website.freelancers.create'),
-            self::CUSTOMER => route('website.customers.create',[StepEnum::STEP1]),
-            self::MENTOR => route('website.mentors.create',[StepEnum::STEP1]),
+            self::CUSTOMER => route('website.customers.create',[StepEnum::USER_INFO]),
+            self::MENTOR => route('website.mentors.create',[StepEnum::USER_INFO]),
         );
         if (!is_null($key) && array_key_exists($key, $images)) {
             return $images[$key];

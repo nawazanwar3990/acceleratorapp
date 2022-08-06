@@ -18,9 +18,9 @@ Route::get('/ba/create/{type?}/{payment?}/{step?}/{id?}', [BAController::class, 
     ->name('ba.create');
 Route::post('/ba/store/{type?}/{payment?}/{step?}/{id?}', [BAController::class, 'store'])
     ->name('ba.store');
-Route::get('/freelancers/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'create'])
+Route::get('/freelancers/create/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'create'])
     ->name('freelancers.create');
-Route::post('/freelancers/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'store'])
+Route::post('/freelancers/store/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'store'])
     ->name('freelancers.store');
 
 Route::get('/ba-pending-subscription', [PageController::class, 'baPendingSubscription'])

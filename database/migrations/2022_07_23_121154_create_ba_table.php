@@ -1,22 +1,23 @@
 <?php
 
 use App\Enum\EmployeeTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create(TableEnum::BA, function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
-
             $table->string('type')->nullable();
+            $table->enum('payment_process',PaymentTypeProcessEnum::getValues())
+                ->default(PaymentTypeProcessEnum::DIRECT_PAYMENT);
             $table->string('company_name')->nullable();
-            $table->enum('is_register_company',['yes','no'])->default('no');
+            $table->enum('is_register_company', ['yes', 'no'])->default('no');
             $table->json('company_institutes')->nullable();
             $table->string('company_no_of_emp')->nullable();
             $table->string('company_date_of_initiation')->nullable();
@@ -33,7 +34,7 @@ return new class extends Migration
             $table->string('ba_postal_code')->nullable();
 
 
-            $table->enum('ba_already_emp',['yes','no'])->default('no');
+            $table->enum('ba_already_emp', ['yes', 'no'])->default('no');
             $table->enum('ba_emp_type', EmployeeTypeEnum::getValues())->default(EmployeeTypeEnum::ONLINE);
 
 
@@ -49,6 +50,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
     public function down()
     {
         Schema::dropIfExists(TableEnum::BA);

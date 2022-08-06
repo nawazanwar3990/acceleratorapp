@@ -17,6 +17,7 @@ class Mentor extends Model
     protected $table = TableEnum::MENTORS;
     protected $fillable = [
         'user_id',
+        'payment_process',
         'other_services',
         'm_father_name',
         'm_contact',

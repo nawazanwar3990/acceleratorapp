@@ -15,6 +15,7 @@ class BA extends Model
     protected $table = TableEnum::BA;
     protected $fillable = [
         'user_id',
+        'payment_process',
         'type',
         'company_name',
         'is_register_company',

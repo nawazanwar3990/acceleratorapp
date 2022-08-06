@@ -16,10 +16,10 @@
                     @include('website.mentor.components.steps')
                     <div class="col-lg-8 col-md-8 border-start">
                         @include('website.mentor.components.step-heading')
-                        {!! Form::open(['url' =>route('website.mentors.store',[$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::open(['url' =>route('website.mentors.store',[$payment,$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                         @include(sprintf('%s.%s', 'website.mentor.components', $step))
                         <div class="text-center mt-4">
-                            @if($step==\App\Enum\StepEnum::STEP3)
+                            @if($step==\App\Enum\StepEnum::PACKAGES)
                                 <a onclick="apply_ba_subscription();"
                                    class="btn btn-primary btn-rounded cs-btn text-white">
                                     {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>

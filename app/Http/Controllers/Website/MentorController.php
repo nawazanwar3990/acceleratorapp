@@ -30,7 +30,7 @@ class MentorController extends Controller
 
     public function create(
         Request $request,
-                $payment_type,
+                $payment,
                 $step,
                 $id = null
     )
@@ -42,15 +42,13 @@ class MentorController extends Controller
         if ($id) {
             $model = Mentor::with('services', 'qualifications', 'certifications', 'projects')->find($id);
         }
-        if ($step == StepEnum::STEP2 && is_null($model)) {
-            return redirect()
-                ->route('website.mentors.create', [StepEnum::STEP1])
-                ->with('error', 'First Choose the Services');
-        }
-        if ($step == StepEnum::STEP3 && is_null($model)) {
-            return redirect()
-                ->route('website.mentors.create', [StepEnum::STEP1])
-                ->with('error', 'First Choose the Services');
+        if (in_array($step, [
+                StepEnum::SERVICES,
+                StepEnum::PACKAGES
+            ]) && !isset($model)) {
+            return redirect()->route('website.mentors.create', [$payment, StepEnum::USER_INFO])->with('error', 'First Create User Info');
+        } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
+            return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES])->with('error', 'First Create Services');
         }
         if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
@@ -63,6 +61,7 @@ class MentorController extends Controller
             ));
         }
         return view('website.mentor.step', compact(
+            'payment',
             'step',
             'model',
             'prev_step',
@@ -72,7 +71,7 @@ class MentorController extends Controller
     }
 
     public function store(Request $request,
-                                  $payment_type,
+                                  $payment,
                                   $step,
                                   $id = null)
     {
@@ -82,7 +81,7 @@ class MentorController extends Controller
         }
         if ($step) {
             switch ($step) {
-                case StepEnum::STEP1;
+                case StepEnum::SERVICES;
                     $model = $this->mentorService->saveServices($model);
                     if ($request->has('services')) {
                         return redirect()->route('website.mentors.create', [StepEnum::STEP2, $model->id]);
@@ -90,7 +89,7 @@ class MentorController extends Controller
                         return redirect()->back()->withInput()->with('error', 'First Choose Services');
                     }
                     break;
-                case StepEnum::STEP2;
+                case StepEnum::USER_INFO;
                     $user_id = $request->input('user_id', null);
                     if ($user_id) {
                         $request->validate([
@@ -103,10 +102,14 @@ class MentorController extends Controller
                             'password' => ['required', 'string', 'min:8', 'confirmed']
                         ]);
                     }
-                    $model = $this->mentorService->saveUseInfo($model, $user_id);
-                    return redirect()->route('website.mentors.create', [StepEnum::STEP3, $model->id]);
+                    $model = $this->mentorService->saveUseInfo(
+                        $payment,
+                        $model,
+                        $user_id
+                    );
+                    return redirect()->route('website.mentors.create', [$payment,StepEnum::SERVICES, $model->id]);
                     break;
-                case StepEnum::STEP3;
+                case StepEnum::PACKAGES;
                     $response = $this->mentorService->applySubscription();
                     $payment_type = $request->input('payment_type');
                     if ($payment_type == 'pre_apply') {

@@ -2,6 +2,7 @@
 
 use App\Enum\EmployeeTypeEnum;
 use App\Enum\EmploymentTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,6 +17,8 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
             $table->string('type')->nullable();
+            $table->enum('payment_process', [PaymentTypeProcessEnum::getValues()])
+                ->default(PaymentTypeProcessEnum::DIRECT_PAYMENT);
             $table->string('sp_name')->nullable();
             $table->enum('is_register_sp', ['yes', 'no'])->default('no');
             $table->json('sp_institutes')->nullable();

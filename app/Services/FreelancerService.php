@@ -68,8 +68,19 @@ class FreelancerService
         return $model;
     }
 
-    public function saveUseInfo($type, $model, $user_id)
+    public function saveUseInfo(
+        $type,
+        $payment_process,
+        $model,
+        $user_id
+    ): Freelancer
     {
+        if (!$model) {
+            $model = new Freelancer();
+            $model->type = $type;
+            $model->payment_process = $payment_process;
+            $model->save();
+        }
         $user = ($user_id) ? User::find($user_id) : new User();
 
         $password = request()->input('password', null);

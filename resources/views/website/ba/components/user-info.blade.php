@@ -1,19 +1,16 @@
-@include('website.components.fields.user-tabs')
-<div class="tab-content tabcontent-border p-3">
-    <div class="tab-pane active" id="basic_info" role="tabpanel">
+<div class="row">
+    @if(isset($model->user))
+        {!! Form::hidden('user_id',$model->user->id??'') !!}
+    @endif
+    <div class="col-9">
         <div class="row">
-            @if(isset($model->user))
-                {!! Form::hidden('user_id',$model->user->id??'') !!}
-            @endif
-            <div class="col-12 mb-3">
+            <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('email' ,__('general.user_name').'(Email)'.'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
                 {!!  Form::email('email',$model->user->email??null,['id'=>'email','class'=>'form-control','required','placeholder'=>'abc@gmail.com']) !!}
                 @error('email')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('first_name' ,__('general.first_name'),['class'=>'form-label']))   !!}
                 {!!  Form::text('first_name',$model->user->first_name??null,['id'=>'first_name','class'=>'form-control']) !!}
@@ -22,12 +19,6 @@
                 {!!  Html::decode(Form::label('last_name' ,__('general.last_name'),['class'=>'form-label']))   !!}
                 {!!  Form::text('last_name',$model->user->last_name??null,['id'=>'first_name','class'=>'form-control']) !!}
             </div>
-            @if($type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
-                <div class="col-md-6 mb-3">
-                    {!!  Html::decode(Form::label('ba_father_name' ,__('general.father_name'),['class'=>'form-label']))   !!}
-                    {!!  Form::text('ba_father_name',$model->ba_father_name??null,['id'=>'ba_father_name','class'=>'form-control']) !!}
-                </div>
-            @endif
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('password' ,__('general.password').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 @if(isset($model->user))
@@ -49,59 +40,67 @@
                     {!!  Form::password('password_confirmation',['id'=>'confirm_password','class'=>'form-control','required']) !!}
                 @endif
             </div>
-            @if($type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
-                <div class="col-md-6 mb-3">
-                    {!!  Html::decode(Form::label('ba_contact' ,__('general.contact_number'),['class'=>'form-label']))   !!}
-                    {!!  Form::text('ba_contact',$model->ba_contact??null,['id'=>'ba_contact','class'=>'form-control']) !!}
-                </div>
-                <div class="col-md-6 mb-3">
-                    {!!  Html::decode(Form::label('ba_emergency_contact' ,__('general.emergency_contact_number'),['class'=>'form-label']))   !!}
-                    {!!  Form::text('ba_emergency_contact',$model->ba_emergency_contact??null,['id'=>'ba_emergency_contact','class'=>'form-control']) !!}
-                </div>
-                <div class="col-md-6 mb-3">
-                    {!!  Html::decode(Form::label('ba_postal_code' ,__('general.postal_code'),['class'=>'form-label']))   !!}
-                    {!!  Form::text('ba_postal_code',$model->ba_postal_code??null,['id'=>'ba_postal_code','class'=>'form-control']) !!}
-                </div>
-                <div class="col-12 mb-3">
-                    {!!  Html::decode(Form::label('ba_already_emp' ,__('general.already_employee'),['class'=>'form-label']))   !!}
-                    {!!  Form::select('ba_already_emp',['yes'=>'Yes','no'=>'No'],$model->ba_already_emp??'no',['id'=>'ba_already_emp','class'=>'form-control','placeholder'=>'select','onchange'=>'already_employee(this);']) !!}
-                </div>
-            @endif
-        </div>
-        @if($type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
-            @include('website.components.fields.employee-detail-holder')
-        @endif
-        @include('website.components.fields.security-questions')
-    </div>
-    <div class="tab-pane" id="qualifications" role="tabpanel">
-        <div class="row">
-            <div class="col-12">
-                @include('website.components.fields.qualification')
-            </div>
         </div>
     </div>
-    <div class="tab-pane" id="experiences" role="tabpanel">
-        <div class="row">
-            <div class="col-12">
-                @include('website.components.fields.experience')
-            </div>
-        </div>
+    <div class="col-3">
+        {!! Form::file('logo',['class'=>'dropify', 'data-height' => '150', 'data-allowed-file-extensions' => 'jpg jpeg png bmp','data-default-file'=>(isset($model->logo) && count($model->logo))?asset($model->logo[0]->filename):'']) !!}
     </div>
-    <div class="tab-pane" id="certifications" role="tabpanel">
-        <div class="row">
-            <div class="col-12">
-                @include('website.components.fields.certifications')
-            </div>
+</div>
+<div class="row">
+    @if($type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+        <div class="col-md-4 mb-3">
+            {!!  Html::decode(Form::label('ba_father_name' ,__('general.father_name'),['class'=>'form-label']))   !!}
+            {!!  Form::text('ba_father_name',$model->ba_father_name??null,['id'=>'ba_father_name','class'=>'form-control']) !!}
         </div>
-    </div>
-    <div class="tab-pane" id="media_tab" role="tabpanel">
-        <div class="row">
-            <div class="col-12">
-                @include('website.components.fields.media')
-            </div>
+    @endif
+    @if($type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
+        <div class="col-md-4 mb-3">
+            {!!  Html::decode(Form::label('ba_contact' ,__('general.contact_number'),['class'=>'form-label']))   !!}
+            {!!  Form::text('ba_contact',$model->ba_contact??null,['id'=>'ba_contact','class'=>'form-control']) !!}
+        </div>
+        <div class="col-md-4 mb-3">
+            {!!  Html::decode(Form::label('ba_emergency_contact' ,__('general.emergency_contact_number'),['class'=>'form-label']))   !!}
+            {!!  Form::text('ba_emergency_contact',$model->ba_emergency_contact??null,['id'=>'ba_emergency_contact','class'=>'form-control']) !!}
+        </div>
+        <div class="col-md-4 mb-3">
+            {!!  Html::decode(Form::label('ba_postal_code' ,__('general.postal_code'),['class'=>'form-label']))   !!}
+            {!!  Form::text('ba_postal_code',$model->ba_postal_code??null,['id'=>'ba_postal_code','class'=>'form-control']) !!}
+        </div>
+        <div class="col-4 mb-3">
+            {!!  Html::decode(Form::label('ba_already_emp' ,__('general.already_employee'),['class'=>'form-label']))   !!}
+            {!!  Form::select('ba_already_emp',['yes'=>'Yes','no'=>'No'],$model->ba_already_emp??'no',['id'=>'ba_already_emp','class'=>'form-control','placeholder'=>'select','onchange'=>'already_employee(this);']) !!}
+        </div>
+        @include('website.components.fields.employee-detail-holder')
+    @endif
+    @include('website.components.fields.security-questions')
+</div>
+{{--<div class="tab-pane" id="qualifications" role="tabpanel">
+    <div class="row">
+        <div class="col-12">
+            @include('website.components.fields.qualification')
         </div>
     </div>
 </div>
-
-
+<div class="tab-pane" id="experiences" role="tabpanel">
+    <div class="row">
+        <div class="col-12">
+            @include('website.components.fields.experience')
+        </div>
+    </div>
+</div>
+<div class="tab-pane" id="certifications" role="tabpanel">
+    <div class="row">
+        <div class="col-12">
+            @include('website.components.fields.certifications')
+        </div>
+    </div>
+</div>
+<div class="tab-pane" id="media_tab" role="tabpanel">
+    <div class="row">
+        <div class="col-12">
+            @include('website.components.fields.media')
+        </div>
+    </div>
+</div>
+--}}
 

@@ -14,54 +14,68 @@ class Freelancer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'payment_process'
+    ];
     protected $table = TableEnum::FREELANCERS;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function logo(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::SP_LOGO);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::SP_LOGO);
     }
+
     public function front_id_card(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::SP_FRONT_ID_CARD);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::SP_FRONT_ID_CARD);
     }
+
     public function back_id_card(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::SP_BACK_ID_CARD);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::SP_BACK_ID_CARD);
     }
+
     public function documents(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::SP_DOCUMENT);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::SP_DOCUMENT);
     }
+
     public function certificates(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::SP_CERTIFICATE);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::SP_CERTIFICATE);
     }
+
     public function focal_persons(): HasMany
     {
-        return $this->hasMany(FreelancerFocalPerson::class, 'freelancer_id','id');
+        return $this->hasMany(FreelancerFocalPerson::class, 'freelancer_id', 'id');
     }
+
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE,'freelancer_id');
+        return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE, 'freelancer_id');
     }
+
     public function qualifications(): HasMany
     {
-        return $this->hasMany(FreelancerQualification::class,'freelancer_id');
+        return $this->hasMany(FreelancerQualification::class, 'freelancer_id');
     }
+
     public function experiences(): HasMany
     {
-        return $this->hasMany(FreelancerExperience::class,'freelancer_id');
+        return $this->hasMany(FreelancerExperience::class, 'freelancer_id');
     }
+
     public function certifications(): HasMany
     {
-        return $this->hasMany(FreelancerCertification::class,'freelancer_id');
+        return $this->hasMany(FreelancerCertification::class, 'freelancer_id');
     }
 }

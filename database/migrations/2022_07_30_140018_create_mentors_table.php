@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,6 +12,8 @@ return new class extends Migration {
         Schema::create(TableEnum::MENTORS, function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
+            $table->enum('payment_process', [PaymentTypeProcessEnum::getValues()])
+                ->default(PaymentTypeProcessEnum::DIRECT_PAYMENT);
             $table->json('other_services')->nullable();
             $table->string('m_father_name')->nullable();
             $table->string('m_contact')->nullable();
