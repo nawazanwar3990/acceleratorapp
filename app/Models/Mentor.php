@@ -22,8 +22,18 @@ class Mentor extends Model
         'm_father_name',
         'm_contact',
         'm_emergency_contact',
-        'm_postal_code'
+        'm_postal_code',
+        'services',
+        'other_services'
     ];
+    public function getServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
+    public function getOtherServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
 
     public function user(): BelongsTo
     {
@@ -53,10 +63,6 @@ class Mentor extends Model
     {
         return $this->hasMany(Media::class,'record_id','id')
             ->where('record_type',MediaTypeEnum::MENTOR_CERTIFICATE);
-    }
-    public function services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::MENTOR_SERVICE);
     }
     public function qualifications(): HasMany
     {

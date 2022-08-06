@@ -21,55 +21,30 @@ class ServiceData
         }
         return $data;
     }
-
-    public static function getServiceTypeDropdown($id = null)
-    {
-        $data = [
-            1 => 'General ServiceTableHeading',
-            2 => 'Security ServiceTableHeading',
-        ];
-        if (!is_null($id)) {
-            $data = $data[$id];
-        }
-
-        return $data;
-    }
-    public static function get_business_accelerator_services()
-    {
-        return Service::where('type', ServiceTypeEnum::BUSINESS_ACCELERATOR_SERVICE)
-            ->whereStatus(true)
-            ->orderBy('name', 'ASC')->get();
-    }
-    public static function get_freelancer_services()
-    {
-        return Service::where('type', ServiceTypeEnum::FREELANCER_SERVICE)
-            ->whereStatus(true)
-            ->orderBy('name', 'ASC')->get();
-    }
     public static function get_mentor_services()
     {
-        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
+        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR)
             ->whereStatus(true)
             ->where('parent_id',null)
             ->orderBy('name', 'ASC')->get();
     }
     public static function get_mentor_package_services()
     {
-        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
+        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR)
             ->whereStatus(true)
             ->where('parent_id','!=',null)
             ->orderBy('name', 'ASC')->get();
     }
     public static function get_mentor_child_services($parent_id)
     {
-        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR_SERVICE)
+        return Service::with('children')->where('type', ServiceTypeEnum::MENTOR)
             ->whereStatus(true)
             ->where('parent_id',$parent_id)
             ->orderBy('name', 'ASC')->get();
     }
     public static function getBasicServices()
     {
-        return Service::where('type', ServiceTypeEnum::BASIC_SERVICE)
+        return Service::where('type', ServiceTypeEnum::BASIC)
             ->whereCreatedBy(Auth::id())
             ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
@@ -77,7 +52,7 @@ class ServiceData
 
     public static function getAdditionalServices()
     {
-        return Service::where('type', ServiceTypeEnum::ADDITIONAL_SERVICE)
+        return Service::where('type', ServiceTypeEnum::ADDITIONAL)
             ->whereCreatedBy(Auth::id())
             ->whereStatus(true)
             ->orderBy('name', 'ASC')->get();
@@ -98,19 +73,5 @@ class ServiceData
             $services = Service::where('created_by', Auth::id());
         }
         return $services->orderBy('id', 'DESC')->paginate(20);
-    }
-
-    public static function getParentFreelancerServicesDropdown()
-    {
-        return Service::whereType(ServiceTypeEnum::FREELANCER_SERVICE)->whereNull('parent_id')->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-    public static function getParentMentorServicesDropdown()
-    {
-        return Service::whereType(ServiceTypeEnum::MENTOR_SERVICE)
-            ->whereNull('parent_id')->orderBy('name', 'ASC')->pluck('name', 'id');
-    }
-    public static function getFreelancerServicesDropdown()
-    {
-        return Service::whereType(ServiceTypeEnum::FREELANCER_SERVICE)->orderBy('name', 'ASC')->pluck('name', 'id');
     }
 }

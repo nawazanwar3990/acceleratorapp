@@ -26,13 +26,11 @@ class MentorService
 
     public function saveServices($model): Mentor
     {
-        $model = $model ?? new Mentor();
-        if (\auth()->user()) {
-            $model->created_by = Auth::id();
+        $services = request()->input('services',array());
+        if (count($services)>0){
+            $model->services = json_encode($services);
+            $model->save();
         }
-        $model->save();
-        $services = request()->input('services');
-        $model->services()->sync($services);
         if (request()->has('other_services')) {
             $other_services = request()->input('other_services', array());
             $model->other_services = json_encode($other_services);

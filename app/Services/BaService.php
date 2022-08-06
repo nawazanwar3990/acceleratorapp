@@ -64,10 +64,13 @@ class BaService
         return $model;
     }
 
-    public function saveServices($type, $model)
+    public function saveServices($model)
     {
-        $services = request()->input('services');
-        $model->services()->sync($services);
+        $services = request()->input('services',array());
+        if (count($services)>0){
+            $model->services = json_encode($services);
+            $model->save();
+        }
         if (request()->has('other_services')) {
             $other_services = request()->input('other_services', array());
             $model->other_services = json_encode($other_services);

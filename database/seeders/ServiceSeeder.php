@@ -19,7 +19,13 @@ class ServiceSeeder extends Seeder
         foreach (ServiceTypeEnum::getDefaultFreelancerServices() as $service) {
             Service::create($service);
         }
+        foreach (ServiceTypeEnum::getDefaultServiceProviderServices() as $service) {
+            Service::create($service);
+        }
         foreach (ServiceTypeEnum::getDefaultBAServices() as $service) {
+            Service::create($service);
+        }
+        foreach (ServiceTypeEnum::getDefaultBAIndividual() as $service) {
             Service::create($service);
         }
         foreach (ServiceTypeEnum::getDefaultParentMentorServices() as $service) {

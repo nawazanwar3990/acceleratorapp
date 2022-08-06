@@ -13,12 +13,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Freelancer extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'payment_process'
-    ];
     protected $table = TableEnum::FREELANCERS;
-
+    protected $fillable = [
+        'payment_process',
+        'services',
+        'other_services'
+    ];
+    public function getServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
+    public function getOtherServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -58,12 +66,6 @@ class Freelancer extends Model
     {
         return $this->hasMany(FreelancerFocalPerson::class, 'freelancer_id', 'id');
     }
-
-    public function services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE, 'freelancer_id');
-    }
-
     public function qualifications(): HasMany
     {
         return $this->hasMany(FreelancerQualification::class, 'freelancer_id');

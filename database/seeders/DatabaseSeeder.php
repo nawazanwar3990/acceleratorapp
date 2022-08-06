@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(OfficeTypeSeeder::class);
         $this->call(FloorTypeSeeder::class);
-        $this->call(PackageSeeder::class);
         $this->call(EventTypeSeeder::class);
     }
 }

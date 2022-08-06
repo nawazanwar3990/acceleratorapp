@@ -25,20 +25,17 @@ class Package extends Model
         'slug',
         'price',
         'status',
-        'reminder_days'
+        'reminder_days',
+        'services'
     ];
-
+    public function getServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
     public function duration_type(): BelongsTo
     {
         return $this->belongsTo(Duration::class, 'duration_type_id');
     }
-
-    public function services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::PACKAGE_SERVICE)
-            ->withPivot('limit');
-    }
-
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);

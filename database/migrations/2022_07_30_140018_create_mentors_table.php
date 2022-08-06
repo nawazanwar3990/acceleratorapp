@@ -12,14 +12,13 @@ return new class extends Migration {
         Schema::create(TableEnum::MENTORS, function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
-            $table->enum('payment_process', [PaymentTypeProcessEnum::getValues()])
-                ->default(PaymentTypeProcessEnum::DIRECT_PAYMENT);
-            $table->json('other_services')->nullable();
+            $table->string('payment_process')->nullable();
             $table->string('m_father_name')->nullable();
             $table->string('m_contact')->nullable();
             $table->string('m_emergency_contact')->nullable();
             $table->string('m_postal_code')->nullable();
-
+            $table->json('services')->nullable();
+            $table->json('other_services')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();

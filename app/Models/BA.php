@@ -25,67 +25,78 @@ class BA extends Model
         'company_address',
         'company_contact_no',
         'company_email',
+        'services',
         'other_services'
     ];
+
+    public function getServicesAttribute($values)
+    {
+        return json_decode($values);
+    }
     public function getOtherServicesAttribute($values)
     {
         return json_decode($values);
     }
+
     public function getCompanyDateOfInitiationAttribute($value)
     {
         return Carbon::parse($value)->format('d M Y');
     }
+
     public function logo(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::BA_LOGO);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::BA_LOGO);
     }
+
     public function front_id_card(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::BA_FRONT_ID_CARD);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::BA_FRONT_ID_CARD);
     }
+
     public function back_id_card(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::BA_BACK_ID_CARD);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::BA_BACK_ID_CARD);
     }
+
     public function documents(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::BA_DOCUMENT);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::BA_DOCUMENT);
     }
+
     public function certificates(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::BA_CERTIFICATE);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::BA_CERTIFICATE);
     }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
-    public function services(): BelongsToMany
-    {
-        return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE,'ba_id','service_id')
-            ->withTimestamps();
-    }
     public function qualifications(): HasMany
     {
-        return $this->hasMany(BaQualification::class,'ba_id');
+        return $this->hasMany(BaQualification::class, 'ba_id');
     }
+
     public function experiences(): HasMany
     {
-        return $this->hasMany(BaExperience::class,'ba_id');
+        return $this->hasMany(BaExperience::class, 'ba_id');
     }
+
     public function certifications(): HasMany
     {
-        return $this->hasMany(BaCertification::class,'ba_id');
+        return $this->hasMany(BaCertification::class, 'ba_id');
     }
+
     public function getCompanyInstitutesAttribute($value)
     {
         return json_decode($value, true);
     }
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

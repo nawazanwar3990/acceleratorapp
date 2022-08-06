@@ -17,8 +17,7 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
             $table->string('type')->nullable();
-            $table->enum('payment_process', [PaymentTypeProcessEnum::getValues()])
-                ->default(PaymentTypeProcessEnum::DIRECT_PAYMENT);
+            $table->string('payment_process')->nullable();
             $table->string('sp_name')->nullable();
             $table->enum('is_register_sp', ['yes', 'no'])->default('no');
             $table->json('sp_institutes')->nullable();
@@ -27,6 +26,8 @@ return new class extends Migration {
             $table->longText('sp_address')->nullable();
             $table->string('sp_contact_no')->nullable();
             $table->string('sp_email')->nullable();
+
+            $table->json('services')->nullable();
             $table->json('other_services')->nullable();
 
             $table->string('f_father_name')->nullable();
