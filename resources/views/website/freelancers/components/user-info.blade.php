@@ -72,33 +72,4 @@
     @endif
     @include('website.components.fields.security-questions')
 </div>
-{{--<div class="tab-pane" id="qualifications" role="tabpanel">
-    <div class="row">
-        <div class="col-12">
-            @include('website.components.fields.qualification')
-        </div>
-    </div>
-</div>
-<div class="tab-pane" id="experiences" role="tabpanel">
-    <div class="row">
-        <div class="col-12">
-            @include('website.components.fields.experience')
-        </div>
-    </div>
-</div>
-<div class="tab-pane" id="certifications" role="tabpanel">
-    <div class="row">
-        <div class="col-12">
-            @include('website.components.fields.certifications')
-        </div>
-    </div>
-</div>
-<div class="tab-pane" id="media_tab" role="tabpanel">
-    <div class="row">
-        <div class="col-12">
-            @include('website.components.fields.media')
-        </div>
-    </div>
-</div>
---}}
-
+@include('website.components.fields.extra-user-fields',['extra_field_for'=>$type=='company'?'company':'individual'])
