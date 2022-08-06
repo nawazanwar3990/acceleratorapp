@@ -1,11 +1,5 @@
 <div class="row pt-4 justify-content-center">
     <div class="col-12">
-        @php $selected_services = array() @endphp
-        @if(isset($model) AND count($model->services)>0)
-            @foreach($model->services as $service)
-                @php  $selected_services[]=$service->id @endphp
-            @endforeach
-        @endif
         @foreach(\App\Services\ServiceData::get_mentor_services() as $service)
             <div class="card mb-3">
                 <div class="card-header">
@@ -16,10 +10,10 @@
                         <div class="col-lg-4 mb-3">
                             <div class="form-check form-switch">
                                 @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
-                                    {!! Form::checkbox('services[]',true,['class'=>'form-check-input align-self-center','readonly']) !!}
+                                    {!! Form::checkbox('services[]',$child_service->name,true,['class'=>'form-check-input align-self-center']) !!}
                                     <label class="form-check-label"> {{ $child_service->name }}</label>
                                 @else
-                                    {!! Form::checkbox('services[]',$child_service->id,in_array($child_service->id,$selected_services)?true:false,['class'=>'form-check-input align-self-center']) !!}
+                                    {!! Form::checkbox('services[]',$child_service->name,in_array($child_service->name,$mode->services)?true:false,['class'=>'form-check-input align-self-center']) !!}
                                     <label class="form-check-label"> {{ $child_service->name }}</label>
                                 @endif
                             </div>

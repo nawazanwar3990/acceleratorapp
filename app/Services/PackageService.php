@@ -10,17 +10,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PackageService
 {
-    public static function list_packages($services,$type): Collection|array
+    public static function list_packages($type): Collection|array
     {
-        $service_ids = array();
-        foreach ($services as $service){
-            $service_ids[] = $service->id;
-        }
         return Package::where('status', true)
             ->where('type', $type)
-            /*->whereHas('services', function ($q) use ($service_ids) {
-                $q->whereIn('services.id', $service_ids);
-            })*/
             ->with('services')
             ->get();
     }

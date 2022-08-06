@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Enum\MediaTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
@@ -40,7 +41,7 @@ class MentorController extends Controller
         $subscription = null;
         $prev_step = null;
         if ($id) {
-            $model = Mentor::with('services', 'qualifications', 'certifications', 'projects')->find($id);
+            $model = Mentor::with('qualifications', 'certifications', 'projects')->find($id);
         }
         if (in_array($step, [
                 StepEnum::SERVICES,
@@ -77,14 +78,20 @@ class MentorController extends Controller
     {
         $model = null;
         if ($id) {
-            $model = Mentor::with('services')->find($id);
+            $model = Mentor::find($id);
         }
         if ($step) {
             switch ($step) {
                 case StepEnum::SERVICES;
                     $model = $this->mentorService->saveServices($model);
                     if ($request->has('services')) {
-                        return redirect()->route('website.mentors.create', [StepEnum::STEP2, $model->id]);
+                        if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                            return redirect()->route('website.mentors.create', [$payment, StepEnum::PACKAGES, $model->id]);
+                        } else {
+                            return redirect()
+                                ->route('website.index')
+                                ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
+                        }
                     } else {
                         return redirect()->back()->withInput()->with('error', 'First Choose Services');
                     }
@@ -107,7 +114,7 @@ class MentorController extends Controller
                         $model,
                         $user_id
                     );
-                    return redirect()->route('website.mentors.create', [$payment,StepEnum::SERVICES, $model->id]);
+                    return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
                     break;
                 case StepEnum::PACKAGES;
                     $response = $this->mentorService->applySubscription();
