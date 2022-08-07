@@ -26,13 +26,12 @@ class PackageRequest extends FormRequest
     {
         $model = Package::create($this->all());
         $model->slug = Str::slug($model->name, '-');
-        $model->created_by = \auth()->id();
-        $model->updated_by = \auth()->id();
-        $model->type = $this->input('type');
-        if ($this->has('status')){
-            $model->status=true;
-        }else{
-            $model->status=false;
+        $model->created_by = Auth::id();
+        $model->updated_by = Auth::id();
+        if ($this->has('status')) {
+            $model->status = true;
+        } else {
+            $model->status = false;
         }
         $model->save();
         $this->manageServices($model);
@@ -41,14 +40,14 @@ class PackageRequest extends FormRequest
 
     public function updateData($id)
     {
-        $model =  Package::findorFail($id);
+        $model = Package::findorFail($id);
         $model->update($this->all());
-        $model->type = $this->input('type');
-        if ($this->has('status')){
-            $model->status=true;
-        }else{
-            $model->status=false;
+        if ($this->has('status')) {
+            $model->status = true;
+        } else {
+            $model->status = false;
         }
+        $model->updated_by = Auth::id();
         $model->save();
         $this->manageServices($model);
         return $model;
@@ -69,21 +68,17 @@ class PackageRequest extends FormRequest
 
     private function manageServices($model)
     {
-        $model->services()->detach();
-        $services = $this->input('services');
+        $services = $this->input('services', array());
+        $new_array = [];
         if (count($services)) {
-            $service_ids = $services['id'];
-            for ($i = 0; $i < count($service_ids); $i++) {
-                $service_id = $services['id'][$i];
+            $service_names = $services['name'];
+            for ($i = 0; $i < count($service_names); $i++) {
+                $service_name = $services['name'][$i];
                 $limit = $services['limit'][$i];
-                if ($limit!=''){
-                    DB::table(TableEnum::PACKAGE_SERVICE)->insert([
-                        'package_id' => $model->id,
-                        'service_id' => $service_id,
-                        'limit' => $limit
-                    ]);
-                }
+                $new_array[$service_name] = $limit;
             }
         }
+        $model->services = $new_array;
+        $model->save();
     }
 }

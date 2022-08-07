@@ -13,13 +13,13 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::PACKAGES, function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
+            $table->string('package_type')->nullable();
             $table->string('payment_process')->nullable();
             $table->string('name')->nullable();
             $table->foreignId('duration_type_id')->nullable()->constrained(TableEnum::DURATIONS);
             $table->string('duration_limit')->nullable();
             $table->string('trail_expire_date')->nullable();
-            $table->json('services')->default(null);
+            $table->json('services')->nullable();
             $table->string('slug')->nullable();
             $table->string('price')->nullable();
             $table->integer('reminder_days')->nullable();

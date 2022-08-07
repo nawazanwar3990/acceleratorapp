@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\PaymentManagement;
+namespace App\Enum\TableHeadings;
 
 use App\Enum\AbstractEnum;
 

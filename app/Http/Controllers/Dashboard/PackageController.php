@@ -6,6 +6,7 @@ use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageRequest;
 use App\Models\Package;
+use App\Models\Service;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -31,17 +32,14 @@ class PackageController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $this->authorize('view', Package::class);
-        $payment = $request->query('payment');
         $type = $request->query('type');
         $records = Package::with('duration_type')
-            ->where('type', $type)
-            ->where('payment_process', $payment)
+            ->wherePackageType($type)
             ->paginate(20);
         $params = [
             'pageTitle' => __('general.packages'),
             'records' => $records,
-            'type' => $type,
-            'payment' => $payment
+            'type' => $type
         ];
         return view('dashboard.packages.index', $params);
     }
@@ -53,9 +51,11 @@ class PackageController extends Controller
     {
         $this->authorize('create', Package::class);
         $type = $request->input('type');
+        $services = Service::whereType($type)->whereStatus(true)->get();
         $params = [
             'pageTitle' => __('general.new_package'),
-            'type' => $type
+            'type' => $type,
+            'services' => $services
         ];
         return view('dashboard.packages.create', $params);
     }
@@ -66,13 +66,13 @@ class PackageController extends Controller
     public function store(PackageRequest $request)
     {
         $this->authorize('create', Package::class);
-        $type = $request->input('type');
+        $package_type = $request->input('package_type');
         if ($request->createData()) {
             if ($request->saveNew) {
-                return redirect()->route('dashboard.packages.create', ['type' => $type])
+                return redirect()->route('dashboard.packages.create', ['type' => $package_type])
                     ->with('success', __('general.record_created_successfully'));
             } else {
-                return redirect()->route('dashboard.packages.index', ['type' => $type])
+                return redirect()->route('dashboard.packages.index', ['type' => $package_type])
                     ->with('success', __('general.record_created_successfully'));
             }
         }
@@ -81,15 +81,19 @@ class PackageController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function edit($id): Factory|View|Application
+    public function edit($id)
     {
         $this->authorize('update', Package::class);
-        $model = Package::with('services')->findorFail($id);
-        $type = $model->type;
+        $model = Package::findorFail($id);
+        $old_services = $model->services;
+        $type = $model->package_type;
+        $services = Service::whereType($type)->whereStatus(true)->get();
         $params = [
             'pageTitle' => __('general.edit_package'),
             'model' => $model,
-            'type' => $type
+            'type' => $type,
+            'services' => $services,
+            'old_services' => $old_services
         ];
 
         return view('dashboard.packages.edit', $params);
@@ -100,7 +104,7 @@ class PackageController extends Controller
      */
     public function update(PackageRequest $request, $id)
     {
-        $type = $request->input('type');
+        $type = $request->input('package_type');
         $this->authorize('update', Package::class);
         if ($request->updateData($id)) {
             return redirect()->route('dashboard.packages.index', ['type' => $type])

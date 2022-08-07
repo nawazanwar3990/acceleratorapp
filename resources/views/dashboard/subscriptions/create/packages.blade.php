@@ -8,7 +8,7 @@
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\SubscriptionManagement\PackageTableHeading::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\PackageTableHeading::getTranslationKeys()])
                         <tbody>
                         @forelse($records as $record)
                             <tr>
@@ -45,7 +45,7 @@
                                         @foreach($record->services as $service)
                                             <li class="list-group-item py-0 border-0  bg-transparent px-0">
                                                 <i class="bx bx-check text-success"></i> <small><strong
-                                                        class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                                                            class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
                                                 </small>
                                             </li>
                                         @endforeach
@@ -77,7 +77,7 @@
             let subscription_id = $("input[name='subscription_id']:checked").val();
             if (subscription_id === undefined) {
                 showError("First Choose Package for Subscription")
-            }else{
+            } else {
                 Swal.fire({
                     title: 'Apply Subscription',
                     html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'form-control','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,

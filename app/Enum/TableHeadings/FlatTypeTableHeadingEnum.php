@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\UserManagement;
+namespace App\Enum\TableHeadings;
 
 use App\Enum\AbstractEnum;
 use function __;
 
-class RelationTableHeadingEnum extends AbstractEnum
+class FlatTypeTableHeadingEnum extends AbstractEnum
 {
     public const NAME = 'name';
     public const STATUS = 'status';

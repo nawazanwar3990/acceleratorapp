@@ -15,9 +15,11 @@ class Package extends Model
     use HasFactory;
 
     protected $table = TableEnum::PACKAGES;
-
+    protected $casts = [
+        'services' => 'array',
+    ];
     protected $fillable = [
-        'type',
+        'package_type',
         'payment_process',
         'duration_type_id',
         'duration_limit',
@@ -26,17 +28,19 @@ class Package extends Model
         'slug',
         'price',
         'status',
-        'reminder_days',
-        'services'
+        'reminder_days'
     ];
+
     public function getServicesAttribute($values)
     {
-        return json_decode($values);
+        return json_decode($values,true);
     }
+
     public function duration_type(): BelongsTo
     {
         return $this->belongsTo(Duration::class, 'duration_type_id');
     }
+
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);

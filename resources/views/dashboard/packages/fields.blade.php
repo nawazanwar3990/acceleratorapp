@@ -1,7 +1,8 @@
 <div class="row mb-3">
+    {!! Form::hidden('package_type',$type,['class'=>'form-control','readonly']) !!}
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('type' ,__('general.type'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('type',\App\Enum\PackageTypeEnum::getTranslationKeys(),$type,['id'=>'type','class'=>'form-control','readonly'])
+        {!!  Html::decode(Form::label('payment_process' ,__('general.payment_process'),['class'=>'col-form-label']))   !!}
+        {!!  Form::select('payment_process',\App\Enum\PaymentTypeProcessEnum::getTranslationKeys(),null,['id'=>'payment_process','class'=>'form-control','placeholder'=>trans('general.select')])
         !!}
     </div>
     <div class="col-md-3 mb-3">
@@ -33,130 +34,30 @@
         </div>
     </div>
 </div>
-@if(in_array($type,[\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR,\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]))
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>{{ trans('general.name') }}</th>
-                    <th>{{ trans('general.limit') }}</th>
-                </tr>
-                </thead>
-                @if( isset($model) &&  count($model->services)>0)
-                    @foreach($model->services as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service->id) !!}
-                                {{ ucwords(str_replace('_',' ',$service->name))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$service->pivot->limit,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    @foreach(\App\Services\ServiceData::get_business_accelerator_services() as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service->id) !!}
-                                {{ ucwords(str_replace('_',' ',$service->name))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
-            </table>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
     </div>
-@endif
-@if(in_array($type,[\App\Enum\PackageTypeEnum::FREELANCER,\App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY]))
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>{{ trans('general.name') }}</th>
+                <th>{{ trans('general.limit') }}</th>
+            </tr>
+            </thead>
+            @foreach($services as $service)
                 <tr>
-                    <th>{{ trans('general.name') }}</th>
-                    <th>{{ trans('general.limit') }}</th>
+                    <th>
+                        {!!  Form::hidden('services[name][]',$service->name) !!}
+                        {{ ucwords(str_replace('_',' ',$service->name))}}
+                    </th>
+                    <td>
+                        @php $old_value = (isset($model) && array_key_exists($service->name,$old_services))?$old_services[$service->name]:'0'  @endphp
+                        {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$old_value,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                    </td>
                 </tr>
-                </thead>
-                @if( isset($model) &&  count($model->services)>0)
-                    @foreach($model->services as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service->id) !!}
-                                {{ ucwords(str_replace('_',' ',$service->name))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$service->pivot->limit,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    @foreach(\App\Services\ServiceData::get_freelancer_services() as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service->id) !!}
-                                {{ ucwords(str_replace('_',' ',$service->name))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
-            </table>
-        </div>
+            @endforeach
+        </table>
     </div>
-@endif
-
-@if($type==\App\Enum\PackageTypeEnum::MENTOR)
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>{{ trans('general.name') }}</th>
-                    <th>{{ trans('general.limit') }}</th>
-                </tr>
-                </thead>
-                @if( isset($model) &&  count($model->services)>0)
-                    @foreach($model->services as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service->id) !!}
-                                {{ ucwords(str_replace('_',' ',$service->name))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$service->pivot->limit,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    @foreach(\App\Services\ServiceData::get_mentor_package_services() as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service->id) !!}
-                                {{ ucwords(str_replace('_',' ',$service->name))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
-            </table>
-        </div>
-    </div>
-@endif
+</div>

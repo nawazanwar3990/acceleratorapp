@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\PlanManagement;
+namespace App\Enum\TableHeadings;
 
 use App\Enum\AbstractEnum;
 use function __;

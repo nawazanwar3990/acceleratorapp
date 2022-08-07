@@ -1,32 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Enum\TableHeadings\WorkingSpace;
+namespace App\Enum\TableHeadings;
 
 use App\Enum\AbstractEnum;
 use function __;
 
-class FlatTypeTableHeadingEnum extends AbstractEnum
+class DurationTableHeading extends AbstractEnum
 {
     public const NAME = 'name';
-    public const STATUS = 'status';
-
-    /**
-     * @inheritDoc
-     */
+    public const SlUG = 'slug';
     public static function getValues(): array
     {
         return [];
     }
-
-    /**
-     * @inheritDoc
-     */
     public static function getTranslationKeys(): array
     {
         return [
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
+            self::SlUG => __(sprintf('%s.%s', 'general', self::SlUG)),
         ];
     }
 }

@@ -10,7 +10,7 @@
                 @endif
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\WorkingSpace\OfficeTableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\OfficeTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.working-spaces.offices.list')
                         </tbody>

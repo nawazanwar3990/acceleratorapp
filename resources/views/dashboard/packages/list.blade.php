@@ -23,15 +23,15 @@
         </td>
         <td>{{ $record->price }}</td>
         <td>{{ $record->reminder_days }}</td>
-        <td style="width: 230px;">
-            <UL class="list-group list-group-flush bg-transparent">
-                @foreach($record->services as $service)
-                    <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                        <i class="bx bx-check text-success"></i> <small><strong
-                                class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
-                        </small>
-                @endforeach
-            </UL>
+        <td>
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ trans('general.view') }}
+                </button>
+                <ul class="dropdown-menu" style="min-width: 300px;">
+                    @include('components.models.package-services')
+                </ul>
+            </div>
         </td>
         <td>
             <span class="badge bg-{{ $record->status === 1 ? "success" : "danger" }}">
