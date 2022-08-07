@@ -363,7 +363,8 @@ table.table-bordered.dataTable th, table.table-bordered.dataTable td {
 }
 
 table.table-bordered.dataTable th:first-child, table.table-bordered.dataTable th:first-child, table.table-bordered.dataTable td:first-child, table.table-bordered.dataTable td:first-child {
-    border-left-width: 1px
+    border-left-width: 1px;
+    text-align: center !important;
 }
 
 table.table-bordered.dataTable th:last-child, table.table-bordered.dataTable th:last-child, table.table-bordered.dataTable td:last-child, table.table-bordered.dataTable td:last-child {

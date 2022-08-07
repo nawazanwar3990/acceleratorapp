@@ -19,7 +19,6 @@ mix.scripts([
     'resources/theme/js/plugins/jquery.dataTables.min.js',
     'resources/theme/js/plugins/dataTables.bootstrap5.min.js',
     'resources/theme/js/plugins/dataTables.responsive.js',
-    'resources/theme/js/plugins/dataTables.fixedColumns.min.js',
     'resources/theme/js/plugins/raphael-min.js',
     'resources/theme/js/plugins/morris.js',
     'resources/theme/js/plugins/jquery.sparkline.min.js',

@@ -29,14 +29,10 @@
         <td>{{ $record->price }}</td>
         <td>{{ $record->reminder_days }}</td>
         <td>
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ trans('general.view') }}
-                </button>
-                <ul class="dropdown-menu" style="min-width: 300px;">
-                    @include('components.models.package-services')
-                </ul>
-            </div>
+            <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#service-model-{{$record->id}}">
+                {{ trans('general.view') }}
+            </button>
+            @include('components.models.package-services',['id'=>$record->id])
         </td>
         <td>
             <span class="badge bg-{{ $record->status === 1 ? "success" : "danger" }}">
