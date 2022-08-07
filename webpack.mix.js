@@ -16,15 +16,19 @@ mix.scripts([
     'resources/theme/js/plugins/select2.min.js',
     'resources/theme/js/plugins/dropify.js',
     'resources/theme/js/plugins/print.js',
-
+    'resources/theme/js/plugins/jquery.dataTables.min.js',
+    'resources/theme/js/plugins/dataTables.bootstrap5.min.js',
+    'resources/theme/js/plugins/dataTables.responsive.js',
+    'resources/theme/js/plugins/dataTables.fixedColumns.min.js',
     'resources/theme/js/plugins/raphael-min.js',
     'resources/theme/js/plugins/morris.js',
     'resources/theme/js/plugins/jquery.sparkline.min.js',
-
     'resources/theme/js/waves.js',
     'resources/theme/js/sidebar.js',
     'resources/theme/js/search.js',
+    'resources/theme/js/dashboard.js',
     'resources/theme/js/common.js'
+
 ], 'public/js/dashboard.min.js');
 
 mix.sass('resources/theme/scss/_website.scss', 'css/website.min.css');

@@ -9,6 +9,7 @@ use function __;
 class PackageTableHeading extends AbstractEnum
 {
     public const PACKAGE_NAME = 'package_name';
+    public const PACKAGE_FOR = 'package_for';
     public const DURATION_TYPE = 'duration_type';
     public const DURATION_LIMIT = 'duration_limit';
     public const PRICE = 'price';
@@ -24,6 +25,7 @@ class PackageTableHeading extends AbstractEnum
     {
         return [
             self::PACKAGE_NAME => __(sprintf('%s.%s', 'general', self::PACKAGE_NAME)),
+            self::PACKAGE_FOR => __(sprintf('%s.%s', 'general', self::PACKAGE_FOR)),
             self::DURATION_TYPE => __(sprintf('%s.%s', 'general', self::DURATION_TYPE)),
             self::DURATION_LIMIT => __(sprintf('%s.%s', 'general', self::DURATION_LIMIT)),
             self::PRICE => __(sprintf('%s.%s', 'general', self::PRICE)),

@@ -1,9 +1,9 @@
 <thead>
 <tr>
-    <th class="text-center">#</th>
+    <th class="text-center" style="min-width: 50px;">#</th>
     @foreach($headings as $key=>$value)
-        <th scope="col">{{ $value }}</th>
+        <th style="min-width: 100px;">{{ $value }}</th>
     @endforeach
-    <th class="text-center">{{__('general.action')}}</th>
+    <th class="text-center" style="min-width: 100px;">{{__('general.action')}}</th>
 </tr>
 </thead>

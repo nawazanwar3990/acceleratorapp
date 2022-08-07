@@ -3,6 +3,11 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ $record->name }}</td>
         <td>
+            @isset($record->payment_process)
+                {{ \App\Enum\PaymentTypeProcessEnum::getTranslationKeyBy($record->payment_process) }}
+            @endisset
+        </td>
+        <td>
             @isset($record->duration_type)
                 {{ $record->duration_type->name }}
             @else

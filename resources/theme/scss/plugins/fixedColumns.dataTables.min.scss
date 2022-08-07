@@ -1,0 +1,38 @@
+table.dataTable {
+    table-layout: fixed;
+    width: 100% !important;
+}
+table.dataTable td {
+    text-overflow: ellipsis;
+}
+
+table.dataTable th, table.dataTable td {
+    padding: 12px 5px;
+    font-size: 13px;
+    overflow: hidden;
+}
+
+table.dataTable tbody tr .edit {
+    cursor: pointer;
+}
+
+table.dataTable tbody tr .delete {
+    cursor: pointer;
+}
+
+table.dataTable tbody tr .action {
+    cursor: pointer;
+}
+
+table.dataTable tbody tr i.fa {
+    padding: 0 3px;
+}
+
+table.dataTable tbody tr td.actions .btn-group {
+    vertical-align: top;
+}
+
+table.dataTable img.icon {
+    width: 16px;
+    height: 16px;
+}
