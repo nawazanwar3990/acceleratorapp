@@ -277,6 +277,7 @@ return [
         'business_accelerator_services' => 'BA Services',
         'client_service' => 'Client Services',
         'event_management' => 'Event Management',
+        'mentor'=>'Mentors'
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

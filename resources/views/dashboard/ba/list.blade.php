@@ -31,9 +31,5 @@
         </td>
     </tr>
 @empty
-    <tr>
-        <td colspan="6" class="text-center">
-            {{ trans('general.no_record_found') }}
-        </td>
-    </tr>
+
 @endforelse
