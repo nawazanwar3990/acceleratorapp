@@ -19,13 +19,15 @@ return new class extends Migration {
             $table->string('type')->nullable();
             $table->string('payment_process')->nullable();
             $table->string('sp_name')->nullable();
-            $table->enum('is_register_sp', ['yes', 'no'])->default('no');
-            $table->json('sp_institutes')->nullable();
-            $table->string('sp_no_of_emp')->nullable();
-            $table->string('sp_date_of_initiation')->nullable();
-            $table->longText('sp_address')->nullable();
-            $table->string('sp_contact_no')->nullable();
-            $table->string('sp_email')->nullable();
+
+            $table->string('company_name')->nullable();
+            $table->enum('is_register_company', ['yes', 'no'])->default('no');
+            $table->json('affiliations')->nullable();
+            $table->string('company_no_of_emp')->nullable();
+            $table->string('company_date_of_initiation')->nullable();
+            $table->longText('company_address')->nullable();
+            $table->string('company_contact_no')->nullable();
+            $table->string('company_email')->nullable();
 
             $table->json('services')->nullable();
             $table->json('other_services')->nullable();

@@ -15,9 +15,10 @@ return new class extends Migration {
             $table->foreignId('user_id')->nullable()->constrained(TableEnum::USERS);
             $table->string('type')->nullable();
             $table->string('payment_process')->nullable();
+
             $table->string('company_name')->nullable();
             $table->enum('is_register_company', ['yes', 'no'])->default('no');
-            $table->json('company_institutes')->nullable();
+            $table->json('affiliations')->nullable();
             $table->string('company_no_of_emp')->nullable();
             $table->string('company_date_of_initiation')->nullable();
             $table->longText('company_address')->nullable();

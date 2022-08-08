@@ -13,13 +13,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class BA extends Model
 {
     protected $table = TableEnum::BA;
+    protected $casts = [
+        'services' => 'array',
+        'other_services' => 'array',
+        'affiliations' => 'array',
+    ];
     protected $fillable = [
         'user_id',
         'payment_process',
         'type',
         'company_name',
         'is_register_company',
-        'company_institutes',
+        'affiliations',
         'company_no_of_emp',
         'company_date_of_initiation',
         'company_address',
@@ -33,6 +38,11 @@ class BA extends Model
     {
         return json_decode($values);
     }
+    public function getAffiliationsAttribute($values)
+    {
+        return json_decode($values);
+    }
+
     public function getOtherServicesAttribute($values)
     {
         return json_decode($values);
@@ -77,6 +87,7 @@ class BA extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function qualifications(): HasMany
     {
         return $this->hasMany(BaQualification::class, 'ba_id');

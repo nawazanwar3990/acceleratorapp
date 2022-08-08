@@ -1,6 +1,6 @@
 <?php
 return [
-
+    'affiliation_certificate' => 'Affiliation Certificate',
     'affiliated_by' => 'Affiliated By',
     'affiliation_detail' => 'Affiliation Detail',
     'sr_no' => 'Sr #',

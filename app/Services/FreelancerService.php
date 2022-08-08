@@ -58,8 +58,8 @@ class FreelancerService
 
     public function saveServices($model)
     {
-        $services = request()->input('services',array());
-        if (count($services)>0){
+        $services = request()->input('services', array());
+        if (count($services) > 0) {
             $model->services = json_encode($services);
             $model->save();
         }
@@ -283,58 +283,68 @@ class FreelancerService
 
     private function manageQualifications($model): void
     {
-        $model->qualifications()->delete();
+
         $data = request()->input('qualifications', []);
-        $count = $data['degree'];
-        $final = array();
-        if (count($count) > 0) {
-            for ($i = 0; $i < count($count); $i++) {
-                $final[] = [
-                    'degree' => $data['degree'][$i] ?? null,
-                    'institute' => $data['institute'][$i] ?? null,
-                    'year_of_passing' => $data['year_of_passing'][$i] ?? null,
-                    'grade' => $data['grade'][$i] ?? null,
-                ];
+        if (count($data) > 0) {
+            $model->qualifications()->delete();
+            $count = $data['degree'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'degree' => $data['degree'][$i] ?? null,
+                        'institute' => $data['institute'][$i] ?? null,
+                        'year_of_passing' => $data['year_of_passing'][$i] ?? null,
+                        'grade' => $data['grade'][$i] ?? null,
+                    ];
+                }
             }
+            $model->qualifications()->createMany($final);
         }
-        $model->qualifications()->createMany($final);
+
     }
 
     private function manageCertifications($model): void
     {
-        $model->certifications()->delete();
         $data = request()->input('certifications', []);
-        $count = $data['certificate_name'];
-        $final = array();
-        if (count($count) > 0) {
-            for ($i = 0; $i < count($count); $i++) {
-                $final[] = [
-                    'certificate_name' => $data['certificate_name'][$i] ?? null,
-                    'institute' => $data['institute'][$i] ?? null,
-                    'year' => $data['year'][$i] ?? null,
-                    'any_distinction' => $data['any_distinction'][$i] ?? null,
-                ];
+
+        if (count($data) > 0) {
+            $model->certifications()->delete();
+
+            $count = $data['certificate_name'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0;
+                     $i < count($count);
+                     $i++) {
+                    $final[] = ['certificate_name' => $data['certificate_name'][$i] ?? null,
+                        'institute' => $data['institute'][$i] ?? null,
+                        'year' => $data['year'][$i] ?? null,
+                        'any_distinction' => $data['any_distinction'][$i] ?? null,];
+                }
             }
+            $model->certifications()->createMany($final);
         }
-        $model->certifications()->createMany($final);
     }
 
     private function manageExperiences($model): void
     {
-        $model->experiences()->delete();
         $data = request()->input('experiences', []);
-        $count = $data['company_name'];
-        $final = array();
-        if (count($count) > 0) {
-            for ($i = 0; $i < count($count); $i++) {
-                $final[] = [
-                    'company_name' => $data['company_name'][$i] ?? null,
-                    'designation' => $data['designation'][$i] ?? null,
-                    'duration' => $data['duration'][$i] ?? null,
-                    'any_achievement' => $data['any_achievement'][$i] ?? null,
-                ];
+        if (count($data) > 0) {
+            $count = $data['company_name'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'company_name' => $data['company_name'][$i] ?? null,
+                        'designation' => $data['designation'][$i] ?? null,
+                        'duration' => $data['duration'][$i] ?? null,
+                        'any_achievement' => $data['any_achievement'][$i] ?? null,
+                    ];
+                }
             }
+            $model->experiences()->createMany($final);
         }
-        $model->experiences()->createMany($final);
+       
     }
 }
