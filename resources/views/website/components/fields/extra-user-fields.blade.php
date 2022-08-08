@@ -26,29 +26,6 @@
                 <button class="accordion-button collapsed bg-white border"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#certificates-accordion"
-                        aria-expanded="false"
-                        aria-controls="media-accordion">
-                    {{ trans('general.certificates') }}
-                </button>
-            </h2>
-            <div id="certificates-accordion"
-                 class="accordion-collapse collapse bg-white border"
-                 aria-labelledby="media-accordion">
-                <div class="accordion-body">
-                    @include('website.components.fields.certifications')
-                </div>
-            </div>
-        </div>
-    </div>
-@endif
-@if(in_array($extra_field_for,['individual','mentor']))
-    <div class="accordion accordion-flush mt-3" id="userInfoAccordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed bg-white border"
-                        type="button"
-                        data-bs-toggle="collapse"
                         data-bs-target="#qualification-accordion"
                         aria-expanded="false"
                         aria-controls="media-accordion">

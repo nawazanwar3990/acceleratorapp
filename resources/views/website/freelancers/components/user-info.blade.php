@@ -72,4 +72,6 @@
     @endif
     @include('website.components.fields.security-questions')
 </div>
-@include('website.components.fields.extra-user-fields',['extra_field_for'=>$type=='company'?'company':'individual'])
+@if($type=='individual')
+    @include('website.components.fields.extra-user-fields',['extra_field_for'=>'individual'])
+@endif

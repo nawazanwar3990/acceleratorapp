@@ -47,13 +47,13 @@
     </div>
 </div>
 <div class="row">
-    @if($type ==\App\Enum\FreelancerTypeEnum::INDIVIDUAL)
+    @if($type =='individual')
         <div class="col-md-4 mb-3">
             {!!  Html::decode(Form::label('ba_father_name' ,__('general.father_name'),['class'=>'form-label']))   !!}
             {!!  Form::text('ba_father_name',$model->ba_father_name??null,['id'=>'ba_father_name','class'=>'form-control']) !!}
         </div>
     @endif
-    @if($type ==\App\Enum\AcceleratorTypeEnum::INDIVIDUAL)
+    @if($type =='individual')
         <div class="col-md-4 mb-3">
             {!!  Html::decode(Form::label('ba_contact' ,__('general.contact_number'),['class'=>'form-label']))   !!}
             {!!  Form::text('ba_contact',$model->ba_contact??null,['id'=>'ba_contact','class'=>'form-control']) !!}
@@ -74,4 +74,6 @@
     @endif
     @include('website.components.fields.security-questions')
 </div>
-@include('website.components.fields.extra-user-fields',['extra_field_for'=>$type=='company'?'company':'individual'])
+@if($type=='individual')
+    @include('website.components.fields.extra-user-fields',['extra_field_for'=>'individual'])
+@endif
