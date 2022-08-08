@@ -33,4 +33,5 @@
         {!!  Html::decode(Form::label('company_address' ,__('general.company_address').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
         {!!  Form::textarea('company_address',isset($model)?$model->company_address:null,['id'=>'company_address','class'=>'form-control','required','rows'=>3]) !!}
     </div>
+    @include('website.components.fields.document')
 </div>

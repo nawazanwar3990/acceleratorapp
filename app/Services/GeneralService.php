@@ -1047,4 +1047,204 @@ class GeneralService
             $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
         })->count();
     }
+
+    public static function generateImage($file, $name, $index, $dir): ?string
+    {
+        $uploaded_file = $file['name'][$name][$index];
+        if ($uploaded_file) {
+            $new_file = uniqid() . "." . strtolower(pathinfo($uploaded_file, PATHINFO_EXTENSION));
+            $file_tmp = $file['tmp_name'][$name][$index];
+            $path = "uploads/" . $dir . "/images/" . $new_file;
+            move_uploaded_file($file_tmp, $path);
+            return $path;
+        } else {
+            return null;
+        }
+    }
+
+    public static function saveCNIC($model, $dir): void
+    {
+
+        if (request()->has('id_card_front')) {
+            $model->front_id_card()->delete();
+            $id_card_front = request()->file('id_card_front');
+            $id_card_front_name = GeneralService::generateFileName($id_card_front);
+            $id_card_front_path = 'uploads/' . $dir . '/images/' . $id_card_front_name;
+            $id_card_front->move('uploads/' . $dir . '/images/', $id_card_front_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => $dir . "_front_id_card",
+                    'filename' => $id_card_front_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+        if (request()->has('id_card_back')) {
+            $model->back_id_card()->delete();
+            $id_card_back = request()->file('id_card_back');
+            $id_card_back_name = GeneralService::generateFileName($id_card_back);
+            $id_card_back_path = 'uploads/' . $dir . '/images/' . $id_card_back_name;
+            $id_card_back->move('uploads/' . $dir . '/images/', $id_card_back_name);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => $dir . "_back_id_card",
+                    'filename' => $id_card_back_path,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+    }
+
+    public static function saveLogo($model, $dir): void
+    {
+        if (request()->has('logo')) {
+            $model->logo()->delete();
+            $logo = request()->file('logo');
+            $logoName = GeneralService::generateFileName($logo);
+            $logoPath = 'uploads/' . $dir . '/images/' . $logoName;
+            $logo->move('uploads/' . $dir . '/images', $logoName);
+            Media::create(
+                [
+                    'record_id' => $model->id,
+                    'record_type' => $dir . '_logo',
+                    'filename' => $logoPath,
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ]
+            );
+        }
+    }
+
+
+    public static  function manageQualifications($model): void
+    {
+
+        $data = request()->input('qualifications', []);
+        if (count($data) > 0) {
+            $model->qualifications()->delete();
+            $count = $data['degree'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'degree' => $data['degree'][$i] ?? null,
+                        'institute' => $data['institute'][$i] ?? null,
+                        'year_of_passing' => $data['year_of_passing'][$i] ?? null,
+                        'grade' => $data['grade'][$i] ?? null,
+                    ];
+                }
+            }
+            $model->qualifications()->createMany($final);
+        }
+
+    }
+
+    public static function manageCertifications($model): void
+    {
+        $data = request()->input('certifications', []);
+
+        if (count($data) > 0) {
+            $model->certifications()->delete();
+
+            $count = $data['certificate_name'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = ['certificate_name' => $data['certificate_name'][$i] ?? null,
+                        'institute' => $data['institute'][$i] ?? null,
+                        'year' => $data['year'][$i] ?? null,
+                        'any_distinction' => $data['any_distinction'][$i] ?? null,];
+                }
+            }
+            $model->certifications()->createMany($final);
+        }
+    }
+
+    public static function manageExperiences($model): void
+    {
+        $data = request()->input('experiences', []);
+        if (count($data) > 0) {
+            $count = $data['company_name'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'company_name' => $data['company_name'][$i] ?? null,
+                        'designation' => $data['designation'][$i] ?? null,
+                        'duration' => $data['duration'][$i] ?? null,
+                        'any_achievement' => $data['any_achievement'][$i] ?? null,
+                    ];
+                }
+            }
+            $model->experiences()->createMany($final);
+        }
+    }
+
+    public static function manageAffiliations($model,$dir): void
+    {
+        $data = request()->input('affiliations', []);
+        if (count($data) > 0) {
+            $count = $data['affiliated_by'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'affiliated_by' => $data['affiliated_by'][$i] ?? null,
+                        'affiliation_detail' => $data['affiliation_detail'][$i] ?? null,
+                        'affiliation_certificate' => self::generateImage($_FILES['affiliations'], 'affiliation_certificate', $i, $dir)
+                    ];
+                }
+            }
+            $model->affiliations = $final;
+            $model->save();
+        }
+
+    }
+    public static function manageDocuments($model,$dir): void
+    {
+        $data = request()->input('documents', []);
+        if (count($data) > 0) {
+            $model->documents()->delete();
+            $count = $data['document_type'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'filename' => self::generateImage($_FILES['documents'], 'document_attachment', $i, $dir),
+                        'document_type' => $data['document_type'][$i] ?? null,
+                        'document_description' => $data['document_description'][$i] ?? null,
+                        'record_id' => $model->id,
+                        'record_type' => MediaTypeEnum::SP_DOCUMENT
+                    ];
+                }
+            }
+            DB::table(TableEnum::MEDIA)->insert($final);
+        }
+    }
+
+    public static function manageProjects($model): void
+    {
+        $model->projects()->delete();
+        $data = request()->input('projects', []);
+        if (count($data) > 0) {
+            $count = $data['project_title'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'project_title' => $data['project_title'][$i] ?? null,
+                        'starting_date' => $data['starting_date'][$i] ?? null,
+                        'ending_date' => $data['ending_date'][$i] ?? null,
+                        'type' => $data['type'][$i] ?? null,
+                        'further_remarks' => $data['further_remarks'][$i] ?? null,
+                    ];
+                }
+            }
+            $model->projects()->createMany($final);
+        }
+    }
 }

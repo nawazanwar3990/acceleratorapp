@@ -4,10 +4,8 @@
             <tbody>
             <tr>
                 <td>
-
                     {!! Form::label('projects[project_title][]',__('general.project_title'),['class'=>'form-label fs-13']) !!}
                     {!!  Form::text('projects[project_title][]',$project->project_title,['id'=>'projects[project_title][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
-
                 </td>
                 <td>
                     {!! Form::label('projects[starting_date][]',__('general.starting_date'),['class'=>'form-label fs-13']) !!}

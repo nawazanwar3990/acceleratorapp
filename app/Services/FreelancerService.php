@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
+use App\Enum\TableEnum;
 use App\Models\Freelancer;
 use App\Models\Media;
 use App\Models\Package;
@@ -46,7 +47,8 @@ class FreelancerService
         $model->company_address = request()->input('company_address', null);
         if ($model->save()) {
             if ($model->is_register_company == 'yes') {
-                $this->manageAffiliations($model);
+                GeneralService::manageAffiliations($model, 'sp');
+                GeneralService::manageDocuments($model, 'sp');
             }
         }
         return $model;
@@ -99,12 +101,11 @@ class FreelancerService
             $model->save();
         }
 
-        $this->saveLogo($model);
-        $this->saveIdcards($model);
-
-        $this->manageQualifications($model);
-        $this->manageCertifications($model);
-        $this->manageExperiences($model);
+        GeneralService::saveLogo($model, 'ba');
+        GeneralService::saveCNIC($model, 'ba');
+        GeneralService::manageQualifications($model);
+        GeneralService::manageCertifications($model);
+        GeneralService::manageExperiences($model);
 
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
@@ -183,164 +184,5 @@ class FreelancerService
             $model->focal_persons()->createMany($records);
         }
         return $model;
-    }
-
-    private function saveLogo($model): void
-    {
-        if (request()->has('logo')) {
-            $model->logo()->delete();
-            $logo = request()->file('logo');
-            $logoName = GeneralService::generateFileName($logo);
-            $logoPath = 'uploads/sp/images/' . $logoName;
-            $logo->move('uploads/sp/images', $logoName);
-            Media::create(
-                [
-                    'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::SP_LOGO,
-                    'filename' => $logoPath,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]
-            );
-        }
-    }
-
-    private function saveIdcards($model)
-    {
-
-        if (request()->has('id_card_front')) {
-            $model->front_id_card()->delete();
-            $id_card_front = request()->file('id_card_front');
-            $id_card_front_name = GeneralService::generateFileName($id_card_front);
-            $id_card_front_path = 'uploads/sp/images/' . $id_card_front_name;
-            $id_card_front->move('uploads/sp/images', $id_card_front_name);
-            Media::create(
-                [
-                    'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::SP_FRONT_ID_CARD,
-                    'filename' => $id_card_front_path,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]
-            );
-        }
-        if (request()->has('id_card_back')) {
-            $model->back_id_card()->delete();
-            $id_card_back = request()->file('id_card_back');
-            $id_card_back_name = GeneralService::generateFileName($id_card_back);
-            $id_card_back_path = 'uploads/sp/images/' . $id_card_back_name;
-            $id_card_back->move('uploads/sp/images', $id_card_back_name);
-            Media::create(
-                [
-                    'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::SP_BACK_ID_CARD,
-                    'filename' => $id_card_back_path,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]
-            );
-        }
-    }
-
-    private function manageQualifications($model): void
-    {
-
-        $data = request()->input('qualifications', []);
-        if (count($data) > 0) {
-            $model->qualifications()->delete();
-            $count = $data['degree'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'degree' => $data['degree'][$i] ?? null,
-                        'institute' => $data['institute'][$i] ?? null,
-                        'year_of_passing' => $data['year_of_passing'][$i] ?? null,
-                        'grade' => $data['grade'][$i] ?? null,
-                    ];
-                }
-            }
-            $model->qualifications()->createMany($final);
-        }
-
-    }
-
-    private function manageCertifications($model): void
-    {
-        $data = request()->input('certifications', []);
-
-        if (count($data) > 0) {
-            $model->certifications()->delete();
-
-            $count = $data['certificate_name'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0;
-                     $i < count($count);
-                     $i++) {
-                    $final[] = ['certificate_name' => $data['certificate_name'][$i] ?? null,
-                        'institute' => $data['institute'][$i] ?? null,
-                        'year' => $data['year'][$i] ?? null,
-                        'any_distinction' => $data['any_distinction'][$i] ?? null,];
-                }
-            }
-            $model->certifications()->createMany($final);
-        }
-    }
-
-    private function manageExperiences($model): void
-    {
-        $data = request()->input('experiences', []);
-        if (count($data) > 0) {
-            $count = $data['company_name'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'company_name' => $data['company_name'][$i] ?? null,
-                        'designation' => $data['designation'][$i] ?? null,
-                        'duration' => $data['duration'][$i] ?? null,
-                        'any_achievement' => $data['any_achievement'][$i] ?? null,
-                    ];
-                }
-            }
-            $model->experiences()->createMany($final);
-        }
-
-    }
-
-    private function manageAffiliations($model): void
-    {
-        $data = request()->input('affiliations', []);
-        if (count($data) > 0) {
-            $count = $data['affiliated_by'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'affiliated_by' => $data['affiliated_by'][$i] ?? null,
-                        'affiliation_detail' => $data['affiliation_detail'][$i] ?? null,
-                        'affiliation_certificate' => $this->generateAffiliationCertificate($_FILES['affiliations'], $i)
-                    ];
-                }
-            }
-            $model->affiliations = $final;
-            $model->save();
-        }
-
-    }
-
-    private function generateAffiliationCertificate($file, $index): ?string
-    {
-        $uploaded_file = $file['name']['affiliation_certificate'][$index];
-        if ($uploaded_file) {
-            $new_file = uniqid() . "." . strtolower(pathinfo($uploaded_file, PATHINFO_EXTENSION));
-            $file_tmp = $file['tmp_name']['affiliation_certificate'][$index];
-            $path = "uploads/sp/images/" . $new_file;
-            move_uploaded_file($file_tmp, $path);
-            return $path;
-        } else {
-            return null;
-        }
     }
 }

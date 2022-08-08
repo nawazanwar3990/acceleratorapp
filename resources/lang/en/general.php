@@ -2,7 +2,11 @@
 return [
     'view_file' => 'View File',
     'affiliation_certificate' => 'Affiliation Certificate',
+    'document_type' => 'Document Type',
+    'document_description' => 'Document Description',
+    'document_attachment' => 'Document Attachment',
     'affiliated_by' => 'Affiliated By',
+    'any_approve_documents' => 'Any Approve Documents',
     'affiliation_detail' => 'Affiliation Detail',
     'sr_no' => 'Sr #',
     'attach_your_affiliation_certificates' => 'Attach Your Affiliation Certificates',

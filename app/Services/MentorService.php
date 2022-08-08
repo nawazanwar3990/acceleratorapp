@@ -75,10 +75,11 @@ class MentorService
             $model->save();
         }
 
-        $this->saveMedia($model);
-        $this->manageCertifications($model);
-        $this->manageQualifications($model);
-        $this->manageProjects($model);
+        GeneralService::saveLogo($model, 'mentor');
+        GeneralService::saveCNIC($model, 'mentor');
+        GeneralService::manageQualifications($model);
+        GeneralService::manageCertifications($model);
+        GeneralService::manageProjects($model);
 
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
@@ -135,157 +136,5 @@ class MentorService
             return false;
         }
 
-    }
-
-    private function saveMedia($model)
-    {
-
-        if (request()->has('logo')) {
-            $model->logo()->delete();
-            $logo = request()->file('logo');
-            $logoName = GeneralService::generateFileName($logo);
-            $logoPath = 'uploads/mentors/images/' . $logoName;
-            $logo->move('uploads/mentors/images', $logoName);
-            Media::create(
-                [
-                    'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::MENTOR_LOGO,
-                    'filename' => $logoPath,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]
-            );
-        }
-        if (request()->has('id_card_front')) {
-            $model->front_id_card()->delete();
-            $id_card_front = request()->file('id_card_front');
-            $id_card_front_name = GeneralService::generateFileName($id_card_front);
-            $id_card_front_path = 'uploads/mentors/images/' . $id_card_front_name;
-            $id_card_front->move('uploads/mentors/images', $id_card_front_name);
-            Media::create(
-                [
-                    'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::MENTOR_FRONT_ID_CARD,
-                    'filename' => $id_card_front_path,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]
-            );
-        }
-        if (request()->has('id_card_back')) {
-            $model->back_id_card()->delete();
-            $id_card_back = request()->file('id_card_back');
-            $id_card_back_name = GeneralService::generateFileName($id_card_back);
-            $id_card_back_path = 'uploads/mentors/images/' . $id_card_back_name;
-            $id_card_back->move('uploads/mentors/images', $id_card_back_name);
-            Media::create(
-                [
-                    'record_id' => $model->id,
-                    'record_type' => MediaTypeEnum::MENTOR_BACK_ID_CARD,
-                    'filename' => $id_card_back_path,
-                    'created_by' => Auth::id(),
-                    'updated_by' => Auth::id()
-                ]
-            );
-        }
-        $images = request()->file('images', []);
-        if (count($images) > 0) {
-            foreach ($images as $image) {
-                $imageName = GeneralService::generateFileName($image);
-                $imagePath = 'uploads/mentors/images/' . $imageName;
-                $image->move('uploads/mentors/images', $imageName);
-                Media::create(
-                    [
-                        'record_id' => $model->id,
-                        'record_type' => MediaTypeEnum::MENTOR_DOCUMENT,
-                        'filename' => $imagePath,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]
-                );
-            }
-        }
-
-        $certificates = request()->file('certificates', []);
-        if (count($certificates) > 0) {
-            foreach ($certificates as $certificate) {
-                $certificateName = GeneralService::generateFileName($certificate);
-                $certificatePath = 'uploads/mentors/images/' . $certificateName;
-                $certificate->move('uploads/mentors/images', $certificateName);
-                Media::create(
-                    [
-                        'record_id' => $model->id,
-                        'record_type' => MediaTypeEnum::MENTOR_CERTIFICATE,
-                        'filename' => $certificatePath,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]
-                );
-            }
-        }
-    }
-
-    private function manageQualifications($model): void
-    {
-        $model->qualifications()->delete();
-        $data = request()->input('qualifications', []);
-        if (count($data) > 0) {
-            $count = $data['degree'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'degree' => $data['degree'][$i] ?? null,
-                        'institute' => $data['institute'][$i] ?? null,
-                        'year_of_passing' => $data['year_of_passing'][$i] ?? null,
-                        'grade' => $data['grade'][$i] ?? null,
-                    ];
-                }
-            }
-            $model->qualifications()->createMany($final);
-        }
-    }
-
-    private function manageCertifications($model): void
-    {
-        $model->certifications()->delete();
-        $data = request()->input('certifications', []);
-        if (count($data) > 0) {
-            $count = $data['certificate_name'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'certificate_name' => $data['certificate_name'][$i] ?? null,
-                        'institute' => $data['institute'][$i] ?? null,
-                        'year' => $data['year'][$i] ?? null,
-                        'any_distinction' => $data['any_distinction'][$i] ?? null,
-                    ];
-                }
-            }
-            $model->certifications()->createMany($final);
-        }
-    }
-
-    private function manageProjects($model): void
-    {
-        $model->projects()->delete();
-        $data = request()->input('projects', []);
-        if (count($data) > 0) {
-            $count = $data['project_title'];
-            $final = array();
-            if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'project_title' => $data['project_title'][$i] ?? null,
-                        'starting_date' => $data['starting_date'][$i] ?? null,
-                        'ending_date' => $data['ending_date'][$i] ?? null,
-                        'type' => $data['type'][$i] ?? null,
-                        'further_remarks' => $data['further_remarks'][$i] ?? null,
-                    ];
-                }
-            }
-            $model->projects()->createMany($final);
-        }
     }
 }
