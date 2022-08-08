@@ -88,7 +88,7 @@ class BAController extends Controller
         }
         switch ($step) {
             case StepEnum::COMPANY_PROFILE;
-                $model = $this->baService->saveCompanyProfile($model->type, $model);
+                $model = $this->baService->saveCompanyProfile($model);
                 return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
                 break;
             case StepEnum::SERVICES;

@@ -2,28 +2,20 @@
 
 namespace App\Services;
 
-use App\Enum\AcceleratorTypeEnum;
 use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
-use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
-use App\Enum\TableEnum;
-use App\Mail\VerifyMail;
 use App\Models\BA;
+use App\Models\Freelancer;
 use App\Models\Media;
 use App\Models\Package;
-use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
-use App\Notifications\VerifyEmailLink;
-use App\Services\RoleService;
 use Carbon\Carbon;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class BaService
 {
@@ -44,7 +36,7 @@ class BaService
         return $model;
     }
 
-    public function saveCompanyProfile($type, $model)
+    public function saveCompanyProfile($model)
     {
         $model->company_name = request()->input('company_name', null);
         $model->is_register_company = request()->input('is_register_company', null);
@@ -55,19 +47,16 @@ class BaService
         $model->company_address = request()->input('company_address', null);
         if ($model->save()) {
             if ($model->is_register_company == 'yes') {
-                $company_institutes = request()->input('company_institutes', array());
-                $model->company_institutes = json_encode($company_institutes);
-                $model->save();
+                $this->manageAffiliations($model);
             }
-            return $model;
         }
         return $model;
     }
 
     public function saveServices($model)
     {
-        $services = request()->input('services',array());
-        if (count($services)>0){
+        $services = request()->input('services', array());
+        if (count($services) > 0) {
             $model->services = json_encode($services);
             $model->save();
         }
@@ -95,27 +84,25 @@ class BaService
         $user = ($user_id) ? User::find($user_id) : new User();
         $password = request()->input('password', null);
         $email = request()->input('email', null);
-
         $first_name = request()->input('first_name', null);
         $last_name = request()->input('last_name', null);
-
         $user->email = $email;
-
         $user->first_name = $first_name;
         $user->last_name = $last_name;
-
         $user->normal_password = $password;
         $user->password = Hash::make($password);
         $user->security_question_name = request()->input('security_question_name');
         $user->security_question_value = request()->input('security_question_value');
         $user->know_about_us = request()->input('know_about_us');
-
         if ($user->save()) {
             $user->roles()->sync($this->roleService->findBySlug(RoleEnum::BUSINESS_ACCELERATOR));
             $model->user_id = $user->id;
             $model->save();
         }
-        $this->saveMedia($model);
+
+        $this->saveLogo($model);
+        $this->saveIdcards($model);
+
         $this->manageQualifications($model);
         $this->manageCertifications($model);
         $this->manageExperiences($model);
@@ -129,7 +116,6 @@ class BaService
         $date = date("Y-m-d g:i:s");
         $verifyUser->user->email_verified_at = $date;
         $verifyUser->user->save();
-
         //$user->notify(new VerifyEmailLink());
         return $model;
     }
@@ -177,9 +163,9 @@ class BaService
 
     }
 
-    private function saveMedia($model)
-    {
 
+    private function saveLogo($model): void
+    {
         if (request()->has('logo')) {
             $model->logo()->delete();
             $logo = request()->file('logo');
@@ -196,6 +182,11 @@ class BaService
                 ]
             );
         }
+    }
+
+    private function saveIdcards($model)
+    {
+
         if (request()->has('id_card_front')) {
             $model->front_id_card()->delete();
             $id_card_front = request()->file('id_card_front');
@@ -228,48 +219,14 @@ class BaService
                 ]
             );
         }
-        $images = request()->file('images', []);
-        if (count($images) > 0) {
-            foreach ($images as $image) {
-                $imageName = GeneralService::generateFileName($image);
-                $imagePath = 'uploads/ba/images/' . $imageName;
-                $image->move('uploads/ba/images', $imageName);
-                Media::create(
-                    [
-                        'record_id' => $model->id,
-                        'record_type' => MediaTypeEnum::BA_DOCUMENT,
-                        'filename' => $imagePath,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]
-                );
-            }
-        }
-
-        $certificates = request()->file('certificates', []);
-        if (count($certificates) > 0) {
-            foreach ($certificates as $certificate) {
-                $certificateName = GeneralService::generateFileName($certificate);
-                $certificatePath = 'uploads/ba/images/' . $certificateName;
-                $certificate->move('uploads/ba/images', $certificateName);
-                Media::create(
-                    [
-                        'record_id' => $model->id,
-                        'record_type' => MediaTypeEnum::BA_CERTIFICATE,
-                        'filename' => $certificatePath,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]
-                );
-            }
-        }
     }
 
     private function manageQualifications($model): void
     {
-        $model->qualifications()->delete();
+
         $data = request()->input('qualifications', []);
         if (count($data) > 0) {
+            $model->qualifications()->delete();
             $count = $data['degree'];
             $final = array();
             if (count($count) > 0) {
@@ -289,19 +246,21 @@ class BaService
 
     private function manageCertifications($model): void
     {
-        $model->certifications()->delete();
         $data = request()->input('certifications', []);
+
         if (count($data) > 0) {
+            $model->certifications()->delete();
+
             $count = $data['certificate_name'];
             $final = array();
             if (count($count) > 0) {
-                for ($i = 0; $i < count($count); $i++) {
-                    $final[] = [
-                        'certificate_name' => $data['certificate_name'][$i] ?? null,
+                for ($i = 0;
+                     $i < count($count);
+                     $i++) {
+                    $final[] = ['certificate_name' => $data['certificate_name'][$i] ?? null,
                         'institute' => $data['institute'][$i] ?? null,
                         'year' => $data['year'][$i] ?? null,
-                        'any_distinction' => $data['any_distinction'][$i] ?? null,
-                    ];
+                        'any_distinction' => $data['any_distinction'][$i] ?? null,];
                 }
             }
             $model->certifications()->createMany($final);
@@ -310,7 +269,6 @@ class BaService
 
     private function manageExperiences($model): void
     {
-        $model->experiences()->delete();
         $data = request()->input('experiences', []);
         if (count($data) > 0) {
             $count = $data['company_name'];
@@ -326,6 +284,42 @@ class BaService
                 }
             }
             $model->experiences()->createMany($final);
+        }
+
+    }
+
+    private function manageAffiliations($model): void
+    {
+        $data = request()->input('affiliations', []);
+        if (count($data) > 0) {
+            $count = $data['affiliated_by'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'affiliated_by' => $data['affiliated_by'][$i] ?? null,
+                        'affiliation_detail' => $data['affiliation_detail'][$i] ?? null,
+                        'affiliation_certificate' => $this->generateAffiliationCertificate($_FILES['affiliations'], $i)
+                    ];
+                }
+            }
+            $model->affiliations = $final;
+            $model->save();
+        }
+
+    }
+
+    private function generateAffiliationCertificate($file, $index): ?string
+    {
+        $uploaded_file = $file['name']['affiliation_certificate'][$index];
+        if ($uploaded_file) {
+            $new_file = uniqid() . "." . strtolower(pathinfo($uploaded_file, PATHINFO_EXTENSION));
+            $file_tmp = $file['tmp_name']['affiliation_certificate'][$index];
+            $path = "uploads/ba/images/" . $new_file;
+            move_uploaded_file($file_tmp, $path);
+            return $path;
+        } else {
+            return null;
         }
     }
 }

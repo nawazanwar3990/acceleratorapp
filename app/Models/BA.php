@@ -36,16 +36,16 @@ class BA extends Model
 
     public function getServicesAttribute($values)
     {
-        return json_decode($values);
+        return json_decode($values,true);
     }
     public function getAffiliationsAttribute($values)
     {
-        return json_decode($values);
+        return json_decode($values,true);
     }
 
     public function getOtherServicesAttribute($values)
     {
-        return json_decode($values);
+        return json_decode($values,true);
     }
 
     public function getCompanyDateOfInitiationAttribute($value)

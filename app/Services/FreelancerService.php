@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
-use App\Models\BA;
 use App\Models\Freelancer;
 use App\Models\Media;
 use App\Models\Package;
@@ -36,22 +35,19 @@ class FreelancerService
         return $model;
     }
 
-    public function saveCompanyProfile($type, $model)
+    public function saveCompanyProfile($model)
     {
-        $model->sp_name = request()->input('sp_name', null);
-        $model->is_register_sp = request()->input('is_register_sp', null);
-        $model->sp_no_of_emp = request()->input('sp_no_of_emp', null);
-        $model->sp_date_of_initiation = request()->input('sp_date_of_initiation', null);
-        $model->sp_contact_no = request()->input('sp_contact_no', null);
-        $model->sp_email = request()->input('sp_email', null);
-        $model->sp_address = request()->input('sp_address', null);
+        $model->company_name = request()->input('company_name', null);
+        $model->is_register_company = request()->input('is_register_company', null);
+        $model->company_no_of_emp = request()->input('company_no_of_emp', null);
+        $model->company_date_of_initiation = request()->input('company_date_of_initiation', null);
+        $model->company_contact_no = request()->input('company_contact_no', null);
+        $model->company_email = request()->input('company_email', null);
+        $model->company_address = request()->input('company_address', null);
         if ($model->save()) {
-            if ($model->is_register_sp == 'yes') {
-                $sp_institutes = request()->input('sp_institutes', array());
-                $model->sp_institutes = json_encode($sp_institutes);
-                $model->save();
+            if ($model->is_register_company == 'yes') {
+                $this->manageAffiliations($model);
             }
-            return $model;
         }
         return $model;
     }
@@ -85,31 +81,27 @@ class FreelancerService
             $model->save();
         }
         $user = ($user_id) ? User::find($user_id) : new User();
-
         $password = request()->input('password', null);
         $email = request()->input('email', null);
-
         $first_name = request()->input('first_name', null);
         $last_name = request()->input('last_name', null);
-
         $user->email = $email;
-
         $user->first_name = $first_name;
         $user->last_name = $last_name;
-
         $user->normal_password = $password;
         $user->password = Hash::make($password);
         $user->security_question_name = request()->input('security_question_name');
         $user->security_question_value = request()->input('security_question_value');
         $user->know_about_us = request()->input('know_about_us');
-
         if ($user->save()) {
             $user->roles()->sync($this->roleService->findBySlug(RoleEnum::FREELANCER));
             $model->user_id = $user->id;
             $model->save();
         }
 
-        $this->saveMedia($model);
+        $this->saveLogo($model);
+        $this->saveIdcards($model);
+
         $this->manageQualifications($model);
         $this->manageCertifications($model);
         $this->manageExperiences($model);
@@ -193,9 +185,8 @@ class FreelancerService
         return $model;
     }
 
-    private function saveMedia($model)
+    private function saveLogo($model): void
     {
-
         if (request()->has('logo')) {
             $model->logo()->delete();
             $logo = request()->file('logo');
@@ -212,6 +203,11 @@ class FreelancerService
                 ]
             );
         }
+    }
+
+    private function saveIdcards($model)
+    {
+
         if (request()->has('id_card_front')) {
             $model->front_id_card()->delete();
             $id_card_front = request()->file('id_card_front');
@@ -243,41 +239,6 @@ class FreelancerService
                     'updated_by' => Auth::id()
                 ]
             );
-        }
-        $images = request()->file('images', []);
-        if (count($images) > 0) {
-            foreach ($images as $image) {
-                $imageName = GeneralService::generateFileName($image);
-                $imagePath = 'uploads/sp/images/' . $imageName;
-                $image->move('uploads/sp/images', $imageName);
-                Media::create(
-                    [
-                        'record_id' => $model->id,
-                        'record_type' => MediaTypeEnum::SP_DOCUMENT,
-                        'filename' => $imagePath,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]
-                );
-            }
-        }
-
-        $certificates = request()->file('certificates', []);
-        if (count($certificates) > 0) {
-            foreach ($certificates as $certificate) {
-                $certificateName = GeneralService::generateFileName($certificate);
-                $certificatePath = 'uploads/sp/images/' . $certificateName;
-                $certificate->move('uploads/sp/images', $certificateName);
-                Media::create(
-                    [
-                        'record_id' => $model->id,
-                        'record_type' => MediaTypeEnum::SP_CERTIFICATE,
-                        'filename' => $certificatePath,
-                        'created_by' => Auth::id(),
-                        'updated_by' => Auth::id()
-                    ]
-                );
-            }
         }
     }
 
@@ -345,6 +306,41 @@ class FreelancerService
             }
             $model->experiences()->createMany($final);
         }
-       
+
+    }
+
+    private function manageAffiliations($model): void
+    {
+        $data = request()->input('affiliations', []);
+        if (count($data) > 0) {
+            $count = $data['affiliated_by'];
+            $final = array();
+            if (count($count) > 0) {
+                for ($i = 0; $i < count($count); $i++) {
+                    $final[] = [
+                        'affiliated_by' => $data['affiliated_by'][$i] ?? null,
+                        'affiliation_detail' => $data['affiliation_detail'][$i] ?? null,
+                        'affiliation_certificate' => $this->generateAffiliationCertificate($_FILES['affiliations'], $i)
+                    ];
+                }
+            }
+            $model->affiliations = $final;
+            $model->save();
+        }
+
+    }
+
+    private function generateAffiliationCertificate($file, $index): ?string
+    {
+        $uploaded_file = $file['name']['affiliation_certificate'][$index];
+        if ($uploaded_file) {
+            $new_file = uniqid() . "." . strtolower(pathinfo($uploaded_file, PATHINFO_EXTENSION));
+            $file_tmp = $file['tmp_name']['affiliation_certificate'][$index];
+            $path = "uploads/sp/images/" . $new_file;
+            move_uploaded_file($file_tmp, $path);
+            return $path;
+        } else {
+            return null;
+        }
     }
 }

@@ -8,30 +8,61 @@
             <th class="fs-13">{{__('general.action')}}</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>
-                {!!  Form::text('affiliation[affiliated_by]',null,['id'=>'affiliation[affiliated_by]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
-            </td>
-            <td>
-                {!!  Form::text('affiliation[affiliation_detail]',null,['id'=>'affiliation[affiliation_detail]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
-            </td>
-            <td>
-                {!! Form::file('affiliation[affiliation_certificate]',['id'=>'affiliation[affiliation_certificate]','class'=>'form-control form-control-sm','placeholder'=>'Attach Document']) !!}
-            </td>
-            <td style="width: 100px;vertical-align: middle;" class="text-center">
-                <a href="javascript:void(0);"
-                   onclick="clone_row(this);"
-                   class="btn btn-xs btn-info">
-                    <i class="bx bx-plus"></i>
-                </a>
-                <a href="javascript:void(0);" tabindex="18"
-                   onclick="remove_clone_row(this);"
-                   class="btn btn-xs btn-danger">
-                    <i class="bx bx-minus"></i>
-                </a>
-            </td>
-        </tr>
-        </tbody>
+        @if($model->affiliations AND count($model->affiliations)>0)
+            @foreach($model->affiliations as $affiliation)
+                <tbody>
+                <tr>
+                    <td>
+                        {!!  Form::text('affiliations[affiliated_by][]',$affiliation['affiliated_by'],['id'=>'affiliations[affiliated_by][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                    </td>
+                    <td>
+                        {!!  Form::text('affiliations[affiliation_detail][]',$affiliation['affiliation_detail'],['id'=>'affiliations[affiliation_detail][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                    </td>
+                    <td>
+                        {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'form-control form-control-sm']) !!}
+                        <a href="{{ asset($affiliation['affiliation_certificate']) }}" class="fs-13 text-info text-center" download>{{ trans('general.view_file') }}</a>
+                    </td>
+                    <td style="width: 100px;vertical-align: middle;" class="text-center">
+                        <a href="javascript:void(0);"
+                           onclick="clone_row(this);"
+                           class="btn btn-xs btn-info">
+                            <i class="bx bx-plus"></i>
+                        </a>
+                        <a href="javascript:void(0);" tabindex="18"
+                           onclick="remove_clone_row(this);"
+                           class="btn btn-xs btn-danger">
+                            <i class="bx bx-minus"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            @endforeach
+        @else
+            <tbody>
+            <tr>
+                <td>
+                    {!!  Form::text('affiliations[affiliated_by][]',null,['id'=>'affiliations[affiliated_by][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                </td>
+                <td>
+                    {!!  Form::text('affiliations[affiliation_detail][]',null,['id'=>'affiliations[affiliation_detail][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                </td>
+                <td>
+                    {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'form-control form-control-sm']) !!}
+                </td>
+                <td style="width: 100px;vertical-align: middle;" class="text-center">
+                    <a href="javascript:void(0);"
+                       onclick="clone_row(this);"
+                       class="btn btn-xs btn-info">
+                        <i class="bx bx-plus"></i>
+                    </a>
+                    <a href="javascript:void(0);" tabindex="18"
+                       onclick="remove_clone_row(this);"
+                       class="btn btn-xs btn-danger">
+                        <i class="bx bx-minus"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        @endif
     </table>
 </div>

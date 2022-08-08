@@ -96,8 +96,8 @@ class FreelancerController extends Controller
         }
         switch ($step) {
             case StepEnum::COMPANY_PROFILE;
-                $model = $this->freelancerService->saveCompanyProfile($model->type, $model);
-                return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
+                $model = $this->freelancerService->saveCompanyProfile($model);
+                return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::FOCAL_PERSON, $model->id]);
                 break;
             case StepEnum::SERVICES;
                 $model = $this->freelancerService->saveServices($model->type, $model);

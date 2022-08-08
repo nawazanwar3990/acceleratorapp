@@ -1,5 +1,6 @@
 <?php
 return [
+    'view_file' => 'View File',
     'affiliation_certificate' => 'Affiliation Certificate',
     'affiliated_by' => 'Affiliated By',
     'affiliation_detail' => 'Affiliation Detail',
