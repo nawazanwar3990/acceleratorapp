@@ -7,7 +7,7 @@
                     @include('dashboard.components.general.form-list-header',['url'=>'dashboard.customers.create','is_create'=>true])
                 @endif
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table custom-datatable table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FreelancerTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.customers.list')

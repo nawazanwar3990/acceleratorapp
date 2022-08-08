@@ -1,6 +1,6 @@
 <div class="row pt-4 justify-content-center">
     <div class="col-12">
-        <table class="table table-sm table-bordered">
+        <table class="table custom-datatable table-sm table-bordered">
             @php $selected_services = array() @endphp
             @if($model->services AND  count($model->services)>0)
                 @foreach($model->services as $service)

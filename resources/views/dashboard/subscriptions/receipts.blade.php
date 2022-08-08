@@ -4,7 +4,7 @@
         <div class="col-12">
             <div class="card shadow-none pt-0">
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table custom-datatable table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\ReceiptTableHeading::getTranslationKeys()])
                         <tbody>
                         @forelse($records  as $record)

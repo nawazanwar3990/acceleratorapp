@@ -10,41 +10,57 @@
 </div>
 <div class="row @if(isset($model) AND $model->is_register_company=='yes') d-block @else d-none @endif"
      id="institute_holder">
-    <div class="col-12 mb-3">
-        <table class="table table-bordered table-hover table-sm">
-            <thead class="thead-light">
-            <tr>
-                <th class="text-center">{{ __('general.affiliate_with') }}</th>
-                <th class="text-center">{{ __('general.add_remove') }}</th>
-            </tr>
-            </thead>
+    <div class="col-12 mb-3 px-4 py-2">
+        <table class="table table-bordered  table-sm">
             <tbody>
-            @if(isset($model) AND $model->is_register_company=='yes' AND count($model->company_institutes)>0)
-                @foreach($model->company_institutes as $company_institute)
-                    <tr>
-                        <td>
-                            {!!  Form::text('company_institutes[]',$company_institute,['id'=>'company_institutes[]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
-                        </td>
-                        <td class="text-center">
-                            <a href="javascript:void(0);"
-                               onclick="clone_row(this);"
-                               class="btn btn-xs btn-info">
-                                <i class="bx bx-plus"></i>
-                            </a>
-                            <a href="javascript:void(0);" tabindex="18"
-                               onclick="remove_clone_row(this);"
-                               class="btn btn-xs btn-danger">
-                                <i class="bx bx-minus"></i>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-            @else
                 <tr>
                     <td>
-                        {!!  Form::text('company_institutes[]',null,['id'=>'company_institutes[]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                        {!!  Html::decode(Form::label('sr_no' ,__('general.sr_no'),['class'=>'col-form-label fs-13']))   !!}
+                        {!!  Form::text('affiliation[sr_no]',1,['id'=>'affiliation[sr_no]','class'=>'form-control form-control-sm','autocomplete'=>'off','readonly']) !!}
                     </td>
-                    <td class="text-center">
+                    <td>
+                        {!!  Html::decode(Form::label('affiliated_by' ,__('general.affiliated_by').'<i class="text-danger">*</i>',['class'=>'col-form-label fs-13']))   !!}
+                        {!!  Form::text('affiliation[affiliated_by]',null,['id'=>'affiliation[affiliated_by]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                    </td>
+                    <td>
+                        {!!  Html::decode(Form::label('affiliation_detail' ,__('general.affiliation_detail'),['class'=>'col-form-label fs-13']))   !!}
+                        {!!  Form::text('affiliation[affiliation_detail]',null,['id'=>'affiliation[affiliation_detail]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                    </td>
+                    <td>
+                        {!!  Html::decode(Form::label('attach_your_affiliation_certificates' ,__('general.attach_your_affiliation_certificates'),['class'=>'col-form-label fs-13']))   !!}
+                        {!! Form::file('affiliation[affiliation_detail]',['id'=>'affiliation[affiliation_detail]','class'=>'form-control form-control-sm','placeholder'=>'Attach Document']) !!}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        {!!  Html::decode(Form::label('attach_your_affiliation_certificates' ,__('general.attach_your_affiliation_certificates'),['class'=>'col-form-label fs-13']))   !!}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="py-3">
+                        <table class="table table-bordered mb-0">
+                            <tr>
+                                <td>
+                                    {!! Form::file('affiliation[affiliation_detail]',['id'=>'affiliation[affiliation_detail]','class'=>'form-control form-control-sm','placeholder'=>'Attach Document']) !!}
+                                </td>
+                                <td class="text-center">
+                                    <a href="javascript:void(0);"
+                                       onclick="clone_row(this);"
+                                       class="btn btn-xs btn-info">
+                                        <i class="bx bx-plus"></i>
+                                    </a>
+                                    <a href="javascript:void(0);" tabindex="18"
+                                       onclick="remove_clone_row(this);"
+                                       class="btn btn-xs btn-danger">
+                                        <i class="bx bx-minus"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center" colspan="4">
                         <a href="javascript:void(0);"
                            onclick="clone_row(this);"
                            class="btn btn-xs btn-info">
@@ -57,10 +73,8 @@
                         </a>
                     </td>
                 </tr>
-            @endif
             </tbody>
         </table>
-
     </div>
 </div>
 <div class="row">

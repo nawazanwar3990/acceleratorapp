@@ -22,7 +22,7 @@
                                 <h4 class="fw-bold mb-0">{{__('general.package_info')}}</h4>
                             </div>
                             <div class="card-body px-0 py-0">
-                                <table class="table table-bordered mb-0">
+                                <table class="table custom-datatable table-bordered mb-0">
                                     <tr>
                                         <th>{{__('general.package_name')}}</th>
                                         <td>{{ $subscription->package->name }}</td>

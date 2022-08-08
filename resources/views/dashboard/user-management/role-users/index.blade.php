@@ -8,7 +8,7 @@
                     {!! Form::open(['route' => ['dashboard.role-users.store',['role'=>request()->query('role')]],'method' => 'POST','files' => true,'id' =>'floors_form', 'class' => 'solid-validation']) !!}
                     <x-created-by-field></x-created-by-field>
 
-                    <table class="table table-bordered table-hover">
+                    <table class="table custom-datatable table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\UserManagement\RoleUserTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.user-management.role-users.list')

@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="card-body  @if(isset($model) AND (is_array($model->other_services) AND count($model->other_services)>0)) d-block @else d-none @endif" id="other_services_holder">
-        <table class="table table-sm table-bordered">
+        <table class="table custom-datatable table-sm table-bordered">
             <tbody>
             @if(isset($model) AND (is_array($model->other_services) AND count($model->other_services)>0))
                 @if(count($model->other_services)>0)

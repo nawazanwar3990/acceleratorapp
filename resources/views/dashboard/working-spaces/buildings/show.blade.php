@@ -9,7 +9,7 @@
                             <h5 class="card-title">All Floors of {{ $building->name }}</h5>
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table custom-datatable table-bordered">
                                 <thead>
                                 <tr>
                                     <th>{{__('general.floor_name')}}</th>
@@ -26,7 +26,7 @@
                                             <td>
                                                 @if(count($floor->offices)>0)
                                                     <div class="offices_holder">
-                                                        <table class="table table-bordered mt-2">
+                                                        <table class="table custom-datatable table-bordered mt-2">
                                                             <thead>
                                                             <tr>
                                                                 <th class="fs-13">{{__('general.office_name')}}</th>
@@ -65,7 +65,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Essential Information</h5>
-                            <table class="table no-border">
+                            <table class="table custom-datatable no-border">
                                 <tbody class="text-dark">
                                 <tr>
                                     <td>{{__('general.name')}}</td>

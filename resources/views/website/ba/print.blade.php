@@ -78,7 +78,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-8 border-top">
-                                    <table class="table  table-hover table-responsive table-striped">
+                                    <table class="table custom-datatable  table-hover table-responsive table-striped">
                                         <thead>
                                         <tr>
                                             <th colspan="2" class="table-head text-center">Package Info</th>
@@ -140,7 +140,7 @@
                                     </table>
                                 </div>
                                 <div class="col-4 border-top">
-                                    <table class="table  table-hover table-striped ">
+                                    <table class="table custom-datatable  table-hover table-striped ">
                                         <thead>
                                         <tr class="text-center">
                                             <th class="table-head">{{ trans('general.your_services') }}</th>
@@ -155,7 +155,7 @@
                                         </tbody>
                                     </table>
                                     @if($model->other_services AND count($model->other_services)>0)
-                                        <table class="table table-hover table-striped mt-md-5">
+                                        <table class="table custom-datatable table-hover table-striped mt-md-5">
                                             <thead>
                                             <tr class="text-center">
                                                 <th class="table-head">{{ trans('general.other_services') }}</th>

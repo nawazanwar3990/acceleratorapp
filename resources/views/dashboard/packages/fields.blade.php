@@ -39,7 +39,7 @@
         <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
     </div>
     <div class="card-body">
-        <table class="table">
+        <table class="table custom-datatable">
             <thead>
             <tr>
                 <th>{{ trans('general.name') }}</th>

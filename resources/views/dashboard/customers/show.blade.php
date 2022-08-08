@@ -8,7 +8,7 @@
                         <h5 class="card-title">{{ __('general.subscription') }}</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table custom-datatable table-bordered">
                             <thead>
                             <tr>
 

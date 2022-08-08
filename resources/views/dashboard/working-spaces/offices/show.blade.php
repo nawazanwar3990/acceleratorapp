@@ -10,7 +10,7 @@
                                 <h5 class="card-title">{{ __('general.plans') }} of {{ $office->name }}</h5>
                             </div>
                             <div class="card-body">
-                                <table class="table table-bordered table-hover">
+                                <table class="table custom-datatable table-bordered table-hover">
                                     <thead>
                                     <tr>
                                         <th scope="col">{{__('general.name')}}</th>
@@ -68,7 +68,7 @@
                                 <h5 class="card-title">{{ __('general.subscriptions') }} of {{ $office->name }}</h5>
                             </div>
                             <div class="card-body">
-                                <table class="table table-bordered table-hover">
+                                <table class="table custom-datatable table-bordered table-hover">
                                     <thead>
                                     <tr>
                                         <th scope="col">{{ __('general.customer') }}</th>
@@ -113,7 +113,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Essential Information</h5>
-                            <table class="table no-border">
+                            <table class="table custom-datatable no-border">
                                 <tbody class="text-dark">
                                 <tr>
                                     @isset($office->building)

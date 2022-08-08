@@ -7,7 +7,7 @@
     <hr>
     <div class="row">
         <div class="col-12">
-            <table class="table table-bordered table-sm">
+            <table class="table custom-datatable table-bordered table-sm">
                 <thead>
                 <tr>
                     <th>{{ trans('general.id') }}</th>
@@ -47,7 +47,7 @@
     <hr>
     <div class="row">
         <div class="col-12">
-            <table class="table table-bordered table-sm">
+            <table class="table custom-datatable table-bordered table-sm">
                 <thead>
                 <tr>
                     <th>{{ trans('general.id') }}</th>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.table').DataTable({
+    $('.custom-datatable').DataTable({
         responsive: true,
         fixedColumns: true,
         scrollX: true,

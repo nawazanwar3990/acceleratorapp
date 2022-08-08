@@ -1,5 +1,10 @@
 <?php
 return [
+
+    'affiliated_by' => 'Affiliated By',
+    'affiliation_detail' => 'Affiliation Detail',
+    'sr_no' => 'Sr #',
+    'attach_your_affiliation_certificates' => 'Attach Your Affiliation Certificates',
     'mentor_packages' => 'Mentor Packages',
     'pre_apply' => 'Pre Apply',
     'direct_apply' => 'Direct Apply',
@@ -277,7 +282,7 @@ return [
         'business_accelerator_services' => 'BA Services',
         'client_service' => 'Client Services',
         'event_management' => 'Event Management',
-        'mentor'=>'Mentors'
+        'mentor' => 'Mentors'
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

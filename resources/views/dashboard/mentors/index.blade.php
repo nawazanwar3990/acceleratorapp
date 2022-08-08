@@ -18,7 +18,7 @@
                     </ul>
                     <div class="tab-content tabcontent-border">
                         <div class="tab-pane active p-3">
-                            <table class="table table-bordered table-hover">
+                            <table class="table custom-datatable table-bordered table-hover">
                                 @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\BATableHeadingEnum::getTranslationKeys()])
                                 <tbody>
                                 @include('dashboard.mentors.list')

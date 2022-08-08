@@ -11,7 +11,7 @@
 <div class="row @if(isset($model) AND $model->is_register_sp=='yes') d-block @else d-none @endif"
      id="institute_holder">
     <div class="col-12 mb-3">
-        <table class="table table-bordered table-hover table-sm">
+        <table class="table custom-datatable table-bordered table-hover table-sm">
             <thead class="thead-light">
             <tr>
                 <th class="text-center">{{ __('general.affiliate_with') }}</th>

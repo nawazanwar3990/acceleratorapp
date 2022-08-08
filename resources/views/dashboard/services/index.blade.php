@@ -21,7 +21,7 @@
                     </ul>
                     <div class="tab-content tabcontent-border">
                         <div class="tab-pane active p-3">
-                            <table class="table table-striped table-bordered nowrap">
+                            <table class="table custom-datatable table-striped table-bordered nowrap">
                                 @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\ServiceTableHeading::getTranslationKeys()])
                                 <tbody>
                                 @include('dashboard.services.list')

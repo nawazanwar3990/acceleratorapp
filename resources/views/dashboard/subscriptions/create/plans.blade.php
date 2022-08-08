@@ -7,7 +7,7 @@
             <div class="card shadow-none pt-0">
                 @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table custom-datatable table-bordered table-hover">
                         <thead>
                         <tr>
                             <th scope="col">Location(optional)</th>
