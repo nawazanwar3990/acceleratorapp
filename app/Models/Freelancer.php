@@ -34,21 +34,6 @@ class Freelancer extends Model
         'other_services'
     ];
 
-    public function getServicesAttribute($values)
-    {
-        return json_decode($values,true);
-    }
-    public function getAffiliationsAttribute($values)
-    {
-        return json_decode($values,true);
-    }
-
-
-    public function getOtherServicesAttribute($values)
-    {
-        return json_decode($values,true);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

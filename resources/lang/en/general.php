@@ -7,6 +7,7 @@ return [
     'document_attachment' => 'Document Attachment',
     'affiliated_by' => 'Affiliated By',
     'any_approve_documents' => 'Any Approve Documents',
+    'services_of_sp' => 'Services Of Service Provider Company',
     'affiliation_detail' => 'Affiliation Detail',
     'sr_no' => 'Sr #',
     'attach_your_affiliation_certificates' => 'Attach Your Affiliation Certificates',

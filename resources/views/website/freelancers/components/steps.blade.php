@@ -24,7 +24,7 @@
         @endif
         <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
             <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null]) }}">
-                {{ trans('general.services_of_freelancers') }}
+               @if($type=='company')  {{ trans('general.services_of_sp') }} @else  {{ trans('general.services_of_freelancers') }} @endif
             </a>
         </li>
         @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)

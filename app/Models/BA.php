@@ -33,21 +33,6 @@ class BA extends Model
         'services',
         'other_services'
     ];
-
-    public function getServicesAttribute($values)
-    {
-        return json_decode($values,true);
-    }
-    public function getAffiliationsAttribute($values)
-    {
-        return json_decode($values,true);
-    }
-
-    public function getOtherServicesAttribute($values)
-    {
-        return json_decode($values,true);
-    }
-
     public function getCompanyDateOfInitiationAttribute($value)
     {
         return Carbon::parse($value)->format('d M Y');
