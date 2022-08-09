@@ -1,6 +1,8 @@
 <div class="row mb-3">
     {!! Form::hidden('package_type',$type,['class'=>'form-control','readonly']) !!}
-    {!! Form::hidden('model_id',$model_id,['class'=>'form-control','readonly']) !!}
+    @isset($model_id)
+        {!! Form::hidden('model_id',$model_id,['class'=>'form-control','readonly']) !!}
+    @endisset
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('payment_process' ,__('general.payment_process'),['class'=>'col-form-label']))   !!}
         {!!  Form::select('payment_process',\App\Enum\PaymentTypeProcessEnum::getTranslationKeys(),null,['id'=>'payment_process','class'=>'form-control','placeholder'=>trans('general.select')])
@@ -35,7 +37,7 @@
         </div>
     </div>
 </div>
-@if($model_id)
+@if(isset($model_id))
     @php
         $process_model=\App\Services\GeneralService::get_model_by_type_and_id($type,$model_id);
     @endphp
