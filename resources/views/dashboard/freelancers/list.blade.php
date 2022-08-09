@@ -6,6 +6,12 @@
         <td>
             {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($record->type)  }}
         </td>
+        <td>
+            <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#service-model-{{$record->id}}">
+                {{ trans('general.view') }}
+            </button>
+            @include('components.models.registered-services',['id'=>$record->id])
+        </td>
         <td class="text-center">
             @if($record->user->subscription)
                 @if($record->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
