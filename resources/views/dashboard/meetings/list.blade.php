@@ -33,9 +33,5 @@
         </td>
     </tr>
 @empty
-    <tr>
-        <td colspan="100%" class="text-center">
-            {{ __('general.no_record_found') }}
-        </td>
-    </tr>
+
 @endforelse
