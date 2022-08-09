@@ -163,7 +163,7 @@ class FreelancerService
 
     }
 
-    public function saveFocalPersonInfo($type, $model)
+    public function saveFocalPersonInfo($model)
     {
         $count = request()->input('fp_name', array());
         $data = request()->all();

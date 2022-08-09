@@ -13,7 +13,7 @@ class PackageService
     public static function list_packages($type): Collection|array
     {
         return Package::where('status', true)
-            ->where('type', $type)
+            ->where('package_type', $type)
             ->with('services')
             ->get();
     }

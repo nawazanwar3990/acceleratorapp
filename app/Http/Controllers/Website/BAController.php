@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Enum\AcceleratorTypeEnum;
 use App\Enum\MediaTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
@@ -94,7 +95,13 @@ class BAController extends Controller
             case StepEnum::SERVICES;
                 $model = $this->baService->saveServices($model);
                 if ($request->has('services')) {
-                    return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
+                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                        return redirect()->route('website.ba.create', [$type,$payment, StepEnum::PACKAGES, $model->id]);
+                    } else {
+                        return redirect()
+                            ->route('website.index')
+                            ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
+                    }
                 } else {
                     return redirect()->back()->withInput()->with('error', 'First Choose Services');
                 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Enum\AcceleratorTypeEnum;
 use App\Enum\MediaTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
@@ -100,9 +101,15 @@ class FreelancerController extends Controller
                 return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::FOCAL_PERSON, $model->id]);
                 break;
             case StepEnum::SERVICES;
-                $model = $this->freelancerService->saveServices($model->type, $model);
+                $model = $this->freelancerService->saveServices($model);
                 if ($request->has('services')) {
-                    return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
+                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                        return redirect()->route('website.freelancers.create', [$type,$payment, StepEnum::PACKAGES, $model->id]);
+                    } else {
+                        return redirect()
+                            ->route('website.index')
+                            ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
+                    }
                 } else {
                     return redirect()->back()->withInput()->with('error', 'First Choose Services');
                 }
@@ -127,11 +134,15 @@ class FreelancerController extends Controller
                     $model,
                     $user_id
                 );
-                if ($type == AcceleratorTypeEnum::COMPANY) {
+                if ($type == 'Company') {
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                 }
+                break;
+            case StepEnum::FOCAL_PERSON;
+                $response = $this->freelancerService->saveFocalPersonInfo($model);
+                return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                 break;
             case StepEnum::PACKAGES;
                 $response = $this->freelancerService->applySubscription($model->type);
