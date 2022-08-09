@@ -118,7 +118,16 @@ class MentorController extends Controller
                     return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
                     break;
                 case StepEnum::PACKAGES:
-                    $response = GeneralService::applySubscription($model);
+                    $subscription_id = request()->input('subscription_id');
+                    $subscribed_id = request()->input('subscribed_id');
+                    $payment_token_number = request()->input('payment_token_number');
+                    $payment_addition_information = request()->input('payment_addition_information');
+                    $response = GeneralService::applySubscription(
+                        $subscription_id,
+                        $subscribed_id,
+                        $payment_token_number,
+                        $payment_addition_information
+                    );
                     $url = route('website.mentors.create', [$payment,StepEnum::PRINT, $model->id]);
                     return response()->json([
                         'status' => $response,
@@ -127,26 +136,5 @@ class MentorController extends Controller
                     break;
             }
         }
-    }
-
-    /**
-     * @param Request $request
-     * @return RedirectResponse
-     */
-    public function storePaymentSnippet(Request $request): RedirectResponse
-    {
-        $subscription_id = $request->input('subscription_id');
-        if (request()->file('receipt')) {
-            $uploadedFile = request()->file('receipt');
-            $path = 'uploads/subscription/receipts/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $subscription_id,
-                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT,
-                'created_by' => $subscription_id
-            ]);
-        }
-        return redirect()->back()->with('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
     }
 }

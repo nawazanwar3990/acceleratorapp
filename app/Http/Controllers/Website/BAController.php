@@ -135,7 +135,16 @@ class BAController extends Controller
                 }
                 break;
             case StepEnum::PACKAGES:
-                $response = GeneralService::applySubscription($model);
+                $subscription_id = request()->input('subscription_id');
+                $subscribed_id = request()->input('subscribed_id');
+                $payment_token_number = request()->input('payment_token_number');
+                $payment_addition_information = request()->input('payment_addition_information');
+                $response = GeneralService::applySubscription(
+                    $subscription_id,
+                    $subscribed_id,
+                    $payment_token_number,
+                    $payment_addition_information
+                );
                 $url = route('website.ba.create', [$type,$payment,StepEnum::PRINT, $model->id]);
                 return response()->json([
                     'status' => $response,

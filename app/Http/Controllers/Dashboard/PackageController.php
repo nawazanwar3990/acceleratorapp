@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enum\PackageTypeEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\RoleEnum;
+use App\Enum\SubscriptionTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageRequest;
 use App\Models\Package;
 use App\Models\Service;
+use App\Services\GeneralService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -41,7 +45,7 @@ class PackageController extends Controller
             'pageTitle' => __('general.packages'),
             'records' => $records,
             'type' => $type,
-            'package_id'=>$package_id
+            'package_id' => $package_id
         ];
         return view('dashboard.packages.index', $params);
     }
@@ -59,7 +63,7 @@ class PackageController extends Controller
             'pageTitle' => __('general.new_package'),
             'type' => $type,
             'services' => $services,
-            'model_id'=>$model_id
+            'model_id' => $model_id
         ];
         return view('dashboard.packages.create', $params);
     }
@@ -72,7 +76,27 @@ class PackageController extends Controller
         $this->authorize('create', Package::class);
         $package_type = $request->input('package_type');
         $model_id = $request->input('model_id');
-        if ($request->createData()) {
+        $data = $request->createData();
+        if ($model_id) {
+            $model = GeneralService::get_model_by_type_and_id($package_type, $model_id);
+            GeneralService::applySubscription(
+                $model_id,
+                $model->user->id,
+                time(),
+                null
+            );
+            if (in_array($package_type, [PackageTypeEnum::FREELANCER, PackageTypeEnum::SERVICE_PROVIDER_COMPANY])) {
+                return redirect()->route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::PRE_PAYMENT])
+                    ->with('success', 'Subscription Created Successfully');
+            } else if (in_array($package_type, [PackageTypeEnum::BUSINESS_ACCELERATOR, PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
+                return redirect()->route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::PRE_PAYMENT])
+                    ->with('success', 'Subscription Created Successfully');
+            } else{
+                return redirect()->route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::PRE_PAYMENT])
+                    ->with('success', 'Subscription Created Successfully');
+            }
+        }
+        if ($data) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.packages.create', ['type' => $package_type])
                     ->with('success', __('general.record_created_successfully'));

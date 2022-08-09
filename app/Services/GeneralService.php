@@ -10,9 +10,12 @@ use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
+use App\Models\BA;
 use App\Models\Building;
 use App\Models\Floor;
+use App\Models\Freelancer;
 use App\Models\Media;
+use App\Models\Mentor;
 use App\Models\Module;
 use App\Models\Office;
 use App\Models\Package;
@@ -22,6 +25,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Translation\Translator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -1249,19 +1255,21 @@ class GeneralService
         }
     }
 
-    public static function applySubscription($model): bool
+    public static function applySubscription(
+        $subscription_id,
+        $subscribed_id,
+        $payment_token_number,
+        $payment_addition_information=null
+    ): bool
     {
-        $subscription_id = request()->input('subscription_id');
-        $subscribed_id = request()->input('subscribed_id');
+
+
         $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
         if ($alreadySubscription->exists()) {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
             $alreadySubscription->delete();
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
-        $payment_token_number = request()->input('payment_token_number');
-        $payment_addition_information = request()->input('payment_addition_information');
-
         $subscribed = User::find($subscribed_id);
         $subscribed->payment_token_number = $payment_token_number;
         $subscribed->save();
@@ -1290,13 +1298,18 @@ class GeneralService
         }
     }
 
-    public static function get_model_by_type_and_id($type, $id)
+    /**
+     * @param $type
+     * @param $id
+     * @return Builder|Builder[]|Collection|Model|null
+     */
+    public static function get_model_by_type_and_id($type, $id): Model|Collection|Builder|array|null
     {
         if (in_array($type, [\App\Enum\PackageTypeEnum::FREELANCER, \App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY])) {
-            return \App\Models\Freelancer::find($id);
+            return Freelancer::with('user')->find($id);
         } else if (in_array($type, [\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR, \App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
-            return \App\Models\BA::find($id);
+            return BA::with('user')->find($id);
         } else
-            return \App\Models\Mentor::find($id);
+            return Mentor::with('user')->find($id);
     }
 }
