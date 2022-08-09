@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Enum\RoleEnum;
 use App\Models\Package;
 use App\Models\Subscription;
@@ -173,10 +174,8 @@ class PersonService
     {
         $data = array();
         $services = Auth::user()->ba->services;
-        if (count($services) > 0) {
-            foreach ($services as $service) {
-                $data[] = $service->slug;
-            }
+        if ($services) {
+            return array_keys(json_decode($services, true));
         }
         return $data;
     }

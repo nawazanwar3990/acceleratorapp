@@ -49,11 +49,11 @@ class Plan extends Model
     public function basic_services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::PLAN_SERVICE)
-            ->where('plan_service.type',ServiceTypeEnum::BASIC_SERVICE);
+            ->where('plan_service.type',ServiceTypeEnum::BASIC);
     }
     public function additional_services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::PLAN_SERVICE)
-            ->where('plan_service.type',ServiceTypeEnum::ADDITIONAL_SERVICE);
+            ->where('plan_service.type',ServiceTypeEnum::ADDITIONAL);
     }
 }

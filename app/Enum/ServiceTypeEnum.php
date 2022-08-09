@@ -56,7 +56,9 @@ class ServiceTypeEnum extends AbstractEnum
             self::BUSINESS_ACCELERATOR_INDIVIDUAL => 'BA Individual',
             self::FREELANCER => 'Freelancer',
             self::SERVICE_PROVIDER_COMPANY => 'Service Provider Company',
-            self::MENTOR =>'Mentor'
+            self::MENTOR =>'Mentor',
+            self::BASIC =>'Basic',
+            self::ADDITIONAL =>'Additional'
         );
     }
 

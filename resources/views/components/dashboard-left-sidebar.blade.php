@@ -28,7 +28,7 @@
                                 </a>
                             </li>
                         @else
-                            @if(in_array(str_replace('_','-',$key),\App\Services\PersonService::getBaServices()))
+                            @if(in_array($value,\App\Services\PersonService::getBaServices()))
                                 <li>
                                     <a class="waves-effect waves-dark"
                                        href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">

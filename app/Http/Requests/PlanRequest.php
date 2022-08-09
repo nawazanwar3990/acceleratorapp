@@ -56,12 +56,12 @@ class PlanRequest extends FormRequest
     {
         $basic_services = $this->input('basic_services', array());
         if (count($basic_services) > 0) {
-            $model->services()->attach($basic_services, ['type' => ServiceTypeEnum::BASIC_SERVICE]);
+            $model->services()->attach($basic_services, ['type' => ServiceTypeEnum::BASIC]);
         }
 
         $additional_services = $this->input('additional_services', array());
         if (count($additional_services) > 0) {
-            $model->services()->attach($additional_services, ['type' => ServiceTypeEnum::ADDITIONAL_SERVICE]);
+            $model->services()->attach($additional_services, ['type' => ServiceTypeEnum::ADDITIONAL]);
         }
     }
 }

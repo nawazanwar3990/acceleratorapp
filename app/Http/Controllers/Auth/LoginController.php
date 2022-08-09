@@ -75,18 +75,12 @@ class LoginController extends Controller
                         'login' => __('general.your_account_is_not_activate_message'),
                     ]);
                 } else {
-                    if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR) || $user->hasRole(RoleEnum::MENTOR) || $user->hasRole(RoleEnum::FREELANCER)) {
+                    if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)
+                        || $user->hasRole(RoleEnum::MENTOR)
+                        || $user->hasRole(RoleEnum::FREELANCER)
+                    ) {
                         $subscription = Subscription::where('subscribed_id', $user->id);
-                        if (!$subscription->exists()) {
-                            if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)){
-                                return redirect()->route('website.ba.create', [$user->ba->type,$user->ba->payment_process,StepEnum::PACKAGES,$user->ba->id]);
-                            }else  if ($user->hasRole(RoleEnum::FREELANCER)){
-                                return redirect()->route('website.freelancers.create', [$user->freelancer->type,$user->freelancer->payment_process,StepEnum::PACKAGES,$user->freelancer->id]);
-                            }else  if ($user->hasRole(RoleEnum::MENTOR)){
-                                return redirect()->route('website.mentors.create', [$user->mentor->payment_process,StepEnum::PACKAGES,$user->mentor->id]);
-                            }
-
-                        } else {
+                        if ($subscription->exists()){
                             $subscription_status = $subscription->value('status');
                             if ($subscription_status == SubscriptionStatusEnum::PENDING) {
                                 return redirect()->route('website.pending-subscription', ['subscribed_id' => $user->id]);
@@ -100,8 +94,20 @@ class LoginController extends Controller
                                     return redirect()->back()->withInput()->with('error', __('auth.failed'));
                                 } else {
                                     RateLimiter::clear($this->throttleKey());
-                                    return redirect()->route('dashboard.index')->with('success', trans('general.welcome_back'));
+                                    return redirect()->route('website.index')->with('success', trans('general.welcome_back'));
                                 }
+                            }
+                        }else{
+                            if (!Auth::attempt([
+                                'email' => $email,
+                                'password' => $password
+                            ], $request->boolean('remember')
+                            )) {
+                                RateLimiter::hit($this->throttleKey());
+                                return redirect()->back()->withInput()->with('error', __('auth.failed'));
+                            } else {
+                                RateLimiter::clear($this->throttleKey());
+                                return redirect()->route('website.index')->with('info','We are working on the basic of your your selected services,So we will let you after Creating a package on the basis of your services');
                             }
                         }
                     }

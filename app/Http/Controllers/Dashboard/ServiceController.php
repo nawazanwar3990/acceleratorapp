@@ -32,7 +32,7 @@ class ServiceController extends Controller
     {
         $this->authorize('view', Service::class);
         $type = $request->query('type');
-        $records = $this->serviceData->listServicesByPagination();
+        $records = Service::whereType($type)->paginate(20);
         $params = [
             'pageTitle' => __('general.services'),
             'records' => $records,
