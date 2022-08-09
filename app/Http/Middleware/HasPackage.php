@@ -30,7 +30,7 @@ class HasPackage
                         }else if ($subscription->status==SubscriptionStatusEnum::PENDING){
                             $currentGuard->logout();
                             Cache::flush();
-                            return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
+                            return redirect()->route('website.pending-subscription', ['subscribed_id' => $user->id]);
                         }
                     }
                 }

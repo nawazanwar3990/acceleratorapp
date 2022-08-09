@@ -144,24 +144,4 @@ class BAController extends Controller
                 break;
         }
     }
-
-    /**
-     * @param Request $request
-     * @return RedirectResponse
-     */
-    public function storePaymentSnippet(Request $request): RedirectResponse
-    {
-        $subscription_id = $request->input('subscription_id');
-        if (request()->file('receipt')) {
-            $uploadedFile = request()->file('receipt');
-            $path = 'uploads/subscription/receipts/' . GeneralService::generateFileName($uploadedFile);
-            Image::make($uploadedFile)->save($path);
-            Media::create([
-                'filename' => $path,
-                'record_id' => $subscription_id,
-                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT
-            ]);
-        }
-        return redirect()->back()->with('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
-    }
 }

@@ -21,6 +21,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/home', [DashboardController::class, 'index'])
         ->name('index')
         ->middleware('has_package');
+
     require __DIR__ . '/service.php';
     require __DIR__ . '/user.php';
     require __DIR__ . '/system.php';
@@ -34,7 +35,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::post('/ba/store/{step?}/{id?}', [BAController::class, 'store'])
         ->name('ba.store');
     Route::post('/ba/payment-snippet/store', [BAController::class, 'storePaymentSnippet'])
-        ->name('ba.payment-snippet-store');
+        ->name('payment-snippet-store');
 
 
     Route::get('/freelancers/create/{step?}/{id?}', [FreelancerController::class, 'create'])

@@ -23,12 +23,11 @@ Route::get('/freelancers/create/{type?}/{payment?}/{step?}/{id?}', [FreelancerCo
 Route::post('/freelancers/store/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'store'])
     ->name('freelancers.store');
 
-Route::get('/ba-pending-subscription', [PageController::class, 'baPendingSubscription'])
-    ->name('ba-pending-subscription')
+Route::get('/pending-subscription', [PageController::class, 'pending_subscription'])
+    ->name('pending-subscription')
     ->middleware('has_package');
-
-Route::post('/ba/payment-snippet/store', [BAController::class, 'storePaymentSnippet'])
-    ->name('ba.payment-snippet-store');
+Route::post('/payment-snippet/store', [PageController::class, 'storePaymentSnippet'])
+    ->name('payment-snippet-store');
 
 
 

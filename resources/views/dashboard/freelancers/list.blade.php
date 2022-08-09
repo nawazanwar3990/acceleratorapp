@@ -18,7 +18,7 @@
                     {{ $record->user->subscription->status}}
                 @else
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('website.ba-pending-subscription',['subscribed_id'=>$record->user->id]) }}">
+                       href="{{ route('website.pending-subscription',['subscribed_id'=>$record->user->id]) }}">
                         {{ trans('general.view') }}
                     </a>
                 @endif

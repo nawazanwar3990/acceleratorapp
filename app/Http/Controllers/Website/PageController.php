@@ -8,12 +8,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Services\GeneralService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 use function __;
 use function session;
 use function view;
@@ -33,7 +36,7 @@ class PageController extends Controller
         return view('website.pages.expire', compact('pageTitle'));
     }
 
-    public function baPendingSubscription(Request $request)
+    public function pending_subscription(Request $request): Factory|View|RedirectResponse|Application
     {
         $pageTitle = 'Pending Subscription';
         $subscribed_id = $request->query('subscribed_id');
@@ -52,6 +55,21 @@ class PageController extends Controller
         } else {
             Session::put('info', $user->payment_token_number . "  is your payment code please Summit your payment receipt for approved you Subscription");
         }
-        return view('website.pages.ba-pending-subscription', compact('pageTitle', 'subscription', 'user', 'media'));
+        return view('website.pages.pending-subscription', compact('pageTitle', 'subscription', 'user', 'media'));
+    }
+    public function storePaymentSnippet(Request $request): RedirectResponse
+    {
+        $subscription_id = $request->input('subscription_id');
+        if (request()->file('receipt')) {
+            $uploadedFile = request()->file('receipt');
+            $path = 'uploads/subscription/receipts/' . GeneralService::generateFileName($uploadedFile);
+            Image::make($uploadedFile)->save($path);
+            Media::create([
+                'filename' => $path,
+                'record_id' => $subscription_id,
+                'record_type' => MediaTypeEnum::SUBSCRIPTION_RECEIPT
+            ]);
+        }
+        return redirect()->back()->with('upload_receipt_success', 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription');
     }
 }

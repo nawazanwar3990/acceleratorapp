@@ -79,17 +79,17 @@ class LoginController extends Controller
                         $subscription = Subscription::where('subscribed_id', $user->id);
                         if (!$subscription->exists()) {
                             if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)){
-                                return redirect()->route('website.ba.create', [StepEnum::STEP4, $user->ba->id]);
+                                return redirect()->route('website.ba.create', [$user->ba->type,$user->ba->payment_process,StepEnum::PACKAGES,$user->ba->id]);
                             }else  if ($user->hasRole(RoleEnum::FREELANCER)){
-                                return redirect()->route('website.freelancers.create', [StepEnum::STEP5, $user->ba->id]);
+                                return redirect()->route('website.freelancers.create', [$user->freelancer->type,$user->freelancer->payment_process,StepEnum::PACKAGES,$user->freelancer->id]);
                             }else  if ($user->hasRole(RoleEnum::MENTOR)){
-                                return redirect()->route('website.mentors.create', [StepEnum::STEP3, $user->ba->id]);
+                                return redirect()->route('website.mentors.create', [$user->mentor->payment_process,StepEnum::PACKAGES,$user->mentor->id]);
                             }
 
                         } else {
                             $subscription_status = $subscription->value('status');
                             if ($subscription_status == SubscriptionStatusEnum::PENDING) {
-                                return redirect()->route('website.ba-pending-subscription', ['subscribed_id' => $user->id]);
+                                return redirect()->route('website.pending-subscription', ['subscribed_id' => $user->id]);
                             } else {
                                 if (!Auth::attempt([
                                     'email' => $email,

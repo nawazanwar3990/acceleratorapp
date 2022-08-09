@@ -44,9 +44,9 @@
                         </div>
                     </div>
                     <div class="col-12 my-3 text-center">
-                        <a class="btn btn-info btn-sm" href="{{ route('website.ba.create',[$user->ba->type==\App\Enum\AcceleratorTypeEnum::COMPANY?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
+                       {{-- <a class="btn btn-info btn-sm" href="{{ route('website.ba.create',[$user->ba->type==\App\Enum\AcceleratorTypeEnum::COMPANY?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
                             Edit Profile
-                        </a>
+                        </a>--}}
                     </div>
                     <div class="col-12">
                         @if(\Illuminate\Support\Facades\Session::has('upload_receipt_success') OR $media)
@@ -61,7 +61,7 @@
                                         aria-label="Close"></button>
                             </div>
                         @else
-                            {!! Form::open(['url' =>route('website.ba.payment-snippet-store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                            {!! Form::open(['url' =>route('website.payment-snippet-store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                             {!! Form::hidden('subscription_id',$subscription->id) !!}
                             <div class="card  bg-white">
                                 <div class="card-header">
