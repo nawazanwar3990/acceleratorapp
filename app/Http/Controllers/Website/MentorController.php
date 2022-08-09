@@ -58,7 +58,8 @@ class MentorController extends Controller
                 'model',
                 'prev_step',
                 'subscription',
-                'id'
+                'id',
+                'payment'
             ));
         }
         return view('website.mentor.step', compact(
@@ -82,7 +83,7 @@ class MentorController extends Controller
         }
         if ($step) {
             switch ($step) {
-                case StepEnum::SERVICES;
+                case StepEnum::SERVICES:
                     $model = $this->mentorService->saveServices($model);
                     if ($request->has('services')) {
                         if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
@@ -96,7 +97,7 @@ class MentorController extends Controller
                         return redirect()->back()->withInput()->with('error', 'First Choose Services');
                     }
                     break;
-                case StepEnum::USER_INFO;
+                case StepEnum::USER_INFO:
                     $user_id = $request->input('user_id', null);
                     if ($user_id) {
                         $request->validate([
@@ -116,15 +117,9 @@ class MentorController extends Controller
                     );
                     return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
                     break;
-                case StepEnum::PACKAGES;
-                    $response = $this->mentorService->applySubscription();
-                    $payment_type = $request->input('payment_type');
-                    if ($payment_type == 'pre_apply') {
-                        $url = route('website.index');
-                        Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
-                    } else {
-                        $url = route('website.mentors.create', [StepEnum::PRINT, $model->id]);
-                    }
+                case StepEnum::PACKAGES:
+                    $response = GeneralService::applySubscription($model);
+                    $url = route('website.mentors.create', [$payment,StepEnum::PRINT, $model->id]);
                     return response()->json([
                         'status' => $response,
                         'url' => $url

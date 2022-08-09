@@ -69,7 +69,9 @@ class FreelancerController extends Controller
                 'model',
                 'prev_step',
                 'subscription',
-                'id'
+                'id',
+                'type',
+                'payment'
             ));
         }
         return view('website.freelancers.step', compact(
@@ -96,15 +98,15 @@ class FreelancerController extends Controller
             $model = Freelancer::find($id);
         }
         switch ($step) {
-            case StepEnum::COMPANY_PROFILE;
+            case StepEnum::COMPANY_PROFILE:
                 $model = $this->freelancerService->saveCompanyProfile($model);
                 return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::FOCAL_PERSON, $model->id]);
                 break;
-            case StepEnum::SERVICES;
+            case StepEnum::SERVICES:
                 $model = $this->freelancerService->saveServices($model);
                 if ($request->has('services')) {
                     if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
-                        return redirect()->route('website.freelancers.create', [$type,$payment, StepEnum::PACKAGES, $model->id]);
+                        return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                     } else {
                         return redirect()
                             ->route('website.index')
@@ -114,7 +116,7 @@ class FreelancerController extends Controller
                     return redirect()->back()->withInput()->with('error', 'First Choose Services');
                 }
                 break;
-            case StepEnum::USER_INFO;
+            case StepEnum::USER_INFO:
                 $user_id = $request->input('user_id', null);
                 if ($user_id) {
                     $request->validate([
@@ -140,19 +142,13 @@ class FreelancerController extends Controller
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                 }
                 break;
-            case StepEnum::FOCAL_PERSON;
+            case StepEnum::FOCAL_PERSON:
                 $response = $this->freelancerService->saveFocalPersonInfo($model);
                 return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                 break;
-            case StepEnum::PACKAGES;
-                $response = $this->freelancerService->applySubscription($model->type);
-                $payment_type = $request->input('payment_type');
-                if ($payment_type == 'pre_apply') {
-                    $url = route('website.index');
-                    Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
-                } else {
-                    $url = route('website.freelancers.create', [StepEnum::PRINT, $model->id]);
-                }
+            case StepEnum::PACKAGES:
+                $response = GeneralService::applySubscription($model);
+                $url = route('website.freelancers.create', [$type, $payment, StepEnum::PRINT, $model->id]);
                 return response()->json([
                     'status' => $response,
                     'url' => $url

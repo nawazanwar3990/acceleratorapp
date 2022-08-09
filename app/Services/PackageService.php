@@ -14,7 +14,6 @@ class PackageService
     {
         return Package::where('status', true)
             ->where('package_type', $type)
-            ->with('services')
             ->get();
     }
 

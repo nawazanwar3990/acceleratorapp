@@ -1247,4 +1247,45 @@ class GeneralService
             $model->projects()->createMany($final);
         }
     }
+
+    public static function applySubscription($model): bool
+    {
+        $subscription_id = request()->input('subscription_id');
+        $subscribed_id = request()->input('subscribed_id');
+        $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
+        if ($alreadySubscription->exists()) {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            $alreadySubscription->delete();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
+        $payment_token_number = request()->input('payment_token_number');
+        $payment_addition_information = request()->input('payment_addition_information');
+
+        $subscribed = User::find($subscribed_id);
+        $subscribed->payment_token_number = $payment_token_number;
+        $subscribed->save();
+
+        $subscription = new Subscription();
+        $subscription->subscribed_id = $subscribed_id;
+        $subscription->subscription_id = $subscription_id;
+        $subscription->subscription_type = SubscriptionTypeEnum::PACKAGE;
+
+        $package = Package::find($subscription_id);
+        $limit = $package->duration_limit;
+        $from_date = Carbon::now();
+        $duration_type = $package->duration_type->slug;
+        $price = $package->price;
+        $subscription->price = $price;
+        $subscription->created_by = auth()->id();
+        $subscription->renewal_date = Carbon::now();
+        $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+        $subscription->status = 'pending';
+        $subscription->payment_token_number = $payment_token_number;
+        $subscription->payment_addition_information = $payment_addition_information;
+        if ($subscription->save()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -61,7 +61,9 @@ class BAController extends Controller
                 'model',
                 'prev_step',
                 'subscription',
-                'id'
+                'id',
+                'type',
+                'payment'
             ));
         }
         return view('website.ba.step', compact(
@@ -88,11 +90,11 @@ class BAController extends Controller
             $model = BA::find($id);
         }
         switch ($step) {
-            case StepEnum::COMPANY_PROFILE;
+            case StepEnum::COMPANY_PROFILE:
                 $model = $this->baService->saveCompanyProfile($model);
                 return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
                 break;
-            case StepEnum::SERVICES;
+            case StepEnum::SERVICES:
                 $model = $this->baService->saveServices($model);
                 if ($request->has('services')) {
                     if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
@@ -106,7 +108,7 @@ class BAController extends Controller
                     return redirect()->back()->withInput()->with('error', 'First Choose Services');
                 }
                 break;
-            case StepEnum::USER_INFO;
+            case StepEnum::USER_INFO:
                 $user_id = $request->input('user_id', null);
                 if ($user_id) {
                     $request->validate([
@@ -132,15 +134,9 @@ class BAController extends Controller
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                 }
                 break;
-            case StepEnum::PACKAGES;
-                $response = $this->baService->applySubscription($model->type);
-                $payment_type = $request->input('payment_type');
-                if ($payment_type == 'pre_apply') {
-                    $url = route('website.index');
-                    Session::put('info', $model->user->payment_token_number . "  is your registration number please wait for admin approval");
-                } else {
-                    $url = route('website.ba.create', [StepEnum::PRINT, $model->id]);
-                }
+            case StepEnum::PACKAGES:
+                $response = GeneralService::applySubscription($model);
+                $url = route('website.ba.create', [$type,$payment,StepEnum::PRINT, $model->id]);
                 return response()->json([
                     'status' => $response,
                     'url' => $url

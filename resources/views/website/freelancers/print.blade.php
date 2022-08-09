@@ -24,7 +24,7 @@
                         <i class="fa fa-print"></i> Print Invoice
                     </button>
                     <a class="btn btn-primary text-white"
-                       href="{{ route('website.freelancers.create',[$model->type ==\App\Enum\FreelancerTypeEnum::SERVICE_PROVIDER?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$model->id]) }}">
+                       href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::USER_INFO,$model->id]) }}">
                         <i class="fa fa-edit"></i> Edit Profile
                     </a>
                     @guest
@@ -125,11 +125,11 @@
                                             <th>{{ trans('general.services') }}</th>
                                             <td>
                                                 <UL class="list-group list-group-flush bg-transparent">
-                                                    @foreach($subscription->package->services as $service)
+                                                    @foreach($subscription->package->services as $service_name=>$service_limit)
                                                         <li class="list-group-item py-0 border-0  bg-transparent px-0">
                                                             <i class="bx bx-check text-success"></i>
                                                             <small><strong
-                                                                    class="text-infogit ">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</strong> {{ str_replace('_',' ',$service->name) }}
+                                                                    class="text-infogit ">{{ ($service_limit)=='∞'?'Unlimited':$service_limit}}</strong> {{ str_replace('_',' ',$service_name) }}
                                                             </small>
                                                         </li>
                                                     @endforeach
@@ -147,9 +147,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($model->services as $service)
+                                        @foreach(json_decode($model->services,true) as $service_name)
                                             <tr class="text-start">
-                                                <td>{{ $service->name }}</td>
+                                                <td>{{ $service_name }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -52,16 +52,14 @@
                 let payment_token_number = Date.now();
                 Swal.fire({
                     title: 'Request Package Subscription',
-                    html: '<table class="table table-sm table-bordered"><tr><th style="font-size:13px;">Package</th><td style="font-size:13px;">' + subscription.attr("data-name") + '</td></tr><tr><th style="font-size:13px;">Price</th><td style="font-size:13px;">' + subscription.attr("data-price") + '</td><tr><tr><th style="font-size:13px;">Expiry Data</th><td style="font-size:13px;">' + subscription.attr("data-expiry") + '</td></tr><tr><th style="font-size:13px;">Payment Token Number</th><td style="font-size:13px;">' + payment_token_number + '</td></tr><tr><th style="font-size:13px;">Additional Information</th><td style="font-size:13px;">{{ Form::textarea('payment_addition_information',null,['id'=>'payment_addition_information','class'=>'form-control form-control-sm','rows'=>2]) }}</td></tr><tr><td colspan="2" class="text-center p-4"><div class="form-check form-check-inline"> <input class="form-check-input" checked type="radio" name="payment_type" id="direct" value="direct"><label class="form-check-label" for="direct">Direct Payment</label></div><div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="payment_type" id="pre_apply" value="pre_apply"><label class="form-check-label" for="pre_apply">Pre Apply</label></div></td></tr></table>',
+                    html: '<table class="table table-sm table-bordered"><tr><th style="font-size:13px;">Package</th><td style="font-size:13px;">' + subscription.attr("data-name") + '</td></tr><tr><th style="font-size:13px;">Price</th><td style="font-size:13px;">' + subscription.attr("data-price") + '</td><tr><tr><th style="font-size:13px;">Expiry Data</th><td style="font-size:13px;">' + subscription.attr("data-expiry") + '</td></tr><tr><th style="font-size:13px;">Payment Token Number</th><td style="font-size:13px;">' + payment_token_number + '</td></tr><tr><th style="font-size:13px;">Additional Information</th><td style="font-size:13px;">{{ Form::textarea('payment_addition_information',null,['id'=>'payment_addition_information','class'=>'form-control form-control-sm','rows'=>2]) }}</td></tr></table>',
                     confirmButtonText: 'Next',
                     focusConfirm: false,
                     preConfirm: () => {
                         const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;
-                        const payment_type = Swal.getPopup().querySelector("input[name=payment_type]:checked").value;
                         return {
                             payment_token_number: payment_token_number,
-                            payment_addition_information: payment_addition_information,
-                            payment_type: payment_type
+                            payment_addition_information: payment_addition_information
                         }
                     }
                 }).then((result) => {
@@ -78,11 +76,10 @@
                         'payment_addition_information': payment_addition_information,
                         'subscription_id': $("input[name='subscription_id']:checked").val(),
                         'subscription_type': '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}',
-                        'subscribed_id': '{{ isset($model)?$model->user_id:0 }}',
-                        'payment_type': payment_type,
+                        'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                     }
                     $.ajax({
-                        url: "{{ route('website.freelancers.store',[$step,($model)?$model->id:null]) }}",
+                        url: "{{ route('website.freelancers.store',[$type,$payment,\App\Enum\StepEnum::PACKAGES,($model)?$model->id:null]) }}",
                         method: 'POST',
                         data: data,
                         success: function (response) {
