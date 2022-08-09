@@ -80,9 +80,11 @@ class ServiceController extends Controller
     {
         $this->authorize('update', Service::class);
         $model = Service::findorFail($id);
+        $type = $model->type;
         $params = [
             'pageTitle' => __('general.edit_service'),
             'model' => $model,
+            'type' => $type
         ];
 
         return view('dashboard.services.edit', $params);
