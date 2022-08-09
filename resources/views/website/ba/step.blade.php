@@ -9,7 +9,7 @@
 @section('css-after')
 @endsection
 @section('content')
-    <div class="container p-4">
+    <div class="container p-4 @auth bg-white @endauth">
         <div class="row justify-content-center">
             <div class="{{ auth()->user()?'col-12':'col-xxl-9 col-xl-9 col-lg-9 col-md-9' }}">
                 <div class="row bg-white p-3">

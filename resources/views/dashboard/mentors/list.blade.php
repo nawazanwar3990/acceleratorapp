@@ -24,7 +24,7 @@
                 @endif
             @else
                 <a class="btn btn-sm btn-success"
-                   href="{{ route('dashboard.packages.create',['type'=>\App\Enum\PackageTypeEnum::MENTOR,$record->id,'subscribed_id'=>$record->id]) }}">
+                   href="{{ route('dashboard.packages.create',['type'=>\App\Enum\PackageTypeEnum::MENTOR,'model_id'=>$record->id]) }}">
                     {{ trans('general.apply_subscription') }}
                 </a>
             @endif
