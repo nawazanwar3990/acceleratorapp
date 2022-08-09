@@ -1120,7 +1120,7 @@ class GeneralService
     }
 
 
-    public static  function manageQualifications($model): void
+    public static function manageQualifications($model): void
     {
 
         $data = request()->input('qualifications', []);
@@ -1184,7 +1184,7 @@ class GeneralService
         }
     }
 
-    public static function manageAffiliations($model,$dir): void
+    public static function manageAffiliations($model, $dir): void
     {
         $data = request()->input('affiliations', []);
         if (count($data) > 0) {
@@ -1204,7 +1204,8 @@ class GeneralService
         }
 
     }
-    public static function manageDocuments($model,$dir): void
+
+    public static function manageDocuments($model, $dir): void
     {
         $data = request()->input('documents', []);
         if (count($data) > 0) {
@@ -1287,5 +1288,15 @@ class GeneralService
         } else {
             return false;
         }
+    }
+
+    public static function get_model_by_type_and_id($type, $id)
+    {
+        if (in_array($type, [\App\Enum\PackageTypeEnum::FREELANCER, \App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY])) {
+            return \App\Models\Freelancer::find($id);
+        } else if (in_array($type, [\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR, \App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
+            return \App\Models\BA::find($id);
+        } else
+            return \App\Models\Mentor::find($id);
     }
 }

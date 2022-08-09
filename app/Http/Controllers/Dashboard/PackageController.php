@@ -33,13 +33,15 @@ class PackageController extends Controller
     {
         $this->authorize('view', Package::class);
         $type = $request->query('type');
+        $package_id = $request->query('package_id');
         $records = Package::with('duration_type')
             ->wherePackageType($type)
             ->paginate(20);
         $params = [
             'pageTitle' => __('general.packages'),
             'records' => $records,
-            'type' => $type
+            'type' => $type,
+            'package_id'=>$package_id
         ];
         return view('dashboard.packages.index', $params);
     }
@@ -51,11 +53,13 @@ class PackageController extends Controller
     {
         $this->authorize('create', Package::class);
         $type = $request->input('type');
+        $model_id = $request->query('model_id');
         $services = Service::whereType($type)->whereStatus(true)->get();
         $params = [
             'pageTitle' => __('general.new_package'),
             'type' => $type,
-            'services' => $services
+            'services' => $services,
+            'model_id'=>$model_id
         ];
         return view('dashboard.packages.create', $params);
     }
@@ -67,6 +71,7 @@ class PackageController extends Controller
     {
         $this->authorize('create', Package::class);
         $package_type = $request->input('package_type');
+        $model_id = $request->input('model_id');
         if ($request->createData()) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.packages.create', ['type' => $package_type])

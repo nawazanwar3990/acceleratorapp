@@ -1,5 +1,6 @@
 <div class="row mb-3">
     {!! Form::hidden('package_type',$type,['class'=>'form-control','readonly']) !!}
+    {!! Form::hidden('model_id',$model_id,['class'=>'form-control','readonly']) !!}
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('payment_process' ,__('general.payment_process'),['class'=>'col-form-label']))   !!}
         {!!  Form::select('payment_process',\App\Enum\PaymentTypeProcessEnum::getTranslationKeys(),null,['id'=>'payment_process','class'=>'form-control','placeholder'=>trans('general.select')])
@@ -34,30 +35,93 @@
         </div>
     </div>
 </div>
-<div class="card">
-    <div class="card-header">
-        <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
-    </div>
-    <div class="card-body">
-        <table class="table custom-datatable">
-            <thead>
-            <tr>
-                <th>{{ trans('general.name') }}</th>
-                <th>{{ trans('general.limit') }}</th>
-            </tr>
-            </thead>
-            @foreach($services as $service)
+@if($model_id)
+    @php
+        $process_model=\App\Services\GeneralService::get_model_by_type_and_id($type,$model_id);
+    @endphp
+    @if($process_model->services)
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ trans('general.services') }}</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{ trans('general.name') }}</th>
+                        <th>{{ trans('general.limit') }}</th>
+                    </tr>
+                    </thead>
+                    @foreach(json_decode($process_model->services,true) as $service)
+                        <tr>
+                            <th>
+                                {!!  Form::hidden('services[name][]',$service) !!}
+                                {{ ucwords(str_replace('_',' ',$service))}}
+                            </th>
+                            <td>
+                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    @endif
+    @if($process_model->other_services)
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ trans('general.other_services') }}</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{ trans('general.name') }}</th>
+                        <th>{{ trans('general.limit') }}</th>
+                    </tr>
+                    </thead>
+                    @foreach(json_decode($process_model->other_services,true) as $service)
+                        <tr>
+                            <th>
+                                {!!  Form::hidden('services[name][]',$service) !!}
+                                {{ ucwords(str_replace('_',' ',$service))}}
+                            </th>
+                            <td>
+                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    @endif
+@else
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
                 <tr>
-                    <th>
-                        {!!  Form::hidden('services[name][]',$service->name) !!}
-                        {{ ucwords(str_replace('_',' ',$service->name))}}
-                    </th>
-                    <td>
-                        @php $old_value = (isset($model) && array_key_exists($service->name,$old_services))?$old_services[$service->name]:'0'  @endphp
-                        {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$old_value,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                    </td>
+                    <th>{{ trans('general.name') }}</th>
+                    <th>{{ trans('general.limit') }}</th>
                 </tr>
-            @endforeach
-        </table>
+                </thead>
+                @foreach($services as $service)
+                    <tr>
+                        <th>
+                            {!!  Form::hidden('services[name][]',$service->name) !!}
+                            {{ ucwords(str_replace('_',' ',$service->name))}}
+                        </th>
+                        <td>
+                            @php $old_value = (isset($model) && array_key_exists($service->name,$old_services))?$old_services[$service->name]:'0'  @endphp
+                            {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$old_value,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
     </div>
-</div>
+@endif
+
