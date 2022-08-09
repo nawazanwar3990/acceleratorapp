@@ -5,9 +5,7 @@
                 @foreach(\App\Enum\RegisterTypeEnum::getTranslationKeys() as $key=>$value)
                     <div class="col-md-3 col-lg-3 col-xl-3 col-xxl-3  text-center align-self-center">
                         <img src='{{ \App\Enum\RegisterTypeEnum::getImage($key)  }}' class="w-50 mb-2 pb-2" alt="{{$value}}"><br>
-                        <a href="{{ \App\Enum\RegisterTypeEnum::getRoute($key)  }}" class="mt-4">
-                            {{ $value }}
-                        </a>
+                        <p class="mt-4">{{ $value }}</p>
                     </div>
                 @endforeach
             </div>
