@@ -27,7 +27,7 @@ class MentorController extends Controller
         $type = $request->query('type');
         $records = Mentor::with('user')->where('payment_process', $type)->paginate(20);
         $params = [
-            'pageTitle' => __('general.accelerators'),
+            'pageTitle' => __('general.mentors'),
             'records' => $records,
             'type' => $type
         ];

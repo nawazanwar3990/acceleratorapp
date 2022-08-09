@@ -6,7 +6,7 @@
         <td>
             {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($record->type)  }}
         </td>
-        <td>
+        <td class="text-center">
             <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#service-model-{{$record->id}}">
                 {{ trans('general.view') }}
             </button>
@@ -24,17 +24,18 @@
                 @endif
             @else
                 <a class="btn btn-sm btn-success"
-                   href="{{ route('website.ba.create',[\App\Enum\StepEnum::PACKAGES,$record->id]) }}">
+                   href="{{ route('dashboard.packages.create',['type'=>\App\Enum\PackageTypeEnum::MENTOR,$record->id,'subscribed_id'=>$record->id]) }}">
                     {{ trans('general.apply_subscription') }}
                 </a>
             @endif
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-                 'edit' => route('website.mentors.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
-                 'delete' => route('dashboard.events.destroy', $record->id),
-             ])
+               'edit' => route('website.mentors.create',[$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
+               'delete' => route('dashboard.mentors.destroy', $record->id),
+           ])
         </td>
     </tr>
 @empty
+
 @endforelse

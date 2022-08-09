@@ -26,7 +26,7 @@ class FreelancerController extends Controller
         $type = $request->query('type');
         $records = Freelancer::with('user')->where('payment_process', $type)->paginate(20);
         $params = [
-            'pageTitle' => __('general.accelerators'),
+            'pageTitle' => __('general.freelancers'),
             'records' => $records,
             'type' => $type
         ];
