@@ -134,7 +134,7 @@ class FreelancerController extends Controller
                     $model,
                     $user_id
                 );
-                if ($type == 'Company') {
+                if ($type == 'company') {
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);

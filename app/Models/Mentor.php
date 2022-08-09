@@ -15,6 +15,10 @@ class Mentor extends Model
     use HasFactory;
 
     protected $table = TableEnum::MENTORS;
+    protected $casts = [
+        'services' => 'array',
+        'other_services' => 'array',
+    ];
     protected $fillable = [
         'user_id',
         'payment_process',
@@ -26,54 +30,54 @@ class Mentor extends Model
         'services',
         'other_services'
     ];
-    public function getServicesAttribute($values)
-    {
-        return json_decode($values);
-    }
-    public function getOtherServicesAttribute($values)
-    {
-        return json_decode($values);
-    }
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function logo(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::MENTOR_LOGO);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::MENTOR_LOGO);
     }
+
     public function front_id_card(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::MENTOR_FRONT_ID_CARD);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::MENTOR_FRONT_ID_CARD);
     }
+
     public function back_id_card(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::MENTOR_BACK_ID_CARD);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::MENTOR_BACK_ID_CARD);
     }
+
     public function documents(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::MENTOR_DOCUMENT);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::MENTOR_DOCUMENT);
     }
+
     public function certificates(): HasMany
     {
-        return $this->hasMany(Media::class,'record_id','id')
-            ->where('record_type',MediaTypeEnum::MENTOR_CERTIFICATE);
+        return $this->hasMany(Media::class, 'record_id', 'id')
+            ->where('record_type', MediaTypeEnum::MENTOR_CERTIFICATE);
     }
+
     public function qualifications(): HasMany
     {
-        return $this->hasMany(MentorQualification::class,'mentor_id');
+        return $this->hasMany(MentorQualification::class, 'mentor_id');
     }
+
     public function projects(): HasMany
     {
-        return $this->hasMany(MentorProject::class,'mentor_id');
+        return $this->hasMany(MentorProject::class, 'mentor_id');
     }
+
     public function certifications(): HasMany
     {
-        return $this->hasMany(MentorCertification::class,'mentor_id');
+        return $this->hasMany(MentorCertification::class, 'mentor_id');
     }
 }

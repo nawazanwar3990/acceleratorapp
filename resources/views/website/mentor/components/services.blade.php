@@ -13,7 +13,11 @@
                                     {!! Form::checkbox('services[]',$child_service->name,true,['class'=>'form-check-input align-self-center']) !!}
                                     <label class="form-check-label"> {{ $child_service->name }}</label>
                                 @else
-                                    {!! Form::checkbox('services[]',$child_service->name,in_array($child_service->name,$mode->services)?true:false,['class'=>'form-check-input align-self-center']) !!}
+                                    @if($model->services)
+                                        {!! Form::checkbox('services[]',$child_service->name,in_array($child_service->name,json_decode($model->services)),['class'=>'form-check-input align-self-center']) !!}
+                                    @else
+                                        {!! Form::checkbox('services[]',$child_service->name,false,['class'=>'form-check-input align-self-center']) !!}
+                                    @endif
                                     <label class="form-check-label"> {{ $child_service->name }}</label>
                                 @endif
                             </div>
