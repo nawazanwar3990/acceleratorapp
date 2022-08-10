@@ -28,9 +28,8 @@
                                 </a>
                             </li>
                         @else
-                            {{ $value }}
-
-                            {{ auth()->user()->ba }}
+                            {{--{{ $value }}--}}
+                            {{--{{ auth()->user()->ba->services }}--}}
                             @if(in_array($value,\App\Services\PersonService::getBaServices()))
                                 <li>
                                     <a class="waves-effect waves-dark"
