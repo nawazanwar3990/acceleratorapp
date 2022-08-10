@@ -73,7 +73,7 @@ class BANavEnum extends AbstractEnum
             self::FREELANCER => __(sprintf('%s.%s', 'general.left-bar', self::FREELANCER)),
             self::MENTORSHIP_WITH_INVESTMENT => __(sprintf('%s.%s', 'general.left-bar', self::MENTORSHIP_WITH_INVESTMENT)),
             self::MENTORSHIP_WITHOUT_INVESTMENT => __(sprintf('%s.%s', 'general.left-bar', self::MENTORSHIP_WITHOUT_INVESTMENT)),
-            self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general.left-bar', self::EVENT_MANAGEMENT)),
+            self::EVENT_MANAGEMENT =>'Event Management',
             self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING))
         ];
     }
