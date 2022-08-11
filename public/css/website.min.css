@@ -35817,6 +35817,10 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   cursor: pointer;
 }
 
+.pull-right {
+  float: right !important;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel

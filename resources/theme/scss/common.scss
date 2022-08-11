@@ -123,9 +123,10 @@
 }
 
 .invoice_holder {
-    .position-relative{
+    .position-relative {
         background-color: #f9fafb;
     }
+
     .footer {
         font-size: 26px !important;
         text-align: center !important;
@@ -255,6 +256,11 @@
         right: 0;
     }
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer;
+}
+
+.pull-right {
+    float: right !important;
 }
