@@ -34,5 +34,14 @@
                 </a>
             </li>
         @endif
+        @if(request()->has('action'))
+            @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
+                <li class="{{ $step==\App\Enum\StepEnum::PACKAGES?'active-link':'in-active-link' }}">
+                    <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::PRINT,isset($model)?$model->id:null]) }}">
+                        {{ trans('general.view_invoice') }}
+                    </a>
+                </li>
+            @endif
+        @endif
     </ul>
 </div>

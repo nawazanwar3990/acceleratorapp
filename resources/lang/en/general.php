@@ -1,6 +1,7 @@
 <?php
 return [
-    'mentors'=>'Mentors',
+    'view_invoice' => 'View Invoice',
+    'mentors' => 'Mentors',
     'view_file' => 'View File',
     'affiliation_certificate' => 'Affiliation Certificate',
     'document_type' => 'Document Type',
