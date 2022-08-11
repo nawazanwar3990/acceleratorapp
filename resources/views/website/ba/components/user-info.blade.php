@@ -4,14 +4,14 @@
     @endif
     <div class="col-9">
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-12 mb-3">
                 {!!  Html::decode(Form::label('email' ,__('general.user_name').'(Email)'.'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
                 {!!  Form::email('email',$model->user->email??null,['id'=>'email','class'=>'form-control','required','placeholder'=>'abc@gmail.com']) !!}
                 @error('email')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-2">
                 {!!  Html::decode(Form::label('first_name' ,__('general.first_name'),['class'=>'form-label']))   !!}
                 {!!  Form::text('first_name',$model->user->first_name??null,['id'=>'first_name','class'=>'form-control']) !!}
             </div>
