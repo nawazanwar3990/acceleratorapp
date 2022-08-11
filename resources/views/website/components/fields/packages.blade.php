@@ -29,9 +29,10 @@
                                         {{ $service_name }}
                                     </div>
                                     <div class="col-4 text-center align-self-center fs-13">
-                                        <strong class="w-bold pull-right">
+                                        <span
+                                            class="w-bold pull-right badge @if($service_limit>0) bg-success @else bg-danger @endif">
                                             {{ $service_limit=='∞'?trans('general.unlimited'):$service_limit }}
-                                        </strong>
+                                        </span>
                                     </div>
                                 </div>
                             @endforeach
