@@ -1,4 +1,4 @@
-<div class="col-12 mb-3 px-4 py-2">
+<div class="col-12 mb-3 px-4">
     <table class="table table-bordered  table-sm">
         <thead>
         <tr>

@@ -7,7 +7,7 @@ return [
     'document_description' => 'Document Description',
     'document_attachment' => 'Document Attachment',
     'affiliated_by' => 'Affiliated By',
-    'any_approve_documents' => 'Any Approve Documents',
+    'any_approve_documents' => 'Approve Documents',
     'services_of_sp' => 'Services Of Service Provider Company',
     'affiliation_detail' => 'Affiliation Detail',
     'sr_no' => 'Sr #',
