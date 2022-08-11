@@ -6,7 +6,7 @@
                 @include('dashboard.components.general.form-list-header',['url'=>'','is_create'=>false])
                 <div class="card-body">
                     <table class="table custom-datatable table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\BATableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\MentorTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.mentors.list')
                         </tbody>
