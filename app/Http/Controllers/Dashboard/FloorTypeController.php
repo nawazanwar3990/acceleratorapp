@@ -57,7 +57,6 @@ class FloorTypeController extends Controller
     {
         $this->authorize('create', FloorType::class);
         if ($request->createData()) {
-
             if ($request->saveNew) {
                 return redirect()->route('dashboard.floor-types.create')
                     ->with('success', __('general.record_created_successfully'));

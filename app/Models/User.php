@@ -44,6 +44,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(BA::class,'user_id');
     }
+    public function customer(): HasOne
+    {
+        return $this->hasOne(Customer::class,'user_id');
+    }
     public function freelancer(): HasOne
     {
         return $this->hasOne(Freelancer::class,'user_id');

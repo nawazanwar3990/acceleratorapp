@@ -31,9 +31,9 @@
                         @elseif($key==\App\Enum\RegisterTypeEnum::FREELANCER_SERVICE_PROVIDER_COMPANY)
                             <a onclick="choose_register_type('customers');" class="mt-4 cursor-pointer">{{ $value }}</a>
                         @elseif($key==\App\Enum\RegisterTypeEnum::MENTOR)
-                            <a onclick=" apply_payment('mentors');" class="mt-4 cursor-pointer">{{ $value }}</a>
+                            <a onclick="apply_payment('mentors');" class="mt-4 cursor-pointer">{{ $value }}</a>
                         @elseif($key==\App\Enum\RegisterTypeEnum::CUSTOMER)
-                            <a onclick="" class="mt-4 cursor-pointer">{{ $value }}</a>
+                                <a href="{{ route('website.customers.create') }}" class="mt-4 cursor-pointer">{{ $value }}</a>
                         @endif
                     </div>
                 @endforeach
