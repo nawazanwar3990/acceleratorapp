@@ -29,7 +29,7 @@
                             <td>
                                 {!! Form::file('documents[document_attachment][]',['id'=>'documents[document_attachment][]','class'=>'form-control form-control-sm']) !!}
                                 <a href="{{ asset($document['filename']) }}"
-                                   class="fs-13 text-info text-center" download>{{ trans('general.view_file') }}</a>
+                                   class="fs-13 text-info text-center view_image" download>{{ trans('general.view_file') }}</a>
                             </td>
                             <td style="width: 100px;vertical-align: middle;" class="text-center">
                                 <a href="javascript:void(0);"

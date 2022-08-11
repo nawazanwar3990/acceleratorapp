@@ -20,7 +20,7 @@
                     </td>
                     <td>
                         {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'form-control form-control-sm']) !!}
-                        <a href="{{ asset($affiliation['affiliation_certificate']) }}" class="fs-13 text-info text-center" download>{{ trans('general.view_file') }}</a>
+                        <a href="{{ asset($affiliation['affiliation_certificate']) }}" class="fs-13 text-info text-center view_image" download>{{ trans('general.view_file') }}</a>
                     </td>
                     <td style="width: 100px;vertical-align: middle;" class="text-center">
                         <a href="javascript:void(0);"
