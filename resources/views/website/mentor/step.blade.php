@@ -11,7 +11,7 @@
 @section('content')
     <div class="container p-4 @auth bg-white @endauth">
         <div class="row justify-content-center">
-            <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9">
+            <div class="{{ auth()->user()?'col-12':'col-xxl-10 col-xl-10 col-lg-10 col-md-10' }}">
                 <div class="row">
                     @include('website.mentor.components.steps')
                     <div class="col-lg-8 col-md-8 border-start">
