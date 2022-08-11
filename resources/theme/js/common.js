@@ -53,7 +53,7 @@ function choose_register_type(parent) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Company"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/company-icon.png" alt="Company"> \n' +
         '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Company\n' +
         '        </h5> \n' +
@@ -75,7 +75,7 @@ function choose_register_type(parent) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Individual"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/indiv.png" alt="Individual"> \n' +
         '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Individual\n' +
         '        </h5> \n' +
@@ -119,8 +119,8 @@ function apply_payment(parent = null, type) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Pre Apply"> \n' +
-        '      <div class="card-body text-center"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/preapply-D2.png" alt="Pre Apply"> \n' +
+        '      <div class="card-body text-center" style="height: 72px;"> \n' +
         '        <h5 class="card-title">Pre Apply\n' +
         '        </h5> \n' +
         '      </div> \n' +
@@ -135,8 +135,8 @@ function apply_payment(parent = null, type) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Direct Apply"> \n' +
-        '      <div class="card-body text-center"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/direct-apply%20(1).png" alt="Direct Apply"> \n' +
+        '      <div class="card-body text-center" style="height: 73px;"> \n' +
         '        <h5 class="card-title">Direct Apply\n' +
         '        </h5> \n' +
         '      </div> \n' +
