@@ -51,6 +51,7 @@ class MentorController extends Controller
         } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
             return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES])->with('error', 'First Create Services');
         }
+        $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             return view('website.mentor.print', compact(
@@ -68,7 +69,8 @@ class MentorController extends Controller
             'model',
             'prev_step',
             'subscription',
-            'id'
+            'id',
+            'action'
         ));
     }
 
