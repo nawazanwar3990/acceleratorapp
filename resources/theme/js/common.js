@@ -53,7 +53,7 @@ function choose_register_type(parent) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/company-icon.png" alt="Company"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/comp.png" alt="Company"> \n' +
         '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Company\n' +
         '        </h5> \n' +
@@ -119,10 +119,16 @@ function apply_payment(parent = null, type) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/preapply-D2.png" alt="Pre Apply"> \n' +
-        '      <div class="card-body text-center" style="height: 72px;"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/preapply.png" alt="Pre Apply"> \n' +
+        '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Pre Apply\n' +
         '        </h5> \n' +
+        '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' +
+        '          <li class="fs-13">Select services according to your need.\n' +
+        '          </li>\n' +
+        '          <li class="fs-13">You can select package after admin package creation on the basis of your selected services.\n' +
+        '          </li>\n' +
+        '        </ul>\n' +
         '      </div> \n' +
         '    </div> \n' +
         '  </div>\n' +
@@ -135,10 +141,16 @@ function apply_payment(parent = null, type) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/direct-apply%20(1).png" alt="Direct Apply"> \n' +
-        '      <div class="card-body text-center" style="height: 73px;"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/directapply.png" alt="Direct Apply"> \n' +
+        '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Direct Apply\n' +
         '        </h5> \n' +
+        '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' +
+        '          <li class="fs-13 mb-3">Already defined services.\n' +
+        '          </li>\n' +
+        '          <li class="fs-13" style="margin-bottom: 2.6rem;">You can select package (Already defined by admin).\n' +
+        '          </li>\n' +
+        '        </ul>\n' +
         '      </div> \n' +
         '    </div> \n' +
         '  </div>\n' +
