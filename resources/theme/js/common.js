@@ -79,7 +79,7 @@ function choose_register_type(parent) {
         '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Individual\n' +
         '        </h5> \n' +
-        '        <ul class="pl-3">\n' +
+        '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' +
         '          <li class="fs-13">If you are an individual\n' +
         '          </li>\n' +
         '          <li class="fs-13">If you are one member company\n' +
