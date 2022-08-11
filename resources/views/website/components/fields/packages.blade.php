@@ -24,8 +24,18 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service_name=>$service_limit)
-                                <div class="price-row" style="padding: 10px 10px;font-size: 13px;text-align: left;">
-                                  @if($service_limit>0) ✓ @else ✗ @endif {{ $service_name }} <strong class="w-bold pull-right">{{ $service_limit=='∞'?trans('general.unlimited'):$service_limit }}</strong>
+                                <div class="price-row row" style="padding: 10px 10px;font-size: 13px;text-align: left;">
+                                    <div class="col-8">
+                                        @if($service_limit>0)
+                                            ✓
+                                        @else
+                                            ✗
+                                        @endif {{ $service_name }}
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <strong
+                                            class="w-bold pull-right">{{ $service_limit=='∞'?trans('general.unlimited'):$service_limit }}</strong>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
