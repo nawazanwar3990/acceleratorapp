@@ -24,11 +24,11 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service_name=>$service_limit)
-                                <div class="row mx-1 border-bottom" style="padding: 10px 10px">
-                                    <div class="col-8 align-self-center fs-13 text-left">
+                                <div class="row mx-1 border-bottom" style="padding: 10px 0;">
+                                    <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
                                         {{ $service_name }}
                                     </div>
-                                    <div class="col-4 text-center align-self-center fs-13">
+                                    <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
                                         <span
                                             class="w-bold pull-right badge @if($service_limit>0) bg-success @else bg-danger @endif">
                                             {{ $service_limit=='∞'?trans('general.unlimited'):$service_limit }}
