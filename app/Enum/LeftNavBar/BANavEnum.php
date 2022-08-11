@@ -73,8 +73,8 @@ class BANavEnum extends AbstractEnum
             self::INCUBATOR => 'Incubator',
             self::MEETING_ROOM =>'Meeting Rooms',
             self::FREELANCER =>'Freelancer',
-            self::MENTORSHIP_WITH_INVESTMENT => __(sprintf('%s.%s', 'general.left-bar', self::MENTORSHIP_WITH_INVESTMENT)),
-            self::MENTORSHIP_WITHOUT_INVESTMENT => __(sprintf('%s.%s', 'general.left-bar', self::MENTORSHIP_WITHOUT_INVESTMENT)),
+            self::MENTORSHIP_WITH_INVESTMENT =>'Mentorship with Investment',
+            self::MENTORSHIP_WITHOUT_INVESTMENT => 'Mentorship with out Investment',
             self::EVENT_MANAGEMENT =>'Event Management',
             self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING))
         ];
