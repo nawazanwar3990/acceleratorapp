@@ -62,13 +62,27 @@
                             </li>
                         @else
                             @if(in_array($value,\App\Services\PersonService::getBaServices()))
-                                <li>
-                                    <a class="waves-effect waves-dark"
-                                       href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
-                                        {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
-                                        {{ $value }}
-                                    </a>
-                                </li>
+                                @if($value=='Incubator')
+                                    <li>
+                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                           aria-expanded="false">
+                                            <i class="ti-settings"></i>
+                                            <span class="hide-menu"> {{ $value }}</span>
+                                        </a>
+                                        <ul aria-expanded="false" class="collapse">
+                                            @include('dashboard.components.left-nav-bar.incubator-types')
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="waves-effect waves-dark"
+                                           href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
+                                            {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span
+                                                class="hide-menu">
+                                            {{ $value }}
+                                        </a>
+                                    </li>
+                                @endif
                             @endif
                         @endif
                     @endforeach
