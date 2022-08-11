@@ -19,7 +19,7 @@
                                 </a>
                                 <a href="{{ route('dashboard.offices.create') }}"
                                    class="btn btn-primary d-inline-flex align-items-center justify-content-center mx-1">
-                                    {{ trans('general.create_office') }}
+                                    {{ trans('general.new_office') }}
                                     <i class="bx bx-plus-circle"></i>
                                 </a>
                                 <div class="card-actions">

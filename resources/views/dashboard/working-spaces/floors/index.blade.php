@@ -4,7 +4,31 @@
         <div class="col-12">
             <div class="card shadow-none pt-0">
                 @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.floors.create','is_create'=>true])
+                    <div class="card-header border-0" style="background-color: transparent !important;">
+                        <div class="row d-print-none">
+                            <div class="col justify-content-end d-flex">
+                                <a href="{{ route('dashboard.buildings.index') }}"
+                                   class="btn btn-primary d-inline-flex align-items-center justify-content-center mx-1">
+                                    {{ trans('general.buildings') }}&nbsp;<i class="bx bx-arrow-to-right"></i>
+                                </a>
+                                <a href="{{ route('dashboard.offices.index') }}"
+                                   class="btn btn-primary d-inline-flex align-items-center justify-content-center mx-1">
+                                    {{ trans('general.offices') }}&nbsp;<i class="bx bx-arrow-to-right"></i>
+                                </a>
+                                <a href="{{ route('dashboard.floors.create') }}"
+                                   class="btn btn-primary d-inline-flex align-items-center justify-content-center mx-1">
+                                    {{ trans('general.new_floor') }}
+                                    <i class="bx bx-plus-circle"></i>
+                                </a>
+                                <div class="card-actions">
+                                    <a class="d-print-none btn btn-primary btn-minimize btn-action d-inline-flex align-items-center justify-content-center"
+                                       data-action="expand" data-bs-toggle="tooltip" title="" data-bs-placement="top"
+                                       data-bs-original-title="Toggle Fullscreen" aria-label="Toggle Fullscreen"><i
+                                            class="bx bx-expand"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
                 <div class="card-body">
                     <table class="table custom-datatable table-bordered table-hover">
