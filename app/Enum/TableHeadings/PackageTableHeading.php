@@ -8,6 +8,7 @@ use function __;
 
 class PackageTableHeading extends AbstractEnum
 {
+    public const TYPE = 'type';
     public const PACKAGE_NAME = 'package_name';
     public const PACKAGE_FOR = 'package_for';
     public const DURATION_TYPE = 'duration_type';
@@ -24,6 +25,7 @@ class PackageTableHeading extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
+            self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
             self::PACKAGE_NAME => __(sprintf('%s.%s', 'general', self::PACKAGE_NAME)),
             self::PACKAGE_FOR => __(sprintf('%s.%s', 'general', self::PACKAGE_FOR)),
             self::DURATION_TYPE => __(sprintf('%s.%s', 'general', self::DURATION_TYPE)),

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
-use App\Enum\LeftNavBar\AccubatorNavEnum;
+use App\Enum\LeftNavBar\IncubatorNavEnum;
 use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
@@ -42,9 +42,9 @@ class GeneralService
     public static function get_working_space_count($type, $user = null): int
     {
         return match ($type) {
-            AccubatorNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
-            AccubatorNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
-            AccubatorNavEnum::OFFICE => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
+            IncubatorNavEnum::BUILDING => ($user) ? Building::whereCreatedBy($user->id)->count() : Building::count(),
+            IncubatorNavEnum::FLOOR => ($user) ? Floor::whereCreatedBy($user->id)->count() : Floor::count(),
+            IncubatorNavEnum::OFFICE => ($user) ? Office::whereCreatedBy($user->id)->count() : Office::count(),
             default => 0,
         };
     }

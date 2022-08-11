@@ -12,6 +12,7 @@ class ServiceTableHeading extends AbstractEnum
     public const NAME = 'name';
     public const SLUG = 'slug';
     public const PARENT = 'parent';
+    public const TYPE = 'type';
     public const STATUS = 'status';
 
     public static function getValues(): array
@@ -22,6 +23,7 @@ class ServiceTableHeading extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         $data = [
+            self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
             self::SLUG => __(sprintf('%s.%s', 'general', self::SLUG)),
             self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),

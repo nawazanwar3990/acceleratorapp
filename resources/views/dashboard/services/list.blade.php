@@ -2,6 +2,9 @@
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
         <td>
+            {{ \App\Enum\ServiceTypeEnum::getTranslationKeyBy($record->type) }}
+        </td>
+        <td>
             @if($type==\App\Enum\ServiceTypeEnum::MENTOR)
                 @isset($record->parent)
                     {{ $record->parent->name }} >

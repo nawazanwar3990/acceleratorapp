@@ -1,6 +1,11 @@
 @forelse($records as $record)
     <tr>
         <td>{{ $loop->iteration }}</td>
+        <td>
+            @isset($record->package_type)
+                {{ \App\Enum\PackageTypeEnum::getTranslationKeyBy($record->package_type) }}
+            @endisset
+        </td>
         <td>{{ $record->name }}</td>
         <td>
             @isset($record->payment_process)
