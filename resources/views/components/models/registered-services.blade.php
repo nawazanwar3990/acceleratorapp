@@ -6,20 +6,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="card mb-0" style="border-top: none;">
-                    <div class="card-header">
-                        <h6 class="card-title mb-0">Package Services</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            @foreach(json_decode($record->services,true) as $service)
-                                <div class="col-4">
-                                    <p class="my-1">{{ $service }}</p>
-                                </div>
-                            @endforeach
+                @if($record->services)
+                    <div class="card mb-0" style="border-top: none;">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">Package Services</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                @foreach(json_decode($record->services,true) as $service)
+                                    <div class="col-4">
+                                        <p class="my-1">{{ $service }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    {{ trans('general.no_record_found') }}
+                @endif
                 @if($record->other_services)
                     <div class="card" style="border-top: none;">
                         <div class="card-header">

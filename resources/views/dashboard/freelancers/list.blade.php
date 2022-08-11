@@ -6,6 +6,9 @@
         <td>
             {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($record->type)  }}
         </td>
+        <td>
+            {!! \App\Enum\PaymentTypeProcessEnum::getTranslationKeyBy($record->payment_process) !!}
+        </td>
         <td class="text-center">
             <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#service-model-{{$record->id}}">
                 {{ trans('general.view') }}

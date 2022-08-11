@@ -4,7 +4,7 @@
         <td>{{ $record->user->email }}</td>
         <td>{{ $record->user->getFullName() }}</td>
         <td>
-            {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($record->type)  }}
+            {{ \App\Enum\PaymentTypeProcessEnum::getTranslationKeyBy($record->payment_process)  }}
         </td>
         <td class="text-center">
             <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#service-model-{{$record->id}}">

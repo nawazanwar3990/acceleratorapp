@@ -6,11 +6,10 @@ namespace App\Enum\TableHeadings;
 use App\Enum\AbstractEnum;
 use function __;
 
-class BATableHeadingEnum extends AbstractEnum
+class MentorTableHeadingEnum extends AbstractEnum
 {
     public const EMAIL = 'email';
     public const NAME = 'name';
-    public const TYPE = 'type';
     public const PAYMENT_TYPE = 'payment_type';
     public const SERVICES = 'services';
     public const SUBSCRIPTION_STATUS = 'subscription_status';
@@ -24,7 +23,6 @@ class BATableHeadingEnum extends AbstractEnum
         return [
             self::EMAIL => __(sprintf('%s.%s', 'general', self::EMAIL)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
-            self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
             self::PAYMENT_TYPE => __(sprintf('%s.%s', 'general', self::PAYMENT_TYPE)),
             self::SERVICES => __(sprintf('%s.%s', 'general', self::SERVICES)),
             self::SUBSCRIPTION_STATUS => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_STATUS)),
