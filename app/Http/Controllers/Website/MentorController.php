@@ -83,60 +83,65 @@ class MentorController extends Controller
         if ($id) {
             $model = Mentor::find($id);
         }
-        if ($step) {
-            switch ($step) {
-                case StepEnum::SERVICES:
-                    $model = $this->mentorService->saveServices($model);
-                    if ($request->has('services')) {
-                        if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
-                            return redirect()->route('website.mentors.create', [$payment, StepEnum::PACKAGES, $model->id]);
-                        } else {
-                            return redirect()
-                                ->route('website.index')
-                                ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
+        $action = $request->query('action');
+        switch ($step) {
+            case StepEnum::SERVICES:
+                $model = $this->mentorService->saveServices($model);
+                if ($request->has('services')) {
+                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                        return redirect()->route('website.mentors.create', [$payment, StepEnum::PACKAGES, $model->id]);
+                    } else {
+                        if ($action) {
+                            return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                         }
-                    } else {
-                        return redirect()->back()->withInput()->with('error', 'First Choose Services');
+                        return redirect()
+                            ->route('website.index')
+                            ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
                     }
-                    break;
-                case StepEnum::USER_INFO:
-                    $user_id = $request->input('user_id', null);
-                    if ($user_id) {
-                        $request->validate([
-                            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
-                            'password' => ['required', 'string', 'min:8', 'confirmed']
-                        ]);
-                    } else {
-                        $request->validate([
-                            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                            'password' => ['required', 'string', 'min:8', 'confirmed']
-                        ]);
-                    }
-                    $model = $this->mentorService->saveUseInfo(
-                        $payment,
-                        $model,
-                        $user_id
-                    );
-                    return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
-                    break;
-                case StepEnum::PACKAGES:
-                    $subscription_id = request()->input('subscription_id');
-                    $subscribed_id = request()->input('subscribed_id');
-                    $payment_token_number = request()->input('payment_token_number');
-                    $payment_addition_information = request()->input('payment_addition_information');
-                    $response = GeneralService::applySubscription(
-                        $subscription_id,
-                        $subscribed_id,
-                        $payment_token_number,
-                        $payment_addition_information
-                    );
-                    $url = route('website.mentors.create', [$payment,StepEnum::PRINT, $model->id]);
-                    return response()->json([
-                        'status' => $response,
-                        'url' => $url
+                } else {
+                    return redirect()->back()->withInput()->with('error', 'First Choose Services');
+                }
+                break;
+            case StepEnum::USER_INFO:
+                $user_id = $request->input('user_id', null);
+                if ($user_id) {
+                    $request->validate([
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user_id],
+                        'password' => ['required', 'string', 'min:8', 'confirmed']
                     ]);
-                    break;
-            }
+                } else {
+                    $request->validate([
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                        'password' => ['required', 'string', 'min:8', 'confirmed']
+                    ]);
+                }
+                $model = $this->mentorService->saveUseInfo(
+                    $payment,
+                    $model,
+                    $user_id
+                );
+                if ($action) {
+                    return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                }
+                return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
+                break;
+            case StepEnum::PACKAGES:
+                $subscription_id = request()->input('subscription_id');
+                $subscribed_id = request()->input('subscribed_id');
+                $payment_token_number = request()->input('payment_token_number');
+                $payment_addition_information = request()->input('payment_addition_information');
+                $response = GeneralService::applySubscription(
+                    $subscription_id,
+                    $subscribed_id,
+                    $payment_token_number,
+                    $payment_addition_information
+                );
+                $url = route('website.mentors.create', [$payment, StepEnum::PRINT, $model->id]);
+                return response()->json([
+                    'status' => $response,
+                    'url' => $url
+                ]);
+                break;
         }
     }
 }
