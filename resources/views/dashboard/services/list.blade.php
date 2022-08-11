@@ -11,7 +11,7 @@
         </td>
         <td>{{ $record->slug ?? '' }}</td>
         <td>
-            <span class="badge bg-{{ $record->status === 1 ? "success" : "danger" }}">
+            <span class="btn btn-xs bg-{{ $record->status === 1 ? "success" : "danger" }}">
                 {{ $record->status === 1 ? "Active" : "Deactivate" }}
             </span>
         </td>

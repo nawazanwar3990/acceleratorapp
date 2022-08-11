@@ -12,7 +12,7 @@
                     <x-updated-by-field></x-updated-by-field>
                     @include('dashboard.user-management.hr.personal-info',['for'=>'edit'])
                     @include('dashboard.user-management.hr.media',['for'=>'edit'])
-                    <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.freelancers.index"></x-buttons>
+                    <x-buttons :update="true" :cancel="true" cancelRoute="dashboard.customers.index"></x-buttons>
                     {!! Form::close() !!}
                 </div>
             </div>

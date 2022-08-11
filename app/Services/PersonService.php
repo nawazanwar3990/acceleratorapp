@@ -170,13 +170,11 @@ class PersonService
         return Auth::user()->hasRole($role);
     }
 
-    public static function getBaServices(): array
+    public static function getBaServices()
     {
-        $data = array();
         $services = Auth::user()->ba->services;
-        if ($services) {
-            return array_keys(json_decode($services, true));
+        if($services){
+            return  json_decode($services,true);
         }
-        return $data;
     }
 }

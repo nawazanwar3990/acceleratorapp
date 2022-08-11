@@ -10,7 +10,7 @@
                     <table class="table custom-datatable table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FreelancerTableHeadingEnum::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.user-management.customers.list')
+                        @include('dashboard.customers.list')
                         </tbody>
                     </table>
                 </div>

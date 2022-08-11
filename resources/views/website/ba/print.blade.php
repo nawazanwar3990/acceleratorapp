@@ -53,7 +53,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                @if($model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
+                                @if($type=='company')
                                     <div class="col-12 text-md-start">
                                         <h3>{{ $model->company_name }}</h3>
                                         <p>{{__('general.company_no_of_emp')}} : {{ $model->company_no_of_emp }}</p>
@@ -65,7 +65,7 @@
                                     </div>
                                 @endif
                                 <div class="col-12">
-                                    @if($model->type==\App\Enum\AcceleratorTypeEnum::COMPANY)
+                                    @if($type=='company')
                                         <div class="text-md-end"> @endif
                                             <h3>To,</h3>
                                             <p>{{ $model->user->email }}</p>
@@ -74,7 +74,7 @@
                                             <p>{{__('general.invoice_date')}}
                                                 : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
                                         </div>
-                                        @if($model->type==\App\Enum\AcceleratorTypeEnum::COMPANY) </div> @endif
+                                        @if($type=='company') </div> @endif
                             </div>
                             <div class="row">
                                 <div class="col-8 border-top">
@@ -120,21 +120,6 @@
                                         <tr>
                                             <th>{{ trans('general.subscription_status') }}</th>
                                             <td>{{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>{{ trans('general.services') }}</th>
-                                            <td>
-                                                <UL class="list-group list-group-flush bg-transparent">
-                                                 @foreach($subscription->package->services as $service_name=>$service_limit)
-                                                        <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                            <i class="bx bx-check text-success"></i>
-                                                            <small><strong
-                                                                    class="text-infogit ">{{ ($service_limit)=='∞'?'Unlimited':$service_limit}}</strong> {{ str_replace('_',' ',$service_name) }}
-                                                            </small>
-                                                        </li>
-                                                    @endforeach
-                                                </UL>
-                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

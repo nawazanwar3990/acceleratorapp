@@ -7,10 +7,8 @@ use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\Customer;
-use App\Models\Hr;
 use App\Models\Role;
 use App\Models\User;
-use App\Services\PersonService;
 use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -25,7 +23,7 @@ class CustomerController extends Controller
     use General;
 
     public function __construct(
-        private PersonService $personService
+        private CustomerSerivice $customerSerivice
     )
     {
         $this->makeDirectory('HR');
@@ -56,7 +54,7 @@ class CustomerController extends Controller
     {
         $this->authorize(AbilityEnum::CREATE, Customer::class);
         $type = $request->get('type');
-        $lastId = Hr::orderBy('id', 'DESC')->value('id');
+        $lastId = Customer::orderBy('id', 'DESC')->value('id');
         $params = [
             'pageTitle' => __('general.new_customer'),
             'lastId' => (is_null($lastId) ? '1' : $lastId),
@@ -73,7 +71,7 @@ class CustomerController extends Controller
     {
         $this->authorize(AbilityEnum::CREATE, Customer::class);
         $data = $request->all();
-        if ($user = $this->personService->store($data)) {
+        if ($user = $this->customerSerivice->store($data)) {
             $role = Role::whereSlug(RoleEnum::CUSTOMER)->value('id');
             $user->roles()->sync([$role]);
 

@@ -17,7 +17,7 @@
                                 </a>
                                 <a href="{{ route('dashboard.buildings.create') }}"
                                    class="btn btn-primary d-inline-flex align-items-center justify-content-center mx-1">
-                                    {{ trans('general.create_building') }}
+                                    {{ trans('general.new_building') }}
                                     <i class="bx bx-plus-circle"></i>
                                 </a>
                                 <div class="card-actions">
@@ -34,7 +34,7 @@
                     <table class="table custom-datatable table-bordered table-hover">
                         @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\BuildingTableHeadingEnum::getTranslationKeys()])
                         <tbody>
-                        @include('dashboard.working-spaces.buildings.list')
+                           @include('dashboard.working-spaces.buildings.list')
                         </tbody>
                     </table>
                 </div>

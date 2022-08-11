@@ -32,7 +32,4 @@
         </td>
     </tr>
 @empty
-    <tr>
-        <td class="text-center" colspan="20">{{ __('general.no_record_found') }}</td>
-    </tr>
 @endforelse
