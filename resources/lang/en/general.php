@@ -484,7 +484,7 @@ return [
     'type' => 'Type',
     'active' => 'Active',
     'inactive' => 'Inactive',
-    'name' => 'Name',
+    'name' => 'Package Name',
     'person_id' => 'Person ID',
     'personal_detail' => 'Personal Detail',
     'employment' => 'Employment',
