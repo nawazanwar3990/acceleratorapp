@@ -1,7 +1,7 @@
 <div class="row pt-3 justify-content-center">
     <div class="row pricing-plan">
         @foreach(\App\Services\PackageService::list_packages($package_for) as $package)
-            <div class="col-md-4 col-xs-12 col-sm-4 no-padding">
+            <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="pricing-box border">
                     <div class="pricing-body border-0">
                         <div class="pricing-header border-0">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service_name=>$service_limit)
-                                <div class="price-row row" style="padding: 10px 10px">
+                                <div class="row" style="padding: 10px 10px">
                                     <div class="col-8 align-self-center fs-13">
                                         {{ $service_name }}
                                     </div>
