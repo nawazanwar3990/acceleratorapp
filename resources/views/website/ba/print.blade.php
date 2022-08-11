@@ -24,7 +24,7 @@
                         <i class="fa fa-print"></i> Print Invoice
                     </button>
                     <a class="btn btn-primary text-white"
-                       href="{{ route('website.ba.create',[$type,$payment,\App\Enum\StepEnum::USER_INFO,$model->id]) }}">
+                       href="{{ route('website.ba.create',[$type,$payment,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
                         <i class="fa fa-edit"></i> Edit Profile
                     </a>
                     @guest
@@ -34,7 +34,7 @@
                     @endguest
                 </div>
             </div>
-            <div class="row position-relative p-5 mt-3"  id="print_holder">
+            <div class="row position-relative p-5 mt-3" id="print_holder">
                 <div class="col-12">
                     <div class="panel panel-default invoice">
                         <div class="panel-body">

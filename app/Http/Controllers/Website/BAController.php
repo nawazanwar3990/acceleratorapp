@@ -54,6 +54,7 @@ class BAController extends Controller
         } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
             return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES])->with('error', 'First Create Services');
         }
+        $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             return view('website.ba.print', compact(
@@ -73,7 +74,8 @@ class BAController extends Controller
             'subscription',
             'type',
             'payment',
-            'id'
+            'id',
+            'action'
         ));
     }
 
@@ -98,7 +100,7 @@ class BAController extends Controller
                 $model = $this->baService->saveServices($model);
                 if ($request->has('services')) {
                     if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
-                        return redirect()->route('website.ba.create', [$type,$payment, StepEnum::PACKAGES, $model->id]);
+                        return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                     } else {
                         return redirect()
                             ->route('website.index')
@@ -145,7 +147,7 @@ class BAController extends Controller
                     $payment_token_number,
                     $payment_addition_information
                 );
-                $url = route('website.ba.create', [$type,$payment,StepEnum::PRINT, $model->id]);
+                $url = route('website.ba.create', [$type, $payment, StepEnum::PRINT, $model->id]);
                 return response()->json([
                     'status' => $response,
                     'url' => $url

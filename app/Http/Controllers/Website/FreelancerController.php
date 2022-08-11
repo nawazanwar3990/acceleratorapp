@@ -62,6 +62,7 @@ class FreelancerController extends Controller
         } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
             return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES])->with('error', 'First Create Services');
         }
+        $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
             $subscription = Subscription::where('subscribed_id', $model->user->id)->first();
             return view('website.freelancers.print', compact(
@@ -81,7 +82,8 @@ class FreelancerController extends Controller
             'subscription',
             'type',
             'payment',
-            'id'
+            'id',
+            'action'
         ));
     }
 

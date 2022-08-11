@@ -24,7 +24,7 @@
                         <i class="fa fa-print"></i> Print Invoice
                     </button>
                     <a class="btn btn-primary text-white"
-                       href="{{ route('website.mentors.create',[$payment,\App\Enum\StepEnum::USER_INFO,$model->id]) }}">
+                       href="{{ route('website.mentors.create',[$payment,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
                         <i class="fa fa-edit"></i> Edit Profile
                     </a>
                     @guest

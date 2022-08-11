@@ -16,7 +16,7 @@
                     @include('website.freelancers.components.steps')
                     <div class="col-lg-8 col-md-8 border-start">
                         @include('website.freelancers.components.step-heading')
-                        {!! Form::open(['url' =>route('website.freelancers.store',[$type,$payment,$step,($model)?$model->id:null]), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::open(['url' =>route('website.freelancers.store',[$type,$payment,$step,($model)?$model->id:null,$action?'action=edit':'']), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                         @include(sprintf('%s.%s', 'website.freelancers.components', $step))
                         <div class="text-center mt-4">
                             @if($step==\App\Enum\StepEnum::PACKAGES)
@@ -25,9 +25,15 @@
                                     {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
                                 </a>
                             @else
-                                <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
-                                    {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                </button>
+                                @if($action)
+                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                        {{ trans('general.update') }} <i class="bx bx-arrow-to-right"></i>
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                        {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                    </button>
+                                @endif
                             @endif
                         </div>
                         {!! Form::close() !!}
