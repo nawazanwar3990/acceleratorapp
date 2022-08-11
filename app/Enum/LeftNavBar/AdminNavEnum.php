@@ -21,6 +21,7 @@ class AdminNavEnum extends AbstractEnum
     public const BA = KeyWordEnum::BA;
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const MENTOR = KeyWordEnum::MENTOR;
+    public const CUSTOMER = KeyWordEnum::CUSTOMER;
     public const SETTING = KeyWordEnum::SETTING;
 
     public static function getValues(): array
@@ -34,7 +35,8 @@ class AdminNavEnum extends AbstractEnum
             self::BA,
             self::SETTING,
             self::FREELANCER,
-            self::MENTOR
+            self::MENTOR,
+            self::CUSTOMER
         ];
     }
 
@@ -49,6 +51,7 @@ class AdminNavEnum extends AbstractEnum
             self::BA => '<i></i>',
             self::FREELANCER => '<i></i>',
             self::MENTOR => '<i></i>',
+            self::CUSTOMER => '<i></i>',
             self::SETTING => '<i></i>'
 
         ];
@@ -70,6 +73,7 @@ class AdminNavEnum extends AbstractEnum
             self::BA => __(sprintf('%s.%s', 'general.left-bar', self::BA)),
             self::FREELANCER => __(sprintf('%s.%s', 'general.left-bar', self::FREELANCER)),
             self::MENTOR => __(sprintf('%s.%s', 'general.left-bar', self::MENTOR)),
+            self::CUSTOMER => __(sprintf('%s.%s', 'general.left-bar', self::CUSTOMER)),
             self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING)),
 
         ];
@@ -87,6 +91,7 @@ class AdminNavEnum extends AbstractEnum
             self::MENTOR => route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::SETTING => route('dashboard.settings.index'),
             self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => SubscriptionTypeEnum::PACKAGE]),
+            self::CUSTOMER => route('dashboard.customers.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

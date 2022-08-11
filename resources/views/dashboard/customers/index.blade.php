@@ -3,12 +3,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                    @include('dashboard.components.general.form-list-header',['url'=>'dashboard.customers.create','is_create'=>true])
-                @endif
+                @include('dashboard.components.general.form-list-header',['url'=>'website.customers.create','is_create'=>true])
                 <div class="card-body">
                     <table class="table custom-datatable table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FreelancerTableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\CustomerTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.customers.list')
                         </tbody>

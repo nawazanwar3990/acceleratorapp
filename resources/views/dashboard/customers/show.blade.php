@@ -2,21 +2,21 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            @if(count($customer->subscriptions))
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">{{ __('general.subscription') }}</h5>
-                    </div>
-                    <div class="card-body">
-                        <table class="table custom-datatable table-bordered">
-                            <thead>
-                            <tr>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ __('general.subscription') }}</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table custom-datatable table-bordered">
+                        <thead>
+                        <tr>
 
-                                <th scope="col">{{__('general.package')}}</th>
-                                <th scope="col">{{__('general.price')}}</th>
-                                <th scope="col">{{__('general.expire_date')}}</th>
-                            </tr>
-                            </thead>
+                            <th scope="col">{{__('general.package')}}</th>
+                            <th scope="col">{{__('general.price')}}</th>
+                            <th scope="col">{{__('general.expire_date')}}</th>
+                        </tr>
+                        </thead>
+                        @if(count($customer->subscriptions))
                             @foreach($customer->subscriptions as $subscription)
                                 <tr>
                                     <td>
@@ -30,10 +30,10 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </table>
-                    </div>
+                        @endif
+                    </table>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
 @endsection

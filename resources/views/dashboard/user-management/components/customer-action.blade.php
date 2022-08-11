@@ -4,10 +4,7 @@
     </button>
     <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item text-black-50"
-               href="{{ route('dashboard.subscriptions.create',['id'=>$customer->id,'type'=>\App\Enum\SubscriptionTypeEnum::PLAN]) }}">
-                {{__('general.apply_subscription')}}
-            </a>
+
         </li>
         <li>
             <a class="dropdown-item text-black-50" href="{{ route('dashboard.customers.edit',$customer->id) }}">
@@ -15,9 +12,7 @@
             </a>
         </li>
         <li>
-            <a class="dropdown-item text-black-50" href="{{ route('dashboard.customers.show',$customer->id) }}">
-                {{__('general.show')}}
-            </a>
+
         </li>
     </ul>
 </div>
