@@ -3,7 +3,9 @@
 namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
+use App\Enum\FreelancerTypeEnum;
 use App\Enum\KeyWordEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
 
@@ -68,9 +70,9 @@ class BANavEnum extends AbstractEnum
             self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
             self::PLAN => __(sprintf('%s.%s', 'general.left-bar', self::PLAN)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
-            self::INCUBATOR => __(sprintf('%s.%s', 'general.left-bar', self::INCUBATOR)),
-            self::MEETING_ROOM => __(sprintf('%s.%s', 'general.left-bar', self::MEETING_ROOM)),
-            self::FREELANCER => __(sprintf('%s.%s', 'general.left-bar', self::FREELANCER)),
+            self::INCUBATOR => 'Incubator',
+            self::MEETING_ROOM =>'Meeting Rooms',
+            self::FREELANCER =>'Freelancer',
             self::MENTORSHIP_WITH_INVESTMENT => __(sprintf('%s.%s', 'general.left-bar', self::MENTORSHIP_WITH_INVESTMENT)),
             self::MENTORSHIP_WITHOUT_INVESTMENT => __(sprintf('%s.%s', 'general.left-bar', self::MENTORSHIP_WITHOUT_INVESTMENT)),
             self::EVENT_MANAGEMENT =>'Event Management',
@@ -85,9 +87,9 @@ class BANavEnum extends AbstractEnum
             self::PLAN => __(sprintf('%s.%s', 'general.left_bar', self::PLAN)),
             self::SERVICE => __(sprintf('%s.%s', 'general.left_bar', self::SERVICE)),
             self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left_bar', self::SUBSCRIPTION)),
-            self::INCUBATOR => __(sprintf('%s.%s', 'general.left_bar', self::INCUBATOR)),
-            self::MEETING_ROOM => __(sprintf('%s.%s', 'general.left_bar', self::MEETING_ROOM)),
-            self::FREELANCER => __(sprintf('%s.%s', 'general.left_bar', self::FREELANCER)),
+            self::INCUBATOR => 'Incubator',
+            self::MEETING_ROOM =>'Meeting Room',
+            self::FREELANCER => 'Freelancer',
             self::MENTORSHIP_WITH_INVESTMENT => __(sprintf('%s.%s', 'general.left_bar', self::MENTORSHIP_WITH_INVESTMENT)),
             self::MENTORSHIP_WITHOUT_INVESTMENT => __(sprintf('%s.%s', 'general.left_bar', self::MENTORSHIP_WITHOUT_INVESTMENT)),
             self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general.left_bar', self::EVENT_MANAGEMENT)),
@@ -102,12 +104,12 @@ class BANavEnum extends AbstractEnum
             self::DASHBOARD => route('dashboard.index'),
             self::PLAN => route('dashboard.plans.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC]),
-            self::SUBSCRIPTION => route('dashboard.buildings.index', [SubscriptionTypeEnum::PLAN]),
+            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type'=>SubscriptionTypeEnum::PLAN]),
             self::INCUBATOR => route('dashboard.incubators.index'),
             self::MEETING_ROOM => route('dashboard.meeting-rooms.index'),
-            self::FREELANCER => route('dashboard.freelancers.index'),
-            self::MENTORSHIP_WITH_INVESTMENT => route('dashboard.buildings.index'),
-            self::MENTORSHIP_WITHOUT_INVESTMENT => route('dashboard.buildings.index'),
+            self::FREELANCER => route('dashboard.freelancers.index',['type'=>PaymentTypeProcessEnum::DIRECT_PAYMENT]),
+            self::MENTORSHIP_WITH_INVESTMENT =>'',
+            self::MENTORSHIP_WITHOUT_INVESTMENT => '',
             self::EVENT_MANAGEMENT => route('dashboard.events.index'),
             self::SETTING => route('dashboard.settings.index'),
         );
