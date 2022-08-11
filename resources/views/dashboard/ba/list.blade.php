@@ -34,7 +34,7 @@
                     </a>
                 @else
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('website.ba.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::PACKAGES,$record->id,'action'=>'edit']) }}">
+                       href="{{ route('website.ba.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::PACKAGES,$record->id]) }}">
                         {{ trans('general.apply_subscription') }}
                     </a>
                 @endif
@@ -42,7 +42,7 @@
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-               'edit' => route('website.ba.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
+               'edit' => route('website.ba.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id,'action'=>'edit']),
                'delete' => route('dashboard.ba.destroy', $record->id),
            ])
         </td>

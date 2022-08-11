@@ -80,7 +80,7 @@ class PackageController extends Controller
         if ($model_id) {
             $model = GeneralService::get_model_by_type_and_id($package_type, $model_id);
             GeneralService::applySubscription(
-                $model_id,
+                $data->id,
                 $model->user->id,
                 time(),
                 null

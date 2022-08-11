@@ -23,15 +23,22 @@
                     </a>
                 @endif
             @else
-                <a class="btn btn-sm btn-success"
-                   href="{{ route('dashboard.packages.create',['type'=>\App\Enum\PackageTypeEnum::MENTOR,'model_id'=>$record->id]) }}">
-                    {{ trans('general.apply_subscription') }}
-                </a>
+                @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+                    <a class="btn btn-sm btn-success"
+                       href="{{ route('dashboard.packages.create',['type'=>\App\Enum\PackageTypeEnum::MENTOR,'model_id'=>$record->id]) }}">
+                        {{ trans('general.apply_subscription') }}
+                    </a>
+                @else
+                    <a class="btn btn-sm btn-success"
+                       href="{{ route('website.mentors.create',[$record->payment_process,\App\Enum\StepEnum::PACKAGES,$record->id]) }}">
+                        {{ trans('general.apply_subscription') }}
+                    </a>
+                @endif
             @endif
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-               'edit' => route('website.mentors.create',[$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
+               'edit' => route('website.mentors.create',[$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id,'action'=>'edit']),
                'delete' => route('dashboard.mentors.destroy', $record->id),
            ])
         </td>

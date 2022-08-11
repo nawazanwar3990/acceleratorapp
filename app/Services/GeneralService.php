@@ -6,6 +6,7 @@ use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
 use App\Enum\LeftNavBar\IncubatorNavEnum;
 use App\Enum\MediaTypeEnum;
+use App\Enum\PackageTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
 use App\Enum\SubscriptionTypeEnum;
@@ -1262,8 +1263,6 @@ class GeneralService
         $payment_addition_information=null
     ): bool
     {
-
-
         $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
         if ($alreadySubscription->exists()) {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -1309,7 +1308,8 @@ class GeneralService
             return Freelancer::with('user')->find($id);
         } else if (in_array($type, [\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR, \App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
             return BA::with('user')->find($id);
-        } else
+        } else if ($type==PackageTypeEnum::MENTOR){
             return Mentor::with('user')->find($id);
+        }
     }
 }

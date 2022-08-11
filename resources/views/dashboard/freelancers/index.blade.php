@@ -8,7 +8,7 @@
                         <div class="col justify-content-end d-flex">
                             <a onclick="choose_register_type('freelancers');"
                                class="btn btn-primary d-inline-flex align-items-center justify-content-center mx-1">
-                                {{ trans('general.create') }}<i class="bx bx-plus-circle"></i>
+                                {{ trans('general.create') }} <i class="bx bx-plus-circle"></i>
                             </a>
                             <div class="card-actions">
                                 <a class="d-print-none btn btn-primary btn-minimize btn-action d-inline-flex align-items-center justify-content-center"

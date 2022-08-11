@@ -4,13 +4,18 @@
         <td>{{ $record->user->email }}</td>
         <td>{{ $record->user->getFullName() }}</td>
         <td>
-            {{ \App\Enum\AcceleratorTypeEnum::getTranslationKeyBy($record->type)  }}
+            @if($record->type=='company')
+                Service Provider
+            @else
+                Individual
+            @endif
         </td>
         <td>
             {!! \App\Enum\PaymentTypeProcessEnum::getTranslationKeyBy($record->payment_process) !!}
         </td>
-        <td class="text-center">
-            <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#service-model-{{$record->id}}">
+        <td>
+            <button type="button" class="btn btn-xs btn-info" data-bs-toggle="modal"
+                    data-bs-target="#service-model-{{$record->id}}">
                 {{ trans('general.view') }}
             </button>
             @include('components.models.registered-services',['id'=>$record->id])
@@ -26,15 +31,22 @@
                     </a>
                 @endif
             @else
-                <a class="btn btn-sm btn-success"
-                   href="{{ route('dashboard.packages.create',['type'=>($record->type=='company')?\App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY:\App\Enum\PackageTypeEnum::FREELANCER,'model_id'=>$record->id]) }}">
-                    {{ trans('general.apply_subscription') }}
-                </a>
+                @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+                    <a class="btn btn-sm btn-success"
+                       href="{{ route('dashboard.packages.create',['type'=>($record->type=='company')?\App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY:\App\Enum\PackageTypeEnum::FREELANCER,'model_id'=>$record->id]) }}">
+                        {{ trans('general.apply_subscription') }}
+                    </a>
+                @else
+                    <a class="btn btn-sm btn-success"
+                       href="{{ route('website.freelancers.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::PACKAGES,$record->id]) }}">
+                        {{ trans('general.apply_subscription') }}
+                    </a>
+                @endif
             @endif
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-               'edit' => route('website.freelancers.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id]),
+               'edit' => route('website.freelancers.create',[$record->type,$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id,'action'=>'edit']),
                'delete' => route('dashboard.freelancers.destroy', $record->id),
            ])
         </td>
