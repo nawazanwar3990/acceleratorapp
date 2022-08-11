@@ -3,7 +3,7 @@ function apply_registration(types) {
     let html = '<div class="row justify-content-center">';
     $.each(types, function (index, value) {
         let checked = (index === 'business_accelerator') ? 'checked' : '';
-        html += '<div class="col-sm-6 col-xs-6 col-md-3 col-lg-3 col-xl-3 copl-xxl-3">' + ' <div class="card border position-relative">' + '<div class="radio-holder position-absolute" style="right:0;top:9px;"> <div class="form-check form-switch">' + '<input class="form-check-input" name="register_type" type="radio" id=' + index + ' value=' + index + ' ' + checked + '>' + ' <label class="form-check-label" for=' + index + '></label>' + ' </div></div>' + '<img class="card-img-top p-5 pb-0" src="/images/icon/' + index + '.png" alt="Card image cap">' + '<div class="card-body">' + '<h6 class="card-title">' + value + '</h6>' + ' </div>' + '</div>' + '</div>';
+        html += '<div class="col-sm-6 col-xs-6 col-md-3 col-lg-3 col-xl-3 copl-xxl-3">' + ' <div class="card border position-relative">' + '<div class="radio-holder position-absolute" style="right:0;top:9px;"> <div class="form-check form-switch">' + '<input class="form-check-input" name="register_type" type="radio" id=' + index + ' value=' + index + ' ' + checked + '>' + ' <label class="form-check-label" for=' + index + '></label>' + ' </div></div>' + '<img class="card-img-top p-5 pb-0" src="/images/icon/' + index + '.png" alt="Card image cap">' + '<div class="card-body" style="height: 73px;">' + '<h6 class="card-title">' + value + '</h6>' + ' </div>' + '</div>' + '</div>';
     });
     html += '</div>';
     Swal.fire({
@@ -53,7 +53,7 @@ function choose_register_type(parent) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Company"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/company-icon.png" alt="Company"> \n' +
         '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Company\n' +
         '        </h5> \n' +
@@ -75,7 +75,7 @@ function choose_register_type(parent) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Individual"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/indiv.png" alt="Individual"> \n' +
         '      <div class="card-body text-center"> \n' +
         '        <h5 class="card-title">Individual\n' +
         '        </h5> \n' +
@@ -119,8 +119,8 @@ function apply_payment(parent = null, type) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Pre Apply"> \n' +
-        '      <div class="card-body text-center"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/preapply-D2.png" alt="Pre Apply"> \n' +
+        '      <div class="card-body text-center" style="height: 72px;"> \n' +
         '        <h5 class="card-title">Pre Apply\n' +
         '        </h5> \n' +
         '      </div> \n' +
@@ -135,8 +135,8 @@ function apply_payment(parent = null, type) {
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
-        '      <img class="p-5 pb-0" src="/images/icon/business_accelerator.png" alt="Direct Apply"> \n' +
-        '      <div class="card-body text-center"> \n' +
+        '      <img class="p-5 pb-0" src="/images/icon/direct-apply%20(1).png" alt="Direct Apply"> \n' +
+        '      <div class="card-body text-center" style="height: 73px;"> \n' +
         '        <h5 class="card-title">Direct Apply\n' +
         '        </h5> \n' +
         '      </div> \n' +

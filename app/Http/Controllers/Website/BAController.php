@@ -91,14 +91,21 @@ class BAController extends Controller
         if ($id) {
             $model = BA::find($id);
         }
+        $action = $request->query('action');
         switch ($step) {
             case StepEnum::COMPANY_PROFILE:
                 $model = $this->baService->saveCompanyProfile($model);
+                if ($action) {
+                    return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                }
                 return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
                 break;
             case StepEnum::SERVICES:
                 $model = $this->baService->saveServices($model);
                 if ($request->has('services')) {
+                    if ($action) {
+                        return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                    }
                     if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                     } else {
@@ -130,7 +137,10 @@ class BAController extends Controller
                     $model,
                     $user_id
                 );
-                if ($type == AcceleratorTypeEnum::COMPANY) {
+                if ($action) {
+                    return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                }
+                if ($type == 'company') {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);

@@ -1,9 +1,9 @@
 <div class="row pt-3 justify-content-center">
     <div class="row pricing-plan">
         @foreach(\App\Services\PackageService::list_packages($package_for) as $package)
-            <div class="col-md-4 col-xs-12 col-sm-4 no-padding">
+            <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="pricing-box border">
-                    <div class="pricing-body border-0">
+                    <div class="pricing-body pb-0 border-0">
                         <div class="pricing-header border-0">
                             <h4 class="text-center">{{ $package->name }}</h4>
                             <h2 class="text-center"><span
@@ -24,11 +24,11 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service_name=>$service_limit)
-                                <div class="price-row row" style="padding: 10px 10px">
-                                    <div class="col-8 align-self-center fs-13">
+                                <div class="row mx-1 border-bottom" style="padding: 10px 0;">
+                                    <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
                                         {{ $service_name }}
                                     </div>
-                                    <div class="col-4 text-center align-self-center fs-13">
+                                    <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
                                         <span
                                             class="w-bold pull-right badge @if($service_limit>0) bg-success @else bg-danger @endif">
                                             {{ $service_limit=='∞'?trans('general.unlimited'):$service_limit }}
@@ -37,7 +37,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="price-row justify-content-center">
+                        <div class="price-row justify-content-center py-3">
                             @if(isset($model->user))
                                 @php $selected = \App\Models\Subscription::where('subscribed_id',$model->user->id)->exists() @endphp
                             @else

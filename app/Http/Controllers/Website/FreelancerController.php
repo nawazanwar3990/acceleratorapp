@@ -99,14 +99,21 @@ class FreelancerController extends Controller
         if ($id) {
             $model = Freelancer::find($id);
         }
+        $action = $request->query('action');
         switch ($step) {
             case StepEnum::COMPANY_PROFILE:
                 $model = $this->freelancerService->saveCompanyProfile($model);
+                if ($action) {
+                    return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                }
                 return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::FOCAL_PERSON, $model->id]);
                 break;
             case StepEnum::SERVICES:
                 $model = $this->freelancerService->saveServices($model);
                 if ($request->has('services')) {
+                    if ($action) {
+                        return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                    }
                     if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
                         return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                     } else {
@@ -138,6 +145,9 @@ class FreelancerController extends Controller
                     $model,
                     $user_id
                 );
+                if ($action) {
+                    return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                }
                 if ($type == 'company') {
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
@@ -146,6 +156,9 @@ class FreelancerController extends Controller
                 break;
             case StepEnum::FOCAL_PERSON:
                 $response = $this->freelancerService->saveFocalPersonInfo($model);
+                if ($action) {
+                    return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                }
                 return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                 break;
             case StepEnum::PACKAGES:

@@ -9,8 +9,8 @@
         !!}
     </div>
     <div class="col-md-3 mb-3">
-        {!!  Html::decode(Form::label('name' ,__('general.name').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
-        {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.name'), 'required']) !!}
+        {!!  Html::decode(Form::label('name' ,__('general.package_name').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
+        {!!  Form::text('name',null,['id'=>'name','class'=>'form-control ','placeholder'=>__('general.package_name'), 'required']) !!}
     </div>
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('duration_type_id' ,__('general.duration_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}
