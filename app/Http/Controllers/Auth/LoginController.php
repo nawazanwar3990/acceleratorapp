@@ -107,6 +107,8 @@ class LoginController extends Controller
                                 return redirect()->back()->withInput()->with('error', __('auth.failed'));
                             } else {
                                 RateLimiter::clear($this->throttleKey());
+                                Auth::logout();
+                                Cache::flush();
                                 return redirect()->route('website.index')->with('info','We are working on the basic of your your selected services,So we will let you after Creating a package on the basis of your services');
                             }
                         }

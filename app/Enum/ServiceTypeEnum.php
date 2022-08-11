@@ -202,7 +202,7 @@ class ServiceTypeEnum extends AbstractEnum
                 'status' => true,
             ],
             [
-                'name' => 'MentorShip with Investment',
+                'name' => 'Mentorship with Investment',
                 'slug' => 'mentorship-with-investment',
                 'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR,
                 'status' => true,
@@ -243,7 +243,7 @@ class ServiceTypeEnum extends AbstractEnum
                 'status' => true,
             ],
             [
-                'name' => 'MentorShip with Investment',
+                'name' => 'Mentorship with Investment',
                 'slug' => 'mentorship-with-investment',
                 'type' => ServiceTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL,
                 'status' => true,
