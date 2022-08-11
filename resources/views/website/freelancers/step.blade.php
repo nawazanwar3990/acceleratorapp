@@ -14,7 +14,7 @@
             <div class="{{ auth()->user()?'col-12':'col-xxl-10 col-xl-10 col-lg-10 col-md-10' }}">
                 <div class="row bg-white p-3">
                     @include('website.freelancers.components.steps')
-                    <div class="col-lg-8 col-md-8 border-start">
+                    <div class="@if(auth()->user()) col-lg-9 col-xl-9 @else col-lg-8 col-md-8 @endif border-start">
                         @include('website.freelancers.components.step-heading')
                         {!! Form::open(['url' =>route('website.freelancers.store',[$type,$payment,$step,($model)?$model->id:null,$action?'action=edit':'']), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                         @include(sprintf('%s.%s', 'website.freelancers.components', $step))

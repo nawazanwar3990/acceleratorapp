@@ -37,7 +37,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="price-row justify-content-center py-3">
+                        <div class="price-row justify-content-center py-3" style="text-align: center;">
                             @if(isset($model->user))
                                 @php $selected = \App\Models\Subscription::where('subscribed_id',$model->user->id)->exists() @endphp
                             @else

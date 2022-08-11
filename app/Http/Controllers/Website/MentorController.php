@@ -47,9 +47,9 @@ class MentorController extends Controller
                 StepEnum::SERVICES,
                 StepEnum::PACKAGES
             ]) && !isset($model)) {
-            return redirect()->route('website.mentors.create', [$payment, StepEnum::USER_INFO])->with('error', 'First Create User Info');
+            return redirect()->route('website.mentors.create', [$payment, StepEnum::USER_INFO,$id??null])->with('error', 'First Create User Info');
         } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
-            return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES])->with('error', 'First Create Services');
+            return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES,$id??null])->with('error', 'First Create Services');
         }
         $action = $request->query('action');
         if ($step == StepEnum::PRINT) {

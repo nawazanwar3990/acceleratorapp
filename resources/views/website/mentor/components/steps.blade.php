@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-4">
+<div class="@if(auth()->user()) col-lg-3 col-xl-3 @else col-lg-4 col-md-4 @endif">
     <h4 class="fw-bold">{{ trans('general.mentor') }}</h4>
     <ul class="progress-bar text-left">
         <li class="{{ $step==\App\Enum\StepEnum::USER_INFO?'active-link':'in-active-link' }}">

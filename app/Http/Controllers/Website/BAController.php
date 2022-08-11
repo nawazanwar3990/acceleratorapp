@@ -50,9 +50,9 @@ class BAController extends Controller
             $model = BA::find($id);
         }
         if (in_array($step, [StepEnum::SERVICES, StepEnum::COMPANY_PROFILE, StepEnum::PACKAGES]) && !isset($model)) {
-            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::USER_INFO])->with('error', 'First Create User Info');
-        } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
-            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES])->with('error', 'First Create Services');
+            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::USER_INFO,$id??null])->with('error', 'First Create User Info');
+        } else if ($step == StepEnum::PACKAGES && isset($model) && !$model->services) {
+            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES,$id??null])->with('error', 'First Create Services');
         }
         $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
