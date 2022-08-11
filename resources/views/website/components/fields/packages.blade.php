@@ -3,7 +3,7 @@
         @foreach(\App\Services\PackageService::list_packages($package_for) as $package)
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="pricing-box border">
-                    <div class="pricing-body border-0">
+                    <div class="pricing-body pb-0 border-0">
                         <div class="pricing-header border-0">
                             <h4 class="text-center">{{ $package->name }}</h4>
                             <h2 class="text-center"><span
@@ -37,7 +37,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="price-row justify-content-center">
+                        <div class="price-row justify-content-center py-3">
                             @if(isset($model->user))
                                 @php $selected = \App\Models\Subscription::where('subscribed_id',$model->user->id)->exists() @endphp
                             @else
