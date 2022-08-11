@@ -69,7 +69,7 @@ class BANavEnum extends AbstractEnum
             self::DASHBOARD => __(sprintf('%s.%s', 'general.left-bar', self::DASHBOARD)),
             self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
             self::PLAN => __(sprintf('%s.%s', 'general.left-bar', self::PLAN)),
-            self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),
+          /*  self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),*/
             self::INCUBATOR => 'Incubator',
             self::MEETING_ROOM =>'Meeting Rooms',
             self::FREELANCER =>'Freelancer',
