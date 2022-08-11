@@ -35821,6 +35821,13 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
   float: right !important;
 }
 
+.parsley-errors-list {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  font-size: 13px !important;
+  color: red !important;
+}
+
 /*
 Template Name: Admin Template
 Author: Wrappixel
