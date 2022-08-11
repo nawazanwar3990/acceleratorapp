@@ -106,21 +106,6 @@
                                                 <th>{{ trans('general.subscription_status') }}</th>
                                                 <td>{{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}</td>
                                             </tr>
-                                            <tr>
-                                                <th>{{ trans('general.services') }}</th>
-                                                <td>
-                                                    <UL class="list-group list-group-flush bg-transparent">
-                                                        @foreach($subscription->package->services as $service_name=>$service_limit)
-                                                            <li class="list-group-item py-0 border-0  bg-transparent px-0">
-                                                                <i class="bx bx-check text-success"></i>
-                                                                <small><strong
-                                                                        class="text-infogit ">{{ ($service_limit)=='∞'?'Unlimited':$service_limit}}</strong> {{ str_replace('_',' ',$service_name) }}
-                                                                </small>
-                                                            </li>
-                                                        @endforeach
-                                                    </UL>
-                                                </td>
-                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
