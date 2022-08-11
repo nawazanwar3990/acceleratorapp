@@ -24,7 +24,7 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service_name=>$service_limit)
-                                <div class="row mx-1" style="padding: 10px 10px">
+                                <div class="row mx-1 border-bottom" style="padding: 10px 10px">
                                     <div class="col-8 align-self-center fs-13 text-left">
                                         {{ $service_name }}
                                     </div>
