@@ -25,9 +25,15 @@
                                     {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
                                 </a>
                             @else
-                                <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
-                                    {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                </button>
+                                @if($action)
+                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                        {{ trans('general.update') }} <i class="bx bx-arrow-to-right"></i>
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                        {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                    </button>
+                                @endif
                             @endif
                         </div>
                         {!! Form::close() !!}

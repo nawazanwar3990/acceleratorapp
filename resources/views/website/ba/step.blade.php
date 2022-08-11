@@ -20,10 +20,15 @@
                         @include(sprintf('%s.%s', 'website.ba.components', $step))
                         <div class="text-center mt-4">
                             @if($step==\App\Enum\StepEnum::PACKAGES)
-                                <a onclick="apply_ba_subscription();"
-                                   class="btn btn-primary btn-rounded cs-btn text-white">
-                                    {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                </a>
+                                @if($action)
+                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                        {{ trans('general.update') }} <i class="bx bx-arrow-to-right"></i>
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                        {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                    </button>
+                                @endif
                             @else
                                 <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
                                     {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
