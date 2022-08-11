@@ -111,12 +111,12 @@ class FreelancerController extends Controller
             case StepEnum::SERVICES:
                 $model = $this->freelancerService->saveServices($model);
                 if ($request->has('services')) {
+                    if ($action) {
+                        return redirect()->back()->with('success', trans('general.record_updated_successfully'));
+                    }
                     if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
                         return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                     } else {
-                        if ($action) {
-                            return redirect()->back()->with('success', trans('general.record_updated_successfully'));
-                        }
                         return redirect()
                             ->route('website.index')
                             ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
