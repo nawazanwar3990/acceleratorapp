@@ -3,7 +3,7 @@
         {!!  Html::decode(Form::label('company_name' ,__('general.company_name').'<i class="text-danger">*</i>',['class'=>'col-form-label']))   !!}
         {!!  Form::text('company_name',isset($model)?$model->company_name:null,['id'=>'company_name','class'=>'form-control','required']) !!}
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 ">
         {!!  Html::decode(Form::label('is_register_company' ,__('general.is_register_company'),['class'=>'col-form-label']))   !!}
         {!!  Form::select('is_register_company',\App\Services\GeneralService::yesOrNoForDropdown(),isset($model)?$model->is_register_company:null,['id'=>'is_register_company','class'=>'form-control','required','placeholder'=>trans('general.select')]) !!}
     </div>
