@@ -56,26 +56,18 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Mentor::class,'user_id');
     }
-    public function hr(): HasOne
-    {
-        return $this->hasOne(Hr::class, 'user_id');
-    }
-
     public function getFullName(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }
-
     public static function getNotifier()
     {
         return User::where('email', 'superadmin@gmail.com')->first();
     }
-
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, TableEnum::ROLE_USER);
     }
-
     public function hasRole($role): bool
     {
         if (is_string($role)) {
@@ -83,7 +75,6 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return !!$role->intersect($this->roles);
     }
-
     public function getRoleName(): bool
     {
         return $this->roles[0]->name;
