@@ -32,7 +32,7 @@
                                 </td>
                                 <td class="text-center">
                                     <a class="btn btn-warning mx-1"
-                                       href="{{ route('dashboard.subscriptions.index',['type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE,'id'=>$record->id]) }}">
+                                       href="{{ route('dashboard.subscriptions.index',['type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE,'subscription_for'=>request()->query('type'),'id'=>$record->id]) }}">
                                         {{ trans('general.view_subscription') }}
                                     </a>
                                 </td>
