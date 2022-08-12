@@ -13,7 +13,6 @@ class BATableHeadingEnum extends AbstractEnum
     public const TYPE = 'type';
     public const PAYMENT_TYPE = 'payment_type';
     public const SERVICES = 'services';
-    public const SUBSCRIPTION_STATUS = 'subscription_status';
     public static function getValues(): array
     {
         return [];
@@ -27,7 +26,6 @@ class BATableHeadingEnum extends AbstractEnum
             self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
             self::PAYMENT_TYPE => __(sprintf('%s.%s', 'general', self::PAYMENT_TYPE)),
             self::SERVICES => __(sprintf('%s.%s', 'general', self::SERVICES)),
-            self::SUBSCRIPTION_STATUS => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_STATUS)),
         ];
     }
 }

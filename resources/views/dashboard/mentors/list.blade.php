@@ -15,18 +15,21 @@
         <td class="text-center">
             @if($record->user->subscription)
                 @if($record->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
-                    {{ $record->user->subscription->status}}
+                    <a class="btn btn-sm btn-success"
+                       href="{{ route('dashboard.payments.index',['id'=>$record->user->subscription->id]) }}">
+                        {{ trans('general.view_payment') }}
+                    </a>
                 @else
                     <a class="btn btn-sm btn-success"
                        href="{{ route('website.pending-subscription',['subscribed_id'=>$record->user->id,'subscription_id'=>$record->id,'subscription_type'=>\App\Enum\RoleEnum::MENTOR]) }}">
-                        {{ trans('general.view') }}
+                        {{ trans('general.view_subscription') }}
                     </a>
                 @endif
             @else
                 @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
                     <a class="btn btn-sm btn-success"
                        href="{{ route('dashboard.packages.create',['type'=>\App\Enum\PackageTypeEnum::MENTOR,'model_id'=>$record->id]) }}">
-                        {{ trans('general.apply_subscription') }}
+                        {{ trans('general.create_plan') }}
                     </a>
                 @else
                     <a class="btn btn-sm btn-success"
@@ -35,12 +38,12 @@
                     </a>
                 @endif
             @endif
-        </td>
-        <td class="text-center">
-            @include('dashboard.components.general.table-actions', [
-               'edit' => route('website.mentors.create',[$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id,'action'=>'edit']),
-               'delete' => route('dashboard.mentors.destroy', $record->id),
-           ])
+            @if($record->created_by==\Illuminate\Support\Facades\Auth::id())
+                @include('dashboard.components.general.table-actions', [
+                   'edit' => route('website.mentors.create',[$record->payment_process,\App\Enum\StepEnum::USER_INFO,$record->id,'action'=>'edit']),
+                   'delete' => route('dashboard.mentors.destroy', $record->id),
+               ])
+            @endif
         </td>
     </tr>
 @empty

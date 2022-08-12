@@ -1,5 +1,7 @@
 <?php
 return [
+    'create_plan'=>'Create Plan',
+    'view_payment'=>'View Payment',
     'edit_profile'=>'Edit Profile',
     'customer_created_success_message' => 'Your Account has been created successfully.',
     'unlimited' => 'unlimited',

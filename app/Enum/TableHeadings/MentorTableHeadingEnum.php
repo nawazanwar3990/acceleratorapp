@@ -12,7 +12,6 @@ class MentorTableHeadingEnum extends AbstractEnum
     public const NAME = 'name';
     public const PAYMENT_TYPE = 'payment_type';
     public const SERVICES = 'services';
-    public const SUBSCRIPTION_STATUS = 'subscription_status';
     public static function getValues(): array
     {
         return [];
@@ -24,8 +23,7 @@ class MentorTableHeadingEnum extends AbstractEnum
             self::EMAIL => __(sprintf('%s.%s', 'general', self::EMAIL)),
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
             self::PAYMENT_TYPE => __(sprintf('%s.%s', 'general', self::PAYMENT_TYPE)),
-            self::SERVICES => __(sprintf('%s.%s', 'general', self::SERVICES)),
-            self::SUBSCRIPTION_STATUS => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_STATUS)),
+            self::SERVICES => __(sprintf('%s.%s', 'general', self::SERVICES))
         ];
     }
 }
