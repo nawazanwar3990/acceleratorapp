@@ -7,10 +7,10 @@
                         <div class="pricing-header border-0">
                             <h4 class="text-center pt-3">{{ $package->name }}</h4>
                             <h2 class="text-center">
-                                <span class="price-sign">{{ \App\Services\GeneralService::get_default_currency() }}</span><br>
+                                <span class="price-sign fs-13">{{ \App\Services\GeneralService::get_default_currency() }}</span><br>
                                 {{ $package->price }}
                             </h2>
-                            <p class="uppercase mx-3">
+                            <p class="uppercase mx-3 text-center">
                                 <strong>{{ $package->duration_limit }}</strong>
                                 @if($package->duration_type->slug===\App\Enum\DurationEnum::Daily)
                                     Days
