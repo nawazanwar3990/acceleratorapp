@@ -18,25 +18,27 @@
                         @include('website.ba.components.step-heading')
                         {!! Form::open(['url' =>route('website.ba.store',[$type,$payment,$step,($model)?$model->id:null,$action?'action=edit':'']), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                         @include(sprintf('%s.%s', 'website.ba.components', $step))
-                        <div class="text-center mt-4">
-                            @if($step==\App\Enum\StepEnum::PACKAGES)
-                                <a onclick="apply_ba_subscription();"
-                                   class="btn btn-primary btn-rounded cs-btn text-white">
-                                    {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                </a>
-                            @else
-                                @if($action)
-                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
-                                        {{ trans('general.update') }} <i class="bx bx-arrow-to-right"></i>
-                                    </button>
-                                @else
-                                    <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
-                                        {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
-                                    </button>
-                                @endif
-                            @endif
-                        </div>
+                        <div style="margin-top: -30px!important;">
+                                <div class="text-center mt-4">
+                                    @if($step==\App\Enum\StepEnum::PACKAGES)
+                                        <a onclick="apply_ba_subscription();"
+                                           class="btn btn-primary btn-rounded cs-btn text-white">
+                                            {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                        </a>
+                                    @else
+                                        @if($action)
+                                            <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                                {{ trans('general.update') }} <i class="bx bx-arrow-to-right"></i>
+                                            </button>
+                                        @else
+                                            <button type="submit" class="btn btn-primary btn-rounded cs-btn text-white">
+                                                {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
+                                            </button>
+                                        @endif
+                                    @endif
+                                </div>
                         {!! Form::close() !!}
+                            </div>
                     </div>
                 </div>
             </div>

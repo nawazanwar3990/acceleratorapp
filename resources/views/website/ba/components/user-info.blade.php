@@ -74,6 +74,8 @@
     @endif
     @include('website.components.fields.security-questions')
 </div>
-@if($type=='individual')
-    @include('website.components.fields.extra-user-fields',['extra_field_for'=>'individual'])
-@endif
+<div style="margin-top: 4rem!important;">
+    @if($type=='individual')
+        @include('website.components.fields.extra-user-fields',['extra_field_for'=>'individual'])
+    @endif
+</div>
