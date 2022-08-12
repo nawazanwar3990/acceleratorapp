@@ -1,6 +1,6 @@
 <?php
 return [
-    'customer_created_success_message' => 'Your Account has been Created Successfully please check you email and activate account',
+    'customer_created_success_message' => 'Your Account has been created successfully.',
     'unlimited' => 'unlimited',
     'view_invoice' => 'View Invoice',
     'mentors' => 'Mentors',
@@ -1497,5 +1497,6 @@ return [
     'transaction' => 'Transaction',
     'latitude' => 'Latitude',
     'longitude' => 'Longitude',
-    'list' => 'List'
+    'list' => 'List',
+    'activate_your_account' => 'Please check your Email & activate your Account.'
 ];
