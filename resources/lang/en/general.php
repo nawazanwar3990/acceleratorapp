@@ -1,5 +1,6 @@
 <?php
 return [
+    'edit_profile'=>'Edit Profile',
     'customer_created_success_message' => 'Your Account has been Created Successfully please check you email and activate account',
     'unlimited' => 'unlimited',
     'view_invoice' => 'View Invoice',

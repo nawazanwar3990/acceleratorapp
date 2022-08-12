@@ -25,7 +25,7 @@
                                 <table class="table custom-datatable table-bordered mb-0">
                                     <tr>
                                         <th>{{__('general.package_name')}}</th>
-                                        <td>{{ $subscription->package->name }}</td>
+                                        <td>{{ str_replace('_',' ',$subscription->package->name) }}</td>
                                     </tr>
                                     <tr>
                                         <th>{{__('general.price')}}</th>
@@ -44,9 +44,29 @@
                         </div>
                     </div>
                     <div class="col-12 my-3 text-center">
-                       {{-- <a class="btn btn-info btn-sm" href="{{ route('website.ba.create',[$user->ba->type==\App\Enum\AcceleratorTypeEnum::COMPANY?\App\Enum\StepEnum::STEP1:\App\Enum\StepEnum::STEP2,$user->ba->id]) }}">
-                            Edit Profile
-                        </a>--}}
+                        @if($subscription_type)
+                            @php
+                                $model = \App\Services\GeneralService::get_models_by_role($subscription_type,$subscription_id);
+                            @endphp
+                            @if($subscription_type==\App\Enum\RoleEnum::BUSINESS_ACCELERATOR)
+                                <a class="btn btn-info btn-sm"
+                                   href="{{ route('website.ba.create',[$model->type,$model->payment_process,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
+                                    {{ trans('general.edit_profile') }}
+                                </a>
+                            @endif
+                            @if($subscription_type==\App\Enum\RoleEnum::FREELANCER)
+                                <a class="btn btn-info btn-sm"
+                                   href="{{ route('website.freelancers.create',[$model->type,$model->payment_process,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
+                                    {{ trans('general.edit_profile') }}
+                                </a>
+                            @endif
+                            @if($subscription_type==\App\Enum\RoleEnum::MENTOR)
+                                <a class="btn btn-info btn-sm"
+                                   href="{{ route('website.mentors.create',[$model->payment_process,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
+                                    {{ trans('general.edit_profile') }}
+                                </a>
+                            @endif
+                        @endif
                     </div>
                     <div class="col-12">
                         @if(\Illuminate\Support\Facades\Session::has('upload_receipt_success') OR $media)
@@ -60,6 +80,12 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                             </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong>Previously Uploaded Receipt</strong>
+                                    <img src="{{ asset($media->filename) }}" alt="" class="img img-fluid">
+                                </div>
+                            </div>
                         @else
                             {!! Form::open(['url' =>route('website.payment-snippet-store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                             {!! Form::hidden('subscription_id',$subscription->id) !!}
@@ -68,7 +94,7 @@
                                     <h4 class="fw-bold">{{__('general.submit_payment_receipt')}}</h4>
                                 </div>
                                 <div class="card-body">
-                                    {!!  Form::file('receipt',['id'=>'receipt','class'=>'form-control dropify']) !!}
+                                    {!!  Form::file('receipt',['id'=>'receipt','class'=>'form-control dropify','required']) !!}
                                 </div>
                             </div>
                             <div class="col-12 text-right justify-content-center" style="text-align: center;">
