@@ -46,7 +46,16 @@ class SubscriptionController extends Controller
     public function index(Request $request)
     {
         $this->authorize('view', Subscription::class);
-        $subscriptions = Subscription::orderBy('id', 'DESC');
+        $subscriptions = Subscription::with('receipt')
+            ->orderBy('id', 'DESC');
+        if (PersonService::hasRole(RoleEnum::SUPER_ADMIN)) {
+            $subscription_for = $request->query('subscription_for');
+            $subscriptions = $subscriptions->whereHas('subscribed', function ($query) use ($subscription_for) {
+                $query->whereHas('roles', function ($q) use ($subscription_for) {
+                    $q->where('slug', $subscription_for);
+                });
+            });
+        }
         if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $subscriptions = $subscriptions->where('created_by', Auth::id());
         }

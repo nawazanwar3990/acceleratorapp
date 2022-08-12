@@ -38,6 +38,14 @@ class RoleEnum extends AbstractEnum
             self::MENTOR => __('general.' . self::MENTOR),
         ];
     }
+    public static function getSubscriptionTypes(): array
+    {
+        return [
+            self::BUSINESS_ACCELERATOR => __('general.' . self::BUSINESS_ACCELERATOR),
+            self::FREELANCER => __('general.' . self::FREELANCER),
+            self::MENTOR => __('general.' . self::MENTOR),
+        ];
+    }
     public static function check_permission($user, $permission): bool
     {
         $permissions = self::get_query($user);

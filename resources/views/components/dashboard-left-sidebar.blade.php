@@ -6,6 +6,7 @@
                     @foreach(\App\Enum\LeftNavBar\AdminNavEnum::getTranslationKeys() as $key=>$value)
                         @if(in_array($key,[
                             \App\Enum\KeyWordEnum::PACKAGE,
+                             \App\Enum\KeyWordEnum::SUBSCRIPTION,
                             \App\Enum\KeyWordEnum::MENTOR,
                             \App\Enum\KeyWordEnum::FREELANCER,
                             \App\Enum\KeyWordEnum::SERVICE,
@@ -18,6 +19,9 @@
                                     {{ $value }}
                                 </a>
                                 <ul aria-expanded="false" class="collapse">
+                                    @if($key==\App\Enum\KeyWordEnum::SUBSCRIPTION)
+                                        @include('dashboard.components.left-nav-bar.subscript-types')
+                                    @endif
                                     @if($key==\App\Enum\KeyWordEnum::BA)
                                         @include('dashboard.components.left-nav-bar.accelerator-type')
                                     @endif
