@@ -27,10 +27,10 @@ class CustomerController extends Controller
         if ($request->createCustomer()) {
             if ($request->saveNew) {
                 return redirect()->route('website.index')
-                    ->with('success', __('general.customer_created_success_message'));
+                    ->with('success', __('general.customer_created_success_message')." ".__('general.activate_your_account'));
             } else {
                 return redirect()->route('website.index')
-                    ->with('success', __('general.customer_created_success_message'));
+                    ->with('success', __('general.customer_created_success_message')." ".__('general.activate_your_account'));
             }
         }
     }
