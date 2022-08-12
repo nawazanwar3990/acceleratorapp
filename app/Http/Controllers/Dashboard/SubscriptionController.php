@@ -183,8 +183,15 @@ class SubscriptionController extends Controller
 
     public function paymentReceipt(Request $request): Factory|View|Application
     {
-
-        $records = Subscription::with('receipt')->whereHas('receipt')->get();
+        $type = $request->input('type');
+        $records = Subscription::with('receipt')
+            ->whereHas('subscribed', function ($query) use ($type) {
+                $query->whereHas('roles', function ($q) use ($type) {
+                    $q->where('slug', $type);
+                });
+            })
+            ->whereHas('receipt')
+            ->get();
         $params = [
             'pageTitle' => __('general.receipts'),
             'records' => $records,

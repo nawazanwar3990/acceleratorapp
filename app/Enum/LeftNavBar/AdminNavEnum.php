@@ -85,7 +85,7 @@ class AdminNavEnum extends AbstractEnum
             self::DASHBOARD => route('dashboard.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR]),
             self::PACKAGE => route('dashboard.packages.index', ['type' => PackageTypeEnum::BUSINESS_ACCELERATOR]),
-            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index'),
+            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index',['type'=>RoleEnum::BUSINESS_ACCELERATOR]),
             self::BA => route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::MENTOR => route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),

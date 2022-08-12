@@ -5,8 +5,9 @@
                 @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
                     @foreach(\App\Enum\LeftNavBar\AdminNavEnum::getTranslationKeys() as $key=>$value)
                         @if(in_array($key,[
+                            \App\Enum\KeyWordEnum::PAYMENT_RECEIPT,
                             \App\Enum\KeyWordEnum::PACKAGE,
-                             \App\Enum\KeyWordEnum::SUBSCRIPTION,
+                            \App\Enum\KeyWordEnum::SUBSCRIPTION,
                             \App\Enum\KeyWordEnum::MENTOR,
                             \App\Enum\KeyWordEnum::FREELANCER,
                             \App\Enum\KeyWordEnum::SERVICE,
@@ -21,6 +22,9 @@
                                 <ul aria-expanded="false" class="collapse">
                                     @if($key==\App\Enum\KeyWordEnum::SUBSCRIPTION)
                                         @include('dashboard.components.left-nav-bar.subscript-types')
+                                    @endif
+                                    @if($key==\App\Enum\KeyWordEnum::PAYMENT_RECEIPT)
+                                        @include('dashboard.components.left-nav-bar.receipt-types')
                                     @endif
                                     @if($key==\App\Enum\KeyWordEnum::BA)
                                         @include('dashboard.components.left-nav-bar.accelerator-type')
