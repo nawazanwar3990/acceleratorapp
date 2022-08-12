@@ -1,7 +1,7 @@
 <div class="row pt-3 justify-content-center">
     <div class="row pricing-plan">
         @foreach(\App\Services\PackageService::list_packages($package_for) as $package)
-            <div class="col-md-4 col-xs-12 col-sm-4">
+            <div class="col-md-4 col-xs-12 col-sm-4 mb-3 pt-2">
                 <div class="pricing-box border">
                     <div class="pricing-body pb-0 border-0">
                         <div class="pricing-header border-0">
@@ -9,7 +9,7 @@
                             <h2 class="text-center"><span
                                     class="price-sign">{{ \App\Services\GeneralService::get_default_currency() }}</span>{{ $package->price }}
                             </h2>
-                            <p class="uppercase">
+                            <p class="uppercase mx-2">
                                 <strong>{{ $package->duration_limit }}</strong>
                                 @if($package->duration_type->slug===\App\Enum\DurationEnum::Daily)
                                     Days

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enum\KeyWordEnum;
+use App\Enum\PaymentTypeProcessEnum;
 use App\Models\Duration;
 use App\Models\Module;
 use App\Models\Package;
@@ -14,6 +15,7 @@ class PackageService
     {
         return Package::where('status', true)
             ->where('package_type', $type)
+            ->where('payment_process',PaymentTypeProcessEnum::DIRECT_PAYMENT)
             ->get();
     }
 
