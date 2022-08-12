@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="col-lg-8     col-md-8 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">All Floors of {{ $building->name }}</h5>
@@ -26,12 +26,12 @@
                                             <td>
                                                 @if(count($floor->offices)>0)
                                                     <div class="offices_holder">
-                                                        <table class="table custom-datatable table-bordered mt-2">
+                                                        <table class="table table-bordered mt-2 text-center">
                                                             <thead>
                                                             <tr>
                                                                 <th class="fs-13">{{__('general.office_name')}}</th>
                                                                 <th class="fs-13">{{__('general.sitting_capacity')}}</th>
-                                                                <th class="fs-13">{{__('general.action')}}</th>
+                                                                <th class="fs-13 text-center align-content-between" style="width: 7rem!important;">{{__('general.action')}}</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -43,7 +43,7 @@
                                                                     <td>
                                                                         {{ $office->sitting_capacity }}
                                                                     </td>
-                                                                    <td>
+                                                                    <td style="height: 8rem!important; width: 5rem!important;">
                                                                         @include('dashboard.working-spaces.components.office-action')
                                                                     </td>
                                                                 </tr>
