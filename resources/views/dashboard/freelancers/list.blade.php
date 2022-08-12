@@ -26,7 +26,7 @@
                     {{ $record->user->subscription->status}}
                 @else
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('website.pending-subscription',['subscribed_id'=>$record->user->id]) }}">
+                       href="{{ route('website.pending-subscription',['subscribed_id'=>$record->user->id,'subscription_id'=>$record->id,'subscription_type'=>\App\Enum\RoleEnum::FREELANCER]) }}">
                         {{ trans('general.view') }}
                     </a>
                 @endif

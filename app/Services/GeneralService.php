@@ -1312,4 +1312,13 @@ class GeneralService
             return Mentor::with('user')->find($id);
         }
     }
+    public static function get_models_by_role($role,$id){
+        if ($role==RoleEnum::FREELANCER){
+            return Freelancer::find($id);
+        }else if ($role==RoleEnum::BUSINESS_ACCELERATOR){
+            return  BA::find($id);
+        }else if ($role==RoleEnum::MENTOR){
+            return  Mentor::find($id);
+        }
+    }
 }

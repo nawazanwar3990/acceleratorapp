@@ -7,12 +7,14 @@ class SubscriptionStatusEnum extends AbstractEnum
 {
     public const PENDING = 'pending';
     public const APPROVED = 'approved';
+    public const DECLINED = 'declined';
 
     public static function getValues(): array
     {
         return array(
             self::PENDING,
-            self::APPROVED
+            self::APPROVED,
+            self::DECLINED,
         );
     }
 
@@ -20,7 +22,8 @@ class SubscriptionStatusEnum extends AbstractEnum
     {
         return array(
             self::PENDING => 'Pending',
-            self::APPROVED => 'Approved'
+            self::APPROVED => 'Approved',
+            self::DECLINED => 'Declined'
         );
     }
 }
