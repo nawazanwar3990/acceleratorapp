@@ -27,11 +27,11 @@
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('no_of_days' ,__('general.no_of_days') ,['class'=>'form-label']))   !!}
-                {!!  Form::text('no_of_days',null,['id'=>'no_of_days','class'=>'form-control']) !!}
+                {!!  Form::text('no_of_days',null,['id'=>'no_of_days','class'=>'form-control','onkeyup'=>'calculate_event_end_date(this);']) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('event_end_date' ,__('general.event_end_date') ,['class'=>'form-label']))   !!}
-                {!!  Form::text('event_end_date',null,['id'=>'event_end_date','class'=>'form-control datepicker']) !!}
+                {!!  Form::text('event_end_date',null,['id'=>'event_end_date','class'=>'form-control','readonly']) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('event_start_time' ,__('general.event_start_time') ,['class'=>'form-label']))   !!}
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-4 mb-3 d-none" id="per_person_cost_holder">
                 {!!  Html::decode(Form::label('per_person_cost' ,__('general.per_person_cost') ,['class'=>'form-label']))   !!}
-                {!!  Form::number('per_person_cost',null,['id'=>'per_person_cost','class'=>'form-control ','required']) !!}
+                {!!  Form::number('per_person_cost',null,['id'=>'per_person_cost','class'=>'form-control']) !!}
             </div>
             <div class="col-md-4  mb-3">
                 {!!  Html::decode(Form::label('event_social_media_url' ,__('general.event_social_media_url') ,['class'=>'form-label']))   !!}

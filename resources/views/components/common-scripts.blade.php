@@ -1,9 +1,4 @@
 <script>
-    Date.prototype.addDays = function (days) {
-        let date = new Date(this.valueOf());
-        date.setDate(date.getDate() + days);
-        return date;
-    }
 
     function toSlug(str) {
         str = str.replace(/^\s+|\s+$/g, ""); // trim
@@ -57,10 +52,21 @@
             .html(options);
     }
 
+    function getFormattedDate(date) {
+        let year = date.getFullYear();
+        let month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+        let day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        return month + "/" + day + "/" + year;
+    }
+
     function calculate_event_end_date(cElement) {
         let start_date = $("#event_start_date").val();
-        let value = new Date($(cElement).val());
-        let end_date = new Date(start_date);
+        let days = $(cElement).val();
+        let dt = new Date(start_date);
+        dt.setDate(dt.getDate() + parseInt(days));
+        $("#event_end_date").val(getFormattedDate(dt));
     }
 
     function changeEventSubType(cElement) {
