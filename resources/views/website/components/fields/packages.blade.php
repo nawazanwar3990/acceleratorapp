@@ -5,11 +5,12 @@
                 <div class="pricing-box border">
                     <div class="pricing-body pb-0 border-0">
                         <div class="pricing-header border-0">
-                            <h4 class="text-center">{{ $package->name }}</h4>
-                            <h2 class="text-center"><span
-                                    class="price-sign">{{ \App\Services\GeneralService::get_default_currency() }}</span>{{ $package->price }}
+                            <h4 class="text-center pt-3">{{ $package->name }}</h4>
+                            <h2 class="text-center">
+                                <span class="price-sign">{{ \App\Services\GeneralService::get_default_currency() }}</span><br>
+                                {{ $package->price }}
                             </h2>
-                            <p class="uppercase mx-2">
+                            <p class="uppercase mx-3">
                                 <strong>{{ $package->duration_limit }}</strong>
                                 @if($package->duration_type->slug===\App\Enum\DurationEnum::Daily)
                                     Days
