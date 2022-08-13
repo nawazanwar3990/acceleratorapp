@@ -105,7 +105,7 @@
                             'type': '{{ \App\Enum\SubscriptionStatusEnum::APPROVED }}'
                         }
                         $.ajax({
-                            url: "{{ route('dashboard.subscriptions.store') }}",
+                            url: "{{ route('dashboard.payments.store') }}",
                             method: 'POST',
                             data: data,
                             success: function (response) {
