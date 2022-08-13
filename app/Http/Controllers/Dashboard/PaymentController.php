@@ -39,7 +39,7 @@ class PaymentController extends Controller
      */
     public function index(Request $request): Factory|View|Application
     {
-      //  $this->authorize('view', Payment::class);
+        //  $this->authorize('view', Payment::class);
         $id = $request->query('id');
         $records = Payment::with('subscribed', 'subscription')
             ->where('subscription_id', $id)
@@ -56,6 +56,7 @@ class PaymentController extends Controller
         $payment_type = $request->input('payment_type');
         $subscription_id = $request->input('subscription_id');
         $transaction_id = $request->input('transaction_id');
+        $subscription_type = $request->input('subscription_type');
 
         $subscription = Subscription::find($subscription_id);
         $user = User::find($subscription->subscribed_id);
@@ -70,13 +71,14 @@ class PaymentController extends Controller
             $payment->price = $subscription->price;
 
             if ($payment->save()) {
-                $type  = $request->input('type');
-                if ($type==SubscriptionStatusEnum::APPROVED){
-                   $subscription->status = SubscriptionStatusEnum::APPROVED;
-                   $subscription->save();
+                $type = $request->input('type');
+                if ($type == SubscriptionStatusEnum::APPROVED) {
+                    $subscription->status = SubscriptionStatusEnum::APPROVED;
+                    $subscription->save();
                     /*$user->notify(new ApprovedSubscription());*/
                     return response()->json([
-                        'status' => true
+                        'status' => true,
+                        'route' => route('dashboard.subscriptions.index', ['id' => $subscription_id, 'type' => $subscription_type])
                     ]);
                 }
 
