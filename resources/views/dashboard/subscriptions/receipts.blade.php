@@ -26,10 +26,17 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-sm btn-info  mx-1"
-                                       onclick="approved_subscription('{{ $record->id}}','{{ $record->subscribed->id }}');">
-                                        {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
-                                    </a>
+                                    @if($record->status==\App\Enum\SubscriptionStatusEnum::PENDING)
+                                        <a class="btn btn-sm btn-info  mx-1"
+                                           onclick="approved_subscription('{{ $record->id}}','{{ $record->subscribed->id }}');">
+                                            {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
+                                        </a>
+                                    @else
+                                        <a class="btn btn-xs btn-warning mx-1"
+                                           href="{{ route('dashboard.subscription.index',['type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE,'id'=>$record->id]) }}">
+                                            {{ trans('general.view_subscription') }}
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
