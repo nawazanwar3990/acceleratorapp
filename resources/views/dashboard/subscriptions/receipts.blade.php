@@ -101,7 +101,8 @@
                             'transaction_id': result.value.transaction_id,
                             'subscription_id': result.value.subscription_id,
                             'subscription_type': '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}',
-                            'subscribed_id': result.value.subscribed_id
+                            'subscribed_id': result.value.subscribed_id,
+                            'type': '{{ \App\Enum\SubscriptionStatusEnum::APPROVED }}'
                         }
                         $.ajax({
                             url: "{{ route('dashboard.subscriptions.store') }}",

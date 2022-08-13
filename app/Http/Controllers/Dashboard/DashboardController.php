@@ -39,6 +39,8 @@ class DashboardController extends Controller
             return view('dashboard.admin-dashboard', $params);
         } else if (PersonService::hasRole(RoleEnum::CUSTOMER)) {
             return view('dashboard.customer-dashboard', $params);
+        }else if (PersonService::hasRole(RoleEnum::MENTOR)) {
+            return view('dashboard.mentor-dashboard', $params);
         }
     }
 }
