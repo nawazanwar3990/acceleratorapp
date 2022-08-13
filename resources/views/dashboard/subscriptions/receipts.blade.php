@@ -20,13 +20,13 @@
                                     @endisset
                                 </td>
                                 <td>
-                                    <a class="btn btn-xs  mx-1" target="_blank"
+                                    <a class="btn btn-sm btn-info  mx-1" target="_blank"
                                        href="{{ asset($record->receipt->filename) }}">
                                         {{ trans('general.view') }}
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-xs  mx-1" {{--onclick="approved_subscription('{{ $record->subscription->id }}');"--}}>
+                                    <a class="btn btn-sm btn-info  mx-1" {{--onclick="approved_subscription('{{ $record->subscription->id }}');"--}}>
                                         {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
                                     </a>
                                 </td>
