@@ -33,7 +33,7 @@
                                         </a>
                                     @else
                                         <a class="btn btn-xs btn-warning mx-1"
-                                           href="{{ route('dashboard.subscription.index',['type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE,'id'=>$record->id]) }}">
+                                           href="{{ route('dashboard.subscriptions.index',['type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE,'id'=>$record->id]) }}">
                                             {{ trans('general.view_subscription') }}
                                         </a>
                                     @endif
