@@ -6,25 +6,27 @@ namespace App\Enum;
 
 class MeetingArrangedForEnum extends AbstractEnum
 {
-    public const PUBLIC = KeyWordEnum::PUBLIC;
-    public const INDIVIDUAL =KeyWordEnum::INDIVIDUAL;
-    public const COMPANY = KeyWordEnum::COMPANY;
-
+    public const REGISTERED_CLIENT ='registered_client';
+    public const NEW_CLIENT ='new_client';
+    public const REGISTERED_COMPANY = 'registered_company';
+    public const NEW_COMPANY = 'new_company';
     public static function getValues(): array
     {
         return array(
-            self::PUBLIC,
-            self::INDIVIDUAL,
-            self::COMPANY
+            self::REGISTERED_CLIENT,
+            self::NEW_CLIENT,
+            self::REGISTERED_COMPANY,
+            self::NEW_COMPANY
         );
     }
 
     public static function getTranslationKeys(): array
     {
         return array(
-            self::PUBLIC => __('general.' . self::PUBLIC),
-            self::INDIVIDUAL => __('general.' . self::INDIVIDUAL),
-            self::COMPANY => __('general.' . self::COMPANY)
+            self::REGISTERED_CLIENT => __('general.' . self::REGISTERED_CLIENT),
+            self::NEW_CLIENT => __('general.' . self::NEW_CLIENT),
+            self::REGISTERED_COMPANY => __('general.' . self::REGISTERED_COMPANY),
+            self::NEW_COMPANY => __('general.' . self::NEW_COMPANY)
         );
     }
 }

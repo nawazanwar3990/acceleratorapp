@@ -1,8 +1,14 @@
 <?php
 return [
-    'create_plan'=>'Create Plan',
-    'view_payment'=>'View Payment',
-    'edit_profile'=>'Edit Profile',
+    'registered_client' => "Registered Client",
+    'new_client' => 'New Client',
+    'registered_company' => 'Registered Company',
+    'new_company' => 'New Company',
+
+    'meeting_pass' => 'Meeting Pass',
+    'create_plan' => 'Create Plan',
+    'view_payment' => 'View Payment',
+    'edit_profile' => 'Edit Profile',
     'customer_created_success_message' => 'Your Account has been created successfully.',
     'unlimited' => 'unlimited',
     'view_invoice' => 'View Invoice',
