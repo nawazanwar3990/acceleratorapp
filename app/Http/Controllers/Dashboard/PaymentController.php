@@ -23,6 +23,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use function __;
 use function response;
 use function view;
@@ -51,7 +52,7 @@ class PaymentController extends Controller
         return view('dashboard.payments.index', $params);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $payment_type = $request->input('payment_type');
         $subscription_id = $request->input('subscription_id');
@@ -76,6 +77,7 @@ class PaymentController extends Controller
                     $subscription->status = SubscriptionStatusEnum::APPROVED;
                     $subscription->save();
                     /*$user->notify(new ApprovedSubscription());*/
+                    Session::put('success', 'Successfully Approved Subscription');
                     return response()->json([
                         'status' => true,
                         'route' => route('dashboard.subscriptions.index', [
@@ -85,7 +87,6 @@ class PaymentController extends Controller
                         ])
                     ]);
                 }
-
                 $subscription_type = $subscription->subscription_type;
                 $duration_type = DurationEnum::MONTHLY;
                 $limit = 1;
@@ -101,10 +102,16 @@ class PaymentController extends Controller
                 $from_date = Carbon::now();
                 $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
                 $subscription->save();
+                Session::put('success', 'Successfully Renew Subscription');
+                return response()->json([
+                    'status' => true,
+                    'route' => route('dashboard.subscriptions.index', [
+                        'subscription_for' => $subscribed->roles[0]->slug,
+                        'id' => $subscription_id,
+                        'type' => $subscription_type
+                    ])
+                ]);
             }
         }
-        return response()->json([
-            'status' => true
-        ]);
     }
 }
