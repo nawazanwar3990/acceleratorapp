@@ -63,7 +63,9 @@
                                 </td>
                                 <td>
                                     @php
-                                        $is_renew = \Illuminate\Support\Facades\DB::table(\App\Enum\TableEnum::SUBSCRIPTION_LOGS)->where('subscription_id',$subscription->id)->count();
+                                        $is_renew = \Illuminate\Support\Facades\DB::table(\App\Enum\TableEnum::PAYMENTS)
+                                        ->where('subscription_id',$subscription->id)
+                                        ->count();
                                     @endphp
                                     @if($is_renew>1)
                                         {{ $subscription->renewal_date }}
