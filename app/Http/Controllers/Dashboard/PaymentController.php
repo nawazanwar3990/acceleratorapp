@@ -69,7 +69,7 @@ class PaymentController extends Controller
             $payment->transaction_id = $transaction_id;
             $payment->payment_type = $payment_type;
             $payment->price = $subscription->price;
-
+            $subscribed = User::find($subscription_id);
             if ($payment->save()) {
                 $type = $request->input('type');
                 if ($type == SubscriptionStatusEnum::APPROVED) {
@@ -78,7 +78,11 @@ class PaymentController extends Controller
                     /*$user->notify(new ApprovedSubscription());*/
                     return response()->json([
                         'status' => true,
-                        'route' => route('dashboard.subscriptions.index', ['id' => $subscription_id, 'type' => $subscription_type])
+                        'route' => route('dashboard.subscriptions.index', [
+                            'subscription_for' => $subscribed->roles[0]->slug,
+                            'id' => $subscription_id,
+                            'type' => $subscription_type
+                        ])
                     ]);
                 }
 
