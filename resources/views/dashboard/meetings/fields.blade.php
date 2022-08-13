@@ -30,6 +30,10 @@
                 {!!  Form::text('meeting_end_time',null,['id'=>'meeting_end_time','class'=>'form-control timepicker']) !!}
             </div>
             <div class="col-md-4 mb-3">
+                {!!  Html::decode(Form::label('meeting_organized_by' ,__('general.organized_by') ,['class'=>'form-label']))   !!}
+                {!!  Form::text('meeting_organized_by',null,['id'=>'meeting_organized_by','class'=>'form-control']) !!}
+            </div>
+            <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('has_meeting_pass' ,__('general.meeting_pass') ,['class'=>'form-label']))   !!}
                 {!!  Form::select('has_meeting_pass',\App\Services\GeneralService::yesOrNoForDropdown(),'no',['id'=>'has_meeting_pass','class'=>'form-control','onchange'=>'changeMeetingPass(this);']) !!}
             </div>

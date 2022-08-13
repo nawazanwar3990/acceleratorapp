@@ -4,6 +4,7 @@ return [
     'new_client' => 'New Client',
     'registered_company' => 'Registered Company',
     'new_company' => 'New Company',
+    'organized_by' => 'Organized By',
 
     'meeting_pass' => 'Meeting Pass',
     'create_plan' => 'Create Plan',
