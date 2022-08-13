@@ -58,7 +58,7 @@ class PageController extends Controller
             Session::put('info', "Your Receipt has Received By Super admin and let you know after approved your Subscription");
         } else {
             if (\auth()->guest()){
-                Session::put('info', $user->payment_token_number . "  is your payment code please Summit your payment receipt for approved you Subscription");
+                Session::put('info', $user->payment_token_number . "  is your payment code. Please submit your payment receipt for approved you subscription.");
             }
             $media=null;
         }

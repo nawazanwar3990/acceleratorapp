@@ -96,7 +96,7 @@ class MentorController extends Controller
                     } else {
                         return redirect()
                             ->route('website.index')
-                            ->with('info', 'Your request is successfully submitted,we will send you a package on the basic of your selected services');
+                            ->with('info', 'Your request is successfully submitted. We will send you a package on the basic of your selected services');
                     }
                 } else {
                     return redirect()->back()->withInput()->with('error', 'First Choose Services');
