@@ -26,8 +26,8 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-xs  mx-1" onclick="approved_subscription('{{ $record->subscription->id }}');">
-                                        {{ trans('general.approved') }}
+                                    <a class="btn btn-xs  mx-1" {{--onclick="approved_subscription('{{ $record->subscription->id }}');"--}}>
+                                        {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
                                     </a>
                                 </td>
                             </tr>
