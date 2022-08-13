@@ -13,9 +13,7 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::MEETINGS, function (Blueprint $table) {
             $table->id();
-
-            $table->enum('meeting_arranged_for', MeetingArrangedForEnum::getValues())
-                ->default(MeetingArrangedForEnum::INDIVIDUAL);
+            $table->string('meeting_arranged_for')->nullable();
             $table->enum('meeting_type', MeetingTypeEnum::getValues())
                 ->default(MeetingTypeEnum::ONLINE);
             $table->string('meeting_held_date')->nullable();
