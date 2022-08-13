@@ -190,8 +190,12 @@ class SubscriptionController extends Controller
                     $q->where('slug', $type);
                 });
             })
-            ->whereHas('receipt')
-            ->get();
+            ->whereHas('receipt');
+        if ($request->has('id')) {
+            $id = $request->query('id');
+            $records = $records->where('id', $id);
+        }
+        $records = $records->get();
         $params = [
             'pageTitle' => __('general.receipts'),
             'records' => $records,
