@@ -2,7 +2,7 @@
 return [
 
     'sender' => 'Sender',
-
+    'view_receipt' => 'View Receipt',
     'registered_client' => "Registered Client",
     'new_client' => 'New Client',
     'registered_company' => 'Registered Company',
