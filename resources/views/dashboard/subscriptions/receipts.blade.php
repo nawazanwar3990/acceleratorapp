@@ -11,24 +11,19 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>
+                                    @isset($record->subscribed)
+                                        {{ $record->subscribed->getFullName()  }}
+                                        <br>
+                                        <strong>Role:</strong> :  {{ $record->subscribed->roles[0]->name  }}
+                                    @else
+                                        --
+                                    @endisset
+                                </td>
+                                <td>
                                     <a class="btn btn-warning mx-1" target="_blank"
                                        href="{{ asset($record->receipt->filename) }}">
                                         {{ trans('general.view') }}
                                     </a>
-                                </td>
-                                <td>
-                                    @isset($record->subscribed)
-                                        {{ $record->subscribed->getFullName()  }}
-                                    @else
-                                        --
-                                    @endisset
-                                </td>
-                                <td>
-                                    @isset($record->subscribed)
-                                        {{ $record->subscribed->roles[0]->name  }}
-                                    @else
-                                        --
-                                    @endisset
                                 </td>
                                 <td class="text-center">
                                     <a class="btn btn-warning mx-1"

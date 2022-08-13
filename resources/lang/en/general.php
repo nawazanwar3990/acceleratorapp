@@ -1,5 +1,8 @@
 <?php
 return [
+
+    'sender' => 'Sender',
+
     'registered_client' => "Registered Client",
     'new_client' => 'New Client',
     'registered_company' => 'Registered Company',
