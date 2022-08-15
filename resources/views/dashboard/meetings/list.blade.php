@@ -51,11 +51,11 @@
         </td>
         <td>
             <p class="fs-13 mb-0"><strong>{{ trans('general.room_number') }}
-                    :</strong> {{ $record->meeting_organized_location }}</p>
+                    :</strong> {{ $record->office->name??null }}</p>
             <p class="fs-13 mb-0"><strong>{{ trans('general.room_type') }}
-                    :</strong> {{ $record->meeting_organized_location_type }}</p>
+                    :</strong> {{ $record->office->type?$record->office->type->name:'' }}</p>
             <p class="fs-13 mb-0"><strong>{{ trans('general.sitting_capacity') }}
-                    :</strong> {{ $record->meeting_organized_location_capacity }}</p>
+                    :</strong> {{ $record->office->sitting_capacity }}</p>
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [

@@ -99,7 +99,7 @@
             </div>
             <div class="card-body">
                 @if(count(\App\Services\OfficeService::getAvailableOffices())>0)
-                    <table class="table custom-datatable table-bordered table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th scope="col">{{ trans('general.location') }}</th>

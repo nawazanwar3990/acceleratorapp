@@ -47,6 +47,11 @@ class Meeting extends Model
         return $this->hasMany(Media::class, 'record_id','id')
             ->where('record_type',MediaTypeEnum::MEETING_IMAGE);
     }
+    public function office(): BelongsTo
+    {
+        return $this->belongsTo(Office::class, 'meeting_organized_location');
+    }
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
