@@ -1,7 +1,7 @@
 <?php
 return [
     'room_name' => 'Room Name',
-    'room_id' => 'Room Id',
+    'room_number' => 'Room Number',
     'meeting_location' => 'Meeting Location',
     'client_id' => 'Client Id',
     'meeting_arranger_for' => 'Meeting Arranged For',

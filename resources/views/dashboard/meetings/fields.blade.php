@@ -88,12 +88,12 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('room_id' ,__('general.room_id') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('room_id',null,['id'=>'room_id','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('room_number' ,__('general.room_number') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('room_number',null,['id'=>'room_number','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('room_name' ,__('general.room_name') ,['class'=>'form-label']))   !!}
-                        {!!  Form::text('room_name',null,['id'=>'room_name','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('room_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
+                        {!!  Form::select('room_type',\App\Services\OfficeService::office_types_dropdown(),2,['id'=>'room_type','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         {!!  Html::decode(Form::label('room_sitting_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
