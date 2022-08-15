@@ -16,14 +16,19 @@ class Meeting extends Model
 
     protected $table = TableEnum::MEETINGS;
     protected $fillable = [
-        'meeting_parent_type',
-        'meeting_parent_sub_type',
-        'meeting_arranged_for',
         'meeting_type',
+        'meeting_sub_type',
+        'meeting_name',
+        'meeting_mode',
+        'meeting_description',
         'meeting_held_date',
         'meeting_start_time',
-        'meeting_name',
-        'meeting_description',
+        'meeting_end_time',
+        'has_meeting_pass',
+        'meeting_pass',
+        'meeting_organized_by',
+        'meeting_organized_for',
+        'meeting_organized_location',
         'created_by',
         'updated_by',
         'deleted_by'

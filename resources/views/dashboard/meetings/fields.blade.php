@@ -2,8 +2,8 @@
     <div class="col-md-8">
         <div class="row">
             <div class="col-md-4 mb-3 meeting_type_holder">
-                {!!  Html::decode(Form::label('meeting_parent_type' ,__('general.meeting_type') ,['class'=>'form-label']))   !!}
-                <select name="meeting_parent_type" id="meeting_parent_type" class="form-control"
+                {!!  Html::decode(Form::label('meeting_type' ,__('general.meeting_type') ,['class'=>'form-label']))   !!}
+                <select name="meeting_type" id="meeting_parent_type" class="form-control"
                         onchange="applyMeetingType(this);">
                     <option value="" selected>{{ trans('general.select') }}</option>
                     @foreach (\App\Services\MeetingService::getMeetingTypes() as $meetingType)
@@ -16,20 +16,20 @@
                 </select>
             </div>
             <div class="col-md-4 mb-3 meeting_child_type_holder">
-                {!!  Html::decode(Form::label('meeting_parent_sub_type' ,__('general.meeting_sub_type') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('meeting_parent_sub_type',array(),null,['id'=>'meeting_parent_sub_type','class'=>'form-control ','required','placeholder'=>trans('general.select'),'onchange'=>'changeMeetingSubType(this);']) !!}
+                {!!  Html::decode(Form::label('meeting_sub_type' ,__('general.meeting_sub_type') ,['class'=>'form-label']))   !!}
+                {!!  Form::select('meeting_sub_type',array(),null,['id'=>'meeting_parent_sub_type','class'=>'form-control ','required','placeholder'=>trans('general.select'),'onchange'=>'changeMeetingSubType(this);']) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('meeting_name' ,__('general.title') ,['class'=>'form-label']))   !!}
                 {!!  Form::text('meeting_name',null,['id'=>'meeting_name','class'=>'form-control']) !!}
             </div>
             <div class="col-md-4 mb-3">
-                {!!  Html::decode(Form::label('meeting_type' ,__('general.mode') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('meeting_type',\App\Enum\MeetingTypeEnum::getTranslationKeys(),null,['id'=>'meeting_type','class'=>'form-control ','required','placeholder'=>trans('general.select'),'onchange'=>'manage_meeting_type(this);']) !!}
+                {!!  Html::decode(Form::label('meeting_mode' ,__('general.mode') ,['class'=>'form-label']))   !!}
+                {!!  Form::select('meeting_mode',\App\Enum\MeetingTypeEnum::getTranslationKeys(),null,['id'=>'meeting_type','class'=>'form-control ','required','placeholder'=>trans('general.select'),'onchange'=>'manage_meeting_type(this);']) !!}
             </div>
             <div class="col-md-4 mb-3 d-none" id="meeting_type_description_holder">
-                {!!  Html::decode(Form::label('description' ,__('general.description') ,['class'=>'form-label']))   !!}
-                {!!  Form::text('description',null,['id'=>'description','class'=>'form-control']) !!}
+                {!!  Html::decode(Form::label('meeting_description' ,__('general.description') ,['class'=>'form-label']))   !!}
+                {!!  Form::text('meeting_description',null,['id'=>'description','class'=>'form-control']) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('meeting_held_date' ,__('general.held_date') ,['class'=>'form-label']))   !!}
@@ -63,8 +63,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                        {!!  Html::decode(Form::label('client_id' ,__('general.client_id') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('client_id',null,['id'=>'client_id','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_for' ,__('general.client_id') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('meeting_organized_for',null,['id'=>'meeting_organized_for','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
                         {!!  Html::decode(Form::label('client_name' ,__('general.name') ,['class'=>'form-label']))   !!}
@@ -92,8 +92,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('room_number' ,__('general.room_number') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('room_number',null,['id'=>'room_number','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_location' ,__('general.room_number') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         {!!  Html::decode(Form::label('room_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
