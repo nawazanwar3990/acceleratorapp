@@ -1,5 +1,7 @@
 <?php
 return [
+    'enter_value'=>'Enter Value',
+    'other_meeting_type'=>'Other Meeting Type',
     'meeting_sub_type' => 'Sub Type',
     'mode' => 'mode',
     'sender' => 'Sender',

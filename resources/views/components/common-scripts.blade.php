@@ -51,21 +51,39 @@
             .empty()
             .html(options);
     }
+
     function applyMeetingType(cElement) {
-        let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
-        let options = "<option value='' selected><?php echo e(trans('general.select')); ?></option>";
-        if (sub_types.length > 0) {
-            $.each(sub_types, function (inner_key, inner_value) {
-                options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
+        let value = JSON.parse($(cElement).find('option:selected').val();
+        if (value === 'other') {
+            Swal.fire({
+                title: '{{ trans('general.other_meeting_type') }}',
+                input: 'text',
+                inputPlaceholder: '{{ trans('general.enter_value') }}',
+            }).then(({value}) => {
+                let holder = $("input[name=meeting_parent_type]");
+                let slug = toSlug(value);
+                let html = "<option value=" + slug + ">" + value + "</option>";
+                holder.append(html);
+                holder.val(slug);
             });
+        } else {
+            let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
+            let options = "<option value='' selected><?php echo e(trans('general.select')); ?></option>";
+            if (sub_types.length > 0) {
+                $.each(sub_types, function (inner_key, inner_value) {
+                    options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
+                });
+            }
+            $(cElement)
+                .closest('.meeting_type_holder')
+                .next('.meeting_child_type_holder')
+                .find('select')
+                .empty()
+                .html(options);
         }
-        $(cElement)
-            .closest('.meeting_type_holder')
-            .next('.meeting_child_type_holder')
-            .find('select')
-            .empty()
-            .html(options);
+
     }
+
     function getFormattedDate(date) {
         let year = date.getFullYear();
         let month = (1 + date.getMonth()).toString();

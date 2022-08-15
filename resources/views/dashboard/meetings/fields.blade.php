@@ -11,6 +11,7 @@
                             {{ $meetingType->name }}
                         </option>
                     @endforeach
+                    <option value="other">{{ trans('general.other') }}</option>
                 </select>
             </div>
             <div class="col-md-4 mb-3 meeting_child_type_holder">
