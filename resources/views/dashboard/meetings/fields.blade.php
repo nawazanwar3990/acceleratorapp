@@ -68,16 +68,16 @@
                         {!!  Form::number('meeting_organized_for',null,['id'=>'meeting_organized_for','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                        {!!  Html::decode(Form::label('client_name' ,__('general.name') ,['class'=>'form-label']))   !!}
-                        {!!  Form::text('client_name',null,['id'=>'client_name','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_for_name' ,__('general.name') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('meeting_organized_for_name',null,['id'=>'meeting_organized_for_name','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                        {!!  Html::decode(Form::label('client_contact' ,__('general.contact') ,['class'=>'form-label']))   !!}
-                        {!!  Form::text('client_contact',null,['id'=>'client_contact','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_for_contact' ,__('general.contact') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('meeting_organized_for_contact',null,['id'=>'meeting_organized_for_contact','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                        {!!  Html::decode(Form::label('client_email' ,__('general.email') ,['class'=>'form-label']))   !!}
-                        {!!  Form::email('client_email',null,['id'=>'client_email','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_for_email' ,__('general.email') ,['class'=>'form-label']))   !!}
+                        {!!  Form::email('meeting_organized_for_email',null,['id'=>'meeting_organized_for_email','class'=>'form-control']) !!}
                     </div>
                 </div>
             </div>
@@ -97,12 +97,12 @@
                         {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('room_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
-                        {!!  Form::select('room_type',\App\Services\OfficeService::office_types_dropdown(),2,['id'=>'room_type','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
+                        {!!  Form::select('meeting_organized_location_type',\App\Services\OfficeService::office_types_dropdown(),2,['id'=>'meeting_organized_location_type','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('room_sitting_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
-                        {!!  Form::text('room_sitting_capacity',null,['id'=>'room_sitting_capacity','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('meeting_organized_location_capacity',null,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
                     </div>
                 </div>
             </div>

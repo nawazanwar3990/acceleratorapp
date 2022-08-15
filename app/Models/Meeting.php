@@ -28,7 +28,12 @@ class Meeting extends Model
         'meeting_pass',
         'meeting_organized_by',
         'meeting_organized_for',
+        'meeting_organized_for_name'.
+        'meeting_organized_for_contact',
+        'meeting_organized_for_email',
         'meeting_organized_location',
+        'meeting_organized_location_type',
+        'meeting_organized_location_capacity',
         'created_by',
         'updated_by',
         'deleted_by'

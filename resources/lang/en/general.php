@@ -1,6 +1,9 @@
 <?php
 return [
-    'room_type'=>"Room Type",
+    'meeting_end_time' => 'End Time',
+    'meeting_organized_for' => 'Organized For',
+    'meeting_organized_location' => 'Organized Location',
+    'room_type' => "Room Type",
     'room_name' => 'Room Name',
     'room_number' => 'Room Number',
     'meeting_location' => 'Meeting Location',

@@ -23,9 +23,18 @@ return new class extends Migration {
             $table->string('meeting_end_time')->nullable();
             $table->string('has_meeting_pass')->nullable();
             $table->json('meeting_pass')->nullable();
+
             $table->string('meeting_organized_by')->nullable();
+
             $table->string('meeting_organized_for')->nullable();
+            $table->string('meeting_organized_for_name')->nullable();
+            $table->string('meeting_organized_for_contact')->nullable();
+            $table->string('meeting_organized_for_email')->nullable();
+
             $table->string('meeting_organized_location')->nullable();
+            $table->string('meeting_organized_location_type')->nullable();
+            $table->string('meeting_organized_location_capacity')->nullable();
+
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
