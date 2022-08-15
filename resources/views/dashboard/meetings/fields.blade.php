@@ -99,31 +99,30 @@
             </div>
             <div class="card-body">
                 @if(count(\App\Services\OfficeService::getAvailableOffices())>0)
-                    <div class="row">
-                        <div class="col-md-4 col-lg-4 col-xl-4">
-                            {!!  Html::decode(Form::label('meeting_organized_location' ,__('general.room_number') ,['class'=>'form-label']))   !!}
-                            <div class="input-group">
-                                {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
-                                <div class="input-group-append">
-                                <span class="input-group-text p-2 bg-info" id="basic-addon2">
-                                    <i class="bx bx-search"></i>
-                                </span>
-                                </div>
+                    @foreach(\App\Services\OfficeService::getAvailableOffices() as $office)
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
+                                {!!  Html::decode(Form::label('meeting_number' ,__('general.room_number') ,['class'=>'form-label']))   !!}
+                                {!!  Form::number('meeting_number',$office->number,['id'=>'meeting_number','class'=>'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
+                                {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
+                                {!!  Form::select('meeting_organized_location_type',\App\Services\OfficeService::office_types_dropdown(),$office->type_id,['id'=>'meeting_organized_location_type','class'=>'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
+                                {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
+                                {!!  Form::text('meeting_organized_location_capacity',$office->sitting_capacity,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
+                                {!! Form::radio('meeting_organized_location',$office->number,false) !!}
                             </div>
                         </div>
-                        <div class="col-md-4 col-lg-4 col-xl-4">
-                            {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
-                            {!!  Form::select('meeting_organized_location_type',\App\Services\OfficeService::office_types_dropdown(),2,['id'=>'meeting_organized_location_type','class'=>'form-control']) !!}
-                        </div>
-                        <div class="col-md-4 col-lg-4 col-xl-4">
-                            {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
-                            {!!  Form::text('meeting_organized_location_capacity',null,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
-                        </div>
-                    </div>
+                    @endforeach
                 @else
                     <div class="row">
                         <div class="col-12 text-center">
-                            <a class="btn btn-info" href="{{ route('dashboard.offices.create') }}">{{ trans('general.new_office') }}</a>
+                            <a class="btn btn-info"
+                               href="{{ route('dashboard.offices.create') }}">{{ trans('general.new_office') }}</a>
                         </div>
                     </div>
                 @endif
