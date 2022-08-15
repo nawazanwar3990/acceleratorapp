@@ -99,35 +99,38 @@
             </div>
             <div class="card-body">
                 @if(count(\App\Services\OfficeService::getAvailableOffices())>0)
-                    @foreach(\App\Services\OfficeService::getAvailableOffices() as $office)
-                        <div class="row">
-                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
-                                {!!  Html::decode(Form::label('meeting_number' ,__('general.room_number') ,['class'=>'form-label']))   !!}
-                                {!!  Form::number('meeting_number',$office->number,['id'=>'meeting_number','class'=>'form-control','readonly']) !!}
-                            </div>
-                            <div class="col-md-4 col-lg-4 col-xl-4 align-self-center">
-                                {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
-                                {!!  Form::text('meeting_organized_location_type',$office->type->name??null,['id'=>'meeting_organized_location_type','class'=>'form-control','readonly']) !!}
-                            </div>
-                            <div class="col-md-4 col-lg-4 col-xl-4 align-self-center">
-                                {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
-                                {!!  Form::text('meeting_organized_location_capacity',$office->sitting_capacity,['id'=>'meeting_organized_location_capacity','class'=>'form-control','readonly']) !!}
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 align-self-center text-center pt-4">
-                                <div class="form-check form-switch">
-                                    {!! Form::radio('meeting_organized_location',$office->number,false,['class'=>'form-check-input align-self-center']) !!}
-                                    <label class="form-check-label"></label>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <a class="btn btn-info"
-                               href="{{ route('dashboard.offices.create') }}">{{ trans('general.new_office') }}</a>
-                        </div>
-                    </div>
+                    <table class="table custom-datatable table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">{{ trans('general.location') }}</th>
+                            <th scope="col">{{ trans('general.office_name') }}</th>
+                            <th scope="col">{{ trans('general.sitting_capacity') }}</th>
+                            <th class="text-center">{{ trans('general.action') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach(\App\Services\OfficeService::getAvailableOffices() as $office)
+                            <tr>
+                                <td>
+                                    @if($office->building  AND $office->floor)
+                                        <strong>{{ $office->floor->name }}</strong> of
+                                        <strong>{{ $office->building->name }}</strong>
+                                    @elseif($office->building  AND !$office->floor)
+                                        {{ $office->building->name }}
+                                    @endif
+                                </td>
+                                <td>{{ $office->name }}</td>
+                                <td>{{ $office->sitting_capacity }}</td>
+                                <td class="text-center">
+                                    <div class="form-check form-switch">
+                                        {!! Form::radio('meeting_organized_location',$office->id,false,['class'=>'form-check-input align-self-center']) !!}
+                                        <label class="form-check-label"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 @endif
             </div>
         </div>
