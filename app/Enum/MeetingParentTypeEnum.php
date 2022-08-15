@@ -33,7 +33,7 @@ class MeetingParentTypeEnum extends AbstractEnum
             [
                 'Informal Meeting',
                 'children' => [
-                    'Personal Get to Gather',
+                    'Personal Get Together',
                     'Agenda Based',
                     'Case Based',
                     'Other'

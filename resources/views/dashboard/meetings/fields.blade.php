@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4 mb-3 meeting_type_holder">
                 {!!  Html::decode(Form::label('meeting_parent_type' ,__('general.meeting_type') ,['class'=>'form-label']))   !!}
-                <select name="meeting_parent_type" class="form-control" onchange="applyMeetingType(this);">
+                <select name="meeting_parent_type" id="meeting_parent_type" class="form-control" onchange="applyMeetingType(this);">
                     <option value="" selected>{{ trans('general.select') }}</option>
                     @foreach (\App\Services\MeetingService::getMeetingTypes() as $meetingType)
                         <option value="{{ $meetingType->slug }}"

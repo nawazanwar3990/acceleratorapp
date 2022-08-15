@@ -60,12 +60,12 @@
                 input: 'text',
                 inputPlaceholder: '{{ trans('general.enter_value') }}',
             }).then(({value}) => {
-                let holder = $("input[name=meeting_parent_type]");
+                let holder = $("#meeting_parent_type");
                 let slug = toSlug(value);
                 let html = "<option value=" + slug + ">" + value + "</option>";
                 holder.append(html);
                 holder.val(slug);
-                $("input[name=meeting_parent_sub_type]").val('').focus();
+                $("#meeting_parent_sub_type").val('').focus();
             });
         } else {
             let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
