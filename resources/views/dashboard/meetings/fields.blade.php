@@ -1,3 +1,4 @@
+{!! Form::hidden('meeting_organized_by',auth()->id()) !!}
 <div class="mb-3 row">
     <div class="col-md-8">
         <div class="row">
