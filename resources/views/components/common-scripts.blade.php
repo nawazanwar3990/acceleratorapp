@@ -65,6 +65,7 @@
                 let html = "<option value=" + slug + ">" + value + "</option>";
                 holder.append(html);
                 holder.val(slug);
+                $("input[name=meeting_parent_sub_type]").val('').focus();
             });
         } else {
             let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
