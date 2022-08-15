@@ -113,8 +113,11 @@
                                 {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
                                 {!!  Form::text('meeting_organized_location_capacity',$office->sitting_capacity,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
                             </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
-                                {!! Form::radio('meeting_organized_location',$office->number,false) !!}
+                            <div class="col-md-3 col-lg-3 col-xl-3 align-self-center text-center">
+                                <div class="form-check form-switch">
+                                    {!! Form::radio('meeting_organized_location',$office->number,false,['class'=>'form-check-input align-self-center']) !!}
+                                    <label class="form-check-label"></label>
+                                </div>
                             </div>
                         </div>
                     @endforeach
