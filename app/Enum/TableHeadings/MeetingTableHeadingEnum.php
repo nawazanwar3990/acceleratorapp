@@ -12,7 +12,7 @@ class MeetingTableHeadingEnum extends AbstractEnum
     public const MEETING_NAME = 'meeting_name';
     public const MEETING_HELD_DATE = 'meeting_held_date';
     public const MEETING_TIME = 'meeting_time';
-    public const MEETING_Mode = 'meeting_mode';
+    public const MEETING_MODE = 'meeting_mode';
     public const MEETING_ORGANIZED_FOR = 'meeting_organized_for';
     public const MEETING_ORGANIZED_LOCATION = 'meeting_organized_location';
 
@@ -29,7 +29,7 @@ class MeetingTableHeadingEnum extends AbstractEnum
             self::MEETING_NAME => __(sprintf('%s.%s', 'general', self::MEETING_NAME)),
             self::MEETING_HELD_DATE => __(sprintf('%s.%s', 'general', self::MEETING_HELD_DATE)),
             self::MEETING_TIME => __(sprintf('%s.%s', 'general', self::MEETING_TIME)),
-            self::MEETING_Mode => __(sprintf('%s.%s', 'general', self::MEETING_Mode)),
+            self::MEETING_MODE => __(sprintf('%s.%s', 'general', self::MEETING_MODE)),
             self::MEETING_ORGANIZED_FOR => __(sprintf('%s.%s', 'general', self::MEETING_ORGANIZED_FOR)),
             self::MEETING_ORGANIZED_LOCATION => __(sprintf('%s.%s', 'general', self::MEETING_ORGANIZED_LOCATION)),
         ];
