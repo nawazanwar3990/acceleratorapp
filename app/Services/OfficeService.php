@@ -30,7 +30,12 @@ class OfficeService
             return false;
         }
     }
-
+    public static function getAvailableOffices()
+    {
+        return Office::where('created_by', Auth::id())
+            ->orderBy('name', 'ASC')
+            ->pluck('name', 'id');
+    }
     public static function getOfficeForDropdown()
     {
         return Office::where('created_by', Auth::id())->orderBy('name', 'ASC')->pluck('name', 'id');

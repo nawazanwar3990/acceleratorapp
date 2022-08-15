@@ -95,30 +95,38 @@
     <div class="col-12">
         <div class="card" style="border: none !important;">
             <div class="card-header">
-                <h6 class="mb-0">{{ trans('general.meeting_location') }}</h6>
+                <h6 class="mb-0">{{ trans('general.available_locations') }}</h6>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('meeting_organized_location' ,__('general.room_number') ,['class'=>'form-label']))   !!}
-                        <div class="input-group">
-                            {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
-                            <div class="input-group-append">
+                @if(count(\App\Services\OfficeService::getAvailableOffices())>0)
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-xl-4">
+                            {!!  Html::decode(Form::label('meeting_organized_location' ,__('general.room_number') ,['class'=>'form-label']))   !!}
+                            <div class="input-group">
+                                {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
+                                <div class="input-group-append">
                                 <span class="input-group-text p-2 bg-info" id="basic-addon2">
                                     <i class="bx bx-search"></i>
                                 </span>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-4 col-lg-4 col-xl-4">
+                            {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
+                            {!!  Form::select('meeting_organized_location_type',\App\Services\OfficeService::office_types_dropdown(),2,['id'=>'meeting_organized_location_type','class'=>'form-control']) !!}
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xl-4">
+                            {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
+                            {!!  Form::text('meeting_organized_location_capacity',null,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
+                        </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
-                        {!!  Form::select('meeting_organized_location_type',\App\Services\OfficeService::office_types_dropdown(),2,['id'=>'meeting_organized_location_type','class'=>'form-control']) !!}
+                @else
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a class="btn btn-info" href="{{ route('dashboard.offices.create') }}">{{ trans('general.new_office') }}</a>
+                        </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
-                        {!!  Form::text('meeting_organized_location_capacity',null,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
