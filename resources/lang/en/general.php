@@ -1,6 +1,7 @@
 <?php
 return [
-
+    'meeting_sub_type' => 'Sub Type',
+    'mode' => 'mode',
     'sender' => 'Sender',
     'view_receipt' => 'View Receipt',
     'registered_client' => "Registered Client",
