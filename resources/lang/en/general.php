@@ -1,5 +1,7 @@
 <?php
 return [
+    'meeting_arranger_for'=>'Meeting Arranged For',
+    'enter_id'=>'Enter Id',
     'other_meeting_sub_type' => 'Other meeting Sub Type',
     'enter_value' => 'Enter Value',
     'other_meeting_type' => 'Other Meeting Type',
