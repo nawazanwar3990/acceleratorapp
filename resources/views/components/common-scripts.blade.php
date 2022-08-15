@@ -65,7 +65,9 @@
                 let html = "<option value=" + slug + ">" + value + "</option>";
                 holder.append(html);
                 holder.val(slug);
-                $("#meeting_parent_sub_type").empty().append("<option value='' selected>{{ trans('general.select') }}</option><option value='other' selected>{{ trans('general.other') }}</option>");
+                $("#meeting_parent_sub_type").empty()
+                    .append("<option value='' selected>{{ trans('general.select') }}</option><option value='other' selected>{{ trans('general.other') }}</option>")
+                    .val('');
             });
         } else {
             let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
@@ -84,7 +86,9 @@
         }
 
     }
-    function changeMeetingSubType(){
+
+    function changeMeetingSubType(cElement) {
+        let value = $(cElement).find('option:selected').val();
         if (value === 'other') {
             Swal.fire({
                 title: '{{ trans('general.other_meeting_sub_type') }}',
@@ -99,6 +103,7 @@
             });
         }
     }
+
     function getFormattedDate(date) {
         let year = date.getFullYear();
         let month = (1 + date.getMonth()).toString();
