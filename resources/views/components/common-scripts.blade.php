@@ -53,7 +53,7 @@
     }
 
     function applyMeetingType(cElement) {
-        let value = JSON.parse($(cElement).find('option:selected').val();
+        let value = $(cElement).find('option:selected').val();
         if (value === 'other') {
             Swal.fire({
                 title: '{{ trans('general.other_meeting_type') }}',
