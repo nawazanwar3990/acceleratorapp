@@ -103,15 +103,15 @@
                         <div class="row">
                             <div class="col-md-3 col-lg-3 col-xl-3 align-self-center">
                                 {!!  Html::decode(Form::label('meeting_number' ,__('general.room_number') ,['class'=>'form-label']))   !!}
-                                {!!  Form::number('meeting_number',$office->number,['id'=>'meeting_number','class'=>'form-control']) !!}
+                                {!!  Form::number('meeting_number',$office->number,['id'=>'meeting_number','class'=>'form-control','readonly']) !!}
                             </div>
                             <div class="col-md-4 col-lg-4 col-xl-4 align-self-center">
                                 {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
-                                {!!  Form::select('meeting_organized_location_type',\App\Services\OfficeService::office_types_dropdown(),$office->type_id,['id'=>'meeting_organized_location_type','class'=>'form-control']) !!}
+                                {!!  Form::text('meeting_organized_location_type',$office->type->name??null,['id'=>'meeting_organized_location_type','class'=>'form-control','readonly']) !!}
                             </div>
                             <div class="col-md-4 col-lg-4 col-xl-4 align-self-center">
                                 {!!  Html::decode(Form::label('meeting_organized_location_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
-                                {!!  Form::text('meeting_organized_location_capacity',$office->sitting_capacity,['id'=>'meeting_organized_location_capacity','class'=>'form-control']) !!}
+                                {!!  Form::text('meeting_organized_location_capacity',$office->sitting_capacity,['id'=>'meeting_organized_location_capacity','class'=>'form-control','readonly']) !!}
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 align-self-center text-center pt-4">
                                 <div class="form-check form-switch">
