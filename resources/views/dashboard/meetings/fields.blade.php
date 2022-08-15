@@ -62,8 +62,8 @@
             <div class="card-body">
                 <div class="row justify-content-center">
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('customer_id' ,__('general.enter_id') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('customer_id',null,['id'=>'customer_id','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('organized_by' ,__('general.enter_id') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('organized_by',null,['id'=>'organized_by','class'=>'form-control']) !!}
                     </div>
                 </div>
             </div>
