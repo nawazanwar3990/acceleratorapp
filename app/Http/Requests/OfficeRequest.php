@@ -74,7 +74,7 @@ class OfficeRequest extends FormRequest
 
     private function saveOwner($model)
     {
-        $model->owners()->sync(PersonService::getCurrentHrId());
+        $model->owners()->sync([Auth::id()]);
     }
 
     private function savePlan($model)

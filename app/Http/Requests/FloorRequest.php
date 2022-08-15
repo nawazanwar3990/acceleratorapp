@@ -71,7 +71,7 @@ class FloorRequest extends FormRequest
     }
     private function saveOwners($model)
     {
-        $model->owners()->sync([PersonService::getCurrentHrId()],);
+        $model->owners()->sync([Auth::id()]);
     }
 
     public function updateData($id)

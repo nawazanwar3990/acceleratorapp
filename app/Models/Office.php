@@ -73,7 +73,7 @@ class Office extends Model
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::OFFICE_OWNER)->withTimestamps();
+        return $this->belongsToMany(User::class, TableEnum::OFFICE_OWNER)->withTimestamps();
     }
 
     public function plans(): BelongsToMany

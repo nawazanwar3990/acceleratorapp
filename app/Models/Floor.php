@@ -66,7 +66,7 @@ class Floor extends Model
 
     public function owners(): BelongsToMany
     {
-        return $this->belongsToMany(Hr::class, TableEnum::FLOOR_OWNER, 'floor_id', 'hr_id')
+        return $this->belongsToMany(User::class, TableEnum::FLOOR_OWNER, 'floor_id', 'user_id')
             ->withPivot(
                 'created_by',
                 'updated_by'
