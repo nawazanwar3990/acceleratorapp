@@ -38,7 +38,7 @@
 
     function applyEventType(cElement) {
         let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
-        let options = "<option value='' selected><?php echo e(trans('general.select')); ?></option>";
+        let options = "<option value='' selected>{{ trans('general.select') }}</option>";
         if (sub_types.length > 0) {
             $.each(sub_types, function (inner_key, inner_value) {
                 options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
@@ -65,7 +65,7 @@
                 let html = "<option value=" + slug + ">" + value + "</option>";
                 holder.append(html);
                 holder.val(slug);
-                $("#meeting_parent_sub_type").val('').focus();
+                $("#meeting_parent_sub_type").empty().append("<option value='' selected>{{ trans('general.select') }}</option>");
             });
         } else {
             let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
@@ -84,7 +84,21 @@
         }
 
     }
-
+    function changeMeetingSubType(){
+        if (value === 'other') {
+            Swal.fire({
+                title: '{{ trans('general.other_meeting_sub_type') }}',
+                input: 'text',
+                inputPlaceholder: '{{ trans('general.enter_value') }}',
+            }).then(({value}) => {
+                let holder = $("#meeting_parent_sub_type");
+                let slug = toSlug(value);
+                let html = "<option value=" + slug + ">" + value + "</option>";
+                holder.append(html);
+                holder.val(slug);
+            });
+        }
+    }
     function getFormattedDate(date) {
         let year = date.getFullYear();
         let month = (1 + date.getMonth()).toString();
