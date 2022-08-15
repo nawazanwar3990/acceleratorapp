@@ -65,7 +65,7 @@
                 let html = "<option value=" + slug + ">" + value + "</option>";
                 holder.append(html);
                 holder.val(slug);
-                $("#meeting_parent_sub_type").empty().append("<option value='' selected>{{ trans('general.select') }}</option>");
+                $("#meeting_parent_sub_type").empty().append("<option value='' selected>{{ trans('general.select') }}</option><option value='other' selected>{{ trans('general.other') }}</option>");
             });
         } else {
             let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
