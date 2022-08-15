@@ -50,12 +50,16 @@
                     :</strong> {{ $record->meeting_organized_for_email }}</p>
         </td>
         <td>
-            <p class="fs-13 mb-0"><strong>{{ trans('general.room_number') }}
-                    :</strong> {{ $record->office->name??null }}</p>
-            <p class="fs-13 mb-0"><strong>{{ trans('general.room_type') }}
-                    :</strong> {{ $record->office?$record->office->type->name:'' }}</p>
-            <p class="fs-13 mb-0"><strong>{{ trans('general.sitting_capacity') }}
-                    :</strong> {{ $record->office->sitting_capacity }}</p>
+            @if($record->office)
+                <p class="fs-13 mb-0"><strong>{{ trans('general.room_number') }}
+                        :</strong> {{ $record->office->name??null }}</p>
+                <p class="fs-13 mb-0"><strong>{{ trans('general.room_type') }}
+                        :</strong> {{ $record->office?$record->office->type->name:'' }}</p>
+                <p class="fs-13 mb-0"><strong>{{ trans('general.sitting_capacity') }}
+                        :</strong> {{ $record->office?$record->office->sitting_capacity:'' }}</p>
+            @else
+                --
+            @endif
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
