@@ -68,7 +68,7 @@
                         <div class="input-group">
                             {!!  Form::number('meeting_organized_for',null,['id'=>'meeting_organized_for','class'=>'form-control']) !!}
                             <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2">
+                                 <span class="input-group-text p-2 bg-info" id="basic-addon2">
                                     <i class="bx bx-search"></i>
                                 </span>
                             </div>
@@ -104,7 +104,7 @@
                         <div class="input-group">
                             {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
                             <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2">
+                                <span class="input-group-text p-2 bg-info" id="basic-addon2">
                                     <i class="bx bx-search"></i>
                                 </span>
                             </div>
