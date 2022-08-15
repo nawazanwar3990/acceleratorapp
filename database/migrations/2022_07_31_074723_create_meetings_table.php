@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->string('meeting_sub_type')->nullable();
             $table->string('meeting_name')->nullable();
             $table->string('meeting_mode')->nullable();
-            $table->string('meeting_name')->nullable();
             $table->string('meeting_description')->nullable();
             $table->string('meeting_held_date')->nullable();
             $table->string('meeting_start_time')->nullable();
