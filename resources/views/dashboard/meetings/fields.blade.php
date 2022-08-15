@@ -62,17 +62,21 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-md-3 col-lg-3 col-xl-3">
                         {!!  Html::decode(Form::label('client_id' ,__('general.client_id') ,['class'=>'form-label']))   !!}
                         {!!  Form::number('client_id',null,['id'=>'client_id','class'=>'form-control']) !!}
                     </div>
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('name' ,__('general.name') ,['class'=>'form-label']))   !!}
-                        {!!  Form::text('name',null,['id'=>'name','class'=>'form-control']) !!}
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        {!!  Html::decode(Form::label('client_name' ,__('general.name') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('client_name',null,['id'=>'client_name','class'=>'form-control']) !!}
                     </div>
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('email' ,__('general.email') ,['class'=>'form-label']))   !!}
-                        {!!  Form::email('email',null,['id'=>'email','class'=>'form-control']) !!}
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        {!!  Html::decode(Form::label('client_contact' ,__('general.contact') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('client_contact',null,['id'=>'client_contact','class'=>'form-control']) !!}
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        {!!  Html::decode(Form::label('client_email' ,__('general.email') ,['class'=>'form-label']))   !!}
+                        {!!  Form::email('client_email',null,['id'=>'client_email','class'=>'form-control']) !!}
                     </div>
                 </div>
             </div>
