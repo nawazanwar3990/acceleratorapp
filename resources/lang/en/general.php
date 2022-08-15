@@ -1,5 +1,6 @@
 <?php
 return [
+    'room_name' => 'Room Name',
     'room_id' => 'Room Id',
     'meeting_location' => 'Meeting Location',
     'client_id' => 'Client Id',
