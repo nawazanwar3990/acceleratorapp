@@ -5,7 +5,8 @@
         @if(in_array($key,[
             \App\Enum\TableHeadings\MeetingTableHeadingEnum::MEETING_ORGANIZED_FOR,
             \App\Enum\TableHeadings\MeetingTableHeadingEnum::MEETING_ORGANIZED_LOCATION,
-            \App\Enum\TableHeadings\MeetingTableHeadingEnum::MEETING_MODE
+            \App\Enum\TableHeadings\MeetingTableHeadingEnum::MEETING_MODE,
+             \App\Enum\TableHeadings\MeetingTableHeadingEnum::MEETING_TIME
          ]))
             <th style="min-width: 200px;">{{ $value }}</th>
         @else
