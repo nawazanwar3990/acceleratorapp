@@ -51,7 +51,21 @@
             .empty()
             .html(options);
     }
-
+    function applyMeetingType(cElement) {
+        let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
+        let options = "<option value='' selected><?php echo e(trans('general.select')); ?></option>";
+        if (sub_types.length > 0) {
+            $.each(sub_types, function (inner_key, inner_value) {
+                options += "<option value=" + inner_value.slug + ">" + inner_value.name + "</option>";
+            });
+        }
+        $(cElement)
+            .closest('.meeting_type_holder')
+            .next('.meeting_child_type_holder')
+            .find('select')
+            .empty()
+            .html(options);
+    }
     function getFormattedDate(date) {
         let year = date.getFullYear();
         let month = (1 + date.getMonth()).toString();
