@@ -65,7 +65,14 @@
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-xl-3">
                         {!!  Html::decode(Form::label('meeting_organized_for' ,__('general.client_id') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('meeting_organized_for',null,['id'=>'meeting_organized_for','class'=>'form-control']) !!}
+                        <div class="input-group">
+                            {!!  Form::number('meeting_organized_for',null,['id'=>'meeting_organized_for','class'=>'form-control']) !!}
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">
+                                    <i class="bx bx-search"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
                         {!!  Html::decode(Form::label('meeting_organized_for_name' ,__('general.name') ,['class'=>'form-label']))   !!}
@@ -94,7 +101,14 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         {!!  Html::decode(Form::label('meeting_organized_location' ,__('general.room_number') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
+                        <div class="input-group">
+                            {!!  Form::number('meeting_organized_location',null,['id'=>'meeting_organized_location','class'=>'form-control']) !!}
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">
+                                    <i class="bx bx-search"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         {!!  Html::decode(Form::label('meeting_organized_location_type' ,__('general.room_type') ,['class'=>'form-label']))   !!}
