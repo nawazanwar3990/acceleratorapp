@@ -10,11 +10,11 @@ class MeetingTableHeadingEnum extends AbstractEnum
     public const MEETING_TYPE = 'meeting_type';
     public const MEETING_SUB_TYPE = 'meeting_sub_type';
     public const MEETING_NAME = 'meeting_name';
-    public const MEETING_HELD_DATE = 'meeting_start_date';
+    public const MEETING_HELD_DATE = 'meeting_held_date';
     public const MEETING_START_TIME = 'meeting_start_time';
     public const MEETING_END_TIME = 'meeting_end_time';
     public const MEETING_ORGANIZED_FOR = 'meeting_organized_for';
-    public const MEETING_ORGANIZED_LOCATION = 'meeting_organized_for';
+    public const MEETING_ORGANIZED_LOCATION = 'meeting_organized_location';
     public static function getValues(): array
     {
         return [];
