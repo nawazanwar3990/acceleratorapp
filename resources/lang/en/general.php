@@ -1,5 +1,7 @@
 <?php
 return [
+    'meeting_time' => 'Time',
+    'meeting_mode' => 'Mode',
     'meeting_end_time' => 'End Time',
     'meeting_organized_for' => 'Organized For',
     'meeting_organized_location' => 'Organized Location',
