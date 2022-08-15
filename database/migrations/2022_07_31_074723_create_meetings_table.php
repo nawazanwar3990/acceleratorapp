@@ -13,13 +13,20 @@ return new class extends Migration {
     {
         Schema::create(TableEnum::MEETINGS, function (Blueprint $table) {
             $table->id();
-            $table->string('meeting_arranged_for')->nullable();
-            $table->enum('meeting_type', MeetingTypeEnum::getValues())
-                ->default(MeetingTypeEnum::ONLINE);
-            $table->string('meeting_held_date')->nullable();
-            $table->string('meeting_start_time')->nullable();
+            $table->string('meeting_type')->nullable();
+            $table->string('meeting_sub_type')->nullable();
+            $table->string('meeting_name')->nullable();
+            $table->string('meeting_mode')->nullable();
             $table->string('meeting_name')->nullable();
             $table->string('meeting_description')->nullable();
+            $table->string('meeting_held_date')->nullable();
+            $table->string('meeting_start_time')->nullable();
+            $table->string('meeting_end_time')->nullable();
+            $table->string('has_meeting_pass')->nullable();
+            $table->json('meeting_pass')->nullable();
+            $table->string('meeting_organized_by')->nullable();
+            $table->string('meeting_organized_for')->nullable();
+            $table->string('meeting_organized_location')->nullable();
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
