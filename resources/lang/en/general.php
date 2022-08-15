@@ -1,5 +1,6 @@
 <?php
 return [
+    'available_locations'=>'Available Locations',
     'meeting_time' => 'Time',
     'meeting_mode' => 'Mode',
     'meeting_end_time' => 'End Time',
