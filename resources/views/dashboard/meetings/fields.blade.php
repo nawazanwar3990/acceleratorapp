@@ -43,10 +43,6 @@
                 {!!  Form::text('meeting_end_time',null,['id'=>'meeting_end_time','class'=>'form-control timepicker']) !!}
             </div>
             <div class="col-md-4 mb-3">
-                {!!  Html::decode(Form::label('meeting_organized_by' ,__('general.organized_by') ,['class'=>'form-label']))   !!}
-                {!!  Form::text('meeting_organized_by',null,['id'=>'meeting_organized_by','class'=>'form-control']) !!}
-            </div>
-            <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('has_meeting_pass' ,__('general.meeting_pass') ,['class'=>'form-label']))   !!}
                 {!!  Form::select('has_meeting_pass',\App\Services\GeneralService::yesOrNoForDropdown(),'no',['id'=>'has_meeting_pass','class'=>'form-control','onchange'=>'changeMeetingPass(this);']) !!}
             </div>
@@ -55,5 +51,22 @@
     <div class="col-md-4">
         {!!  Html::decode(Form::label('images' ,__('general.images') ,['class'=>'form-label']))   !!}
         @include('components.images-field',['images'=>$for=='edit'?$model->images:[]])
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h6>{{ trans('general.organized_by') }}</h6>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        {!!  Html::decode(Form::label('customer_id' ,__('general.enter_id') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('customer_id',null,['id'=>'customer_id','class'=>'form-control']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
