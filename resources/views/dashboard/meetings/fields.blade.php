@@ -63,8 +63,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 col-lg-4 col-xl-4">
-                        {!!  Html::decode(Form::label('organized_by' ,__('general.enter_id') ,['class'=>'form-label']))   !!}
-                        {!!  Form::number('organized_by',null,['id'=>'organized_by','class'=>'form-control']) !!}
+                        {!!  Html::decode(Form::label('client_id' ,__('general.client_id') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('client_id',null,['id'=>'client_id','class'=>'form-control']) !!}
                     </div>
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         {!!  Html::decode(Form::label('name' ,__('general.name') ,['class'=>'form-label']))   !!}
@@ -73,6 +73,31 @@
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         {!!  Html::decode(Form::label('email' ,__('general.email') ,['class'=>'form-label']))   !!}
                         {!!  Form::email('email',null,['id'=>'email','class'=>'form-control']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card" style="border: none !important;">
+            <div class="card-header">
+                <h6 class="mb-0">{{ trans('general.meeting_location') }}</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        {!!  Html::decode(Form::label('room_id' ,__('general.room_id') ,['class'=>'form-label']))   !!}
+                        {!!  Form::number('room_id',null,['id'=>'room_id','class'=>'form-control']) !!}
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        {!!  Html::decode(Form::label('room_name' ,__('general.room_name') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('room_name',null,['id'=>'room_name','class'=>'form-control']) !!}
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        {!!  Html::decode(Form::label('room_sitting_capacity' ,__('general.sitting_capacity') ,['class'=>'form-label']))   !!}
+                        {!!  Form::text('room_sitting_capacity',null,['id'=>'room_sitting_capacity','class'=>'form-control']) !!}
                     </div>
                 </div>
             </div>
