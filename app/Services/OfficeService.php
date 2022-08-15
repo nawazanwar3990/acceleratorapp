@@ -34,7 +34,7 @@ class OfficeService
     {
         return Office::where('created_by', Auth::id())
             ->orderBy('name', 'ASC')
-            ->pluck('name', 'id');
+            ->get();
     }
     public static function getOfficeForDropdown()
     {
