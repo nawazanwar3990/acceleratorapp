@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\FreelancerController;
 use App\Http\Controllers\Dashboard\MeetingController;
 use App\Http\Controllers\Website\PageController;
+use App\Notifications\ApprovedSubscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +50,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         ->middleware('has_package');
 
     Route::get('/test-mail', function () {
-        echo "yes";
+       \auth()->user()->notify(new ApprovedSubscription());
     });
 });
 require __DIR__ . '/auth.php';
