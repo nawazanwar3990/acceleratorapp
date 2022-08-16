@@ -47,5 +47,9 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         ->middleware('has_package');
     Route::resource('/meeting-rooms', MeetingController::class, ['names' => 'meeting-rooms'])
         ->middleware('has_package');
+
+    Route::get('/test-mail', function () {
+        echo "yes";
+    });
 });
 require __DIR__ . '/auth.php';
