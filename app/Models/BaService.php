@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class FreelancerService extends Model
+class BaService extends Model
 {
     use HasFactory;
 
-    protected $table = TableEnum::FREELANCER_SERVICE;
+    protected $table = TableEnum::BA_SERVICE;
 
-    public function freelancers(): BelongsTo
+    public function ba(): BelongsTo
     {
-        return $this->belongsTo(Freelancer::class, 'freelancer_id');
+        return $this->belongsTo(BA::class, 'ba_id');
     }
 
     public function service(): BelongsTo

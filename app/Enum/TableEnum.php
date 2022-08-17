@@ -39,10 +39,10 @@ class TableEnum extends AbstractEnum
 
     public const FLOOR_OWNER = 'floor_owner';
     public const OFFICE_PLAN = 'office_plan';
-    public const PACKAGE_SERVICE = 'package_service';
+    public const PACKAGE_SERVICE = 'package_services';
 
     public const BA = 'ba';
-    public const BA_SERVICE = 'ba_service';
+    public const BA_SERVICE = 'ba_services';
     public const VERIFY_USERS = 'verify_users';
     public const BA_QUALIFICATION = 'ba_qualification';
     public const BA_CERTIFICATION = 'ba_certification';

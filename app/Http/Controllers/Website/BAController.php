@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Website;
 use App\Enum\AcceleratorTypeEnum;
 use App\Enum\MediaTypeEnum;
 use App\Enum\PaymentTypeProcessEnum;
+use App\Enum\ServiceTypeEnum;
 use App\Enum\StepEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
 use App\Models\Media;
+use App\Models\Service;
 use App\Models\Subscription;
 use App\Services\BaService;
 use App\Services\GeneralService;
@@ -98,7 +100,11 @@ class BAController extends Controller
                 if ($action) {
                     return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                 }
-                return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
+                if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                    return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
+                }else{
+                    return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
+                }
                 break;
             case StepEnum::SERVICES:
                 $model = $this->baService->saveServices($model);
@@ -143,7 +149,15 @@ class BAController extends Controller
                 if ($type == 'company') {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
-                    return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
+                    if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                        $service_type = ($type==='company')?ServiceTypeEnum::BUSINESS_ACCELERATOR: ServiceTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL;
+                        $services = Service::whereType($service_type)->whereStatus(true)->pluck('id')->toArray();
+                        $model->services = json_encode($services);
+                        $model->save();
+                        return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $response->id]);
+                    }else{
+                        return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
+                    }
                 }
                 break;
             case StepEnum::PACKAGES:

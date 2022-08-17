@@ -13,7 +13,7 @@ class MentorService extends Model
 
     protected $table = TableEnum::MENTOR_SERVICE;
 
-    public function mentor(): BelongsTo
+    public function mentors(): BelongsTo
     {
         return $this->belongsTo(Mentor::class, 'mentor_id');
     }
