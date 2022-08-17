@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->foreignId('duration_type_id')->nullable()->constrained(TableEnum::DURATIONS);
             $table->string('duration_limit')->nullable();
             $table->string('trail_expire_date')->nullable();
-            $table->json('services')->nullable();
             $table->string('slug')->nullable();
             $table->string('price')->nullable();
             $table->integer('reminder_days')->nullable();

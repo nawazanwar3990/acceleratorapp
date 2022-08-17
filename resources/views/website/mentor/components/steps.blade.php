@@ -6,11 +6,13 @@
                 {{ trans('general.mentor_detail') }}
             </a>
         </li>
-        <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.mentors.create',[$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
-                {{ trans('general.mentor_services') }}
-            </a>
-        </li>
+        @if($payment==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+            <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
+                <a href="{{ route('website.mentors.create',[$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
+                    {{ trans('general.mentor_services') }}
+                </a>
+            </li>
+        @endif
         @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
             <li class="{{ $step==\App\Enum\StepEnum::PACKAGES?'active-link':'in-active-link' }}">
                 <a href="{{ route('website.mentors.create',[$payment,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">

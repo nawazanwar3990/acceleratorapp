@@ -13,6 +13,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('package_id')->nullable()->constrained(TableEnum::PACKAGES);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
+            $table->string('limit')->nullable();
+
             $table->timestamps();
         });
     }

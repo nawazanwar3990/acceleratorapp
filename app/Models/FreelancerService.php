@@ -12,6 +12,12 @@ class FreelancerService extends Model
     use HasFactory;
 
     protected $table = TableEnum::FREELANCER_SERVICE;
+    protected $fillable = [
+        'freelancer_id',
+        'service_id',
+        'service_type',
+        'service_name'
+    ];
 
     public function freelancers(): BelongsTo
     {

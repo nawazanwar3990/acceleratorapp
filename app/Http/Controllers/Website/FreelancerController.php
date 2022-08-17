@@ -59,8 +59,6 @@ class FreelancerController extends Controller
                 StepEnum::FOCAL_PERSON
             ]) && !isset($model)) {
             return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::USER_INFO,$id??null])->with('error', 'First Create User Info');
-        } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
-            return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES,$id??null])->with('error', 'First Create Services');
         }
         $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
@@ -151,7 +149,11 @@ class FreelancerController extends Controller
                 if ($type == 'company') {
                     return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
-                    return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
+                    if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                        return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::PACKAGES, $response->id]);
+                    }else{
+                        return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
+                    }
                 }
                 break;
             case StepEnum::FOCAL_PERSON:
@@ -159,7 +161,11 @@ class FreelancerController extends Controller
                 if ($action) {
                     return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                 }
-                return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
+                if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                    return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::PACKAGES, $response->id]);
+                }else{
+                    return redirect()->route('website.freelancers.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
+                }
                 break;
             case StepEnum::PACKAGES:
                 $subscription_id = request()->input('subscription_id');

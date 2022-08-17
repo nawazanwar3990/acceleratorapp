@@ -29,9 +29,6 @@ return new class extends Migration {
             $table->string('company_contact_no')->nullable();
             $table->string('company_email')->nullable();
 
-            $table->json('services')->nullable();
-            $table->json('other_services')->nullable();
-
             $table->string('f_father_name')->nullable();
             $table->string('f_contact')->nullable();
             $table->string('f_emergency_contact')->nullable();

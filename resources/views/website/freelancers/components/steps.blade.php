@@ -22,11 +22,17 @@
                 </a>
             </li>
         @endif
-        <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
-               @if($type=='company')  {{ trans('general.services_of_sp') }} @else  {{ trans('general.services_of_freelancers') }} @endif
-            </a>
-        </li>
+        @if($payment==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+            <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
+                <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
+                    @if($type=='company')
+                        {{ trans('general.services_of_sp') }}
+                    @else
+                        {{ trans('general.services_of_freelancers') }}
+                    @endif
+                </a>
+            </li>
+        @endif
         @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
             <li class="{{ $step==\App\Enum\StepEnum::PACKAGES?'active-link':'in-active-link' }}">
                 <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">

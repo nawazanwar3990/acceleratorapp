@@ -16,8 +16,6 @@ class Freelancer extends Model
 
     protected $table = TableEnum::FREELANCERS;
     protected $casts = [
-        'services' => 'array',
-        'other_services' => 'array',
         'affiliations' => 'array',
     ];
     protected $fillable = [
@@ -30,9 +28,14 @@ class Freelancer extends Model
         'company_contact_no',
         'company_email',
         'payment_process',
-        'services',
-        'other_services'
     ];
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE, 'freelancer_id')
+            ->withPivot('service_type')
+            ->withTimestamps();
+    }
 
     public function user(): BelongsTo
     {

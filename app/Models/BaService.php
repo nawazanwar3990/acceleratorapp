@@ -13,6 +13,13 @@ class BaService extends Model
 
     protected $table = TableEnum::BA_SERVICE;
 
+    protected $fillable = [
+        'ba_id',
+        'service_id',
+        'service_type',
+        'service_name'
+    ];
+
     public function ba(): BelongsTo
     {
         return $this->belongsTo(BA::class, 'ba_id');

@@ -16,7 +16,6 @@ class Package extends Model
 
     protected $table = TableEnum::PACKAGES;
     protected $casts = [
-        'services' => 'array',
     ];
     protected $fillable = [
         'package_type',
@@ -28,12 +27,14 @@ class Package extends Model
         'slug',
         'price',
         'status',
-        'reminder_days'
+        'reminder_days',
     ];
 
-    public function getServicesAttribute($values)
+    public function services(): BelongsToMany
     {
-        return json_decode($values,true);
+        return $this->belongsToMany(Service::class, TableEnum::PACKAGE_SERVICE)
+            ->withTimestamps()
+            ->withPivot('limit');
     }
 
     public function duration_type(): BelongsTo

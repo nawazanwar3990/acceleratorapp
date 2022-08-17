@@ -12,6 +12,11 @@ class PackageService extends Model
     use HasFactory;
 
     protected $table = TableEnum::PACKAGE_SERVICE;
+    protected $fillable = [
+        'package_id',
+        'service_id',
+        'limit'
+    ];
 
     public function packages(): BelongsTo
     {

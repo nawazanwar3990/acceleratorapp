@@ -14,6 +14,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('ba_id')->nullable()->constrained(TableEnum::BA);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
+            $table->string('service_type')->nullable();
+            $table->string('service_name')->nullable();
             $table->timestamps();
         });
     }

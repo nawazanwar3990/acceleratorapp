@@ -16,9 +16,9 @@
                         @else
                             <div class="form-check form-switch">
                                 @if($model->services)
-                                    {!! Form::checkbox('services[]',$service->name,in_array($service->name,json_decode($model->services,true)),['class'=>'form-check-input align-self-center']) !!}
+                                    {!! Form::checkbox('services[]',$service->id,in_array($service->name,json_decode($model->services,true)),['class'=>'form-check-input align-self-center']) !!}
                                 @else
-                                    {!! Form::checkbox('services[]',$service->name,false,['class'=>'form-check-input align-self-center']) !!}
+                                    {!! Form::checkbox('services[]',$service->id,false,['class'=>'form-check-input align-self-center']) !!}
                                 @endif
                                 <label class="form-check-label"></label>
                             </div>

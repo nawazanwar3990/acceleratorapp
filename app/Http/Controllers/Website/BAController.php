@@ -53,8 +53,6 @@ class BAController extends Controller
         }
         if (in_array($step, [StepEnum::SERVICES, StepEnum::COMPANY_PROFILE, StepEnum::PACKAGES]) && !isset($model)) {
             return redirect()->route('website.ba.create', [$type, $payment, StepEnum::USER_INFO,$id??null])->with('error', 'First Create User Info');
-        } else if ($step == StepEnum::PACKAGES && isset($model) && !$model->services) {
-            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES,$id??null])->with('error', 'First Create Services');
         }
         $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
@@ -150,10 +148,6 @@ class BAController extends Controller
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
                     if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
-                        $service_type = ($type==='company')?ServiceTypeEnum::BUSINESS_ACCELERATOR: ServiceTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL;
-                        $services = Service::whereType($service_type)->whereStatus(true)->pluck('id')->toArray();
-                        $model->services = json_encode($services);
-                        $model->save();
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $response->id]);
                     }else{
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);

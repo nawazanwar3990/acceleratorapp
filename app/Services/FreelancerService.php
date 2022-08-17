@@ -58,13 +58,22 @@ class FreelancerService
     {
         $services = request()->input('services', array());
         if (count($services) > 0) {
-            $model->services = json_encode($services);
-            $model->save();
+            $model->services()->detach();
+            $model->services()->attach($services, ['service_type' => 'package']);
         }
         if (request()->has('other_services')) {
             $other_services = request()->input('other_services', array());
-            $model->other_services = json_encode($other_services);
-            $model->save();
+            if (count($other_services) > 0) {
+                foreach ($other_services as $other_service) {
+                    if ($other_service != '') {
+                        \App\Models\FreelancerService::create([
+                            'freelancer_id' => $model->id,
+                            'service_type' => 'other',
+                            'service_name' => $other_service
+                        ]);
+                    }
+                }
+            }
         }
         return $model;
     }

@@ -14,11 +14,13 @@
                 </a>
             </li>
         @endif
-        <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
-            <a href="{{ route('website.ba.create',[$type,$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
-                {{ trans('general.services_of_business_accelerator') }}
-            </a>
-        </li>
+        @if($payment==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+            <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
+                <a href="{{ route('website.ba.create',[$type,$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
+                    {{ trans('general.services_of_business_accelerator') }}
+                </a>
+            </li>
+        @endif
         @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
             <li class="{{ $step==\App\Enum\StepEnum::PACKAGES?'active-link':'in-active-link' }}">
                 <a href="{{ route('website.ba.create',[$type,$payment,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">

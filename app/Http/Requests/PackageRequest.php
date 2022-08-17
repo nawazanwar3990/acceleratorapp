@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enum\TableEnum;
 use App\Models\Package;
+use App\Models\PackageService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -69,16 +70,18 @@ class PackageRequest extends FormRequest
     private function manageServices($model)
     {
         $services = $this->input('services', array());
-        $new_array = [];
         if (count($services)) {
-            $service_names = $services['name'];
+            $model->services()->detach();
+            $service_names = $services['id'];
             for ($i = 0; $i < count($service_names); $i++) {
-                $service_name = $services['name'][$i];
+                $service_id = $services['id'][$i];
                 $limit = $services['limit'][$i];
-                $new_array[$service_name] = $limit;
+                PackageService::create([
+                    'package_id' => $model->id,
+                    'service_id' => $service_id,
+                    'limit' => $limit
+                ]);
             }
         }
-        $model->services = $new_array;
-        $model->save();
     }
 }

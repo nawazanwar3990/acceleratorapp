@@ -48,8 +48,6 @@ class MentorController extends Controller
                 StepEnum::PACKAGES
             ]) && !isset($model)) {
             return redirect()->route('website.mentors.create', [$payment, StepEnum::USER_INFO,$id??null])->with('error', 'First Create User Info');
-        } else if ($step == StepEnum::PACKAGES && isset($model) && !isset($model->services)) {
-            return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES,$id??null])->with('error', 'First Create Services');
         }
         $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
@@ -123,7 +121,11 @@ class MentorController extends Controller
                 if ($action) {
                     return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                 }
-                return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
+                if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                    return redirect()->route('website.mentors.create', [$payment, StepEnum::PACKAGES, $model->id]);
+                }else{
+                    return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);
+                }
                 break;
             case StepEnum::PACKAGES:
                 $subscription_id = request()->input('subscription_id');

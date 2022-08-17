@@ -2,20 +2,11 @@
 
 namespace App\Services;
 
-use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
-use App\Enum\SubscriptionTypeEnum;
-use App\Enum\TableEnum;
 use App\Models\BA;
-use App\Models\Freelancer;
-use App\Models\Media;
-use App\Models\Package;
-use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class BaService
@@ -59,13 +50,22 @@ class BaService
     {
         $services = request()->input('services', array());
         if (count($services) > 0) {
-            $model->services = json_encode($services);
-            $model->save();
+            $model->services()->detach();
+            $model->services()->attach($services, ['service_type' => 'package']);
         }
         if (request()->has('other_services')) {
             $other_services = request()->input('other_services', array());
-            $model->other_services = json_encode($other_services);
-            $model->save();
+            if (count($other_services) > 0) {
+                foreach ($other_services as $other_service) {
+                    if ($other_service != '') {
+                        \App\Models\BaService::create([
+                            'ba_id' => $model->id,
+                            'service_type' => 'other',
+                            'service_name' => $other_service
+                        ]);
+                    }
+                }
+            }
         }
         return $model;
     }

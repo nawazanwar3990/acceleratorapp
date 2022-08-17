@@ -13,6 +13,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('freelancer_id')->nullable()->constrained(TableEnum::FREELANCERS);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
+            $table->string('service_type')->nullable();
+            $table->string('service_name')->nullable();
             $table->timestamps();
         });
     }

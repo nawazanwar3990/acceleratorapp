@@ -14,8 +14,6 @@ class BA extends Model
 {
     protected $table = TableEnum::BA;
     protected $casts = [
-        'services' => 'array',
-        'other_services' => 'array',
         'affiliations' => 'array',
     ];
     protected $fillable = [
@@ -30,9 +28,15 @@ class BA extends Model
         'company_address',
         'company_contact_no',
         'company_email',
-        'services',
-        'other_services'
     ];
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE, 'ba_id')
+            ->withPivot('service_type')
+            ->withTimestamps();
+
+    }
     public function getCompanyDateOfInitiationAttribute($value)
     {
         return Carbon::parse($value)->format('d M Y');

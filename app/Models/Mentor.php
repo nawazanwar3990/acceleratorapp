@@ -17,7 +17,6 @@ class Mentor extends Model
     protected $table = TableEnum::MENTORS;
     protected $casts = [
         'services' => 'array',
-        'other_services' => 'array',
     ];
     protected $fillable = [
         'user_id',
@@ -27,9 +26,14 @@ class Mentor extends Model
         'm_contact',
         'm_emergency_contact',
         'm_postal_code',
-        'services',
-        'other_services'
     ];
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::MENTOR_SERVICE, 'mentor_id')
+            ->withPivot('service_type')
+            ->withTimestamps();
+    }
 
     public function user(): BelongsTo
     {

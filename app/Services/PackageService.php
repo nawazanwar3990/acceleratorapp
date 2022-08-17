@@ -13,7 +13,8 @@ class PackageService
 {
     public static function list_packages($type): Collection|array
     {
-        return Package::where('status', true)
+        return Package::with('services')
+            ->where('status', true)
             ->where('package_type', $type)
             ->where('payment_process',PaymentTypeProcessEnum::DIRECT_PAYMENT)
             ->get();

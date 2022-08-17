@@ -113,11 +113,11 @@
                 @foreach($services as $service)
                     <tr>
                         <th>
-                            {!!  Form::hidden('services[name][]',$service->name) !!}
+                            {!!  Form::hidden('services[id][]',$service->id) !!}
                             {{ ucwords(str_replace('_',' ',$service->name))}}
                         </th>
                         <td>
-                            @php $old_value = (isset($model) && array_key_exists($service->name,$old_services))?$old_services[$service->name]:'0'  @endphp
+                            @php $old_value = (isset($model) && array_key_exists($service->id,$old_services))?$old_services[$service->id]:'0'  @endphp
                             {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$old_value,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
                         </td>
                     </tr>

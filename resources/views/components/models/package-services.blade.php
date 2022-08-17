@@ -7,9 +7,9 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group list-group-flush">
-                    @foreach($record->services as $service_key=>$service_value)
+                    @foreach($record->services as $service)
                         <li class="list-group-item">
-                            <span class="text-muted fs-13">{{ ($service_key)=='∞'?'Unlimited':$service_key }}</span> <span class="fw-bold">{{ str_replace('_',' ',$service_value) }}</span>
+                             <span class="fw-bold">{{ $service->name }}</span> <span class="text-muted fs-13 pull-right">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</span>
                         </li>
                     @endforeach
                 </ul>

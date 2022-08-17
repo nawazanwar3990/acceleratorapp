@@ -13,6 +13,13 @@ class MentorService extends Model
 
     protected $table = TableEnum::MENTOR_SERVICE;
 
+    protected $fillable = [
+        'mentor_id',
+        'service_id',
+        'service_type',
+        'service_name'
+    ];
+
     public function mentors(): BelongsTo
     {
         return $this->belongsTo(Mentor::class, 'mentor_id');
