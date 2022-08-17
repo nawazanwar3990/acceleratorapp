@@ -121,7 +121,7 @@ function apply_payment(parent = null, type) {
         '      </div> \n' +
         '      <img class="p-5 pb-0" src="/images/icon/preapply.png" alt="Pre Apply"> \n' +
         '      <div class="card-body text-center"> \n' +
-        '        <h5 class="card-title">Pre Apply\n' +
+        '        <h5 class="card-title">Customized Plan\n' +
         '        </h5> \n' +
         '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' +
         '          <li class="fs-13">Select services according to your need.\n' +
@@ -143,7 +143,7 @@ function apply_payment(parent = null, type) {
         '      </div> \n' +
         '      <img class="p-5 pb-0" src="/images/icon/directapply.png" alt="Direct Apply"> \n' +
         '      <div class="card-body text-center"> \n' +
-        '        <h5 class="card-title">Direct Apply\n' +
+        '        <h5 class="card-title">Predefined Plan\n' +
         '        </h5> \n' +
         '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' +
         '          <li class="fs-13 mb-3">Already defined services.\n' +

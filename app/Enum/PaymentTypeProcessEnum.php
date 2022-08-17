@@ -22,8 +22,8 @@ class PaymentTypeProcessEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return array(
-            self::DIRECT_PAYMENT => 'Direct Apply',
-            self::PRE_PAYMENT => 'Pre Apply',
+            self::PRE_PAYMENT => __(sprintf('%s.%s', 'general', self::PRE_PAYMENT)),
+            self::DIRECT_PAYMENT => __(sprintf('%s.%s', 'general', self::DIRECT_PAYMENT)),
         );
     }
 }

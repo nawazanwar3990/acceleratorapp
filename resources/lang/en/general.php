@@ -1,6 +1,6 @@
 <?php
 return [
-    'available_locations'=>'Available Locations',
+    'available_locations' => 'Available Locations',
     'meeting_time' => 'Time',
     'meeting_mode' => 'Mode',
     'meeting_end_time' => 'End Time',
@@ -25,6 +25,8 @@ return [
     'registered_company' => 'Registered Company',
     'new_company' => 'New Company',
     'organized_by' => 'Organized By',
+    'pre-payment' => 'Customized Plan',
+    'direct-payment' => 'Predefined Plan',
 
     'meeting_pass' => 'Meeting Pass',
     'create_plan' => 'Create Plan',

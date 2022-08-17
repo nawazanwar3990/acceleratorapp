@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ApprovedSubscription extends Notification
+class ApprovedSubscription extends Notification implements \Illuminate\Contracts\Mail\Mailable
 {
     use Queueable;
     public function __construct()
