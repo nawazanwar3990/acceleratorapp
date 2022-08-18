@@ -36,12 +36,10 @@ class Mentor extends Model
             ->withTimestamps();
     }
 
-    public function other_services(): BelongsToMany
+    public function other_services(): HasMany
     {
-        return $this->belongsToMany(Service::class, TableEnum::MENTOR_SERVICE, 'mentor_id')
-            ->where('mentor_service.service_type', 'other')
-            ->withPivot('service_type')
-            ->withTimestamps();
+        return $this->hasMany(MentorService::class, 'mentor_id')
+            ->where('service_type', 'other');
     }
 
     public function user(): BelongsTo

@@ -38,11 +38,10 @@ class BA extends Model
             ->withTimestamps();
 
     }
-    public function other_services(): BelongsToMany
+    public function other_services(): HasMany
     {
-        return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE, 'ba_id')
-            ->where('ba_service.service_type','other');
-
+        return $this->hasMany(BaService::class,'ba_id')
+            ->where('service_type','other');
     }
     public function getCompanyDateOfInitiationAttribute($value)
     {
