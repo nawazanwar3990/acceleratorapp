@@ -33,8 +33,15 @@ class BA extends Model
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE, 'ba_id')
+            ->where('ba_service.service_type','package')
             ->withPivot('service_type')
             ->withTimestamps();
+
+    }
+    public function other_services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE, 'ba_id')
+            ->where('ba_service.service_type','other');
 
     }
     public function getCompanyDateOfInitiationAttribute($value)

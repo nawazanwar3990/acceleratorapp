@@ -13,9 +13,9 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                @foreach(json_decode($record->services,true) as $service)
+                                @foreach($record->services as $service)
                                     <div class="col-4">
-                                        <p class="my-1">{{ $service }}</p>
+                                        <p class="my-1">{{ $service->name }}</p>
                                     </div>
                                 @endforeach
                             </div>
@@ -31,9 +31,9 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                @foreach(json_decode($record->other_services,true) as $service)
+                                @foreach($record->other_services as $service)
                                     <div class="col-4">
-                                        <p class="my-1">{{ $service }}</p>
+                                        <p class="my-1">{{ $service->pivot->name }}</p>
                                     </div>
                                 @endforeach
                             </div>

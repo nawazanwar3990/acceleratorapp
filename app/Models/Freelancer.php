@@ -33,8 +33,17 @@ class Freelancer extends Model
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE, 'freelancer_id')
+            ->where('freelancer_service.service_type', 'package')
             ->withPivot('service_type')
             ->withTimestamps();
+
+    }
+
+    public function other_services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE, 'freelancer_id')
+            ->where('freelancer_service.service_type', 'other');
+
     }
 
     public function user(): BelongsTo

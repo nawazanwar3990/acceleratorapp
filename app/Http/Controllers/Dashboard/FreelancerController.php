@@ -27,7 +27,7 @@ class FreelancerController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $type = $request->query('type');
-        $records = Freelancer::with('user')->where('payment_process', $type);
+        $records = Freelancer::with('user','services','other_services')->where('payment_process', $type);
         if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $records = $records->where('created_by', Auth::id());
         } else {

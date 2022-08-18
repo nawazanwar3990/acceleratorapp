@@ -132,9 +132,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach(json_decode($model->services,true) as $service_name)
+                                        @foreach($subscription->package->services as $service)
                                             <tr class="text-start">
-                                                <td>{{ $service_name }}</td>
+                                                <td>{{ $service->name }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -150,7 +150,7 @@
                                             @foreach($model->other_services as $service)
                                                 @if($service)
                                                     <tr>
-                                                        <td>{{ $service}}</td>
+                                                        <td>{{ $service->service_name}}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
