@@ -38,39 +38,6 @@ class PageController extends Controller
 
     public function pending_subscription(Request $request): Factory|View|RedirectResponse|Application
     {
-        $pageTitle = 'Pending Subscription';
-
-        $subscription_id = $request->query('subscription_id');
-        $subscription_type = $request->input('subscription_type');
-        $subscribed_id = $request->query('subscribed_id');
-        $user = User::find($subscribed_id);
-        $subscription = Subscription::where('subscribed_id', $subscribed_id)->first();
-        if ($subscription->status == SubscriptionStatusEnum::APPROVED) {
-            Auth::attempt([
-                'email' => $user->email,
-                'password' => $user->normal_password
-            ]);
-            return redirect()->route('website.index')->with('success','Your Subscription has Approved');
-        }
-        $media = Media::where('record_id', $subscription->id)->whereRecordType(MediaTypeEnum::SUBSCRIPTION_RECEIPT);
-        if ($media->exists()) {
-            $media = $media->first();
-            Session::put('info', "Your Receipt has Received By Super admin and let you know after approved your Subscription");
-        } else {
-            if (\auth()->guest()){
-                Session::put('info', $user->payment_token_number . "  is your payment code. Please submit your payment receipt for approved you subscription.");
-            }
-            $media=null;
-        }
-
-        return view('website.pages.pending-subscription', compact(
-            'pageTitle',
-            'subscription',
-            'user',
-            'media',
-            'subscription_type',
-            'subscription_id'
-        ));
     }
     public function storePaymentSnippet(Request $request): RedirectResponse
     {

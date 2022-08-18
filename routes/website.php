@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentReceiptController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Website\BAController;
 use App\Http\Controllers\Website\CustomerController;
 use App\Http\Controllers\Website\FreelancerController;
@@ -24,11 +26,11 @@ Route::get('/freelancers/create/{type?}/{payment?}/{step?}/{id?}', [FreelancerCo
 Route::post('/freelancers/store/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'store'])
     ->name('freelancers.store');
 
-Route::get('/pending-subscription', [PageController::class, 'pending_subscription'])
+Route::get('/pending-subscription', [SubscriptionController::class, 'viewPendingSubscription'])
     ->name('pending-subscription')
     ->middleware('has_package');
-Route::post('/payment-snippet/store', [PageController::class, 'storePaymentSnippet'])
-    ->name('payment-snippet-store');
+Route::post('/payment-receipts/store', [PaymentReceiptController::class, 'storePaymentReceipt'])
+    ->name('payment-receipts.store');
 
 
 

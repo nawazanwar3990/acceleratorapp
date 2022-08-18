@@ -1,5 +1,8 @@
 <?php
 return [
+    'package_approval' => 'Package Approval',
+    'receipt_uploaded_message' => 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription',
+    'apply_payment' => 'Apply Payment',
     'available_locations' => 'Available Locations',
     'meeting_time' => 'Time',
     'meeting_mode' => 'Mode',
