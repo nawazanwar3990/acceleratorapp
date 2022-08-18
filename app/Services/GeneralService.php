@@ -1305,11 +1305,11 @@ class GeneralService
     public static function get_model_by_type_and_id($type, $id): Model|Collection|Builder|array|null
     {
         if (in_array($type, [\App\Enum\PackageTypeEnum::FREELANCER, \App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY])) {
-            return Freelancer::with('user')->find($id);
+            return Freelancer::with('user','services')->find($id);
         } else if (in_array($type, [\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR, \App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
-            return BA::with('user')->find($id);
+            return BA::with('user','services')->find($id);
         } else if ($type==PackageTypeEnum::MENTOR){
-            return Mentor::with('user')->find($id);
+            return Mentor::with('user','services')->find($id);
         }
     }
     public static function get_models_by_role($role,$id){

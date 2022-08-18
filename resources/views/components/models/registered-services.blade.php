@@ -10,7 +10,7 @@
                     @if($record->services)
                         <div class="card mb-0" style="border-top: none;">
                             <div class="card-body">
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush text-left">
                                     @foreach($record->services as $service)
                                         <li class="list-group-item">
                                             {{ $service->name }}
@@ -28,7 +28,7 @@
                                 <h6 class="card-title mb-0">Other Services</h6>
                             </div>
                             <div class="card-body">
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush text-left">
                                     @foreach($record->other_services as $service)
                                         <li class="list-group-item">{{ $service->service_name }}</li>
                                     @endforeach
@@ -40,7 +40,7 @@
                     @isset($record->user->subscription->package->services)
                         <div class="card mb-0" style="border-top: none;">
                             <div class="card-body">
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush text-left">
                                     @foreach($record->user->subscription->package->services as $service)
                                         <li class="list-group-item">
                                             {{ $service->name }} <span class="btn btn-sm btn-info pull-right">{{ $service->pivot->limit }}</span>

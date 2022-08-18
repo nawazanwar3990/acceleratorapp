@@ -54,11 +54,11 @@
                         <th>{{ trans('general.limit') }}</th>
                     </tr>
                     </thead>
-                    @foreach(json_decode($process_model->services,true) as $service)
+                    @foreach($process_model->services as $service)
                         <tr>
                             <th>
-                                {!!  Form::hidden('services[name][]',$service) !!}
-                                {{ ucwords(str_replace('_',' ',$service))}}
+                                {!!  Form::hidden('services[id][]',$service->id) !!}
+                                {{ ucwords(str_replace('_',' ',$service->name))}}
                             </th>
                             <td>
                                 {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
@@ -69,7 +69,7 @@
             </div>
         </div>
     @endif
-    @if($process_model->other_services)
+   {{-- @if($process_model->other_services)
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title mb-0">{{ trans('general.other_services') }}</h5>
@@ -82,10 +82,10 @@
                         <th>{{ trans('general.limit') }}</th>
                     </tr>
                     </thead>
-                    @foreach(json_decode($process_model->other_services,true) as $service)
+                    @foreach($process_model->other_services as $service)
                         <tr>
                             <th>
-                                {!!  Form::hidden('services[name][]',$service) !!}
+                                {!!  Form::hidden('services[id][]',$service) !!}
                                 {{ ucwords(str_replace('_',' ',$service))}}
                             </th>
                             <td>
@@ -96,7 +96,7 @@
                 </table>
             </div>
         </div>
-    @endif
+    @endif--}}
 @else
     <div class="card">
         <div class="card-header">
