@@ -1,5 +1,8 @@
 <?php
 return [
+    'payment'=>'Payment',
+    'payment_for'=>'Payment For',
+    'payment_info' => 'Payment Info',
     'package_approval' => 'Package Approval',
     'receipt_uploaded_message' => 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription',
     'apply_payment' => 'Apply Payment',

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Enum\MediaTypeEnum;
 use App\Enum\PaymentForEnum;
 use App\Enum\SubscriptionStatusEnum;
-use App\Models\Media;
 use App\Models\PaymentReceipt;
 use App\Models\Subscription;
 use App\Models\User;
@@ -35,22 +33,24 @@ class SubscriptionController extends Controller
             ]);
             return redirect()->route('website.index')->with('success','Your Subscription has Approved');
         }
-        $media = PaymentReceipt::where('payment_for',PaymentForEnum::PACKAGE_APPROVAL)->where();
-        if ($media->exists()) {
-            $media = $media->first();
+        $receipt = PaymentReceipt::with('subscription','subscribed')
+            ->where('payment_for',PaymentForEnum::PACKAGE_APPROVAL)
+            ->where('subscribed_id',$subscribed_id)
+            ->where('subscription_id',$subscription_id);
+        if ($receipt->exists()) {
+            $receipt = $receipt->first();
             Session::put('info', "Your Receipt has Received By Super admin and let you know after approved your Subscription");
         } else {
             if (\auth()->guest()){
                 Session::put('info', $user->payment_token_number . "  is your payment code. Please submit your payment receipt for approved you subscription.");
             }
-            $media=null;
+            $receipt=null;
         }
-
         return view('website.subscriptions.pending', compact(
             'pageTitle',
             'subscription',
             'user',
-            'media',
+            'receipt',
             'subscription_type',
             'subscription_id'
         ));
