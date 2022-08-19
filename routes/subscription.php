@@ -3,7 +3,7 @@
 use App\Http\Controllers\Dashboard\DurationController;
 use App\Http\Controllers\Dashboard\ModuleController;
 use App\Http\Controllers\Dashboard\PackageController;
-use App\Http\Controllers\Dashboard\PaymentController;
+use App\Http\Controllers\Dashboard\PaymentReceiptController;
 use App\Http\Controllers\Dashboard\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,9 +12,6 @@ Route::resource('/modules', ModuleController::class, ['names' => 'modules'])->mi
 Route::resource('/packages', PackageController::class, ['names' => 'packages'])->middleware('has_package');
 Route::resource('/subscriptions', SubscriptionController::class, ['names' => 'subscriptions'])->middleware('has_package');
 
-Route::resource('/payments', PaymentController::class, ['names' => 'payments'])->middleware('has_package');
-Route::get('/subscription/logs', [SubscriptionController::class, 'logs'])->name('subscription-logs.index')->middleware('has_package');
-
-Route::get('/payment/receipts', [SubscriptionController::class, 'paymentReceipt'])
+Route::get('/payment-receipts', [PaymentReceiptController::class, 'index'])
     ->name('payment-receipts.index')
     ->middleware('has_package');

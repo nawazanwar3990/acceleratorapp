@@ -7,6 +7,7 @@ use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Subscription extends Model
 {
@@ -37,14 +38,17 @@ class Subscription extends Model
     {
         return $this->belongsTo(Package::class, 'subscription_id');
     }
+
     public function office(): BelongsTo
     {
         return $this->belongsTo(Office::class, 'model_id');
     }
+
     public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class, 'subscription_id');
     }
+
     public function updated_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
@@ -59,9 +63,9 @@ class Subscription extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by');
     }
-    public function receipt(): BelongsTo
+
+    public function receipt(): HasMany
     {
-        return $this->belongsTo(Media::class,'id','record_id')
-            ->where('media.record_type',MediaTypeEnum::SUBSCRIPTION_RECEIPT);
+        return $this->hasMany(PaymentReceipt::class, 'subscription_id', 'id');
     }
 }

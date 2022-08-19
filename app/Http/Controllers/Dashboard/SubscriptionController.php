@@ -12,6 +12,7 @@ use App\Models\Media;
 use App\Models\Office;
 use App\Models\Package;
 use App\Models\Payment;
+use App\Models\PaymentReceipt;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Services\GeneralService;
@@ -181,25 +182,4 @@ class SubscriptionController extends Controller
         echo "under process";
     }
 
-    public function paymentReceipt(Request $request): Factory|View|Application
-    {
-        $type = $request->input('type');
-        $records = Subscription::with('receipt')
-            ->whereHas('subscribed', function ($query) use ($type) {
-                $query->whereHas('roles', function ($q) use ($type) {
-                    $q->where('slug', $type);
-                });
-            })
-            ->whereHas('receipt');
-        if ($request->has('id')) {
-            $id = $request->query('id');
-            $records = $records->where('id', $id);
-        }
-        $records = $records->get();
-        $params = [
-            'pageTitle' => __('general.receipts'),
-            'records' => $records,
-        ];
-        return view('dashboard.subscriptions.receipts', $params);
-    }
 }

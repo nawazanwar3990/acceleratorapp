@@ -1,7 +1,12 @@
 <?php
 return [
-    'payment'=>'Payment',
-    'payment_for'=>'Payment For',
+    'declined'=>'Declined',
+    'reason_for_declining_subscription'=>'Reason for Declining Subscription',
+    'reason_for_approving' => 'Reason for Approving Subscription',
+    'approved_subscription' => 'Approved Subscription',
+    'transaction_amount' => 'Transaction Amount',
+    'payment' => 'Payment',
+    'payment_for' => 'Payment For',
     'payment_info' => 'Payment Info',
     'package_approval' => 'Package Approval',
     'receipt_uploaded_message' => 'Your Receipt is Successfully Uploaded,Please Wait,We will Let You While While Approving Your Subscription',
