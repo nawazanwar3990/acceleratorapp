@@ -56,13 +56,26 @@
                 @endif
                 @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
                     @foreach(\App\Services\PersonService::get_current_ba_package_services() as $key=>$value)
-                        <li>
-                            <a class="waves-effect waves-dark"
-                               href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
-                                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
-                                {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($key) }}
-                            </a>
-                        </li>
+                        @if($key===\App\Enum\LeftNavBar\BANavEnum::INCUBATOR)
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="ti-settings"></i>
+                                    <span class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($key) }}</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse">
+                                    @include('dashboard.components.left-nav-bar.incubator-types')
+                                </ul>
+                            </li>
+                        @else
+                            <li>
+                                <a class="waves-effect waves-dark"
+                                   href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
+                                    {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
+                                    {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($key) }}
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                 @endif
             </ul>
