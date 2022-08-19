@@ -17,9 +17,14 @@ use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
+    public function expire(): Factory|View|Application
+    {
+        $pageTitle = trans('general.package_expire');
+        $subscription = \auth()->user()->subscription;
+        return view('website.subscriptions.expire', compact('pageTitle','subscription'));
+    }
     public function viewPendingSubscription(Request $request): Factory|View|RedirectResponse|Application
     {
-
         $pageTitle =trans('general.pending_subscription');
         $subscription_id = $request->query('subscription_id');
         $subscription_type = $request->input('subscription_type');

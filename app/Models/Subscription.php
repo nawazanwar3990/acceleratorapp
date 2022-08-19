@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enum\TableEnum;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,6 +28,19 @@ class Subscription extends Model
         'status'
     ];
 
+    public function getExpireDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d M Y h:i:s A');
+    }
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d M Y h:i:s A');
+    }
+
+    public function getCompanyDateOfInitiationAttribute($value)
+    {
+        return Carbon::parse($value)->format('d M Y');
+    }
     public function subscribed(): BelongsTo
     {
         return $this->belongsTo(User::class, 'subscribed_id');

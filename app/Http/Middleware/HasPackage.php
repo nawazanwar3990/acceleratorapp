@@ -26,7 +26,7 @@ class HasPackage
                     if ($subscriptionQuery->exists()) {
                         $subscription = $subscriptionQuery->first();
                         if (GeneralService::isExpireSubscription(\Carbon\Carbon::now(), $subscription->expire_date)) {
-                            return redirect()->route('package.expire');
+                            return redirect()->route('subscription.expire');
                         }else if ($subscription->status==SubscriptionStatusEnum::PENDING){
                             $currentGuard->logout();
                             Cache::flush();

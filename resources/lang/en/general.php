@@ -1,7 +1,8 @@
 <?php
 return [
-    'declined'=>'Declined',
-    'reason_for_declining_subscription'=>'Reason for Declining Subscription',
+    'package_expire' => 'Package Expire',
+    'declined' => 'Declined',
+    'reason_for_declining_subscription' => 'Reason for Declining Subscription',
     'reason_for_approving' => 'Reason for Approving Subscription',
     'approved_subscription' => 'Approved Subscription',
     'transaction_amount' => 'Transaction Amount',
