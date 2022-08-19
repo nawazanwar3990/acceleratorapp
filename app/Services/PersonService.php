@@ -177,4 +177,9 @@ class PersonService
             return  json_decode($services,true);
         }
     }
+
+    public static function get_current_ba_package_services()
+    {
+        return Auth::user()->subscription->package->services()->pluck('package_service.limit','services.slug')->toArray();
+    }
 }

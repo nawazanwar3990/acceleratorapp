@@ -55,44 +55,14 @@
                     @endforeach
                 @endif
                 @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                    @foreach(\App\Enum\LeftNavBar\BANavEnum::getTranslationKeys() as $key=>$value)
-                        @if(in_array($key,[
-                                \App\Enum\LeftNavBar\BANavEnum::PLAN,
-                                \App\Enum\LeftNavBar\BANavEnum::SERVICE,
-                                \App\Enum\LeftNavBar\BANavEnum::SUBSCRIPTION
-                         ]))
-                            <li>
-                                <a class="waves-effect waves-dark"
-                                   href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
-                                    {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
-                                    {{ $value }}
-                                </a>
-                            </li>
-                        @else
-                            @if(in_array($value,\App\Services\PersonService::getBaServices()))
-                                @if($value=='Incubator')
-                                    <li>
-                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                           aria-expanded="false">
-                                            <i class="ti-settings"></i>
-                                            <span class="hide-menu"> {{ $value }}</span>
-                                        </a>
-                                        <ul aria-expanded="false" class="collapse">
-                                            @include('dashboard.components.left-nav-bar.incubator-types')
-                                        </ul>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a class="waves-effect waves-dark"
-                                           href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
-                                            {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span
-                                                class="hide-menu">
-                                            {{ $value }}
-                                        </a>
-                                    </li>
-                                @endif
-                            @endif
-                        @endif
+                    @foreach(\App\Services\PersonService::get_current_ba_package_services() as $key=>$value)
+                        <li>
+                            <a class="waves-effect waves-dark"
+                               href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($key) }}">
+                                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($key) !!} <span class="hide-menu">
+                                {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($key) }}
+                            </a>
+                        </li>
                     @endforeach
                 @endif
             </ul>

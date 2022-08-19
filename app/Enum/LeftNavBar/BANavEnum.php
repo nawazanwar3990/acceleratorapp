@@ -15,14 +15,13 @@ class BANavEnum extends AbstractEnum
     public const PLAN = KeyWordEnum::PLAN;
     public const SERVICE = KeyWordEnum::SERVICE;
     public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
-    public const INCUBATOR = KeyWordEnum::INCUBATOR;
-    public const FREELANCER = KeyWordEnum::FREELANCER;
-    public const MEETING_ROOM = KeyWordEnum::MEETING_ROOM;
-    public const MENTORSHIP_WITH_INVESTMENT = KeyWordEnum::MENTORSHIP_WITH_INVESTMENT;
-    public const MENTORSHIP_WITHOUT_INVESTMENT = KeyWordEnum::MENTORSHIP_WITHOUT_INVESTMENT;
-    public const EVENT_MANAGEMENT = KeyWordEnum::EVENT_MANAGEMENT;
+    public const INCUBATOR = 'incubator';
+    public const FREELANCER = 'freelancer';
+    public const MEETING_ROOM = 'meeting-room';
+    public const MENTORSHIP_WITH_INVESTMENT = 'mentorship-with-investment';
+    public const MENTORSHIP_WITHOUT_INVESTMENT = 'mentorship-with-out-investment';
+    public const EVENT_MANAGEMENT = 'event-management';
     public const SETTING = KeyWordEnum::SETTING;
-
 
     public static function getValues(): array
     {
