@@ -37,10 +37,12 @@
                                 </td>
                                 <td class="text-center">
                                     @if($record->payment_for==\App\Enum\PaymentForEnum::PACKAGE_APPROVAL)
-                                        <a class="btn btn-sm btn-info  mx-1"
-                                           onclick="approved_subscription('{{ $record->subscription->id}}');">
-                                            {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
-                                        </a>
+                                        @if($record->subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
+                                            <a class="btn btn-sm btn-info  mx-1"
+                                               onclick="approved_subscription('{{ $record->subscription->id}}');">
+                                                {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
+                                            </a>
+                                        @endif
                                         <a class="btn btn-sm btn-info  mx-1"
                                            onclick="decline_subscription('{{ $record->subscription->id}}');">
                                             {{ trans('general.declined') }} <i class="bx bx-minus-circle"></i>
@@ -67,23 +69,81 @@
         function approved_subscription(subscription_id) {
             Swal.fire({
                 title: '{{ trans('general.approved') }}',
-                html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_approving'),'rows'=>'3']) !!}',
+                html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_approving'),'rows'=>'3','id'=>'reason']) !!}',
                 confirmButtonText: '{{ trans('general.save') }}',
                 focusConfirm: true,
+                preConfirm: () => {
+                    const reason = Swal.getPopup().querySelector('#reason').value
+                    if (!reason) {
+                        Swal.showValidationMessage(`Please Enter Reason`)
+                    }
+                    return {
+                        reason: reason,
+                    }
+                }
             }).then((result) => {
-
+                Swal.fire({
+                    html: '{!! __('general.request_wait') !!}',
+                    allowOutsideClick: () => !Swal.isLoading()
+                });
+                Swal.showLoading();
+                let reason = result.value.reason;
+                $.ajax({
+                    url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::APPROVED }}/update',
+                    method: 'POST',
+                    data: {
+                        reason: reason
+                    },
+                    success: function (response) {
+                        if (response.status === true) {
+                            location.reload();
+                        }
+                    },
+                    error: function (response) {
+                    }
+                });
             });
         }
+
         function decline_subscription(subscription_id) {
             Swal.fire({
                 title: '{{ trans('general.declined') }}',
                 html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_declining_subscription'),'rows'=>'3']) !!}',
                 confirmButtonText: '{{ trans('general.save') }}',
                 focusConfirm: true,
+                preConfirm: () => {
+                    const reason = Swal.getPopup().querySelector('#reason').value
+                    if (!reason) {
+                        Swal.showValidationMessage(`Please Enter Reason`)
+                    }
+                    return {
+                        reason: reason,
+                    }
+                }
             }).then((result) => {
-
+                Swal.fire({
+                    html: '{!! __('general.request_wait') !!}',
+                    allowOutsideClick: () => !Swal.isLoading()
+                });
+                Swal.showLoading();
+                let reason = result.value.reason;
+                $.ajax({
+                    url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::DECLINED }}/update',
+                    method: 'POST',
+                    data: {
+                        reason: reason
+                    },
+                    success: function (response) {
+                        if (response.status === true) {
+                            location.reload();
+                        }
+                    },
+                    error: function (response) {
+                    }
+                });
             });
         }
+
         function renew_subscription(subscription_id) {
             Swal.fire({
                 title: '{{ trans('general.renew') }}',

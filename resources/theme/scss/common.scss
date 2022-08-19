@@ -264,9 +264,17 @@
 .pull-right {
     float: right !important;
 }
-.parsley-errors-list{
+
+.parsley-errors-list {
     list-style-type: none !important;
     padding-left: 0 !important;
     font-size: 13px !important;
     color: red !important;
+}
+
+.swal2-popup .swal2-validation-message {
+    justify-content: left !important;
+    font-size: 13px !important;
+    margin-top: 6px;
+    background-color: transparent !important;
 }

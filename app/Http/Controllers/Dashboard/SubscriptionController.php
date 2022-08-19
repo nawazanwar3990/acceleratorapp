@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Enum\DurationEnum;
 use App\Enum\KeyWordEnum;
 use App\Enum\RoleEnum;
+use App\Enum\SubscriptionStatusEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
@@ -175,12 +176,18 @@ class SubscriptionController extends Controller
         ]);
     }
 
-    public function update(Request $request, $status, $id): JsonResponse
+    public function update(Request $request, $id, $status): JsonResponse
     {
         $subscription = Subscription::find($id);
         $subscription->status = $status;
         $subscription->reason = $request->input('reason');
         $subscription->save();
+        if ($subscription->status == SubscriptionStatusEnum::APPROVED) {
+            session()->put('info','Subscription Approved Successfully');
+        }
+        if ($subscription->status == SubscriptionStatusEnum::DECLINED) {
+            session()->put('info','Subscription Declined Successfully');
+        }
         return response()->json([
             'status' => true
         ]);

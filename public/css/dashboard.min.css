@@ -35830,6 +35830,13 @@ div.dtr-modal div.dtr-modal-background {
   color: red !important;
 }
 
+.swal2-popup .swal2-validation-message {
+  justify-content: left !important;
+  font-size: 13px !important;
+  margin-top: 6px;
+  background-color: transparent !important;
+}
+
 .sidebar-nav ul li a {
   padding: 10px 5px 10px 3px !important;
   font-size: 13px !important;

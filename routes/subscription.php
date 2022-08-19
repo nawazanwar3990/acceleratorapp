@@ -13,7 +13,7 @@ Route::resource('/packages', PackageController::class, ['names' => 'packages'])-
 Route::resource('/subscriptions', SubscriptionController::class, ['names' => 'subscriptions'])->middleware('has_package');
 
 
-Route::post('/subscription/{id}/{type}', [SubscriptionController::class,'update'])
+Route::post('/subscription/{id}/{status}/update', [SubscriptionController::class,'update'])
     ->name('subscription.update')
     ->middleware('has_package');
 
