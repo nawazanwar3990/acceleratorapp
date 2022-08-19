@@ -8,11 +8,9 @@ use App\Enum\RoleEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
-use App\Models\Media;
 use App\Models\Office;
 use App\Models\Package;
 use App\Models\Payment;
-use App\Models\PaymentReceipt;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Services\GeneralService;
@@ -177,9 +175,15 @@ class SubscriptionController extends Controller
         ]);
     }
 
-    public function logs(Request $request)
+    public function update(Request $request, $status, $id): JsonResponse
     {
-        echo "under process";
+        $subscription = Subscription::find($id);
+        $subscription->status = $status;
+        $subscription->reason = $request->input('reason');
+        $subscription->save();
+        return response()->json([
+            'status' => true
+        ]);
     }
 
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enum\MediaTypeEnum;
 use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +13,6 @@ class Subscription extends Model
     use HasFactory;
 
     protected $table = TableEnum::SUBSCRIPTIONS;
-
     protected $fillable = [
         'subscribed_id',
         'subscription_id',
@@ -47,21 +45,6 @@ class Subscription extends Model
     public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class, 'subscription_id');
-    }
-
-    public function updated_by(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    public function created_by(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function deleted_by(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'deleted_by');
     }
 
     public function receipt(): HasMany

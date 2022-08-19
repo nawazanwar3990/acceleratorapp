@@ -12,6 +12,11 @@ Route::resource('/modules', ModuleController::class, ['names' => 'modules'])->mi
 Route::resource('/packages', PackageController::class, ['names' => 'packages'])->middleware('has_package');
 Route::resource('/subscriptions', SubscriptionController::class, ['names' => 'subscriptions'])->middleware('has_package');
 
+
+Route::post('/subscription/{id}/{type}', [SubscriptionController::class,'update'])
+    ->name('subscription.update')
+    ->middleware('has_package');
+
 Route::get('/payment-receipts', [PaymentReceiptController::class, 'index'])
     ->name('payment-receipts.index')
     ->middleware('has_package');

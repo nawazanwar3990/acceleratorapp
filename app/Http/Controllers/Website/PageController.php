@@ -3,19 +3,14 @@
 namespace App\Http\Controllers\Website;
 
 use App\Enum\MediaTypeEnum;
-use App\Enum\SubscriptionStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
-use App\Models\Subscription;
-use App\Models\User;
 use App\Services\GeneralService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 use function __;
 use function session;
