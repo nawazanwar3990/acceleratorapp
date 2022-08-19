@@ -9,6 +9,7 @@ use App\Enum\MediaTypeEnum;
 use App\Enum\PackageTypeEnum;
 use App\Enum\RoleEnum;
 use App\Enum\ServiceTypeEnum;
+use App\Enum\SubscriptionStatusEnum;
 use App\Enum\SubscriptionTypeEnum;
 use App\Enum\TableEnum;
 use App\Models\BA;
@@ -1260,7 +1261,7 @@ class GeneralService
         $subscription_id,
         $subscribed_id,
         $payment_token_number,
-        $payment_addition_information=null
+        $payment_addition_information = null
     ): bool
     {
         $alreadySubscription = Subscription::where('subscribed_id', $subscribed_id);
@@ -1284,10 +1285,9 @@ class GeneralService
         $duration_type = $package->duration_type->slug;
         $price = $package->price;
         $subscription->price = $price;
-        $subscription->created_by = auth()->id();
         $subscription->renewal_date = Carbon::now();
         $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
-        $subscription->status = 'pending';
+        $subscription->status = SubscriptionStatusEnum::PENDING;
         $subscription->payment_token_number = $payment_token_number;
         $subscription->payment_addition_information = $payment_addition_information;
         if ($subscription->save()) {
@@ -1305,20 +1305,22 @@ class GeneralService
     public static function get_model_by_type_and_id($type, $id): Model|Collection|Builder|array|null
     {
         if (in_array($type, [\App\Enum\PackageTypeEnum::FREELANCER, \App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY])) {
-            return Freelancer::with('user','services')->find($id);
+            return Freelancer::with('user', 'services')->find($id);
         } else if (in_array($type, [\App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR, \App\Enum\PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
-            return BA::with('user','services')->find($id);
-        } else if ($type==PackageTypeEnum::MENTOR){
-            return Mentor::with('user','services')->find($id);
+            return BA::with('user', 'services')->find($id);
+        } else if ($type == PackageTypeEnum::MENTOR) {
+            return Mentor::with('user', 'services')->find($id);
         }
     }
-    public static function get_models_by_role($role,$id){
-        if ($role==RoleEnum::FREELANCER){
+
+    public static function get_models_by_role($role, $id)
+    {
+        if ($role == RoleEnum::FREELANCER) {
             return Freelancer::find($id);
-        }else if ($role==RoleEnum::BUSINESS_ACCELERATOR){
-            return  BA::find($id);
-        }else if ($role==RoleEnum::MENTOR){
-            return  Mentor::find($id);
+        } else if ($role == RoleEnum::BUSINESS_ACCELERATOR) {
+            return BA::find($id);
+        } else if ($role == RoleEnum::MENTOR) {
+            return Mentor::find($id);
         }
     }
 }

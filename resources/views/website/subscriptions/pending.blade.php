@@ -40,7 +40,7 @@
                                 </a>
                             @endif
                             @if(!$receipt)
-                                <a class="btn btn-info btn-sm pull-right" onclick="apply_payment();">
+                                <a class="btn btn-info btn-sm pull-right mx-2" onclick="apply_payment();">
                                     {{ trans('general.apply_payment') }} <i class="bx bx-plus-circle"></i>
                                 </a>
                             @endif
