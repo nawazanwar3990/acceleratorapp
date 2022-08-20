@@ -87,7 +87,8 @@
                                                     class="bx bx-plus-circle"></i>
                                             </a>
                                         @else
-                                            <a class="btn btn-xs btn-warning mx-1">
+                                            <a class="btn btn-xs btn-warning mx-1"
+                                               href="{{route('dashboard.payment-logs.index',$subscription->id)}}">
                                                 {{ trans('general.payment_logs') }}
                                             </a>
                                         @endif

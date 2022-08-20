@@ -20,3 +20,7 @@ Route::post('/subscription/{id}/{status}/update', [SubscriptionController::class
 Route::get('/payment-receipts', [PaymentReceiptController::class, 'index'])
     ->name('payment-receipts.index')
     ->middleware('has_package');
+
+Route::get('/payment-logs/{subscription_id}', [PaymentReceiptController::class, 'logs'])
+    ->name('payment-logs.index')
+    ->middleware('has_package');
