@@ -16,12 +16,12 @@
             @if($record->user->subscription)
                 @if($record->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('dashboard.payments.index',['id'=>$record->user->subscription->id]) }}">
+                       href="{{ route('dashboard.payment-logs.index',$record->user->subscription->id) }}">
                         {{ trans('general.view_payment') }}
                     </a>
                 @else
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('website.pending-subscription',['subscribed_id'=>$record->user->id,'subscription_id'=>$record->id,'subscription_type'=>\App\Enum\RoleEnum::MENTOR]) }}">
+                       href="{{ route('website.pending-subscription',[$record->user->subscription->id,\App\Enum\RoleEnum::MENTOR]) }}">
                         {{ trans('general.view_subscription') }}
                     </a>
                 @endif

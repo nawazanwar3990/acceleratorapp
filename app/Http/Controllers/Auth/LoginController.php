@@ -79,29 +79,13 @@ class LoginController extends Controller
                         || $user->hasRole(RoleEnum::MENTOR)
                         || $user->hasRole(RoleEnum::FREELANCER)
                     ) {
-                        $subscription = Subscription::with('subscribed')->where('subscribed_id', $user->id);
-                        if ($subscription->exists()) {
-                            $subscription_status = $subscription->value('status');
-                            if ($subscription_status == SubscriptionStatusEnum::PENDING) {
+                        $subscription = $user->subscription;
+                        if ($subscription) {
+                            if ($subscription->status == SubscriptionStatusEnum::PENDING) {
                                 $current_role = $user->roles[0]->slug;
-                                $subscription_type = null;
-                                $subscription_id = null;
-                                if ($current_role == RoleEnum::BUSINESS_ACCELERATOR) {
-                                    $subscription_type = RoleEnum::BUSINESS_ACCELERATOR;
-                                    $subscription_id = $user->ba->id;
-                                } else if ($current_role == RoleEnum::MENTOR) {
-                                    $subscription_type = RoleEnum::MENTOR;
-                                    $subscription_id = $user->mentor->id;
-                                } else if ($current_role == RoleEnum::FREELANCER) {
-                                    $type = RoleEnum::FREELANCER;
-                                    $subscription_type = $user->freelancer->type;
-                                    $subscription_id = $user->freelancer->id;
-                                }
-                                return redirect()->route('website.pending-subscription', [
-                                    'subscribed_id' => $user->id,
-                                    'subscription_id' => $subscription_id,
-                                    'subscription_type' => $subscription_type
-                                ]);
+                                $subscription_type = $current_role;
+                                $subscription_id =$user->subscription->id;
+                                return redirect()->route('website.pending-subscription',[$subscription_id,$subscription_type]);
                             } else {
                                 if (!Auth::attempt([
                                     'email' => $email,
@@ -128,7 +112,6 @@ class LoginController extends Controller
                                 Auth::logout();
                                 Cache::flush();
                                 return redirect()->route('website.index')->with('info','We are creating package on the basis of your selected services .So we will send you confirmation email after creating your package');
-
                             }
                         }
                     }

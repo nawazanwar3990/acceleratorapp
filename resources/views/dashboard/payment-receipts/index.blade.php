@@ -10,9 +10,14 @@
                         @forelse($records  as $record)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>
+                                <td class="text-center">
                                     @isset($record->subscribed)
                                         <a target="_blank"> {{ $record->subscribed->getFullName()  }}</a>
+                                        <br>
+                                        <a class="btn btn-xs btn-warning mx-1" target="_blank"
+                                           href="{{asset($record->file_name)}}">
+                                            {{ trans('general.view_receipt') }}
+                                        </a>
                                     @endisset
                                 </td>
                                 <td>

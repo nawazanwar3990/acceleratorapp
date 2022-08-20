@@ -26,7 +26,7 @@ Route::get('/freelancers/create/{type?}/{payment?}/{step?}/{id?}', [FreelancerCo
 Route::post('/freelancers/store/{type?}/{payment?}/{step?}/{id?}', [FreelancerController::class, 'store'])
     ->name('freelancers.store');
 
-Route::get('/pending-subscription', [SubscriptionController::class, 'viewPendingSubscription'])
+Route::get('/pending-subscription/{id}/{type}', [SubscriptionController::class, 'viewPendingSubscription'])
     ->name('pending-subscription')
     ->middleware('has_package');
 Route::post('/payment-receipts/store', [PaymentReceiptController::class, 'storePaymentReceipt'])

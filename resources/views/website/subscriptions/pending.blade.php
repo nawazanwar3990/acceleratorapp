@@ -17,25 +17,22 @@
                 <h3 class="text-center fw-bold">{{__('general.pending_subscription')}}</h3>
                 <div class="row justify-content-center mt-3 pt-3">
                     <div class="col-12 my-3 text-right">
-                        @if($subscription_type)
-                            @php
-                                $model = \App\Services\GeneralService::get_models_by_role($subscription_type,$subscription_id);
-                            @endphp
-                            @if($subscription_type==\App\Enum\RoleEnum::BUSINESS_ACCELERATOR)
+                        @if($type)
+                            @if($type==\App\Enum\RoleEnum::BUSINESS_ACCELERATOR)
                                 <a class="btn btn-info btn-sm pull-right"
-                                   href="{{ route('website.ba.create',[$model->type,$model->payment_process,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
+                                   href="{{ route('website.ba.create',[$subscription->subscribed->ba->type,$subscription->subscribed->ba->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->ba->id,'action'=>'edit']) }}">
                                     {{ trans('general.edit_profile') }}
                                 </a>
                             @endif
-                            @if($subscription_type==\App\Enum\RoleEnum::FREELANCER)
+                            @if($type==\App\Enum\RoleEnum::FREELANCER)
                                 <a class="btn btn-info btn-sm pull-right"
-                                   href="{{ route('website.freelancers.create',[$model->type,$model->payment_process,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
+                                   href="{{ route('website.freelancers.create',[$subscription->subscribed->freelancer->type,$subscription->subscribed->freelancer->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->freelancer->id,'action'=>'edit']) }}">
                                     {{ trans('general.edit_profile') }}
                                 </a>
                             @endif
-                            @if($subscription_type==\App\Enum\RoleEnum::MENTOR)
+                            @if($type==\App\Enum\RoleEnum::MENTOR)
                                 <a class="btn btn-info btn-sm pull-right"
-                                   href="{{ route('website.mentors.create',[$model->payment_process,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
+                                   href="{{ route('website.mentors.create',[$subscription->subscribed->mentor->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->mentor->id,'action'=>'edit']) }}">
                                     {{ trans('general.edit_profile') }}
                                 </a>
                             @endif
