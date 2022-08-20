@@ -29,13 +29,8 @@ class PackageController extends Controller
     {
         $this->middleware('auth');
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function index(Request $request): Factory|View|Application
     {
-        $this->authorize('view', Package::class);
         $type = $request->query('type');
         $package_id = $request->query('package_id');
         $records = Package::with('duration_type')
@@ -49,13 +44,8 @@ class PackageController extends Controller
         ];
         return view('dashboard.packages.index', $params);
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function create(Request $request): Factory|View|Application
     {
-        $this->authorize('create', Package::class);
         $type = $request->input('type');
         $model_id = $request->query('model_id');
         $services = Service::whereType($type)->whereStatus(true)->get();
@@ -67,13 +57,8 @@ class PackageController extends Controller
         ];
         return view('dashboard.packages.create', $params);
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function store(PackageRequest $request)
     {
-        $this->authorize('create', Package::class);
         $package_type = $request->input('package_type');
         $model_id = $request->input('model_id');
         $data = $request->createData();
@@ -106,13 +91,8 @@ class PackageController extends Controller
             }
         }
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function edit($id)
     {
-        $this->authorize('update', Package::class);
         $model = Package::findorFail($id);
         $old_services = $model->services;
         $type = $model->package_type;
@@ -127,10 +107,6 @@ class PackageController extends Controller
 
         return view('dashboard.packages.edit', $params);
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function update(PackageRequest $request, $id)
     {
         $type = $request->input('package_type');
@@ -140,13 +116,8 @@ class PackageController extends Controller
                 ->with('success', __('general.record_updated_successfully'));
         }
     }
-
-    /**
-     * @throws AuthorizationException
-     */
     public function destroy(PackageRequest $request, $id)
     {
-        $this->authorize('delete', Package::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.packages.index')
                 ->with('success', __('general.record_deleted_successfully'));

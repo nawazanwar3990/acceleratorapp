@@ -42,11 +42,9 @@ class SubscriptionController extends Controller
     /**
      * @param Request $request
      * @return Application|Factory|View|void
-     * @throws AuthorizationException
      */
     public function index(Request $request)
     {
-        $this->authorize('view', Subscription::class);
         $subscriptions = Subscription::with('receipt')
             ->orderBy('id', 'DESC');
         if (PersonService::hasRole(RoleEnum::SUPER_ADMIN)) {
@@ -57,8 +55,14 @@ class SubscriptionController extends Controller
                 });
             });
         }
-        if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
-            $subscriptions = $subscriptions->where('created_by', Auth::id());
+        if (
+            PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)
+            ||
+            PersonService::hasRole(RoleEnum::FREELANCER)
+            ||
+            PersonService::hasRole(RoleEnum::MENTOR)
+        ) {
+            $subscriptions = $subscriptions->where('subscribed_id', Auth::id());
         }
         $type = $request->query('type');
         $id = $request->query('id');
