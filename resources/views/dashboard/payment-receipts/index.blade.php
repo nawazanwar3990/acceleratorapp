@@ -92,11 +92,13 @@
                     url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::APPROVED }}/update',
                     method: 'POST',
                     data: {
-                        reason: reason
+                        reason: reason,
+                        subscription_for: '{{ request()->query('type') }}',
+                        type: '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}'
                     },
                     success: function (response) {
                         if (response.status === true) {
-                            location.reload();
+                            location.assign(response.route);
                         }
                     },
                     error: function (response) {
@@ -131,11 +133,13 @@
                     url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::DECLINED }}/update',
                     method: 'POST',
                     data: {
-                        reason: reason
+                        reason: reason,
+                        subscription_for: '{{ request()->query('type') }}',
+                        type: '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}'
                     },
                     success: function (response) {
                         if (response.status === true) {
-                            location.reload();
+                            location.assign(response.route);
                         }
                     },
                     error: function (response) {

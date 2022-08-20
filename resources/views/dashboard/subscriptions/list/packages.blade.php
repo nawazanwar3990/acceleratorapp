@@ -63,8 +63,7 @@
                                 </td>
                                 <td>
                                     @php
-                                        $is_renew = \Illuminate\Support\Facades\DB::table(\App\Enum\TableEnum::PAYMENTS)
-                                        ->where('subscription_id',$subscription->id)
+                                        $is_renew = \App\Models\PaymentReceipt::where('subscription_id',$subscription->id)
                                         ->count();
                                     @endphp
                                     @if($is_renew>1)

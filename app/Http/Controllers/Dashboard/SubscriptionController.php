@@ -12,7 +12,6 @@ use App\Enum\TableEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Office;
 use App\Models\Package;
-use App\Models\Payment;
 use App\Models\PaymentReceipt;
 use App\Models\Plan;
 use App\Models\Subscription;
@@ -196,8 +195,11 @@ class SubscriptionController extends Controller
         if ($subscription->status == SubscriptionStatusEnum::DECLINED) {
             session()->put('info', 'Subscription Declined Successfully');
         }
+        $type = $request->input('type');
+        $subscription_for = $request->input('subscription_for');
         return response()->json([
-            'status' => true
+            'status' => true,
+            'route' => route('dashboard.subscriptions.index', ['type' => $type, 'subscription_for' => $subscription_for])
         ]);
     }
 
