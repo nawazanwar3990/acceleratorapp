@@ -3,18 +3,14 @@
 namespace App\Enum\LeftNavBar;
 
 use App\Enum\AbstractEnum;
-use App\Enum\FreelancerTypeEnum;
 use App\Enum\KeyWordEnum;
 use App\Enum\PaymentTypeProcessEnum;
 use App\Enum\ServiceTypeEnum;
-use App\Enum\SubscriptionTypeEnum;
 
 class BANavEnum extends AbstractEnum
 {
-    public const DASHBOARD = KeyWordEnum::DASHBOARD;
     public const PLAN = KeyWordEnum::PLAN;
     public const SERVICE = KeyWordEnum::SERVICE;
-    public const SUBSCRIPTION = KeyWordEnum::SUBSCRIPTION;
     public const INCUBATOR = 'incubator';
     public const FREELANCER = 'freelancer';
     public const MEETING_ROOM = 'meeting-room';
@@ -26,10 +22,8 @@ class BANavEnum extends AbstractEnum
     public static function getValues(): array
     {
         return [
-            self::DASHBOARD,
             self::PLAN,
             self::SERVICE,
-            self::SUBSCRIPTION,
             self::INCUBATOR,
             self::FREELANCER,
             self::MEETING_ROOM,
@@ -43,10 +37,8 @@ class BANavEnum extends AbstractEnum
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::DASHBOARD => '<i class="mdi mdi-account"></i>',
             self::PLAN => '<i class="mdi mdi-account"></i>',
             self::SERVICE => '<i class="mdi mdi-account"></i>',
-            self::SUBSCRIPTION => '<i class="mdi mdi-account"></i>',
             self::INCUBATOR => '<i class="mdi mdi-account"></i>',
             self::FREELANCER => '<i class="mdi mdi-account"></i>',
             self::MEETING_ROOM => '<i class="mdi mdi-account"></i>',
@@ -65,16 +57,14 @@ class BANavEnum extends AbstractEnum
     public static function getTranslationKeys(): array
     {
         return [
-            self::DASHBOARD => __(sprintf('%s.%s', 'general.left-bar', self::DASHBOARD)),
             self::SERVICE => __(sprintf('%s.%s', 'general.left-bar', self::SERVICE)),
             self::PLAN => __(sprintf('%s.%s', 'general.left-bar', self::PLAN)),
-          /*  self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left-bar', self::SUBSCRIPTION)),*/
             self::INCUBATOR => 'Incubator',
-            self::MEETING_ROOM =>'Meeting Room',
-            self::FREELANCER =>'Freelancer',
-            self::MENTORSHIP_WITH_INVESTMENT =>'Mentorship with Investment',
+            self::MEETING_ROOM => 'Meeting Room',
+            self::FREELANCER => 'Freelancer',
+            self::MENTORSHIP_WITH_INVESTMENT => 'Mentorship with Investment',
             self::MENTORSHIP_WITHOUT_INVESTMENT => 'Mentorship with out Investment',
-            self::EVENT_MANAGEMENT =>'Event Management',
+            self::EVENT_MANAGEMENT => 'Event Management',
             self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING))
         ];
     }
@@ -82,12 +72,10 @@ class BANavEnum extends AbstractEnum
     public static function getAdminWorkingSpaces(): array
     {
         return [
-            self::DASHBOARD => __(sprintf('%s.%s', 'general.left_bar', self::DASHBOARD)),
             self::PLAN => __(sprintf('%s.%s', 'general.left_bar', self::PLAN)),
             self::SERVICE => __(sprintf('%s.%s', 'general.left_bar', self::SERVICE)),
-            self::SUBSCRIPTION => __(sprintf('%s.%s', 'general.left_bar', self::SUBSCRIPTION)),
             self::INCUBATOR => 'Incubator',
-            self::MEETING_ROOM =>'Meeting Room',
+            self::MEETING_ROOM => 'Meeting Room',
             self::FREELANCER => 'Freelancer',
             self::MENTORSHIP_WITH_INVESTMENT => __(sprintf('%s.%s', 'general.left_bar', self::MENTORSHIP_WITH_INVESTMENT)),
             self::MENTORSHIP_WITHOUT_INVESTMENT => __(sprintf('%s.%s', 'general.left_bar', self::MENTORSHIP_WITHOUT_INVESTMENT)),
@@ -100,14 +88,12 @@ class BANavEnum extends AbstractEnum
     public static function getRoute($key = null)
     {
         $routes = array(
-            self::DASHBOARD => route('dashboard.index'),
             self::PLAN => route('dashboard.plans.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC]),
-            self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type'=>SubscriptionTypeEnum::PLAN]),
             self::INCUBATOR => route('dashboard.incubators.index'),
             self::MEETING_ROOM => route('dashboard.meeting-rooms.index'),
-            self::FREELANCER => route('dashboard.freelancers.index',['type'=>PaymentTypeProcessEnum::DIRECT_PAYMENT]),
-            self::MENTORSHIP_WITH_INVESTMENT =>'',
+            self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
+            self::MENTORSHIP_WITH_INVESTMENT => '',
             self::MENTORSHIP_WITHOUT_INVESTMENT => '',
             self::EVENT_MANAGEMENT => route('dashboard.events.index'),
             self::SETTING => route('dashboard.settings.index'),
