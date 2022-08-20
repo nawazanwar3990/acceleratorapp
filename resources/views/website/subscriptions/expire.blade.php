@@ -49,11 +49,45 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 my-3 text-center">
-                        <a class="btn btn-primary btn-rounded cs-btn text-white" onclick="apply_payment();">
-                            {{ trans('general.apply_payment') }} <i class="bx bx-plus-circle"></i>
-                        </a>
-                    </div>
+                    @if(!$receipt)
+                        <div class="col-12 my-3 text-center">
+                            <a class="btn btn-primary btn-rounded cs-btn text-white" onclick="apply_payment();">
+                                {{ trans('general.apply_payment') }} <i class="bx bx-plus-circle"></i>
+                            </a>
+                        </div>
+                    @endif
+                    @if($receipt)
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0 fw-bold">{{ trans('general.payment_info') }}</h4>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 py-0">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <span>{{__('general.payment_type')}}</span>
+                                        <span
+                                            class="pull-right">{{ \App\Enum\PaymentTypeEnum::getTranslationKeyBy($receipt->payment_type) }}</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>{{__('general.payment_for')}}</span>
+                                        <span
+                                            class="pull-right">{{ \App\Enum\PaymentForEnum::getTranslationKeyBy($receipt->payment_for) }}</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>{{__('general.transaction_id')}}</span>
+                                        <span class="pull-right">{{ $receipt->transaction_id }}</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>{{__('general.payment')}}</span>
+                                        <span
+                                            class="pull-right">{{ $receipt->price }} {{ \App\Services\GeneralService::get_default_currency() }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -81,15 +115,23 @@
                 if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                     Swal.fire({
                         title: 'Manage Payment',
-                        html: `<div class="text-left fs-13">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'form-control dropify','id'=>'file_name']) }}</div>`,
+                        html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'form-control dropify','id'=>'file_name']) }}</div>`,
                         confirmButtonText: 'Submit',
                         focusConfirm: false,
                         preConfirm: () => {
-                            const transaction_id = Swal.getPopup().querySelector('#transaction_id').value
+                            const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
+                            let file_name = Swal.getPopup().querySelector('#file_name');
+                            file_name = file_name.files[0];
+                            if (!file_name) {
+                                Swal.showValidationMessage(`Please Choose Receipt in jpg,png format`)
+                            }
                             if (!transaction_id) {
                                 Swal.showValidationMessage(`First Enter Transaction ID`)
                             }
-                            return {transaction_id: transaction_id}
+                            return {
+                                transaction_id: transaction_id,
+                                file_name: file_name
+                            }
                         }
                     }).then((result) => {
                         Swal.fire({
@@ -97,18 +139,23 @@
                             allowOutsideClick: () => !Swal.isLoading()
                         });
                         Swal.showLoading();
-                        let data = {
-                            'payment_type': payment_type,
-                            'transaction_id': result.value.transaction_id,
-                            'subscription_id': "{{ $subscription->id }}",
-                            'subscribed_id': {{ $subscription->subscribed_id }},
-                            'payment_for':"{{ \App\Enum\PaymentForEnum::PACKAGE_APPROVAL }}",
-                            'price': '{{ $subscription->package->price }}',
-                        }
+                        let transaction_id = result.value.transaction_id;
+                        let file_name = result.value.file_name;
+                        let data = new FormData();
+                        data.append('payment_type', payment_type);
+                        data.append('transaction_id', transaction_id);
+                        data.append('subscription_id', "{{ $subscription->id }}");
+                        data.append('subscribed_id', "{{ $subscription->subscribed_id }}");
+                        data.append('payment_for', "{{ \App\Enum\PaymentForEnum::PACKAGE_EXPIRE }}");
+                        data.append('price', "{{ $subscription->package->price }}");
+                        data.append('file_name', file_name);
                         $.ajax({
                             url: "{{ route('website.payment-receipts.store')}}",
                             method: 'POST',
                             data: data,
+                            enctype: 'multipart/form-data',
+                            processData: false,
+                            contentType: false,
                             success: function (response) {
                                 if (response.status === true) {
                                     location.reload();

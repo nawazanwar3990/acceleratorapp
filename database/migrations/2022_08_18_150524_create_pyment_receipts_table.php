@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('transaction_id')->nullable();
             $table->string('price')->nullable();
             $table->string('file_name')->nullable();
+            $table->boolean('is_processed')->default(false);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Enum\DurationEnum;
 use App\Enum\KeyWordEnum;
+use App\Enum\PaymentForEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionStatusEnum;
 use App\Enum\SubscriptionTypeEnum;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Office;
 use App\Models\Package;
 use App\Models\Payment;
+use App\Models\PaymentReceipt;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Services\GeneralService;
@@ -182,11 +184,17 @@ class SubscriptionController extends Controller
         $subscription->status = $status;
         $subscription->reason = $request->input('reason');
         $subscription->save();
+        PaymentReceipt::where('subscribed_id', $subscription->subscribed_id)
+            ->where('subscription_id', $subscription->id)
+            ->where('is_processed', false)
+            ->update([
+                'is_processed' => true
+            ]);
         if ($subscription->status == SubscriptionStatusEnum::APPROVED) {
-            session()->put('info','Subscription Approved Successfully');
+            session()->put('info', 'Subscription Approved Successfully');
         }
         if ($subscription->status == SubscriptionStatusEnum::DECLINED) {
-            session()->put('info','Subscription Declined Successfully');
+            session()->put('info', 'Subscription Declined Successfully');
         }
         return response()->json([
             'status' => true

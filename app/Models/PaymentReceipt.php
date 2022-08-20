@@ -17,12 +17,15 @@ class PaymentReceipt extends Model
         'transaction_id',
         'file_name',
         'payment_for',
-        'price'
+        'price',
+        'is_processed'
     ];
+
     public function subscription(): BelongsTo
     {
         return $this->belongsTo(Subscription::class, 'subscription_id');
     }
+
     public function subscribed(): BelongsTo
     {
         return $this->belongsTo(User::class, 'subscribed_id');

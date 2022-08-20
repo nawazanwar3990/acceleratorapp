@@ -129,15 +129,23 @@
                 if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                     Swal.fire({
                         title: 'Manage Payment',
-                        html: `<div class="text-left fs-13">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'form-control dropify','id'=>'file_name']) }}</div>`,
+                        html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'form-control dropify','id'=>'file_name']) }}</div>`,
                         confirmButtonText: 'Submit',
                         focusConfirm: false,
                         preConfirm: () => {
-                            const transaction_id = Swal.getPopup().querySelector('#transaction_id').value
+                            const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
+                            let file_name = Swal.getPopup().querySelector('#file_name');
+                            file_name = file_name.files[0];
+                            if (!file_name) {
+                                Swal.showValidationMessage(`Please Choose Receipt in jpg,png format`)
+                            }
                             if (!transaction_id) {
                                 Swal.showValidationMessage(`First Enter Transaction ID`)
                             }
-                            return {transaction_id: transaction_id}
+                            return {
+                                transaction_id: transaction_id,
+                                file_name: file_name
+                            }
                         }
                     }).then((result) => {
                         Swal.fire({
@@ -145,18 +153,23 @@
                             allowOutsideClick: () => !Swal.isLoading()
                         });
                         Swal.showLoading();
-                        let data = {
-                            'payment_type': payment_type,
-                            'transaction_id': result.value.transaction_id,
-                            'subscription_id': "{{ $subscription->id }}",
-                            'subscribed_id': {{ $subscription->subscribed_id }},
-                            'payment_for': 'package_approval',
-                            'price': '{{ $subscription->package->price }}',
-                        }
+                        let transaction_id = result.value.transaction_id;
+                        let file_name = result.value.file_name;
+                        let data = new FormData();
+                        data.append('payment_type', payment_type);
+                        data.append('transaction_id', transaction_id);
+                        data.append('subscription_id', "{{ $subscription->id }}");
+                        data.append('subscribed_id', "{{ $subscription->subscribed_id }}");
+                        data.append('payment_for', "{{ \App\Enum\PaymentForEnum::PACKAGE_APPROVAL }}");
+                        data.append('price', "{{ $subscription->package->price }}");
+                        data.append('file_name', file_name);
                         $.ajax({
                             url: "{{ route('website.payment-receipts.store')}}",
                             method: 'POST',
                             data: data,
+                            enctype: 'multipart/form-data',
+                            processData: false,
+                            contentType: false,
                             success: function (response) {
                                 if (response.status === true) {
                                     location.reload();

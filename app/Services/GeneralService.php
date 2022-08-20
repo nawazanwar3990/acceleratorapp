@@ -1275,6 +1275,7 @@ class GeneralService
         $subscribed->save();
 
         $subscription = new Subscription();
+        $subscription->created_by = \auth()->id();
         $subscription->subscribed_id = $subscribed_id;
         $subscription->subscription_id = $subscription_id;
         $subscription->subscription_type = SubscriptionTypeEnum::PACKAGE;

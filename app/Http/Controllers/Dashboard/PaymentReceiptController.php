@@ -14,7 +14,8 @@ class PaymentReceiptController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $type = $request->input('type');
-        $records = PaymentReceipt::has('subscription')
+        $records = PaymentReceipt::where('is_processed', false)
+            ->has('subscription')
             ->whereHas('subscribed', function ($query) use ($type) {
                 $query->whereHas('roles', function ($q) use ($type) {
                     $q->where('slug', $type);

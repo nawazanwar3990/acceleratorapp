@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->longText('payment_addition_information')->nullable();
             $table->string('status')->default(SubscriptionStatusEnum::APPROVED);
             $table->longText('reason')->nullable();
+            $table->foreignId('created_by')->nullable();
             $table->timestamps();
         });
     }
