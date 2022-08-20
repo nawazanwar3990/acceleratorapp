@@ -19,7 +19,11 @@ class HasPackage
         foreach ($guards as $guard) {
             $currentGuard = Auth::guard($guard);
             if ($currentGuard->check()) {
-                if ($currentGuard->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
+                if (
+                    $currentGuard->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR) ||
+                    $currentGuard->user()->hasRole(RoleEnum::FREELANCER) ||
+                    $currentGuard->user()->hasRole(RoleEnum::MENTOR)
+                ) {
                     $userId = $currentGuard->id();
                     $user = $currentGuard->user();
                     $subscriptionQuery = Subscription::where('subscribed_id', $userId);
@@ -27,7 +31,7 @@ class HasPackage
                         $subscription = $subscriptionQuery->first();
                         if (GeneralService::isExpireSubscription(\Carbon\Carbon::now(), $subscription->expire_date)) {
                             return redirect()->route('subscription.expire');
-                        }else if ($subscription->status==SubscriptionStatusEnum::PENDING){
+                        } else if ($subscription->status == SubscriptionStatusEnum::PENDING) {
                             $currentGuard->logout();
                             Cache::flush();
                             return redirect()->route('website.pending-subscription', ['subscribed_id' => $user->id]);

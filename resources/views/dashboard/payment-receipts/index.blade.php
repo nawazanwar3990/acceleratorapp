@@ -54,7 +54,7 @@
                                         </a>
                                     @else
                                         <a class="btn btn-sm btn-info  mx-1"
-                                           onclick="renew_package('{{ $record->subscription->id}}');">
+                                           onclick="renew_subscription('{{ $record->subscription->id}}');">
                                             {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
                                         </a>
                                     @endif
@@ -115,7 +115,7 @@
         function decline_subscription(subscription_id) {
             Swal.fire({
                 title: '{{ trans('general.declined') }}',
-                html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_declining_subscription'),'rows'=>'3']) !!}',
+                html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_declining_subscription'),'rows'=>'3','id'=>'reason']) !!}',
                 confirmButtonText: '{{ trans('general.save') }}',
                 focusConfirm: true,
                 preConfirm: () => {
@@ -156,11 +156,41 @@
         function renew_subscription(subscription_id) {
             Swal.fire({
                 title: '{{ trans('general.renew') }}',
-                html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_renew_subscription'),'rows'=>'3']) !!}',
+                html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_renew_subscription'),'rows'=>'3','id'=>'reason']) !!}',
                 confirmButtonText: '{{ trans('general.save') }}',
-                focusConfirm: true,
+                focusConfirm: false,
+                preConfirm: () => {
+                    const reason = Swal.getPopup().querySelector('#reason').value
+                    if (!reason) {
+                        Swal.showValidationMessage(`Please Enter Reason`)
+                    }
+                    return {
+                        reason: reason,
+                    }
+                }
             }).then((result) => {
-
+                Swal.fire({
+                    html: '{!! __('general.request_wait') !!}',
+                    allowOutsideClick: () => !Swal.isLoading()
+                });
+                Swal.showLoading();
+                let reason = result.value.reason;
+                $.ajax({
+                    url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::RENEW }}/update',
+                    method: 'POST',
+                    data: {
+                        reason: reason,
+                        subscription_for: '{{ request()->query('type') }}',
+                        type: '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}'
+                    },
+                    success: function (response) {
+                        if (response.status === true) {
+                            location.assign(response.route);
+                        }
+                    },
+                    error: function (response) {
+                    }
+                });
             });
         }
     </script>

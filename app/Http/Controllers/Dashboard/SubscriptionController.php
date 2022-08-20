@@ -183,6 +183,15 @@ class SubscriptionController extends Controller
         $subscription->status = $status;
         $subscription->reason = $request->input('reason');
         $subscription->save();
+        if ($status == SubscriptionStatusEnum::RENEW) {
+            $model = Package::find($subscription->subscription_id);
+            $limit = $model->duration_limit;
+            $duration_type = $model->duration_type->slug;
+            $subscription->renewal_date = Carbon::now();
+            $from_date = Carbon::now();
+            $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+            $subscription->save();
+        }
         PaymentReceipt::where('subscribed_id', $subscription->subscribed_id)
             ->where('subscription_id', $subscription->id)
             ->where('is_processed', false)
@@ -194,6 +203,9 @@ class SubscriptionController extends Controller
         }
         if ($subscription->status == SubscriptionStatusEnum::DECLINED) {
             session()->put('info', 'Subscription Declined Successfully');
+        }
+        if ($subscription->status == SubscriptionStatusEnum::RENEW) {
+            session()->put('info', 'Subscription Renew Successfully');
         }
         $type = $request->input('type');
         $subscription_for = $request->input('subscription_for');

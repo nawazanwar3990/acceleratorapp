@@ -14,14 +14,14 @@ class PaymentForEnum extends AbstractEnum
     {
         return [
             self::PACKAGE_APPROVAL,
-            self::PACKAGE_EXPIRE        ];
+            self::PACKAGE_EXPIRE];
     }
 
     public static function getTranslationKeys(): array
     {
         return [
-            self::PACKAGE_APPROVAL => trans('general.'.self::PACKAGE_APPROVAL),
-            self::PACKAGE_EXPIRE => trans('general.'.self::PACKAGE_EXPIRE),
+            self::PACKAGE_APPROVAL =>'Package Approval',
+            self::PACKAGE_EXPIRE => 'Package Renew',
         ];
     }
 }

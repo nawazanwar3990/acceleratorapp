@@ -1,5 +1,6 @@
 <?php
 return [
+    'reason_for_renew_subscription'=>'Reason for Renew Subscription',
     'package_expire' => 'Package Expire',
     'declined' => 'Declined',
     'reason_for_declining_subscription' => 'Reason for Declining Subscription',

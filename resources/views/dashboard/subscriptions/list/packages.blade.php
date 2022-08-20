@@ -46,7 +46,7 @@
                                     {{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}
                                 </td>
                                 <td>
-                                    @if($subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
+                                    @if(in_array($subscription->status,[\App\Enum\SubscriptionStatusEnum::APPROVED,\App\Enum\SubscriptionStatusEnum::RENEW]))
                                         {{ $subscription->expire_date }}
                                     @else
                                         {{ $subscription->package->duration_limit }}
@@ -62,14 +62,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @php
-                                        $is_renew = \App\Models\PaymentReceipt::where('subscription_id',$subscription->id)
-                                        ->count();
-                                    @endphp
-                                    @if($is_renew>1)
+                                    @if($subscription->status == \App\Enum\SubscriptionStatusEnum::RENEW)
                                         {{ $subscription->renewal_date }}
-                                    @else
-                                        --
                                     @endif
                                 </td>
                                 <td class="text-center">
