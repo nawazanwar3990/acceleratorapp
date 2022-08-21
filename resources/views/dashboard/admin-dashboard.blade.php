@@ -135,7 +135,6 @@
                                     <th scope="col">Price</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Expire Date</th>
-                                    <th scope="col">Renewal Date</th>
                                 </tr>
                                 </thead>
                                 @forelse($subscriptions as $subscription)
@@ -171,16 +170,6 @@
                                                 @elseif($subscription->package->duration_type->slug===\App\Enum\DurationEnum::YEARLY)
                                                     Years
                                                 @endif After Approved
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @php
-                                                $is_renew = \Illuminate\Support\Facades\DB::table(\App\Enum\TableEnum::SUBSCRIPTION_LOGS)->where('subscription_id',$subscription->id)->count();
-                                            @endphp
-                                            @if($is_renew>1)
-                                                {{ $subscription->renewal_date }}
-                                            @else
-                                                --
                                             @endif
                                         </td>
                                     </tr>
