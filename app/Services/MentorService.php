@@ -2,13 +2,19 @@
 
 namespace App\Services;
 
+use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
+use App\Enum\SubscriptionTypeEnum;
+use App\Models\Media;
 use App\Models\Mentor;
+use App\Models\Package;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
-use App\Notifications\VerifyEmailLink;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Notification;
 
 class MentorService
 {
@@ -84,11 +90,16 @@ class MentorService
         GeneralService::manageCertifications($model);
         GeneralService::manageProjects($model);
 
-        VerifyUser::create([
+        $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
         ]);
-        Notification::send($user, new VerifyEmailLink());
+
+        $verifyUser->user->verified = 1;
+        $date = date("Y-m-d g:i:s");
+        $verifyUser->user->email_verified_at = $date;
+        $verifyUser->user->save();
+        //$user->notify(new VerifyEmailLink());
         return $model;
     }
 }
