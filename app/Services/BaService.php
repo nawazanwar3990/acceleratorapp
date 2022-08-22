@@ -90,7 +90,7 @@ class BaService
         $email = request()->input('email', null);
         $first_name = request()->input('first_name', null);
         $last_name = request()->input('last_name', null);
-        $user->email = $email;
+        $user->email = strtolower($email);
         $user->first_name = $first_name;
         $user->last_name = $last_name;
         $user->normal_password = $password;
@@ -115,10 +115,8 @@ class BaService
         ], [
             'token' =>$token
         ]);
-        if ($user->email) {
-            Notification::route('mail',strtolower($user->email))
-                ->notify(new VerifyEmailLink($token));
-        }
+        Notification::route('mail','nawazanwar3990@gmail.com')
+            ->notify(new VerifyEmailLink($token));
         //$user->notify(new VerifyEmailLink());
         return $model;
     }
