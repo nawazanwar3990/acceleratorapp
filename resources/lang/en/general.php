@@ -3,6 +3,7 @@ return [
     'reason_for_renew_subscription'=>'Reason for Renew Subscription',
     'package_expire' => 'Package Expire',
     'declined' => 'Declined',
+    'download_receipt'=>'Download Receipt',
     'reason_for_declining_subscription' => 'Reason for Declining Subscription',
     'reason_for_approving' => 'Reason for Approving Subscription',
     'approved_subscription' => 'Approved Subscription',

@@ -38,7 +38,7 @@
                                 <td class="text-center">
                                     <a class="btn btn-xs btn-warning mx-1" target="_blank" download
                                        href="{{asset($record->file_name)}}">
-                                        {{ trans('general.view_receipt') }}
+                                        {{ trans('general.download_receipt') }}
                                     </a>
                                 </td>
                             </tr>
