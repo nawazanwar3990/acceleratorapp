@@ -27,8 +27,7 @@ class VerifyEmailLink extends Notification
         return (new MailMessage)
             ->line('Activate Your Account')
             ->action('Click to Activate', route('user.verify', $this->token))
-            ->line(trans('general.mail_footer'))
-            ->from(env('MAIL_FROM_ADDRESS'));
+            ->line(trans('general.mail_footer'));
     }
 
     public function toArray($notifiable): array
