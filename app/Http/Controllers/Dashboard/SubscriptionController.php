@@ -15,6 +15,9 @@ use App\Models\Package;
 use App\Models\PaymentReceipt;
 use App\Models\Plan;
 use App\Models\Subscription;
+use App\Notifications\ApprovedSubscription;
+use App\Notifications\DeclinedSubscription;
+use App\Notifications\RenewSubscription;
 use App\Services\GeneralService;
 use App\Services\PersonService;
 use Carbon\Carbon;
@@ -26,6 +29,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use function __;
 use function auth;
 use function response;
@@ -203,13 +207,16 @@ class SubscriptionController extends Controller
                 'is_processed' => true
             ]);
         if ($subscription->status == SubscriptionStatusEnum::APPROVED) {
-            session()->put('info', 'Subscription Approved Successfully');
+            session()->put('info', trans('general.approved_subscription_mail_message'));
+            Notification::send($subscription->subscribed, new ApprovedSubscription());
         }
         if ($subscription->status == SubscriptionStatusEnum::DECLINED) {
-            session()->put('info', 'Subscription Declined Successfully');
+            session()->put('info', trans('general.declined_subscription_mail_message'));
+            Notification::send($subscription->subscribed, new DeclinedSubscription());
         }
         if ($subscription->status == SubscriptionStatusEnum::RENEW) {
-            session()->put('info', 'Subscription Renew Successfully');
+            session()->put('info', trans('general.renew_subscription_mail_message'));
+            Notification::send($subscription->subscribed, new RenewSubscription());
         }
         $type = $request->input('type');
         $subscription_for = $request->input('subscription_for');

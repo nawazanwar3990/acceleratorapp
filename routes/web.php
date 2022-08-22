@@ -10,6 +10,7 @@ use App\Notifications\ApprovedSubscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Notification;
 
 Auth::routes(['verify' => true]);
 
@@ -42,8 +43,5 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         ->middleware('has_package');
     Route::resource('/meeting-rooms', MeetingController::class, ['names' => 'meeting-rooms'])
         ->middleware('has_package');
-    Route::get('/test-mail', function () {
-        Mail::to('nawazanwar3990@gmail.com')->send(new ApprovedSubscription());
-    });
 });
 require __DIR__ . '/auth.php';

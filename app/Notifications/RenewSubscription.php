@@ -6,12 +6,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerifyEmailLink extends Notification
+class RenewSubscription extends Notification
 {
     use Queueable;
 
     public function __construct()
     {
+        //
     }
 
     public function via($notifiable): array
@@ -22,14 +23,16 @@ class VerifyEmailLink extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('Activate Your Account')
-            ->action('Click to Activate', url('user/verify', $notifiable->verifyUser->token))
+            ->line(trans('general.renew_subscription'))
+            ->line(trans('general.renew_subscription_mail_message'))
+            ->action('Login', url('/login'))
             ->line(trans('general.mail_footer'));
     }
 
-    public function toArray($notifiable): array
+    public function toArray($notifiable)
     {
         return [
+            //
         ];
     }
 }

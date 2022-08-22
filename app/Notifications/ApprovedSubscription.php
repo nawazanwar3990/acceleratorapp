@@ -3,28 +3,32 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ApprovedSubscription extends Notification implements \Illuminate\Contracts\Mail\Mailable
+class ApprovedSubscription extends Notification
 {
     use Queueable;
+
     public function __construct()
     {
         //
     }
-    public function via($notifiable)
+
+    public function via($notifiable): array
     {
         return ['mail'];
     }
-    public function toMail($notifiable)
+
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Approved Your Subscription')
-                    ->action('Login', url('/login'))
-                    ->line('Thank you for using our application!');
+            ->line(trans('general.approved_subscription'))
+            ->line(trans('general.approved_subscription_mail_message'))
+            ->action('Login', url('/login'))
+            ->line(trans('general.mail_footer'));
     }
+
     public function toArray($notifiable)
     {
         return [

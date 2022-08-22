@@ -1,21 +1,14 @@
 <?php
 
 namespace App\Services;
-
-use App\Enum\MediaTypeEnum;
 use App\Enum\RoleEnum;
-use App\Enum\SubscriptionTypeEnum;
-use App\Enum\TableEnum;
 use App\Models\Freelancer;
-use App\Models\Media;
-use App\Models\Package;
-use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
-use Carbon\Carbon;
+use App\Notifications\VerifyEmailLink;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class FreelancerService
 {
@@ -116,16 +109,11 @@ class FreelancerService
         GeneralService::manageCertifications($model);
         GeneralService::manageExperiences($model);
 
-        $verifyUser = VerifyUser::create([
+        VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
         ]);
-
-        $verifyUser->user->verified = 1;
-        $date = date("Y-m-d g:i:s");
-        $verifyUser->user->email_verified_at = $date;
-        $verifyUser->user->save();
-        //$user->notify(new VerifyEmailLink());
+        Notification::send($user, new VerifyEmailLink());
         return $model;
     }
     public function saveFocalPersonInfo($model)

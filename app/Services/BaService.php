@@ -6,8 +6,10 @@ use App\Enum\RoleEnum;
 use App\Models\BA;
 use App\Models\User;
 use App\Models\VerifyUser;
+use App\Notifications\VerifyEmailLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class BaService
 {
@@ -108,16 +110,11 @@ class BaService
         GeneralService::manageCertifications($model);
         GeneralService::manageExperiences($model);
 
-        $verifyUser = VerifyUser::create([
+        VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
         ]);
-
-        $verifyUser->user->verified = 1;
-        $date = date("Y-m-d g:i:s");
-        $verifyUser->user->email_verified_at = $date;
-        $verifyUser->user->save();
-        //$user->notify(new VerifyEmailLink());
+        Notification::send($user, new VerifyEmailLink());
         return $model;
     }
 }

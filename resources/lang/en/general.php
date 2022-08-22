@@ -1,12 +1,18 @@
 <?php
 return [
-    'reason_for_renew_subscription'=>'Reason for Renew Subscription',
+
+    'approved_subscription' => 'Approved Subscription',
+    'approved_subscription_mail_message' => 'Your Subscription has approved Successfully,Please click the below button for login',
+    'declined_subscription_mail_message' => 'Your Subscription has Declined Please contact with admin',
+    'renew_subscription_mail_message' => 'Your Subscription has Renew Successfully,Please click the below button for login',
+    'mail_footer' => 'Thanks for Using our application',
+
+    'reason_for_renew_subscription' => 'Reason for Renew Subscription',
     'package_expire' => 'Package Expire',
     'declined' => 'Declined',
-    'download_receipt'=>'Download Receipt',
+    'download_receipt' => 'Download Receipt',
     'reason_for_declining_subscription' => 'Reason for Declining Subscription',
     'reason_for_approving' => 'Reason for Approving Subscription',
-    'approved_subscription' => 'Approved Subscription',
     'transaction_amount' => 'Transaction Amount',
     'payment' => 'Payment',
     'payment_for' => 'Payment For',
