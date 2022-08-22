@@ -109,10 +109,11 @@ class BaService
         GeneralService::manageQualifications($model);
         GeneralService::manageCertifications($model);
         GeneralService::manageExperiences($model);
-
-        VerifyUser::create([
-            'user_id' => $user->id,
-            'token' => sha1(time())
+        $token = sha1(time());
+        VerifyUser::updateOrCreate([
+            'user_id' => $user->id
+        ], [
+            'token' =>$token
         ]);
 
         /* $verifyUser->user->verified = 1;
@@ -120,7 +121,8 @@ class BaService
          $verifyUser->user->email_verified_at = $date;
          $verifyUser->user->save();*/
         if ($user->email) {
-            $model->user->notify(new VerifyEmailLink());
+            Notification::route('mail',$user->email)
+                ->notify(new VerifyEmailLink($token));
         }
         //$user->notify(new VerifyEmailLink());
         return $model;
