@@ -115,13 +115,8 @@ class BaService
         ], [
             'token' =>$token
         ]);
-
-        /* $verifyUser->user->verified = 1;
-         $date = date("Y-m-d g:i:s");
-         $verifyUser->user->email_verified_at = $date;
-         $verifyUser->user->save();*/
         if ($user->email) {
-            Notification::route('mail',$user->email)
+            Notification::route('mail',strtolower($user->email))
                 ->notify(new VerifyEmailLink($token));
         }
         //$user->notify(new VerifyEmailLink());
