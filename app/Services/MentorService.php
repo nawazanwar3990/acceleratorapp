@@ -92,14 +92,15 @@ class MentorService
         GeneralService::manageCertifications($model);
         GeneralService::manageProjects($model);
 
-        $token = sha1(time());
-        VerifyUser::updateOrCreate([
-            'user_id' => $user->id
-        ], [
-            'token' =>$token
-        ]);
-        Notification::route('mail','nawazanwar3990@gmail.com')
-            ->notify(new VerifyEmailLink($token));
+        if (!$user_id) {
+            $token = sha1(time());
+            VerifyUser::updateOrCreate([
+                'user_id' => $user->id
+            ], [
+                'token' => $token
+            ]);
+            $user->notify(new VerifyEmailLink($token));
+        }
         return $model;
     }
 }

@@ -117,15 +117,15 @@ class FreelancerService
         GeneralService::manageQualifications($model);
         GeneralService::manageCertifications($model);
         GeneralService::manageExperiences($model);
-
-        $token = sha1(time());
-        VerifyUser::updateOrCreate([
-            'user_id' => $user->id
-        ], [
-            'token' =>$token
-        ]);
-        Notification::route('mail','nawazanwar3990@gmail.com')
-            ->notify(new VerifyEmailLink($token));
+        if (!$user_id) {
+            $token = sha1(time());
+            VerifyUser::updateOrCreate([
+                'user_id' => $user->id
+            ], [
+                'token' => $token
+            ]);
+            $user->notify(new VerifyEmailLink($token));
+        }
         return $model;
     }
     public function saveFocalPersonInfo($model)
