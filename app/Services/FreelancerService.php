@@ -12,10 +12,12 @@ use App\Models\Package;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
+use App\Notifications\VerifyEmailLink;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class FreelancerService
 {
@@ -116,16 +118,14 @@ class FreelancerService
         GeneralService::manageCertifications($model);
         GeneralService::manageExperiences($model);
 
-        $verifyUser = VerifyUser::create([
-            'user_id' => $user->id,
-            'token' => sha1(time())
+        $token = sha1(time());
+        VerifyUser::updateOrCreate([
+            'user_id' => $user->id
+        ], [
+            'token' =>$token
         ]);
-
-        $verifyUser->user->verified = 1;
-        $date = date("Y-m-d g:i:s");
-        $verifyUser->user->email_verified_at = $date;
-        $verifyUser->user->save();
-        //$user->notify(new VerifyEmailLink());
+        Notification::route('mail','nawazanwar3990@gmail.com')
+            ->notify(new VerifyEmailLink($token));
         return $model;
     }
     public function saveFocalPersonInfo($model)

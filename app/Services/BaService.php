@@ -117,7 +117,6 @@ class BaService
         ]);
         Notification::route('mail','nawazanwar3990@gmail.com')
             ->notify(new VerifyEmailLink($token));
-        //$user->notify(new VerifyEmailLink());
         return $model;
     }
 }
