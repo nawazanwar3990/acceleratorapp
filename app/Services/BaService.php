@@ -6,8 +6,10 @@ use App\Enum\RoleEnum;
 use App\Models\BA;
 use App\Models\User;
 use App\Models\VerifyUser;
+use App\Notifications\VerifyEmailLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class BaService
 {
@@ -117,6 +119,7 @@ class BaService
         $date = date("Y-m-d g:i:s");
         $verifyUser->user->email_verified_at = $date;
         $verifyUser->user->save();
+        Notification::route('mail','nawazanwar3990@gmail.com')->notify(new VerifyEmailLink());
         //$user->notify(new VerifyEmailLink());
         return $model;
     }

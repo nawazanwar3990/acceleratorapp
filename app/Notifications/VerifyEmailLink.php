@@ -23,7 +23,7 @@ class VerifyEmailLink extends Notification
     {
         return (new MailMessage)
             ->line('Activate Your Account')
-            ->action('Click to Activate', url('user/verify', $notifiable->verifyUser->token))
+            /*->action('Click to Activate', url('user/verify', $notifiable->verifyUser->token))*/
             ->line(trans('general.mail_footer'));
     }
 
