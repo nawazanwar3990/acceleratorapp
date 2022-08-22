@@ -110,16 +110,18 @@ class BaService
         GeneralService::manageCertifications($model);
         GeneralService::manageExperiences($model);
 
-        $verifyUser = VerifyUser::create([
+        VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time())
         ]);
 
-        $verifyUser->user->verified = 1;
-        $date = date("Y-m-d g:i:s");
-        $verifyUser->user->email_verified_at = $date;
-        $verifyUser->user->save();
-        Notification::route('mail','nawazanwar3990@gmail.com')->notify(new VerifyEmailLink());
+        /* $verifyUser->user->verified = 1;
+         $date = date("Y-m-d g:i:s");
+         $verifyUser->user->email_verified_at = $date;
+         $verifyUser->user->save();*/
+        if ($user->email) {
+            $model->user->notify(new VerifyEmailLink());
+        }
         //$user->notify(new VerifyEmailLink());
         return $model;
     }
