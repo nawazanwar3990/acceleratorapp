@@ -63,7 +63,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-8 border-top">
-                                        <table class="table custom-datatable  table-hover table-responsive table-striped">
+                                        <table
+                                            class="table custom-datatable  table-hover table-responsive table-striped">
                                             <thead>
                                             <tr>
                                                 <th colspan="2" class="table-head text-center">Package Info</th>
@@ -120,6 +121,7 @@
                                             @foreach($subscription->package->services as $service)
                                                 <tr class="text-start">
                                                     <td>{{ $service->name }}</td>
+                                                    <td class="text-right">{{ $service->pivot->limit }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

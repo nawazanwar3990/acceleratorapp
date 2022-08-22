@@ -36,7 +36,7 @@
                                     {{ $record->price }}  {{ \App\Services\GeneralService::get_default_currency() }}
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-xs btn-warning mx-1" target="_blank"
+                                    <a class="btn btn-xs btn-warning mx-1" target="_blank" download
                                        href="{{asset($record->file_name)}}">
                                         {{ trans('general.view_receipt') }}
                                     </a>

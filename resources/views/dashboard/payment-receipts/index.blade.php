@@ -14,7 +14,7 @@
                                     @isset($record->subscribed)
                                         <a target="_blank"> {{ $record->subscribed->getFullName()  }}</a>
                                         <br>
-                                        <a class="btn btn-xs btn-warning mx-1" target="_blank"
+                                        <a class="btn btn-xs btn-warning mx-1" target="_blank" download
                                            href="{{asset($record->file_name)}}">
                                             {{ trans('general.view_receipt') }}
                                         </a>
