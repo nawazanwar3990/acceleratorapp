@@ -10,8 +10,11 @@ class VerifyEmailLink extends Notification
 {
     use Queueable;
 
-    public function __construct()
+    private string $token;
+
+    public function __construct($token)
     {
+        $this->token = $token;
     }
 
     public function via($notifiable): array
@@ -23,7 +26,7 @@ class VerifyEmailLink extends Notification
     {
         return (new MailMessage)
             ->line('Activate Your Account')
-            ->action('Click to Activate', url('user/verify', $notifiable->token))
+            ->action('Click to Activate', url('user/verify', $this->token))
             ->line(trans('general.mail_footer'));
     }
 
