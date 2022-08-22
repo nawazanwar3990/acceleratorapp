@@ -3,6 +3,10 @@ $(document).ready(function () {
         responsive: true,
         fixedColumns: true,
         scrollX: true,
-        "ordering": false
+        "ordering": false,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
     });
 });

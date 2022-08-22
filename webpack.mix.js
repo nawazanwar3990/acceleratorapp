@@ -19,6 +19,15 @@ mix.scripts([
     'resources/theme/js/plugins/jquery.dataTables.min.js',
     'resources/theme/js/plugins/dataTables.bootstrap5.min.js',
     'resources/theme/js/plugins/dataTables.responsive.js',
+
+    'resources/theme/js/plugins/dataTables.buttons.min.js',
+    'resources/theme/js/plugins/jszip.min.js',
+    'resources/theme/js/plugins/pdfmake.min.js',
+    'resources/theme/js/plugins/vfs_fonts.js',
+    'resources/theme/js/plugins/buttons.html5.min.js',
+    'resources/theme/js/plugins/buttons.print.min.js',
+
+
     'resources/theme/js/plugins/raphael-min.js',
     'resources/theme/js/plugins/morris.js',
     'resources/theme/js/plugins/jquery.sparkline.min.js',

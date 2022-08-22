@@ -28089,12 +28089,15 @@ Table-Data Table
 .dt-buttons .dt-button {
   padding: 5px 15px;
   border-radius: 0.25rem;
-  background: #fb9678;
-  color: #fff;
+  background-color: #472051;
   margin-right: 3px;
+  color: white;
+  border: none;
 }
 .dt-buttons .dt-button:hover {
-  background: #343a40;
+  background-color: rgba(71, 32, 81, 0.7882352941) !important;
+  color: white !important;
+  border: none !important;
 }
 
 .dataTables_info,

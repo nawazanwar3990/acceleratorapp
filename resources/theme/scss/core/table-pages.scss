@@ -1,8 +1,6 @@
 @import '../variable';
 
 
-
-
 /*******************
 Table Cell
 *******************/
@@ -11,7 +9,6 @@ Table Cell
     display: table;
     width: 100%;
 }
-
 
 
 .cell {
@@ -38,15 +35,18 @@ Table Cell
         vertical-align: middle;
     }
 }
+
 .table-responsive {
     display: block;
     width: 100%;
     overflow-x: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-.table-striped tbody tr:nth-of-type(odd){
+
+.table-striped tbody tr:nth-of-type(odd) {
     background: $gray-100;
 }
+
 /*******************
 Table td vertical middle
 *******************/
@@ -67,14 +67,16 @@ Table td vertical middle
         }
     }
 }
+
 /*******************
 Table-Layout
 ******************/
-.color-table{
-    th{
+.color-table {
+    th {
         border: 0px;
     }
 }
+
 .color-table.primary-table thead th {
     background-color: $primary;
     color: $white;
@@ -131,6 +133,7 @@ Table-Layout
 
 .color-bordered-table.primary-bordered-table {
     border: 2px solid $primary;
+
     thead th {
         background-color: $primary;
         color: $white;
@@ -139,6 +142,7 @@ Table-Layout
 
 .color-bordered-table.success-bordered-table {
     border: 2px solid $success;
+
     thead th {
         background-color: $success;
         color: $white;
@@ -147,6 +151,7 @@ Table-Layout
 
 .color-bordered-table.info-bordered-table {
     border: 2px solid $info;
+
     thead th {
         background-color: $info;
         color: $white;
@@ -155,6 +160,7 @@ Table-Layout
 
 .color-bordered-table.warning-bordered-table {
     border: 2px solid $warning;
+
     thead th {
         background-color: $warning;
         color: $white;
@@ -163,6 +169,7 @@ Table-Layout
 
 .color-bordered-table.danger-bordered-table {
     border: 2px solid $danger;
+
     thead th {
         background-color: $danger;
         color: $white;
@@ -171,6 +178,7 @@ Table-Layout
 
 .color-bordered-table.inverse-bordered-table {
     border: 2px solid $gray-800;
+
     thead th {
         background-color: $gray-800;
         color: $white;
@@ -179,6 +187,7 @@ Table-Layout
 
 .color-bordered-table.dark-bordered-table {
     border: 2px solid $dark;
+
     thead th {
         background-color: $dark;
         color: $white;
@@ -187,6 +196,7 @@ Table-Layout
 
 .color-bordered-table.red-bordered-table {
     border: 2px solid $red;
+
     thead th {
         background-color: $red;
         color: $white;
@@ -195,6 +205,7 @@ Table-Layout
 
 .color-bordered-table.purple-bordered-table {
     border: 2px solid $purple;
+
     thead th {
         background-color: $purple;
         color: $white;
@@ -203,6 +214,7 @@ Table-Layout
 
 .color-bordered-table.muted-bordered-table {
     border: 2px solid $text-muted;
+
     thead th {
         background-color: $text-muted;
         color: $white;
@@ -228,8 +240,6 @@ Table-Layout
 // }
 
 
-
-
 /*******************
 Table-Data Table
 ******************/
@@ -238,14 +248,19 @@ Table-Data Table
     display: inline-block;
     padding-top: 5px;
     margin-bottom: 15px;
+
     .dt-button {
         padding: 5px 15px;
-        border-radius: $border-radius;
-        background: $themecolor;
-        color: $white;
+        border-radius: 0.25rem;
+        background-color: #472051;
         margin-right: 3px;
+        color: white;
+        border: none;
+
         &:hover {
-            background: $gray-800;
+            background-color: #472051c9 !important;
+            color: white !important;
+            border: none !important;
         }
     }
 }
@@ -257,6 +272,7 @@ Table-Data Table
 
 .dataTables_length {
     margin-top: 10px;
+
     select {
         border: 0;
         background-image: linear-gradient($themecolor, $themecolor), linear-gradient($border-color, $border-color);
@@ -266,6 +282,7 @@ Table-Data Table
         background-color: transparent;
         transition: background 0s ease-out;
         padding-bottom: 5px;
+
         &:focus {
             outline: none;
             background-image: linear-gradient($themecolor, $themecolor), linear-gradient($border-color, $border-color);
@@ -279,6 +296,7 @@ Table-Data Table
 .dataTables_filter {
     float: right;
     margin-top: 10px;
+
     input {
         border: 0;
         background-image: linear-gradient($themecolor, $themecolor), linear-gradient($border-color, $border-color);
@@ -291,6 +309,7 @@ Table-Data Table
         box-shadow: none;
         border-radius: 0;
         margin-left: 10px;
+
         &:focus {
             outline: none;
             background-image: linear-gradient($themecolor, $themecolor), linear-gradient($border-color, $border-color);
@@ -301,7 +320,7 @@ Table-Data Table
     }
 }
 
-#editable-datatable_wrapper{
+#editable-datatable_wrapper {
     .dataTables_paginate {
         float: right;
         text-align: right;
@@ -341,7 +360,8 @@ Table-Data Table
     .dataTables_paginate .paginate_button:hover {
         border: 1px solid $themecolor;
         background-color: $themecolor;
-        a{
+
+        a {
             color: $white;
         }
     }
@@ -356,12 +376,13 @@ Table-Data Table
     }
 
 }
+
 /*******************
 Table- responsive
 ******************/
 
 .tablesaw-bar .btn-group label {
-    color: $body-color!important;
+    color: $body-color !important;
 }
 
 /*******************
@@ -371,11 +392,13 @@ Table- editable table
 .dt-bootstrap {
     display: block;
 }
+
 .stylish-table {
-    tbody tr{
-        border-left:3px solid transparent;
-        &:hover, &.active{
-            border-color:$themecolor;
+    tbody tr {
+        border-left: 3px solid transparent;
+
+        &:hover, &.active {
+            border-color: $themecolor;
         }
     }
 }
