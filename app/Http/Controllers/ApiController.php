@@ -42,7 +42,8 @@ class ApiController extends Controller
         }
         if ($model) {
             return response()->json([
-                'status' => true
+                'status' => true,
+                'model' => $model
             ]);
         } else {
             return response()->json([
