@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/building/floor', [ApiController::class, 'getBuildingFloors'])
     ->name('api.building.floors');
+
+Route::get('/user-info-by/{id}/{type}', [ApiController::class, 'getUserInfoByIdType'])
+    ->name('api.user_info_by_id_type');

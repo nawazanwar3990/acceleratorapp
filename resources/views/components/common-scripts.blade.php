@@ -63,6 +63,19 @@
         }
     }
 
+    function getUserByType(cElement) {
+        let user_id = $("#event_user_id").val();
+        let user_type = $("#event_user_type").find('option:selected').val();
+        if (user_id === '') {
+            showError('First Enter User Id');
+        } else {
+            let route = "/api/user-info-by/" + user_id + "/" + user_type;
+            Ajax.call(route, null, 'GET', function (response) {
+                console.log(response);
+            });
+        }
+    }
+
     function showError(errorMsg) {
         $.toast({
             heading: "<?php echo e(__('general.error')); ?>",

@@ -51,11 +51,16 @@
             </div>
             <div class="col-md-4 mb-3 d-none" id="event_user_type_holder">
                 {!!  Html::decode(Form::label('event_user_type' ,__('general.event_user_type') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('event_user_type',\App\Enum\RoleEnum::getTranslationKeys(),null,['id'=>'event_user_type','class'=>'form-control ','required','onchange'=>'changeEventUserType(this);','placeholder'=>trans('general.select')]) !!}
+                {!!  Form::select('event_user_type',\App\Enum\AccessTypeEnum::getTranslationKeys(),null,['id'=>'event_user_type','class'=>'form-control ','required','onchange'=>'changeEventUserType(this);','placeholder'=>trans('general.select')]) !!}
             </div>
             <div class="col-md-4 mb-3 d-none" id="event_user_id_holder">
                 {!!  Html::decode(Form::label('event_user_id' ,__('general.event_user_id') ,['class'=>'form-label']))   !!}
-                {!!  Form::text('event_user_id',null,['id'=>'event_user_id','class'=>'form-control']) !!}
+                <div class="input-group">
+                    {!!  Form::text('event_user_id',null,['id'=>'event_user_id','class'=>'form-control']) !!}
+                    <button type="button" class="btn btn-primary" onclick="getUserByType(this);">
+                        <i class="bx bx-search"></i>
+                    </button>
+                </div>
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('is_applied_ticker' ,__('general.is_applied_ticker') ,['class'=>'form-label']))   !!}
