@@ -7,6 +7,7 @@ use App\Models\BA;
 use App\Models\Floor;
 use App\Models\Freelancer;
 use App\Models\Mentor;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -24,26 +25,40 @@ class ApiController extends Controller
         return $html;
     }
 
-    public function getUserInfoByIdType($id, $type)
+    public function getUserInfoByIdType($id, $type): JsonResponse
     {
+        $html = null;
         $model = null;
         switch ($type) {
-            case AccessTypeEnum::BUSINESS_ACCELERATOR:
             case AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL:
+            case AccessTypeEnum::BUSINESS_ACCELERATOR:
                 $model = BA::with('user')->find($id);
+                if ($type == AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL) {
+                    $html = view('ajax.table.ba-individual', compact('model'))->render();
+                }
+                if ($type == AccessTypeEnum::BUSINESS_ACCELERATOR) {
+                    $html = view('ajax.table.ba-individual', compact('model'))->render();
+                }
                 break;
-            case AccessTypeEnum::FREELANCER:
             case AccessTypeEnum::SERVICE_PROVIDER_COMPANY:
+            case AccessTypeEnum::FREELANCER:
                 $model = Freelancer::with('user')->find($id);
+            if ($type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY) {
+                $html = view('ajax.table.service-provider', compact('model'))->render();
+            }
+            if ($type == AccessTypeEnum::FREELANCER) {
+                $html = view('ajax.table.freelancer', compact('model'))->render();
+            }
                 break;
             case AccessTypeEnum::MENTOR:
                 $model = Mentor::with('user')->find($id);
+                $html = view('ajax.table.mentor', compact('model'))->render();
                 break;
         }
         if ($model) {
             return response()->json([
                 'status' => true,
-                'model' => $model
+                'html' => $html
             ]);
         } else {
             return response()->json([
