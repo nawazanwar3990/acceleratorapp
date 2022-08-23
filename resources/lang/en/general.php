@@ -1,6 +1,12 @@
 <?php
 return [
-
+    'enter_ba_company_id' => 'Enter BA Company Id',
+    'enter_ba_id' => 'Enter BA ID',
+    'enter_freelancer_id' => 'Enter Freelancer Id',
+    'enter_service_provider_id' => 'Enter Service Provider Id',
+    'enter_mentor_id' => 'Enter Mentor Id',
+    'accelerator_name' => 'Accelerator Name',
+    'accelerator_email' => 'Accelerator Email',
     'approved_subscription' => 'Approved Subscription',
     'approved_subscription_mail_message' => 'Your Subscription has approved Successfully,Please click the below button for login',
     'declined_subscription_mail_message' => 'Your Subscription has Declined Please contact with admin',
@@ -8,7 +14,7 @@ return [
     'mail_footer' => 'Thanks for Using our application',
 
     'event_user_type' => 'Event User Type',
-    'event_user_id'=>'Event User Id',
+    'event_user_id' => 'Event User Id',
 
     'reason_for_renew_subscription' => 'Reason for Renew Subscription',
     'package_expire' => 'Package Expire',

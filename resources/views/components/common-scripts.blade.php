@@ -60,6 +60,19 @@
             event_user_id_holder.addClass('d-none');
         } else {
             event_user_id_holder.addClass('d-block');
+            let new_added_value = '';
+            if (value === 'mentor') {
+                new_added_value = "{{ trans('general.enter_mentor_id') }}";
+            } else if (value === 'service_provider_company') {
+                new_added_value = "{{ trans('general.enter_service_provider_id') }}";
+            } else if (value === 'freelancer') {
+                new_added_value = "{{ trans('general.enter_freelancer_id') }}";
+            } else if (value === 'business_accelerator_individual') {
+                new_added_value = "{{ trans('general.enter_ba_id') }}";
+            } else if (value === 'business_accelerator') {
+                new_added_value = "{{ trans('general.enter_ba_company_id') }}";
+            }
+            event_user_id_holder.find('label').empty().text(new_added_value);
         }
     }
 
@@ -69,11 +82,13 @@
         if (user_id === '') {
             showError('First Enter User Id');
         } else {
-            let route = "/api/user-info-by/" + user_id + "/" + user_type;
+            let route = "/api/user-info-cols-by/" + user_id + "/" + user_type;
             Ajax.call(route, null, 'GET', function (response) {
                 console.log(response);
-                if(response.status ===false){
+                if (response.status === false) {
                     showError('No Data Found With This User Id');
+                } else {
+                    $(cElement).closest('#event_user_id_holder').after(response.html);
                 }
             });
         }
