@@ -79,6 +79,7 @@
     function getUserByType(cElement) {
         let user_id = $("#event_user_id").val();
         let user_type = $("#event_user_type").find('option:selected').val();
+        $(".extra_info_field").remove();
         if (user_id === '') {
             showError('First Enter User Id');
         } else {

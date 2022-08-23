@@ -34,25 +34,36 @@ class ApiController extends Controller
             case AccessTypeEnum::BUSINESS_ACCELERATOR:
                 $model = BA::with('user')->find($id);
                 if ($type == AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL) {
-                    $html = view('ajax.new-cols.ba-individual', compact('model'))->render();
+                    if ($model) {
+                        $html = view('ajax.new-cols.ba-individual', compact('model'))->render();
+                    }
+
                 }
                 if ($type == AccessTypeEnum::BUSINESS_ACCELERATOR) {
-                    $html = view('ajax.new-cols.ba-individual', compact('model'))->render();
+                    if ($model) {
+                        $html = view('ajax.new-cols.ba-company', compact('model'))->render();
+                    }
                 }
                 break;
             case AccessTypeEnum::SERVICE_PROVIDER_COMPANY:
             case AccessTypeEnum::FREELANCER:
                 $model = Freelancer::with('user')->find($id);
-            if ($type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY) {
-                $html = view('ajax.new-cols.service-provider', compact('model'))->render();
-            }
-            if ($type == AccessTypeEnum::FREELANCER) {
-                $html = view('ajax.new-cols.freelancer', compact('model'))->render();
-            }
+                if ($type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY) {
+                    if ($model) {
+                        $html = view('ajax.new-cols.service-provider', compact('model'))->render();
+                    }
+                }
+                if ($type == AccessTypeEnum::FREELANCER) {
+                    if ($model) {
+                        $html = view('ajax.new-cols.freelancer', compact('model'))->render();
+                    }
+                }
                 break;
             case AccessTypeEnum::MENTOR:
                 $model = Mentor::with('user')->find($id);
-                $html = view('ajax.new-cols.mentor', compact('model'))->render();
+                if ($model) {
+                    $html = view('ajax.new-cols.mentor', compact('model'))->render();
+                }
                 break;
         }
         if ($model) {
