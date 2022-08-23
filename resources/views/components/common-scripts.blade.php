@@ -36,6 +36,55 @@
         }
     };
 
+    function changeEventOrganizedFor(cElement) {
+
+        let event_user_type_holder = $("#event_user_type_holder");
+        event_user_type_holder.removeClass('d-none d-block');
+
+        let value = $(cElement).find('option:selected').val();
+        if (value === 'non_registered_user') {
+            showError('First Register a New User');
+            event_user_type_holder.addClass('d-none');
+        } else {
+            event_user_type_holder.addClass('d-block');
+        }
+    }
+
+    function changeEventUserType(cElement) {
+
+        let event_user_id_holder = $("#event_user_id_holder");
+        event_user_id_holder.removeClass('d-none d-block');
+        let value = $(cElement).find('option:selected').val();
+        if (value === '') {
+            showError('First Select the User Type');
+            event_user_id_holder.addClass('d-none');
+        } else {
+            event_user_id_holder.addClass('d-block');
+        }
+    }
+
+    function showError(errorMsg) {
+        $.toast({
+            heading: "<?php echo e(__('general.error')); ?>",
+            text: errorMsg,
+            position: 'top-right',
+            icon: 'error',
+            hideAfter: 3000,
+            stack: 6
+        });
+    }
+
+    function showSuccessMessage(message) {
+        $.toast({
+            heading: "<?php echo e(__('general.success')); ?>",
+            text: message,
+            position: 'top-right',
+            icon: 'success',
+            hideAfter: 3000,
+            stack: 6
+        });
+    }
+
     function applyEventType(cElement) {
         let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
         let options = "<option value='' selected>{{ trans('general.select') }}</option>";

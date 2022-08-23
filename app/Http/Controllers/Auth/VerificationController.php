@@ -38,7 +38,9 @@ class VerificationController extends Controller
         $date = date("Y-m-d g:i:s");
         $user->email_verified_at = $date;
         $user->save();
-        return redirect()->route('login')->with('success', 'Your account has activated please login and processed');
+        return redirect()
+            ->route('login')
+            ->with('success', 'Your account has activated please login and processed');
     }
 
     public function resend(Request $request): Factory|View|Application

@@ -7,6 +7,9 @@ return [
     'renew_subscription_mail_message' => 'Your Subscription has Renew Successfully,Please click the below button for login',
     'mail_footer' => 'Thanks for Using our application',
 
+    'event_user_type' => 'Event User Type',
+    'event_user_id'=>'Event User Id',
+
     'reason_for_renew_subscription' => 'Reason for Renew Subscription',
     'package_expire' => 'Package Expire',
     'declined' => 'Declined',

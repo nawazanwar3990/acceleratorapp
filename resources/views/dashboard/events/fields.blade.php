@@ -47,12 +47,21 @@
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('event_organized_for' ,__('general.event_organized_for') ,['class'=>'form-label']))   !!}
-                {!!  Form::select('event_organized_for',\App\Enum\EventOrganizedForEnum::getTranslationKeys(),null,['id'=>'event_organized_for','class'=>'form-control ','required','onchange'=>'addOtherOrganizedFor(this);','placeholder'=>trans('general.select')]) !!}
+                {!!  Form::select('event_organized_for',\App\Enum\EventOrganizeForEnum::getTranslationKeys(),null,['id'=>'event_organized_for','class'=>'form-control ','required','onchange'=>'changeEventOrganizedFor(this);','placeholder'=>trans('general.select')]) !!}
+            </div>
+            <div class="col-md-4 mb-3 d-none" id="event_user_type_holder">
+                {!!  Html::decode(Form::label('event_user_type' ,__('general.event_user_type') ,['class'=>'form-label']))   !!}
+                {!!  Form::select('event_user_type',\App\Enum\RoleEnum::getTranslationKeys(),null,['id'=>'event_user_type','class'=>'form-control ','required','onchange'=>'changeEventUserType(this);','placeholder'=>trans('general.select')]) !!}
+            </div>
+            <div class="col-md-4 mb-3 d-none" id="event_user_id_holder">
+                {!!  Html::decode(Form::label('event_user_id' ,__('general.event_user_id') ,['class'=>'form-label']))   !!}
+                {!!  Form::text('event_user_id',null,['id'=>'event_user_id','class'=>'form-control']) !!}
             </div>
             <div class="col-md-4 mb-3">
                 {!!  Html::decode(Form::label('is_applied_ticker' ,__('general.is_applied_ticker') ,['class'=>'form-label']))   !!}
                 {!!  Form::select('is_applied_ticker',['no'=>'No','yes'=>'Yes'],null,['id'=>'is_applied_ticker','class'=>'form-control ','required','onChange'=>'isAppliedTicket(this);']) !!}
             </div>
+
             <div class="col-md-4 mb-3 text-center pt-4 mt-2 d-none" id="is_applied_holder">
                 @foreach(\App\Enum\TicketTypeEnum::getTranslationKeys() as $ticket_key=>$ticket_value)
                     <div class="form-check form-switch form-check-inline">
