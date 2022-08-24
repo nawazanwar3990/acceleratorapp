@@ -51,7 +51,7 @@
                     <thead>
                     <tr>
                         <th>{{ trans('general.name') }}</th>
-                        <th>{{ trans('general.limit') }}</th>
+                        <th>{{ trans('general.enter_limit') }}</th>
                     </tr>
                     </thead>
                     @foreach($process_model->services as $service)
@@ -69,60 +69,110 @@
             </div>
         </div>
     @endif
-   {{-- @if($process_model->other_services)
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">{{ trans('general.other_services') }}</h5>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('general.name') }}</th>
-                        <th>{{ trans('general.limit') }}</th>
-                    </tr>
-                    </thead>
-                    @foreach($process_model->other_services as $service)
-                        <tr>
-                            <th>
-                                {!!  Form::hidden('services[id][]',$service) !!}
-                                {{ ucwords(str_replace('_',' ',$service))}}
-                            </th>
-                            <td>
-                                {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                </table>
-            </div>
-        </div>
-    @endif--}}
+    {{-- @if($process_model->other_services)
+         <div class="card">
+             <div class="card-header">
+                 <h5 class="card-title mb-0">{{ trans('general.other_services') }}</h5>
+             </div>
+             <div class="card-body">
+                 <table class="table">
+                     <thead>
+                     <tr>
+                         <th>{{ trans('general.name') }}</th>
+                         <th>{{ trans('general.enter_limit') }}</th>
+                     </tr>
+                     </thead>
+                     @foreach($process_model->other_services as $service)
+                         <tr>
+                             <th>
+                                 {!!  Form::hidden('services[id][]',$service) !!}
+                                 {{ ucwords(str_replace('_',' ',$service))}}
+                             </th>
+                             <td>
+                                 {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),0,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
+                             </td>
+                         </tr>
+                     @endforeach
+                 </table>
+             </div>
+         </div>
+     @endif--}}
 @else
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0">{{ trans('general.services_limit') }}</h5>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>{{ trans('general.name') }}</th>
-                    <th>{{ trans('general.limit') }}</th>
-                </tr>
-                </thead>
-                @foreach($services as $service)
-                    <tr>
-                        <th>
-                            {!!  Form::hidden('services[id][]',$service->id) !!}
-                            {{ ucwords(str_replace('_',' ',$service->name))}}
-                        </th>
-                        <td>
-                            @php $old_value = (isset($model) && array_key_exists($service->id,$old_services))?$old_services[$service->id]:'0'  @endphp
-                            {!!  Form::select('services[limit][]',\App\Services\ServiceData::get_package_services_range(),$old_value,['id'=>'module_limit','class'=>'select2 form-control form-select','style'=>'width:100%']) !!}
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
+            @foreach($services as $service)
+                <div class="row mb-3">
+                    {!!  Form::hidden('services[id][]',$service->id) !!}
+                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 align-self-center">
+                        {{ $service->name }}
+                    </div>
+                    <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 align-self-center">
+                        <div class="row">
+                            @if($service->slug === 'incubator')
+                                <div class="col-4 align-self-center">
+                                    {!!  Html::decode(Form::label('buildings' ,__('general.buildings') ,['class'=>'form-label'])) !!}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text p-2">
+                                                <div class="form-check form-switch">
+                                                    {!! Form::checkbox('unlimited','∞',false,['class'=>'form-check-input','onclick'=>'change_limit_switcher(this);']) !!}
+                                                    {!! Form::label('unlimited',trans('general.unlimited'),['class'=>'form-check-label']) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {!!  Form::text('services[limit][0][building_limit]',null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    {!!  Html::decode(Form::label('floors' ,__('general.floors') ,['class'=>'form-label'])) !!}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text p-2">
+                                                <div class="form-check form-switch">
+                                                    {!! Form::checkbox('unlimited','∞',false,['class'=>'form-check-input','onclick'=>'change_limit_switcher(this);']) !!}
+                                                    {!! Form::label('unlimited',trans('general.unlimited'),['class'=>'form-check-label']) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {!!  Form::text('services[limit][0][floor_limit]',null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    {!!  Html::decode(Form::label('offices' ,__('general.offices') ,['class'=>'form-label'])) !!}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text p-2">
+                                                <div class="form-check form-switch">
+                                                    {!! Form::checkbox('unlimited','∞',false,['class'=>'form-check-input','onclick'=>'change_limit_switcher(this);']) !!}
+                                                    {!! Form::label('unlimited',trans('general.unlimited'),['class'=>'form-check-label']) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {!!  Form::text('services[limit][0][office_limit]',null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text p-2">
+                                                <div class="form-check form-switch">
+                                                    {!! Form::checkbox('unlimited','∞',false,['class'=>'form-check-input','onclick'=>'change_limit_switcher(this);']) !!}
+                                                    {!! Form::label('unlimited',trans('general.unlimited'),['class'=>'form-check-label']) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {!!  Form::text('services[limit][]',null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 @endif

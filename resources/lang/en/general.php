@@ -1,5 +1,6 @@
 <?php
 return [
+    'enter_limit'=>"Enter Limit",
     'enter_ba_company_id' => 'Enter BA Company Id',
     'enter_ba_id' => 'Enter BA ID',
     'enter_freelancer_id' => 'Enter Freelancer Id',

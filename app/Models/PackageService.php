@@ -15,7 +15,10 @@ class PackageService extends Model
     protected $fillable = [
         'package_id',
         'service_id',
-        'limit'
+        'limit',
+        'building_limit',
+        'floor_limit',
+        'office_limit'
     ];
 
     public function packages(): BelongsTo

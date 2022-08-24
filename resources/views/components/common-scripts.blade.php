@@ -1,4 +1,14 @@
 <script>
+    function change_limit_switcher(cElement) {
+        let element = $(cElement);
+        let is_checked = element.is(":checked");
+        let holder = element.closest('.input-group').find('input[type=text]');
+        if (is_checked === true) {
+            holder.val(element.val()).attr('readonly', 'readonly');
+        } else {
+            holder.val('').removeAttr('readonly');
+        }
+    }
 
     function toSlug(str) {
         str = str.replace(/^\s+|\s+$/g, ""); // trim

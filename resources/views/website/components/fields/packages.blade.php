@@ -7,7 +7,8 @@
                         <div class="pricing-header border-0">
                             <h4 class="text-center pt-3">{{ $package->name }}</h4>
                             <h2 class="text-center">
-                                <span class="price-sign fs-13">{{ \App\Services\GeneralService::get_default_currency() }}</span><br>
+                                <span
+                                    class="price-sign fs-13">{{ \App\Services\GeneralService::get_default_currency() }}</span><br>
                                 {{ $package->price }}
                             </h2>
                             <p class="uppercase mx-3 text-center">
@@ -25,17 +26,53 @@
                         </div>
                         <div class="price-table-content">
                             @foreach($package->services as $service)
-                                <div class="row mx-1 border-bottom" style="padding: 10px 0;">
-                                    <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
-                                        {{ $service->name }}
+                                @if($service->slug=='incubator')
+                                    <div class="row mx-1 border-bottom" style="padding: 10px 0;">
+                                        <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
+                                            {{ trans('general.buildings') }}
+                                        </div>
+                                        <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
+                                        <span
+                                            class="w-bold pull-right badge @if($service->pivot->building_limit>0) bg-success @else bg-danger @endif">
+                                            {{ ($service->pivot->building_limit)=='∞'?'Unlimited':$service->pivot->building_limit }}
+                                        </span>
+                                        </div>
                                     </div>
-                                    <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
+                                    <div class="row mx-1 border-bottom" style="padding: 10px 0;">
+                                        <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
+                                            {{ trans('general.floors') }}
+                                        </div>
+                                        <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
+                                        <span
+                                            class="w-bold pull-right badge @if($service->pivot->floor_limit>0) bg-success @else bg-danger @endif">
+                                            {{ ($service->pivot->floor_limit)=='∞'?'Unlimited':$service->pivot->floor_limit }}
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="row mx-1 border-bottom" style="padding: 10px 0;">
+                                        <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
+                                            {{ trans('general.offices') }}
+                                        </div>
+                                        <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
+                                        <span
+                                            class="w-bold pull-right badge @if($service->pivot->office_limit>0) bg-success @else bg-danger @endif">
+                                            {{ ($service->pivot->office_limit)=='∞'?'Unlimited':$service->pivot->office_limit }}
+                                        </span>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="row mx-1 border-bottom" style="padding: 10px 0;">
+                                        <div class="col-8 align-self-center fs-13" style="text-align: left !important;">
+                                            {{ $service->name }}
+                                        </div>
+                                        <div class="col-4 align-self-center fs-13" style="text-align: right !important;">
                                         <span
                                             class="w-bold pull-right badge @if($service->pivot->limit>0) bg-success @else bg-danger @endif">
-                                            {{ $service->pivot->limit =='∞'?trans('general.unlimited'):$service->pivot->limit }}
+                                            {{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}
                                         </span>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                         <div class="price-row justify-content-center py-3" style="text-align: center;">

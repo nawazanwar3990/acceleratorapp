@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Enum\TableEnum;
 use App\Models\Package;
 use App\Models\PackageService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PackageRequest extends FormRequest
@@ -74,13 +72,25 @@ class PackageRequest extends FormRequest
             $model->services()->detach();
             $service_names = $services['id'];
             for ($i = 0; $i < count($service_names); $i++) {
-                $service_id = $services['id'][$i];
-                $limit = $services['limit'][$i];
-                PackageService::create([
-                    'package_id' => $model->id,
-                    'service_id' => $service_id,
-                    'limit' => $limit
-                ]);
+                $service_id = $services['id'][$i] ?? null;
+                $limit = $services['limit'][$i] ?? null;
+                $building_limit = $services['limit'][$i]['building_limit'] ?? null;
+                $floor_limit = $services['limit'][$i]['floor_limit'] ?? null;
+                $office_limit = $services['limit'][$i]['office_limit'] ?? null;
+                $data = array();
+                if (!is_array($limit)) {
+                    $data['package_id'] = $model->id;
+                    $data['service_id'] = $service_id;
+                    $data['limit'] = $limit;
+                } else {
+                    $data['package_id'] = $model->id;
+                    $data['limit'] = null;
+                    $data['service_id'] = $service_id;
+                    $data['building_limit'] = $building_limit;
+                    $data['floor_limit'] = $floor_limit;
+                    $data['office_limit'] = $office_limit;
+                }
+                PackageService::create($data);
             }
         }
     }

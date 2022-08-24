@@ -35,7 +35,7 @@ class Package extends Model
     {
         return $this->belongsToMany(Service::class, TableEnum::PACKAGE_SERVICE)
             ->withTimestamps()
-            ->withPivot('limit');
+            ->withPivot('limit','building_limit','floor_limit','office_limit');
     }
 
     public function duration_type(): BelongsTo

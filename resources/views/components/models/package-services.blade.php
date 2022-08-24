@@ -8,8 +8,20 @@
             <div class="modal-body">
                 <ul class="list-group list-group-flush">
                     @foreach($record->services as $service)
+
                         <li class="list-group-item">
-                             <span class="fw-bold">{{ $service->name }}</span> <span class="text-muted fs-13 pull-right">{{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}</span>
+                            <span class="fw-bold">{{ $service->name }}</span> <span class="text-muted fs-13 pull-right">
+                                @if($service->slug=='incubator')
+                                    <strong> {{ ($service->pivot->building_limit)=='∞'?'Unlimited':$service->pivot->building_limit }}</strong> {{ trans('general.buildings') }}
+                                    <br>
+                                    <strong> {{ ($service->pivot->floor_limit)=='∞'?'Unlimited':$service->pivot->floor_limit }}</strong> {{ trans('general.floors') }}
+                                    <br>
+                                    <strong> {{ ($service->pivot->office_limit)=='∞'?'Unlimited':$service->pivot->office_limit }}</strong> {{ trans('general.offices') }}
+                                    <br>
+                                @else
+                                    {{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}
+                                @endif
+                            </span>
                         </li>
                     @endforeach
                 </ul>
