@@ -8,7 +8,6 @@
             <div class="modal-body">
                 <ul class="list-group list-group-flush">
                     @foreach($record->services as $service)
-
                         <li class="list-group-item">
                             <span class="fw-bold">{{ $service->name }}</span> <span class="text-muted fs-13 pull-right">
                                 @if($service->slug=='incubator')

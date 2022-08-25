@@ -7,43 +7,45 @@
             </div>
             <div class="modal-body">
                 @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
-                    @if($record->services)
-                        <div class="card mb-0" style="border-top: none;">
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush text-left">
-                                    @foreach($record->services as $service)
-                                        <li class="list-group-item">
-                                            {{ $service->name }}
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    @else
-                        {{ trans('general.no_record_found') }}
-                    @endif
-                    @if($record->other_services)
-                        <div class="card" style="border-top: none;">
-                            <div class="card-header">
-                                <h6 class="card-title mb-0">Other Services</h6>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush text-left">
-                                    @foreach($record->other_services as $service)
-                                        <li class="list-group-item">{{ $service->service_name }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    @endif
+                    <ul class="list-group list-group-flush">
+                        @foreach($record->services as $service)
+                            <li class="list-group-item">
+                                <span class="fw-bold">{{ $service->name }}</span> <span
+                                    class="text-muted fs-13 pull-right">
+                                @if($service->slug=='incubator')
+                                        <strong> {{ ($service->pivot->building_limit)=='∞'?'Unlimited':$service->pivot->building_limit }}</strong> {{ trans('general.buildings') }}
+                                        <br>
+                                        <strong> {{ ($service->pivot->floor_limit)=='∞'?'Unlimited':$service->pivot->floor_limit }}</strong> {{ trans('general.floors') }}
+                                        <br>
+                                        <strong> {{ ($service->pivot->office_limit)=='∞'?'Unlimited':$service->pivot->office_limit }}</strong> {{ trans('general.offices') }}
+                                        <br>
+                                    @else
+                                        {{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}
+                                    @endif
+                            </span>
+                            </li>
+                        @endforeach
+                    </ul>
                 @else
                     @isset($record->user->subscription->package->services)
                         <div class="card mb-0" style="border-top: none;">
                             <div class="card-body">
-                                <ul class="list-group list-group-flush text-left">
+                                <ul class="list-group list-group-flush">
                                     @foreach($record->user->subscription->package->services as $service)
                                         <li class="list-group-item">
-                                            {{ $service->name }} <span class="btn btn-sm btn-info pull-right">{{ $service->pivot->limit }}</span>
+                                            <span class="fw-bold">{{ $service->name }}</span> <span
+                                                class="text-muted fs-13 pull-right">
+                                @if($service->slug=='incubator')
+                                                    <strong> {{ ($service->pivot->building_limit)=='∞'?'Unlimited':$service->pivot->building_limit }}</strong> {{ trans('general.buildings') }}
+                                                    <br>
+                                                    <strong> {{ ($service->pivot->floor_limit)=='∞'?'Unlimited':$service->pivot->floor_limit }}</strong> {{ trans('general.floors') }}
+                                                    <br>
+                                                    <strong> {{ ($service->pivot->office_limit)=='∞'?'Unlimited':$service->pivot->office_limit }}</strong> {{ trans('general.offices') }}
+                                                    <br>
+                                                @else
+                                                    {{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}
+                                                @endif
+                            </span>
                                         </li>
                                     @endforeach
                                 </ul>

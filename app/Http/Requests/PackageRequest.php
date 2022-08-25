@@ -103,6 +103,5 @@ class PackageRequest extends FormRequest
             }
             \App\Models\PackageService::insert($final_data);
         }
-
     }
 }
