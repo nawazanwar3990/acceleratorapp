@@ -15,9 +15,6 @@ class Mentor extends Model
     use HasFactory;
 
     protected $table = TableEnum::MENTORS;
-    protected $casts = [
-        'services' => 'array',
-    ];
     protected $fillable = [
         'user_id',
         'payment_process',
@@ -32,7 +29,7 @@ class Mentor extends Model
     {
         return $this->belongsToMany(Service::class, TableEnum::MENTOR_SERVICE, 'mentor_id')
             ->where('mentor_service.service_type', 'package')
-            ->withPivot('service_type')
+            ->withPivot('service_type', 'limit', 'building_limit', 'floor_limit', 'office_limit')
             ->withTimestamps();
     }
 

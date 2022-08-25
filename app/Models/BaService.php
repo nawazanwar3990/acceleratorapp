@@ -17,7 +17,11 @@ class BaService extends Model
         'ba_id',
         'service_id',
         'service_type',
-        'service_name'
+        'service_name',
+        'limit',
+        'building_limit',
+        'floor_limit',
+        'office_limit'
     ];
 
     public function ba(): BelongsTo

@@ -34,9 +34,8 @@ class Freelancer extends Model
     {
         return $this->belongsToMany(Service::class, TableEnum::FREELANCER_SERVICE, 'freelancer_id')
             ->where('freelancer_service.service_type', 'package')
-            ->withPivot('service_type')
+            ->withPivot('service_type', 'limit', 'building_limit', 'floor_limit', 'office_limit')
             ->withTimestamps();
-
     }
 
     public function other_services(): HasMany

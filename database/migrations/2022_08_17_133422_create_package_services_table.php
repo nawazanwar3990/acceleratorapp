@@ -13,12 +13,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('package_id')->nullable()->constrained(TableEnum::PACKAGES);
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
-            $table->string('limit')->nullable();
-
-            $table->string('building_limit')->nullable();
-            $table->string('floor_limit')->nullable();
-            $table->string('office_limit')->nullable();
-
+            $table->text('limit')->default('0');
+            $table->text('building_limit')->default('0');
+            $table->text('floor_limit')->default('0');
+            $table->text('office_limit')->default('0');
             $table->timestamps();
         });
     }

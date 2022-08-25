@@ -16,6 +16,10 @@ return new class extends Migration
             $table->foreignId('service_id')->nullable()->constrained(TableEnum::SERVICES);
             $table->string('service_type')->nullable();
             $table->string('service_name')->nullable();
+            $table->text('limit')->default('0');
+            $table->text('building_limit')->nullable();
+            $table->text('floor_limit')->nullable();
+            $table->text('office_limit')->nullable();
             $table->timestamps();
         });
     }

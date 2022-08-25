@@ -4,9 +4,11 @@ namespace App\Services;
 
 use App\Enum\RoleEnum;
 use App\Models\BA;
+use App\Models\Service;
 use App\Models\User;
 use App\Models\VerifyUser;
 use App\Notifications\VerifyEmailLink;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -53,9 +55,44 @@ class BaService
         $services = request()->input('services', array());
         if (count($services) > 0) {
             $model->services()->detach();
-            $model->services()->attach($services, ['service_type' => 'package']);
+            $final_data = array();
+            foreach ($services['limit'] as $service_slug => $service_value) {
+                if ($service_slug == 'incubator') {
+                    $building_limit = $service_value['building_limit'];
+                    $floor_limit = $service_value['floor_limit'];
+                    $office_limit = $service_value['office_limit'];
+                    if ($building_limit || $floor_limit || $office_limit) {
+                        $final_data[] = [
+                            'service_id' => Service::whereSlug($service_slug)->value('id'),
+                            'ba_id' => $model->id,
+                            'service_type' => 'package',
+                            'limit' => '0',
+                            'building_limit' => $building_limit,
+                            'floor_limit' => $floor_limit,
+                            'office_limit' => $office_limit,
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now()
+                        ];
+                    }
+                } else {
+                    if ($service_value) {
+                        $final_data[] = [
+                            'service_id' => Service::whereSlug($service_slug)->value('id'),
+                            'ba_id' => $model->id,
+                            'service_type' => 'package',
+                            'limit' => $service_value,
+                            'building_limit' => null,
+                            'floor_limit' => null,
+                            'office_limit' => null,
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now()
+                        ];
+                    }
+                }
+            }
+            \App\Models\BaService::insert($final_data);
         }
-        if (request()->has('other_services')) {
+        /*if (request()->has('other_services')) {
             $other_services = request()->input('other_services', array());
             if (count($other_services) > 0) {
                 foreach ($other_services as $other_service) {
@@ -68,7 +105,7 @@ class BaService
                     }
                 }
             }
-        }
+        }*/
         return $model;
     }
 

@@ -33,16 +33,18 @@ class BA extends Model
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, TableEnum::BA_SERVICE, 'ba_id')
-            ->where('ba_service.service_type','package')
-            ->withPivot('service_type')
+            ->where('ba_service.service_type', 'package')
+            ->withPivot('service_type', 'limit', 'building_limit', 'floor_limit', 'office_limit')
             ->withTimestamps();
 
     }
+
     public function other_services(): HasMany
     {
-        return $this->hasMany(BaService::class,'ba_id')
-            ->where('service_type','other');
+        return $this->hasMany(BaService::class, 'ba_id')
+            ->where('service_type', 'other');
     }
+
     public function getCompanyDateOfInitiationAttribute($value)
     {
         return Carbon::parse($value)->format('d M Y');

@@ -9,6 +9,7 @@ use App\Enum\TableEnum;
 use App\Models\Freelancer;
 use App\Models\Media;
 use App\Models\Package;
+use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\VerifyUser;
@@ -61,21 +62,21 @@ class FreelancerService
         $services = request()->input('services', array());
         if (count($services) > 0) {
             $model->services()->detach();
-            $model->services()->attach($services, ['service_type' => 'package']);
-        }
-        if (request()->has('other_services')) {
-            $other_services = request()->input('other_services', array());
-            if (count($other_services) > 0) {
-                foreach ($other_services as $other_service) {
-                    if ($other_service != '') {
-                        \App\Models\FreelancerService::create([
-                            'freelancer_id' => $model->id,
-                            'service_type' => 'other',
-                            'service_name' => $other_service
-                        ]);
-                    }
+            $final_data = array();
+            foreach ($services['limit'] as $service_slug => $service_value) {
+                if ($service_value) {
+                    $data = [
+                        'service_id' => Service::whereSlug($service_slug)->value('id'),
+                        'freelancer_id' => $model->id,
+                        'service_type' => 'package',
+                        'limit' => $service_value,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ];
+                    $final_data[] = $data;
                 }
             }
+            \App\Models\FreelancerService::insert($final_data);
         }
         return $model;
     }
@@ -128,6 +129,7 @@ class FreelancerService
         }
         return $model;
     }
+
     public function saveFocalPersonInfo($model)
     {
         $count = request()->input('fp_name', array());

@@ -36,6 +36,22 @@ use Illuminate\Support\Facades\DB;
 class GeneralService
 {
 
+    public static function search_by_key_value($array, $key, $value): array
+    {
+        $results = array();
+        if (is_array($array)) {
+            if (isset($array[$key]) && $array[$key] == $value) {
+                $results[] = $array;
+            }
+            foreach ($array as $subarray) {
+                $results = array_merge($results,
+                    self::search_by_key_value($subarray, $key, $value));
+            }
+        }
+        return $results;
+    }
+
+
     public static function get_default_currency(): string
     {
         return CurrencyEnum::SAR;

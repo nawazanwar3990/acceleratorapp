@@ -52,7 +52,7 @@ class BAController extends Controller
             $model = BA::find($id);
         }
         if (in_array($step, [StepEnum::SERVICES, StepEnum::COMPANY_PROFILE, StepEnum::PACKAGES]) && !isset($model)) {
-            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::USER_INFO,$id??null])->with('error', 'First Create User Info');
+            return redirect()->route('website.ba.create', [$type, $payment, StepEnum::USER_INFO, $id ?? null])->with('error', 'First Create User Info');
         }
         $action = $request->query('action');
         if ($step == StepEnum::PRINT) {
@@ -98,9 +98,9 @@ class BAController extends Controller
                 if ($action) {
                     return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                 }
-                if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
-                }else{
+                } else {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
                 }
                 break;
@@ -147,9 +147,9 @@ class BAController extends Controller
                 if ($type == 'company') {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
-                    if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $response->id]);
-                    }else{
+                    } else {
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);
                     }
                 }
