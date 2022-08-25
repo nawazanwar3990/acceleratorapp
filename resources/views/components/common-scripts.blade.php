@@ -35,7 +35,7 @@
                     'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                 }
                 $.ajax({
-                    url: "{{ route('website.mentors.store',[isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,($model)?$model->id:null]) }}",
+                    url: "{{ route('website.mentors.store',[isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}",
                     method: 'POST',
                     data: data,
                     success: function (response) {
@@ -88,7 +88,7 @@
                     'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                 }
                 $.ajax({
-                    url: "{{ route('website.freelancers.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,($model)?$model->id:null]) }}",
+                    url: "{{ route('website.freelancers.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}",
                     method: 'POST',
                     data: data,
                     success: function (response) {
@@ -140,7 +140,7 @@
                     'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                 }
                 $.ajax({
-                    url: "{{ route('website.ba.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,($model)?$model->id:null]) }}",
+                    url: "{{ route('website.ba.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}",
                     method: 'POST',
                     data: data,
                     success: function (response) {
