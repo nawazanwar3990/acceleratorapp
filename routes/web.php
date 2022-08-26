@@ -29,6 +29,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/plan.php';
     require __DIR__ . '/working-space.php';
     require __DIR__ . '/subscription.php';
+    require __DIR__ . '/setting.php';
+
     Route::get('/ba/create/{step?}/{id?}', [BAController::class, 'create'])
         ->name('ba.create');
     Route::post('/ba/store/{step?}/{id?}', [BAController::class, 'store'])

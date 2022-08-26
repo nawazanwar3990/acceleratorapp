@@ -25,14 +25,14 @@ class SettingController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', Setting::class);
+      //  $this->authorize('view', Setting::class);
         $records = Setting::first();
         $params = [
             'pageTitle' => __('general.SETTINGS'),
             'records' => $records,
         ];
 
-        return view('dashboard.system-configurations.settings.index', $params);
+        return view('dashboard.settings.index', $params);
     }
 
     /**
@@ -40,7 +40,7 @@ class SettingController extends Controller
      */
     public function store(SystemSettingsRequest $request)
     {
-        $this->authorize('create', Setting::class);
+      //  $this->authorize('create', Setting::class);
             if ($request->createData()) {
                 return redirect()->route('dashboard.settings.create')
                     ->with('success', __('general.record_created_successfully'));

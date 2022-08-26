@@ -73,6 +73,14 @@ class TableEnum extends AbstractEnum
 
     public const PAYMENT_RECEIPTS = 'payment_receipts';
 
+    public const CMS_CONTACT_US = 'contact_us';
+    public const CMS_MENUS = 'cms_menus';
+    public const  CMS_PAGES = 'cms_pages';
+    public const CMS_SECTIONS = 'cms_sections';
+    public const CMS_LAYOUTS = 'cms_layouts';
+    public const CMS_FAQ_TOPICS = 'cms_faq_topics';
+    public const CMS_FAQ_TOPIC_SECTIONS = 'cms_faq_topic_sections';
+
     public static function getValues(): array
     {
         return [];

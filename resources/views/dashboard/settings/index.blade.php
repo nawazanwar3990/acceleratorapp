@@ -1,13 +1,11 @@
 @extends('layouts.dashboard')
 @section('css-before')
-
 @endsection
-
 @section('content')
     <div class="container">
         {!! Form::open(['url' => route('dashboard.settings.store')]) !!}
         <x-created-by-field></x-created-by-field>
-        @include('dashboard.system-configurations.settings.components.settings-fields',['records'=>$records])
+        @include('dashboard.settings.components.settings-fields',['records'=>$records])
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
