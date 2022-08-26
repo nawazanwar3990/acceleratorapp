@@ -121,29 +121,21 @@
                                             @foreach($subscription->package->services as $service)
                                                 <tr class="text-start">
                                                     <td>{{ $service->name }}</td>
-                                                    <td class="text-right">{{ $service->pivot->limit }}</td>
+                                                    <td class="fs-13">
+                                                        @if($service->slug=='incubator')
+                                                            {{ ($service->pivot->building_limit)=='∞'?'Unlimited':$service->pivot->building_limit }} {{ trans('general.buildings') }}
+                                                            <br>
+                                                            {{ ($service->pivot->floor_limit)=='∞'?'Unlimited':$service->pivot->floor_limit }} {{ trans('general.floors') }}
+                                                            <br>
+                                                            {{ ($service->pivot->office_limit)=='∞'?'Unlimited':$service->pivot->office_limit }}{{ trans('general.offices') }}
+                                                        @else
+                                                            {{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
                                         </table>
-                                        @if($model->other_services AND count($model->other_services)>0)
-                                            <table class="table custom-datatable table-hover table-striped mt-md-5">
-                                                <thead>
-                                                <tr class="text-center">
-                                                    <th class="table-head">{{ trans('general.other_services') }}</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($model->other_services as $service)
-                                                    @if($service)
-                                                        <tr>
-                                                            <td>{{ $service->service_name}}</td>
-                                                        </tr>
-                                                    @endif
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        @endif
                                     </div>
                                 </div>
                                 <hr>
