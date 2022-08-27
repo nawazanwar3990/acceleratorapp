@@ -333,6 +333,13 @@ return [
     'building_information' => 'Building Info',
     'floor_information' => 'Floor Info',
     'days_reminder_notice' => 'Days Reminder Notice',
+    'menu_type' => 'Menu Type',
+    'header_logo' => 'Header Logo',
+    'footer_logo' => 'Footer Logo',
+    'new_layout'=>'New Layout',
+    'layouts'=>'Layouts',
+    'layout'=>'Layout',
+    'edit_layout'=>'Edit Layout',
 
     'register_types' => [
         'business_accelerator' => 'Business Accelerator',

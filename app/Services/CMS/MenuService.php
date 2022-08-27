@@ -18,6 +18,13 @@ class MenuService
     {
         return Menu::pluck('name', 'id');
     }
+    public static function getTypes()
+    {
+        return [
+            'simple' => 'Simple',
+            'mega_menu' => 'Mega Menu'
+        ];
+    }
     public function findById($id)
     {
         return Menu::find($id);
