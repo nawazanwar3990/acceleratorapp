@@ -15,6 +15,6 @@ class PageService
 
     public function listByPagination()
     {
-        return Page::orderBy('name', 'ASC')->paginate(20);
+        return Page::orderBy('page_title', 'ASC')->paginate(20);
     }
 }
