@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('layout_id')->nullable();
             $table->foreignId('menu_id')->nullable();
+            $table->string('name')->nullable();
             $table->longText('page_title')->nullable();
             $table->longText('page_description')->nullable();
             $table->longText('page_keyword')->nullable();

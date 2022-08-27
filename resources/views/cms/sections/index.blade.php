@@ -3,16 +3,17 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-none pt-0">
-                @include('dashboard.components.general.form-list-header',['url'=>'cms..faq-topics.create','is_create'=>true])
+                @include('dashboard.components.general.form-list-header')
                 <div class="card-body">
-                    <table class="table custom-datatable table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>App\Enum\TableHeadings\CMS\FaqTopicTableHeadingEnum::getTranslationKeys()])
-                        <tbody>
-                        @include('cms..faq-topics.list')
-                        </tbody>
-                    </table>
+                    {!! Form::open(['url' =>route('cms.sections.store'), 'method' => 'POST','files' => true,'id' =>'expense_head_form', 'class' => 'solid-validation']) !!}
+                    <x-created-by-field></x-created-by-field>
+                    @include('cms.sections.fields', ['for' => 'create'])
+                    <x-buttons :save="true" :saveNew="true" :cancel="true" :reset="true"
+                               formID="expense_head_form" cancelRoute="cms.sections.index"></x-buttons>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@include('cms.components.tiny-script')

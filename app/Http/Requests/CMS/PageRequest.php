@@ -24,9 +24,9 @@ class PageRequest extends FormRequest
         ) {
             $edit_id = $this->model;
             if (isset($edit_id)) {
-                $data['page_title'] = ['required', Rule::unique(TableEnum::CMS_PAGES)->ignore($edit_id)];
+                $data['name'] = ['required', Rule::unique(TableEnum::CMS_PAGES)->ignore($edit_id)];
             } else {
-                $data['page_title'] = ['required', Rule::unique(TableEnum::CMS_PAGES)];
+                $data['name'] = ['required', Rule::unique(TableEnum::CMS_PAGES)];
             }
             return $data;
         } else {

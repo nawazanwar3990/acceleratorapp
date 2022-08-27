@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Services\CMS;
+
 use App\Models\CMS\Section;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use function __;
 
 class SectionService
@@ -12,8 +15,15 @@ class SectionService
         return Section::find($id);
     }
 
-    public function listByPagination()
+    public function listByPagination(): Collection|array|null
     {
-        return Section::with('page')->orderBy('order', 'ASC')->paginate(20);
+        $page_id = request()->query('page_id');
+        $sections = null;
+        if ($page_id) {
+            $sections = Section::with('page')
+                ->orderBy('order', 'ASC')->where('page_id', $page_id)
+                ->get();
+        }
+        return $sections;
     }
 }

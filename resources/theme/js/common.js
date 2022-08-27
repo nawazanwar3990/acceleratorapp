@@ -1,3 +1,5 @@
+
+
 function apply_registration(types) {
     types = JSON.parse(types);
     let html = '<div class="row justify-content-center">';
@@ -377,7 +379,6 @@ function clone_table_body(cElement) {
     $(cElement).closest('table').append(clone);
     $(clone).find('input[type=file]').dropify();
 }
-
 function remove_table_body(cElement) {
     let length = $(cElement).closest('table').find('tbody').length;
     if (length > 1) {

@@ -13,11 +13,6 @@ class Layout extends Model
     protected $table = TableEnum::CMS_LAYOUTS;
     protected $fillable = [
         'name',
-        'page_title',
-        'page_description',
-        'page_keyword',
-        'extra_css',
-        'extra_js',
         'active',
         'header_logo',
         'footer_logo',

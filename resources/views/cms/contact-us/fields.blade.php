@@ -10,11 +10,11 @@
         {!!  Html::decode(Form::label('phone' ,__('general.phone'),['class'=>'col-form-label']))   !!}
         {!! Form::number('phone', old('phone'), ['class' => 'form-control', 'autofocus', 'id' => 'phone' ]) !!}
     </div>
-    <div class="mb-3 col-6">
+    <div class="mb-3 col-4">
         {!!  Html::decode(Form::label('email' ,__('general.email'),['class'=>'col-form-label']))   !!}
         {!! Form::text('email', old('email'), ['class' => 'form-control', 'autofocus', 'id' => 'email' ]) !!}
     </div>
-    <div class="mb-3 col-6">
+    <div class="mb-3 col-12">
         {!!  Html::decode(Form::label('message' ,__('general.message'),['class'=>'col-form-label']))   !!}
         {!! Form::textarea('message', old('message'), ['class' => 'form-control', 'autofocus', 'id' => 'message' ]) !!}
     </div>

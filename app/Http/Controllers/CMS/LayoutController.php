@@ -9,6 +9,7 @@ use App\Http\Requests\FloorTypeRequest;
 use App\Models\FloorType;
 use App\Services\CMS\LayoutService;
 use App\Services\CMS\MenuService;
+use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -19,12 +20,16 @@ use function view;
 
 class LayoutController extends Controller
 {
+    use General;
+
     public function __construct(
         private LayoutService $layoutService
     )
     {
         $this->middleware('auth');
+        $this->makeDirectory('layouts');
     }
+
     public function index(LayoutRequest $request): Factory|View|Application
     {
         $records = $this->layoutService->listByPagination();
@@ -32,8 +37,9 @@ class LayoutController extends Controller
             'pageTitle' => __('general.layouts'),
             'records' => $records,
         ];
-        return view('cms.layouts.index',$params);
+        return view('cms.layouts.index', $params);
     }
+
     public function create(LayoutRequest $request): Factory|View|Application
     {
         $params = [
@@ -41,6 +47,7 @@ class LayoutController extends Controller
         ];
         return view('cms.layouts.create', $params);
     }
+
     public function store(LayoutRequest $request)
     {
         if ($request->createData()) {
@@ -54,6 +61,7 @@ class LayoutController extends Controller
 
         }
     }
+
     public function edit($id): Factory|View|Application
     {
         $model = $this->layoutService->findById($id);
@@ -63,6 +71,7 @@ class LayoutController extends Controller
         ];
         return view('cms.layouts.edit', $params);
     }
+
     public function update(LayoutRequest $request, $id)
     {
         $model = $this->layoutService->findById($id);
@@ -76,6 +85,7 @@ class LayoutController extends Controller
             }
         }
     }
+
     public function destroy(LayoutRequest $request, int $id)
     {
         $model = $this->layoutService->findById($id);

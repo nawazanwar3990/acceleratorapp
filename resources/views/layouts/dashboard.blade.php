@@ -31,6 +31,7 @@
 <script src="{{ config('app.url') }}:{{ config('app.laravel_echo_port') }}/socket.io/socket.io.js"></script>
 <script src="{{ asset('js/laravel-echo-setup.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/dashboard.min.js') }}"></script>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=o23blg9ah1zca8fzz4hpnqndoxanbov1pv288bvw0ptznp19"></script>
 @include('includes.global-scripts')
 <x-session-messages></x-session-messages>
 @yield('inner-script-files')

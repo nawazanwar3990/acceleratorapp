@@ -6,6 +6,7 @@ use App\Enum\MethodEnum;
 use App\Enum\TableEnum;
 use App\Models\CMS\Layout;
 use App\Models\CMS\Menu;
+use App\Services\GeneralService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -16,33 +17,24 @@ class LayoutRequest extends FormRequest
     {
         return true;
     }
+
     public function rules(): array
     {
-        if (
-            $this->isMethod(MethodEnum::POST)
-            ||
-            $this->isMethod(MethodEnum::PUT)
-        ) {
-            $edit_id = $this->model;
-            if (isset($edit_id)) {
-                $data['name'] = ['required', Rule::unique(TableEnum::CMS_LAYOUTS)->ignore($edit_id)];
-            } else {
-                $data['name'] = ['required', Rule::unique(TableEnum::CMS_LAYOUTS)];
-            }
-            return $data;
-        } else {
-            return array();
-        }
+        return  array();
     }
 
     public function createData()
     {
-        return Layout::create($this->all());
+        $model = Layout::create($this->all());
+        $this->manageImages($model);
+        return $model;
     }
 
     public function updateData($model)
     {
-        return $model->update($this->all());
+        $model->update($this->all());
+        $this->manageImages($model);
+        return $model;
     }
 
     public function deleteData($model)
@@ -50,5 +42,25 @@ class LayoutRequest extends FormRequest
         $model->deleted_by = Auth::id();
         $model->save();
         $model->delete();
+    }
+
+    private function manageImages($model)
+    {
+        if ($this->has('header_logo')) {
+            $header_logo = $this->file('header_logo');
+            $header_logo_name = GeneralService::generateFileName($header_logo);
+            $header_logo_path = 'uploads/layouts/' . $header_logo_name;
+            $header_logo->move('uploads/layouts/', $header_logo_name);
+            $model->header_logo = $header_logo_path;
+            $model->save();
+        }
+        if ($this->has('footer_logo')) {
+            $footer_logo = $this->file('footer_logo');
+            $footer_logo_name = GeneralService::generateFileName($footer_logo);
+            $footer_logo_path = 'uploads/layouts/' . $footer_logo_name;
+            $footer_logo->move('uploads/layouts/', $footer_logo_name);
+            $model->footer_logo = $footer_logo_path;
+            $model->save();
+        }
     }
 }

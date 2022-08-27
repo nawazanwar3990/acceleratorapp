@@ -17,7 +17,7 @@ class Page extends Model
     protected $fillable = [
         'layout_id',
         'menu_id',
-        'page_title',
+        'name',
         'page_description',
         'page_keyword',
         'extra_css',

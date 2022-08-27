@@ -15,11 +15,6 @@ return new class extends Migration
             $table->string('header_logo')->nullable();
             $table->string('footer_logo')->nullable();
             $table->enum('menu_type',['simple','mega_menu'])->default('simple');
-            $table->longText('page_title')->nullable();
-            $table->longText('page_description')->nullable();
-            $table->longText('page_keyword')->nullable();
-            $table->longText('extra_css')->nullable();
-            $table->longText('extra_js')->nullable();
             $table->boolean('active')->default(true);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);

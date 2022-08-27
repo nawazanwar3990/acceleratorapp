@@ -3,13 +3,20 @@
         <td class="text-center">{{ $record->id }}</td>
         <td>{{$record->name}}</td>
         <td>{{$record->menu_type}}</td>
-        <td>{{$record->page_title}}</td>
-        <td>{{$record->page_description}}</td>
-        <td>{{$record->page_keyword}}</td>
-        <td>{{$record->extra_css}}</td>
-        <td>{{$record->extra_js}}</td>
-        <td>{{$record->header_logo}}</td>
-        <td>{{$record->footer_logo}}</td>
+        <td>
+            @if($record->header_logo)
+                <img src="{{ asset($record->header_logo) }}" alt="{{ $record->name }}" class="img-fluid w-25">
+            @else
+                <img src="{{ asset('images/logo-icon.png') }}" alt="{{ $record->name }}" class="img-fluid">
+            @endif
+        </td>
+        <td>
+            @if($record->footer_logo)
+                <img src="{{ asset($record->header_logo) }}" alt="{{ $record->name }}" class="img-fluid w-25">
+            @else
+                <img src="{{ asset('images/logo-icon.png') }}" alt="{{ $record->name }}" class="img-fluid">
+            @endif
+        </td>
         <td>
             {!! Form::checkbox('active[]',null,$record->active,['class'=>'activeBox checkBoxStatus','id'=>'active_'.$key,'onclick'=>'activeListButton('.$record->id.',this,"'.route('cms.menus.active.update').'")']); !!}
             {!! Form::label('active_'.$key,'Active') !!}

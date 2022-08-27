@@ -10,7 +10,7 @@ class PageService
 
     public static function pluckPages()
     {
-        return Page::pluck('page_title', 'id');
+        return Page::pluck('name', 'id');
     }
 
     public function findById($id)
@@ -20,6 +20,6 @@ class PageService
 
     public function listByPagination()
     {
-        return Page::orderBy('page_title', 'ASC')->paginate(20);
+        return Page::orderBy('name', 'ASC')->paginate(20);
     }
 }

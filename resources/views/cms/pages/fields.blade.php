@@ -1,19 +1,21 @@
 <div class="row">
-    <div class="mb-3 col-6">
-        {!!  Html::decode(Form::label('menu_id' ,__('general.menu_id'),['class'=>'col-form-label']))   !!}
-        {!! Form::select('menu_id',\App\Services\CMS\MenuService::pluckMenus(),null, ['class' => 'form-control', 'autofocus', 'id' => 'menu_id','placeholder'=>'Select Menu' ]) !!}
-    </div>
-    <div class="mb-3 col-6">
+    <div class="mb-3 col-4">
         {!!  Html::decode(Form::label('layout_id' ,__('general.layout_id'),['class'=>'col-form-label']))   !!}
         {!! Form::select('layout_id',\App\Services\CMS\LayoutService::pluckLayouts(),null, ['class' => 'form-control', 'autofocus', 'id' => 'layout_id','placeholder'=>'Select Layout' ]) !!}
     </div>
-    <div class="mb-3 col-6">
+    <div class="mb-3 col-4">
+        {!!  Html::decode(Form::label('menu_id' ,__('general.menu_id'),['class'=>'col-form-label']))   !!}
+        {!! Form::select('menu_id',\App\Services\CMS\MenuService::pluckMenus(),null, ['class' => 'form-control', 'autofocus', 'id' => 'menu_id','placeholder'=>'Select Menu' ]) !!}
+    </div>
+    <div class="mb-3 col-4">
         {!!  Html::decode(Form::label('page_title' ,__('general.page_title'),['class'=>'col-form-label']))   !!}
-        {!! Form::text('page_title', old('name'), ['class' => 'form-control', 'autofocus', 'id' => 'page_title' ]) !!}
-        @error('page_title')
+        {!! Form::text('name', old('name'), ['class' => 'form-control', 'autofocus', 'id' => 'name' ]) !!}
+        @error('name')
         <small class="form-control-feedback text-danger"> {{ $message }} </small>
         @enderror
     </div>
+</div>
+<div class="row">
     <div class="mb-3 col-6">
         {!!  Html::decode(Form::label('page_description' ,__('general.page_description'),['class'=>'col-form-label']))   !!}
         {!! Form::textarea('page_description', old('page_description'), ['class' => 'form-control', 'autofocus', 'id' => 'page_description' ]) !!}
