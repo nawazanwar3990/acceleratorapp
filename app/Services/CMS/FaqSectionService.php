@@ -14,6 +14,6 @@ class FaqSectionService
 
     public function listByPagination()
     {
-        return FaqTopicSection::orderBy('name', 'ASC')->paginate(20);
+        return FaqTopicSection::orderBy('question', 'ASC')->paginate(20);
     }
 }

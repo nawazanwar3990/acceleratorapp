@@ -32,6 +32,10 @@ class Page extends Model
     {
         return $this->belongsTo(Layout::class);
     }
+    public function topic(): BelongsTo
+    {
+        return $this->belongsTo(FaqTopic::class);
+    }
 
     public function menu(): BelongsTo
     {

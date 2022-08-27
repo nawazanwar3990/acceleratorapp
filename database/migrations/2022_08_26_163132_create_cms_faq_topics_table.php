@@ -12,9 +12,10 @@ return new class extends Migration
         Schema::create(TableEnum::CMS_FAQ_TOPICS, function (Blueprint $table) {
             $table->id();
             $table->string('name', 255)->nullable();
-            $table->string('icon', 255)->nullable();
+            $table->foreignId('page_id')->nullable();
+            $table->string('all_pages')->nullable();
             $table->integer('order')->nullable();
-            $table->integer('page_id')->nullable();
+            $table->string('icon', 255)->nullable();
             $table->boolean('active')->default(false);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
