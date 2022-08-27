@@ -347,6 +347,9 @@ return [
     'sections'=>'Sections',
     'section'=>'Sections',
     'new_section'=>'New Section',
+    'message'=>'Message',
+    'new_contact_us'=>'New Contact Us',
+    'edit_contact_us'=>'Edit Contact Us',
 
 
 
