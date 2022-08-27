@@ -340,6 +340,15 @@ return [
     'layouts'=>'Layouts',
     'layout'=>'Layout',
     'edit_layout'=>'Edit Layout',
+    'layout_id'=>'Layout',
+    'page_id'=>'Page',
+    'html'=>'Html',
+    'edit_section'=>'Edit Section',
+    'sections'=>'Sections',
+    'section'=>'Sections',
+    'new_section'=>'New Section',
+
+
 
     'register_types' => [
         'business_accelerator' => 'Business Accelerator',
@@ -351,6 +360,8 @@ return [
 
     'left-bar' => [
         'payment-receipt' => 'Payment Receipts',
+        'layout' => 'Layout',
+        'section' => 'Section',
         'setting' => 'Setting',
         'dashboard' => 'Dashboard',
         'service' => 'Services',

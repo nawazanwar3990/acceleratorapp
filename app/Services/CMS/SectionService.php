@@ -14,6 +14,6 @@ class SectionService
 
     public function listByPagination()
     {
-        return Section::orderBy('name', 'ASC')->paginate(20);
+        return Section::with('page')->orderBy('order', 'ASC')->paginate(20);
     }
 }

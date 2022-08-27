@@ -15,7 +15,7 @@ class Page extends Model
 
     protected $table = TableEnum::CMS_PAGES;
     protected $fillable = [
-
+        'layout_id',
         'menu_id',
         'page_title',
         'page_description',
@@ -28,14 +28,18 @@ class Page extends Model
         'deleted_by'
     ];
 
-    public function sections(): HasMany
+    public function layout(): BelongsTo
     {
-        return $this->hasMany(Section::class);
+        return $this->belongsTo(Layout::class);
     }
 
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
+    }
+    public function sections(): HasMany
+    {
+        return $this->hasMany(Section::class);
     }
     public function createdBy(): BelongsTo
     {

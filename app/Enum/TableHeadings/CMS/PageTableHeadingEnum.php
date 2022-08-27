@@ -9,6 +9,7 @@ use function __;
 class PageTableHeadingEnum extends AbstractEnum
 {
     public const MENU_ID = 'menu_id';
+    public const LAYOUT_ID = 'layout_id';
     public const PAGE_TITLE = 'page_title';
     public const PAGE_DESCRIPTION = 'page_description';
     public const PAGE_KEYWORD = 'page_keyword';
@@ -25,6 +26,7 @@ class PageTableHeadingEnum extends AbstractEnum
     {
         return [
             self::MENU_ID => __(sprintf('%s.%s', 'general', self::MENU_ID)),
+            self::LAYOUT_ID => __(sprintf('%s.%s', 'general', self::LAYOUT_ID)),
             self::PAGE_TITLE => __(sprintf('%s.%s', 'general', self::PAGE_TITLE)),
             self::PAGE_DESCRIPTION => __(sprintf('%s.%s', 'general', self::PAGE_DESCRIPTION)),
             self::PAGE_KEYWORD => __(sprintf('%s.%s', 'general', self::PAGE_KEYWORD)),

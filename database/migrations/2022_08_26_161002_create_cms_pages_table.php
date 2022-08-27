@@ -11,6 +11,7 @@ return new class extends Migration
     {
         Schema::create(TableEnum::CMS_PAGES, function (Blueprint $table) {
             $table->id();
+            $table->foreignId('layout_id')->nullable();
             $table->foreignId('menu_id')->nullable();
             $table->longText('page_title')->nullable();
             $table->longText('page_description')->nullable();

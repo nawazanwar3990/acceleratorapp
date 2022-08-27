@@ -4,6 +4,10 @@
         {!! Form::select('menu_id',\App\Services\CMS\MenuService::pluckMenus(),null, ['class' => 'form-control', 'autofocus', 'id' => 'menu_id','placeholder'=>'Select Menu' ]) !!}
     </div>
     <div class="mb-3 col-6">
+        {!!  Html::decode(Form::label('layout_id' ,__('general.layout_id'),['class'=>'col-form-label']))   !!}
+        {!! Form::select('layout_id',\App\Services\CMS\LayoutService::pluckLayouts(),null, ['class' => 'form-control', 'autofocus', 'id' => 'layout_id','placeholder'=>'Select Layout' ]) !!}
+    </div>
+    <div class="mb-3 col-6">
         {!!  Html::decode(Form::label('page_title' ,__('general.page_title'),['class'=>'col-form-label']))   !!}
         {!! Form::text('page_title', old('name'), ['class' => 'form-control', 'autofocus', 'id' => 'page_title' ]) !!}
         @error('page_title')

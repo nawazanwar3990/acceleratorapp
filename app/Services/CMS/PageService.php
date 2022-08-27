@@ -8,6 +8,11 @@ use function __;
 class PageService
 {
 
+    public static function pluckPages()
+    {
+        return Page::pluck('page_title', 'id');
+    }
+
     public function findById($id)
     {
         return Page::find($id);

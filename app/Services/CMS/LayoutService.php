@@ -2,12 +2,16 @@
 
 namespace App\Services\CMS;
 
-use App\Models\CMS\FaqTopic;
 use App\Models\CMS\Layout;
 use function __;
 
 class LayoutService
 {
+
+    public static function pluckLayouts()
+    {
+        return Layout::pluck('name', 'id');
+    }
 
     public function findById($id)
     {

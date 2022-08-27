@@ -26,9 +26,9 @@ class Layout extends Model
         'updated_by',
         'deleted_by'
     ];
-    public function sections(): HasMany
+    public function pages(): HasMany
     {
-        return $this->hasMany(Section::class);
+        return $this->hasMany(Page::class);
     }
     public function createdBy(): BelongsTo
     {

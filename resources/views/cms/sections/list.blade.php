@@ -1,11 +1,9 @@
 @forelse($records as $key=>$record)
     <tr>
         <td class="text-center">{{ $record->id }}</td>
-        <td>{{$record->menu->name}}</td>
-        <td>{{$record->layout->name}}</td>
-        <td>{{$record->page_title}}</td>
-        <td>{{$record->page_description}}</td>
-        <td>{{$record->page_keyword}}</td>
+        <td>{{$record->page->page_title??null}}</td>
+        <td>{{$record->order}}</td>
+        <td>{{$record->html}}</td>
         <td>{{$record->extra_css}}</td>
         <td>{{$record->extra_js}}</td>
         <td>
@@ -14,8 +12,8 @@
         </td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
-                  'edit' => route('cms.pages.edit', $record->id),
-                  'delete' => route('cms.pages.destroy', $record->id),
+                  'edit' => route('cms.sections.edit', $record->id),
+                  'delete' => route('cms.sections.destroy', $record->id),
               ])
         </td>
     </tr>
