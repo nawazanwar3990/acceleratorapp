@@ -18,7 +18,11 @@ return new class extends Migration
             $table->integer('order')->nullable();
             $table->boolean('active')->default(false);
             $table->enum('type',['header','footer'])->default('header');
+            $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
     public function down()

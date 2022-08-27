@@ -16,7 +16,11 @@ return new class extends Migration
             $table->longText('answer')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('active')->default(true);
+            $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
     public function down()

@@ -104,6 +104,8 @@ class KeyWordEnum extends AbstractEnum
     public const PHYSICAL = 'physical';
     public const ONLINE = 'online';
 
+    public const CMS = 'cms';
+
     static function getConstants()
     {
         $oClass = new \ReflectionClass(__CLASS__);

@@ -11,7 +11,8 @@
                             \App\Enum\KeyWordEnum::MENTOR,
                             \App\Enum\KeyWordEnum::FREELANCER,
                             \App\Enum\KeyWordEnum::SERVICE,
-                            \App\Enum\KeyWordEnum::BA
+                            \App\Enum\KeyWordEnum::BA,
+                            \App\Enum\KeyWordEnum::CMS
                         ]))
                             <li>
                                 <a class="waves-effect waves-dark has-arrow"
@@ -40,6 +41,9 @@
                                     @endif
                                     @if($key==\App\Enum\KeyWordEnum::MENTOR)
                                         @include('dashboard.components.left-nav-bar.mentor-types')
+                                    @endif
+                                    @if($key==\App\Enum\KeyWordEnum::CMS)
+                                        @include('dashboard.components.left-nav-bar.cms')
                                     @endif
                                 </ul>
                             </li>

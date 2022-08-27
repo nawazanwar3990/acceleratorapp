@@ -1,6 +1,13 @@
 <?php
 return [
-    'enter_limit'=>"Enter Limit",
+
+    'menus' => 'Menus',
+    'icon' => 'Icon',
+    'order' => 'Order',
+    'new_menu'=>'New Menu',
+    'edit_menu'=>'Edit Menu',
+
+    'enter_limit' => "Enter Limit",
     'enter_ba_company_id' => 'Enter BA Company Id',
     'enter_ba_id' => 'Enter BA ID',
     'enter_freelancer_id' => 'Enter Freelancer Id',
@@ -354,7 +361,9 @@ return [
         'business_accelerator_services' => 'BA Services',
         'client_service' => 'Client Services',
         'event_management' => 'Event Management',
-        'mentor' => 'Mentors'
+        'mentor' => 'Mentors',
+        'cms' => 'CMS',
+        'menus' => 'Menus'
     ],
     'number' => 'Number',
     'available_flats' => 'Available Flats',

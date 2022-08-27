@@ -210,6 +210,15 @@ function printMe(id, route) {
 }
 
 (function () {
+
+    $(".custom_checkbox").on('click', function () {
+        if ($(this).is(":checked")) {
+            $(this).val(1);
+        } else {
+            $(this).val(0);
+        }
+    });
+
     $('.select2').select2();
     $('.dropify').dropify();
     $('.timepicker').timepicker();

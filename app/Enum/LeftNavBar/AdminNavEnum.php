@@ -22,7 +22,7 @@ class AdminNavEnum extends AbstractEnum
     public const FREELANCER = KeyWordEnum::FREELANCER;
     public const MENTOR = KeyWordEnum::MENTOR;
     public const CUSTOMER = KeyWordEnum::CUSTOMER;
-    public const SETTING = KeyWordEnum::SETTING;
+    public const CMS = KeyWordEnum::CMS;
 
     public static function getValues(): array
     {
@@ -33,7 +33,7 @@ class AdminNavEnum extends AbstractEnum
             self::PAYMENT_RECEIPT,
             self::SUBSCRIPTION,
             self::BA,
-            self::SETTING,
+            self::CMS,
             self::FREELANCER,
             self::MENTOR,
             self::CUSTOMER
@@ -52,7 +52,7 @@ class AdminNavEnum extends AbstractEnum
             self::FREELANCER => '<i></i>',
             self::MENTOR => '<i></i>',
             self::CUSTOMER => '<i></i>',
-            self::SETTING => '<i></i>'
+            self::CMS => '<i></i>'
 
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
@@ -74,7 +74,7 @@ class AdminNavEnum extends AbstractEnum
             self::FREELANCER => __(sprintf('%s.%s', 'general.left-bar', self::FREELANCER)),
             self::MENTOR => __(sprintf('%s.%s', 'general.left-bar', self::MENTOR)),
             self::CUSTOMER => __(sprintf('%s.%s', 'general.left-bar', self::CUSTOMER)),
-            self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING)),
+            self::CMS => __(sprintf('%s.%s', 'general.left-bar', self::CMS)),
 
         ];
     }
@@ -85,11 +85,11 @@ class AdminNavEnum extends AbstractEnum
             self::DASHBOARD => route('dashboard.index'),
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BUSINESS_ACCELERATOR]),
             self::PACKAGE => route('dashboard.packages.index', ['type' => PackageTypeEnum::BUSINESS_ACCELERATOR]),
-            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index',['type'=>RoleEnum::BUSINESS_ACCELERATOR]),
+            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index', ['type' => RoleEnum::BUSINESS_ACCELERATOR]),
             self::BA => route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
             self::MENTOR => route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
-            self::SETTING => route('dashboard.settings.index'),
+            self::CMS => null,
             self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => SubscriptionTypeEnum::PACKAGE, 'subscription_for' => RoleEnum::BUSINESS_ACCELERATOR]),
             self::CUSTOMER => route('dashboard.customers.index'),
         );

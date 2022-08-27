@@ -11,14 +11,17 @@
                                 {{ trans('general.create') }} <i class="bx bx-plus-circle"></i>
                             </a>
                             <div class="card-actions">
-                                <a class="d-print-none btn btn-primary btn-minimize btn-action d-inline-flex align-items-center justify-content-center" data-action="expand" data-bs-toggle="tooltip" title="" data-bs-placement="top" data-bs-original-title="Toggle Fullscreen" aria-label="Toggle Fullscreen"><i class="bx bx-expand"></i></a>
+                                <a class="d-print-none btn btn-primary btn-minimize btn-action d-inline-flex align-items-center justify-content-center"
+                                   data-action="expand" data-bs-toggle="tooltip" title="" data-bs-placement="top"
+                                   data-bs-original-title="Toggle Fullscreen" aria-label="Toggle Fullscreen"><i
+                                            class="bx bx-expand"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <table class="table custom-datatable table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\BATableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\MenuTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.ba.list')
                         </tbody>

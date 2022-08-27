@@ -3,6 +3,7 @@
 namespace App\Models\CMS;
 
 use App\Enum\TableEnum;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,7 +22,10 @@ class Page extends Model
         'page_keyword',
         'extra_css',
         'extra_js',
-        'active'
+        'active',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function sections(): HasMany
@@ -32,5 +36,19 @@ class Page extends Model
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
+    }
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'deleted_by');
+    }
+
+    public function deletedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }
