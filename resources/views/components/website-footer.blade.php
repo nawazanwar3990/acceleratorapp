@@ -1,21 +1,41 @@
-<footer class="footer">
-    <div class="fix-width">
-        <div class="row">
-            <div class="col-md-6">
-                    <h3>
-                        About Us
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aliquam, tempore? Corporis, delectus dolores enim expedita hic magni minus nam nemo nihil odit placeat provident quam sapiente sunt vero vitae.
-                    </p>
+<footer class="footer footer-light-left">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-6">
+                <div class="mb-20">
+                    <img class="small-footer-logo" src="{{ asset($cPage->layout->footer_log) }}" alt="">
+                </div>
+                <div>
+                    <span class="moto">Designed and coded with <i class="fa fa-heart color-red"></i> by CSS Ninja.</span>
+                    <nav class="level is-mobile mt-20">
+                        <div class="level-left level-social">
+                            <a href="#" class="level-item">
+                                <span class="icon"><i class="fa fa-facebook"></i></span>
+                            </a>
+                            <a href="#" class="level-item">
+                                <span class="icon"><i class="fa fa-twitter"></i></span>
+                            </a>
+                            <a href="#" class="level-item">
+                                <span class="icon"><i class="fa fa-linkedin"></i></span>
+                            </a>
+                            <a href="#" class="level-item">
+                                <span class="icon"><i class="fa fa-dribbble"></i></span>
+                            </a>
+                            <a href="#" class="level-item">
+                                <span class="icon"><i class="fa fa-github"></i></span>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
             </div>
-            <div class="col-md-6">
-                    <h3>
-                        Contact Us
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aliquam, tempore? Corporis, delectus dolores enim expedita hic magni minus nam nemo nihil odit placeat provident quam sapiente sunt vero vitae.
-                    </p>
+            <div class="column">
+                <div class="footer-nav-right">
+                    <a class="footer-nav-link" href="#">Home</a>
+                    <a class="footer-nav-link" href="#">Features</a>
+                    <a class="footer-nav-link" href="#">Pricing</a>
+                    <a class="footer-nav-link" href="#">Sign in</a>
+                    <a class="footer-nav-link" href="#">Sign up</a>
+                </div>
             </div>
         </div>
     </div>

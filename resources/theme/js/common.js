@@ -1,13 +1,22 @@
-
-
 function apply_registration(types) {
     types = JSON.parse(types);
-    let html = '<div class="row justify-content-center">';
+    let html = '<div class="columns is-multiline grid-products-inne">';
     $.each(types, function (index, value) {
         let checked = (index === 'business_accelerator') ? 'checked' : '';
-        html += '<div class="col-sm-6 col-xs-6 col-md-3 col-lg-3 col-xl-3 copl-xxl-3">' + ' <div class="card border position-relative">' + '<div class="radio-holder position-absolute" style="right:0;top:9px;"> <div class="form-check form-switch">' + '<input class="form-check-input" name="register_type" type="radio" id=' + index + ' value=' + index + ' ' + checked + '>' + ' <label class="form-check-label" for=' + index + '></label>' + ' </div></div>' + '<img class="card-img-top p-5 pb-0" src="/images/icon/' + index + '.png" alt="Card image cap">' + '<div class="card-body" style="height: 73px;">' + '<h6 class="card-title">' + value + '</h6>' + ' </div>' + '</div>' + '</div>';
+        html += '<div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd"><div class="grid-product">\n' +
+            '                            <div class="grid-product-image">\n' +
+            '                                <img src="/images/icon/' + index + '.png" data-demo-src="src="/images/icon/' + index + '.png" alt=' + value + '>\n' +
+            '                            </div>\n' +
+            '                            <div class="grid-product-info">\n' +
+            '                                <h3>' + value + '</h3>\n' +
+            '                            </div>\n' +
+            '                            <div class="grid-product-info">\n' +
+            '                                <p><input  name="register_type" type="radio" id=' + index + ' value=' + index + ' ' + checked + '></p>\n' +
+            '                            </div>\n' +
+            '                        </div>\n' +
+            '                    </div>';
     });
-    html += '</div>';
+    html += '</div></div>';
     Swal.fire({
         title: 'User Registration Type',
         html: html,
@@ -379,6 +388,7 @@ function clone_table_body(cElement) {
     $(cElement).closest('table').append(clone);
     $(clone).find('input[type=file]').dropify();
 }
+
 function remove_table_body(cElement) {
     let length = $(cElement).closest('table').find('tbody').length;
     if (length > 1) {

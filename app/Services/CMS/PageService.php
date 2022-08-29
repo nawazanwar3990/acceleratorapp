@@ -14,9 +14,22 @@ class PageService
         return Page::pluck('name', 'id');
     }
 
+    public static function getPagesForMenus()
+    {
+        return Page::where('parent_id', null)
+            ->whereActive(true)
+            ->orderBy('order', 'ASC')
+            ->get();
+    }
+
     public function findById($id)
     {
-        return Page::find($id);
+        return Page::with('layout')->find($id);
+    }
+
+    public function findByCode($code)
+    {
+        return Page::with('layout', 'sections')->whereCode($code)->first();
     }
 
     public function listByPagination(): LengthAwarePaginator

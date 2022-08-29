@@ -1,46 +1,88 @@
-<header class="bg-dark-grey">
-    <div class="navbar-fixed">
-        <div class="fix-width">
-            <!-- Start Header -->
-            <div class="header">
-                <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="#">
-                        <img src="{{ asset('images/business-accelerator-logo-white.png') }}" class="light-logo"
-                             style="margin-left: 31px;" alt="homepage"/>
+<div class="navbar-placeholder" style="height: 64.3906px;">
+    <nav class="navbar navbar-wrapper navbar-fade is-transparent navbar-light">
+        <div class="container">
+            <!-- Brand -->
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img class="switcher-logo" src="{{ asset($cPage->layout->header_logo) }}" alt="">
+                </a>
+                <!-- Sidebar Trigger -->
+                <a id="navigation-trigger" class="navbar-item hamburger-btn" href="javascript:void(0);">
+                        <span class="menu-toggle">
+                          <span class="icon-box-toggle">
+                              <span class="rotate">
+                                  <i class="icon-line-top"></i>
+                                  <i class="icon-line-center"></i>
+                                  <i class="icon-line-bottom"></i>
+                              </span>
+                        </span>
+                        </span>
+                </a>
+                <!-- Responsive toggle -->
+                <div class="custom-burger" data-target="">
+                    <a id="" class="responsive-btn" href="javascript:void(0);">
+                            <span class="menu-toggle">
+                              <span class="icon-box-toggle">
+                                  <span class="rotate">
+                                      <i class="icon-line-top"></i>
+                                      <i class="icon-line-center"></i>
+                                      <i class="icon-line-bottom"></i>
+                                  </span>
+                            </span>
+                            </span>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        @guest
-                            <ul class="navbar-nav ms-auto">
-                                <li class="nav-item mx-1">
-                                    <a href="{{ route('login') }}"
-                                       class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.login') }}</a>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}');" class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.signup') }}</button>
-                                </li>
-                            </ul>
-                        @else
-                            <ul class="navbar-nav ms-auto">
-                                <li class="nav-item mx-1">
-                                    <a href="{{ route('dashboard.index') }}"
-                                       class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.dashboard') }}</a>
-                                </li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                                <li class="nav-item mx-1">
-                                    <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary btn-rounded cs-btn text-white">{{ trans('general.logout') }}</a>
-                                </li>
-                            </ul>
-                        @endguest
-                    </div>
-                </nav>
+                </div>
+                <!-- /Responsive toggle -->
+            </div>
+
+            <!-- Navbar menu -->
+            <div class="navbar-menu">
+                <!-- Navbar Start -->
+                <div class="navbar-start">
+                    @if($cPage->layout->menu_type = 'simple')
+                        @if(count(\App\Services\CMS\PageService::getPagesForMenus())>0)
+                            @foreach(\App\Services\CMS\PageService::getPagesForMenus() as $page)
+                                @if($page->code=='home')
+                                    <a class="navbar-item is-slide is-centered-tablet"
+                                       href="{{ route('website.index') }}">
+                                        {{$page->code}}
+                                    </a>
+                                @else
+                                    <a class="navbar-item is-slide is-centered-tablet"
+                                       href="{{ route('website.pages.index',$page->code) }}">
+                                        {{$page->code}}
+                                    </a>
+                                @endif
+                            @endforeach
+                        @endif
+                    @else
+                    @endif
+                </div>
+                <!-- Navbar end -->
+                <div class="navbar-end">
+                    @guest
+                        <div class="navbar-item">
+                            <a href="{{ route('login') }}"
+                               class="button button-cta btn-outlined is-bold btn-align primary-btn raised">
+                                {{ trans('general.login') }}
+                            </a>
+                        </div>
+                        <div class="navbar-item">
+                            <a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')"
+                               class="button button-cta btn-outlined is-bold btn-align primary-btn raised">
+                                {{ trans('general.signup') }}
+                            </a>
+                        </div>
+                    @else
+                        <div class="navbar-item">
+                            <a href="{{ route('dashboard.index') }}"
+                               class="button button-cta btn-outlined is-bold btn-align primary-btn raised">
+                                {{ trans('general.dashboard') }}
+                            </a>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </nav>
+</div>
