@@ -62,5 +62,13 @@ class LayoutRequest extends FormRequest
             $model->footer_logo = $footer_logo_path;
             $model->save();
         }
+        if ($this->has('favicon_logo')) {
+            $favicon_logo = $this->file('favicon_logo');
+            $favicon_logo_name = GeneralService::generateFileName($favicon_logo);
+            $favicon_logo_path = 'uploads/layouts/' . $favicon_logo_name;
+            $favicon_logo->move('uploads/layouts/', $favicon_logo_name);
+            $model->favicon_logo = $favicon_logo_path;
+            $model->save();
+        }
     }
 }

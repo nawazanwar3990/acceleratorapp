@@ -1,18 +1,22 @@
 <div class="row">
-    <div class="mb-3 col-4">
+    <div class="mb-3 col-3">
         {!!  Html::decode(Form::label('layout_id' ,__('general.layout_id'),['class'=>'col-form-label']))   !!}
         {!! Form::select('layout_id',\App\Services\CMS\LayoutService::pluckLayouts(),null, ['class' => 'form-control', 'autofocus', 'id' => 'layout_id','placeholder'=>'Select Layout' ]) !!}
     </div>
-    <div class="mb-3 col-4">
-        {!!  Html::decode(Form::label('menu_id' ,__('general.menu_id'),['class'=>'col-form-label']))   !!}
-        {!! Form::select('menu_id',\App\Services\CMS\MenuService::pluckMenus(),null, ['class' => 'form-control', 'autofocus', 'id' => 'menu_id','placeholder'=>'Select Menu' ]) !!}
-    </div>
-    <div class="mb-3 col-4">
+    <div class="mb-3 col-3">
         {!!  Html::decode(Form::label('page_title' ,__('general.page_title'),['class'=>'col-form-label']))   !!}
         {!! Form::text('name', old('name'), ['class' => 'form-control', 'autofocus', 'id' => 'name' ]) !!}
-        @error('name')
+    </div>
+    <div class="mb-3 col-3">
+        {!!  Html::decode(Form::label('code' ,__('general.route'),['class'=>'col-form-label']))   !!}
+        {!! Form::text('code', old('code'), ['class' => 'form-control', 'autofocus', 'id' => 'code' ]) !!}
+        @error('code')
         <small class="form-control-feedback text-danger"> {{ $message }} </small>
         @enderror
+    </div>
+    <div class="mb-3 col-3">
+        {!!  Html::decode(Form::label('order' ,__('general.order'),['class'=>'col-form-label']))   !!}
+        {!! Form::number('order', old('order'), ['class' => 'form-control', 'autofocus', 'id' => 'order' ]) !!}
     </div>
 </div>
 <div class="row">

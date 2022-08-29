@@ -1,6 +1,12 @@
 <?php
 return [
-
+    'edit_page' => 'Edit Page',
+    'route' => "Route",
+    'pages' => 'Pages',
+    'page_url' => 'Page Url',
+    'favicon' => 'Favicon',
+    'header' => 'Header',
+    'footer' => 'Footer',
     'menus' => 'Menus',
     'icon' => 'Icon',
     'order' => 'Order',
@@ -356,9 +362,9 @@ return [
     'edit_faq_topic' => 'Edit Faq Topic',
     'topic_id' => 'Faq Topic',
     'question' => 'Question',
-    'faq_section'=>'Faq Section',
-    'new_faq-section'=>'New Faq Section',
-    'edit_faq-section'=>'Edit Faq Section',
+    'faq_section' => 'Faq Section',
+    'new_faq-section' => 'New Faq Section',
+    'edit_faq-section' => 'Edit Faq Section',
     'register_types' => [
         'business_accelerator' => 'Business Accelerator',
         'freelancer' => 'Freelancer/Service Provider Company',
@@ -398,9 +404,9 @@ return [
         'cms' => 'CMS',
         'menu' => 'Menus',
         'page' => 'Pages',
-        'contact_us'=>'Contact Us',
-        'faq_topic'=>'Faq Topic',
-        'faq_section'=>'Faq Section',
+        'contact_us' => 'Contact Us',
+        'faq_topic' => 'Faq Topic',
+        'faq_section' => 'Faq Section',
 
     ],
     'number' => 'Number',

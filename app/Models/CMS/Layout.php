@@ -16,6 +16,7 @@ class Layout extends Model
         'active',
         'header_logo',
         'footer_logo',
+        'favicon_logo',
         'menu_type',
         'created_by',
         'updated_by',
@@ -25,6 +26,7 @@ class Layout extends Model
     {
         return $this->hasMany(Page::class);
     }
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

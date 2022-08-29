@@ -18,3 +18,4 @@
         </div>
     </div>
 @endsection
+@include('cms.components.tiny-script')

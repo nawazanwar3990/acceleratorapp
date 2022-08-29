@@ -22,11 +22,11 @@ class PageRequest extends FormRequest
             ||
             $this->isMethod(MethodEnum::PUT)
         ) {
-            $edit_id = $this->model;
+            $edit_id = $this->model_id;
             if (isset($edit_id)) {
-                $data['name'] = ['required', Rule::unique(TableEnum::CMS_PAGES)->ignore($edit_id)];
+                $data['code'] = ['required', Rule::unique(TableEnum::CMS_PAGES)->ignore($edit_id)];
             } else {
-                $data['name'] = ['required', Rule::unique(TableEnum::CMS_PAGES)];
+                $data['code'] = ['required', Rule::unique(TableEnum::CMS_PAGES)];
             }
             return $data;
         } else {

@@ -43,7 +43,7 @@
         }
 
         callTiny('section_tiny');
-
+        callTiny('tinyLayout');
         function callTiny(tiny_selector) {
             tinymce.init({
                 selector: '.' + tiny_selector,
@@ -56,8 +56,8 @@
                 image_advtab: true,
                 relative_urls: false,
                 remove_script_host: false,
-                images_upload_url: '/dash/sections/upload',
-                images_upload_base_path: '/uploads/sections',
+                images_upload_url: '/cms/sections/upload',
+                images_upload_base_path: '/uploads/cmd',
                 image_caption: true,
                 extended_valid_elements: "*[*]",
                 file_picker_callback: function (callback, value, meta) {

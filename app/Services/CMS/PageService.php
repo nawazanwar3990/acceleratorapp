@@ -3,6 +3,7 @@
 namespace App\Services\CMS;
 
 use App\Models\CMS\Page;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use function __;
 
 class PageService
@@ -18,8 +19,10 @@ class PageService
         return Page::find($id);
     }
 
-    public function listByPagination()
+    public function listByPagination(): LengthAwarePaginator
     {
-        return Page::orderBy('name', 'ASC')->paginate(20);
+        return Page::with('layout')
+            ->orderBy('layout_id', 'ASC')
+            ->paginate(20);
     }
 }

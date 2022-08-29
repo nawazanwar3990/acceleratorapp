@@ -16,13 +16,14 @@ class Page extends Model
     protected $table = TableEnum::CMS_PAGES;
     protected $fillable = [
         'layout_id',
-        'menu_id',
         'name',
+        'code',
         'page_description',
         'page_keyword',
         'extra_css',
         'extra_js',
         'active',
+        'order',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -32,19 +33,17 @@ class Page extends Model
     {
         return $this->belongsTo(Layout::class);
     }
+
     public function topic(): BelongsTo
     {
         return $this->belongsTo(FaqTopic::class);
     }
 
-    public function menu(): BelongsTo
-    {
-        return $this->belongsTo(Menu::class);
-    }
     public function sections(): HasMany
     {
         return $this->hasMany(Section::class);
     }
+
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

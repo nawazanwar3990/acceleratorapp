@@ -11,6 +11,7 @@ class LayoutTableHeadingEnum extends AbstractEnum
     public const NAME = 'name';
     public const MENU_TYPE = 'menu_type';
     public const HEADER_LOGO = 'header_logo';
+    public const FAVICON_LOGO = 'favicon';
     public const FOOTER_LOGO = 'footer_logo';
     public const ACTIVE = 'active';
 
@@ -26,6 +27,7 @@ class LayoutTableHeadingEnum extends AbstractEnum
             self::MENU_TYPE => __(sprintf('%s.%s', 'general', self::MENU_TYPE)),
             self::HEADER_LOGO => __(sprintf('%s.%s', 'general', self::HEADER_LOGO)),
             self::FOOTER_LOGO => __(sprintf('%s.%s', 'general', self::FOOTER_LOGO)),
+            self::FAVICON_LOGO => __(sprintf('%s.%s', 'general', self::FAVICON_LOGO)),
             self::ACTIVE => __(sprintf('%s.%s', 'general', self::ACTIVE)),
         ];
     }

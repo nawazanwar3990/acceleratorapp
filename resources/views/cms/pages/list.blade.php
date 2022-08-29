@@ -1,17 +1,22 @@
 @forelse($records as $key=>$record)
     <tr>
         <td class="text-center">{{ $record->id }}</td>
-        <td>{{$record->menu->name??null}}</td>
         <td>{{$record->layout->name??null}}</td>
-        <td>{{$record->name}}</td>
-        <td>{{$record->page_description}}</td>
-        <td>{{$record->page_keyword}}</td>
-        <td>{{$record->extra_css}}</td>
-        <td>{{$record->extra_js}}</td>
         <td>
-            {!! Form::checkbox('active[]',null,$record->active,['class'=>'activeBox checkBoxStatus','id'=>'active_'.$key,'onclick'=>'activeListButton('.$record->id.',this,"'.route('cms.menus.active.update').'")']); !!}
-            {!! Form::label('active_'.$key,'Active') !!}
+            {{ $record->name }}
         </td>
+        <td>
+            @if($record->code=='home')
+                <a target="_blank" class="text-info" href="{{ route('website.index') }}">
+                    {{$record->code}}
+                </a>
+            @else
+                <a target="_blank" class="text-info" href="{{ route('website.pages.index',$record->code) }}">
+                    {{$record->code}}
+                </a>
+            @endif
+        </td>
+        <td>{{$record->order}}</td>
         <td class="text-center">
             @include('dashboard.components.general.table-actions', [
                   'edit' => route('cms.pages.edit', $record->id),

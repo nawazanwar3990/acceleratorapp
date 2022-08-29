@@ -12,13 +12,15 @@ return new class extends Migration
         Schema::create(TableEnum::CMS_PAGES, function (Blueprint $table) {
             $table->id();
             $table->foreignId('layout_id')->nullable();
-            $table->foreignId('menu_id')->nullable();
             $table->string('name')->nullable();
+            $table->string('code')->unique()->nullable();
+            $table->integer('parent_id')->nullable();
             $table->longText('page_title')->nullable();
             $table->longText('page_description')->nullable();
             $table->longText('page_keyword')->nullable();
             $table->longText('extra_css')->nullable();
             $table->longText('extra_js')->nullable();
+            $table->integer('order')->nullable();
             $table->boolean('active')->default(true);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
