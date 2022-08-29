@@ -28,13 +28,9 @@
         {!!  Html::decode(Form::label('page_keyword' ,__('general.page_keyword'),['class'=>'col-form-label']))   !!}
         {!! Form::textarea('page_keyword', old('page_keyword'), ['class' => 'form-control', 'autofocus', 'id' => 'page_keyword' ]) !!}
     </div>
-    <div class="mb-3 col-6">
-        {!!  Html::decode(Form::label('extra_css' ,__('general.extra_css'),['class'=>'col-form-label']))   !!}
-        {!! Form::textarea('extra_css', old('extra_css'), ['class' => 'form-control', 'autofocus', 'id' => 'extra_css' ]) !!}
-    </div>
-    <div class="mb-3 col-6">
-        {!!  Html::decode(Form::label('extra_js' ,__('general.extra_js'),['class'=>'col-form-label']))   !!}
-        {!! Form::textarea('extra_js', old('extra_js'), ['class' => 'form-control', 'autofocus', 'id' => 'extra_js' ]) !!}
+    <div class="mb-3 col-12">
+        {!!  Html::decode(Form::label('banner_image' ,__('general.banner_image'),['class'=>'col-form-label']))   !!}
+        {!! Form::file('banner_image', ['class' => 'form-control dropify','id' => 'banner_image','data-default-file'=>asset($model->banner_image)]) !!}
     </div>
     <div class="mb-3 col-12">
         {!! Form::checkbox('active',($for=='edit')?$model->active:0,null,['class'=>'custom_checkbox']); !!}

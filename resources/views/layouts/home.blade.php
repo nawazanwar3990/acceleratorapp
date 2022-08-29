@@ -32,10 +32,10 @@
                 is-6 is-offset-6 is-centered-tablet-portrait is-centered-mobile
               ">
                     <h1 class="parallax-hero-title is-smaller light-text">
-                        Analyze, rate and score corporate suppliers at scale.
+                        {{ $page->page_title }}
                     </h1>
                     <h2 class="subtitle is-5 light-text mt-4 no-padding">
-                        For any type of businesses, services and companies.
+                        {{ $page->page_description }}
                     </h2>
                     <br>
                     <p class="buttons is-flex-center-mobile">

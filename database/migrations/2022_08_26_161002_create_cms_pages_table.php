@@ -18,9 +18,8 @@ return new class extends Migration
             $table->longText('page_title')->nullable();
             $table->longText('page_description')->nullable();
             $table->longText('page_keyword')->nullable();
-            $table->longText('extra_css')->nullable();
-            $table->longText('extra_js')->nullable();
             $table->integer('order')->nullable();
+            $table->string('banner_image')->nullable();
             $table->boolean('active')->default(true);
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
