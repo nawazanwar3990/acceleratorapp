@@ -32,6 +32,7 @@
             @include('dashboard.components.general.table-actions', [
                   'edit' => route('cms.layouts.edit', $record->id),
                   'delete' => route('cms.layouts.destroy', $record->id),
+                  'pages' => route('cms.pages.index',['layout_id'=>$record->id]),
               ])
         </td>
     </tr>

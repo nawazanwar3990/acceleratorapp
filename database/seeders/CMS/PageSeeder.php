@@ -24,7 +24,7 @@ class PageSeeder extends Seeder
                 'page_description' => 'For any type of businesses, services and companies.',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '/uploads/pages/home_banner',
+                'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -37,7 +37,7 @@ class PageSeeder extends Seeder
                 'page_description' => '',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '',
+                'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -50,7 +50,7 @@ class PageSeeder extends Seeder
                 'page_description' => '',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '',
+                'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -63,7 +63,7 @@ class PageSeeder extends Seeder
                 'page_description' => '',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '',
+                'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -76,7 +76,7 @@ class PageSeeder extends Seeder
                 'page_description' => '',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '',
+                'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -89,7 +89,7 @@ class PageSeeder extends Seeder
                 'page_description' => '',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '',
+                'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]

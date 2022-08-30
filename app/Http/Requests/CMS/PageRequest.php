@@ -5,6 +5,7 @@ namespace App\Http\Requests\CMS;
 use App\Enum\MethodEnum;
 use App\Enum\TableEnum;
 use App\Models\CMS\Page;
+use App\Services\GeneralService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -36,12 +37,14 @@ class PageRequest extends FormRequest
 
     public function createData()
     {
-        return Page::create($this->all());
+        $page =  Page::create($this->all());
+        $this->saveBannerImage($page);
     }
 
     public function updateData($model)
     {
-        return $model->update($this->all());
+        $page =  $model->update($this->all());
+        $this->saveBannerImage($page);
     }
 
     public function deleteData($model)
@@ -49,5 +52,17 @@ class PageRequest extends FormRequest
         $model->deleted_by = Auth::id();
         $model->save();
         $model->delete();
+    }
+
+    private function saveBannerImage($page)
+    {
+        if ($this->has('banner_image')) {
+            $banner_image = $this->file('banner_image');
+            $banner_image_name = GeneralService::generateFileName($banner_image);
+            $banner_image_path = 'uploads/pages/' . $banner_image_name;
+            $banner_image->move('uploads/pages/', $banner_image_name);
+            $page->banner_image = $banner_image_path;
+            $page->save();
+        }
     }
 }

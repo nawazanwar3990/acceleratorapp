@@ -9,6 +9,7 @@ use App\Http\Requests\FloorTypeRequest;
 use App\Models\FloorType;
 use App\Services\CMS\MenuService;
 use App\Services\CMS\PageService;
+use App\Traits\General;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -19,11 +20,13 @@ use function view;
 
 class PageController extends Controller
 {
+    use General;
     public function __construct(
         private PageService $pageService
     )
     {
         $this->middleware('auth');
+        $this->makeDirectory('pages');
     }
     public function index(PageRequest $request): Factory|View|Application
     {

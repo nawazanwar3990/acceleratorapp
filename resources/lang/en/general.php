@@ -1,5 +1,6 @@
 <?php
 return [
+    'banner_image' => 'Banner Image',
     'edit_page' => 'Edit Page',
     'route' => "Route",
     'pages' => 'Pages',

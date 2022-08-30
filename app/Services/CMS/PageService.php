@@ -29,13 +29,18 @@ class PageService
 
     public function findByCode($code)
     {
-        return Page::with('layout', 'sections')->whereCode($code)->first();
+        return Page::with('layout', 'sections')
+            ->whereCode($code)
+            ->first();
     }
 
     public function listByPagination(): LengthAwarePaginator
     {
-        return Page::with('layout')
-            ->orderBy('layout_id', 'ASC')
-            ->paginate(20);
+        $pages = Page::with('layout')->orderBy('layout_id', 'ASC');
+        if (request()->has('layout_id')) {
+            $layout_id = request()->query('layout_id');
+            $pages = $pages->where('layout_id', $layout_id);
+        }
+        return $pages->paginate(20);
     }
 }

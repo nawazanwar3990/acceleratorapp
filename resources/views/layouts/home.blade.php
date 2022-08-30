@@ -16,14 +16,16 @@
 </head>
 <body class="is-theme-yellow">
 <div class="pageloader"></div>
-<div class="hero type-1 parallax is-cover is-relative is-fullheight" data-background="/assets/img/demo/hero-17.jpeg"
-     data-color="#545375" data-color-opacity="0.6" data-demo-background="/assets/img/demo/hero-17.jpeg"
+<div class="hero type-1 parallax is-cover is-relative is-fullheight"
+     data-background="{{ asset($page->banner_image) }}"
+     data-color="#545375"
+     data-color-opacity="0.6"
+     data-demo-background="{{ asset($page->banner_image) }}"
      data-page-theme="yellow"
-     style="background-image: url(&quot;/assets/img/demo/hero-17.jpeg&quot;); background-attachment: fixed; background-position: 50% 0px;">
+     style="background-image: url({{ asset($page->banner_image) }}); background-attachment: fixed; background-position: 50% 0;">
     <div class="parallax-overlay" style="background-color: rgb(84, 83, 117); opacity: 0.6;"></div>
     <img class="hero-shape-commerce" src="assets/img/graphics/legacy/cut-circle.svg" alt="">
     <x-web-header :cPage="$page"></x-web-header>
-    <!-- Hero caption -->
     <div id="main-hero" class="hero-body">
         <div class="container">
             <div class="columns is-vcentered">
