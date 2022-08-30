@@ -92,6 +92,18 @@ class PageSeeder extends Seeder
                 'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ], [
+                'layout_id' => '3',
+                'name' => 'Login',
+                'code' => 'login',
+                'order' => '5',
+                'page_title' => 'Start managing now',
+                'page_description' => 'Stop struggling with common tasks and focus on the real choke points. Discover a full featured HR management platform.',
+                'page_keyword' => 'login',
+                'active' => true,
+                'banner_image' => '/uploads/pages/default_login_banner.svg',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ]);
     }

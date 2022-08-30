@@ -35,7 +35,7 @@ class LoginController extends Controller
 
     public function showLoginForm(): Factory|View|Application
     {
-        $page = PageService::getHomePage();
+        $page = PageService::getLoginPage();
         return view('auth.login',compact('page'));
     }
 

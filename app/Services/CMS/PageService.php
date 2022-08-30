@@ -17,10 +17,15 @@ class PageService
     {
         return Page::whereCode('home')->first();
     }
+    public static function getLoginPage()
+    {
+        return Page::whereCode('login')->first();
+    }
     public static function getPagesForMenus()
     {
         return Page::where('parent_id', null)
             ->whereActive(true)
+            ->where('code','!=','login')
             ->orderBy('order', 'ASC')
             ->get();
     }

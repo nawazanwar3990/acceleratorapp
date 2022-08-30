@@ -17,10 +17,6 @@
                             <div class="columns">
                                 <div class="column"></div>
                                 <div class="column is-5">
-                                    <div class="auth-content">
-                                        <h2>Start managing now</h2>
-                                        <p>Please sign in to your account</p>
-                                    </div>
                                     <form class="form-horizontal form-material text-center"
                                           id="loginform"
                                           action="{{ route('login') }}"
@@ -100,14 +96,13 @@
                 <div class="hero is-fullheight is-theme-primary is-relative">
                     <div class="columns has-text-centered">
                         <div class="column">
-                            <h2 class="title is-2 light-text">Start managing now</h2>
+                            <h2 class="title is-2 light-text">{{ $page->page_title }}</h2>
                             <h3 class="subtitle is-5 light-text">
-                                Stop struggling with common tasks and focus on the real choke
-                                points. Discover a full featured HR management platform.
+                                {{ $page->page_description }}
                             </h3>
                         </div>
                     </div>
-                    <img class="login-city" src="assets/img/graphics/compositions/city.svg" alt="">
+                    <img class="login-city" src="{{ asset($page->banner_image) }}" alt="">
                 </div>
             </div>
         </div>

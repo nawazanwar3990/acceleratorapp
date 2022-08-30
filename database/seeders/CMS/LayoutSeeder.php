@@ -27,6 +27,12 @@ class LayoutSeeder extends Seeder
                 'active' => true,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ],[
+                'name' => 'auth',
+                'menu_type' => 'Simple',
+                'active' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ]);
     }

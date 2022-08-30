@@ -16,6 +16,7 @@ class PageRequest extends FormRequest
     {
         return true;
     }
+
     public function rules(): array
     {
         if (
@@ -37,14 +38,15 @@ class PageRequest extends FormRequest
 
     public function createData()
     {
-        $page =  Page::create($this->all());
+        $page = Page::create($this->all());
         $this->saveBannerImage($page);
     }
 
     public function updateData($model)
     {
-        $page =  $model->update($this->all());
-        $this->saveBannerImage($page);
+        $model->update($this->all());
+        $this->saveBannerImage($model);
+        return $model;
     }
 
     public function deleteData($model)
