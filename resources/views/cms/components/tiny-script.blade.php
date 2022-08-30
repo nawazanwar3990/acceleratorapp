@@ -57,7 +57,7 @@
                 relative_urls: false,
                 remove_script_host: false,
                 images_upload_url: '/cms/sections/upload',
-                images_upload_base_path: '/uploads/cmd',
+                images_upload_base_path: '/uploads/sections',
                 image_caption: true,
                 extended_valid_elements: "*[*]",
                 file_picker_callback: function (callback, value, meta) {
