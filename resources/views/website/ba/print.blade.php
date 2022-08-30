@@ -11,16 +11,28 @@
             <div class="container">
                 <div class="row text-right">
                     <div class="col-12 text-end">
-                        <button class="btn btn-success"
+                        <button class="button button-cta
+                    btn-align
+                    primary-btn
+                    z-index-2
+                    scroll-link"
                                 onclick="printMe('print_holder','{{ auth()->guest()?route('website.index'):route('dashboard.index') }}')">
                             <i class="fa fa-print"></i> Print Invoice
                         </button>
-                        <a class="btn btn-primary text-white"
+                        <a class="button button-cta
+                    btn-align
+                    primary-btn
+                    z-index-2
+                    scroll-link"
                            href="{{ route('website.ba.create',[$type,$payment,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
                             <i class="fa fa-edit"></i> Edit Profile
                         </a>
                         @guest
-                            <a class="btn btn-danger" href="{{ route('login') }}">
+                            <a class="button button-cta
+                    btn-align
+                    primary-btn
+                    z-index-2
+                    scroll-link" href="{{ route('login') }}">
                                 <i class="fa fa-check"></i>Login
                             </a>
                         @endguest
@@ -28,7 +40,7 @@
                 </div>
                 <div class="row position-relative p-5 mt-3" id="print_holder">
                     <div class="col-12">
-                        <div class="panel panel-default invoice">
+                        <div class="panel panel-default invoice shadow-none">
                             <div class="panel-body">
                                 <div class="invoice-ribbon">
                                     <div class="ribbon-inner">PAID</div>
