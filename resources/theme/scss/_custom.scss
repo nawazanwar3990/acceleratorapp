@@ -20,16 +20,19 @@
         }
     }
 }
-.fs-13{
+
+.fs-13 {
     font-size: 13px !important;
 }
-.parsley-errors-list{
+
+.parsley-errors-list {
     list-style-type: none;
     font-size: 13px;
     padding-top: 8px;
     color: red;
     padding-left: 0;
 }
+
 .dropify-wrapper {
     font-size: 13px !important;
     border: 1px solid #e5e5e58c !important;
@@ -48,7 +51,8 @@
     cursor: pointer;
     padding: 3px 2px 1px 1px;
 }
-.dropify-remove-clone-btn{
+
+.dropify-remove-clone-btn {
     right: 27px;
     top: 2px;
     z-index: 1000;
@@ -60,4 +64,12 @@
     border-radius: 100%;
     cursor: pointer;
     padding: 3px 2px 1px 1px;
+}
+
+.file-icon {
+    display: contents !important;
+}
+
+.navbar-wrapper .navbar-item {
+    font-size: 16px !important;
 }

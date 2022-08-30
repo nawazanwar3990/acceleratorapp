@@ -13,7 +13,10 @@ class PageService
     {
         return Page::pluck('name', 'id');
     }
-
+    public static function getHomePage()
+    {
+        return Page::whereCode('home')->first();
+    }
     public static function getPagesForMenus()
     {
         return Page::where('parent_id', null)

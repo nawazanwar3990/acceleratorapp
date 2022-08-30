@@ -17,19 +17,19 @@
                     <div class="row mt-3">
                         <div class="col-md-6 mb-3">
                             {!!  Html::decode(Form::label('f_emp_location' ,__('general.employee_location'),['class'=>'form-label']))   !!}
-                            {!!  Form::text('f_emp_location',$model->f_emp_location??null,['id'=>'f_emp_location','class'=>'form-control']) !!}
+                            {!!  Form::text('f_emp_location',$model->f_emp_location??null,['id'=>'f_emp_location','class'=>'input']) !!}
                         </div>
                         <div class="col-md-6 mb-3">
                             {!!  Html::decode(Form::label('f_emp_timing' ,__('general.employee_timing'),['class'=>'form-label']))   !!}
-                            {!!  Form::text('f_emp_timing',$model->f_emp_timing??null,['id'=>'f_emp_timing','class'=>'form-control']) !!}
+                            {!!  Form::text('f_emp_timing',$model->f_emp_timing??null,['id'=>'f_emp_timing','class'=>'input']) !!}
                         </div>
                         <div class="col-md-6 mb-3">
                             {!!  Html::decode(Form::label('f_emp_designation' ,__('general.employee_designation'),['class'=>'form-label']))   !!}
-                            {!!  Form::text('f_emp_designation',$model->f_emp_designation??null,['id'=>'f_emp_designation','class'=>'form-control']) !!}
+                            {!!  Form::text('f_emp_designation',$model->f_emp_designation??null,['id'=>'f_emp_designation','class'=>'input']) !!}
                         </div>
                         <div class="col-md-6 mb-3">
                             {!!  Html::decode(Form::label('f_emp_description' ,__('general.employee_description'),['class'=>'form-label']))   !!}
-                            {!!  Form::text('f_emp_description',$model->f_emp_description??null,['id'=>'f_emp_description','class'=>'form-control']) !!}
+                            {!!  Form::text('f_emp_description',$model->f_emp_description??null,['id'=>'f_emp_description','class'=>'input']) !!}
                         </div>
                     </div>
                 </section>

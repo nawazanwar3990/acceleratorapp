@@ -31191,15 +31191,6 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
   cursor: pointer;
 }
 
-.swal2-popup .swal2-styled.swal2-confirm {
-  border: 0;
-  border-radius: 0.25em;
-  background: initial;
-  background-color: #3085d6;
-  color: #fff;
-  font-size: 1.0625em;
-}
-
 .swal2-popup .swal2-styled.swal2-cancel {
   border: 0;
   border-radius: 0.25em;
@@ -31718,6 +31709,10 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
     position: initial !important;
   }
 }
+.swal2-confirm {
+  padding: 0px 17px !important;
+}
+
 /**
  * jQuery toast plugin created by Kamran Ahmed copyright MIT license 2014
  */
@@ -36151,6 +36146,10 @@ div.dtr-modal div.dtr-modal-background {
     width: 95%;
   }
 }
+a {
+  text-decoration: none !important;
+}
+
 .bootstrap-timepicker-widget table td input {
   width: 59px !important;
   height: 30px !important;
@@ -36215,6 +36214,9 @@ div.dtr-modal div.dtr-modal-background {
   text-align: left;
   font-weight: normal;
 }
+.progress-bar li a {
+  margin-left: 36px;
+}
 .progress-bar li::before {
   color: #fff;
   content: counter(container);
@@ -36223,22 +36225,21 @@ div.dtr-modal div.dtr-modal-background {
   position: absolute;
   height: 29px;
   width: 29px;
-  border: 1px solid #fb9678;
+  border: 1px solid #f5c62c;
   border-radius: 50%;
-  left: -42px;
   top: -5px;
   z-index: 10;
-  background-color: #fb9678;
+  background-color: #f5c62c;
 }
 .progress-bar li::after {
   content: "";
   position: absolute;
-  height: 66px;
+  height: 66px !important;
   width: 1px;
-  background-color: #fb9678;
+  background-color: #f5c62c;
   z-index: 1;
-  left: -27px;
-  top: -70px;
+  left: 15px;
+  top: -46px;
 }
 .progress-bar li:first-of-type::after {
   height: 0 !important;
@@ -36453,6 +36454,14 @@ div.dtr-modal div.dtr-modal-background {
   border-radius: 100%;
   cursor: pointer;
   padding: 3px 2px 1px 1px;
+}
+
+.file-icon {
+  display: contents !important;
+}
+
+.navbar-wrapper .navbar-item {
+  font-size: 16px !important;
 }
 
 /*

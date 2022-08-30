@@ -1,16 +1,4 @@
-@extends((auth()->user())?'layouts.dashboard':'layouts.website')
-@section('innerCSS')
-    <style>
-        .card {
-            border-top: 1px solid #edf1f5 !important;
-        }
-    </style>
-@endsection
-@section('css-before')
-@endsection
-@section('css-after')
-@endsection
-@section('content')
+
     <section class="invoice_holder mb-4" @guest style="
     max-width: 87%;
     margin: auto;
@@ -158,8 +146,3 @@
             </div>
         </div>
     </section>
-@endsection
-@section('innerScript')
-    <script>
-    </script>
-@endsection

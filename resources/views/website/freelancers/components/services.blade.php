@@ -27,7 +27,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {!!  Form::text('services[limit]['.$service->slug.']',isset($search_value[0])?$search_value[0]['pivot']['limit']:null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
+                                {!!  Form::text('services[limit]['.$service->slug.']',isset($search_value[0])?$search_value[0]['pivot']['limit']:null,['class'=>'input','placeholder'=>trans('general.enter_limit')]) !!}
                             </div>
                         </div>
                     </div>

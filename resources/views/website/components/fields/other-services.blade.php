@@ -13,7 +13,7 @@
                     @foreach($model->other_services as $service)
                         <tr>
                             <th class="py-2">
-                                {!! Form::text('other_services[]',$service,['id'=>'other_services[]','class'=>'form-control form-control-sm']) !!}
+                                {!! Form::text('other_services[]',$service,['id'=>'other_services[]','class'=>'input input-sm']) !!}
                             </th>
                             <td class="text-center pt-2">
                                 <a href="javascript:void(0);"

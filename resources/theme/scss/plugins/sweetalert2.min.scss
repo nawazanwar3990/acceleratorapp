@@ -1042,15 +1042,6 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
     cursor: pointer
 }
 
-.swal2-popup .swal2-styled.swal2-confirm {
-    border: 0;
-    border-radius: .25em;
-    background: initial;
-    background-color: #3085d6;
-    color: #fff;
-    font-size: 1.0625em
-}
-
 .swal2-popup .swal2-styled.swal2-cancel {
     border: 0;
     border-radius: .25em;
@@ -1588,4 +1579,8 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
     body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
         position: initial !important
     }
+}
+
+.swal2-confirm {
+    padding: 0px 17px !important;
 }

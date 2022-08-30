@@ -1,3 +1,7 @@
+a {
+    text-decoration: none !important;
+}
+
 .bootstrap-timepicker-widget table td input {
     width: 59px !important;
     height: 30px !important;
@@ -62,6 +66,10 @@
         text-align: left;
         font-weight: normal;
 
+        a {
+            margin-left: 36px;
+        }
+
         &::before {
             color: #fff;
             content: counter(container);
@@ -70,23 +78,22 @@
             position: absolute;
             height: 29px;
             width: 29px;
-            border: 1px solid #fb9678;
+            border: 1px solid #f5c62c;
             border-radius: 50%;
-            left: -42px;
             top: -5px;
             z-index: 10;
-            background-color: #fb9678;
+            background-color: #f5c62c;
         }
 
         &::after {
             content: "";
             position: absolute;
-            height: 66px;
+            height: 66px !important;
             width: 1px;
-            background-color: #fb9678;
+            background-color: #f5c62c;
             z-index: 1;
-            left: -27px;
-            top: -70px;
+            left: 15px;
+            top: -46px;
         }
 
         &:first-of-type {

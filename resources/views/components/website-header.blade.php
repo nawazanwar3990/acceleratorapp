@@ -63,20 +63,20 @@
                     @guest
                         <div class="navbar-item">
                             <a href="{{ route('login') }}"
-                               class="button button-cta btn-outlined is-bold btn-align primary-btn raised">
+                               class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn">
                                 {{ trans('general.login') }}
                             </a>
                         </div>
                         <div class="navbar-item">
                             <a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')"
-                               class="button button-cta btn-outlined is-bold btn-align primary-btn raised">
+                               class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn">
                                 {{ trans('general.signup') }}
                             </a>
                         </div>
                     @else
                         <div class="navbar-item">
                             <a href="{{ route('dashboard.index') }}"
-                               class="button button-cta btn-outlined is-bold btn-align primary-btn raised">
+                               class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn">
                                 {{ trans('general.dashboard') }}
                             </a>
                         </div>

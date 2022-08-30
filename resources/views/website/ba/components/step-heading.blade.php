@@ -1,22 +1,22 @@
 @switch($step)
     @case(\App\Enum\StepEnum::USER_INFO)
-        <h2 class="text-center fw-bold">
-            {{ trans('general.create_user_information') }}
-        </h2>
-       @break
+
+        {{ trans('general.create_user_information') }}
+
+        @break
     @case(\App\Enum\StepEnum::COMPANY_PROFILE)
-        <h2 class="text-center fw-bold">
-            {{ trans('general.company_profile') }}
-        </h2>
+
+        {{ trans('general.company_profile') }}
+
         @break
     @case(\App\Enum\StepEnum::SERVICES)
-        <h2 class="text-center fw-bold">
-            {{ trans('general.services_of_business_accelerator') }}
-        </h2>
+
+        {{ trans('general.services_of_business_accelerator') }}
+
         @break
     @case(\App\Enum\StepEnum::PACKAGES)
-        <h2 class="text-center fw-bold">
-            {{ trans('general.packages') }}
-        </h2>
+
+        {{ trans('general.packages') }}
+
         @break
 @endswitch

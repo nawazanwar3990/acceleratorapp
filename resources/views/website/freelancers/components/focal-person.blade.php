@@ -5,25 +5,25 @@
             <tr>
                 <td>
                     {!!  Html::decode(Form::label('fp_name[]' ,__('general.name')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                    {!!  Form::text('fp_name[]',$person->fp_name,['id'=>'focal[fp_name]','class'=>'form-control','required']) !!}
+                    {!!  Form::text('fp_name[]',$person->fp_name,['id'=>'focal[fp_name]','class'=>'input','required']) !!}
                 </td>
                 <td>
                     {!!  Html::decode(Form::label('fp_designation[]' ,__('general.designation')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                    {!!  Form::text('fp_designation[]',$person->fp_designation,['id'=>'fp_designation[]','class'=>'form-control','required']) !!}
+                    {!!  Form::text('fp_designation[]',$person->fp_designation,['id'=>'fp_designation[]','class'=>'input','required']) !!}
                 </td>
                 <td>
                     {!!  Html::decode(Form::label('fp_emp_type[]' ,__('general.employment_type')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                    {!!  Form::select('fp_emp_type[]',\App\Enum\EmploymentTypeEnum::getTranslationKeys(),$person->fp_emp_type,['id'=>'fp_emp_type[]','class'=>'form-control','placeholder'=>'Select','required']) !!}
+                    {!!  Form::select('fp_emp_type[]',\App\Enum\EmploymentTypeEnum::getTranslationKeys(),$person->fp_emp_type,['id'=>'fp_emp_type[]','class'=>'input','placeholder'=>'Select','required']) !!}
                 </td>
             </tr>
             <tr>
                 <td>
                     {!!  Html::decode(Form::label('fp_contact[]' ,__('general.contact')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                    {!!  Form::text('fp_contact[]',$person->fp_contact,['id'=>'fp_contact[]','class'=>'form-control']) !!}
+                    {!!  Form::text('fp_contact[]',$person->fp_contact,['id'=>'fp_contact[]','class'=>'input']) !!}
                 </td>
                 <td>
                     {!!  Html::decode(Form::label('fp_email[]' ,__('general.email')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                    {!!  Form::text('fp_email[]',$person->fp_email,['id'=>'fp_email[]','class'=>'form-control','required']) !!}
+                    {!!  Form::text('fp_email[]',$person->fp_email,['id'=>'fp_email[]','class'=>'input','required']) !!}
                 </td>
                 <td style="text-align: center;padding-top: 42px;">
                     <a href="javascript:void(0);"
@@ -45,25 +45,25 @@
         <tr>
             <td>
                 {!!  Html::decode(Form::label('fp_name[]' ,__('general.name')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                {!!  Form::text('fp_name[]',null,['id'=>'focal[fp_name]','class'=>'form-control','required']) !!}
+                {!!  Form::text('fp_name[]',null,['id'=>'focal[fp_name]','class'=>'input','required']) !!}
             </td>
             <td>
                 {!!  Html::decode(Form::label('fp_designation[]' ,__('general.designation')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                {!!  Form::text('fp_designation[]',null,['id'=>'fp_designation[]','class'=>'form-control','required']) !!}
+                {!!  Form::text('fp_designation[]',null,['id'=>'fp_designation[]','class'=>'input','required']) !!}
             </td>
             <td>
                 {!!  Html::decode(Form::label('fp_emp_type[]' ,__('general.employment_type')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                {!!  Form::select('fp_emp_type[]',\App\Enum\EmploymentTypeEnum::getTranslationKeys(),null,['id'=>'fp_emp_type[]','class'=>'form-control','placeholder'=>trans('general.select'),'required']) !!}
+                {!!  Form::select('fp_emp_type[]',\App\Enum\EmploymentTypeEnum::getTranslationKeys(),null,['id'=>'fp_emp_type[]','class'=>'input','placeholder'=>trans('general.select'),'required']) !!}
             </td>
         </tr>
         <tr>
             <td>
                 {!!  Html::decode(Form::label('fp_contact[]' ,__('general.contact'),['class'=>'form-label']))   !!}
-                {!!  Form::text('fp_contact[]',null,['id'=>'fp_contact[]','class'=>'form-control','required']) !!}
+                {!!  Form::text('fp_contact[]',null,['id'=>'fp_contact[]','class'=>'input','required']) !!}
             </td>
             <td>
                 {!!  Html::decode(Form::label('fp_email[]' ,__('general.email')."<span class='text-danger'>*</span>",['class'=>'form-label']))   !!}
-                {!!  Form::text('fp_email[]',null,['id'=>'fp_email[]','class'=>'form-control','required']) !!}
+                {!!  Form::text('fp_email[]',null,['id'=>'fp_email[]','class'=>'input','required']) !!}
             </td>
             <td style="text-align: center;padding-top: 42px;">
                 <a href="javascript:void(0);"

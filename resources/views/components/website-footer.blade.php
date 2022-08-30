@@ -1,12 +1,13 @@
-<footer class="footer footer-light-left">
+<footer class="footer footer-dark-left">
     <div class="container">
         <div class="columns is-vcentered">
             <div class="column is-6">
                 <div class="mb-20">
-                    <img class="small-footer-logo" src="{{ asset($cPage->layout->footer_log) }}" alt="">
+                    <img class="small-footer-logo switcher-logo" src="assets/img/logos/logo/bulkit-yellow.svg" alt="">
                 </div>
                 <div>
-                    <span class="moto">Designed and coded with <i class="fa fa-heart color-red"></i> by CSS Ninja.</span>
+                    <span class="moto">Designed and coded with <i
+                            class="fa fa-heart color-red"></i> by CSS Ninja.</span>
                     <nav class="level is-mobile mt-20">
                         <div class="level-left level-social">
                             <a href="#" class="level-item">

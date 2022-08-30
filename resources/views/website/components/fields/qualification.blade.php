@@ -5,21 +5,21 @@
             <tr>
                 <td>
                     {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('qualifications[degree][]',$qualification->degree,['id'=>'qualifications[degree][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                    {!!  Form::text('qualifications[degree][]',$qualification->degree,['id'=>'qualifications[degree][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
                 </td>
                 <td>
                     {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('qualifications[institute][]',$qualification->institute,['id'=>'qualifications[institute][]','class'=>'form-control form-control-sm']) !!}
+                    {!!  Form::text('qualifications[institute][]',$qualification->institute,['id'=>'qualifications[institute][]','class'=>'input input-sm']) !!}
                 </td>
             </tr>
             <tr>
                 <td>
                     {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('qualifications[year_of_passing][]',$qualification->year_of_passing,['id'=>'qualifications[year_of_passing][]','class'=>'form-control form-control-sm']) !!}
+                    {!!  Form::text('qualifications[year_of_passing][]',$qualification->year_of_passing,['id'=>'qualifications[year_of_passing][]','class'=>'input input-sm']) !!}
                 </td>
                 <td>
                     {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('qualifications[grade][]',$qualification->grade,['id'=>'qualifications[grade][]','class'=>'form-control form-control-sm']) !!}
+                    {!!  Form::text('qualifications[grade][]',$qualification->grade,['id'=>'qualifications[grade][]','class'=>'input input-sm']) !!}
                 </td>
             </tr>
             <tr>
@@ -45,21 +45,21 @@
         <tr>
             <td>
                 {!! Form::label('qualifications[degree][]',__('general.degree'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('qualifications[degree][]',null,['id'=>'qualifications[degree][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
+                {!!  Form::text('qualifications[degree][]',null,['id'=>'qualifications[degree][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
             </td>
             <td>
                 {!! Form::label('qualifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('qualifications[institute][]',null,['id'=>'qualifications[institute][]','class'=>'form-control form-control-sm']) !!}
+                {!!  Form::text('qualifications[institute][]',null,['id'=>'qualifications[institute][]','class'=>'input input-sm']) !!}
             </td>
         </tr>
         <tr>
             <td>
                 {!! Form::label('qualifications[year_of_passing][]',__('general.year_of_passing'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('qualifications[year_of_passing][]',null,['id'=>'qualifications[year_of_passing][]','class'=>'form-control form-control-sm']) !!}
+                {!!  Form::text('qualifications[year_of_passing][]',null,['id'=>'qualifications[year_of_passing][]','class'=>'input input-sm']) !!}
             </td>
             <td>
                 {!! Form::label('qualifications[grade][]',__('general.grade'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('qualifications[grade][]',null,['id'=>'qualifications[grade][]','class'=>'form-control form-control-sm']) !!}
+                {!!  Form::text('qualifications[grade][]',null,['id'=>'qualifications[grade][]','class'=>'input input-sm']) !!}
             </td>
         </tr>
         <tr>
