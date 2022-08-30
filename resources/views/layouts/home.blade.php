@@ -11,17 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link id="theme-sheet" rel="stylesheet" href="{{ asset('assets/css/yellow.css') }}">
+    <link id="theme-sheet" rel="stylesheet" href="{{ asset('assets/css/green.css') }}">
     <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
 </head>
-<body class="is-theme-yellow">
+<body class="is-theme-green">
 <div class="pageloader"></div>
 <div class="hero type-1 parallax is-cover is-relative is-fullheight"
      data-background="{{ asset($page->banner_image) }}"
      data-color="#545375"
      data-color-opacity="0.6"
      data-demo-background="{{ asset($page->banner_image) }}"
-     data-page-theme="yellow"
+     data-page-theme="green"
      style="background-image: url({{ asset($page->banner_image) }}); background-attachment: fixed; background-position: 50% 0;">
     <div class="parallax-overlay" style="background-color: rgb(84, 83, 117); opacity: 0.6;"></div>
     <img class="hero-shape-commerce" src="assets/img/graphics/legacy/cut-circle.svg" alt="">

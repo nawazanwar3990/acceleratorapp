@@ -11,10 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link id="theme-sheet" rel="stylesheet" href="{{ asset('assets/css/yellow.css') }}">
+    <link id="theme-sheet" rel="stylesheet" href="{{ asset('assets/css/green.css') }}">
     <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
 </head>
-<body class="is-theme-yellow">
+<body class="is-theme-green">
 <div class="pageloader"></div>
 <div class="hero is-relative is-theme-primary">
     <x-web-header :cPage="$page"></x-web-header>

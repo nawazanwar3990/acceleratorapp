@@ -8,6 +8,7 @@ use App\Enum\SubscriptionStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Subscription;
+use App\Services\CMS\PageService;
 use App\Services\PersonService;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Contracts\Foundation\Application;
@@ -34,7 +35,8 @@ class LoginController extends Controller
 
     public function showLoginForm(): Factory|View|Application
     {
-        return view('auth.login');
+        $page = PageService::getHomePage();
+        return view('auth.login',compact('page'));
     }
 
     /**
