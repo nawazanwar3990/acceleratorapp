@@ -28706,6 +28706,11 @@ a {
   background-color: transparent !important;
 }
 
+.navbar-wrapper .navbar-brand img {
+  width: 108px;
+  max-height: 150px !important;
+}
+
 .sidebar-nav ul li a {
   padding: 10px 5px 10px 3px !important;
   font-size: 13px !important;

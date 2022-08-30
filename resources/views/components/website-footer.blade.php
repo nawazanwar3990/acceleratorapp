@@ -3,7 +3,7 @@
         <div class="columns is-vcentered">
             <div class="column is-6">
                 <div class="mb-20">
-                    <img class="small-footer-logo switcher-logo" src="assets/img/logos/logo/bulkit-yellow.svg" alt="">
+                    <img class="small-footer-logo" src="{{ asset($cPage->layout->footer_logo) }}" alt="">
                 </div>
                 <div>
                     <span class="moto">Designed and coded with <i

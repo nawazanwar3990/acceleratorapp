@@ -18,18 +18,24 @@ class LayoutSeeder extends Seeder
             [
                 'name' => 'home',
                 'menu_type' => 'Simple',
+                'header_logo'=>'uploads/header_logo.png',
+                'footer_logo'=>'uploads/footer_logo.png',
                 'active' => true,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],[
                 'name' => 'page',
                 'menu_type' => 'Simple',
+                'header_logo'=>'uploads/header_logo.png',
+                'footer_logo'=>'uploads/footer_logo.png',
                 'active' => true,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],[
                 'name' => 'auth',
                 'menu_type' => 'Simple',
+                'header_logo'=>'uploads/header_logo.png',
+                'footer_logo'=>'uploads/footer_logo.png',
                 'active' => true,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

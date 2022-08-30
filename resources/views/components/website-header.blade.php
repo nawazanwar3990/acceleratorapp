@@ -4,7 +4,7 @@
             <!-- Brand -->
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
-                    <img class="switcher-logo" src="{{ asset($cPage->layout->header_logo) }}" alt="">
+                    <img style="height: 53px;" src="{{ asset($cPage->layout->header_logo) }}" alt="">
                 </a>
                 <!-- Sidebar Trigger -->
                 <a id="navigation-trigger" class="navbar-item hamburger-btn" href="javascript:void(0);">

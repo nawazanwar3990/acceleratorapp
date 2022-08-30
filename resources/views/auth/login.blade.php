@@ -6,9 +6,12 @@
             <div class="column is-7">
                 <div class="hero is-fullheight">
                     <div class="hero-heading">
-                        <div class="auth-logo">
+                        <div class="auth-logo text-center">
                             <a href="/">
-                                <img class="top-logo switcher-logo" src="{{ asset($page->layout->header_logo) }}" alt="">
+                                <img class="top-logo" style="
+    width: 100px;
+    height: 64px;
+" src="{{ asset($page->layout->header_logo) }}" alt="">
                             </a>
                         </div>
                     </div>
