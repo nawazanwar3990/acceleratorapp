@@ -34,19 +34,11 @@
                     'subscription_type': '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}',
                     'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                 }
-                $.ajax({
-                    url: "{{ route('website.mentors.store',[isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}",
-                    method: 'POST',
-                    data: data,
-                    success: function (response) {
-                        if (response.status === true) {
-                            location.assign(response.url);
-                        }
-                    },
-                    error: function (response) {
+                Ajax.call("{{ route('website.mentors.store',[isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}", data, 'POST', function (response) {
+                    if (response.status === true) {
+                        location.assign(response.url);
                     }
-                });
-                console.log(data);
+                })
             });
         }
     }
@@ -87,19 +79,11 @@
                     'subscription_type': '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}',
                     'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                 }
-                $.ajax({
-                    url: "{{ route('website.freelancers.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}",
-                    method: 'POST',
-                    data: data,
-                    success: function (response) {
-                        if (response.status === true) {
-                            location.assign(response.url);
-                        }
-                    },
-                    error: function (response) {
+                Ajax.call("{{ route('website.freelancers.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}", data, 'POST', function (response) {
+                    if (response.status === true) {
+                        location.assign(response.url);
                     }
-                });
-                console.log(data);
+                })
             });
         }
     }
@@ -139,19 +123,11 @@
                     'subscription_type': '{{ \App\Enum\SubscriptionTypeEnum::PACKAGE }}',
                     'subscribed_id': '{{ isset($model)?$model->user_id:0 }}'
                 }
-                $.ajax({
-                    url: "{{ route('website.ba.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}",
-                    method: 'POST',
-                    data: data,
-                    success: function (response) {
-                        if (response.status === true) {
-                            location.assign(response.url);
-                        }
-                    },
-                    error: function (response) {
+                Ajax.call("{{ route('website.ba.store',[isset($type)?$type:null,isset($payment)?$payment:null,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null]) }}", data, 'POST', function (response) {
+                    if (response.status === true) {
+                        location.assign(response.url);
                     }
-                });
-                console.log(data);
+                })
             });
         }
     }
