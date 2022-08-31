@@ -13,6 +13,9 @@
                             <span class="">Lorem ipsum dolor sit amet, clita laoreet ne cum. His caelus elet
                   cu harum inermis iudicabit.</span>
                     </div>
+                    <div class="py-1">
+                        <a href="#" class="button  primary-btn btn-sm rounded raised">View Services</a>
+                    </div>
                 </div>
             </div>
         @endforeach
