@@ -9,7 +9,7 @@
     padding-top: 24px;
 " @endguest>
             <div class="container">
-                <div class="row text-right">
+                <div class="row text-right pb-3">
                     <div class="col-12 text-end">
                         <button class="button button-cta
                     btn-align
