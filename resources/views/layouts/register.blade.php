@@ -39,9 +39,9 @@
                         @elseif($type == \App\Enum\AccessTypeEnum::MENTOR)
                             @include('website.mentor.components.step-heading')
                         @elseif($type=='pending_subscription')
-                            {{__('general.pending_subscription')}}
+                            Subscription
                         @elseif($type=='expire_subscription')
-                            {{__('general.expire_subscription')}}
+                            Subscription
                         @endif
                     </h2>
                 </div>
