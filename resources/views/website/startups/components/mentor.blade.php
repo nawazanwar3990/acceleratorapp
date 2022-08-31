@@ -1,7 +1,7 @@
 @if(is_object($records))
     @if(count($records))
         @foreach($records as $record)
-            <div class="column">
+            <div class="column border-light">
                 <div class="feature-card card-md hover-inset has-text-centered">
                     <div class="card-icon">
                         <i class="im im-icon-Two-Windows"></i>
