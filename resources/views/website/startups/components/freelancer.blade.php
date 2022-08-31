@@ -2,14 +2,11 @@
     @if(count($records))
         @foreach($records as $record)
             <div class="column is-3">
-                <div class="feature-card card-md hover-inset has-text-centered border">
-                    <div class="card-icon">
-                        <i class="im im-icon-Two-Windows"></i>
-                    </div>
-                    <div class="card-title">
-                        <h4>{{ $record->user->getFullName() }}</h4>
-                    </div>
-                </div>
+                <a class="support-card">
+                    <i class="im im-icon-Mail-Love"></i>
+                    <h3>Email Marketing</h3>
+                    <p>We answer your questions and solve your technical problems</p>
+                </a>
             </div>
         @endforeach
     @endif

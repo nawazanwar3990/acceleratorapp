@@ -16,7 +16,7 @@
             </div>
             <div class="container">
                 @if(request()->has('type'))
-                    <div class="columns services-cards is-minimal is-vcentered is-gapless is-multiline">
+                    <div class="columns is-multiline">
                         @include(sprintf('website.startups.components.%s',str_replace('_','-',request()->query('type'))))
                     </div>
                 @endif
