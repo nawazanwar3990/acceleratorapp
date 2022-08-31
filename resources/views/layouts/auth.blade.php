@@ -20,5 +20,6 @@
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/core.js') }}"></script>
 <script src="{{ asset('js/website.min.js') }}"></script>
+<x-session-messages></x-session-messages>
 </body>
 </html>
