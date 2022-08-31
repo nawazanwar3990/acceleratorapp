@@ -23,13 +23,13 @@
                                     </a>
                                 @endif
                                 @if($type==\App\Enum\RoleEnum::MENTOR)
-                                    <a class="btn btn-info btn-sm pull-right"
+                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link mr-3"
                                        href="{{ route('website.mentors.create',[$subscription->subscribed->mentor->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->mentor->id,'action'=>'edit']) }}">
                                         {{ trans('general.edit_profile') }}
                                     </a>
                                 @endif
                                 @if(!$receipt)
-                                    <a class="btn btn-info btn-sm pull-right mx-2" onclick="apply_pending_payment();">
+                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link" onclick="apply_pending_payment();">
                                         {{ trans('general.apply_payment') }} <i class="bx bx-plus-circle"></i>
                                     </a>
                                 @endif
