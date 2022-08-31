@@ -76,8 +76,8 @@ return [
     'registered_company' => 'Registered Company',
     'new_company' => 'New Company',
     'organized_by' => 'Organized By',
-    'pre-payment' => 'Customized Plan',
-    'direct-payment' => 'Predefined Plan',
+    'customized-plan' => 'Customized Plan',
+    'pre-defined-plan' => 'Predefined Plan',
 
     'meeting_pass' => 'Meeting Pass',
     'create_plan' => 'Create Plan',

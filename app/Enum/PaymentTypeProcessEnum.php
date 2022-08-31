@@ -8,22 +8,22 @@ use App\Enum\AbstractEnum;
 
 class PaymentTypeProcessEnum extends AbstractEnum
 {
-    public const PRE_PAYMENT = 'pre-payment';
-    public const DIRECT_PAYMENT = 'direct-payment';
+    public const CUSTOMIZED_PLAN = 'customized-plan';
+    public const PRE_DEFINED_PLAN = 'pre-defined-plan';
 
     public static function getValues(): array
     {
         return array(
-            self::PRE_PAYMENT,
-            self::DIRECT_PAYMENT
+            self::CUSTOMIZED_PLAN,
+            self::PRE_DEFINED_PLAN
         );
     }
 
     public static function getTranslationKeys(): array
     {
         return array(
-            self::PRE_PAYMENT => __(sprintf('%s.%s', 'general', self::PRE_PAYMENT)),
-            self::DIRECT_PAYMENT => __(sprintf('%s.%s', 'general', self::DIRECT_PAYMENT)),
+            self::CUSTOMIZED_PLAN => __(sprintf('%s.%s', 'general', self::CUSTOMIZED_PLAN)),
+            self::PRE_DEFINED_PLAN => __(sprintf('%s.%s', 'general', self::PRE_DEFINED_PLAN)),
         );
     }
 }

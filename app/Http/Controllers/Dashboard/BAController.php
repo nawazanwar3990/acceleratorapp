@@ -23,7 +23,9 @@ class BAController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $type = $request->query('type');
-        $records = BA::with('user','services','other_services')->where('payment_process', $type)->paginate(20);
+        $records = BA::with('user','services','other_services')
+            ->where('payment_process', $type)
+            ->paginate(20);
         $params = [
             'pageTitle' => __('general.accelerators'),
             'records' => $records,

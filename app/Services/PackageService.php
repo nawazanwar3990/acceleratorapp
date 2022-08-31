@@ -17,7 +17,7 @@ class PackageService
         return Package::with('services')
             ->where('status', true)
             ->where('package_type', $type)
-            ->where('payment_process',PaymentTypeProcessEnum::DIRECT_PAYMENT)
+            ->where('payment_process',PaymentTypeProcessEnum::PRE_DEFINED_PLAN)
             ->get();
     }
 

@@ -34,7 +34,7 @@
                     </a>
                 @endif
             @else
-                @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+                @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::CUSTOMIZED_PLAN)
                     <a class="btn btn-sm btn-success"
                        href="{{ route('dashboard.packages.create',['type'=>($record->type=='company')?\App\Enum\PackageTypeEnum::SERVICE_PROVIDER_COMPANY:\App\Enum\PackageTypeEnum::FREELANCER,'model_id'=>$record->id]) }}">
                         {{ trans('general.create_plan') }}

@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table custom-datatable table-bordered table-hover">
-                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\MenuTableHeadingEnum::getTranslationKeys()])
+                        @include('dashboard.components.general.table-headings',['headings'=>\App\Enum\TableHeadings\FreelancerTableHeadingEnum::getTranslationKeys()])
                         <tbody>
                         @include('dashboard.freelancers.list')
                         </tbody>

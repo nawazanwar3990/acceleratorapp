@@ -89,7 +89,7 @@ class MentorController extends Controller
                     if ($action) {
                         return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                     }
-                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                    if ($payment == PaymentTypeProcessEnum::PRE_DEFINED_PLAN) {
                         return redirect()->route('website.mentors.create', [$payment, StepEnum::PACKAGES, $model->id]);
                     } else {
                         return redirect()
@@ -121,7 +121,7 @@ class MentorController extends Controller
                 if ($action) {
                     return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                 }
-                if ($payment==PaymentTypeProcessEnum::DIRECT_PAYMENT){
+                if ($payment==PaymentTypeProcessEnum::PRE_DEFINED_PLAN){
                     return redirect()->route('website.mentors.create', [$payment, StepEnum::PACKAGES, $model->id]);
                 }else{
                     return redirect()->route('website.mentors.create', [$payment, StepEnum::SERVICES, $model->id]);

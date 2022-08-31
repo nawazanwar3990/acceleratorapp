@@ -98,7 +98,7 @@ class BAController extends Controller
                 if ($action) {
                     return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                 }
-                if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                if ($payment == PaymentTypeProcessEnum::PRE_DEFINED_PLAN) {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                 } else {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $model->id]);
@@ -110,7 +110,7 @@ class BAController extends Controller
                     if ($action) {
                         return redirect()->back()->with('success', trans('general.record_updated_successfully'));
                     }
-                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                    if ($payment == PaymentTypeProcessEnum::PRE_DEFINED_PLAN) {
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $model->id]);
                     } else {
                         return redirect()
@@ -147,7 +147,7 @@ class BAController extends Controller
                 if ($type == 'company') {
                     return redirect()->route('website.ba.create', [$type, $payment, StepEnum::COMPANY_PROFILE, $response->id]);
                 } else {
-                    if ($payment == PaymentTypeProcessEnum::DIRECT_PAYMENT) {
+                    if ($payment == PaymentTypeProcessEnum::PRE_DEFINED_PLAN) {
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::PACKAGES, $response->id]);
                     } else {
                         return redirect()->route('website.ba.create', [$type, $payment, StepEnum::SERVICES, $response->id]);

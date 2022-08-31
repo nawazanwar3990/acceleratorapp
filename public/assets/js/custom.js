@@ -114,8 +114,8 @@ function apply_payment(parent = null, type) {
         '    <div class="card border position-relative"> \n' +
         '      <div class="radio-holder position-absolute" style="right:0;top:9px;"> \n' +
         '        <div class="form-check form-switch">\n' +
-        '          <input id="pre-payment" class="form-check-input" required="" name="payment_type" type="radio" value="pre-payment"> \n' +
-        '          <label class="form-check-label" for="pre-payment">\n' +
+        '          <input id="customized-plan" class="form-check-input" required="" name="payment_type" type="radio" value="customized-plan"> \n' +
+        '          <label class="form-check-label" for="customized-plan">\n' +
         '          </label> \n' +
         '        </div> \n' +
         '      </div> \n' +
@@ -136,7 +136,7 @@ function apply_payment(parent = null, type) {
         '    <div class="card border position-relative"> \n' +
         '      <div class="radio-holder position-absolute" style="right:0;top:9px;"> \n' +
         '        <div class="form-check form-switch">\n' +
-        '          <input id="direct-payment" class="form-check-input" required="" checked="checked" name="payment_type" type="radio" value="direct-payment"> \n' +
+        '          <input id="pre-defined-plan" class="form-check-input" required="" checked="checked" name="payment_type" type="radio" value="pre-defined-plan"> \n' +
         '          <label class="form-check-label" for="direct">\n' +
         '          </label> \n' +
         '        </div> \n' +

@@ -5,7 +5,7 @@
     @endisset
     <div class="col-md-3 mb-3">
         {!!  Html::decode(Form::label('payment_process' ,__('general.payment_process'),['class'=>'col-form-label']))   !!}
-        {!!  Form::select('payment_process',\App\Enum\PaymentTypeProcessEnum::getTranslationKeys(),isset($model_id)?\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT:\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT,['id'=>'payment_process','class'=>'form-control','placeholder'=>trans('general.select')])
+        {!!  Form::select('payment_process',\App\Enum\PaymentTypeProcessEnum::getTranslationKeys(),isset($model_id)?\App\Enum\PaymentTypeProcessEnum::CUSTOMIZED_PLAN:\App\Enum\PaymentTypeProcessEnum::PRE_DEFINED_PLAN,['id'=>'payment_process','class'=>'form-control','placeholder'=>trans('general.select')])
         !!}
     </div>
     <div class="col-md-3 mb-3">

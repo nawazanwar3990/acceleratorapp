@@ -22,7 +22,7 @@
                 </a>
             </li>
         @endif
-        @if($payment==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+        @if($payment==\App\Enum\PaymentTypeProcessEnum::CUSTOMIZED_PLAN)
             <li class="{{ $step==\App\Enum\StepEnum::SERVICES?'active-link':'in-active-link' }}">
                 <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::SERVICES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
                     @if($type=='company')
@@ -33,7 +33,7 @@
                 </a>
             </li>
         @endif
-        @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
+        @if($payment==\App\Enum\PaymentTypeProcessEnum::PRE_DEFINED_PLAN)
             <li class="{{ $step==\App\Enum\StepEnum::PACKAGES?'active-link':'in-active-link' }}">
                 <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::PACKAGES,isset($model)?$model->id:null,$action?'action=edit':'']) }}">
                     {{ trans('general.packages') }}
@@ -41,7 +41,7 @@
             </li>
         @endif
         @if($action)
-            @if($payment==\App\Enum\PaymentTypeProcessEnum::DIRECT_PAYMENT)
+            @if($payment==\App\Enum\PaymentTypeProcessEnum::PRE_DEFINED_PLAN)
                 <li class="{{ $step==\App\Enum\StepEnum::PACKAGES?'active-link':'in-active-link' }}">
                     <a href="{{ route('website.freelancers.create',[$type,$payment,\App\Enum\StepEnum::PRINT,isset($model)?$model->id:null]) }}">
                         {{ trans('general.view_invoice') }}

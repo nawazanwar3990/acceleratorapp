@@ -71,13 +71,13 @@ class PackageController extends Controller
                 null
             );
             if (in_array($package_type, [PackageTypeEnum::FREELANCER, PackageTypeEnum::SERVICE_PROVIDER_COMPANY])) {
-                return redirect()->route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::PRE_PAYMENT])
+                return redirect()->route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::CUSTOMIZED_PLAN])
                     ->with('success', 'Subscription Created Successfully');
             } else if (in_array($package_type, [PackageTypeEnum::BUSINESS_ACCELERATOR, PackageTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL])) {
-                return redirect()->route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::PRE_PAYMENT])
+                return redirect()->route('dashboard.ba.index', ['type' => PaymentTypeProcessEnum::CUSTOMIZED_PLAN])
                     ->with('success', 'Subscription Created Successfully');
             } else{
-                return redirect()->route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::PRE_PAYMENT])
+                return redirect()->route('dashboard.mentors.index', ['type' => PaymentTypeProcessEnum::CUSTOMIZED_PLAN])
                     ->with('success', 'Subscription Created Successfully');
             }
         }

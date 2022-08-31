@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::PRE_PAYMENT)
+                @if($record->payment_process==\App\Enum\PaymentTypeProcessEnum::CUSTOMIZED_PLAN)
                     <ul class="list-group list-group-flush">
                         @foreach($record->services as $service)
                             <li class="list-group-item">

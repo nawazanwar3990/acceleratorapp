@@ -92,7 +92,7 @@ class BANavEnum extends AbstractEnum
             self::SERVICE => route('dashboard.services.index', ['type' => ServiceTypeEnum::BASIC]),
             self::INCUBATOR => route('dashboard.incubators.index'),
             self::MEETING_ROOM => route('dashboard.meeting-rooms.index'),
-            self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::DIRECT_PAYMENT]),
+            self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN]),
             self::MENTORSHIP_WITH_INVESTMENT => '',
             self::MENTORSHIP_WITHOUT_INVESTMENT => '',
             self::EVENT_MANAGEMENT => route('dashboard.events.index'),
