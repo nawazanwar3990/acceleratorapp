@@ -29,7 +29,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {!!  Form::text('services[limit]['.$service->slug.'][building_limit]',$search_value[0]['pivot']['building_limit']??null,['class'=>'input','placeholder'=>trans('general.enter_limit')]) !!}
+                                    {!!  Form::text('services[limit]['.$service->slug.'][building_limit]',$search_value[0]['pivot']['building_limit']??null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
                                 </div>
                             </div>
                             <div class="col-6 align-self-center">
@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {!!  Form::text('services[limit]['.$service->slug.'][floor_limit]',$search_value[0]['pivot']['floor_limit']??null,['class'=>'input','placeholder'=>trans('general.enter_limit')]) !!}
+                                    {!!  Form::text('services[limit]['.$service->slug.'][floor_limit]',$search_value[0]['pivot']['floor_limit']??null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
                                 </div>
                             </div>
                             <div class="col-6 align-self-center">
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {!!  Form::text('services[limit]['.$service->slug.'][office_limit]',$search_value[0]['pivot']['office_limit']??null,['class'=>'input','placeholder'=>trans('general.enter_limit')]) !!}
+                                    {!!  Form::text('services[limit]['.$service->slug.'][office_limit]',$search_value[0]['pivot']['office_limit']??null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
                                 </div>
                             </div>
                         @else
@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {!!  Form::text('services[limit]['.$service->slug.']',isset($search_value[0])?$search_value[0]['pivot']['limit']:null,['class'=>'input','placeholder'=>trans('general.enter_limit')]) !!}
+                                    {!!  Form::text('services[limit]['.$service->slug.']',isset($search_value[0])?$search_value[0]['pivot']['limit']:null,['class'=>'form-control','placeholder'=>trans('general.enter_limit')]) !!}
                                 </div>
                             </div>
                         @endif
