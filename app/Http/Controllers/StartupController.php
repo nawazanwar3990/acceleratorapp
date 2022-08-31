@@ -7,6 +7,7 @@ use App\Models\BA;
 use App\Models\Freelancer;
 use App\Models\Mentor;
 use App\Services\CMS\PageService;
+use App\Services\GeneralService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -24,6 +25,7 @@ class StartupController extends Controller
     public function index(Request $request): Factory|View|Application
     {
         $type = $request->query('type', null);
+        $type = GeneralService::generateType($type);
         $page = $this->pageService->findByCode('startup');
         $records = null;
         switch ($type) {

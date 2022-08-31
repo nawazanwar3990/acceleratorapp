@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\AccessTypeEnum;
 use App\Enum\CurrencyEnum;
 use App\Enum\DurationEnum;
 use App\Enum\LeftNavBar\IncubatorNavEnum;
@@ -1339,5 +1340,16 @@ class GeneralService
         } else if ($role == RoleEnum::MENTOR) {
             return Mentor::find($id);
         }
+    }
+
+    public static function generateType($type): ?string
+    {
+        $type = null;
+        if ($type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY || $type == AccessTypeEnum::BUSINESS_ACCELERATOR) {
+            $type = 'company';
+        } else if ($type == AccessTypeEnum::FREELANCER || $type == AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL) {
+            $type = 'individual';
+        }
+        return $type;
     }
 }
