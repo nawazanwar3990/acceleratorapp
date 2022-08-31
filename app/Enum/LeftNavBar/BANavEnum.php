@@ -17,8 +17,6 @@ class BANavEnum extends AbstractEnum
     public const MENTORSHIP_WITH_INVESTMENT = 'mentorship-with-investment';
     public const MENTORSHIP_WITHOUT_INVESTMENT = 'mentorship-with-out-investment';
     public const EVENT_MANAGEMENT = 'event-management';
-    public const SETTING = KeyWordEnum::SETTING;
-
     public static function getValues(): array
     {
         return [
@@ -30,7 +28,6 @@ class BANavEnum extends AbstractEnum
             self::MENTORSHIP_WITH_INVESTMENT,
             self::MENTORSHIP_WITHOUT_INVESTMENT,
             self::EVENT_MANAGEMENT,
-            self::SETTING
         ];
     }
 
@@ -45,7 +42,6 @@ class BANavEnum extends AbstractEnum
             self::MENTORSHIP_WITH_INVESTMENT => '<i class="mdi mdi-account"></i>',
             self::MENTORSHIP_WITHOUT_INVESTMENT => '<i class="mdi mdi-account"></i>',
             self::EVENT_MANAGEMENT => '<i class="mdi mdi-account"></i>',
-            self::SETTING => '<i class="mdi mdi-account"></i>'
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -64,8 +60,7 @@ class BANavEnum extends AbstractEnum
             self::FREELANCER => 'Freelancer',
             self::MENTORSHIP_WITH_INVESTMENT => 'Mentorship with Investment',
             self::MENTORSHIP_WITHOUT_INVESTMENT => 'Mentorship with out Investment',
-            self::EVENT_MANAGEMENT => 'Event Management',
-            self::SETTING => __(sprintf('%s.%s', 'general.left-bar', self::SETTING))
+            self::EVENT_MANAGEMENT => 'Event Management'
         ];
     }
 
@@ -79,9 +74,7 @@ class BANavEnum extends AbstractEnum
             self::FREELANCER => 'Freelancer',
             self::MENTORSHIP_WITH_INVESTMENT => __(sprintf('%s.%s', 'general.left_bar', self::MENTORSHIP_WITH_INVESTMENT)),
             self::MENTORSHIP_WITHOUT_INVESTMENT => __(sprintf('%s.%s', 'general.left_bar', self::MENTORSHIP_WITHOUT_INVESTMENT)),
-            self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general.left_bar', self::EVENT_MANAGEMENT)),
-            self::SETTING => __(sprintf('%s.%s', 'general.left_bar', self::SETTING)),
-
+            self::EVENT_MANAGEMENT => __(sprintf('%s.%s', 'general.left_bar', self::EVENT_MANAGEMENT))
         ];
     }
 
@@ -95,8 +88,7 @@ class BANavEnum extends AbstractEnum
             self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN]),
             self::MENTORSHIP_WITH_INVESTMENT => '',
             self::MENTORSHIP_WITHOUT_INVESTMENT => '',
-            self::EVENT_MANAGEMENT => route('dashboard.events.index'),
-            self::SETTING => route('dashboard.settings.index'),
+            self::EVENT_MANAGEMENT => route('dashboard.events.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
