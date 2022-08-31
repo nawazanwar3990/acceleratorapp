@@ -88,8 +88,8 @@
                     </li>
                     <li>
                         <a class="waves-effect waves-dark"
-                           href="{{ \App\Enum\LeftNavBar\AdminNavEnum::getRoute(\App\Enum\LeftNavBar\BANavEnum::PLAN) }}">
-                            {!! \App\Enum\LeftNavBar\AdminNavEnum::getIcon(\App\Enum\LeftNavBar\BANavEnum::PLAN) !!}
+                           href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute(\App\Enum\LeftNavBar\BANavEnum::PLAN) }}">
+                            {!! \App\Enum\LeftNavBar\BANavEnum::getIcon(\App\Enum\LeftNavBar\BANavEnum::PLAN) !!}
                             <span class="hide-menu">
                             {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\BANavEnum::PLAN) }}
                         </a>
