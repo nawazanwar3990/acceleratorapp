@@ -1,4 +1,5 @@
 <script>
+    @isset($subscription)
     function apply_expire_payment() {
         Swal.fire({
             title: '{{ trans('general.apply_payment') }}',
@@ -59,6 +60,7 @@
                     data.append('payment_for', "{{ \App\Enum\PaymentForEnum::PACKAGE_EXPIRE }}");
                     data.append('price', "{{ $subscription->package->price }}");
                     data.append('file_name', file_name);
+                    Ajax.setAjaxHeader();
                     $.ajax({
                         url: "{{ route('website.payment-receipts.store')}}",
                         method: 'POST',
@@ -84,6 +86,7 @@
             }
         });
     }
+
     function apply_pending_payment() {
         Swal.fire({
             title: '{{ trans('general.apply_payment') }}',
@@ -144,6 +147,7 @@
                     data.append('payment_for', "{{ \App\Enum\PaymentForEnum::PACKAGE_APPROVAL }}");
                     data.append('price', "{{ $subscription->package->price }}");
                     data.append('file_name', file_name);
+                    Ajax.setAjaxHeader();
                     $.ajax({
                         url: "{{ route('website.payment-receipts.store')}}",
                         method: 'POST',
@@ -169,6 +173,7 @@
             }
         });
     }
+    @endisset
     function apply_mentor_subscription() {
 
         let subscription = $("input[name='subscription_id']:checked");
