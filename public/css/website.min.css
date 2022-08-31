@@ -28557,10 +28557,6 @@ a {
   color: #fb9678;
 }
 
-.active-link a {
-  color: #fb9678 !important;
-}
-
 .in-active-link a {
   color: black !important;
 }

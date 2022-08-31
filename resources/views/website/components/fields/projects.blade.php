@@ -32,12 +32,12 @@
                 <td colspan="2" class="text-center">
                     <a href="javascript:void(0);"
                        onclick="clone_table_body(this);"
-                       class="btn btn-xs btn-info">
+                       class="button primary-btn">
                         <i class="bx bx-plus"></i>
                     </a>
                     <a href="javascript:void(0);" tabindex="18"
                        onclick="remove_table_body(this);"
-                       class="btn btn-xs btn-danger">
+                       class="button primary-btn">
                         <i class="bx bx-minus"></i>
                     </a>
                 </td>
@@ -78,12 +78,12 @@
             <td colspan="2" class="text-center">
                 <a href="javascript:void(0);"
                    onclick="clone_table_body(this);"
-                   class="btn btn-xs btn-info">
+                   class="button primary-btn">
                     <i class="bx bx-plus"></i>
                 </a>
                 <a href="javascript:void(0);" tabindex="18"
                    onclick="remove_table_body(this);"
-                   class="btn btn-xs btn-danger">
+                   class="button primary-btn">
                     <i class="bx bx-minus"></i>
                 </a>
             </td>
