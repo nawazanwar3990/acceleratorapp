@@ -27,13 +27,13 @@
                     @if($loop->last)
                         <a href="javascript:void(0);"
                            onclick="clone_table_body(this);"
-                           class="button primary-btn">
+                           class="button primary-btn btn-sm">
                             <i class="bx bx-plus"></i>
                         </a>
                     @endif
                     <a href="javascript:void(0);" tabindex="18"
                        onclick="remove_table_body(this);"
-                       class="button primary-btn">
+                       class="button primary-btn btn-sm">
                         <i class="bx bx-minus"></i>
                     </a>
                 </td>
@@ -66,12 +66,12 @@
             <td colspan="2" class="text-center">
                 <a href="javascript:void(0);"
                    onclick="clone_table_body(this);"
-                   class="button primary-btn">
+                   class="button primary-btn btn-sm">
                     <i class="bx bx-plus"></i>
                 </a>
                 <a href="javascript:void(0);" tabindex="18"
                    onclick="remove_table_body(this);"
-                   class="button primary-btn">
+                   class="button primary-btn btn-sm">
                     <i class="bx bx-minus"></i>
                 </a>
             </td>
