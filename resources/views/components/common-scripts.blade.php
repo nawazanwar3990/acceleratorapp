@@ -10,7 +10,11 @@
             Swal.fire({
                 title: 'Request Package Subscription',
                 html: '<table class="table table-sm table-bordered"><tr><th style="font-size:13px;">Package</th><td style="font-size:13px;">' + subscription.attr("data-name") + '</td></tr><tr><th style="font-size:13px;">Price</th><td style="font-size:13px;">' + subscription.attr("data-price") + '</td><tr><tr><th style="font-size:13px;">Expiry Data</th><td style="font-size:13px;">' + subscription.attr("data-expiry") + '</td></tr><tr><th style="font-size:13px;">Payment Token Number</th><td style="font-size:13px;">' + payment_token_number + '</td></tr><tr><th style="font-size:13px;">Additional Information</th><td style="font-size:13px;">{{ Form::textarea('payment_addition_information',null,['id'=>'payment_addition_information','class'=>'form-control form-control-sm','rows'=>2]) }}</td></tr></table>',
-                confirmButtonText: 'Next',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: "Proceeded",
+                confirmButtonColor: '#00b289',
+                cancelButtonColor: '#00b289',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;
@@ -54,7 +58,11 @@
             Swal.fire({
                 title: 'Request Package Subscription',
                 html: '<table class="table table-sm table-bordered"><tr><th style="font-size:13px;">Package</th><td style="font-size:13px;">' + subscription.attr("data-name") + '</td></tr><tr><th style="font-size:13px;">Price</th><td style="font-size:13px;">' + subscription.attr("data-price") + '</td><tr><tr><th style="font-size:13px;">Expiry Data</th><td style="font-size:13px;">' + subscription.attr("data-expiry") + '</td></tr><tr><th style="font-size:13px;">Payment Token Number</th><td style="font-size:13px;">' + payment_token_number + '</td></tr><tr><th style="font-size:13px;">Additional Information</th><td style="font-size:13px;">{{ Form::textarea('payment_addition_information',null,['id'=>'payment_addition_information','class'=>'form-control form-control-sm','rows'=>2]) }}</td></tr></table>',
-                confirmButtonText: 'Next',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: "Proceeded",
+                confirmButtonColor: '#00b289',
+                cancelButtonColor: '#00b289',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;
@@ -99,7 +107,11 @@
             Swal.fire({
                 title: 'Request Package Subscription',
                 html: '<table class="table table-sm table-bordered"><tr><th style="font-size:13px;">Package</th><td style="font-size:13px;">' + subscription.attr("data-name") + '</td></tr><tr><th style="font-size:13px;">Price</th><td style="font-size:13px;">' + subscription.attr("data-price") + '</td><tr><tr><th style="font-size:13px;">Expiry Data</th><td style="font-size:13px;">' + subscription.attr("data-expiry") + '</td></tr><tr><th style="font-size:13px;">Payment Token Number</th><td style="font-size:13px;">' + payment_token_number + '</td></tr><tr><th style="font-size:13px;">Additional Information</th><td style="font-size:13px;">{{ Form::textarea('payment_addition_information',null,['id'=>'payment_addition_information','class'=>'form-control form-control-sm','rows'=>2]) }}</td></tr></table>',
-                confirmButtonText: 'Next',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: "Proceeded",
+                confirmButtonColor: '#00b289',
+                cancelButtonColor: '#00b289',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;
