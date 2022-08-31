@@ -2,7 +2,7 @@
     @if(count($records))
         @foreach($records as $record)
             <div class="column">
-                <div class="feature-card card-md hover-inset has-text-centered">
+                <div class="feature-card card-md hover-inset has-text-centered border">
                     <div class="card-icon">
                         <i class="im im-icon-Two-Windows"></i>
                     </div>
