@@ -20,6 +20,7 @@ class AccessSeeder extends Seeder
         DB::table(TableEnum::BA)->insert([
             array(
                 'user_id' => '2',
+                'type' => 'individual',
                 'payment_process' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN,
                 'company_name' => '',
                 'created_at' => Carbon::now(),
@@ -27,6 +28,7 @@ class AccessSeeder extends Seeder
             ),
             array(
                 'user_id' => '3',
+                'type' => 'company',
                 'payment_process' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN,
                 'company_name' => 'Test Ba Company',
                 'created_at' => Carbon::now(),
@@ -40,6 +42,7 @@ class AccessSeeder extends Seeder
         DB::table(TableEnum::FREELANCERS)->insert([
             array(
                 'user_id' => '4',
+                'type' => 'individual',
                 'payment_process' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN,
                 'company_name' => '',
                 'created_at' => Carbon::now(),
@@ -47,6 +50,7 @@ class AccessSeeder extends Seeder
             ),
             array(
                 'user_id' => '5',
+                'type' => 'company',
                 'payment_process' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN,
                 'company_name' => 'Sp Company',
                 'created_at' => Carbon::now(),

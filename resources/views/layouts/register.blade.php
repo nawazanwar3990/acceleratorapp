@@ -37,7 +37,9 @@
         </div>
     </div>
 </div>
-{{$content}}
+<main class="bg-white">
+    {{$content}}
+</main>
 <x-web-footer :cPage="$page"></x-web-footer>
 <div id="backtotop"><a href="#"></a></div>
 <x-style-switcher></x-style-switcher>

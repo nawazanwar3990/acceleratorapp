@@ -1,3 +1,30 @@
+function LogoutConfirm() {
+    swal.fire({
+        title: "Are you Sure?",
+        type: "question",
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonText: "confirm",
+        confirmButtonColor: '#00b289',
+        cancelButtonColor: '#00b289',
+        allowOutsideClick: () => {
+            const popup = swal.getPopup();
+            popup.classList.remove('swal2-show');
+            setTimeout(() => {
+                popup.classList.add('headShake', 'animated');
+            });
+            setTimeout(() => {
+                popup.classList.remove('headShake', 'animated');
+            }, 500);
+            return false;
+        }
+    }).then((result) => {
+        if (result.value === true) {
+            $('#logoutForm').submit();
+        }
+    });
+}
+
 function apply_registration(types) {
     types = JSON.parse(types);
     let html = '<div class="row justify-content-center">';
@@ -7,9 +34,10 @@ function apply_registration(types) {
     });
     html += '</div>';
     Swal.fire({
-        title: 'User Registration Type', html: html, width: 900, confirmButtonText: 'Next', customClass: {
-            confirmButton: 'button button-cta btn-align rounded raised primary-btn'
-        }, focusConfirm: false, preConfirm: () => {
+        title: 'User Registration Type', html: html, width: 900, confirmButtonText: 'Next',
+        confirmButtonColor: '#00b289',
+        cancelButtonColor: '#00b289',
+        focusConfirm: false, preConfirm: () => {
             const register_type = Swal.getPopup().querySelector("input[name=register_type]:checked").value;
             if (!register_type) {
                 Swal.showValidationMessage(`First Choose Register Type`)
@@ -46,9 +74,8 @@ function choose_register_type(parent) {
         html: html,
         confirmButtonText: 'Next',
         focusConfirm: false,
-        customClass: {
-            confirmButton: 'button button-cta btn-align rounded raised primary-btn'
-        },
+        confirmButtonColor: '#00b289',
+        cancelButtonColor: '#00b289',
         preConfirm: () => {
             const type = Swal.getPopup().querySelector("input[name=type]:checked").value;
             return {
@@ -65,9 +92,10 @@ function choose_register_type(parent) {
 function apply_payment(parent = null, type) {
     let html = '<div class="row justify-content-center">\n' + '  <div class="col-lg-6 col-md-6"> \n' + '    <div class="card border position-relative"> \n' + '      <div class="radio-holder position-absolute" style="right:0;top:9px;"> \n' + '        <div class="form-check form-switch">\n' + '          <input id="customized-plan" class="form-check-input" required="" name="payment_type" type="radio" value="customized-plan"> \n' + '          <label class="form-check-label" for="customized-plan">\n' + '          </label> \n' + '        </div> \n' + '      </div> \n' + '      <img class="p-5 pb-0" src="/images/icon/preapply.png" alt="Pre Apply"> \n' + '      <div class="card-body text-center"> \n' + '        <h5 class="card-title">Customized Plan\n' + '        </h5> \n' + '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' + '          <li class="fs-13">Select services according to your need.\n' + '          </li>\n' + '          <li class="fs-13">You can select package after admin package creation on the basis of your selected services.\n' + '          </li>\n' + '        </ul>\n' + '      </div> \n' + '    </div> \n' + '  </div>\n' + '  <div class="col-lg-6 col-md-6"> \n' + '    <div class="card border position-relative"> \n' + '      <div class="radio-holder position-absolute" style="right:0;top:9px;"> \n' + '        <div class="form-check form-switch">\n' + '          <input id="pre-defined-plan" class="form-check-input" required="" checked="checked" name="payment_type" type="radio" value="pre-defined-plan"> \n' + '          <label class="form-check-label" for="direct">\n' + '          </label> \n' + '        </div> \n' + '      </div> \n' + '      <img class="p-5 pb-0" src="/images/icon/directapply.png" alt="Direct Apply"> \n' + '      <div class="card-body text-center"> \n' + '        <h5 class="card-title">Predefined Plan\n' + '        </h5> \n' + '        <ul class="pl-3" style="text-align: left;padding-left: 9px;">\n' + '          <li class="fs-13 mb-3">Already defined services.\n' + '          </li>\n' + '          <li class="fs-13" style="margin-bottom: 2.6rem;">You can select package (Already defined by admin).\n' + '          </li>\n' + '        </ul>\n' + '      </div> \n' + '    </div> \n' + '  </div>\n' + '</div>\n';
     Swal.fire({
-        title: 'Payment Process', html: html, confirmButtonText: 'Next', focusConfirm: false, customClass: {
-            confirmButton: 'button button-cta btn-align rounded raised primary-btn'
-        }, preConfirm: () => {
+        title: 'Payment Process', html: html, confirmButtonText: 'Next', focusConfirm: false,
+        confirmButtonColor: '#00b289',
+        cancelButtonColor: '#00b289',
+        preConfirm: () => {
             const payment_type = Swal.getPopup().querySelector("input[name=payment_type]:checked").value;
             return {
                 parent: parent, type: type, payment_type: payment_type

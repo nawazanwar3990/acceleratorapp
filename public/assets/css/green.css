@@ -58511,3 +58511,7 @@ figure.team-slanted:hover .member-position {
     color: #048c68 !important;
 }
 /*# sourceMappingURL=scss */
+.form-check-input:checked {
+    background-color: #048c68 !important;
+    border-color: #048c68 !important;
+}

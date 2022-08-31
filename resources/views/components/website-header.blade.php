@@ -79,6 +79,12 @@
                                class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn">
                                 {{ trans('general.dashboard') }}
                             </a>
+                            <button class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn ml-2" href="javascript:void(0);" onclick="LogoutConfirm();">
+                                <i class="fa fa-power-off"></i> <span>{{__('general.logout')}}</span>
+                            </button>
+                            <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                                @csrf
+                            </form>
                         </div>
                     @endif
                 </div>
