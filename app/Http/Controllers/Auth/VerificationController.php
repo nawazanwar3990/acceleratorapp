@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Services\CMS\PageService;
 use App\Services\PersonService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
@@ -45,7 +46,8 @@ class VerificationController extends Controller
 
     public function resend(Request $request): Factory|View|Application
     {
-        return view('auth.verification.resend');
+        $page = PageService::getLoginPage();
+        return view('auth.verification.resend',compact('page'));
     }
 
     /**

@@ -1,5 +1,6 @@
-@extends('layouts.auth')
-@section('content')
+<x-auth-layout
+    :page="$page">
+    <x-slot name="content">
     <section id="wrapper" class="login-register login-sidebar"
              style="background-image:url( {{asset('images/background/login-register.jpg') }});">
         <div class="login-box card" style="border-top: none !important;">
@@ -40,5 +41,5 @@
             </div>
         </div>
     </section>
-
-@endsection
+    </x-slot>
+</x-auth-layout>
