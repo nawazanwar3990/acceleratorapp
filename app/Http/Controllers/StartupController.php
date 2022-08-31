@@ -22,22 +22,22 @@ class StartupController extends Controller
 
     }
 
-    public function index(Request $request): Factory|View|Application
+    public function index(Request $request)
     {
         $type = $request->query('type', null);
-        $type = GeneralService::generateType($type);
+        $search_type = GeneralService::generateType($type);
         $page = $this->pageService->findByCode('startup');
         $records = null;
         switch ($type) {
             case AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL:
             case AccessTypeEnum::BUSINESS_ACCELERATOR:
                 $records = BA::with('user', 'services', 'other_services')
-                    ->where('type', $type);
+                    ->where('type', $search_type);
                 break;
             case AccessTypeEnum::SERVICE_PROVIDER_COMPANY:
             case AccessTypeEnum::FREELANCER:
                 $records = Freelancer::with('user', 'services', 'other_services')
-                    ->where('type', $type);
+                    ->where('type', $search_type);
                 break;
             case AccessTypeEnum::MENTOR:
                 $records = Mentor::with('user', 'services', 'other_services');

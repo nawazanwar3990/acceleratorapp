@@ -1342,14 +1342,12 @@ class GeneralService
         }
     }
 
-    public static function generateType($type): ?string
+    public static function generateType($type)
     {
-        $type = null;
         if ($type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY || $type == AccessTypeEnum::BUSINESS_ACCELERATOR) {
-            $type = 'company';
+            return 'company';
         } else if ($type == AccessTypeEnum::FREELANCER || $type == AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL) {
-            $type = 'individual';
+            return 'individual';
         }
-        return $type;
     }
 }
