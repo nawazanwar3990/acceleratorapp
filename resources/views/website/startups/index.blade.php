@@ -14,11 +14,11 @@
                     @endforeach
                 </div>
             </div>
-            <div class="columns is-vcentered has-text-centered is-multiline is-justify-content-center">
+            <div class="container">
                 @if(request()->has('type'))
-                    @include(sprintf('website.startups.components.%s',str_replace('_','-',request()->query('type'))))
-                @else
-                    @include('website.startups.components.ba-individual')
+                    <div class="columns services-cards is-minimal is-vcentered is-gapless is-multiline">
+                        @include(sprintf('website.startups.components.%s',str_replace('_','-',request()->query('type'))))
+                    </div>
                 @endif
             </div>
         </div>

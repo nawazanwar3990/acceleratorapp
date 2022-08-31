@@ -1,12 +1,14 @@
 @if(is_object($records))
     @if(count($records))
         @foreach($records as $record)
-            <div class="column is-3">
-                <div class="flex-card icon-card hover-inset">
-                    <img src="assets/img/graphics/icons/invoice-core.svg"
-                         data-base-url="assets/img/graphics/icons/invoice"
-                         data-extension=".svg" alt="">
-                    <div class="icon-card-text is-clean">{{ $record->user->getFullName() }}</div>
+            <div class="column">
+                <div class="feature-card card-md hover-inset has-text-centered">
+                    <div class="card-icon">
+                        <i class="im im-icon-Two-Windows"></i>
+                    </div>
+                    <div class="card-title">
+                        <h4>{{ $record->user->getFullName() }}</h4>
+                    </div>
                 </div>
             </div>
         @endforeach
