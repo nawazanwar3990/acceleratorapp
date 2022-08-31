@@ -11,13 +11,13 @@
                         <div class="col-12 my-3 text-right">
                             @if($type)
                                 @if($type==\App\Enum\RoleEnum::BUSINESS_ACCELERATOR)
-                                    <a class="btn btn-info btn-sm pull-right"
+                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link mr-3"
                                        href="{{ route('website.ba.create',[$subscription->subscribed->ba->type,$subscription->subscribed->ba->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->ba->id,'action'=>'edit']) }}">
                                         {{ trans('general.edit_profile') }}
                                     </a>
                                 @endif
                                 @if($type==\App\Enum\RoleEnum::FREELANCER)
-                                    <a class="btn btn-info btn-sm pull-right"
+                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link mr-3"
                                        href="{{ route('website.freelancers.create',[$subscription->subscribed->freelancer->type,$subscription->subscribed->freelancer->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->freelancer->id,'action'=>'edit']) }}">
                                         {{ trans('general.edit_profile') }}
                                     </a>
