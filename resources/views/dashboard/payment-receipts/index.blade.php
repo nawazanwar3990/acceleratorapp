@@ -75,8 +75,12 @@
             Swal.fire({
                 title: '{{ trans('general.approved') }}',
                 html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_approving'),'rows'=>'3','id'=>'reason']) !!}',
-                confirmButtonText: '{{ trans('general.save') }}',
-                focusConfirm: true,
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: "Proceeded",
+                confirmButtonColor: '#00b289',
+                cancelButtonColor: '#00b289',
+                focusConfirm: false,
                 preConfirm: () => {
                     const reason = Swal.getPopup().querySelector('#reason').value
                     if (!reason) {
@@ -93,6 +97,11 @@
                 });
                 Swal.showLoading();
                 let reason = result.value.reason;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
                 $.ajax({
                     url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::APPROVED }}/update',
                     method: 'POST',
@@ -116,8 +125,12 @@
             Swal.fire({
                 title: '{{ trans('general.declined') }}',
                 html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_declining_subscription'),'rows'=>'3','id'=>'reason']) !!}',
-                confirmButtonText: '{{ trans('general.save') }}',
-                focusConfirm: true,
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: "Proceeded",
+                confirmButtonColor: '#00b289',
+                cancelButtonColor: '#00b289',
+                focusConfirm: false,
                 preConfirm: () => {
                     const reason = Swal.getPopup().querySelector('#reason').value
                     if (!reason) {
@@ -134,6 +147,11 @@
                 });
                 Swal.showLoading();
                 let reason = result.value.reason;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
                 $.ajax({
                     url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::DECLINED }}/update',
                     method: 'POST',
@@ -157,7 +175,11 @@
             Swal.fire({
                 title: '{{ trans('general.renew') }}',
                 html: '{!! Form::textarea('reason',null,['class'=>'form-control','placeholder'=>trans('general.reason_for_renew_subscription'),'rows'=>'3','id'=>'reason']) !!}',
-                confirmButtonText: '{{ trans('general.save') }}',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: "Proceeded",
+                confirmButtonColor: '#00b289',
+                cancelButtonColor: '#00b289',
                 focusConfirm: false,
                 preConfirm: () => {
                     const reason = Swal.getPopup().querySelector('#reason').value
@@ -175,6 +197,11 @@
                 });
                 Swal.showLoading();
                 let reason = result.value.reason;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
                 $.ajax({
                     url: '/dashboard/subscription/' + subscription_id + '/{{ \App\Enum\SubscriptionStatusEnum::RENEW }}/update',
                     method: 'POST',
