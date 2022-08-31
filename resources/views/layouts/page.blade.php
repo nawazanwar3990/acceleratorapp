@@ -30,17 +30,6 @@
               ">
                     <h1 class="title is-2">{{ $page->name }}</h1>
                     <h2 class="subtitle text-white">{{ $page->page_description }}</h2>
-                    <div class="search-area">
-                        <div class="control has-icons-left">
-                            <input class="input is-large" type="text" placeholder="Search...">
-                            <span class="icon is-small is-left">
-                    <i class="sl sl-icon-magnifier"></i>
-                  </span>
-                            <div class="search-button">
-                                <button class="button primary-btn is-bold">Search</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
