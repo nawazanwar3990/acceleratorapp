@@ -58500,18 +58500,32 @@ figure.team-slanted:hover .member-position {
     color: #000;
     opacity: .75
 }
+
 .progress-bar li::before {
     border: 1px solid #048c68 !important;
     background-color: #048c68 !important;
 }
+
 .progress-bar li::after {
     background-color: #048c68 !important;
 }
+
 .active-link a {
     color: #048c68 !important;
 }
+
 /*# sourceMappingURL=scss */
 .form-check-input:checked {
     background-color: #048c68 !important;
     border-color: #048c68 !important;
+}
+
+.card {
+    box-shadow: none;
+}
+
+.card-header {
+    background-color: #04a97e !important;
+    color: white !important;
+    padding: 13px !important;
 }
