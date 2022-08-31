@@ -58543,3 +58543,7 @@ figure.team-slanted:hover .member-position {
 .active-link a {
     color: #04a97e !important;
 }
+
+body {
+    background-color: white !important;
+}
