@@ -7,14 +7,14 @@
                     $html = $section->html;
                 @endphp
                 @if(str_contains($html, '%faq_data%'))
-                    @php $html =  str_replace('%faq_data%',require_once(resource_path()."/views/components/faqs.blade.php"),$html) @endphp
+                    @php $html =  str_replace('%faq_data%',require_once(resource_path()."/views/website/pages/components/faqs.blade.php"),$html) @endphp
                 @endif
                 @if(str_contains($html, '%contact_form_data%'))
-                    @php $html =  str_replace('%contact_form_data%',include(resource_path()."/views/components/contact-form.blade.php"),$html) @endphp
+                    @php $html =  str_replace('%contact_form_data%',include(resource_path()."/views/website/pages/components/contact-form.blade.php"),$html) @endphp
                 @endif
 
                 @if(str_contains($html, '%about_us_data%'))
-                    @php $html =  str_replace('%about_us_data%',require_once(resource_path()."/views/components/about-us.blade.php"),$html) @endphp
+                    @php $html =  str_replace('%about_us_data%',require_once(resource_path()."/views/website/pages/components/about-us.blade.php"),$html) @endphp
                 @endif
             @endforeach
         @endif
