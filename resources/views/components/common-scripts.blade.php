@@ -22,7 +22,11 @@
                 Swal.fire({
                     title: 'Manage Payment',
                     html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'input','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'input dropify','id'=>'file_name']) }}</div>`,
-                    confirmButtonText: 'Submit',
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    confirmButtonText: "Proceeded",
+                    confirmButtonColor: '#00b289',
+                    cancelButtonColor: '#00b289',
                     focusConfirm: false,
                     preConfirm: () => {
                         const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
@@ -103,7 +107,11 @@
                 Swal.fire({
                     title: 'Manage Payment',
                     html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'input','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'input dropify','id'=>'file_name']) }}</div>`,
-                    confirmButtonText: 'Submit',
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    confirmButtonText: "Proceeded",
+                    confirmButtonColor: '#00b289',
+                    cancelButtonColor: '#00b289',
                     focusConfirm: false,
                     preConfirm: () => {
                         const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
