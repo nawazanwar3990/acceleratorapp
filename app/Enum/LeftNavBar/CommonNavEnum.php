@@ -57,7 +57,7 @@ class CommonNavEnum extends AbstractEnum
         $routes = array(
             self::DASHBOARD => route('dashboard.index'),
             self::SUBSCRIPTION => route('dashboard.subscriptions.index', ['type' => SubscriptionTypeEnum::PACKAGE]),
-            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index',['type'=>auth()->user()->roles[0]->name])
+            self::PAYMENT_RECEIPT => route('dashboard.payment-receipts.index',['type'=>auth()->user()->roles[0]->slug])
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
