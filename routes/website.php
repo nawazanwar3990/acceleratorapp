@@ -44,9 +44,10 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::post('/mentors/store/{payment?}/{step?}/{id?}', [MentorController::class, 'store'])
         ->name('mentors.store');
 
-
     Route::get('', [HomeController::class, 'index'])
         ->name('index');
-    Route::get('pages/{type}', [PageController::class, 'home'])
+
+    Route::get('pages', [PageController::class, 'index'])
         ->name('pages.index');
+
 });

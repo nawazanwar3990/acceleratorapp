@@ -49,7 +49,7 @@
                                     </a>
                                 @else
                                     <a class="navbar-item is-slide is-centered-tablet"
-                                       href="{{ route('website.pages.index',$page->code) }}">
+                                       href="{{ route('website.pages.index',['type'=>$page->code]) }}">
                                         {{$page->code}}
                                     </a>
                                 @endif

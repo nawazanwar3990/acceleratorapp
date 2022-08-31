@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Enum\MediaTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
+use App\Services\CMS\PageService;
 use App\Services\GeneralService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -18,6 +19,27 @@ use function view;
 
 class PageController extends Controller
 {
+    public function __construct(
+        private PageService $pageService
+    )
+    {
+
+    }
+
+    public function index(Request $request)
+    {
+        $type = $request->query('type', null);
+        $page = $this->pageService->findByCode($type);
+        switch ($type) {
+            case "startup":
+                return view('website.startups.index', compact('page'));
+                break;
+            default:
+                return view('website.pages.index', compact('page'));
+                break;
+        }
+    }
+
     public function verifyUserEmailSuccess(): Factory|View|Application
     {
         $user = session()->get('register_user');
@@ -31,9 +53,6 @@ class PageController extends Controller
         return view('website.pages.expire', compact('pageTitle'));
     }
 
-    public function pending_subscription(Request $request): Factory|View|RedirectResponse|Application
-    {
-    }
     public function storePaymentSnippet(Request $request): RedirectResponse
     {
         $subscription_id = $request->input('subscription_id');

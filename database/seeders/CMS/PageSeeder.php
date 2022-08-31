@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\CMS;
 
+use App\Enum\AccessTypeEnum;
 use App\Enum\TableEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -30,11 +31,11 @@ class PageSeeder extends Seeder
             ],
             [
                 'layout_id' => '2',
-                'name' => 'About',
-                'code' => 'about',
+                'name' => 'About Us',
+                'code' => 'about-us',
                 'order' => '2',
-                'page_title' => '',
-                'page_description' => '',
+                'page_title' => 'about us',
+                'page_description' => 'This is related to about us',
                 'page_keyword' => '',
                 'active' => true,
                 'banner_image' => '/uploads/pages/default_banner.jpeg',
@@ -46,9 +47,9 @@ class PageSeeder extends Seeder
                 'name' => 'Our Startup',
                 'code' => 'startup',
                 'order' => '3',
-                'page_title' => '',
-                'page_description' => '',
-                'page_keyword' => '',
+                'page_title' => implode(',', AccessTypeEnum::getValues()),
+                'page_description' => 'Our Startups Include ' . implode(',', AccessTypeEnum::getTranslationKeys()),
+                'page_keyword' => implode(',', AccessTypeEnum::getValues()),
                 'active' => true,
                 'banner_image' => '/uploads/pages/default_banner.jpeg',
                 'created_at' => Carbon::now(),
@@ -59,8 +60,8 @@ class PageSeeder extends Seeder
                 'name' => 'News',
                 'code' => 'news',
                 'order' => '4',
-                'page_title' => '',
-                'page_description' => '',
+                'page_title' => 'News',
+                'page_description' => 'This Is Related To News',
                 'page_keyword' => '',
                 'active' => true,
                 'banner_image' => '/uploads/pages/default_banner.jpeg',
@@ -69,11 +70,11 @@ class PageSeeder extends Seeder
             ],
             [
                 'layout_id' => '2',
-                'name' => 'Contact',
-                'code' => 'contact',
+                'name' => 'Contact Us',
+                'code' => 'contact-us',
                 'order' => '3',
-                'page_title' => '',
-                'page_description' => '',
+                'page_title' => 'Contact Us',
+                'page_description' => 'This Is Related To Contact Us',
                 'page_keyword' => '',
                 'active' => true,
                 'banner_image' => '/uploads/pages/default_banner.jpeg',
@@ -85,8 +86,8 @@ class PageSeeder extends Seeder
                 'name' => 'Event',
                 'code' => 'events',
                 'order' => '4',
-                'page_title' => '',
-                'page_description' => '',
+                'page_title' => 'Event',
+                'page_description' => 'This Is Related To event ',
                 'page_keyword' => '',
                 'active' => true,
                 'banner_image' => '/uploads/pages/default_banner.jpeg',
