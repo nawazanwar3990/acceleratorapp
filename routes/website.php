@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentReceiptController;
+use App\Http\Controllers\StartupController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Website\BAController;
 use App\Http\Controllers\Website\CustomerController;
@@ -49,5 +50,8 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
 
     Route::get('pages', [PageController::class, 'index'])
         ->name('pages.index');
+
+    Route::get('startups', [StartupController::class, 'index'])
+        ->name('startups.index');
 
 });

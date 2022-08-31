@@ -33,7 +33,16 @@ class AccessTypeEnum extends AbstractEnum
             self::MENTOR => 'Mentor'
         );
     }
-
+    public static function getStartups(): array
+    {
+        return array(
+            self::BUSINESS_ACCELERATOR_INDIVIDUAL => 'BA Individual',
+            self::BUSINESS_ACCELERATOR => 'BA Company',
+            self::FREELANCER => 'Freelancer',
+            self::SERVICE_PROVIDER_COMPANY => 'Service Provider Company',
+            self::MENTOR => 'Mentor'
+        );
+    }
     public static function getDropDownKey(): array
     {
         return array(

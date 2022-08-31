@@ -47,6 +47,11 @@
                                        href="{{ route('website.index') }}">
                                         {{$page->name}}
                                     </a>
+                                @elseif($page->code=='startup')
+                                    <a class="navbar-item is-slide is-centered-tablet"
+                                       href="{{ route('website.startups.index',['type'=>\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]) }}">
+                                        {{$page->name}}
+                                    </a>
                                 @else
                                     <a class="navbar-item is-slide is-centered-tablet"
                                        href="{{ route('website.pages.index',['type'=>$page->code]) }}">
