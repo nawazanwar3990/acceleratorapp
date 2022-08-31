@@ -45,12 +45,12 @@
                                 @if($page->code=='home')
                                     <a class="navbar-item is-slide is-centered-tablet"
                                        href="{{ route('website.index') }}">
-                                        {{$page->code}}
+                                        {{$page->name}}
                                     </a>
                                 @else
                                     <a class="navbar-item is-slide is-centered-tablet"
                                        href="{{ route('website.pages.index',['type'=>$page->code]) }}">
-                                        {{$page->code}}
+                                        {{$page->name}}
                                     </a>
                                 @endif
                             @endforeach

@@ -18,6 +18,7 @@ class Page extends Model
         'layout_id',
         'name',
         'code',
+        'page_title',
         'page_description',
         'page_keyword',
         'active',
