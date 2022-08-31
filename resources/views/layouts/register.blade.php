@@ -22,7 +22,15 @@
         <div class="container has-text-centered">
             <div class="columns is-vcentered is-header-caption">
                 <div class="column is-6 is-offset-3 has-text-centered">
-                    <h1 class="title main-title">{{ trans('general.register') }} {{ \App\Enum\AccessTypeEnum::getTranslationKeyBy($type) }}</h1>
+                    <h1 class="title main-title">
+                        @if($type=='pending_subscription')
+                            Pending
+                        @elseif($type=='expire_subscription')
+                            Expire
+                        @else
+                            {{ trans('general.register') }} {{ \App\Enum\AccessTypeEnum::getTranslationKeyBy($type) }}
+                        @endif
+                    </h1>
                     <h2 class="subtitle is-5 light-text">
                         @if(in_array($type,[\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR,\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]))
                             @include('website.ba.components.step-heading')
@@ -30,6 +38,10 @@
                             @include('website.freelancers.components.step-heading')
                         @elseif($type == \App\Enum\AccessTypeEnum::MENTOR)
                             @include('website.mentor.components.step-heading')
+                        @elseif($type=='pending_subscription')
+                            {{__('general.pending_subscription')}}
+                        @elseif($type=='expire_subscription')
+                            {{__('general.expire_subscription')}}
                         @endif
                     </h2>
                 </div>

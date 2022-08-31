@@ -1,12 +1,11 @@
 <x-register-layout
     :page="\App\Services\CMS\PageService::getHomePage()"
-    type="Expire Subscription"
+    type="expire_subscription"
     step="expire">
     <x-slot name="content">
         <div class="container p-4">
             <div class="row justify-content-center">
                 <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
-                    <h3 class="text-center fw-bold">{{ $pageTitle }}</h3>
                     <div class="row justify-content-center mt-3 pt-3">
                         <div class="col-12">
                             <div class="card  bg-white mb-0">
