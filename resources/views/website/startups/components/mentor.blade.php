@@ -7,7 +7,7 @@
                         <i class="im im-icon-Two-Windows"></i>
                     </div>
                     <div class="card-title">
-                        <h4>Web development</h4>
+                        <h4>{{ $record->user->getFullName() }}</h4>
                     </div>
                     <div class="card-feature-description">
                             <span class="">Lorem ipsum dolor sit amet, clita laoreet ne cum. His caelus elet
