@@ -49,7 +49,7 @@
                                     </a>
                                 @elseif($page->code=='startup')
                                     <a class="navbar-item is-slide is-centered-tablet"
-                                       href="{{ route('website.startups.index',['type'=>\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]) }}">
+                                       href="{{ route('website.startups.index',[\App\Enum\StartUpForEnum::BA,\App\Enum\StartUpTypeEnum::INDIVIDUAL]) }}">
                                         {{$page->name}}
                                     </a>
                                 @else
@@ -84,7 +84,9 @@
                                class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn">
                                 {{ trans('general.dashboard') }}
                             </a>
-                            <button class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn ml-2" href="javascript:void(0);" onclick="LogoutConfirm();">
+                            <button
+                                class="button button-signup btn-outlined is-bold btn-align rounded raised light-btn ml-2"
+                                href="javascript:void(0);" onclick="LogoutConfirm();">
                                 <i class="fa fa-power-off"></i> <span>{{__('general.logout')}}</span>
                             </button>
                             <form method="POST" action="{{ route('logout') }}" id="logoutForm">

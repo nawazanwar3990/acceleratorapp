@@ -12,6 +12,9 @@ class AccessTypeEnum extends AbstractEnum
     public const SERVICE_PROVIDER_COMPANY = 'service_provider_company';
     public const MENTOR = 'mentor';
 
+    public const INDIVIDUAL = 'individual';
+    public const COMPANY = 'company';
+
     public static function getValues(): array
     {
         return array(

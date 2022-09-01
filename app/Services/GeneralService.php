@@ -1342,12 +1342,23 @@ class GeneralService
         }
     }
 
-    public static function generateType($type)
+    public static function generateStartType($type)
     {
         if ($type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY || $type == AccessTypeEnum::BUSINESS_ACCELERATOR) {
             return 'company';
         } else if ($type == AccessTypeEnum::FREELANCER || $type == AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL) {
             return 'individual';
+        }
+    }
+
+    public static function generateStartupFor($type)
+    {
+        if ($type == AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL || $type == AccessTypeEnum::BUSINESS_ACCELERATOR) {
+            return 'ba';
+        } else if ($type == AccessTypeEnum::FREELANCER || $type == AccessTypeEnum::SERVICE_PROVIDER_COMPANY) {
+            return 'freelancer';
+        } else if ($type == AccessTypeEnum::MENTOR) {
+            return 'mentor';
         }
     }
 }

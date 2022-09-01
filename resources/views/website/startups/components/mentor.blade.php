@@ -14,7 +14,8 @@
                   cu harum inermis iudicabit.</span>
                     </div>
                     <div class="py-1">
-                        <a href="#" class="button  primary-btn btn-sm rounded raised">View Services</a>
+                        <a href="{{ route('website.startups.services.index',[$startup_for,'individual',$record->user->id]) }}"
+                           class="button  primary-btn btn-sm rounded raised">View Services</a>
                     </div>
                 </div>
             </div>

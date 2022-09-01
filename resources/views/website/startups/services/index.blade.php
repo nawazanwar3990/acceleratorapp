@@ -4,7 +4,7 @@
         <div class="container pb-5">
             <div class="pricing-wrapper">
                 <div class="pricing-tabs mb-0">
-                    @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
+                 {{--   @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
                         @php
                             $new_startup_for = \App\Services\GeneralService::generateStartupFor($access_key);
                             $new_start_type = \App\Services\GeneralService::generateStartType($access_key);
@@ -15,7 +15,7 @@
                                  alt="{{$access_value}}">
                             <span>{{ $access_value }}</span>
                         </a>
-                    @endforeach
+                    @endforeach--}}
                 </div>
             </div>
             <div class="
@@ -24,11 +24,7 @@
             is-minimal is-vcentered is-gapless is-multiline
           ">
                 <div class="columns is-multiline">
-                    @if($startup_type)
-                        @include(sprintf('website.startups.components.%s-%s',$startup_for,$startup_type))
-                    @else
-                        @include(sprintf('website.startups.components.%s',$startup_for))
-                    @endif
+                    @include(sprintf('website.startups.services.components.%s-%s',$startup_for,$startup_type))
                 </div>
             </div>
         </div>

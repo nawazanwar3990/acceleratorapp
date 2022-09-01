@@ -173,13 +173,22 @@ class PersonService
     public static function getBaServices()
     {
         $services = Auth::user()->ba->services;
-        if($services){
-            return  json_decode($services,true);
+        if ($services) {
+            return json_decode($services, true);
         }
     }
 
     public static function get_current_ba_package_services()
     {
-        return Auth::user()->subscription->package->services()->pluck('package_service.limit','services.slug')->toArray();
+        return Auth::user()->subscription->package->services()->pluck('package_service.limit', 'services.slug')->toArray();
+    }
+
+    public static function getStartupServicesForUser($subscribed)
+    {
+        if ($subscribed->subscription) {
+            return $subscribed->subscription->package->services()->get();
+        } else {
+            return null;
+        }
     }
 }
