@@ -13,7 +13,14 @@
                         <p></p>
                     </div>
                     <div class="py-1 text-center">
-                        <a href="" class="button  primary-btn btn-sm rounded raised">View</a>
+                        @if($service->slug =='incubator')
+                            <a href="" class="button  primary-btn btn-sm rounded raised">{{trans('general.building')}}</a>
+                            <a href="" class="button  primary-btn btn-sm rounded raised">{{trans('general.floor')}}</a>
+                            <a href="" class="button  primary-btn btn-sm rounded raised">{{trans('general.office')}}</a>
+                        @else
+                            <a href="" class="button  primary-btn btn-sm rounded raised">View</a>
+
+                        @endif
                     </div>
                 </div>
             </div>
