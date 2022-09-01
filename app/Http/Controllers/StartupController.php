@@ -85,8 +85,9 @@ class StartupController extends Controller
 
     public function buildings($startup_id): Factory|View|Application
     {
+        $page = $this->pageService->findByCode('startup');
         $buildings = $this->buildingService->listBuildingsByUser($startup_id);
-        return view('website.startups.building.index', compact('buildings'));
+        return view('website.startups.buildings.index', compact('buildings','page'));
     }
 
     public function floors()
