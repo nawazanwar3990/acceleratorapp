@@ -80,4 +80,13 @@ class StartupController extends Controller
             'startup_id'
         ));
     }
+    public function buildings(){
+        echo "underprocess";
+    }
+    public function floors(){
+        echo "underprocess";
+    }
+    public function offices(){
+        echo "underprocess";
+    }
 }
