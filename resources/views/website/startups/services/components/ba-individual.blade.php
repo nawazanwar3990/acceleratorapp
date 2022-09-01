@@ -1,6 +1,6 @@
-@if(is_object($services))
-    @if(count($services)>0)
-        @foreach($services as $service)
+@if(is_object($startup_services))
+    @if(count($startup_services)>0)
+        @foreach($startup_services as $service)
             <div class="column">
                 <div class="feature-card card-md hover-inset has-text-centered border">
                     <div class="card-icon">
