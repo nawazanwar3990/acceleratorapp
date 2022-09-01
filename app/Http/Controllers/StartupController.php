@@ -76,7 +76,8 @@ class StartupController extends Controller
             'startup_user',
             'startup_for',
             'startup_type',
-            'startup_services'
+            'startup_services',
+            'startup_id'
         ));
     }
 }

@@ -14,9 +14,9 @@
                     </div>
                     <div class="py-1 text-center">
                         @if($service->slug =='incubator')
-                            <a href="" class="button  primary-btn btn-sm rounded raised">{{trans('general.building')}}</a>
-                            <a href="" class="button  primary-btn btn-sm rounded raised">{{trans('general.floor')}}</a>
-                            <a href="" class="button  primary-btn btn-sm rounded raised">{{trans('general.office')}}</a>
+                            <a href="{{route('websites.buildings.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.building')}}</a>
+                            <a href="{{route('websites.floors.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.floor')}}</a>
+                            <a href="{{route('websites.offices.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.office')}}</a>
                         @else
                             <a href="" class="button  primary-btn btn-sm rounded raised">View</a>
 
