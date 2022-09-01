@@ -12,7 +12,7 @@
                         <h3>{{ $service->name }}</h3>
                         <p></p>
                     </div>
-                    <div class="py-1">
+                    <div class="py-1 text-center">
                         <a href="" class="button  primary-btn btn-sm rounded raised">View</a>
                     </div>
                 </div>
