@@ -9,6 +9,7 @@ use App\Models\Freelancer;
 use App\Models\Mentor;
 use App\Models\User;
 use App\Services\BaService;
+use App\Services\BuildingService;
 use App\Services\CMS\PageService;
 use App\Services\FreelancerService;
 use App\Services\GeneralService;
@@ -25,7 +26,8 @@ class StartupController extends Controller
         private PageService       $pageService,
         private FreelancerService $freelancerService,
         private BaService         $baService,
-        private MentorService     $mentorService
+        private MentorService     $mentorService,
+        private BuildingService   $buildingService
     )
     {
 
@@ -80,13 +82,20 @@ class StartupController extends Controller
             'startup_id'
         ));
     }
-    public function buildings(){
-        echo "underprocess";
+
+    public function buildings($startup_id): Factory|View|Application
+    {
+        $buildings = $this->buildingService->listBuildingsByUser($startup_id);
+        return view('website.startups.building.index', compact('buildings'));
     }
-    public function floors(){
-        echo "underprocess";
+
+    public function floors()
+    {
+
     }
-    public function offices(){
+
+    public function offices()
+    {
         echo "underprocess";
     }
 }

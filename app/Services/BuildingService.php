@@ -67,6 +67,7 @@ class BuildingService
         }
         return $data;
     }
+
     public static function no_of_offices($id = null)
     {
         for ($i = 1; $i < 30; $i++) {
@@ -77,6 +78,7 @@ class BuildingService
         }
         return $data;
     }
+
     public static function buildingFacingsForDropdown($id = null)
     {
         $data = [
@@ -113,7 +115,7 @@ class BuildingService
 
     public static function getBuildingDropdown()
     {
-        return Building::where('created_by',Auth::id())->pluck('name', 'id');
+        return Building::where('created_by', Auth::id())->pluck('name', 'id');
     }
 
     public static function getBuildingServices($type = 'general')
@@ -133,6 +135,12 @@ class BuildingService
             $buildings = $buildings->whereCreatedBy(Auth::id());
         }
         return $buildings->paginate(20);
+    }
+
+    public function listBuildingsByUser($user_id): LengthAwarePaginator
+    {
+        return Building::with('offices', 'floors', 'images')
+            ->whereCreatedBy($user_id)->paginate(20);
     }
 
     public function findById($id)
