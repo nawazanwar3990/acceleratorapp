@@ -8,6 +8,8 @@ use App\Enum\TableEnum;
 use App\Models\Customer;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\VerifyUser;
+use App\Notifications\VerifyEmailLink;
 use App\Services\GeneralService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -85,6 +87,13 @@ class UserRequest extends FormRequest
             $user->customer()->save($customer);
             GeneralService::saveLogo($customer, 'customer');
         }
+        $token = sha1(time());
+        VerifyUser::updateOrCreate([
+            'user_id' => $user->id
+        ], [
+            'token' => $token
+        ]);
+        $user->notify(new VerifyEmailLink($token));
         return $customer;
     }
 }
