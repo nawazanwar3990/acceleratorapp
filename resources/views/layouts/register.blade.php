@@ -42,6 +42,8 @@
                             Subscription
                         @elseif($type=='expire_subscription')
                             Subscription
+                        @elseif($type=='customer')
+                            {{ trans('general.customer') }}
                         @endif
                     </h2>
                 </div>

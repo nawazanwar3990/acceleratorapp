@@ -76,7 +76,20 @@ class LoginController extends Controller
                     throw ValidationException::withMessages([
                         'login' => __('general.your_account_is_not_activate_message'),
                     ]);
-                } else {
+                }else if ($user->hasRole(RoleEnum::CUSTOMER)){
+                    if (!Auth::attempt([
+                        'email' => $email,
+                        'password' => $password
+                    ], $request->boolean('remember')
+                    )) {
+                        RateLimiter::hit($this->throttleKey());
+                        return redirect()->back()->withInput()->with('error', __('auth.failed'));
+                    } else {
+                        RateLimiter::clear($this->throttleKey());
+                        return redirect()->route('website.index')->with('success', trans('general.welcome_back'));
+                    }
+                }
+                else {
                     if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)
                         || $user->hasRole(RoleEnum::MENTOR)
                         || $user->hasRole(RoleEnum::FREELANCER)

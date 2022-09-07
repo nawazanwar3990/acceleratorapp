@@ -14,69 +14,44 @@
 
                 <div class="pricing-wrapper">
                     <div class="columns">
-                        <div class="column is-4">
-                            <div class="pricing-box">
-                                <img src="assets/img/graphics/icons/ecommerce-pricing-icon-1-green.svg" data-base-url="assets/img/graphics/icons/ecommerce-pricing-icon-1" data-extension=".svg" alt="">
-                                <h3>Shop</h3>
-                                <p>For starter projects</p>
-                                <div class="price">
-                                    <div class="price-number">
-                                        <span>$12</span>
+                        @forelse($plans as $plan)
+                            <div class="column is-4">
+                                <div class="pricing-box">
+                                    <img src="assets/img/graphics/icons/ecommerce-pricing-icon-1-green.svg"
+                                         data-base-url="assets/img/graphics/icons/ecommerce-pricing-icon-1"
+                                         data-extension=".svg" alt="">
+                                    <h3>{{$plan->name}}</h3>
+                                    <p>For startup Offices</p>
+                                    <div class="price">
+                                        <div class="price-number">
+                                            <span
+                                                class="mr-2 pr-10">{{\App\Services\GeneralService::get_default_currency()}}{{$plan->price}}</span>
+                                        </div>
                                     </div>
+                                    <p class="border-bottom pb-3 text-start">
+                                        <strong>{{ trans('general.basic_service') }}</strong> <span
+                                            class="pull-right"> {{ count($plan->basic_services) }}</span>
+                                    </p>
+                                    <p class="border-bottom pb-3 text-start">
+                                        <strong>{{ trans('general.additional_service') }}</strong> <span
+                                            class="pull-right"> {{ count($plan->additional_services) }}</span>
+                                    </p>
+                                    @guest
+                                        <a class="button primary-btn raised is-fullwidth"
+                                           href="{{ route('website.customers.create',[\App\Enum\StepEnum::USER_INFO]) }}">
+                                            {{ trans('general.login_to_subscribed') }}
+                                        </a>
+                                    @else
+                                        <a class="button primary-btn raised is-fullwidth"
+                                           onclick="apply_subscription('{{ $office->plans}}','{{$office->id}}','{{ $office->sitting_capacity }}');">
+                                            {{ trans('general.apply_subscription') }}
+                                        </a>
+                                    @endif
                                 </div>
-                                <p>Up to 250 products</p>
-                                <a class="button primary-btn raised is-fullwidth">Try it free</a>
                             </div>
-                        </div>
-                        <div class="column is-4">
-                            <div class="pricing-box">
-                                <img src="assets/img/graphics/icons/ecommerce-pricing-icon-2-green.svg" data-base-url="assets/img/graphics/icons/ecommerce-pricing-icon-2" data-extension=".svg" alt="">
-                                <h3>Store</h3>
-                                <p>For established stores</p>
-                                <div class="price">
-                                    <div class="price-number">
-                                        <span>$25</span>
-                                    </div>
-                                </div>
-                                <p>Up to 2000 products</p>
-                                <a class="button primary-btn raised is-fullwidth">Try it free</a>
-                            </div>
-                        </div>
-                        <div class="column is-4">
-                            <div class="pricing-box">
-                                <img src="assets/img/graphics/icons/ecommerce-pricing-icon-3-green.svg" data-base-url="assets/img/graphics/icons/ecommerce-pricing-icon-3" data-extension=".svg" alt="">
-                                <h3>Flagship</h3>
-                                <p>For bigger stores</p>
-                                <div class="price">
-                                    <div class="price-number">
-                                        <span>$55</span>
-                                    </div>
-                                </div>
-                                <p>Unlimited products</p>
-                                <a class="button primary-btn raised is-fullwidth">Try it free</a>
-                            </div>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
-                </div>
-
-                <div class="tabs is-centered ref-tabs">
-                    <ul>
-                        <li>
-                            <a><img src="assets/img/logos/custom/gutwork.svg" alt=""></a>
-                        </li>
-                        <li>
-                            <a><img src="assets/img/logos/custom/kromo.svg" alt=""></a>
-                        </li>
-                        <li>
-                            <a><img src="assets/img/logos/custom/infinite.svg" alt=""></a>
-                        </li>
-                        <li>
-                            <a><img src="assets/img/logos/custom/covenant.svg" alt=""></a>
-                        </li>
-                        <li>
-                            <a><img src="assets/img/logos/custom/tribe.svg" alt=""></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

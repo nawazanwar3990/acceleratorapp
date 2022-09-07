@@ -18,9 +18,9 @@ class CustomerController extends Controller
     {
         $this->makeMultipleDirectories('customer', ['images']);
     }
-    public function create(UserRequest $request): Factory|View|Application
+    public function create(UserRequest $request,$step): Factory|View|Application
     {
-        return view('website.customers.create');
+        return view('website.customers.create',compact('step'));
     }
     public function store(UserRequest $request)
     {
