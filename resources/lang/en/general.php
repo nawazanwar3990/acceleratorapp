@@ -1,5 +1,6 @@
 <?php
 return [
+    'subscription_plans' => 'Subscription Plans',
     'upload_logo' => 'Upload Logo',
     'banner_image' => 'Banner Image',
     'edit_page' => 'Edit Page',

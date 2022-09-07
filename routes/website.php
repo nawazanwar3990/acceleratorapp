@@ -63,4 +63,7 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
         ->name('floors.index');
     Route::get('offices/{user_id}/{floor_id?}', [StartupController::class, 'offices'])
         ->name('offices.index');
+
+    Route::get('office/{office_id}/plans', [StartupController::class, 'office_plans'])
+        ->name('office.plans.index');
 });

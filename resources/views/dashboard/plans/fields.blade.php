@@ -25,14 +25,18 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    @foreach(\App\Services\ServiceData::getBasicServices() as $service)
+                    @forelse(\App\Services\ServiceData::getBasicServices() as $service)
                         <div class="col-md-3 mb-3">
                             <div class="form-check form-switch">
                                 {!! Form::checkbox('basic_services[]',$service->id,null,['class'=>'form-check-input']) !!}
                                 <label class="form-check-label">{{ $service->name }}</label>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12 text-center">
+                            <a   <a class="btn btn-sm btn-primary" href="{{ route('dashboard.services.create',['type'=>\App\Enum\ServiceTypeEnum::BASIC]) }}">{{ trans('general.new_service') }}</a>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -44,14 +48,18 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    @foreach(\App\Services\ServiceData::getAdditionalServices() as $service)
+                    @forelse(\App\Services\ServiceData::getAdditionalServices() as $service)
                         <div class="col-md-3 mb-3">
                             <div class="form-check form-switch">
                                 {!! Form::checkbox('additional_services[]',$service->id,null,['class'=>'form-check-input']) !!}
                                 <label class="form-check-label">{{ $service->name }}</label>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12 text-center">
+                            <a class="btn btn-sm btn-primary" href="{{ route('dashboard.services.create',['type'=>\App\Enum\ServiceTypeEnum::ADDITIONAL]) }}">{{ trans('general.new_service') }}</a>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>

@@ -14,239 +14,53 @@
                     </div>
                 </div>
                 <div class="grid-products pb-6">
-                    <div class="columns is-multiline grid-products-inner">
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>49.00</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/nail-kit.jpg" data-demo-src="assets/img/demo/products/nail-kit.jpg" alt="">
-                                </div>
-                                <a class="grid-product-info">
-                                    <h4>Polish</h4>
-                                    <h3>Polish Nail Kit</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
+                    @forelse($floors as $floor)
+                        <div class="columns is-multiline grid-products-inner">
+                            <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
+                                <div class="grid-product">
+                                    <div class="grid-product-info">
+                                        <span>{{ $floor->name }}</span>
+                                    </div>
+                                    <div class="grid-product-rating">
+                                        <i class="fas fa-star highlighted"></i>
+                                        <i class="fas fa-star highlighted"></i>
+                                        <i class="fas fa-star highlighted"></i>
+                                        <i class="fas fa-star highlighted"></i>
+                                        <i class="fas fa-star highlighted"></i>
+                                    </div>
+                                    <div class="grid-product-image">
+                                        <img src="{{ asset('images/icon/company.png') }}"
+                                             data-demo-src="{{ asset('images/icon/company.png') }}"
+                                             alt="{{ $floor->name }}">
+                                    </div>
+                                  <p class="border-bottom pb-1 mb-2">
+                                        <strong>{{ trans('general.building') }}</strong>
+                                        <span class="pull-right">
+                                          @isset($floor->building)
+                                                {{ $floor->building->name  }}
+                                            @else
+                                                --
+                                            @endif
+                                    </span>
                                     </p>
-                                </a>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
+                                    <p class="border-bottom pb-1">
+                                        <strong>{{ trans('general.floor_type') }}</strong>
+                                        <span class="pull-right">
+                                           @if($floor->type_id)
+                                                {{ \App\Services\BuildingService::buildingTypesForDropdown($floor->type_id)  }}
+                                            @else
+                                                --
+                                            @endif
+                                    </span>
+                                    </p>
+                                    <div class="buttons text-center justify-content-center">
+                                        <a class="button is-fullwidth">{{ trans('general.offices') }} ({{ count($floor->offices) }})</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>34.99</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/purce-1.png" data-demo-src="assets/img/demo/products/purce-1.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Bags &amp; Purces</h4>
-                                    <h3>Totte Bag</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>749.99</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/complexion.png" data-demo-src="assets/img/demo/products/complexion.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Complexions</h4>
-                                    <h3>Replenish cream io</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>89.99</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/palette.png" data-demo-src="assets/img/demo/products/palette.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Palettes</h4>
-                                    <h3>Lovely palette</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>89.99</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/palette.png" data-demo-src="assets/img/demo/products/palette.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Palettes</h4>
-                                    <h3>Lovely palette</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>125.00</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/shoe-1.png" data-demo-src="assets/img/demo/products/shoe-1.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Shoes</h4>
-                                    <h3>High Heels</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Product-->
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>249.99</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/polish.png" data-demo-src="assets/img/demo/products/polish.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Polish</h4>
-                                    <h3>Extra permanent polish</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                            <div class="grid-product">
-                                <div class="grid-product-price">
-                                    <span>1299.99</span>
-                                </div>
-                                <div class="grid-product-rating">
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                    <i class="fas fa-star highlighted"></i>
-                                </div>
-                                <div class="grid-product-image">
-                                    <img src="assets/img/demo/products/purce-2.png" data-demo-src="assets/img/demo/products/purce-2.png" alt="">
-                                </div>
-                                <div class="grid-product-info">
-                                    <h4>Bags &amp; Purces</h4>
-                                    <h3>Totte Bag</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qui
-                                        enim voluptatem ipsam...
-                                    </p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="button is-fullwidth">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </div>

@@ -30,8 +30,8 @@ class StartupController extends Controller
         private BaService         $baService,
         private MentorService     $mentorService,
         private BuildingService   $buildingService,
-        private FloorService   $floorService,
-        private OfficeService   $officeService,
+        private FloorService      $floorService,
+        private OfficeService     $officeService,
     )
     {
 
@@ -91,20 +91,29 @@ class StartupController extends Controller
     {
         $page = $this->pageService->findByCode('startup');
         $buildings = $this->buildingService->startup_buildings($startup_id);
-        return view('website.startups.buildings.index', compact('buildings','page'));
+        return view('website.startups.buildings.index', compact('buildings', 'page'));
     }
 
     public function floors($startup_id): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
         $floors = $this->floorService->startup_floors($startup_id);
-        return view('website.startups.floors.index', compact('floors','page'));
+        return view('website.startups.floors.index', compact('floors', 'page'));
     }
 
     public function offices($startup_id): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
-        $buildings = $this->officeService->startup_offices($startup_id);
-        return view('website.startups.offices.index', compact('buildings','page'));
+        $offices = $this->officeService->startup_offices($startup_id);
+        return view('website.startups.offices.index', compact('offices', 'page'));
+    }
+
+    public function office_plans($office_id)
+    {
+
+        $page = $this->pageService->findByCode('startup');
+        $office = $this->officeService->findById($office_id);
+        $plans = $office->plans;
+        return view('website.startups.office-plans.index', compact('office', 'page', 'plans'));
     }
 }
