@@ -22,12 +22,14 @@ class RegisterTypeEnum extends AbstractEnum
             self::MENTOR
         );
     }
-    public static function getRoute($key){
+
+    public static function getRoute($key)
+    {
         $images = array(
             self::BUSINESS_ACCELERATOR => route('website.ba.create'),
             self::FREELANCER_SERVICE_PROVIDER_COMPANY => route('website.freelancers.create'),
-            self::CUSTOMER => route('website.customers.create'),
-            self::MENTOR => route('website.mentors.create',[StepEnum::USER_INFO]),
+            self::CUSTOMER => route('website.customers.create', [StepEnum::USER_INFO]),
+            self::MENTOR => route('website.mentors.create', [StepEnum::USER_INFO]),
         );
         if (!is_null($key) && array_key_exists($key, $images)) {
             return $images[$key];
@@ -35,6 +37,7 @@ class RegisterTypeEnum extends AbstractEnum
             return null;
         }
     }
+
     public static function getImage($key)
     {
         $images = array(
@@ -49,13 +52,14 @@ class RegisterTypeEnum extends AbstractEnum
             return null;
         }
     }
+
     public static function getTranslationKeys(): array
     {
         return array(
             self::BUSINESS_ACCELERATOR => __(sprintf('%s.%s', 'general.register_types', self::BUSINESS_ACCELERATOR)),
             self::FREELANCER_SERVICE_PROVIDER_COMPANY => __(sprintf('%s.%s', 'general.register_types', self::FREELANCER_SERVICE_PROVIDER_COMPANY)),
             self::MENTOR => __(sprintf('%s.%s', 'general.register_types', self::MENTOR)),
-        /*    self::CUSTOMER => __(sprintf('%s.%s', 'general.register_types', self::CUSTOMER)),*/
+            self::CUSTOMER => __(sprintf('%s.%s', 'general.register_types', self::CUSTOMER)),
         );
     }
 }
