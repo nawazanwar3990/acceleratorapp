@@ -76,11 +76,11 @@ class FloorService
 
     public function listFloorByPagination(): LengthAwarePaginator
     {
-        $floors = Floor::with('building','offices', 'type', 'images');
+        $floors = Floor::with('building', 'offices', 'type', 'images');
         if (request()->has('bId')) {
-            $floors->whereHas('building',function ($q){
+            $floors->whereHas('building', function ($q) {
                 $building_id = request()->query('bId');
-                $q->where('buildings.id',$building_id);
+                $q->where('buildings.id', $building_id);
             });
         }
         if (\auth()->user() && \auth()->user()->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
@@ -101,5 +101,16 @@ class FloorService
             $records = $records->whereCreatedBy(Auth::id());
         }
         return $records->paginate(20);
+    }
+
+    public function startup_floors($startup_id): LengthAwarePaginator
+    {
+        return Floor::with('offices', 'building', 'images')
+            ->where('created_by', $startup_id)
+            ->paginate(20);
+    }
+    public static function available_count_startup_floors($user_id)
+    {
+        return Floor::where('created_by', $user_id)->count();
     }
 }

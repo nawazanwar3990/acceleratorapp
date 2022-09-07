@@ -9,7 +9,7 @@
     padding-top: 24px;
 " @endguest>
             <div class="container">
-                <div class="row text-right pb-3">
+                <div class="row text-right py-3">
                     <div class="col-12 text-end">
                         <button class="button button-cta
                     btn-align
@@ -38,7 +38,7 @@
                         @endguest
                     </div>
                 </div>
-                <div class="row position-relative p-5 mt-3" id="print_holder">
+                <div class="row position-relative p-5" id="print_holder">
                     <div class="col-12">
                         <div class="panel panel-default invoice shadow-none">
                             <div class="panel-body">

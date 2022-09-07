@@ -62,7 +62,7 @@
 {{$content}}
 <x-web-footer :cPage="$page"></x-web-footer>
 <div id="backtotop"><a href="#"></a></div>
-{{--<x-style-switcher></x-style-switcher>--}}
+<x-style-switcher></x-style-switcher>
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/core.js') }}"></script>
 <script src="{{ asset('js/website.min.js') }}"></script>

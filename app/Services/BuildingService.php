@@ -137,12 +137,6 @@ class BuildingService
         return $buildings->paginate(20);
     }
 
-    public function listBuildingsByUser($user_id): LengthAwarePaginator
-    {
-        return Building::with('offices', 'floors', 'images')
-            ->whereCreatedBy($user_id)->paginate(20);
-    }
-
     public function findById($id)
     {
         return Building::find($id);
@@ -151,5 +145,16 @@ class BuildingService
     public function getBuildingName()
     {
         return $this->name;
+    }
+
+    public function startup_buildings($user_id): LengthAwarePaginator
+    {
+        return Building::with('offices', 'floors', 'images')
+            ->where('created_by', $user_id)->paginate(20);
+    }
+
+    public static function available_count_startup_buildings($user_id)
+    {
+        return Building::where('created_by', $user_id)->count();
     }
 }

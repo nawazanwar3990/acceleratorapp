@@ -30,12 +30,14 @@ class OfficeService
             return false;
         }
     }
+
     public static function getAvailableOffices()
     {
         return Office::where('created_by', Auth::id())
             ->orderBy('name', 'ASC')
             ->get();
     }
+
     public static function getOfficeForDropdown()
     {
         return Office::where('created_by', Auth::id())->orderBy('name', 'ASC')->pluck('name', 'id');
@@ -97,7 +99,7 @@ class OfficeService
 
     public function listOfficesByPagination(): LengthAwarePaginator
     {
-        $offices = Office::with('building', 'floor', 'images','plans','plans.basic_services','plans.additional_services');
+        $offices = Office::with('building', 'floor', 'images', 'plans', 'plans.basic_services', 'plans.additional_services');
         if (request()->has('bId')) {
             $offices = $offices->whereHas('building', function ($q) {
                 $building_id = request()->query('bId');
@@ -128,5 +130,16 @@ class OfficeService
             $records = $records->whereCreatedBy(Auth::id());
         }
         return $records->paginate(20);
+    }
+
+    public function startup_offices($startup_id)
+    {
+        return Office::with('floor', 'building', 'images')
+            ->where('created_by', $startup_id)
+            ->paginate(20);
+    }
+    public static function available_count_startup_offices($user_id)
+    {
+        return Office::where('created_by', $user_id)->count();
     }
 }

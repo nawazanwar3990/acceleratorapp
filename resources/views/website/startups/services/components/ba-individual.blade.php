@@ -14,12 +14,11 @@
                     </div>
                     <div class="py-1 text-center">
                         @if($service->slug =='incubator')
-                            <a href="{{route('website.buildings.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.building')}}</a>
-                            <a href="{{route('website.floors.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.floor')}}</a>
-                            <a href="{{route('website.offices.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.office')}}</a>
+                            <a href="{{route('website.buildings.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.building')}} ({{ \App\Services\BuildingService::available_count_startup_buildings($startup_id) }})</a>
+                            <a href="{{route('website.floors.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.floor')}} ({{ \App\Services\FloorService::available_count_startup_floors($startup_id) }})</a>
+                            <a href="{{route('website.offices.index',$startup_id)}}" class="button  primary-btn btn-sm rounded raised">{{trans('general.office')}} ({{ \App\Services\OfficeService::available_count_startup_offices($startup_id) }}</a>
                         @else
                             <a href="" class="button  primary-btn btn-sm rounded raised">View</a>
-
                         @endif
                     </div>
                 </div>

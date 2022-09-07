@@ -11,9 +11,11 @@ use App\Models\User;
 use App\Services\BaService;
 use App\Services\BuildingService;
 use App\Services\CMS\PageService;
+use App\Services\FloorService;
 use App\Services\FreelancerService;
 use App\Services\GeneralService;
 use App\Services\MentorService;
+use App\Services\OfficeService;
 use App\Services\PersonService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -27,7 +29,9 @@ class StartupController extends Controller
         private FreelancerService $freelancerService,
         private BaService         $baService,
         private MentorService     $mentorService,
-        private BuildingService   $buildingService
+        private BuildingService   $buildingService,
+        private FloorService   $floorService,
+        private OfficeService   $officeService,
     )
     {
 
@@ -86,17 +90,21 @@ class StartupController extends Controller
     public function buildings($startup_id): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
-        $buildings = $this->buildingService->listBuildingsByUser($startup_id);
+        $buildings = $this->buildingService->startup_buildings($startup_id);
         return view('website.startups.buildings.index', compact('buildings','page'));
     }
 
-    public function floors()
+    public function floors($startup_id): Factory|View|Application
     {
-
+        $page = $this->pageService->findByCode('startup');
+        $floors = $this->floorService->startup_floors($startup_id);
+        return view('website.startups.floors.index', compact('floors','page'));
     }
 
-    public function offices()
+    public function offices($startup_id): Factory|View|Application
     {
-        echo "underprocess";
+        $page = $this->pageService->findByCode('startup');
+        $buildings = $this->officeService->startup_offices($startup_id);
+        return view('website.startups.offices.index', compact('buildings','page'));
     }
 }
