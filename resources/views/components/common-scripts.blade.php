@@ -1,7 +1,12 @@
 <script>
-    function apply_office_plan_subscription(subscription_id, subscribed_id, model_id) {
+    function apply_office_plan_subscription(
+        subscription_id,
+        subscribed_id,
+        owner_id,
+        model_id
+    ) {
         Swal.fire({
-            title: '{{ trans('general.apply_payment') }}',
+            title: 'Payment For Subscription',
             html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'input','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
             showCancelButton: true,
             showConfirmButton: true,
@@ -18,6 +23,7 @@
                     payment_type: payment_type,
                     subscription_id: subscription_id,
                     subscribed_id: subscribed_id,
+                    owner_id: owner_id,
                     model_id: model_id,
                     model_type: 'office',
                 }
@@ -25,6 +31,7 @@
         }).then((result) => {
             let payment_type = result.value.payment_type;
             let subscription_id = result.value.subscription_id;
+            let owner_id = result.value.owner_id;
             let subscribed_id = result.value.subscribed_id;
             let model_id = result.value.model_id;
             let model_type = result.value.model_type;
@@ -55,7 +62,7 @@
                             subscribed_id: subscribed_id,
                             model_id: model_id,
                             model_type: model_type,
-
+                            owner_id: owner_id,
                         }
                     }
                 }).then((result) => {
@@ -64,13 +71,14 @@
                         allowOutsideClick: () => !Swal.isLoading()
                     });
                     Swal.showLoading();
-                    let transaction_id=result.value.transaction_id;
-                    let file_name= result.value.file_name;
+                    let transaction_id = result.value.transaction_id;
+                    let file_name = result.value.file_name;
                     let payment_type = result.value.payment_type;
                     let subscription_id = result.value.subscription_id;
                     let subscribed_id = result.value.subscribed_id;
                     let model_id = result.value.model_id;
                     let model_type = result.value.model_type;
+                    let owner_id = result.value.owner_id;
                     let data = new FormData();
                     data.append('transaction_id', transaction_id);
                     data.append('file_name', file_name);
@@ -79,6 +87,7 @@
                     data.append('subscribed_id', subscribed_id);
                     data.append('model_id', model_id);
                     data.append('model_type', model_type);
+                    data.append('owner_id', owner_id);
                     Ajax.setAjaxHeader();
                     $.ajax({
                         url: "{{ route('website.office-subscriptions.store')}}",

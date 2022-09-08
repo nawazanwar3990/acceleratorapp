@@ -25,7 +25,7 @@ class PlanController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', Plan::class);
+      //  $this->authorize('view', Plan::class);
         $records = Plan::with('basic_services', 'additional_services')->get();
         $params = [
             'pageTitle' => __('general.plans'),
@@ -40,7 +40,7 @@ class PlanController extends Controller
      */
     public function create(): Factory|View|Application
     {
-        $this->authorize('create', Plan::class);
+      //  $this->authorize('create', Plan::class);
         $params = [
             'pageTitle' => __('general.new_plan'),
         ];
@@ -53,7 +53,7 @@ class PlanController extends Controller
      */
     public function store(PlanRequest $request)
     {
-        $this->authorize('create', Plan::class);
+     //   $this->authorize('create', Plan::class);
         if ($request->createData()) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.plans.create')
@@ -70,7 +70,7 @@ class PlanController extends Controller
      */
     public function edit($id): Factory|View|Application
     {
-        $this->authorize('update', Plan::class);
+      //  $this->authorize('update', Plan::class);
         $model = Plan::with('basic_services', 'additional_services')->find($id);
         $params = [
             'pageTitle' => __('general.edit_installment_plan'),
@@ -85,7 +85,7 @@ class PlanController extends Controller
      */
     public function update(PlanRequest $request, $id)
     {
-        $this->authorize('update', Plan::class);
+      //  $this->authorize('update', Plan::class);
         if ($request->updateData($id)) {
             if ($request->saveNew) {
                 return redirect()->route('dashboard.plans.create')
@@ -102,7 +102,7 @@ class PlanController extends Controller
      */
     public function destroy(PlanRequest $request, $id)
     {
-        $this->authorize('delete', Plan::class);
+      //  $this->authorize('delete', Plan::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.plans.index')
                 ->with('success', __('general.record_deleted_successfully'));

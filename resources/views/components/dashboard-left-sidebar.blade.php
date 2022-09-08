@@ -58,42 +58,54 @@
                         @endif
                     @endforeach
                 @endif
-                @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::MENTOR)
-                       OR
-                       \App\Services\PersonService::hasRole(\App\Enum\RoleEnum::FREELANCER)
-                       OR
-                       \App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                    @foreach(\App\Enum\LeftNavBar\CommonNavEnum::getTranslationKeys() as $key=>$value)
-                        <li>
-                            <a class="waves-effect waves-dark"
-                               href="{{ \App\Enum\LeftNavBar\CommonNavEnum::getRoute($key) }}">
-                                {!! \App\Enum\LeftNavBar\CommonNavEnum::getIcon($key) !!}
-                                <span class="hide-menu">
-                                {{ $value }}
-                            </a>
-                        </li>
-                    @endforeach
-                @endif
                 @if(\App\Services\PersonService::hasRole(\App\Enum\RoleEnum::BUSINESS_ACCELERATOR))
-                    <li>
-                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i class="ti-settings"></i>
-                            <span
-                                class="hide-menu">{{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\BANavEnum::SERVICE) }}</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse">
-                            @include('dashboard.components.left-nav-bar.service-types')
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="waves-effect waves-dark"
-                           href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute(\App\Enum\LeftNavBar\BANavEnum::PLAN) }}">
-                            {!! \App\Enum\LeftNavBar\BANavEnum::getIcon(\App\Enum\LeftNavBar\BANavEnum::PLAN) !!}
-                            <span class="hide-menu">
-                            {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy(\App\Enum\LeftNavBar\BANavEnum::PLAN) }}
-                        </a>
-                    </li>
+                    @foreach(\App\Enum\LeftNavBar\BANavEnum::getCommonNavs() as $common)
+                        @if($common===\App\Enum\LeftNavBar\BANavEnum::SERVICE)
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="ti-settings"></i>
+                                    <span
+                                        class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse">
+                                    @include('dashboard.components.left-nav-bar.service-types')
+                                </ul>
+                            </li>
+                        @elseif($common===\App\Enum\LeftNavBar\BANavEnum::SUBSCRIPTION)
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="ti-settings"></i>
+                                    <span
+                                        class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse">
+                                    @include('dashboard.components.left-nav-bar.subscript-types')
+                                </ul>
+                            </li>
+                        @elseif($common===\App\Enum\LeftNavBar\BANavEnum::PAYMENT_RECEIPT)
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="ti-settings"></i>
+                                    <span
+                                        class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse">
+                                    @include('dashboard.components.left-nav-bar.receipt-types')
+                                </ul>
+                            </li>
+                        @else
+                            <li>
+                                <a class="waves-effect waves-dark"
+                                   href="{{ \App\Enum\LeftNavBar\BANavEnum::getRoute($common) }}">
+                                    {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($common) !!} <span class="hide-menu">
+                                    {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
                     @foreach(\App\Services\PersonService::get_current_ba_package_services() as $key=>$value)
                         @if($key===\App\Enum\LeftNavBar\BANavEnum::INCUBATOR)
                             <li>

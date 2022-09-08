@@ -37,7 +37,7 @@ class OfficeController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        $this->authorize('view', Office::class);
+       // $this->authorize('view', Office::class);
         $records = $this->officeService->listOfficesByPagination();
         $params = [
             'pageTitle' => __('general.offices'),
@@ -52,7 +52,7 @@ class OfficeController extends Controller
      */
     public function create(): View|Factory|RedirectResponse|Application
     {
-        $this->authorize('create', Office::class);
+      //  $this->authorize('create', Office::class);
         /*$package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
         $existing_limit = Office::where('created_by', Auth::id())->count();
         if ($existing_limit >= $package_limit) {
@@ -69,7 +69,7 @@ class OfficeController extends Controller
      */
     public function store(OfficeRequest $request)
     {
-        $this->authorize('create', Office::class);
+      //  $this->authorize('create', Office::class);
         /* $package_limit = GeneralService::hasPackageSubscriptionLimit(KeyWordEnum::OFFICE);
          $existing_limit = Office::where('created_by', Auth::id())->count();
          if ($existing_limit >= $package_limit) {
@@ -93,7 +93,7 @@ class OfficeController extends Controller
      */
     public function edit($id): Factory|View|Application
     {
-        $this->authorize('update', Office::class);
+       // $this->authorize('update', Office::class);
         $model = Office::findorFail($id);
         $floors = Floor::where('building_id', $model->building_id)->pluck('name', 'id');
         $params = [
@@ -116,7 +116,7 @@ class OfficeController extends Controller
      */
     public function update(OfficeRequest $request, $id)
     {
-        $this->authorize('update', Office::class);
+     //   $this->authorize('update', Office::class);
         if ($request->updateData($id)) {
 
             if ($request->saveNew) {
@@ -136,7 +136,7 @@ class OfficeController extends Controller
      */
     public function destroy(OfficeRequest $request, $id)
     {
-        $this->authorize('delete', Office::class);
+      //  $this->authorize('delete', Office::class);
         if ($request->deleteData($id)) {
             return redirect()->route('dashboard.offices.index')
                 ->with('success', __('general.record_deleted_successfully'));

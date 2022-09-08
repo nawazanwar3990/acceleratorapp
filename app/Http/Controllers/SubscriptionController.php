@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Enum\DurationEnum;
-use App\Enum\KeyWordEnum;
 use App\Enum\PaymentForEnum;
 use App\Enum\SubscriptionStatusEnum;
+use App\Enum\SubscriptionTypeEnum;
 use App\Models\PaymentReceipt;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Services\GeneralService;
-use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -90,14 +87,20 @@ class SubscriptionController extends Controller
         $transaction_id = $request->input('transaction-id');
         $model_id = $request->input('model_id');
         $model_type = $request->input('model_type');
+        $owner_id = $request->input('owner_id');
+
         $subscription = new Subscription();
+
         $subscription->subscribed_id = $subscribed_id;
         $subscription->subscription_id = $subscription_id;
+        $subscription->owner_id = $owner_id;
+
         $subscription->model_id = $model_id;
         $subscription->model_type = $model_type;
         $plan = Plan::find($subscription_id);
         $subscription->price = $plan->price;
         $subscription->created_by = auth()->id();
+        $subscription->subscripton_type = SubscriptionTypeEnum::PLAN;
         $subscription->status = SubscriptionStatusEnum::PENDING;
         $subscription->save();
         $receipt = PaymentReceipt::create([

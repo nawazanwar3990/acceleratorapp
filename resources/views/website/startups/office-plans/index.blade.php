@@ -28,12 +28,12 @@
                                         </div>
                                     </div>
                                     <p class="border-bottom pb-3 text-start">
-                                        <strong>{{ trans('general.basic_service') }}</strong> <span
-                                            class="pull-right"> {{ count($plan->basic_services) }}</span>
+                                        <strong>{{ trans('general.basic_service') }}</strong>
+                                        <span class="pull-right"> {{ count($plan->basic_services) }}</span>
                                     </p>
                                     <p class="border-bottom pb-3 text-start">
-                                        <strong>{{ trans('general.additional_service') }}</strong> <span
-                                            class="pull-right"> {{ count($plan->additional_services) }}</span>
+                                        <strong>{{ trans('general.additional_service') }}</strong>
+                                        <span class="pull-right"> {{ count($plan->additional_services) }}</span>
                                     </p>
                                     @guest
                                         <a class="button primary-btn raised is-fullwidth"
@@ -43,9 +43,11 @@
                                     @else
                                         <a class="button primary-btn raised is-fullwidth"
                                            onclick="apply_office_plan_subscription(
+
                                                '{{$plan->id}}',
                                                '{{ auth()->id() }}',
-                                              '{{$office->id}}',
+                                               '{{$office->getOwnerId()}}',
+                                               '{{$office->id}}',
                                                );">
                                             {{ trans('general.apply_subscription') }}
                                         </a>
