@@ -103,12 +103,20 @@ class FloorService
         return $records->paginate(20);
     }
 
-    public function startup_floors($startup_id): LengthAwarePaginator
+    public function startup_floors($startup_id, $building_id): LengthAwarePaginator
     {
-        return Floor::with('offices', 'building', 'images')
-            ->where('created_by', $startup_id)
-            ->paginate(20);
+        $floors = Floor::with('offices', 'building', 'images')
+            ->where('created_by', $startup_id);
+        if ($building_id) {
+            $floors = $floors->where('building_id', $building_id);
+        }
+        if (request()->query('s')) {
+            $keyword = request()->query('s');
+            $floors = $floors->where('id', $keyword);
+        }
+        return $floors->paginate(20);
     }
+
     public static function available_count_startup_floors($user_id)
     {
         return Floor::where('created_by', $user_id)->count();

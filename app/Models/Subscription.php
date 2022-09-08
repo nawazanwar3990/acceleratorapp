@@ -15,6 +15,7 @@ class Subscription extends Model
 
     protected $table = TableEnum::SUBSCRIPTIONS;
     protected $fillable = [
+        'owner_id',
         'subscribed_id',
         'subscription_id',
         'subscription_type',

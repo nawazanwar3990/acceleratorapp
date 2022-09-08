@@ -59,4 +59,12 @@ class Building extends Model
     {
         return $this->belongsToMany(User::class, TableEnum::BUILDING_OWNER)->withTimestamps();
     }
+    public function getOwnerName(): string
+    {
+        return $this->owners[0]->getFullName()??'';
+    }
+    public function getOwnerId(): string
+    {
+        return $this->owners[0]->id??'';
+    }
 }

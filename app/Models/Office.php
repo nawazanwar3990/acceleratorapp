@@ -75,7 +75,14 @@ class Office extends Model
     {
         return $this->belongsToMany(User::class, TableEnum::OFFICE_OWNER)->withTimestamps();
     }
-
+    public function getOwnerName(): string
+    {
+        return $this->owners[0]->getFullName()??'';
+    }
+    public function getOwnerId(): string
+    {
+        return $this->owners[0]->id??'';
+    }
     public function plans(): BelongsToMany
     {
         return $this->belongsToMany(Plan::class, TableEnum::OFFICE_PLAN)->withTimestamps();

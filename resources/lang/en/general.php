@@ -5,6 +5,7 @@ return [
     'upload_logo' => 'Upload Logo',
     'banner_image' => 'Banner Image',
     'edit_page' => 'Edit Page',
+    'plan_info'=>'Plan Info',
     'route' => "Route",
     'pages' => 'Pages',
     'page_url' => 'Page Url',

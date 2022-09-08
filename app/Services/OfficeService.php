@@ -132,12 +132,22 @@ class OfficeService
         return $records->paginate(20);
     }
 
-    public function startup_offices($startup_id)
+    public function startup_offices($startup_id, $building_id, $floor_id): LengthAwarePaginator
     {
-        return Office::with('floor', 'building', 'images')
-            ->where('created_by', $startup_id)
-            ->paginate(20);
+        $offices = Office::with('floor', 'building', 'images')->where('created_by', $startup_id);
+        if ($building_id) {
+            $offices = $offices->where('building_id', $building_id);
+        }
+        if (request()->query('s')) {
+            $keyword = request()->query('s');
+            $offices = $offices->where('id', $keyword);
+        }
+        if ($floor_id) {
+            $offices = $offices->where('floor_id', $floor_id);
+        }
+        return $offices->paginate(20);
     }
+
     public static function available_count_startup_offices($user_id)
     {
         return Office::where('created_by', $user_id)->count();

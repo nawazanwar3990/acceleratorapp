@@ -149,8 +149,12 @@ class BuildingService
 
     public function startup_buildings($user_id): LengthAwarePaginator
     {
-        return Building::with('offices', 'floors', 'images')
-            ->where('created_by', $user_id)->paginate(20);
+        $buildings = Building::with('offices', 'floors', 'images')->where('created_by', $user_id);
+        if (request()->query('s')) {
+            $keyword = request()->query('s');
+            $buildings = $buildings->where('id', $keyword);
+        }
+        return $buildings->paginate(20);
     }
 
     public static function available_count_startup_buildings($user_id)

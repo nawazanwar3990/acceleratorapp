@@ -2,6 +2,7 @@
     <tr>
         <td class="text-center">{{ $loop->iteration }}</td>
         <td>{{ $record->name }}</td>
+        <td></td>
         <td>
             @if($record->building_type)
                 {{ \App\Services\BuildingService::buildingTypesForDropdown($record->building_type)  }}

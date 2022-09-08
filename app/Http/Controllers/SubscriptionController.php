@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\DurationEnum;
+use App\Enum\KeyWordEnum;
 use App\Enum\PaymentForEnum;
 use App\Enum\SubscriptionStatusEnum;
 use App\Models\PaymentReceipt;
+use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Services\GeneralService;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -43,7 +48,7 @@ class SubscriptionController extends Controller
         ));
     }
 
-    public function viewPendingSubscription(Request $request,$id,$type)
+    public function viewPendingSubscription(Request $request, $id, $type)
     {
         $pageTitle = trans('general.pending_subscription');
         $subscription = Subscription::find($id);
@@ -75,5 +80,48 @@ class SubscriptionController extends Controller
             'type',
             'id',
         ));
+    }
+
+    public function storeOfficeSubscription(Request $request)
+    {
+        $subscription_id = $request->input('subscription_id');
+        $subscribed_id = $request->input('subscribed_id');
+        $payment_type = $request->input('payment_type');
+        $transaction_id = $request->input('transaction-id');
+        $model_id = $request->input('model_id');
+        $model_type = $request->input('model_type');
+        $subscription = new Subscription();
+        $subscription->subscribed_id = $subscribed_id;
+        $subscription->subscription_id = $subscription_id;
+        $subscription->model_id = $model_id;
+        $subscription->model_type = $model_type;
+        $plan = Plan::find($subscription_id);
+        $subscription->price = $plan->price;
+        $subscription->created_by = auth()->id();
+        $subscription->status = SubscriptionStatusEnum::PENDING;
+        $subscription->save();
+        $receipt = PaymentReceipt::create([
+            'subscription_id' => $subscription_id,
+            'subscribed_id' => $subscribed_id,
+            'payment_type' => $payment_type,
+            'transaction_id' => $transaction_id,
+            'price' => $plan->price,
+            'payment_for' => PaymentForEnum::OFFICE_SUBSCRIPTION_APPROVAL,
+
+        ]);
+        if ($request->hasFile('file_name')) {
+            $file = $request->file('file_name');
+            $file_name = GeneralService::generateFileName($file);
+            $file_path = 'uploads/receipts/' . $file_name;
+            $file->move('uploads/receipts/', $file_name);
+            $receipt->file_name = $file_path;
+            $receipt->save();
+        }
+        session(['info' => trans('general.receipt_uploaded_message')]);
+        if ($receipt) {
+            return response()->json([
+                'status' => true
+            ]);
+        }
     }
 }

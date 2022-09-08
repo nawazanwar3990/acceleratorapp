@@ -73,4 +73,12 @@ class Floor extends Model
             )
             ->withTimestamps();
     }
+    public function getOwnerName(): string
+    {
+        return $this->owners[0]->getFullName()??'';
+    }
+    public function getOwnerId(): string
+    {
+        return $this->owners[0]->id??'';
+    }
 }

@@ -12,6 +12,7 @@
             @endif
         </td>
         <td>{{ $record->name}}</td>
+        <td></td>
         <td>
             @if($record->type_id)
                 {{ \App\Services\BuildingService::buildingTypesForDropdown($record->type_id)  }}

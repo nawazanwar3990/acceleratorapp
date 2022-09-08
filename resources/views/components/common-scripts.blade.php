@@ -1,4 +1,106 @@
 <script>
+    function apply_office_plan_subscription(subscription_id, subscribed_id, model_id) {
+        Swal.fire({
+            title: '{{ trans('general.apply_payment') }}',
+            html: `{!!  Html::decode(Form::label('payment_type' ,__('general.payment_type').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::select('payment_type',\App\Enum\PaymentTypeEnum::getTranslationKeys(),\App\Enum\PaymentTypeEnum::OFFLINE,['class'=>'input','id'=>'payment_type','placeholder'=>'Select Payment Type']) }}`,
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonText: "Proceeded",
+            confirmButtonColor: '#00b289',
+            cancelButtonColor: '#00b289',
+            focusConfirm: false,
+            preConfirm: () => {
+                const payment_type = Swal.getPopup().querySelector('#payment_type').value
+                if (!payment_type) {
+                    Swal.showValidationMessage(`First Choose Payment Type`)
+                }
+                return {
+                    payment_type: payment_type,
+                    subscription_id: subscription_id,
+                    subscribed_id: subscribed_id,
+                    model_id: model_id,
+                    model_type: 'office',
+                }
+            }
+        }).then((result) => {
+            let payment_type = result.value.payment_type;
+            let subscription_id = result.value.subscription_id;
+            let subscribed_id = result.value.subscribed_id;
+            let model_id = result.value.model_id;
+            let model_type = result.value.model_type;
+            if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
+                Swal.fire({
+                    title: 'Manage Payment',
+                    html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'input','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'input dropify','id'=>'file_name']) }}</div>`,
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    confirmButtonText: "Proceeded",
+                    confirmButtonColor: '#00b289',
+                    cancelButtonColor: '#00b289',
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
+                        let file_name = Swal.getPopup().querySelector('#file_name');
+                        file_name = file_name.files[0];
+                        if (!file_name) {
+                            Swal.showValidationMessage(`Please Choose Receipt in jpg,png format`)
+                        }
+                        if (!transaction_id) {
+                            Swal.showValidationMessage(`First Enter Transaction ID`)
+                        }
+                        return {
+                            transaction_id: transaction_id,
+                            file_name: file_name,
+                            subscription_id: subscription_id,
+                            subscribed_id: subscribed_id,
+                            model_id: model_id,
+                            model_type: model_type,
+
+                        }
+                    }
+                }).then((result) => {
+                    Swal.fire({
+                        html: '<?php echo __('general.request_wait'); ?>',
+                        allowOutsideClick: () => !Swal.isLoading()
+                    });
+                    Swal.showLoading();
+                    let transaction_id=result.value.transaction_id;
+                    let file_name= result.value.file_name;
+                    let payment_type = result.value.payment_type;
+                    let subscription_id = result.value.subscription_id;
+                    let subscribed_id = result.value.subscribed_id;
+                    let model_id = result.value.model_id;
+                    let model_type = result.value.model_type;
+                    let data = new FormData();
+                    data.append('transaction_id', transaction_id);
+                    data.append('file_name', file_name);
+                    data.append('payment_type', payment_type);
+                    data.append('subscription_id', subscription_id);
+                    data.append('subscribed_id', subscribed_id);
+                    data.append('model_id', model_id);
+                    data.append('model_type', model_type);
+                    Ajax.setAjaxHeader();
+                    $.ajax({
+                        url: "{{ route('website.office-subscriptions.store')}}",
+                        method: 'POST',
+                        data: data,
+                        enctype: 'multipart/form-data',
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            if (response.status === true) {
+                                location.reload();
+                            }
+                        },
+                        error: function (response) {
+                        }
+                    });
+                });
+            } else {
+
+            }
+        });
+    }
     @isset($subscription)
     function apply_expire_payment() {
         Swal.fire({

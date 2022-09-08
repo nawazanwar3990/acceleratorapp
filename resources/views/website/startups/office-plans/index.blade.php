@@ -11,7 +11,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="pricing-wrapper">
                     <div class="columns">
                         @forelse($plans as $plan)
@@ -43,7 +42,11 @@
                                         </a>
                                     @else
                                         <a class="button primary-btn raised is-fullwidth"
-                                           onclick="apply_subscription('{{ $office->plans}}','{{$office->id}}','{{ $office->sitting_capacity }}');">
+                                           onclick="apply_office_plan_subscription(
+                                               '{{$plan->id}}',
+                                               '{{ auth()->id() }}',
+                                              '{{$office->id}}',
+                                               );">
                                             {{ trans('general.apply_subscription') }}
                                         </a>
                                     @endif
@@ -55,5 +58,6 @@
                 </div>
             </div>
         </div>
+        @include('components.common-scripts')
     </x-slot>
 </x-page-layout>

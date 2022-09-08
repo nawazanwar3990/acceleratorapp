@@ -35,6 +35,9 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::post('/payment-receipts/store', [PaymentReceiptController::class, 'storePaymentReceipt'])
         ->name('payment-receipts.store');
 
+    Route::post('/office-subscriptions/store', [SubscriptionController::class, 'storeOfficeSubscription'])
+        ->name('office-subscriptions.store');
+
 
     Route::get('/customers/create/{step?}/{id?}', [CustomerController::class, 'create'])
         ->name('customers.create');
@@ -61,7 +64,7 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
         ->name('buildings.index');
     Route::get('floors/{user_id}/{building_id?}', [StartupController::class, 'floors'])
         ->name('floors.index');
-    Route::get('offices/{user_id}/{floor_id?}', [StartupController::class, 'offices'])
+    Route::get('offices/{user_id}/{building_id?}/{floor_id?}', [StartupController::class, 'offices'])
         ->name('offices.index');
 
     Route::get('office/{office_id}/plans', [StartupController::class, 'office_plans'])

@@ -116,6 +116,7 @@ class BuildingRequest extends FormRequest
                             'created_by' => Auth::id()
                         ]
                     );
+                    $this->saveOwners($model);
                     $offices = $floors[$i]['offices'];
                     if (count($offices) > 0) {
                         $floor_name_count = count($offices['name']);
@@ -134,6 +135,7 @@ class BuildingRequest extends FormRequest
                                         'created_by' => Auth::id()
                                     ]
                                 );
+                                $this->saveOwners($office);
                             }
                         }
                     }

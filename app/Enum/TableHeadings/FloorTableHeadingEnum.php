@@ -10,6 +10,7 @@ class FloorTableHeadingEnum extends AbstractEnum
 {
     public const BUILDING = 'building';
     public const FLOOR_NAME = 'floor_name';
+    public const OWNER_NAME = 'owner_name';
     public const OFFICES = 'offices';
     public const DIMENSION = 'dimension';
     public const TYPE = 'type';
@@ -32,6 +33,7 @@ class FloorTableHeadingEnum extends AbstractEnum
         return [
             self::BUILDING => __(sprintf('%s.%s', 'general', self::BUILDING)),
             self::FLOOR_NAME => __(sprintf('%s.%s', 'general', self::FLOOR_NAME)),
+            self::OWNER_NAME => __(sprintf('%s.%s', 'general', self::OWNER_NAME)),
             self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
         ];
     }
