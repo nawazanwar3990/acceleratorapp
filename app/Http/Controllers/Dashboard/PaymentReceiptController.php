@@ -21,12 +21,15 @@ class PaymentReceiptController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index(Request $request): Factory|View|Application
     {
+        $type = $request->query('type');
         $records = $this->receiptService->findByPagination();
         $params = [
             'pageTitle' => __('general.receipts'),
             'records' => $records,
+            'type' => $type
         ];
         return view('dashboard.payment-receipts.index', $params);
     }

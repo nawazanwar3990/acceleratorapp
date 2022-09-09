@@ -9,14 +9,14 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table(TableEnum::SUBSCRIPTIONS, function (Blueprint $table) {
-            if (!Schema::hasColumn(TableEnum::SUBSCRIPTIONS, 'owner_id')) {
+        Schema::table(TableEnum::PAYMENT_RECEIPTS, function (Blueprint $table) {
+            if (!Schema::hasColumn(TableEnum::PAYMENT_RECEIPTS, 'owner_id')) {
                 $table->foreignId('owner_id')->after('id')->nullable();
             }
         });
     }
-
     public function down()
     {
+        //
     }
 };

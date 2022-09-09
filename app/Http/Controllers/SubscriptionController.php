@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\DurationEnum;
 use App\Enum\PaymentForEnum;
 use App\Enum\SubscriptionStatusEnum;
 use App\Enum\SubscriptionTypeEnum;
@@ -84,7 +85,7 @@ class SubscriptionController extends Controller
         $subscription_id = $request->input('subscription_id');
         $subscribed_id = $request->input('subscribed_id');
         $payment_type = $request->input('payment_type');
-        $transaction_id = $request->input('transaction-id');
+        $transaction_id = $request->input('transaction_id');
         $model_id = $request->input('model_id');
         $model_type = $request->input('model_type');
         $owner_id = $request->input('owner_id');
@@ -97,6 +98,7 @@ class SubscriptionController extends Controller
 
         $subscription->model_id = $model_id;
         $subscription->model_type = $model_type;
+
         $plan = Plan::find($subscription_id);
         $subscription->price = $plan->price;
         $subscription->created_by = auth()->id();
@@ -104,13 +106,13 @@ class SubscriptionController extends Controller
         $subscription->status = SubscriptionStatusEnum::PENDING;
         $subscription->save();
         $receipt = PaymentReceipt::create([
+            'owner_id' => $owner_id,
             'subscription_id' => $subscription_id,
             'subscribed_id' => $subscribed_id,
             'payment_type' => $payment_type,
             'transaction_id' => $transaction_id,
             'price' => $plan->price,
             'payment_for' => PaymentForEnum::OFFICE_SUBSCRIPTION_APPROVAL,
-
         ]);
         if ($request->hasFile('file_name')) {
             $file = $request->file('file_name');

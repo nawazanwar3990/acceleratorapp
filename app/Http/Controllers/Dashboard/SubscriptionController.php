@@ -164,10 +164,14 @@ class SubscriptionController extends Controller
 
     public function update(Request $request, $id, $status): JsonResponse
     {
+        $type = $request->input('type');
+        $subscription_for = $request->input('subscription_for');
+
         $subscription = Subscription::find($id);
         $subscription->status = $status;
         $subscription->reason = $request->input('reason');
         $subscription->save();
+        $route = '';
         if ($status == SubscriptionStatusEnum::RENEW) {
             $model = Package::find($subscription->subscription_id);
             $limit = $model->duration_limit;
@@ -175,6 +179,25 @@ class SubscriptionController extends Controller
             $subscription->renewal_date = Carbon::now();
             $from_date = Carbon::now();
             $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+            $subscription->save();
+        }
+        if ($subscription->subscription_type == SubscriptionTypeEnum::PACKAGE) {
+            $route = route('dashboard.subscriptions.index', ['type' => SubscriptionTypeEnum::PACKAGE, 'subscription_for' => $subscription_for]);
+            $package = Package::find($subscription->subscription_id);
+            $limit = $package->duration_limit;
+            $from_date = Carbon::now();
+            $duration_type = $package->duration_type->slug;
+            $subscription->renewal_date = Carbon::now();
+            $subscription->expire_date = GeneralService::get_remaining_time($duration_type, $limit, $from_date);
+            $subscription->save();
+        }
+        if ($subscription->subscription_type == SubscriptionTypeEnum::PLAN) {
+            $route = route('dashboard.subscriptions.index', ['type' => SubscriptionTypeEnum::PLAN, 'subscription_for' => 'office']);
+            $plan = Plan::find($subscription->subscription_id);
+            $from_date = Carbon::now();
+            $limit = $plan->duration;
+            $subscription->renewal_date = Carbon::now();
+            $subscription->expire_date = GeneralService::get_remaining_time(DurationEnum::MONTHLY, $limit, $from_date);
             $subscription->save();
         }
         PaymentReceipt::where('subscribed_id', $subscription->subscribed_id)
@@ -195,11 +218,9 @@ class SubscriptionController extends Controller
             session()->put('info', trans('general.renew_subscription_mail_message'));
             Notification::send($subscription->subscribed, new RenewSubscription());
         }
-        $type = $request->input('type');
-        $subscription_for = $request->input('subscription_for');
         return response()->json([
             'status' => true,
-            'route' => route('dashboard.subscriptions.index', ['type' => $type, 'subscription_for' => $subscription_for])
+            'route' => $route
         ]);
     }
 

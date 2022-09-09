@@ -56,6 +56,7 @@
                             Swal.showValidationMessage(`First Enter Transaction ID`)
                         }
                         return {
+                            payment_type: payment_type,
                             transaction_id: transaction_id,
                             file_name: file_name,
                             subscription_id: subscription_id,

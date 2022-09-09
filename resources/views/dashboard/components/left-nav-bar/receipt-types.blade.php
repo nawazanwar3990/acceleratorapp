@@ -8,7 +8,7 @@
     @endforeach
 @else
     <li>
-        <a href="{{ route('dashboard.payment-receipts.index',['type'=>auth()->user()->roles[0]->slug]) }}">
+        <a href="{{ route('dashboard.payment-receipts.index',['type'=>\App\Enum\SubscriptionTypeEnum::PACKAGE]) }}">
             {!! \App\Enum\SubscriptionTypeEnum::getTranslationKeyBy(\App\Enum\SubscriptionTypeEnum::PACKAGE) !!}
         </a>
     </li>

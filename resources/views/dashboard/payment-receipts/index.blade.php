@@ -10,16 +10,9 @@
                         @forelse($records  as $record)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td class="text-center">
+                                <td>
                                     @isset($record->subscribed)
-                                        <a target="_blank"> {{ $record->subscribed->getFullName()  }}</a>
-                                        @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
-                                            <br>
-                                            <a class="btn btn-xs btn-warning mx-1" target="_blank" download
-                                               href="{{asset($record->file_name)}}">
-                                                {{ trans('general.download_receipt') }}
-                                            </a>
-                                        @endif
+                                        {{ $record->subscribed->getFullName() }}
                                     @endisset
                                 </td>
                                 <td>
@@ -43,31 +36,10 @@
                                     {{ $record->price }}  {{ \App\Services\GeneralService::get_default_currency() }}
                                 </td>
                                 <td class="text-center">
-                                    @if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::SUPER_ADMIN))
-                                        @if($record->payment_for==\App\Enum\PaymentForEnum::PACKAGE_APPROVAL)
-                                            @if($record->subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
-                                                <a class="btn btn-sm btn-info  mx-1"
-                                                   onclick="approved_subscription('{{ $record->subscription->id}}');">
-                                                    {{ trans('general.approved') }} <i class="bx bx-plus-circle"></i>
-                                                </a>
-                                            @endif
-                                            <a class="btn btn-sm btn-info  mx-1"
-                                               onclick="decline_subscription('{{ $record->subscription->id}}');">
-                                                {{ trans('general.declined') }} <i class="bx bx-minus-circle"></i>
-                                            </a>
-                                        @else
-                                            <a class="btn btn-sm btn-info  mx-1"
-                                               onclick="renew_subscription('{{ $record->subscription->id}}');">
-                                                {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
-                                            </a>
-                                        @endif
+                                    @if($type==\App\Enum\SubscriptionTypeEnum::OFFICE)
+                                        @include('dashboard.payment-receipts.components.office-action')
                                     @else
-                                        @isset($record->subscribed)
-                                            <a class="btn btn-xs btn-warning mx-1" target="_blank" download
-                                               href="{{asset($record->file_name)}}">
-                                                {{ trans('general.download_receipt') }}
-                                            </a>
-                                        @endisset
+                                        @include('dashboard.payment-receipts.components.package-action')
                                     @endif
                                 </td>
                             </tr>
