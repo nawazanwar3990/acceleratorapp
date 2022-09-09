@@ -32,6 +32,9 @@ class PaymentReceiptService
             $records = $records->where('is_processed', false)
                 ->where('owner_id', Auth::id());
         }
+        if ($type == SubscriptionTypeEnum::OFFICE && PersonService::hasRole(RoleEnum::CUSTOMER)) {
+            $records = $records->where('subscribed_id', Auth::id());
+        }
         if ($type == SubscriptionTypeEnum::PACKAGE && PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             $records = $records
                 ->where('subscribed_id', Auth::id())

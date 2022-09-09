@@ -26,7 +26,12 @@ class SubscriptionTypeEnum extends AbstractEnum
             self::OFFICE => __(sprintf('%s.%s', 'general', 'office')),
         );
     }
-
+    public static function getCustomerTypes(): array
+    {
+        return array(
+            self::OFFICE => __(sprintf('%s.%s', 'general', 'office')),
+        );
+    }
     public static function getTranslationKeys(): array
     {
         return array(

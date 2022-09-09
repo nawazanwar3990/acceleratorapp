@@ -42,6 +42,9 @@ class SubscriptionService
             if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
                 $subscriptions = $subscriptions->where('owner_id', Auth::id());
             }
+            if (PersonService::hasRole(RoleEnum::CUSTOMER)) {
+                $subscriptions = $subscriptions->where('subscribed_id', Auth::id());
+            }
         }
         return $subscriptions->paginate(20);
     }
