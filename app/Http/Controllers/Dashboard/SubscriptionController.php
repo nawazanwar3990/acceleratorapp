@@ -20,6 +20,7 @@ use App\Notifications\DeclinedSubscription;
 use App\Notifications\RenewSubscription;
 use App\Services\GeneralService;
 use App\Services\PersonService;
+use App\Services\SubscriptionService;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -38,7 +39,9 @@ use function view;
 
 class SubscriptionController extends Controller
 {
-    public function __construct()
+    public function __construct(
+        private SubscriptionService $subscriptionService
+    )
     {
         $this->middleware('auth');
     }
@@ -49,36 +52,10 @@ class SubscriptionController extends Controller
      */
     public function index(Request $request)
     {
-        $subscriptions = Subscription::with('receipt')
-            ->orderBy('id', 'DESC');
-        if (PersonService::hasRole(RoleEnum::SUPER_ADMIN)) {
-            $subscription_for = $request->query('subscription_for');
-            $subscriptions = $subscriptions->whereHas('subscribed', function ($query) use ($subscription_for) {
-                $query->whereHas('roles', function ($q) use ($subscription_for) {
-                    $q->where('slug', $subscription_for);
-                });
-            });
-        }
-        if (
-            PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)
-            ||
-            PersonService::hasRole(RoleEnum::FREELANCER)
-            ||
-            PersonService::hasRole(RoleEnum::MENTOR)
-        ) {
-            $subscriptions = $subscriptions->where('subscribed_id', Auth::id());
-        }
         $type = $request->query('type');
-        $id = $request->query('id');
-        if ($type) {
-            $subscriptions = $subscriptions->where('subscription_type', $type);
-        }
-        if ($id) {
-            $subscriptions = $subscriptions->where('id', $id);
-        }
-        $subscriptions = $subscriptions->paginate(20);
+        $subscriptions = $this->subscriptionService->getListByPagination($type);
         if ($type == SubscriptionTypeEnum::PLAN) {
-            $pageTitle = 'Office Subscriptions';
+            $pageTitle = trans('general.plan_subscriptions');
             return view('dashboard.subscriptions.list.plans', compact(
                 'subscriptions',
                 'pageTitle',
