@@ -1,11 +1,14 @@
 <?php
 return [
+
+    'month_after_approved' => 'Month After Approved',
+    'months_after_approved' => 'Months After Approved',
     'login_to_subscribed' => 'Login to Subscribed',
     'subscription_plans' => 'Subscription Plans',
     'upload_logo' => 'Upload Logo',
     'banner_image' => 'Banner Image',
     'edit_page' => 'Edit Page',
-    'plan_info'=>'Plan Info',
+    'plan_info' => 'Plan Info',
     'route' => "Route",
     'pages' => 'Pages',
     'page_url' => 'Page Url',

@@ -98,7 +98,7 @@
                         contentType: false,
                         success: function (response) {
                             if (response.status === true) {
-                                location.reload();
+                                location.assign(response.route);
                             }
                         },
                         error: function (response) {

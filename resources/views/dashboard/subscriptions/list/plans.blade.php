@@ -29,36 +29,55 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @isset($subscription->subscribed)
-                                        {{ $subscription->subscribed->getFullName() }}
+                                        {{ $subscription->subscribed->getFullName()  }}
+                                    @else
+                                        --
+                                    @endisset
+                                    <br>
+                                    @isset($subscription->subscribed)
+                                        <small
+                                            class="text-muted">Role: {{ $subscription->subscribed->roles[0]->name  }} </small>
                                     @else
                                         --
                                     @endisset
                                 </td>
                                 <td>
-                                    <strong class="text-info">{{ $subscription->plan->name??null}}</strong> for <strong
-                                        class="text-info">{{ $subscription->office->name??null }}</strong>
+                                    {{ $subscription->package->name??null}}
                                 </td>
                                 <td>
                                     {{ $subscription->price }} {{ \App\Services\GeneralService::get_default_currency() }}
                                 </td>
                                 <td>
-                                    {{ $subscription->created_at }}
+                                    {{ \App\Enum\SubscriptionStatusEnum::getTranslationKeyBy($subscription->status) }}
                                 </td>
                                 <td>
-                                    {{ $subscription->expire_date }}
-                                </td>
-                                <td>
-                                    @php
-                                        $is_renew = \Illuminate\Support\Facades\DB::table(\App\Enum\TableEnum::SUBSCRIPTION_LOGS)->where('subscription_id',$subscription->id)->count();
-                                    @endphp
-                                    @if($is_renew>1)
-                                        {{ $subscription->renewal_date }}
+                                    @if(in_array($subscription->status,[\App\Enum\SubscriptionStatusEnum::APPROVED,\App\Enum\SubscriptionStatusEnum::RENEW]))
+                                        {{ $subscription->expire_date }}
                                     @else
-                                        --
+                                        {{ $subscription->plan->duration }} @if($subscription->plan->duration>1)
+                                            {{ trans('general.months_after_approved') }}
+                                        @else
+                                            {{ trans('general.month_after_approved') }}
+                                        @endif
                                     @endif
                                 </td>
-                                <td class="text-center d-flex">
-
+                                <td>
+                                    @if($subscription->status == \App\Enum\SubscriptionStatusEnum::RENEW)
+                                        {{ $subscription->renewal_date }}
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if($subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
+                                        <a class="btn btn-xs btn-warning mx-1"
+                                           href="{{ route('dashboard.payment-receipts.index',['type'=>\App\Enum\SubscriptionTypeEnum::OFFICE,'id'=>$subscription->id]) }}">
+                                            {{ trans('general.view_receipt') }}
+                                        </a>
+                                    @else
+                                        <a class="btn btn-xs btn-warning mx-1"
+                                           href="{{route('dashboard.payment-logs.index',$subscription->id)}}">
+                                            {{ trans('general.payment_logs') }}
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

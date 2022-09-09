@@ -100,7 +100,7 @@ class SubscriptionController extends Controller
         $plan = Plan::find($subscription_id);
         $subscription->price = $plan->price;
         $subscription->created_by = auth()->id();
-        $subscription->subscripton_type = SubscriptionTypeEnum::PLAN;
+        $subscription->subscription_type = SubscriptionTypeEnum::PLAN;
         $subscription->status = SubscriptionStatusEnum::PENDING;
         $subscription->save();
         $receipt = PaymentReceipt::create([
@@ -123,7 +123,8 @@ class SubscriptionController extends Controller
         session(['info' => trans('general.receipt_uploaded_message')]);
         if ($receipt) {
             return response()->json([
-                'status' => true
+                'status' => true,
+                'route' => route('website.index')
             ]);
         }
     }

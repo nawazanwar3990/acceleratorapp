@@ -77,8 +77,7 @@
                                         @if($subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
                                             <a class="btn btn-xs btn-warning mx-1"
                                                href="{{ route('dashboard.payment-receipts.index',['type'=>$subscription->subscribed->roles[0]->slug,'id'=>$subscription->id]) }}">
-                                                {{ trans('general.view_receipt') }} <i
-                                                    class="bx bx-plus-circle"></i>
+                                                {{ trans('general.view_receipt') }}
                                             </a>
                                         @else
                                             <a class="btn btn-xs btn-warning mx-1"
