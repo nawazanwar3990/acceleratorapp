@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentReceipt;
+use App\Services\PaymentReceiptService;
 use App\Services\PersonService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -14,21 +15,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentReceiptController extends Controller
 {
+    public function __construct(
+        private PaymentReceiptService $receiptService
+    )
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request): Factory|View|Application
     {
-        $type = $request->input('type');
-        $records = PaymentReceipt::where('is_processed', false)
-            ->has('subscription')
-            ->whereHas('subscribed', function ($query) use ($type) {
-                $query->whereHas('roles', function ($q) use ($type) {
-                    $q->where('slug', $type);
-                });
-            })->with('subscription', 'subscribed');
-        if ($request->has('id')) {
-            $id = $request->query('id');
-            $records = $records->where('id', $id);
-        }
-        $records = $records->get();
+        $records = $this->receiptService->findByPagination();
         $params = [
             'pageTitle' => __('general.receipts'),
             'records' => $records,
