@@ -57,8 +57,7 @@ class SubscriptionController extends Controller
             ]);
             return redirect()->route('website.index')->with('success', 'Your Subscription has Approved');
         }
-        $receipt = PaymentReceipt::with('subscription', 'subscribed')
-            ->where('payment_for', PaymentForEnum::PACKAGE_APPROVAL)
+        $receipt = PaymentReceipt::where('payment_for', PaymentForEnum::PACKAGE_APPROVAL)
             ->where('subscribed_id', $subscription->subscribed->id)
             ->where('subscription_id', $subscription->id)
             ->where('is_processed', false);
