@@ -80,6 +80,7 @@ class TableEnum extends AbstractEnum
     public const CMS_LAYOUTS = 'cms_layouts';
     public const CMS_FAQ_TOPICS = 'cms_faq_topics';
     public const CMS_FAQ_TOPIC_SECTIONS = 'cms_faq_topic_sections';
+    public const BLOGS = 'blogs';
 
     public static function getValues(): array
     {

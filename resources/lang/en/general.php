@@ -1,6 +1,9 @@
 <?php
 return [
-
+    'image'=>'Image',
+    'heading'=>'Heading',
+    'new_blogs' => 'New Blogs',
+    'blog' => 'Blog',
     'month_after_approved' => 'Month After Approved',
     'months_after_approved' => 'Months After Approved',
     'login_to_subscribed' => 'Login to Subscribed',
@@ -384,6 +387,7 @@ return [
     'left-bar' => [
         'payment-receipt' => 'Payment Receipts',
         'layout' => 'Layout',
+        'blog' => 'Blog',
         'section' => 'Section',
         'setting' => 'Setting',
         'dashboard' => 'Dashboard',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CMS\BlogController;
 use App\Http\Controllers\CMS\ContactUsController;
 use App\Http\Controllers\CMS\FaqSectionController;
 use App\Http\Controllers\CMS\FaqTopicController;
@@ -18,6 +19,7 @@ Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
     Route::resource('/faq-topics',FaqTopicController::class)->names('faq-topics');
     Route::resource('/faq-sections',FaqSectionController::class)->names('faq-sections');
     Route::resource('/contact-us', ContactUsController::class)->names('contact-us');
+    Route::resource('/blogs', BlogController::class)->names('blogs');
 
     Route::post('/sections/upload', [SectionController::class, 'uploadImage'])->name('sections.upload');
     Route::post('/layouts/upload', [LayoutController::class, 'uploadImage'])->name('layouts.upload');
