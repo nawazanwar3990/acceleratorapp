@@ -1,7 +1,8 @@
 <?php
 return [
-    'image'=>'Image',
-    'heading'=>'Heading',
+    'edit_blogs' => 'Edit Blogs',
+    'image' => 'Image',
+    'heading' => 'Heading',
     'new_blogs' => 'New Blogs',
     'blog' => 'Blog',
     'month_after_approved' => 'Month After Approved',
