@@ -7,7 +7,7 @@
                     <div class="card-img-overlay">
                         <span class="badge bg-danger rounded-pill">For Rent</span>
                     </div>
-                    <div class="card-body bg-white px-0">
+                    <div class="card-body bg-white px-0 text-center">
                         <h6 class="card-title text-center">{{ $record->user->getFullName() }}</h6>
                         <a class="learn_more" href="{{ route('website.startups.services.index',[$startup_for,$startup_type,$record->user->id]) }}">
                             {{ trans('general.view_services') }}
