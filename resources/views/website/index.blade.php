@@ -10,7 +10,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-9 col-lg-9 col-xxl-9">
-                        <iframe width="800" height="400" src="https://www.youtube.com/embed/y881t8ilMyc" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="800" height="400" src="https://www.youtube.com/embed/y881t8ilMyc" frameborder="0"
+                                allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -30,7 +31,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title text-primary">Business Accelerator</h4>
-                                <p class="card-text text-white text-center fw-bold">Each startup gets access to one-to-one sessions with a diverse pool of expert mentors.</p>
+                                <p class="card-text text-white text-center fw-bold">Each startup gets access to
+                                    one-to-one sessions with a diverse pool of expert mentors.</p>
                             </div>
                         </div>
                     </div>
@@ -40,7 +42,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title text-danger">Freelancer</h4>
-                                <p class="card-text text-white text-center fw-bold">Each startup gets access to one-to-one sessions with a diverse pool of expert mentors.</p>
+                                <p class="card-text text-white text-center fw-bold">Each startup gets access to
+                                    one-to-one sessions with a diverse pool of expert mentors.</p>
                             </div>
                         </div>
                     </div>
@@ -50,7 +53,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title text-success">Service Provider</h4>
-                                <p class="card-text text-white text-center fw-bold">Each startup gets access to one-to-one sessions with a diverse pool of expert mentors.</p>
+                                <p class="card-text text-white text-center fw-bold">Each startup gets access to
+                                    one-to-one sessions with a diverse pool of expert mentors.</p>
                             </div>
                         </div>
                     </div>
@@ -60,7 +64,8 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title text-info">Mentor</h4>
-                                <p class="card-text text-white text-center fw-bold">Each startup gets access to one-to-one sessions with a diverse pool of expert mentors.</p>
+                                <p class="card-text text-white text-center fw-bold">Each startup gets access to
+                                    one-to-one sessions with a diverse pool of expert mentors.</p>
                             </div>
                         </div>
                     </div>
@@ -114,6 +119,18 @@
                                 <p class="card-text text-center fw-bold">Applications close date May 21, 2022</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="my-5 py-5 meet-startup-holder" style="background-image: url('/uploads/meet_back.webp')">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6 text-center pb-3">
+                        <h1 class="mb-4">Meet The Startups</h1>
+                        <h6 class="pt-4">Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that
+                            time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders.
+                            Learn more about our dynamic community</h6>
                     </div>
                 </div>
             </div>
