@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
-<body>
+<body class="bg-white">
 <x-web-header :cPage="$page"></x-web-header>
 <header class="page-hero home-page-hero bg-gradient-primary-to-secondary"
         style="background: url({{ $page->banner_image }})">

@@ -199,3 +199,7 @@
     line-height: 26px;
     margin-bottom: 10px;
 }
+.about-us-holder{
+    background-size: cover;
+    background-position: center;
+}

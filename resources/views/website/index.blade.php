@@ -6,6 +6,15 @@
                  {!! $section->html !!}
              @endforeach
          @endif--}}
+        <section class="my-5 py-5 about-us-holder" style="background-image: url('/uploads/about_background.webp')">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9 col-lg-9 col-xxl-9 pt-5">
+                        <iframe width="800" height="400" src="https://www.youtube.com/embed/y881t8ilMyc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="my-5 py-5 we-offer-holder" style="background-image: url('/uploads/offer_bg.webp')">
             <div class="container">
                 <div class="row">
