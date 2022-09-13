@@ -48,7 +48,7 @@
                             {{ trans('general.dashboard') }}
                         </a>
                         <button
-                            class="text-white mx-1"
+                            class="text-white mx-1 border-0 bg-transparent"
                             href="javascript:void(0);" onclick="LogoutConfirm();">
                             <i class="fa fa-power-off"></i> <span>{{__('general.logout')}}</span>
                         </button>
