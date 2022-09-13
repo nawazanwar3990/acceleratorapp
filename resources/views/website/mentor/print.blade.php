@@ -11,16 +11,16 @@
             <div class="container">
                 <div class="row text-right py-3">
                     <div class="col-12 text-end">
-                        <button class="btn btn-success"
+                        <button class="btn btn-primary"
                                 onclick="printMe('print_holder','{{ auth()->guest()?route('website.index'):route('dashboard.index') }}')">
                             <i class="fa fa-print"></i> Print Invoice
                         </button>
-                        <a class="btn btn-primary text-white"
+                        <a class="btn btn-primary"
                            href="{{ route('website.mentors.create',[$payment,\App\Enum\StepEnum::USER_INFO,$model->id,'action'=>'edit']) }}">
                             <i class="fa fa-edit"></i> Edit Profile
                         </a>
                         @guest
-                            <a class="btn btn-danger" href="{{ route('login') }}">
+                            <a class="btn btn-primary" href="{{ route('login') }}">
                                 <i class="fa fa-check"></i>Login
                             </a>
                         @endguest
