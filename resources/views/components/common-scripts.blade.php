@@ -134,7 +134,7 @@
             if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                 Swal.fire({
                     title: 'Manage Payment',
-                    html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'input dropify','id'=>'file_name']) }}</div>`,
+                    html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'form-control dropify','id'=>'file_name']) }}</div>`,
                     showCancelButton: true,
                     showConfirmButton: true,
                     confirmButtonText: "Proceeded",
@@ -221,7 +221,7 @@
             if (payment_type === '{{ \App\Enum\PaymentTypeEnum::OFFLINE }}') {
                 Swal.fire({
                     title: 'Manage Payment',
-                    html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'input dropify','id'=>'file_name']) }}</div>`,
+                    html: `<div class="fs-13" style="text-align:left;">{!!  Html::decode(Form::label('transaction_id' ,__('general.transaction_id').'<i class="text-danger">*</i>' ,['class'=>'form-label'])) !!}{{ Form::text('transaction_id',null,['class'=>'form-control','id'=>'transaction_id']) }}{!!  Html::decode(Form::label('file_name' ,__('general.receipt'),['class'=>'form-label'])) !!}{{ Form::file('file_name',['class'=>'form-control dropify','id'=>'file_name']) }}</div>`,
                     showCancelButton: true,
                     showConfirmButton: true,
                     confirmButtonText: "Proceeded",
