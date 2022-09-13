@@ -1,5 +1,6 @@
 <?php
 return [
+    'view_services'=>'View Services',
     'edit_blogs' => 'Edit Blogs',
     'image' => 'Image',
     'heading' => 'Heading',
