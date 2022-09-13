@@ -36,7 +36,7 @@ class PaymentReceiptController extends Controller
 
     public function logs($subscription_id): Factory|View|Application
     {
-        $records = PaymentReceipt::with('subscription', 'subscribed');
+        $records = PaymentReceipt::with('package_subscription','plan_subscription', 'subscribed');
         if ($subscription_id) {
             $records = $records->where('subscription_id', $subscription_id);
         }
