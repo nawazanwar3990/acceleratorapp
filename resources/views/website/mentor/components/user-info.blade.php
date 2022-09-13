@@ -23,7 +23,7 @@
                 {!!  Html::decode(Form::label('password' ,__('general.password').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 @if(isset($model->user))
                     <input type="password" name="password" value="{{$model->user->normal_password}}"
-                           class="input"/>
+                           class="form-control"/>
                 @else
                     {!!  Form::password('password',['id'=>'password','class'=>'input', 'required']) !!}
                 @endif
@@ -34,7 +34,7 @@
             <div class="col-md-6 mb-3">
                 {!!  Html::decode(Form::label('confirm_password' ,__('general.confirm_password').'<i class="text-danger">*</i>' ,['class'=>'form-label']))   !!}
                 @if(isset($model->user))
-                    <input type="password" name="password_confirmation" class="input"
+                    <input type="password" name="password_confirmation" class="form-control"
                            value="{{$model->user->normal_password}}"/>
                 @else
                     {!!  Form::password('password_confirmation',['id'=>'confirm_password','class'=>'input','required']) !!}

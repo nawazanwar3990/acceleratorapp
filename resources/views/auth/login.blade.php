@@ -47,11 +47,12 @@
                                 <div class="d-flex no-block align-items-center">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="customCheck1" name="remember">
-                                        <label class="form-check-label"
-                                               for="customCheck1">{{ __('general.remember_me') }}</label>
+                                        <label class="form-check-labe text-white" for="customCheck1">{{ __('general.remember_me') }}</label>
                                     </div>
                                     <div class="ms-auto">
-                                        <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Forgot pwd?</a>
+                                        <a href="javascript:void(0)" id="to-recover" class="text-white">
+                                            <i class="fas fa-lock m-r-5"></i> Forgot pwd?
+                                        </a>
                                     </div>
                                 </div>
                             </div>

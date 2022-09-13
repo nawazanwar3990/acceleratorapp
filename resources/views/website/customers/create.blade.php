@@ -9,7 +9,7 @@
                     {!! Form::open(['url' =>route('website.customers.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                     @include('website.customers.fields')
                     <div class="text-center mt-4">
-                        <button type="submit" class="button button-cta is-bold btn-align primary-btn raised is-rounded">
+                        <button type="submit" class="btn btn-sm btn-primary">
                             {{ trans('general.save') }} <i class="bx bx-arrow-to-right"></i>
                         </button>
                     </div>

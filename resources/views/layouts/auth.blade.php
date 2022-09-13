@@ -10,6 +10,26 @@
     <link href="{{ asset('css/auth.min.css') }}" rel="stylesheet">
 </head>
 <body class="skin-default card-no-border">
+<style>
+    .login-box {
+        width: 400px;
+        margin: 0 auto;
+        background-color:#343a40;
+        border-radius: 13px;
+        color: white;
+    }
+
+    .login-box input {
+        border: none;
+        color: white !important;
+    }
+
+    .login-box button {
+        background-color: black;
+        border: none;
+        opacity: 1;
+    }
+</style>
 {{$content}}
 <x-session-messages></x-session-messages>
 </body>

@@ -9,17 +9,17 @@
                 </td>
                 <td>
                     {!! Form::label('certifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('certifications[institute][]',$certification->institute,['id'=>'certifications[institute][]','class'=>'input']) !!}
+                    {!!  Form::text('certifications[institute][]',$certification->institute,['id'=>'certifications[institute][]','class'=>'form-control']) !!}
                 </td>
             </tr>
             <tr>
                 <td>
                     {!! Form::label('certifications[year][]',__('general.year'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('certifications[year][]',$certification->year,['id'=>'certifications[year][]','class'=>'input']) !!}
+                    {!!  Form::text('certifications[year][]',$certification->year,['id'=>'certifications[year][]','class'=>'form-control']) !!}
                 </td>
                 <td>
                     {!! Form::label('certifications[any_distinction][]',__('general.any_distinction'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('certifications[any_distinction][]',$certification->any_distinction,['id'=>'certifications[any_distinction][]','class'=>'input']) !!}
+                    {!!  Form::text('certifications[any_distinction][]',$certification->any_distinction,['id'=>'certifications[any_distinction][]','class'=>'form-control']) !!}
                 </td>
             </tr>
             <tr>
@@ -45,21 +45,21 @@
         <tr>
             <td>
                 {!! Form::label('certifications[certificate_name][]',__('general.certificate_name'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('certifications[certificate_name][]',null,['id'=>'certifications[certificate_name][]','class'=>'input','autocomplete'=>'off']) !!}
+                {!!  Form::text('certifications[certificate_name][]',null,['id'=>'certifications[certificate_name][]','class'=>'form-control','autocomplete'=>'off']) !!}
             </td>
             <td>
                 {!! Form::label('certifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('certifications[institute][]',null,['id'=>'certifications[institute][]','class'=>'input']) !!}
+                {!!  Form::text('certifications[institute][]',null,['id'=>'certifications[institute][]','class'=>'form-control']) !!}
             </td>
         </tr>
         <tr>
             <td>
                 {!! Form::label('certifications[year][]',__('general.year'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('certifications[year][]',null,['id'=>'certifications[year][]','class'=>'input']) !!}
+                {!!  Form::text('certifications[year][]',null,['id'=>'certifications[year][]','class'=>'form-control']) !!}
             </td>
             <td>
                 {!! Form::label('certifications[any_distinction][]',__('general.any_distinction'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('certifications[any_distinction][]',null,['id'=>'certifications[any_distinction][]','class'=>'input']) !!}
+                {!!  Form::text('certifications[any_distinction][]',null,['id'=>'certifications[any_distinction][]','class'=>'form-control']) !!}
             </td>
         </tr>
         <tr>
