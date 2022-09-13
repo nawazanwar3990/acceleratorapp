@@ -203,3 +203,43 @@
     background-size: cover;
     background-position: center;
 }
+.how-its-work-holder {
+    background-size: 100% 100% !Important;
+    margin-top: -80px !important;
+    padding-top: 70px !important;
+    padding-bottom: 20px !important;
+}
+.how-its-work-holder h1{
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+    margin: 30px 0px 0px 0px !important;
+    text-align: center;
+}
+.how-its-work-holder .card-title{
+    margin-top: 22px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #b1bd32;
+    text-align:center;
+}
+.how-its-work-holder .card-text{
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+}
+.how-its-work-holder img{
+    width: 193px;
+    height: 143px;
+    margin: 0 auto;
+    border: 7px solid #fff;
+    box-shadow: #b4b4b4 1px 1.7px 5.8px;
+}
+.how-its-work-holder img::after{
+    border: 1px solid red;
+}
