@@ -1,7 +1,16 @@
 <x-page-layout
     :page="$page">
     <x-slot name="content">
-        <div class="container pb-5">
+        <div class="container py-5">
+            <div class="row">
+                @if($startup_type)
+                    @include(sprintf('website.startups.components.%s-%s',$startup_for,$startup_type))
+                @else
+                    @include(sprintf('website.startups.components.%s',$startup_for))
+                @endif
+            </div>
+        </div>
+      {{--  <div class="container pb-5">
             <div class="pricing-wrapper">
                 <div class="pricing-tabs mb-0">
                     @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
@@ -31,6 +40,6 @@
                     @endif
                 </div>
             </div>
-        </div>
+        </div>--}}
     </x-slot>
 </x-page-layout>
