@@ -8,8 +8,8 @@
                         <span class="badge bg-danger rounded-pill">For Rent</span>
                     </div>
                     <div class="card-body bg-white px-0">
-                        <h3 class="card-title text-center">{{ $record->user->getFullName() }}</h3>
-                        <a class="text-primary" href="{{ route('website.startups.services.index',[$startup_for,$startup_type,$record->user->id]) }}">
+                        <h6 class="card-title text-center">{{ $record->user->getFullName() }}</h6>
+                        <a class="learn_more" href="{{ route('website.startups.services.index',[$startup_for,$startup_type,$record->user->id]) }}">
                             {{ trans('general.view_services') }}
                         </a>
                     </div>
