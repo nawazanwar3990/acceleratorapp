@@ -10,25 +10,25 @@
                         <div class="col-12 my-3 text-right">
                             @if($type)
                                 @if($type==\App\Enum\RoleEnum::BUSINESS_ACCELERATOR)
-                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link mr-3"
+                                    <a class="btn btn-primary mr-3"
                                        href="{{ route('website.ba.create',[$subscription->subscribed->ba->type,$subscription->subscribed->ba->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->ba->id,'action'=>'edit']) }}">
                                         {{ trans('general.edit_profile') }}
                                     </a>
                                 @endif
                                 @if($type==\App\Enum\RoleEnum::FREELANCER)
-                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link mr-3"
+                                    <a class="btn btn-primary mr-3"
                                        href="{{ route('website.freelancers.create',[$subscription->subscribed->freelancer->type,$subscription->subscribed->freelancer->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->freelancer->id,'action'=>'edit']) }}">
                                         {{ trans('general.edit_profile') }}
                                     </a>
                                 @endif
                                 @if($type==\App\Enum\RoleEnum::MENTOR)
-                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link mr-3"
+                                    <a class="btn btn-primary mr-3"
                                        href="{{ route('website.mentors.create',[$subscription->subscribed->mentor->payment_process,\App\Enum\StepEnum::USER_INFO,$subscription->subscribed->mentor->id,'action'=>'edit']) }}">
                                         {{ trans('general.edit_profile') }}
                                     </a>
                                 @endif
                                 @if(!$receipt)
-                                    <a class="button button-cta btn-align primary-btn z-index-2 scroll-link" onclick="apply_pending_payment();">
+                                    <a class="btn btn-primary" onclick="apply_pending_payment();">
                                         {{ trans('general.apply_payment') }} <i class="bx bx-plus-circle"></i>
                                     </a>
                                 @endif
