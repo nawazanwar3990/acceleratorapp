@@ -5,21 +5,21 @@
             <tr>
                 <td>
                     {!! Form::label('experiences[company_name][]',__('general.company_name'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('experiences[company_name][]',$experience->company_name,['id'=>'experiences[company_name][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                    {!!  Form::text('experiences[company_name][]',$experience->company_name,['id'=>'experiences[company_name][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                 </td>
                 <td>
                     {!! Form::label('experiences[designation][]',__('general.designation'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('experiences[designation][]',$experience->designation,['id'=>'experiences[designation][]','class'=>'input input-sm']) !!}
+                    {!!  Form::text('experiences[designation][]',$experience->designation,['id'=>'experiences[designation][]','class'=>'form-control form-control-sm']) !!}
                 </td>
             </tr>
             <tr>
                 <td>
                     {!! Form::label('experiences[duration][]',__('general.duration'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('experiences[duration][]',$experience->duration,['id'=>'experiences[duration][]','class'=>'input input-sm']) !!}
+                    {!!  Form::text('experiences[duration][]',$experience->duration,['id'=>'experiences[duration][]','class'=>'form-control form-control-sm']) !!}
                 </td>
                 <td>
                     {!! Form::label('experiences[any_achievement][]',__('general.any_achievement'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('experiences[any_achievement][]',$experience->any_achievement,['id'=>'experiences[any_achievement][]','class'=>'input input-sm']) !!}
+                    {!!  Form::text('experiences[any_achievement][]',$experience->any_achievement,['id'=>'experiences[any_achievement][]','class'=>'form-control form-control-sm']) !!}
                 </td>
             </tr>
             <tr>
@@ -45,21 +45,21 @@
         <tr>
             <td>
                 {!! Form::label('experiences[company_name][]',__('general.company_name'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('experiences[company_name][]',null,['id'=>'experiences[company_name][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                {!!  Form::text('experiences[company_name][]',null,['id'=>'experiences[company_name][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
             </td>
             <td>
                 {!! Form::label('experiences[designation][]',__('general.designation'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('experiences[designation][]',null,['id'=>'experiences[designation][]','class'=>'input input-sm']) !!}
+                {!!  Form::text('experiences[designation][]',null,['id'=>'experiences[designation][]','class'=>'form-control form-control-sm']) !!}
             </td>
         </tr>
         <tr>
             <td>
                 {!! Form::label('experiences[duration][]',__('general.duration'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('experiences[duration][]',null,['id'=>'experiences[duration][]','class'=>'input input-sm']) !!}
+                {!!  Form::text('experiences[duration][]',null,['id'=>'experiences[duration][]','class'=>'form-control form-control-sm']) !!}
             </td>
             <td>
                 {!! Form::label('experiences[any_achievement][]',__('general.any_achievement'),['class'=>'form-label fs-13']) !!}
-                {!!  Form::text('experiences[any_achievement][]',null,['id'=>'experiences[any_achievement][]','class'=>'input input-sm']) !!}
+                {!!  Form::text('experiences[any_achievement][]',null,['id'=>'experiences[any_achievement][]','class'=>'form-control form-control-sm']) !!}
             </td>
         </tr>
         <tr>

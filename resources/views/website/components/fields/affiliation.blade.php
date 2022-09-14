@@ -13,13 +13,13 @@
                 <tbody>
                 <tr>
                     <td>
-                        {!!  Form::text('affiliations[affiliated_by][]',$affiliation['affiliated_by'],['id'=>'affiliations[affiliated_by][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                        {!!  Form::text('affiliations[affiliated_by][]',$affiliation['affiliated_by'],['id'=>'affiliations[affiliated_by][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                     </td>
                     <td>
-                        {!!  Form::text('affiliations[affiliation_detail][]',$affiliation['affiliation_detail'],['id'=>'affiliations[affiliation_detail][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                        {!!  Form::text('affiliations[affiliation_detail][]',$affiliation['affiliation_detail'],['id'=>'affiliations[affiliation_detail][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                     </td>
                     <td>
-                        {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'input input-sm']) !!}
+                        {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'form-control form-control-sm']) !!}
                         <a href="{{ asset($affiliation['affiliation_certificate']) }}" class="fs-13 text-info text-center view_image" download>{{ trans('general.view_file') }}</a>
                     </td>
                     <td style="width: 100px;vertical-align: middle;" class="text-center">
@@ -41,13 +41,13 @@
             <tbody>
             <tr>
                 <td>
-                    {!!  Form::text('affiliations[affiliated_by][]',null,['id'=>'affiliations[affiliated_by][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                    {!!  Form::text('affiliations[affiliated_by][]',null,['id'=>'affiliations[affiliated_by][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                 </td>
                 <td>
-                    {!!  Form::text('affiliations[affiliation_detail][]',null,['id'=>'affiliations[affiliation_detail][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                    {!!  Form::text('affiliations[affiliation_detail][]',null,['id'=>'affiliations[affiliation_detail][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                 </td>
                 <td>
-                    {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'input input-sm']) !!}
+                    {!! Form::file('affiliations[affiliation_certificate][]',['id'=>'affiliations[affiliation_certificate][]','class'=>'form-control form-control-sm']) !!}
                 </td>
                 <td style="width: 100px;vertical-align: middle;" class="text-center">
                     <a href="javascript:void(0);"

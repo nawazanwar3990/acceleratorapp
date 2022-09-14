@@ -21,13 +21,13 @@
                         <tbody>
                         <tr>
                             <td>
-                                {!!  Form::text('documents[document_type][]',$document['document_type'],['id'=>'documents[document_type][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                                {!!  Form::text('documents[document_type][]',$document['document_type'],['id'=>'documents[document_type][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                             </td>
                             <td>
-                                {!!  Form::text('documents[document_description][]',$document['document_description'],['id'=>'documents[document_description][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                                {!!  Form::text('documents[document_description][]',$document['document_description'],['id'=>'documents[document_description][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                             </td>
                             <td>
-                                {!! Form::file('documents[document_attachment][]',['id'=>'documents[document_attachment][]','class'=>'input input-sm']) !!}
+                                {!! Form::file('documents[document_attachment][]',['id'=>'documents[document_attachment][]','class'=>'form-control form-control-sm']) !!}
                                 <a href="{{ asset($document['filename']) }}"
                                    class="fs-13 text-info text-center view_image" download>{{ trans('general.view_file') }}</a>
                             </td>
@@ -50,13 +50,13 @@
                     <tbody>
                     <tr>
                         <td>
-                            {!!  Form::text('documents[document_type][]',null,['id'=>'documents[document_type][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                            {!!  Form::text('documents[document_type][]',null,['id'=>'documents[document_type][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                         </td>
                         <td>
-                            {!!  Form::text('documents[document_description][]',null,['id'=>'documents[document_description][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                            {!!  Form::text('documents[document_description][]',null,['id'=>'documents[document_description][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                         </td>
                         <td>
-                            {!! Form::file('documents[document_attachment][]',['id'=>'documents[document_attachment][]','class'=>'input input-sm']) !!}
+                            {!! Form::file('documents[document_attachment][]',['id'=>'documents[document_attachment][]','class'=>'form-control form-control-sm']) !!}
                         </td>
                         <td style="width: 100px;vertical-align: middle;" class="text-center">
                             <a href="javascript:void(0);"

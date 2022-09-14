@@ -5,7 +5,7 @@
             <tr>
                 <td>
                     {!! Form::label('certifications[certificate_name][]',__('general.certificate_name'),['class'=>'form-label fs-13']) !!}
-                    {!!  Form::text('certifications[certificate_name][]',$certification->certificate_name,['id'=>'certifications[certificate_name][]','class'=>'input input-sm','autocomplete'=>'off']) !!}
+                    {!!  Form::text('certifications[certificate_name][]',$certification->certificate_name,['id'=>'certifications[certificate_name][]','class'=>'form-control form-control-sm','autocomplete'=>'off']) !!}
                 </td>
                 <td>
                     {!! Form::label('certifications[institute][]',__('general.institute'),['class'=>'form-label fs-13']) !!}
