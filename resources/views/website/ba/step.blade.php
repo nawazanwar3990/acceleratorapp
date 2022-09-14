@@ -14,18 +14,18 @@
                             <div class="text-center mt-4">
                                 @if($step==\App\Enum\StepEnum::PACKAGES)
                                     <a onclick="apply_ba_subscription();"
-                                       class="btn btn-sm btn-primary">
+                                       class="btn  btn-primary">
                                         {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
                                     </a>
                                 @else
                                     @if($action)
                                         <button type="submit"
-                                                class="btn btn-sm btn-primary">
+                                                class="btn btn-primary">
                                             {{ trans('general.update') }} <i class="bx bx-arrow-to-right"></i>
                                         </button>
                                     @else
                                         <button type="submit"
-                                                class="btn btn-sm btn-primary">
+                                                class="btn btn-primary">
                                             {{ trans('general.next') }} <i class="bx bx-arrow-to-right"></i>
                                         </button>
                                     @endif
