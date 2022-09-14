@@ -1,38 +1,31 @@
 <x-page-layout
     :page="$page">
     <x-slot name="content">
-        <div class="container py-5">
-            <div class="row">
-                @if($startup_type)
-                    @include(sprintf('website.startups.components.%s-%s',$startup_for,$startup_type))
-                @else
-                    @include(sprintf('website.startups.components.%s',$startup_for))
-                @endif
-            </div>
-        </div>
-      {{--  <div class="container pb-5">
-            <div class="pricing-wrapper">
-                <div class="pricing-tabs mb-0">
-                    @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
-                        @php
-                            $new_startup_for = \App\Services\GeneralService::generateStartupFor($access_key);
-                            $new_start_type = \App\Services\GeneralService::generateStartType($access_key);
-                        @endphp
-                        <a class="tab-item @if($new_startup_for==$startup_for AND $new_start_type==$startup_type) is-active @endif"
-                           href="{{ route('website.startups.index',[$new_startup_for,$new_start_type]) }}">
-                            <img src="{{ asset('assets/img/graphics/icons/custom-pricing-icon-5-green.svg') }}"
-                                 alt="{{$access_value}}">
-                            <span>{{ $access_value }}</span>
-                        </a>
-                    @endforeach
+        <section class="startup-holder py-5" style="background: url('/uploads/startup.PNG')">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-10 m-auto">
+                        <ul class="startup-nav-holder">
+                            @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
+                                @php
+                                    $new_startup_for = \App\Services\GeneralService::generateStartupFor($access_key);
+                                    $new_start_type = \App\Services\GeneralService::generateStartType($access_key);
+                                @endphp
+                                <li class="nav-item  @if($new_startup_for==$startup_for AND $new_start_type==$startup_type) active @endif">
+                                    <a href="{{ route('website.startups.index',[$new_startup_for,$new_start_type])}}"
+                                       class="nav-link">
+                                        {{ $access_value }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="
-            columns
-            services-cards
-            is-minimal is-vcentered is-gapless is-multiline
-          ">
-                <div class="columns is-multiline">
+        </section>
+        <section class="bg-body py-5">
+            <div class="container">
+                <div class="row">
                     @if($startup_type)
                         @include(sprintf('website.startups.components.%s-%s',$startup_for,$startup_type))
                     @else
@@ -40,6 +33,6 @@
                     @endif
                 </div>
             </div>
-        </div>--}}
+        </section>
     </x-slot>
 </x-page-layout>

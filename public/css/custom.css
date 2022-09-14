@@ -386,46 +386,54 @@
     background-color: white !important;
 }
 
-.site-first-btn-color {
+.site-first-btn-color, .bg-success {
     background-color: #01023B !important;
     color: white !important;
     border: #01023B !important;
 }
+
 .site-first-btn-color:hover {
     background-color: #6641F3 !important;
     color: white !important;
     border: #6641F3 !important;
 }
+
 .site-second-btn-color {
     background-color: #F784B2 !important;
     color: white !important;
     border: #F784B2 !important;
 }
+
 .site-second-btn-color:hover {
     background-color: #6641F3 !important;
     color: white !important;
     border: #6641F3 !important;
 }
+
 .site-third-btn-color {
     background-color: #6641F3 !important;
     color: white !important;
     border: #6641F3 !important;
 }
+
 .site-third-btn-color:hover {
     background-color: #6641F3 !important;
     color: white !important;
     border: #6641F3 !important;
 }
+
 .site-fourth-btn-color {
     background-color: #00D3E1 !important;
     color: white !important;
     border: #00D3E1 !important;
 }
+
 .site-fourth-btn-color:hover {
     background-color: #6641F3 !important;
     color: white !important;
     border: #6641F3 !important;
 }
+
 .site-mix-color {
 
 }
@@ -464,6 +472,7 @@ footer .nav-holder img {
     padding: 3px;
     font-size: 16px;
 }
+
 .login-box {
     width: 400px;
     margin: 0 auto;
@@ -481,7 +490,55 @@ footer .nav-holder img {
     border: none;
     opacity: 1;
 }
+
 .form-check-input:checked {
     background-color: #01023B;
     border-color: #01023B;
+}
+
+.badge {
+    padding: 5px !important;
+}
+
+.progress-bar li::before {
+    border: 1px solid blue;
+    background-color: #1d1dc3;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.startup-nav-holder li {
+    background: #eeeeee;
+    padding: 18px;
+    color: black !IMPORTANT;
+    cursor: pointer;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.startup-nav-holder li.active, .startup-nav-holder li:hover {
+    background: white !Important;
+    color: #000 !IMPORTANT;
+    border: 2px solid;
+    border-image-source: linear-gradient(to right, #f49648, #00ada9);
+    border-image-slice: 1;
+}
+
+.startup-nav-holder li a {
+    background: transparent;
+    border: none;
+    padding: 0 0 2px 0;
+    display: inline;
+    color: #6f6f6f;
+    margin: 0;
+    cursor: pointer;
+}
+.startup-holder{
+    background-size: contain !important;
+}
+.startup-holder .card-title{
+    font-size: 19px;
+    font-weight: bold;
 }

@@ -61,8 +61,8 @@
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonText: "Proceeded",
-                confirmButtonColor: '#00b289',
-                cancelButtonColor: '#00b289',
+                confirmButtonColor: '#01023B',
+                cancelButtonColor: '#01023B',
                 focusConfirm: false,
                 preConfirm: () => {
                     const reason = Swal.getPopup().querySelector('#reason').value
@@ -111,8 +111,8 @@
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonText: "Proceeded",
-                confirmButtonColor: '#00b289',
-                cancelButtonColor: '#00b289',
+                confirmButtonColor: '#01023B',
+                cancelButtonColor: '#01023B',
                 focusConfirm: false,
                 preConfirm: () => {
                     const reason = Swal.getPopup().querySelector('#reason').value
@@ -161,8 +161,8 @@
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonText: "Proceeded",
-                confirmButtonColor: '#00b289',
-                cancelButtonColor: '#00b289',
+                confirmButtonColor: '#01023B',
+                cancelButtonColor: '#01023B',
                 focusConfirm: false,
                 preConfirm: () => {
                     const reason = Swal.getPopup().querySelector('#reason').value
