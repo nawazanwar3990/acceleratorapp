@@ -23,7 +23,7 @@
                 </div>
             </div>
         </section>
-        <section class="bg-body py-5">
+        <section class="startup-holder  bg-body py-5">
             <div class="container">
                 <div class="row">
                     @if($startup_type)
