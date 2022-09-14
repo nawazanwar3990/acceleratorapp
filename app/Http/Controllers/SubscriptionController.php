@@ -46,7 +46,7 @@ class SubscriptionController extends Controller
         ));
     }
 
-    public function viewPendingSubscription(Request $request, $id, $type)
+    public function viewPendingSubscription(Request $request, $id, $type): Factory|View|\Illuminate\Http\RedirectResponse|Application
     {
         $pageTitle = trans('general.pending_subscription');
         $subscription = Subscription::find($id);
@@ -59,7 +59,7 @@ class SubscriptionController extends Controller
         }
         $receipt = PaymentReceipt::where('payment_for', PaymentForEnum::PACKAGE_APPROVAL)
             ->where('subscribed_id', $subscription->subscribed->id)
-            ->where('subscription_id', $subscription->id)
+            ->where('subscription_id', $subscription->subscription_id)
             ->where('is_processed', false);
         if ($receipt->exists()) {
             $receipt = $receipt->first();
