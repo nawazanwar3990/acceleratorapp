@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="mb-3 text-center m-t-20">
-                            <button class="btn w-100 btn-lg btn-info btn-rounded text-white" type="submit">{{ __('general.login') }}</button>
+                            <button class="btn btn-primary site-first-btn-color text-white" type="submit">{{ __('general.login') }}</button>
                         </div>
                     </form>
                 </div>

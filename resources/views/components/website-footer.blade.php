@@ -1,45 +1,3 @@
-<style>
-    footer {
-        background-color: #1c1c1c;
-    }
-
-    footer img {
-        width: 140px;
-    }
-
-    footer .nav-holder {
-        line-height: 38px;
-    }
-
-    footer .nav-holder .col.right {
-        padding-left: 79px;
-    }
-
-    footer .nav-holder a {
-        font-size: 15px;
-        line-height: 20px;
-    }
-
-    footer .nav-holder img {
-        display: block;
-        width: 80px;
-        height: 2px;
-    }
-
-    .btn {
-        color: white;
-        background-color: rgb(56, 148, 143);
-        border: none;
-    }
-
-    .btn-circle {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        padding: 3px;
-        font-size: 16px;
-    }
-</style>
 <footer class="py-5">
     <div class="container">
         <div class="row">
@@ -69,14 +27,14 @@
             <div class="col-md-4 col-sm-4 col-xs-12 align-self-center text-center">
                 <h4 class="text-white">Stay Updated with the latest news</h4>
                 <div class="footer-buttons mt-3 mb-4">
-                    <a class="btn btn-primary btn-xs mx-2">Subscribed</a>
-                    <a class="btn btn-primary btn-xs btn-circle mx-2">
+                    <a class="btn btn-primary btn-xs mx-2 site-first-btn-color">Subscribed</a>
+                    <a class="btn btn-primary btn-xs btn-circle mx-2 site-second-btn-color">
                         <i class="bx bxl-twitter"></i>
                     </a>
-                    <a class="btn btn-primary btn-xs btn-circle mx-2">
+                    <a class="btn btn-primary btn-xs btn-circle mx-2 site-third-btn-color">
                         <i class="bx bxl-instagram"></i>
                     </a>
-                    <a class="btn btn-primary btn-xs btn-circle mx-2">
+                    <a class="btn btn-primary btn-xs btn-circle mx-2 site-fourth-btn-color">
                         <i class="bx bxl-youtube"></i>
                     </a>
                 </div>

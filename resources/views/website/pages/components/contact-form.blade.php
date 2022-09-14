@@ -4,7 +4,7 @@
 
             <div class="column is-6" style="align-self: center !important;">
                 <div class="content-div">
-                    
+
                     <h1 class="title is-1 has-text-black">Contact Information</h1>
                     <br>
                     <p class="subtitle is-4" style="text-align: justify !important;">
@@ -37,7 +37,7 @@
                                            class="input is-medium"
                                            required>
                                     <span class="icon is-left is-small"><i class="sl sl-icon-user"></i></span>
-                                    
+
                                 </div>
                             </div>
 
@@ -57,11 +57,11 @@
                                     <textarea name="message" id="message" placeholder="Your Message" rows="10"
                                               class="textarea" required></textarea>
                                               <br>
-                                   
+
                                 </div>
                             </div>
 
-                            <button type="submit" class="button button-cta btn-align raised primary-btn">Submit</button>
+                            <button type="submit" class="btn btn-primary site-first-btn-color">Submit</button>
                         </div>
                     </div>
                 </div>

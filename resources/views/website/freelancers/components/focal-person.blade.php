@@ -28,12 +28,12 @@
                 <td style="text-align: center;padding-top: 42px;">
                     <a href="javascript:void(0);"
                        onclick="clone_table_body(this);"
-                       class="btn btn-xs btn-info">
+                       class="btn btn-xs btn-primary site-first-btn-color">
                         <i class="bx bx-plus"></i>
                     </a>
                     <a href="javascript:void(0);" tabindex="18"
                        onclick="remove_table_body(this);"
-                       class="btn btn-xs btn-danger">
+                       class="btn btn-xs btn-primary site-first-btn-color">
                         <i class="bx bx-minus"></i>
                     </a>
                 </td>

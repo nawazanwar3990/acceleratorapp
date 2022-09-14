@@ -11,8 +11,8 @@
             showCancelButton: true,
             showConfirmButton: true,
             confirmButtonText: "Proceeded",
-            confirmButtonColor: '#00b289',
-            cancelButtonColor: '#00b289',
+            confirmButtonColor: '#01023B',
+            cancelButtonColor: '#01023B',
             focusConfirm: false,
             preConfirm: () => {
                 const payment_type = Swal.getPopup().querySelector('#payment_type').value
@@ -42,8 +42,8 @@
                     showCancelButton: true,
                     showConfirmButton: true,
                     confirmButtonText: "Proceeded",
-                    confirmButtonColor: '#00b289',
-                    cancelButtonColor: '#00b289',
+                    confirmButtonColor: '#01023B',
+                    cancelButtonColor: '#01023B',
                     focusConfirm: false,
                     preConfirm: () => {
                         const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
@@ -119,8 +119,8 @@
             showCancelButton: true,
             showConfirmButton: true,
             confirmButtonText: "Proceeded",
-            confirmButtonColor: '#00b289',
-            cancelButtonColor: '#00b289',
+            confirmButtonColor: '#01023B',
+            cancelButtonColor: '#01023B',
             focusConfirm: false,
             preConfirm: () => {
                 const payment_type = Swal.getPopup().querySelector('#payment_type').value
@@ -138,8 +138,8 @@
                     showCancelButton: true,
                     showConfirmButton: true,
                     confirmButtonText: "Proceeded",
-                    confirmButtonColor: '#00b289',
-                    cancelButtonColor: '#00b289',
+                    confirmButtonColor: '#01023B',
+                    cancelButtonColor: '#01023B',
                     focusConfirm: false,
                     preConfirm: () => {
                         const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
@@ -206,8 +206,8 @@
             showCancelButton: true,
             showConfirmButton: true,
             confirmButtonText: "Proceeded",
-            confirmButtonColor: '#00b289',
-            cancelButtonColor: '#00b289',
+            confirmButtonColor: '#01023B',
+            cancelButtonColor: '#01023B',
             focusConfirm: false,
             preConfirm: () => {
                 const payment_type = Swal.getPopup().querySelector('#payment_type').value
@@ -225,8 +225,8 @@
                     showCancelButton: true,
                     showConfirmButton: true,
                     confirmButtonText: "Proceeded",
-                    confirmButtonColor: '#00b289',
-                    cancelButtonColor: '#00b289',
+                    confirmButtonColor: '#01023B',
+                    cancelButtonColor: '#01023B',
                     focusConfirm: false,
                     preConfirm: () => {
                         const transaction_id = Swal.getPopup().querySelector('#transaction_id').value;
@@ -300,8 +300,8 @@
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonText: "Proceeded",
-                confirmButtonColor: '#00b289',
-                cancelButtonColor: '#00b289',
+                confirmButtonColor: '#01023B',
+                cancelButtonColor: '#01023B',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;
@@ -348,8 +348,8 @@
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonText: "Proceeded",
-                confirmButtonColor: '#00b289',
-                cancelButtonColor: '#00b289',
+                confirmButtonColor: '#01023B',
+                cancelButtonColor: '#01023B',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;
@@ -397,8 +397,8 @@
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonText: "Proceeded",
-                confirmButtonColor: '#00b289',
-                cancelButtonColor: '#00b289',
+                confirmButtonColor: '#01023B',
+                cancelButtonColor: '#01023B',
                 focusConfirm: false,
                 preConfirm: () => {
                     const payment_addition_information = Swal.getPopup().querySelector('#payment_addition_information').value;

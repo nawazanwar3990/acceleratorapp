@@ -42,7 +42,7 @@
                         </div>
                         @if(!$receipt)
                             <div class="col-12 my-3 text-center">
-                                <a class="btn btn-primary" onclick="apply_expire_payment();">
+                                <a class="btn  btn-primary site-first-btn-color" onclick="apply_expire_payment();">
                                     {{ trans('general.apply_payment') }} <i class="bx bx-plus-circle"></i>
                                 </a>
                             </div>

@@ -34,12 +34,12 @@
                             <td style="width: 100px;vertical-align: middle;" class="text-center">
                                 <a href="javascript:void(0);"
                                    onclick="clone_row(this);"
-                                   class="button primary-btn btn-sm">
+                                   class="btn  btn-primary site-first-btn-color btn-sm">
                                     <i class="bx bx-plus"></i>
                                 </a>
                                 <a href="javascript:void(0);" tabindex="18"
                                    onclick="remove_clone_row(this);"
-                                   class="button primary-btn btn-sm">
+                                   class="btn  btn-primary site-first-btn-color btn-sm">
                                     <i class="bx bx-minus"></i>
                                 </a>
                             </td>
