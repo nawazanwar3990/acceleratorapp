@@ -49,6 +49,7 @@
                 selector: '.' + tiny_selector,
                 extended_valid_elements: 'i[class]',
                 theme: 'modern',
+                height : "500",
                 plugins: plugins,
                 toolbar1: toolbar1,
                 entity_encoding: "raw",
