@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\CMS;
+namespace Database\Seeders;
 
 use App\Enum\TableEnum;
 use Carbon\Carbon;

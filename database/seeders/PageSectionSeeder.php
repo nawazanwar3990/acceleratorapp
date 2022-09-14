@@ -1,14 +1,20 @@
 <?php
 
-namespace Database\Seeders\CMS;
+namespace Database\Seeders;
 
 use App\Enum\TableEnum;
 use Carbon\Carbon;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class HomePageSectionsSeeder extends Seeder
+class PageSectionSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
