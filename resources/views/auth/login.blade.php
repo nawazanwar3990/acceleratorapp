@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
 <x-auth-layout
     :page="$page">
     <x-slot name="content">
         <div class="login-register" style="background-image:url({{ $page->banner_image }});">
             <div class="login-box card">
-                <div class="card-body">
+                <div class="card-body" style="padding: 1rem 1rem 0 1rem">
                     <form class="form-horizontal form-material"
                           id="loginform"
                           action="{{ route('login') }}"
@@ -47,18 +48,21 @@
                                 <div class="d-flex no-block align-items-center">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="customCheck1" name="remember">
-                                        <label class="form-check-labe text-white" for="customCheck1">{{ __('general.remember_me') }}</label>
+                                        <label class="form-check-label text-white" for="customCheck1">{{ __('general.remember_me') }}</label>
                                     </div>
                                     <div class="ms-auto">
                                         <a href="javascript:void(0)" id="to-recover" class="text-white">
-                                            <i class="fas fa-lock m-r-5"></i> Forgot pwd?
+                                            <i class="fas fa-lock m-r-5"></i> Forgot password?
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3 text-center m-t-20">
-                            <button class="btn btn-primary site-first-btn-color text-white" type="submit">{{ __('general.login') }}</button>
+                        <div class="mb-3  text-center">
+                            <button class="btn btn-login site-first-btn-color text-white px-5" type="submit">{{ __('general.login') }}</button>
+                        </div>
+                        <div class="text-center mt-4" style="cursor: pointer">
+                            Become a member?<a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')" class="ms-2 signup-text p-2" title="Become a member">Sign Up</a>
                         </div>
                     </form>
                 </div>
@@ -66,3 +70,4 @@
         </div>
     </x-slot>
 </x-auth-layout>
+<script src="{{asset('js/dashboard.min.js')}}"></script>

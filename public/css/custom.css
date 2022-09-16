@@ -1,3 +1,6 @@
+.navbar{
+    padding: 0!important;
+}
 .navbar .navbar-toggler {
     padding: 0.5rem;
     border: 0;
@@ -7,26 +10,32 @@
     margin-right: 21px;
 }
 
+
 .navbar .navbar-brand {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .navbar .navbar-brand img {
-    height: 1rem;
+    height: auto;
 }
 
 .navbar .navbar-nav {
-    padding-top: 1.2rem;
-    padding-bottom: 1rem;
+    /*padding-top: 1.2rem;*/
+    /*padding-bottom: 1rem;*/
     margin-right: 99px;
 }
 
 .navbar a {
     font-weight: 500;
     color: white !important;
-    font-size: 17px;
+    font-size: 15px;
     text-transform: capitalize;
+    transition: 1s;
+}
+.navbar a:hover{
+    font-weight: bold!important;
+    transition: .5s;
 }
 
 .page-hero {
@@ -159,7 +168,11 @@
 .text-right {
     text-align: right;
 }
-
+.btn {
+    color: white;
+    background-color: #01023B !important;
+    border: none;
+}
 .learn_more {
     color: #43afa7;
     border-bottom: 1px solid #45afaa;
@@ -182,7 +195,13 @@
     padding-top: 11px;
     margin-bottom: 58px;
 }
-
+.start_button:hover{
+    border-radius: 0;
+    color: white;
+    border: 2px solid white;
+    background-color: #01023B;
+    box-shadow: #605d5d 1px 1.7px 5.8px;
+}
 .how-we-are-holder .read-more {
     border-radius: 0;
     border: 2px solid white;
@@ -273,7 +292,7 @@
 
 .how-its-work-holder img {
     width: 100%;
-    max-width: 175px;
+    max-width: 130px;
     height: auto;
     margin: 0 auto;
     border: 7px solid #fff;
@@ -282,7 +301,11 @@
 .how-its-work-holder img::after {
     border: 1px solid red;
 }
-
+.vhr{
+    border-right:2px solid rgba(69, 68, 68, 0.3) ;
+    height:35px;
+    margin-right: 10px;
+}
 .meet-startup-holder {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -569,13 +592,18 @@ footer .nav-holder img {
     background: white !Important;
     color: #000 !IMPORTANT;
     border: 2px solid;
-    border-image-source: linear-gradient(to right, #f49648, #00ada9);
+    border-image-source: linear-gradient(90deg, rgba(0, 211, 225, 1) 0%, rgba(102, 65, 243, 1) 50%, rgba(247, 132, 178, 1) 90%);;
     border-image-slice: 1;
 }
 
 .site-border {
-    border: 2px solid;
-    border-image-source: linear-gradient(to right, #f49648, #00ada9);
+    border: 1px solid;
+    border-image-source: linear-gradient(0deg, rgba(0,211,225,1) 0%, rgba(102,65,243,1) 50%, rgba(247,132,178,1) 100%);
+    border-image-slice: 1;
+}
+.site-border-bottom {
+    border-bottom: 1px solid;
+    border-image-source: linear-gradient(0deg, rgba(0,211,225,1) 0%, rgba(102,65,243,1) 50%, rgba(247,132,178,1) 100%);
     border-image-slice: 1;
 }
 
@@ -587,6 +615,22 @@ footer .nav-holder img {
     color: #6f6f6f;
     margin: 0;
     cursor: pointer;
+}
+.signup-text{
+    color: white;
+    font-weight: 500;
+}
+.signup-text:hover{
+    width: auto;
+    color: white!important;
+    background-color: #01023B;
+    box-shadow: #605d5d 1px 1.7px 5.8px;
+}
+.form-control{
+    border-radius: 0!important;
+}
+.btn-login{
+    box-shadow: #605d5d 1px 1.7px 5.8px;
 }
 
 .startup-holder {
@@ -694,6 +738,12 @@ footer .nav-holder img {
         font-weight: bold;
         text-align: center;
     }
+    .contact_form_screen{
+        text-align: center;
+    }
+    .vhr{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -701,11 +751,38 @@ footer .nav-holder img {
         margin-left: 0 !important;
     }
 
-    .img-adjust-home-banner img {
+    .contact_form_screen{
+        text-align: center;
+    }
+    .img-adjust-home-banner .line-one {
         width: 100%;
-        max-width: 150px;
+        position: relative;
+        left: 0!important;
+        height: 4px!important;
+        max-width: 100px;
+        margin-bottom: .50rem;
+    }
+    .img-adjust-home-banner .line-two {
+        position: relative;
+        right: 0!important;
+        width: 100%;
+        height: 4px!important;
+        max-width: 100px;
+        margin-top: .50rem;
     }
 
+    .footer-logo{
+        text-align: center!important;
+    }
+    .footer-text{
+        margin-top: 1.25rem;
+    }
+    .footer-image{
+        margin-right: 10px;
+    }
+    .blog-image{
+        margin-bottom: 1rem;
+    }
     .page-hero .page-hero-content .page-hero-title {
         color: white;
         font-size: 17px !important;
@@ -713,6 +790,9 @@ footer .nav-holder img {
         letter-spacing: 0.1px !important;
         font-weight: bold;
         text-align: center;
+    }
+    .home-title{
+        font-size: 1vw!important;
     }
 
     .how-we-are-holder .read-more {
@@ -777,7 +857,7 @@ footer .nav-holder img {
 
 .btn {
     color: white;
-    background-color: #01023B !important;
+    background-color: #01023B;
     border: none;
     border-radius: 0;
 }
@@ -948,14 +1028,21 @@ footer .nav-holder img {
     height: 5px;
 }
 
-.img-adjust-home-banner img {
+.img-adjust-home-banner .line-one {
     position: relative;
-    height: 10px;
+    height: 6px;
+    left: 30px;
+}
+.img-adjust-home-banner .line-two{
+    position: relative;
+    height: 6px;
+    right: 30px;
 }
 
 .blog-text:hover {
-    color: red;
-}
+    background: -webkit-linear-gradient(#00D3E1FF, #6641F3FF ,#F784B2FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;}
 
 .blog-image {
     width: 100%;
@@ -988,13 +1075,6 @@ footer .nav-holder img {
     width: 80px;
     height: 2px;
 }
-
-.btn {
-    color: white;
-    background-color: #01023B !important;
-    border: none;
-}
-
 .btn:hover {
     color: white;
     background-color: #01023B !important;
@@ -1135,10 +1215,15 @@ footer .nav-holder img {
     text-align: center;
 }
 
+
 svg {
+    width: 100%;
+    max-width: 150px;
     margin: auto;
 }
-
+.contact-icon{
+  margin-top: -10px;
+}
 .contact-us-holder img.icon {
     width: 40px;
     height: 40px;

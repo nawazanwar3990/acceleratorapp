@@ -18,7 +18,7 @@
         </td>
         <td class="text-center">
             @if($record->user->subscription)
-                @if($record->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
+                @if(in_array($record->user->subscription->status,[\App\Enum\SubscriptionStatusEnum::APPROVED,\App\Enum\SubscriptionStatusEnum::RENEW]))
                     <a class="btn btn-sm btn-success"
                        href="{{ route('dashboard.payment-logs.index',$record->user->subscription->id) }}">
                         {{ trans('general.view_payment') }}

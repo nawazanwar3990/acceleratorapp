@@ -2,21 +2,21 @@
     <div class="container">
         <div class="row">
             <div>
-                <h3 class="contact_heading">Get in touch!</h3>
+                <h3 class="contact_heading fw-bold text-center" style="letter-spacing: 3px">Get In Touch!</h3>
                 <div class="text-center img">
                     <img src="{{ asset('uploads/line-D1.png') }}" class="custom_underline" alt="">
                 </div>
-                <p class="contact_para">If you should have any questions regarding our products, terms, delivery time
+                <p class="contact_para mt-3" style="line-height: 25px">If you should have any questions regarding our products, terms, delivery time
                     order or the like, please check our FAQs first. If you should not find an answer there and in case
                     you should have specific questions concerning your customer account or current order for example,
                     please do not hesitate to use the contact form below to get in touch with our customer service.
                     Please note, that in order to get a reply, you have to provide a valid email address.</p>
             </div>
-            <div class="col-md-6 mt-5">
+            <div class="col-md-6 mt-5 contact_form_screen">
                 <div class="mt-5">
                     <div class="row">
                         <div class="col-md-1 align-self-center">
-                            <img class="icon" src="{{ asset('uploads/location.PNG') }}" alt="">
+                            <img class="contact-icon" src="{{ asset('uploads/location.PNG') }}" alt="">
                         </div>
                         <div class="col-md-10 align-self-center">
                             <h6 class="fw-bold">Kingdom of Saudi Arabia, Riyadh. Box 12128, Postal Code</h6>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-1 align-self-center">
-                           <img class="icon" src="{{ asset('uploads/message.PNG') }}" alt="">
+                           <img class="contact-icon" src="{{ asset('uploads/message.PNG') }}" alt="">
                         </div>
                         <div class="col-md-10 align-self-center">
                             <h6 class="fw-bold">Email</h6>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row  mt-4">
                         <div class="col-md-1 align-self-center">
-                            <img class="icon" src="{{ asset('uploads/time.PNG') }}" alt="">
+                            <img class="contact-icon" src="{{ asset('uploads/time.PNG') }}" alt="">
                         </div>
                         <div class="col-md-10 align-self-center">
                             <h6 class="fw-bold">Timing</h6>

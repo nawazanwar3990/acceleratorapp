@@ -1,5 +1,4 @@
-<x-home-layout
-    :page="$page">
+<x-home-layout :page="$page">
     <x-slot name="content">
        {{-- @if(count($page->sections)>0)
             @foreach($page->sections as $section)
@@ -233,7 +232,7 @@
                 </div>
             </div>
         </section>
-        <section class="my-5 py-5 how-its-work-holder" style="background-image: url({{ asset('uploads/back_how_it_works.webp') }});">
+        <section class="my-5 py-5 how-its-work-holder" style="">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center pb-3">
@@ -288,7 +287,7 @@
                 </div>
             </div>
         </section>
-        <section class="my-5 py-5 meet-startup-holder" style="background-image: url({{ asset('uploads/meet_back.webp') }});">
+        <section class="my-5 py-5 meet-startup-holder" style="">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-12 text-center pb-3">
