@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3 text-center">
+                        <div class="mb-3  text-center">
                             <button class="btn btn-login site-first-btn-color text-white px-5" type="submit">{{ __('general.login') }}</button>
                         </div>
                         <div class="text-center mt-4" style="cursor: pointer">

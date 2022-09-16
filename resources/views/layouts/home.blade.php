@@ -17,21 +17,21 @@
         style="background: url({{ $page->banner_image }})">
     <div class="page-hero-content pt-10">
         <div class="container">
-            <div class="row justify-content-center" style="margin-left: 90px;margin-right: 90px;">
+            <div class="row justify-content-center" style="">
                 <div class="col-12">
-                    <div class="">
-                        <img src="{{ asset('uploads/line-D1.png') }}" alt="">
+                    <div class="img-adjust-home-banner">
+                        <img src="{{ asset('uploads/line-D1.png') }}" class="line-one" alt="">
                     </div>
-                    <h1 class="page-hero-title">
+                    <h1 class="page-hero-title home-title">
                         {{ $page->page_title }}
                     </h1>
-                    <div class="text-right">
-                        <img src="{{ asset('uploads/line-D2.png') }}" alt="">
+                    <div class="text-right img-adjust-home-banner">
+                        <img src="{{ asset('uploads/line-D2.png') }}" class="line-two" alt="">
                     </div>
                 </div>
-                <div class="col-12 text-center">
+                <div class="col-12 mt-3 text-center">
                     <a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')"
-                       class="start_button py-3 px-5">
+                       class="start_button py-sm-3 px-sm-5">
                         {{ trans('general.get_started') }}
                     </a>
                 </div>
