@@ -75,7 +75,7 @@
                                 <td class="text-center">
                                     @if($subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
                                         <a class="btn btn-xs btn-warning mx-1"
-                                           href="{{ route('dashboard.payment-receipts.index',['type'=>\App\Enum\SubscriptionTypeEnum::OFFICE,'subscription_id'=>$subscription->id]) }}">
+                                           href="{{ route('dashboard.payment-receipts.index',['type'=>\App\Enum\SubscriptionTypeEnum::OFFICE,'subscription_id'=>$subscription->subscription_id]) }}">
                                             {{ trans('general.view_receipt') }}
                                         </a>
                                     @else

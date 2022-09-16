@@ -15,7 +15,8 @@
                 {{ trans('general.download_receipt') }}
             </a>
         @endif
-    @else
+    @endif
+    @if($record->payment_for==\App\Enum\PaymentForEnum::PACKAGE_EXPIRE)
         <a class="btn btn-sm btn-info  mx-1"
            onclick="renew_subscription('{{ $record->package_subscription->id}}');">
             {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
