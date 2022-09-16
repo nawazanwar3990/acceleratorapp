@@ -41,9 +41,9 @@ class PaymentReceiptService
                 ->whereIn('is_processed', [true, false])
                 ->whereIn('payment_for', [PaymentForEnum::PACKAGE_APPROVAL, PaymentForEnum::PACKAGE_EXPIRE]);
         }
-        if (request()->has('id')) {
-            $id = request()->query('id');
-            $records = $records->where('id', $id);
+        if (request()->has('subscription_id')) {
+            $id = request()->query('subscription_id');
+            $records = $records->where('subscription_id', $id);
         }
         return $records->paginate(20);
     }

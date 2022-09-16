@@ -7,7 +7,7 @@
                         [
                             'url'=>'website.customers.create',
                             'extra'=>[\App\Enum\StepEnum::USER_INFO],
-                            'is_create'=>true
+                            'is_create'=>false
                         ])
                 <div class="card-body">
                     <table class="table custom-datatable table-bordered table-hover">
@@ -15,7 +15,8 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th scope="col">{{ __('general.subscribed_by') }}</th>
-                            <th scope="col">{{__('general.package')}}</th>
+                            <th scope="col">Subscription For</th>
+                            <th scope="col">{{__('general.plan')}}</th>
                             <th scope="col">{{__('general.price')}}</th>
                             <th scope="col">{{__('general.status')}}</th>
                             <th scope="col">{{__('general.expire_date')}}</th>
@@ -40,6 +41,11 @@
                                     @else
                                         --
                                     @endisset
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('dashboard.offices.show',[$subscription->model_id]) }}">
+                                        {{ trans('general.office') }}
+                                    </a>
                                 </td>
                                 <td>
                                     {{ $subscription->package->name??null}}
@@ -69,7 +75,7 @@
                                 <td class="text-center">
                                     @if($subscription->status==\App\Enum\SubscriptionStatusEnum::PENDING)
                                         <a class="btn btn-xs btn-warning mx-1"
-                                           href="{{ route('dashboard.payment-receipts.index',['type'=>\App\Enum\SubscriptionTypeEnum::OFFICE,'id'=>$subscription->id]) }}">
+                                           href="{{ route('dashboard.payment-receipts.index',['type'=>\App\Enum\SubscriptionTypeEnum::OFFICE,'subscription_id'=>$subscription->id]) }}">
                                             {{ trans('general.view_receipt') }}
                                         </a>
                                     @else
