@@ -79,65 +79,39 @@
             </div>
 
             <section class="container">
-                <div class="carousel slide" data-ride="carousel" id="multi_item">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center">
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider.png') }}" class="image" alt="">
-                                        <h4>Hattan Ahmed</h4>
-                                        <p>Head of KAUST Entreneurship Center</p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider2.png') }}" class="image" alt="">
-                                        <h4>Abdulrahman Aljiffry </h4>
-                                        <p>TAQADAM Program Manager</p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider3.png') }}" class="image" alt="">
-                                        <h4>Arwa Shafi</h4>
-                                        <p>Accelerator Lead</p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="carousel-wrap">
+                    <div class="owl-carousel">
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider.png') }}" class="image">
+                            <h4>Hattan Ahmed</h4>
+                            <p>Head of KAUST Entreneurship Center</p>
                         </div>
-                        <div class="carousel-item">
-                            <div class="row justify-content-center">
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider4.png') }}" class="image" alt="">
-                                        <h4>Maryam Barradh</h4>
-                                        <p>Startup Coordinator</p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider5.png') }}" class="image" alt="">
-                                        <h4>Lama Hakem</h4>
-                                        <p>Training Specialist </p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider6.png') }}" class="image" alt="">
-                                        <h4>Nikolaos Tsorpatzidis</h4>
-                                        <p>Startup Coordinator</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider2.png') }}" class="image">
+                            <h4>Abdulrahman Aljiffry </h4>
+                            <p>TAQADAM Program Manager</p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider3.png') }}" class="image">
+                            <h4>Arwa Shafi</h4>
+                            <p>Accelerator Lead</p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider4.png') }}" class="image">
+                            <h4>Maryam Barradh</h4>
+                            <p>Startup Coordinator</p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider5.png') }}" class="image">
+                            <h4>Lama Hakem</h4>
+                            <p>Training Specialist </p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider6.png') }}" class="image">
+                            <h4>Nikolaos Tsorpatzidis</h4>
+                            <p>Startup Coordinator</p>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#multi_item" role="button" data-slide="prev">
-                        <img src="{{ asset('uploads/left.png') }}" class="icon set" alt="">
-                    </a>
-                    <a class="carousel-control-next" href="#multi_item" role="button" data-slide="next">
-                        <img src="{{ asset('uploads/right.png') }}" class="icon set" alt="">
-                    </a>
                 </div>
             </section>
         </div>
@@ -482,3 +456,92 @@
         </div>
     </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
+<script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        navText: [
+            "<img src='{{asset('uploads/left.png')}}' class='icon set'>",
+            "<img src='{{asset('uploads/right.png')}}' class='icon'>",
+        ],
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+</script>
+
+{{--<div class="carousel slide" data-ride="carousel" id="multi_item">--}}
+{{--    <div class="carousel-inner">--}}
+{{--        <div class="carousel-item active">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-xxl-3 col-xl-3 col-md-3">--}}
+{{--                    <div class="item">--}}
+{{--                        <img src="{{ asset('uploads/slider.png') }}" class="image" alt="">--}}
+{{--                        <h4>Hattan Ahmed</h4>--}}
+{{--                        <p>Head of KAUST Entreneurship Center</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xxl-3 col-xl-3 col-md-3">--}}
+{{--                    <div class="item">--}}
+{{--                        <img src="{{ asset('uploads/slider2.png') }}" class="image" alt="">--}}
+{{--                        <h4>Abdulrahman Aljiffry </h4>--}}
+{{--                        <p>TAQADAM Program Manager</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xxl-3 col-xl-3 col-md-3">--}}
+{{--                    <div class="item">--}}
+{{--                        <img src="{{ asset('uploads/slider3.png') }}" class="image" alt="">--}}
+{{--                        <h4>Arwa Shafi</h4>--}}
+{{--                        <p>Accelerator Lead</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="carousel-item">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-xxl-3 col-xl-3 col-md-3">--}}
+{{--                    <div class="item">--}}
+{{--                        <img src="{{ asset('uploads/slider4.png') }}" class="image" alt="">--}}
+{{--                        <h4>Maryam Barradh</h4>--}}
+{{--                        <p>Startup Coordinator</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xxl-3 col-xl-3 col-md-3">--}}
+{{--                    <div class="item">--}}
+{{--                        <img src="{{ asset('uploads/slider5.png') }}" class="image" alt="">--}}
+{{--                        <h4>Lama Hakem</h4>--}}
+{{--                        <p>Training Specialist </p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xxl-3 col-xl-3 col-md-3">--}}
+{{--                    <div class="item">--}}
+{{--                        <img src="{{ asset('uploads/slider6.png') }}" class="image" alt="">--}}
+{{--                        <h4>Nikolaos Tsorpatzidis</h4>--}}
+{{--                        <p>Startup Coordinator</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <a class="carousel-control-prev" href="#multi_item" role="button" data-slide="prev">--}}
+{{--        <img src="{{ asset('uploads/left.png') }}" class="icon set" alt="">--}}
+{{--    </a>--}}
+{{--    <a class="carousel-control-next" href="#multi_item" role="button" data-slide="next">--}}
+{{--        <img src="{{ asset('uploads/right.png') }}" class="icon set" alt="">--}}
+{{--    </a>--}}
+{{--</div>--}}
+{{----}}
