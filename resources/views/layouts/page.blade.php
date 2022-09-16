@@ -9,23 +9,29 @@
     <meta name="keywords" content="{{ $page->page_keyword }}">
     <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 </head>
-<body>
+<body class="bg-white">
 <x-web-header :cPage="$page"></x-web-header>
-<header class="page-hero bg-gradient-primary-to-secondary"
-        style="background: url({{ $page->banner_image }})">
-    <div class="page-hero-content pt-10">
-        <div class="container px-5">
-            <div class="row justify-content-center p-3">
-                <div class="col-5 position-relative">
-                    <h1 class="page-hero-title">
-                        {{ $page->name }}
-                    </h1>
+<section class="py-5 mt-5 about-us" style="background-image:url({{ $page->banner_image }})">
+    <div class="container text-center py-5">
+        <div class="row my-5">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 ">
+                <div class="last-paragraph-no-margin txt_white">
+                    <div class="row justify-content-center">
+                        <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
+                        <div class="col-5"></div>
+                        <div><h1>{{ $page->page_title }}</h1></div>
+                        <div class="col-5"></div>
+                        <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-4"></div>
         </div>
     </div>
-</header>
+</section>
 <main class="bg-white">
     {{$content}}
 </main>

@@ -9,6 +9,7 @@
     <meta name="keywords" content="{{ $page->page_keyword }}">
     <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 </head>
 <body class="bg-white">
 <x-web-header :cPage="$page"></x-web-header>

@@ -25,7 +25,7 @@ class PageSeeder extends Seeder
                 'page_description' => 'With INCUAPP, we’ve helped startups scale their business.',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '/uploads/home_banner.png',
+                'banner_image' => '/uploads/home-page-banner.png',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -38,7 +38,7 @@ class PageSeeder extends Seeder
                 'page_description' => 'This is related to about us',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '/uploads/startup.webp',
+                'banner_image' => '/uploads/about-us.png',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -47,7 +47,7 @@ class PageSeeder extends Seeder
                 'name' => 'Our Startup',
                 'code' => 'startup',
                 'order' => '3',
-                'page_title' => implode(',', AccessTypeEnum::getValues()),
+                'page_title' => 'Our Startups',
                 'page_description' => 'Our Startups Include ' . implode(',', AccessTypeEnum::getTranslationKeys()),
                 'page_keyword' => implode(',', AccessTypeEnum::getValues()),
                 'active' => true,
@@ -64,7 +64,7 @@ class PageSeeder extends Seeder
                 'page_description' => 'Related to News',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '/uploads/startup.webp',
+                'banner_image' => '/uploads/news.png',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -77,7 +77,7 @@ class PageSeeder extends Seeder
                 'page_description' => 'This Is Related To Contact Us',
                 'page_keyword' => '',
                 'active' => true,
-                'banner_image' => '/uploads/startup.webp',
+                'banner_image' => '/uploads/contact.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

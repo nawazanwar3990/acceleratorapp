@@ -13,41 +13,50 @@
 <body>
 <div>
     <x-web-header :cPage="$page"></x-web-header>
-    <header class="page-hero bg-gradient-primary-to-secondary"
-            style="background: url({{ asset('uploads/startup.webp') }})">
-        <div class="page-hero-content pt-10">
-            <div class="container px-5">
-                <div class="row justify-content-center p-3">
-                    <div class="col-5 position-relative">
-                        <h1 class="page-hero-title">
-                            @if($type=='pending_subscription')
-                                Pending
-                            @elseif($type=='expire_subscription')
-                                Expire
-                            @else
-                                {{ trans('general.register') }} {{ \App\Enum\AccessTypeEnum::getTranslationKeyBy($type) }}
-                            @endif
-                            <p class="page-hero-text text-center">
-                                @if(in_array($type,[\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR,\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]))
-                                    @include('website.ba.components.step-heading')
-                                @elseif(in_array($type,[\App\Enum\AccessTypeEnum::SERVICE_PROVIDER_COMPANY,\App\Enum\AccessTypeEnum::FREELANCER]))
-                                    @include('website.freelancers.components.step-heading')
-                                @elseif($type == \App\Enum\AccessTypeEnum::MENTOR)
-                                    @include('website.mentor.components.step-heading')
-                                @elseif($type=='pending_subscription')
-                                    Subscription
-                                @elseif($type=='expire_subscription')
-                                    Subscription
-                                @elseif($type=='customer')
-                                    {{ trans('general.customer') }}
-                                @endif
-                            </p>
-                        </h1>
+    <section class="py-5 mt-5 about-us" style="background-image:url({{ $page->banner_image }})">
+        <div class="container text-center py-5">
+            <div class="row my-5">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="last-paragraph-no-margin txt_white">
+                        <div class="row justify-content-center">
+                            <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
+                            <div class="col-5"></div>
+                            <div>
+                                <h1>
+                                    @if($type=='pending_subscription')
+                                        Pending
+                                    @elseif($type=='expire_subscription')
+                                        Expire
+                                    @else
+                                        {{ trans('general.register') }} {{ \App\Enum\AccessTypeEnum::getTranslationKeyBy($type) }}
+                                    @endif
+                                </h1>
+                                <h4>
+                                    @if(in_array($type,[\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR,\App\Enum\AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL]))
+                                        @include('website.ba.components.step-heading')
+                                    @elseif(in_array($type,[\App\Enum\AccessTypeEnum::SERVICE_PROVIDER_COMPANY,\App\Enum\AccessTypeEnum::FREELANCER]))
+                                        @include('website.freelancers.components.step-heading')
+                                    @elseif($type == \App\Enum\AccessTypeEnum::MENTOR)
+                                        @include('website.mentor.components.step-heading')
+                                    @elseif($type=='pending_subscription')
+                                        Subscription
+                                    @elseif($type=='expire_subscription')
+                                        Subscription
+                                    @elseif($type=='customer')
+                                        {{ trans('general.customer') }}
+                                    @endif
+                                </h4>
+                            </div>
+                            <div class="col-5"></div>
+                            <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
         </div>
-    </header>
+    </section>
 </div>
 <main class="bg-white">
     {{$content}}
