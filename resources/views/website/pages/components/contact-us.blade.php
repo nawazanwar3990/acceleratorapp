@@ -12,11 +12,11 @@
                     please do not hesitate to use the contact form below to get in touch with our customer service.
                     Please note, that in order to get a reply, you have to provide a valid email address.</p>
             </div>
-            <div class="col-md-6 mt-5">
+            <div class="col-md-6 mt-5 contact_form_screen">
                 <div class="mt-5">
                     <div class="row">
                         <div class="col-md-1 align-self-center">
-                            <img class="icon" src="{{ asset('uploads/location.PNG') }}" alt="">
+                            <img class="contact-icon" src="{{ asset('uploads/location.PNG') }}" alt="">
                         </div>
                         <div class="col-md-10 align-self-center">
                             <h6 class="fw-bold">Kingdom of Saudi Arabia, Riyadh. Box 12128, Postal Code</h6>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-1 align-self-center">
-                           <img class="icon" src="{{ asset('uploads/message.PNG') }}" alt="">
+                           <img class="contact-icon" src="{{ asset('uploads/message.PNG') }}" alt="">
                         </div>
                         <div class="col-md-10 align-self-center">
                             <h6 class="fw-bold">Email</h6>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row  mt-4">
                         <div class="col-md-1 align-self-center">
-                            <img class="icon" src="{{ asset('uploads/time.PNG') }}" alt="">
+                            <img class="contact-icon" src="{{ asset('uploads/time.PNG') }}" alt="">
                         </div>
                         <div class="col-md-10 align-self-center">
                             <h6 class="fw-bold">Timing</h6>

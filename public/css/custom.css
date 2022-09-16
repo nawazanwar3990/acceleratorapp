@@ -738,6 +738,9 @@ footer .nav-holder img {
         font-weight: bold;
         text-align: center;
     }
+    .contact_form_screen{
+        text-align: center;
+    }
     .vhr{
         display: none;
     }
@@ -747,7 +750,9 @@ footer .nav-holder img {
     .set {
         margin-left: 0 !important;
     }
-
+    .contact_form_screen{
+        text-align: center;
+    }
     .img-adjust-home-banner img {
         width: 100%;
         max-width: 150px;
@@ -1180,7 +1185,9 @@ svg {
 
     margin: auto;
 }
-
+.contact-icon{
+  margin-top: -10px;
+}
 .contact-us-holder img.icon {
     width: 40px;
     height: 40px;
