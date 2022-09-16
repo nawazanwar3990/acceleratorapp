@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div>
-                <h3 class="contact_heading">Get in touch!</h3>
+                <h3 class="contact_heading fw-bold text-center" style="letter-spacing: 3px">Get In Touch!</h3>
                 <div class="text-center img">
                     <img src="{{ asset('uploads/line-D1.png') }}" class="custom_underline" alt="">
                 </div>
-                <p class="contact_para">If you should have any questions regarding our products, terms, delivery time
+                <p class="contact_para mt-3" style="line-height: 25px">If you should have any questions regarding our products, terms, delivery time
                     order or the like, please check our FAQs first. If you should not find an answer there and in case
                     you should have specific questions concerning your customer account or current order for example,
                     please do not hesitate to use the contact form below to get in touch with our customer service.

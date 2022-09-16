@@ -59,10 +59,10 @@
     </div>
 </section>
 <section class="my-5 py-5 about-us-holder">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="container">
-                <div class="row justify-content-center">
+            <div class="container-fluid ">
+                <div class="row justify-content-center py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
                         <img src="{{ asset('uploads/blogimage1.png') }}" class="blog-image" alt="">
                     </div>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center mt-5">
+                <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
                         <img src="{{ asset('uploads/blogimage3.png') }}" class="blog-image" alt="">
                     </div>
@@ -116,7 +116,7 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center mt-5">
+                <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
                         <img src="{{ asset('uploads/blogimage5.png') }}" class="blog-image" alt="">
                     </div>
@@ -152,9 +152,9 @@
         </div>
     </div>
 
-    <div class="container about-us-holder" style="background-image: url({{ asset('uploads/bg-dots.png') }})">
+    <div class="container-fluid about-us-holder">
         <div class="">
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
                 <div class="col-sm-4 text-end">
                     <img src="{{ asset('uploads/blogimage7.png') }}" class="blog-image" alt="">
                 </div>
@@ -188,7 +188,7 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
                 <div class="col-sm-4 text-end">
                     <img src="{{ asset('uploads/blogimage9.png') }}" class="blog-image" alt="">
                 </div>

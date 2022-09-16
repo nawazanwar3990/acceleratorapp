@@ -20,18 +20,18 @@
             <div class="row justify-content-center" style="margin-left: 90px;margin-right: 90px;">
                 <div class="col-12">
                     <div class="">
-                        <img src="{{ asset('icons/green-bar.webp') }}" alt="">
+                        <img src="{{ asset('uploads/line-D1.png') }}" alt="">
                     </div>
                     <h1 class="page-hero-title">
                         {{ $page->page_title }}
                     </h1>
                     <div class="text-right">
-                        <img src="{{ asset('icons/orange-bar.webp') }}" alt="">
+                        <img src="{{ asset('uploads/line-D2.png') }}" alt="">
                     </div>
                 </div>
                 <div class="col-12 text-center">
                     <a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')"
-                       class="start_button">
+                       class="start_button py-3 px-5">
                         {{ trans('general.get_started') }}
                     </a>
                 </div>
