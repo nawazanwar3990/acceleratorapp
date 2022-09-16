@@ -168,7 +168,11 @@
 .text-right {
     text-align: right;
 }
-
+.btn {
+    color: white;
+    background-color: #01023B !important;
+    border: none;
+}
 .learn_more {
     color: #43afa7;
     border-bottom: 1px solid #45afaa;
@@ -593,8 +597,13 @@ footer .nav-holder img {
 }
 
 .site-border {
-    border: 2px solid;
-    border-image-source: linear-gradient(to right, #f49648, #00ada9);
+    border: 1px solid;
+    border-image-source: linear-gradient(0deg, rgba(0,211,225,1) 0%, rgba(102,65,243,1) 50%, rgba(247,132,178,1) 100%);
+    border-image-slice: 1;
+}
+.site-border-bottom {
+    border-bottom: 1px solid;
+    border-image-source: linear-gradient(0deg, rgba(0,211,225,1) 0%, rgba(102,65,243,1) 50%, rgba(247,132,178,1) 100%);
     border-image-slice: 1;
 }
 
@@ -815,7 +824,7 @@ footer .nav-holder img {
 
 .btn {
     color: white;
-    background-color: #01023B !important;
+    background-color: #01023B;
     border: none;
     border-radius: 0;
 }
@@ -1027,13 +1036,6 @@ footer .nav-holder img {
     width: 80px;
     height: 2px;
 }
-
-.btn {
-    color: white;
-    background-color: #01023B !important;
-    border: none;
-}
-
 .btn:hover {
     color: white;
     background-color: #01023B !important;

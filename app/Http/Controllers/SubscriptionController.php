@@ -25,7 +25,7 @@ class SubscriptionController extends Controller
         $pageTitle = trans('general.package_expire');
         $subscription = \auth()->user()->subscription;
         $user = User::find($subscription->subscribe_id);
-        $receipt = PaymentReceipt::with('subscription', 'subscribed')
+        $receipt = PaymentReceipt::with('package_subscription', 'plan_subscription', 'subscribed')
             ->where('payment_for', PaymentForEnum::PACKAGE_EXPIRE)
             ->where('subscribed_id', $subscription->subscribed_id)
             ->where('subscription_id', $subscription->id)

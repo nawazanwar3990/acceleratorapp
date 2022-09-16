@@ -26,7 +26,7 @@
             <div class="row justify-content-center">
                 <div class="col-6 ml-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
                 <div class="col-4"></div>
-                <div><h2>TAQADAM Startup Accelerator</h2></div>
+                <div><h2>Business Accelerator Startup Accelerator</h2></div>
                 <div class="col-4"></div>
                 <div class="col-6 mr-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
             </div>
@@ -37,11 +37,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <p style="text-align:left;">At TAQADAM, we believe in the power of people with big ideas, bold
+                    <p style="text-align:left;">At Business Accelerator, we believe in the power of people with big ideas, bold
                         thinking and creativity to change the world. We back MENA’s most remarkable founders who are
                         creating the next generation of startups.
                         <br><br>
-                        TAQADAM is a startup accelerator powered by KAUST and SABB. Since 2016, we’ve helped founders
+                        Business Accelerator is a startup accelerator powered by KAUST and SABB. Since 2016, we’ve helped founders
                         push the boundaries of what’s possible, giving them the funds, tools, and hands-on resources to
                         define and refine their companies — and bring their game-changing businesses to market.
                         <br><br>
@@ -49,11 +49,11 @@
                         workshops focusing on product design, market fit, business model planning, team development, and
                         fundraising.
                         <br><br>
-                        For each TAQADAM cohort, participating startups receive $40,000 in funding, plus access to
+                        For each Business Accelerator cohort, participating startups receive $40,000 in funding, plus access to
                         co-working spaces across Saudi, a diverse international community and a wide pool of experts and
                         mentors.
                         <br><br>
-                        At the close of each TAQADAM cohort, founders walk away with a dynamic toolkit designed to
+                        At the close of each Business Accelerator cohort, founders walk away with a dynamic toolkit designed to
                         accelerate their business, while ensuring they have the insights and access needed to engage
                         potential customers and develop an exceptional network of mentors and investors.</p>
                 </div>
@@ -75,69 +75,43 @@
                 </div>
             </div>
             <div>
-                <p>Meet the team behind the TAQADAM initiative</p>
+                <p>Meet the team behind the Business Accelerator initiative</p>
             </div>
 
             <section class="container">
-                <div class="carousel slide" data-ride="carousel" id="multi_item">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center">
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider.png') }}" class="image" alt="">
-                                        <h4>Hattan Ahmed</h4>
-                                        <p>Head of KAUST Entreneurship Center</p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider2.png') }}" class="image" alt="">
-                                        <h4>Abdulrahman Aljiffry </h4>
-                                        <p>TAQADAM Program Manager</p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider3.png') }}" class="image" alt="">
-                                        <h4>Arwa Shafi</h4>
-                                        <p>Accelerator Lead</p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="carousel-wrap">
+                    <div class="owl-carousel">
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider.png') }}" class="image">
+                            <h4>Hattan Ahmed</h4>
+                            <p>Head of KAUST Entreneurship Center</p>
                         </div>
-                        <div class="carousel-item">
-                            <div class="row justify-content-center">
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider4.png') }}" class="image" alt="">
-                                        <h4>Maryam Barradh</h4>
-                                        <p>Startup Coordinator</p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider5.png') }}" class="image" alt="">
-                                        <h4>Lama Hakem</h4>
-                                        <p>Training Specialist </p>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-xl-3 col-md-3">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slider6.png') }}" class="image" alt="">
-                                        <h4>Nikolaos Tsorpatzidis</h4>
-                                        <p>Startup Coordinator</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider2.png') }}" class="image">
+                            <h4>Abdulrahman Aljiffry </h4>
+                            <p>Business Accelerator Program Manager</p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider3.png') }}" class="image">
+                            <h4>Arwa Shafi</h4>
+                            <p>Accelerator Lead</p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider4.png') }}" class="image">
+                            <h4>Maryam Barradh</h4>
+                            <p>Startup Coordinator</p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider5.png') }}" class="image">
+                            <h4>Lama Hakem</h4>
+                            <p>Training Specialist </p>
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('uploads/slider6.png') }}" class="image">
+                            <h4>Nikolaos Tsorpatzidis</h4>
+                            <p>Startup Coordinator</p>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#multi_item" role="button" data-slide="prev">
-                        <img src="{{ asset('uploads/left.png') }}" class="icon set" alt="">
-                    </a>
-                    <a class="carousel-control-next" href="#multi_item" role="button" data-slide="next">
-                        <img src="{{ asset('uploads/right.png') }}" class="icon set" alt="">
-                    </a>
                 </div>
             </section>
         </div>
@@ -162,24 +136,24 @@
                             <button class="accordion-button" style="background-color: transparent!important;"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
-                                What is TAQADAM Startup Accelerator?
+                                What is Business Accelerator Startup Accelerator?
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                TAQADAM is a startup accelerator for entrepreneurs aiming to rapidly grow their business
+                                Business Accelerator is a startup accelerator for entrepreneurs aiming to rapidly grow their business
                                 over a period of six months.
                                 <br><br>
                                 Through mentorship and targeted learning in ideation, product design, marketing and
                                 fundraising, founders gain the skills they need to accelerate their growth, engage and
                                 activate new customers, and drive investors.
                                 <br><br>
-                                Each new TAQADAM cohort receives pre-seed funding to support their time in the
+                                Each new Business Accelerator cohort receives pre-seed funding to support their time in the
                                 accelerator, as well as access to co-working space across the Kingdom. At the completion
                                 of the program, selected graduates are eligible for non-dilutive, follow-on funding.
                                 <br><br>
-                                TAQADAM is a Saudi-based accelerator founded in 2016 by King Abdullah University of
+                                Business Accelerator is a Saudi-based accelerator founded in 2016 by King Abdullah University of
                                 Science and Technology (KAUST) in partnership with SABB.
                                 <br><br>
                                 The Accelerator was founded in 2016 by King Abdullah University of Science and
@@ -197,7 +171,7 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                TAQADAM is a highly competitive startup accelerator. From more than 800 applications
+                                Business Accelerator is a highly competitive startup accelerator. From more than 800 applications
                                 every year, startups are evaluated by a committee that reviews the team, startup
                                 scalability, market potential, and other criteria. From there, up to 60 high-potential
                                 startups are selected to complete a pre-accelerator bootcamp.
@@ -208,7 +182,7 @@
                                 The startups then spend the next several months participating in a hybrid program. The
                                 mentor-led methodology encompasses mentorships and targeted support, all designed to
                                 help founders scale their ventures. The most promising startups are eligible for
-                                additional pre-seed funding from TAQADAM
+                                additional pre-seed funding from Business Accelerator
                             </div>
                         </div>
                     </div>
@@ -216,13 +190,13 @@
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Am I eligible to join TAQADAM Accelerator?
+                                Am I eligible to join Business Accelerator Accelerator?
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                To be eligible to join TAQADAM, at least one team member must be able to attend all
+                                To be eligible to join Business Accelerator, at least one team member must be able to attend all
                                 required accelerator activities. The accelerator requires a six months’ time commitment,
                                 which could involve startup team members to engage in the day, evening and weekend
                                 events and bootcamps. Founders may be required to travel to KAUST to participate in
@@ -242,7 +216,7 @@
                         <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                TAQADAM accelerator is open to all entrepreneurs and startups from different industries.
+                                Business Accelerator accelerator is open to all entrepreneurs and startups from different industries.
                                 Our previous cohorts graduated startups from the following industries: Energy, Food,
                                 Water, Fintech, Retail, Digital, Cybersecurity, Tourism, Logistics, Mobility, Health,
                                 Gaming, Agriculture – and more.
@@ -273,12 +247,12 @@
                         <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingsix"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                March 10, 2022 - TAQADAM Cohort 2022 applications open <br>
-                                May 21, 2022 - TAQADAM Cohort 2022 applications close<br>
-                                July 19, 2022 - TAQADAM Cohort 2022 results announced<br>
-                                August 1, 2022 - TAQADAM Cohort 2022 Bootcamp<br>
-                                Q1 of 2023 - TAQADAM Cohort 2023 Showcase<br>
-                                Q1 of 2023 - TAQADAM Cohort 2023 applications open<br>
+                                March 10, 2022 - Business Accelerator Cohort 2022 applications open <br>
+                                May 21, 2022 - Business Accelerator Cohort 2022 applications close<br>
+                                July 19, 2022 - Business Accelerator Cohort 2022 results announced<br>
+                                August 1, 2022 - Business Accelerator Cohort 2022 Bootcamp<br>
+                                Q1 of 2023 - Business Accelerator Cohort 2023 Showcase<br>
+                                Q1 of 2023 - Business Accelerator Cohort 2023 applications open<br>
                             </div>
                         </div>
                     </div>
@@ -286,7 +260,7 @@
                         <h2 class="accordion-header" id="headingseven">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
-                                I am a full-time employee. Can I apply for TAQADAM?
+                                I am a full-time employee. Can I apply for Business Accelerator?
                             </button>
                         </h2>
                         <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven"
@@ -321,7 +295,7 @@
                         <div id="collapsenine" class="accordion-collapse collapse" aria-labelledby="headingnine"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                We are open to people of all nationalities applying to TAQADAM.
+                                We are open to people of all nationalities applying to Business Accelerator.
                             </div>
                         </div>
                     </div>
@@ -368,7 +342,7 @@
                         <div id="collapsetwelve" class="accordion-collapse collapse" aria-labelledby="headingtwelve"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body accordian-font">
-                                TAQADAM kicks off with a two-week bootcamp, running for 4 – 5 hours each day. After
+                                Business Accelerator kicks off with a two-week bootcamp, running for 4 – 5 hours each day. After
                                 that, there are monthly sessions, averaging nine hours per month. We will share the
                                 details of these sessions after the program commences. Attendance is mandatory for all
                                 teams.
@@ -411,7 +385,7 @@
                                         plan to take their startup forward.
                                     </li>
                                     <li>Novel ideas and business models that have the potential to scale.</li>
-                                    <li>TAQADAM supports both Saudi and international startups with plans to expand to
+                                    <li>Business Accelerator supports both Saudi and international startups with plans to expand to
                                         Saudi Arabia.
                                     </li>
                                 </ul>
@@ -432,7 +406,7 @@
                                 - There must be at least two founders for each startup team. <br>
                                 - Applicants must not be enrolled in any other accelerator when the bootcamp commences
                                 or at any other stage during the program. There may be some exceptions to this; however,
-                                teams must obtain approval by the TAQADAM staff, which is decided on a case-by-case
+                                teams must obtain approval by the Business Accelerator staff, which is decided on a case-by-case
                                 basis. <br>
                                 - There must be evidence of startup progress. This can include customer interviews,
                                 signed interest of potential clients, or anything that demonstrates that the startup is
@@ -482,3 +456,30 @@
         </div>
     </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
+<script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        navText: [
+            "<img src='{{asset('uploads/left.png')}}' class='icon set'>",
+            "<img src='{{asset('uploads/right.png')}}' class='icon'>",
+        ],
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+</script>
