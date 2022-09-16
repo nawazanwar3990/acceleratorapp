@@ -45,21 +45,21 @@ class StartupController extends Controller
             case StartUpForEnum::BA:
                 $records = BA::whereHas('user', function ($query) {
                     $query->whereHas('subscription', function ($q) {
-                        $q->where('subscriptions.status', SubscriptionStatusEnum::APPROVED);
+                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED,SubscriptionStatusEnum::RENEW]);
                     });
                 })->where('ba.type', $startup_type);
                 break;
             case StartUpForEnum::FREELANCER:
                 $records = Freelancer::whereHas('user', function ($query) {
                     $query->whereHas('subscription', function ($q) {
-                        $q->where('subscriptions.status', SubscriptionStatusEnum::APPROVED);
+                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED,SubscriptionStatusEnum::RENEW]);
                     });
                 })->where('freelancers.type', $startup_type);
                 break;
             case StartUpForEnum::MENTOR:
                 $records = Mentor::whereHas('user', function ($query) {
                     $query->whereHas('subscription', function ($q) {
-                        $q->where('subscriptions.status', SubscriptionStatusEnum::APPROVED);
+                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED,SubscriptionStatusEnum::RENEW]);
                     });
                 });
                 break;
