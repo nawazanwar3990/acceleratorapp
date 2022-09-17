@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-12 text-center pb-3">
                         <h1>What We Offer</h1>
-                        <h6 class="mt-3 mb-3">Build, launch and scale your startup with TAQADAM</h6>
+                        <h6 class="mt-3 mb-3">Build, launch and scale your startup with Business Accelerators</h6>
                     </div>
                 </div>
                 <div class="row">
@@ -311,8 +311,8 @@
                             </div>
                             <div class="col-md-6">
                                 <h6 class="pt-4 h6-text">
-                                    Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
-                                    Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
+                                    Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
+                                    Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
                                 </h6>
                             </div>
                         </div>
@@ -330,7 +330,7 @@
                                 <div class="header-content">
                                     <div class="line"></div>
                                     <h1>Meet The Startups1</h1>
-                                    <h4>Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                    <h4>Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
                                 </div>
                             </div>
                         </div>
@@ -342,7 +342,7 @@
                                 <div class="header-content">
                                     <div class="line animated bounceInLeft"></div>
                                     <h1>Meet The Startups2</h1>
-                                    <h4>Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                    <h4>Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
                                 </div>
                             </div>
                         </div>
@@ -354,7 +354,7 @@
                                 <div class="header-content">
                                     <div class="line animated bounceInLeft"></div>
                                     <h1>Meet The Startups3</h1>
-                                    <h4>Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                    <h4>Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
                                 </div>
                             </div>
                         </div>

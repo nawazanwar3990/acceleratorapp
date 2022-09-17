@@ -1,7 +1,7 @@
 <nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top"
      style="background-color: rgb(232, 228, 228)!important;">
     <div class="container">
-        <a class="navbar-brand" href="javascript:void(0)">
+        <a class="navbar-brand" href="{{route('website.index')}}">
             <img style="height: 100%;max-height: 45px" src="{{ asset($cPage->layout->header_logo) }}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
