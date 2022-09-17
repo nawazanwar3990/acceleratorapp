@@ -177,7 +177,7 @@
                                         <img src="{{asset('uploads/slider.png')}}" alt=""/>
                                     </div>
                                     <div class="details mt-4">
-                                        <div class="name">Nasir Bashir</div>
+                                        <div class="name">Ahsan</div>
                                         <div class="job work">Full Stack Developer</div>
 
                                     </div>
@@ -192,7 +192,7 @@
                                         <img src="{{asset('uploads/slider2.png')}}" alt=""/>                                    </div>
 
                                     <div class="details mt-4">
-                                        <div class="name">Muhammad Haroon</div>
+                                        <div class="name">Usman</div>
                                         <div class="job work">Web Designer</div>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                                     <div class="img">
                                         <img src="{{asset('uploads/slider3.png')}}" alt=""/>                                    </div>
                                     <div class="details mt-4">
-                                        <div class="name">Ramish Hassan</div>
+                                        <div class="name">Ramisha</div>
                                         <div class="job work">Web Designer</div>
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@
                                         <img src="{{asset('uploads/slider5.png')}}" alt=""/>
                                     </div>
                                     <div class="details mt-4">
-                                        <div class="name">Muhammad Abdullah</div>
+                                        <div class="name">Sana</div>
                                         <div class="job work">Web Designer</div>
                                     </div>
                                 </div>
@@ -250,7 +250,7 @@
                                         <img src="{{asset('uploads/slider6.png')}}" alt=""/>
                                     </div>
                                     <div class="details mt-4">
-                                        <div class="name">Muhammad Hamza</div>
+                                        <div class="name">Nawaz</div>
                                         <div class="job work">Web Desginer</div>
                                     </div>
                                 </div>
