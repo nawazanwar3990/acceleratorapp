@@ -221,7 +221,7 @@
                                         <img src="{{asset('uploads/slider4.png')}}" alt=""/>
                                     </div>
                                     <div class="details mt-4 ">
-                                        <div class="name">Zubaida appa</div>
+                                        <div class="name">Zubaida</div>
                                         <div class="job work">Web Designer</div>
                                     </div>
                                 </div>
