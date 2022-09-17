@@ -1,3 +1,9 @@
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<style></style>
 <x-home-layout :page="$page">
     <x-slot name="content">
        {{-- @if(count($page->sections)>0)
@@ -5,6 +11,11 @@
                 {!! $section->html !!}
             @endforeach
         @endif--}}
+
+
+
+
+
         <div class="container how-we-are-holder pt-4">
             <div class="row">
                 <div class="col-6 mx-auto text-center">
@@ -287,6 +298,7 @@
                 </div>
             </div>
         </section>
+
         <section class="my-5 py-5 meet-startup-holder" style="">
             <div class="container">
                 <div class="row justify-content-center">
@@ -308,6 +320,48 @@
                 </div>
             </div>
         </section>
+        <section>
+            <header>
+                <div class="owl-carousel testing_owl owl-theme">
+                    <div class="item">
+                        <img src="{{ asset('uploads/slider_index1.png') }}" alt="images not found">
+                        <div class="cover">
+                            <div class="container">
+                                <div class="header-content">
+                                    <div class="line"></div>
+                                    <h1>Meet The Startups1</h1>
+                                    <h4>Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('uploads/slider_index2.png')}}" alt="images not found">
+                        <div class="cover">
+                            <div class="container">
+                                <div class="header-content">
+                                    <div class="line animated bounceInLeft"></div>
+                                    <h1>Meet The Startups2</h1>
+                                    <h4>Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('uploads/slider_index1.png')}}" alt="images not found">
+                        <div class="cover">
+                            <div class="container">
+                                <div class="header-content">
+                                    <div class="line animated bounceInLeft"></div>
+                                    <h1>Meet The Startups3</h1>
+                                    <h4>Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </section>
         <section class="my-5 py-5 counter-back-holder" style="background-image: url({{ asset('uploads/counter_back.webp') }});">
             <div class="container">
                 <div class="row justify-content-center">
@@ -315,7 +369,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-first-btn-color text-white">130+</h4>
-                                <p class="card-text site-first-color">Startups <br />Graduates</p>
+                                <p class="card-text site-first-color">Business <br />Accelerator</p>
                             </div>
                         </div>
                     </div>
@@ -323,7 +377,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-second-btn-color text-white">500+</h4>
-                                <p class="card-text site-second-color">Entrepreneurs <br />supported</p>
+                                <p class="card-text site-second-color">Freelancer</p>
                             </div>
                         </div>
                     </div>
@@ -331,7 +385,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-first-btn-color text-white">8500+</h4>
-                                <p class="card-text site-first-color">Showcase <br />Attendees</p>
+                                <p class="card-text site-first-color">Service <br />Provider</p>
                             </div>
                         </div>
                     </div>
@@ -339,7 +393,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-second-btn-color text-white">1700+</h4>
-                                <p class="card-text site-second-color">Jobs <br />Created</p>
+                                <p class="card-text site-second-color">Mentor</p>
                             </div>
                         </div>
                     </div>
@@ -400,3 +454,30 @@
         </section>
     </x-slot>
 </x-home-layout>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $('.testing_owl').owlCarousel({
+        loop:true,
+        margin:10,
+        dots:false,
+        nav:true,
+        mouseDrag:false,
+        autoplay:true,
+        animateOut: 'slideOutUp',
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    });
+</script>
