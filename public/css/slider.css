@@ -127,7 +127,7 @@ width: 80%;
 #two:checked ~ .buttons .two{
     width: 35px;
 }
-input[type="radio"]{
+.radio{
     display: none;
 }
 @media (max-width: 768px) {

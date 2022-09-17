@@ -163,8 +163,8 @@
 
             <section class="work section" id="team">
                 <div class="containers">
-                    <input type="radio" name="dot" id="one"/>
-                    <input type="radio" name="dot" id="two"/>
+                    <input type="radio" name="dot" class="radio" id="one"/>
+                    <input type="radio" name="dot" class="radio" id="two"/>
 
                     <div class="main-card">
                         <div class="cards">
