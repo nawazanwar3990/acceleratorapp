@@ -1,7 +1,141 @@
-/**
- * Owl Carousel v2.1.1
- * Copyright 2013-2016 David Deutsch
- * Licensed under MIT (https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE)
- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
 
-.owl-carousel,.owl-carousel .owl-item{-webkit-tap-highlight-color:transparent;position:relative}.owl-carousel{display:none;width:100%;z-index:1}.owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y}.owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}.owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0,0,0)}.owl-carousel .owl-item{min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-touch-callout:none}.owl-carousel .owl-item img{display:block;width:100%;-webkit-transform-style:preserve-3d}.owl-carousel .owl-dots.disabled,.owl-carousel .owl-nav.disabled{display:none}.owl-carousel .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev{cursor:pointer;cursor:hand;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-loaded{display:block}.owl-carousel.owl-loading{opacity:0;display:block}.owl-carousel.owl-hidden{opacity:0}.owl-carousel.owl-refresh .owl-item{display:none}.owl-carousel.owl-drag .owl-item{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-grab{cursor:move;cursor:grab}.owl-carousel.owl-rtl{direction:rtl}.owl-carousel.owl-rtl .owl-item{float:right}.no-js .owl-carousel{display:block}.owl-carousel .animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.owl-carousel .owl-animated-in{z-index:0}.owl-carousel .owl-animated-out{z-index:1}.owl-carousel .fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.owl-height{transition:height .5s ease-in-out}.owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}.owl-carousel .owl-item img.owl-lazy{-webkit-transform-style:preserve-3d;transform-style:preserve-3d}.owl-carousel .owl-video-wrapper{position:relative;height:100%;background:#000}.owl-carousel .owl-video-play-icon{position:absolute;height:80px;width:80px;left:50%;top:50%;margin-left:-40px;margin-top:-40px;background:url(owl.video.play.png) no-repeat;cursor:pointer;z-index:1;-webkit-backface-visibility:hidden;transition:-webkit-transform .1s ease;transition:transform .1s ease}.owl-carousel .owl-video-play-icon:hover{-webkit-transform:scale(1.3,1.3);-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}.owl-carousel .owl-video-playing .owl-video-play-icon,.owl-carousel .owl-video-playing .owl-video-tn{display:none}.owl-carousel .owl-video-tn{opacity:0;height:100%;background-position:center center;background-repeat:no-repeat;background-size:contain;transition:opacity .4s ease}.owl-carousel .owl-video-frame{position:relative;z-index:1;height:100%;width:100%}
+.containers::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    /*background: #FF676D;*/
+    clip-path: inset(47% 0 0 0);
+    z-index: -1;
+}
+::selection{
+    /*background:	#FF676D;*/
+    color: #fff;
+}
+.containers{
+    /*max-width: 950px;*/
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 80px 0;
+}
+.containers .main-card{
+    display: flex;
+    justify-content: space-evenly;
+    width: 200%;
+    transition: 1s;
+}
+#two:checked ~ .main-card{
+    margin-left: -100%;
+}
+.containers .main-card .cards{
+    width: calc(100% / 2 - 10px);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    justify-content: space-between;
+}
+.main-card .cards .card{
+    width: calc(100% / 3 - 10px);
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s ease;
+}
+.main-card .cards .card:hover{
+    transform: translateY(-15px);
+}
+.cards .card .content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.image{
+    margin-top: 5%;
+}
+.cards .card .content .img{
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    padding: 3px;
+    background:#01023B;
+    margin-bottom: 14px;
+}
+.card .content .img img{
+    height: 100%;
+    width: 100%;
+    border: 3px solid white;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.card .content .name{
+    font-size: 20px;
+    font-weight: 500;
+}
+.card .content .job{
+    font-size: 20px;
+}
+.card .content .media-icons{
+    margin-top: 10px;
+    display: flex;
+}
+.details p{
+    color:#01023B!important;
+}
+.container .buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    background-color: transparent;
+}
+.container .buttons:hover{
+    border: none;
+}
+.buttons label{
+    height: 15px;
+    width: 15px;
+    border-radius: 20px;
+    background:  #01023B;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.buttons label.active{
+    width: 35px;
+}
+#one:checked ~ .buttons .one{
+    width: 35px;
+}
+#one:checked ~ .buttons .two{
+    width: 15px;
+}
+#two:checked ~ .buttons .one{
+    width: 15px;
+}
+#two:checked ~ .buttons .two{
+    width: 35px;
+}
+input[type="radio"]{
+    display: none;
+}
+@media (max-width: 768px) {
+    .main-card .cards .card{
+        margin: 20px 0 10px 0;
+        width: calc(100% / 2 - 10px);
+    }
+}
+@media (max-width: 600px) {
+    .main-card .cards .card{
+        width: 100%;
+    }
+}

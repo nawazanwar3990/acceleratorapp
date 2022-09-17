@@ -32,8 +32,8 @@
                         <b>Entrepreneurship </b>
                     </div>
                     <div class="values-items-item-img mt-2">
-                        <div class="small-img" style="background-color: #4d4ddb"></div>
-                        <div class="values-items-item-img-details" style="background-color: #4d4ddb">
+                        <div class="small-img" style="background-color: #00D3E1"></div>
+                        <div class="values-items-item-img-details" style="background-color:#00D3E1">
                             <div>
                                 <p>Freedom <br>  Autonomy <br> Independence<br></p>
                             </div>
@@ -47,8 +47,8 @@
                         <b> Community</b>
                     </div>
                     <div class="values-items-item-img mt-2">
-                        <div class="small-img" style="background-color: #127562"></div>
-                        <div class="values-items-item-img-details" style="background-color: #127562">
+                        <div class="small-img" style="background-color: #6641F3"></div>
+                        <div class="values-items-item-img-details" style="background-color: #6641F3">
                             <div>
                                 <p>
                                     Helpfulness <br>
@@ -66,8 +66,8 @@
                         <b> Respect </b>
                     </div>
                     <div class="values-items-item-img mt-2">
-                        <div class="small-img" style="background-color: #704aa0"></div>
-                        <div class="values-items-item-img-details" style="background-color: #704aa0">
+                        <div class="small-img" style="background-color: #00D3E1"></div>
+                        <div class="values-items-item-img-details" style="background-color: #00D3E1">
                             <div>
                                 <p>
                                     Trust <br>
@@ -85,8 +85,8 @@
                         <b> Innovation </b>
                     </div>
                     <div class="values-items-item-img mt-2">
-                        <div class="small-img" style="background-color: #e1b324"></div>
-                        <div class="values-items-item-img-details" style="background-color: #e1b324">
+                        <div class="small-img" style="background-color: #6641F3"></div>
+                        <div class="values-items-item-img-details" style="background-color: #6641F3">
                             <div>
                                 <p>
                                     Empowerment <br>
@@ -103,17 +103,14 @@
 </section>
 
 {{--our values--}}
-
-
-
 <section style="">
     <section class="my-5 mx-sm-3">
         <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col-6 ml-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
-                <div class="col-4"></div>
+                <div class="col-5 ms-5"></div>
                 <div><h2>Business Accelerator Startup Accelerator</h2></div>
-                <div class="col-4"></div>
+                <div class="col-5 me-5"></div>
                 <div class="col-6 mr-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
             </div>
         </div>
@@ -164,50 +161,125 @@
                 <p>Meet the team behind the Business Accelerator initiative</p>
             </div>
 
-            <section class="container">
-                <div class="carousel-wrap">
-                    <div class="owl-carousel">
-                        <div class="item">
-                            <img src="{{ asset('uploads/slider.png') }}" class="image">
-                            <h4>Hattan Ahmed</h4>
-                            <p>Head of KAUST Entreneurship Center</p>
+            <section class="work section" id="team">
+                <div class="containers">
+                    <input type="radio" name="dot" id="one"/>
+                    <input type="radio" name="dot" id="two"/>
+
+                    <div class="main-card">
+                        <div class="cards">
+                            <!--//Member 1st//-->
+
+                            <div class="card">
+
+                                <div class="content">
+                                    <div class="img">
+                                        <img src="{{asset('uploads/slider.png')}}" alt=""/>
+                                    </div>
+                                    <div class="details mt-4">
+                                        <div class="name">Nasir Bashir</div>
+                                        <div class="job work">Full Stack Developer</div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--//Member 2nd//-->
+                            <div class="card">
+                                <div class="content">
+                                    <div class="img">
+                                        <img src="{{asset('uploads/slider2.png')}}" alt=""/>                                    </div>
+
+                                    <div class="details mt-4">
+                                        <div class="name">Muhammad Haroon</div>
+                                        <div class="job work">Web Designer</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--//Member 3rd//-->
+
+                            <div class="card">
+
+                                <div class="content">
+                                    <div class="img">
+                                        <img src="{{asset('uploads/slider3.png')}}" alt=""/>                                    </div>
+                                    <div class="details mt-4">
+                                        <div class="name">Ramish Hassan</div>
+                                        <div class="job work">Web Designer</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="item">
-                            <img src="{{ asset('uploads/slider2.png') }}" class="image">
-                            <h4>Abdulrahman Aljiffry </h4>
-                            <p>Business Accelerator Program Manager</p>
+                        <div class="cards">
+                            <!--//Member 4th//-->
+
+                            <div class="card">
+                                <div class="content">
+                                    <div class="img">
+                                        <img src="{{asset('uploads/slider4.png')}}" alt=""/>
+                                    </div>
+                                    <div class="details mt-4 ">
+                                        <div class="name">Zubaida appa</div>
+                                        <div class="job work">Web Designer</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--//Member 5th//-->
+
+                            <div class="card">
+
+                                <div class="content">
+                                    <div class="img">
+                                        <img src="{{asset('uploads/slider5.png')}}" alt=""/>
+                                    </div>
+                                    <div class="details mt-4">
+                                        <div class="name">Muhammad Abdullah</div>
+                                        <div class="job work">Web Designer</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--//Member 6th//-->
+
+                            <div class="card">
+                                <div class="content">
+                                    <div class="img">
+                                        <img src="{{asset('uploads/slider6.png')}}" alt=""/>
+                                    </div>
+                                    <div class="details mt-4">
+                                        <div class="name">Muhammad Hamza</div>
+                                        <div class="job work">Web Desginer</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="item">
-                            <img src="{{ asset('uploads/slider3.png') }}" class="image">
-                            <h4>Arwa Shafi</h4>
-                            <p>Accelerator Lead</p>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('uploads/slider4.png') }}" class="image">
-                            <h4>Maryam Barradh</h4>
-                            <p>Startup Coordinator</p>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('uploads/slider5.png') }}" class="image">
-                            <h4>Lama Hakem</h4>
-                            <p>Training Specialist </p>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('uploads/slider6.png') }}" class="image">
-                            <h4>Nikolaos Tsorpatzidis</h4>
-                            <p>Startup Coordinator</p>
-                        </div>
+                    </div>
+                    <div class="buttons">
+                        <label for="one" class="active one"></label>
+                        <label for="two" class="two"></label>
                     </div>
                 </div>
             </section>
+
         </div>
     </div>
 </section>
 <section class="py-5 meet-startup-holder" style="background-color: #fff">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 text-center pb-3">
-                <h2 class="">About Us</h2>
+            <div class="col-md-12 text-center vpb-3">
+                <div class="col-md-3 mx-auto pt-4">
+                    <div class="row justify-content-center">
+                        <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
+                        <div class="col-3"></div>
+                        <div><h2>About Us</h2></div>
+                        <div class="col-3"></div>
+                        <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
+                    </div>
+                </div>
                 <div class="row mt-5 mb-5">
                     <div class="col-md-6">
                         <img src="{{ asset('uploads/team-member.png') }}" alt="Meet Up Image" class="team-image">
@@ -215,8 +287,8 @@
                     </div>
                     <div class="col-md-6">
                         <h6 class="pt-4 h6-text">
-                            Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
-                            Since its launch in 2016, more than 130 startups have graduated from TAQADAM. During that time, TAQADAM funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
+                            Since its launch in 2016, more than 130 startups have graduated from Business Accelerator. During that time, Business Accelerator funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
+                            Since its launch in 2016, more than 130 startups have graduated from Business Accelerator. During that time, Business Accelerator funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
                         </h6>
                     </div>
                 </div>
@@ -225,29 +297,26 @@
     </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
 <script type="text/javascript">
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        navText: [
-            "<img src='{{asset('uploads/left.png')}}' class='icon set'>",
-            "<img src='{{asset('uploads/right.png')}}' class='icon'>",
-        ],
+        jQuery('.card-slider').slick({
+        slidesToShow:3,
         autoplay: true,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
+        slidesToScroll:1,
+        dots: false,
+        responsive:[
+    {
+        breakpoint: 768,
+        settings: {
+        slidesToShow: 2
+    }
+    },
+    {
+        breakpoint: 600,
+        settings: {
+        slidesToShow: 1
+    }
+    }
+        ]
+    });
 </script>
+
