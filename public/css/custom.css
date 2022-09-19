@@ -1296,7 +1296,7 @@ svg {
     margin: auto;
 }
 .contact-icon{
-  margin-top: -10px;
+    margin-top: -10px;
 }
 .contact-us-holder img.icon {
     width: 40px;
@@ -1633,7 +1633,6 @@ img {
 }
 .pricing-section {
     position: relative;
-    padding: 100px 0 80px;
     overflow: hidden;
 }
 .pricing-section .outer-box{
@@ -1761,7 +1760,7 @@ img {
     padding-left: 30px;
     border-bottom: 1px dashed #dddddd;
 }
-.pricing-block .features li:before {
+.pricing-block .features li i {
     position: absolute;
     left: 0;
     top: 50%;
@@ -1774,8 +1773,6 @@ img {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    content: "\f058";
-    font-family: "Font Awesome 5 Free";
     margin-top: -8px;
 }
 .pricing-block .features li.false:before{
@@ -1899,5 +1896,106 @@ img {
     -moz-box-shadow: 10px 10px 5px 0px rgba(213, 210, 210, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(210, 209, 209, 0.75);
 }
-/*ba company Style end*/
+/*ba company Style start*/
+
+
+.tab-main{
+    text-align: center;
+}
+#tsum-tabs h1 {
+    padding: 50px 0;
+    font-weight: 400;
+    text-align: center;
+}
+
+#tsum-tabs p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+#tsum-tabs main {
+    padding: 50px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+#tsum-tabs section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+
+#tsum-tabs input {
+    display: none;
+}
+
+#tsum-tabs label {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #01023B;
+    border: 1px solid transparent;
+}
+#content1,#content2,#content3,#content4{
+    border: none!important;
+    margin-top: 2rem;
+}
+
+#tsum-tabs label:before {
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+#tsum-tabs label:hover {
+    color: #888;
+    cursor: pointer;
+}
+
+#tsum-tabs input:checked + label {
+    background-color: transparent;
+    color: #01023B;
+    border: 2px solid;
+    border-image-source: linear-gradient(90deg, rgba(0, 211, 225, 1) 0%, rgba(102, 65, 243, 1) 50%, rgba(247, 132, 178, 1) 90%);;
+    border-image-slice: 1;
+}
+
+#tsum-tabs #tab1:checked ~ #content1,
+#tsum-tabs #tab2:checked ~ #content2,
+#tsum-tabs #tab3:checked ~ #content3,
+#tsum-tabs #tab4:checked ~ #content4 {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    main{
+        width: 100%;
+    }
+    #tsum-tabs label {
+        font-size: 10px;
+    }
+    #tsum-tabs label:before {
+        margin: 0;
+        font-size: 18px;
+    }
+    #tsum-tabs main{
+        padding:10px!important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    main{
+        width: 100%;
+    }
+    #tsum-tabs label {
+        padding: 15px;
+    }
+    #tsum-tabs main{
+        padding:10px!important;
+    }
+}
+
+/*plan tabs Style end*/
 

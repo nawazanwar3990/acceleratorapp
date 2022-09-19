@@ -9,6 +9,8 @@
     <meta name="keywords" content="{{ $page->page_keyword }}">
     <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
 </head>
 <body>
 <div>

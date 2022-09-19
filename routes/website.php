@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentReceiptController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\StartupController;
 use App\Http\Controllers\StartupServiceController;
 use App\Http\Controllers\SubscriptionController;
@@ -54,6 +55,9 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
 
     Route::get('pages', [PageController::class, 'index'])
         ->name('pages.index');
+
+    Route::get('plans/{for}/{type?}', [PlanController::class, 'index'])
+        ->name('plans.index');
 
     Route::get('startups/{for}/{type?}', [StartupController::class, 'index'])
         ->name('startups.index');

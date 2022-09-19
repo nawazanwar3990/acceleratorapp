@@ -1,108 +1,104 @@
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
-<style>
+<section class="pricing-section">
+    <div class="container">
+        <section class="mb-5">
+        <div class="container how-we-are-holder">
+            <div class="row">
+                <div class="col-6 mx-auto text-center">
+                    <h1 class="who-are-you text-uppercase">Per-defined Packages</h1>
+                </div>
+            </div>
+        </div>
 
-    .tab-main{
-        text-align: center;
-    }
-    #tsum-tabs h1 {
-        padding: 50px 0;
-        font-weight: 400;
-        text-align: center;
-    }
+            <div class="row mx-1">
+                <div class="col-4 border-top"> </div>
+                <div class="col-4"> </div>
+                <div class="col-4 border-top"> </div>
+            </div>
+        </section>
 
-    #tsum-tabs p {
-        margin: 0 0 20px;
-        line-height: 1.5;
-    }
+        <div class="outer-box">
+            <div class="row">
+                <!-- Pricing Block -->
+                <div class="pricing-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <div class="icon-outer"><i class="fas fa-paper-plane"></i></div>
+                        </div>
+                        <div class="price-box">
+                            <div class="title">Basics</div>
+                            <h4 class="price">SAR : 35.99</h4>
+                            <div  class="month">Month : 12</div>
+                        </div>
+                        <ul class="features">
+                            <li class="true">Freelancer</li>
+                            <li class="true">Mentor</li>
+                            <li class="true">Business Accelerator</li>
+                            <li class="false">Incubater</li>
+                            <li class="false">Meeting Room</li>
+                            <li class="false">Event Management</li>
+                        </ul>
+                        <div class="btn-box">
+                            <a href="https://codepen.io/anupkumar92" class="theme-btn">BUY plan</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing Block -->
+                <div class="pricing-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <div class="icon-outer"><i class="fas fa-gem"></i></div>
+                        </div>
+                        <div class="price-box">
 
-    #tsum-tabs main {
-        padding: 50px;
-        margin: 0 auto;
-        background: #fff;
-    }
+                            <div class="title">Standard</div>
+                            <h4 class="price">SAR : 235.99</h4>
+                            <div  class="month">Month : 12</div>
+                        </div>
+                        <ul class="features">
+                            <li class="true">Freelancer</li>
+                            <li class="true">Mentor</li>
+                            <li class="true">Business Accelerator</li>
+                            <li class="false">Incubater</li>
+                            <li class="false">Meeting Room</li>
+                            <li class="false">Event Management</li>
+                        </ul>
+                        <div class="btn-box">
+                            <a href="https://codepen.io/anupkumar92" class="theme-btn">BUY plan</a>
+                        </div>
+                    </div>
+                </div>
 
-    #tsum-tabs section {
-        display: none;
-        padding: 20px 0 0;
-        border-top: 1px solid #ddd;
-    }
-
-    #tsum-tabs input {
-        display: none;
-    }
-
-    #tsum-tabs label {
-        background-color: #eee;
-        display: inline-block;
-        margin: 0 0 -1px;
-        padding: 15px 25px;
-        font-weight: 600;
-        text-align: center;
-        color: #01023B;
-        border: 1px solid transparent;
-    }
-    #content1,#content2,#content3,#content4{
-        border: none!important;
-        margin-top: 2rem;
-    }
-
-    #tsum-tabs label:before {
-        font-weight: normal;
-        margin-right: 10px;
-    }
-
-    #tsum-tabs label:hover {
-        color: #888;
-        cursor: pointer;
-    }
-
-    #tsum-tabs input:checked + label {
-        background-color: transparent;
-        color: #01023B;
-        border: 2px solid;
-        border-image-source: linear-gradient(90deg, rgba(0, 211, 225, 1) 0%, rgba(102, 65, 243, 1) 50%, rgba(247, 132, 178, 1) 90%);;
-        border-image-slice: 1;
-    }
-
-    #tsum-tabs #tab1:checked ~ #content1,
-    #tsum-tabs #tab2:checked ~ #content2,
-    #tsum-tabs #tab3:checked ~ #content3,
-    #tsum-tabs #tab4:checked ~ #content4 {
-        display: block;
-    }
-
-    @media screen and (max-width: 650px) {
-        main{
-            width: 100%;
-        }
-        #tsum-tabs label {
-            font-size: 10px;
-        }
-        #tsum-tabs label:before {
-            margin: 0;
-            font-size: 18px;
-        }
-        #tsum-tabs main{
-            padding:10px!important;
-        }
-    }
-
-    @media screen and (max-width: 400px) {
-        main{
-            width: 100%;
-        }
-        #tsum-tabs label {
-            padding: 15px;
-        }
-        #tsum-tabs main{
-            padding:10px!important;
-        }
-    }
-</style>
-
-
-
+                <!-- Pricing Block -->
+                <div class="pricing-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <div class="icon-outer"><i class="fas fa-rocket"></i></div>
+                        </div>
+                        <div class="price-box">
+                            <div class="title">Permium</div>
+                            <h4 class="price">SAR : 435.99</h4>
+                            <div  class="month">Month : 12</div>
+                        </div>
+                        <ul class="features">
+                            <li class="true">Freelancer</li>
+                            <li class="true">Mentor</li>
+                            <li class="true">Business Accelerator</li>
+                            <li class="false">Incubater</li>
+                            <li class="false">Meeting Room</li>
+                            <li class="false">Event Management</li>
+                        </ul>
+                        <div class="btn-box">
+                            <a href="https://codepen.io/anupkumar92" class="theme-btn">BUY plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section>
 
     <div class="container how-we-are-holder">
