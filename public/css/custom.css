@@ -1744,8 +1744,8 @@ img {
 
 .pricing-block .features{
     position: relative;
-    max-width: 200px;
-    margin: 0 auto 20px;
+    max-width: 73%;
+    margin: 0 auto;
 }
 
 .pricing-block .features li{
@@ -1996,6 +1996,3 @@ img {
         padding:10px!important;
     }
 }
-
-/*plan tabs Style end*/
-
