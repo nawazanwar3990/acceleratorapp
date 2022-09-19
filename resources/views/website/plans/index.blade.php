@@ -26,11 +26,7 @@
         <section class="startup-holder  bg-body py-5">
             <div class="container">
                 <div class="row">
-                    {{--  @if($startup_type)
-                          @include(sprintf('website.startups.components.%s-%s',$startup_for,$startup_type))
-                      @else
-                          @include(sprintf('website.startups.components.%s',$startup_for))
-                      @endif--}}
+              @include('website.plans.list')
                 </div>
             </div>
         </section>
