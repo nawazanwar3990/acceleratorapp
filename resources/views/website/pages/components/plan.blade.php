@@ -1,7 +1,3 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-<link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
-
-
 <section class="pricing-section">
     <div class="container">
         <section class="mb-5">
@@ -46,7 +42,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Pricing Block -->
                 <div class="pricing-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
                     <div class="inner-box">
