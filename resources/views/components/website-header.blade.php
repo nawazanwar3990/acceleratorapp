@@ -4,11 +4,13 @@
             <img style="height: 100%;max-height: 45px" src="{{ asset($cPage->layout->header_logo) }}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
+            <span class="">
+                <img src="{{asset('uploads/toggle-icon-blue.png')}}">
+            </span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             @if($cPage->layout->menu_type = 'simple')
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav column-12 ms-auto">
                     @if(count(\App\Services\CMS\PageService::getPagesForMenus())>0)
                         @foreach(\App\Services\CMS\PageService::getPagesForMenus() as $page)
                             <li class="nav-item">
@@ -36,14 +38,14 @@
             @endif
             <div class="d-flex">
                 @guest
-                    <div class="navbar-item">
+                    <div class="navbar-item padding">
                         <a href="{{ route('login') }}"
                            class="mx-md-1 login-nav" style="color: #01023B!important;">
                             <b>{{ trans('general.login') }}</b>
                         </a>
                     </div>
                 @else
-                    <div class="navbar-item">
+                    <div class="navbar-item padding">
                         <a href="{{ route('dashboard.index') }}"
                            class="text-white mx-1" style="color: #01023B!important;">
                             {{ trans('general.dashboard') }}
