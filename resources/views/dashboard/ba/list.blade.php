@@ -20,7 +20,7 @@
             @if($record->user->subscription)
                 @if(in_array($record->user->subscription->status,[\App\Enum\SubscriptionStatusEnum::APPROVED,\App\Enum\SubscriptionStatusEnum::RENEW]))
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('dashboard.payment-logs.index',$record->user->subscription->id) }}">
+                       href="{{ route('dashboard.payment-logs.index',$record->user->subscription->subscription_id) }}">
                         {{ trans('general.view_payment') }}
                     </a>
                 @else

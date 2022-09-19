@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Enum;
 
 use App\Enum\AbstractEnum;
+use phpDocumentor\Reflection\Types\Self_;
 
 class SubscriptionTypeEnum extends AbstractEnum
 {
@@ -30,6 +31,12 @@ class SubscriptionTypeEnum extends AbstractEnum
     {
         return array(
             self::OFFICE => __(sprintf('%s.%s', 'general', 'office')),
+        );
+    }
+    public static function getFreelancerTypes(): array
+    {
+        return array(
+            self::PACKAGE => __(sprintf('%s.%s', 'general',self::PACKAGE)),
         );
     }
     public static function getTranslationKeys(): array

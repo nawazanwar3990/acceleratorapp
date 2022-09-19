@@ -30,6 +30,8 @@ class DashboardController extends Controller
         ];
         if (PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
             return view('dashboard.ba-dashboard', $params);
+        } else if (PersonService::hasRole(RoleEnum::FREELANCER)) {
+            return view('dashboard.freelancer-dashboard', $params);
         } else if (PersonService::hasRole(RoleEnum::SUPER_ADMIN)) {
             $subscriptions = Subscription::orderBy('id', 'DESC')
                 ->where('created_by', Auth::id())
@@ -39,7 +41,7 @@ class DashboardController extends Controller
             return view('dashboard.admin-dashboard', $params);
         } else if (PersonService::hasRole(RoleEnum::CUSTOMER)) {
             return view('dashboard.customer-dashboard', $params);
-        }else if (PersonService::hasRole(RoleEnum::MENTOR)) {
+        } else if (PersonService::hasRole(RoleEnum::MENTOR)) {
             return view('dashboard.mentor-dashboard', $params);
         }
     }
