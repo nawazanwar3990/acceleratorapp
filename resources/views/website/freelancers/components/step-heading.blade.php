@@ -1,4 +1,4 @@
-@if($model)
+@isset($model)
     @switch($step)
         @case(\App\Enum\StepEnum::COMPANY_PROFILE)
 
@@ -26,4 +26,4 @@
 
             @break
     @endswitch
-@endif
+@endisset
