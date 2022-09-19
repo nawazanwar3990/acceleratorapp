@@ -35,5 +35,6 @@
                 </div>
             </div>
         </div>
+        @include('components.common-scripts')
     </x-slot>
 </x-register-layout>

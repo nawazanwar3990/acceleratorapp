@@ -45,7 +45,6 @@ class FreelancerController extends Controller
                 $id = null
     )
     {
-
         $model = null;
         $subscription = null;
         $prev_step = null;
