@@ -24,6 +24,7 @@
 
                 {{ trans('general.package') }}
 
+
             @break
     @endswitch
 @endisset
