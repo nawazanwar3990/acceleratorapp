@@ -1296,7 +1296,7 @@ svg {
     margin: auto;
 }
 .contact-icon{
-  margin-top: -10px;
+    margin-top: -10px;
 }
 .contact-us-holder img.icon {
     width: 40px;
@@ -1633,7 +1633,6 @@ img {
 }
 .pricing-section {
     position: relative;
-    padding: 100px 0 80px;
     overflow: hidden;
 }
 .pricing-section .outer-box{

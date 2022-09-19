@@ -1,3 +1,25 @@
+<section class="startup-holder py-5" style="">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-12 m-auto">
+                <ul class="startup-nav-holder">
+                    @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
+                        @php
+                            $new_startup_for = \App\Services\GeneralService::generateStartupFor($access_key);
+                            $new_start_type = \App\Services\GeneralService::generateStartType($access_key);
+                        @endphp
+                        <li class="nav-item">
+                            <a href="{{ route('website.plans.index',[$new_startup_for,$new_start_type])}}"
+                               class="nav-link">
+                                {{ $access_value }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="pricing-section">
     <div class="container">
         <section class="mb-5">

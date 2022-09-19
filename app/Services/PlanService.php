@@ -19,4 +19,8 @@ class PlanService
     {
         return Plan::find($planId);
     }
+
+    public function findByCode(string $string)
+    {
+    }
 }
