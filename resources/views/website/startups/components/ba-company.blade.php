@@ -3,7 +3,7 @@
     @if(count($records))
         @foreach($records as $record)
             <div class="col-md-3">
-                <div class="card card-shadow px-5 py-3" style="border-radius: 10px">
+                <div class="card card-shadow px-5 py-3  rounded-3">
                     <div>
                         <img class="card-img-top circle" src="{{asset('uploads/ot_logo.png')}}" alt="Card image cap" >
                     </div>
