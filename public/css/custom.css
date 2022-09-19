@@ -765,6 +765,29 @@ footer .nav-holder img {
         color: #fff;
     }
     /*slider home page*/
+    .navbar > .container{
+        display: flex;
+        flex-wrap: inherit;
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
+        padding: 0 0 20px 0;
+    }
+    .nav-link{
+        letter-spacing: 2px;
+    }
+    .login-nav{
+        position: relative;
+        left:-60px ;
+    }
+    .navbar-toggler{
+        outline: none!important;
+        box-shadow: none!important;
+    }
+
+    .navbar-toggler > .navbar-toggler-icon{
+        box-shadow: none!important;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -830,8 +853,6 @@ footer .nav-holder img {
     .who-are-you {
         font-size: 5vw !important;
     }
-
-
     /*slider home page*/
     header .item .cover .header-content h2 {
         font-weight: 300;
@@ -852,7 +873,17 @@ footer .nav-holder img {
         color: #fff;
     }
     /*slider home page*/
+}
+@media screen and (max-width: 715px){
+    /*Startup Tabs responsive start*/
 
+    .startup-nav-holder li {
+        font-size: 10px;
+        padding: 2vw!important;
+        margin-bottom: 5px;
+
+    }
+    /*Startup Tabs responsive end*/
 }
 
 .icon {
@@ -1869,3 +1900,4 @@ img {
     box-shadow: 10px 10px 5px 0px rgba(210, 209, 209, 0.75);
 }
 /*ba company Style end*/
+

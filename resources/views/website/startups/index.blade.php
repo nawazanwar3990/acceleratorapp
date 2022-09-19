@@ -4,7 +4,7 @@
         <section class="startup-holder py-5" style="">
             <div class="container">
                 <div class="row text-center">
-                    <div class="col-10 m-auto">
+                    <div class="col-sm-12 m-auto">
                         <ul class="startup-nav-holder">
                             @foreach(\App\Enum\AccessTypeEnum::getStartups() as $access_key=>$access_value)
                                 @php

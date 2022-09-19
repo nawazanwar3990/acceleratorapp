@@ -1,5 +1,4 @@
-<nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top"
-     style="background-color: rgb(232, 228, 228)!important;">
+<nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top" style="background-color: rgb(232, 228, 228)!important;">
     <div class="container">
         <a class="navbar-brand" href="{{route('website.index')}}">
             <img style="height: 100%;max-height: 45px" src="{{ asset($cPage->layout->header_logo) }}" alt="">
@@ -39,7 +38,7 @@
                 @guest
                     <div class="navbar-item">
                         <a href="{{ route('login') }}"
-                           class="text-white mx-1" style="color: #01023B!important;">
+                           class="mx-md-1 login-nav" style="color: #01023B!important;">
                             <b>{{ trans('general.login') }}</b>
                         </a>
                     </div>
