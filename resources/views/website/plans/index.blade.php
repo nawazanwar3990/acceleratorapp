@@ -11,7 +11,8 @@
                                     $new_plan_for = \App\Services\GeneralService::generateStartupFor($access_key);
                                     $new_plan_type = \App\Services\GeneralService::generateStartType($access_key);
                                 @endphp
-                                <li class="nav-item  @if($new_plan_for==$plan_for AND $new_plan_type==$plan_type) active @endif">
+                         {{--  {{ $new_plan_for }} {{$new_plan_type}}--}}
+                                <li class="nav-item  @if($new_plan_for==request()->segment(2) AND $new_plan_type==request()->segment(3)) active @endif">
                                     <a href="{{ route('website.plans.index',[$new_plan_for,$new_plan_type])}}"
                                        class="nav-link">
                                         {{ $access_value }}

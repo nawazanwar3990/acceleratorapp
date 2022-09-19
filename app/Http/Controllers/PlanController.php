@@ -4,19 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Enum\AccessTypeEnum;
 use App\Enum\StartUpForEnum;
-use App\Enum\SubscriptionStatusEnum;
-use App\Models\BA;
-use App\Models\Freelancer;
-use App\Models\Mentor;
 use App\Models\Package;
-use App\Services\BaService;
-use App\Services\BuildingService;
 use App\Services\CMS\PageService;
-use App\Services\FloorService;
-use App\Services\FreelancerService;
-use App\Services\MentorService;
-use App\Services\OfficeService;
-use App\Services\PlanService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -30,7 +19,7 @@ class PlanController extends Controller
     {
 
     }
-    public function index(Request $request, $plan_for, $plan_type = null): Factory|View|Application
+    public function index(Request $request, $plan_for, $plan_type = null)
     {
         $page = $this->pageService->findByCode('plan');
         $records = null;
