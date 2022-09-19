@@ -331,8 +331,8 @@
                             <div class="container">
                                 <div class="header-content">
                                     <div class="line"></div>
-                                    <h1>Meet The Startups1</h1>
-                                    <h4>Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                    <h1>OPTIMUM TECH</h1>
+                                    <h4>Our competent team of inquisitive designers, marketers, and developers are highly capable of strong leadership and problem-solving skills, task execution, and innovative strategy-making.</h4>
                                 </div>
                             </div>
                         </div>
@@ -343,8 +343,10 @@
                             <div class="container">
                                 <div class="header-content">
                                     <div class="line animated bounceInLeft"></div>
-                                    <h1>Meet The Startups2</h1>
-                                    <h4>Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                    <h1>IT EMPIRE</h1>
+                                    <h4>
+                                        Since its inception, it has grown and progressed to be at the center stage of information and technology, providing effective computing strategies and solutions to Private and Government Organizations. IT Empire has played a major role in some of the largest IT projects in the country.
+                                        </h4>
                                 </div>
                             </div>
                         </div>
@@ -355,8 +357,8 @@
                             <div class="container">
                                 <div class="header-content">
                                     <div class="line animated bounceInLeft"></div>
-                                    <h1>Meet The Startups3</h1>
-                                    <h4>Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.</h4>
+                                    <h1>ANT SOFT</h1>
+                                    <h4>ANT SOFT have been involved in multiple complex E-Commerce B2C integration solutions, Connecting commerce platforms with different third party services. Have also built different integrations regarding payment, shipping, analytics etc.</h4>
                                 </div>
                             </div>
                         </div>
