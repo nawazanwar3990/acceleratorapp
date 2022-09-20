@@ -50,7 +50,7 @@
                         </a>
                     </div>
                 @else
-                    <div class="navbar-item padding mt-3">
+                    <div class="navbar-item padding">
                         <a href="{{ route('dashboard.index') }}"
                            class="text-white mx-1" style="color: #01023B!important;">
                             {{ trans('general.dashboard') }}

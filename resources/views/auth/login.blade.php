@@ -60,7 +60,7 @@
                         <div class="mb-3  text-center">
                             <button class="btn btn-login site-first-btn-color text-white px-5" type="submit">{{ __('general.login') }}</button>
                         </div>
-                        <div class="text-center mt-4" style="cursor: pointer">
+                        <div class="text-center mt-4 mb-2" style="cursor: pointer">
                             Become a member?<a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')" class="ms-2 signup-text p-2" title="Become a member">Sign Up</a>
                         </div>
                     </form>
