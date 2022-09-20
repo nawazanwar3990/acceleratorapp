@@ -24,7 +24,7 @@
             @if($record->user->subscription)
                 @if($record->user->subscription->status==\App\Enum\SubscriptionStatusEnum::APPROVED)
                     <a class="btn btn-sm btn-success"
-                       href="{{ route('dashboard.payment-logs.index',$record->user->subscription->subscription_id) }}">
+                       href="{{ route('dashboard.payment-logs.index',$record->user->subscription->id) }}">
                         {{ trans('general.view_payment') }}
                     </a>
                 @else

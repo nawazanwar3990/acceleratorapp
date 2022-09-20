@@ -29,6 +29,9 @@ mix.scripts([
 
     'resources/theme/js/plugins/buttons.print.min.js',
 
+    'resources/theme/js/plugins/html2pdf.bundle.min.js',
+    'resources/theme/js/plugins/owl.carousel.min.js',
+
     'resources/theme/js/plugins/raphael-min.js',
     'resources/theme/js/plugins/morris.js',
     'resources/theme/js/plugins/jquery.sparkline.min.js',

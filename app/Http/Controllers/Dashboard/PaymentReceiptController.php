@@ -37,11 +37,11 @@ class PaymentReceiptController extends Controller
         return view('dashboard.payment-receipts.index', $params);
     }
 
-    public function logs($subscription_id): Factory|View|Application
+    public function logs($id): Factory|View|Application
     {
         $records = PaymentReceipt::with('package_subscription', 'plan_subscription', 'subscribed');
-        if ($subscription_id) {
-            $records = $records->where('subscription_id', $subscription_id);
+        if ($id) {
+            $records = $records->where('id', $id);
         }
         if (
             PersonService::hasRole(RoleEnum::BUSINESS_ACCELERATOR)
