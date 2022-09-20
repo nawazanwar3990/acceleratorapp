@@ -1996,3 +1996,28 @@ img {
         padding:10px!important;
     }
 }
+
+/*ba company card start*/
+.card-shadow{
+    -webkit-box-shadow:5px 5px 5px 5px rgba(210, 209, 209, 0.75);
+    -moz-box-shadow:5px 5px 5px 5px rgba(210, 209, 209, 0.75);
+    box-shadow: 5px 5px 5px 5px rgba(210, 209, 209, 0.75);
+}
+.card-btn{
+    position: relative;
+    bottom: 0!important;
+}
+@media screen and (max-width: 576px) {
+
+    .card{
+        width: 100%;
+        margin: auto;
+        max-width:300px;
+    }
+    .card-img-adjust{
+        width: 100%;
+        margin:auto;
+        max-width: 150px;
+    }
+}
+/*ba company card end*/
