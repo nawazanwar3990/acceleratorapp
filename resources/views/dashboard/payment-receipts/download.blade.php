@@ -91,7 +91,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{ trans('general.transaction_id') }}</th>
-                                        <td>{{ $subscription->transaction_id??null }}</td>
+                                        <td>{{ $receipt->transaction_id??null }}</td>
                                     </tr>
                                     <tr>
                                         <th>{{ trans('general.payment_type') }}</th>
