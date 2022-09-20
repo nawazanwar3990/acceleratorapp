@@ -1,6 +1,6 @@
 <div class="card card-shadow px-5 py-3  rounded-3">
     <div>
-        <img class="card-img-top circle  p-3" style="height:171px;" src="{{ asset($record->logo[0]->filename??'uploads/default_startup.png') }}"
+        <img class="card-img-top circle mb-2" src="{{ asset($record->logo[0]->filename??'uploads/default_startup.png') }}"
              alt=" @if($startup_for==\App\Enum\StartUpForEnum::BA AND $startup_type==\App\Enum\StartUpTypeEnum::INDIVIDUAL)
                 {{ $record->user->getFullName() }}
             @elseif($startup_for==\App\Enum\StartUpForEnum::FREELANCER AND $startup_type==\App\Enum\StartUpTypeEnum::INDIVIDUAL)
