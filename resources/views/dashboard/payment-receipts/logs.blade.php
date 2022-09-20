@@ -36,10 +36,18 @@
                                     {{ $record->price }}  {{ \App\Services\GeneralService::get_default_currency() }}
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-xs btn-warning mx-1" target="_blank" download
-                                       href="{{asset($record->file_name)}}">
-                                        {{ trans('general.download_receipt') }}
-                                    </a>
+                                    @if(in_array($record->payment_for,[\App\Enum\PaymentForEnum::PACKAGE_APPROVAL,\App\Enum\PaymentForEnum::PACKAGE_EXPIRE]))
+                                        <a class="btn btn-xs btn-warning mx-1"
+                                           href="{{ route('dashboard.payment-receipt-download',[$record->package_subscription->id]) }}">
+                                            {{ trans('general.download_receipt') }}
+                                        </a>
+                                    @endif
+                                    @if(in_array($record->payment_for,[\App\Enum\PaymentForEnum::OFFICE_SUBSCRIPTION_APPROVAL,\App\Enum\PaymentForEnum::OFFICE_SUBSCRIPTION_EXPIRE]))
+                                        <a class="btn btn-xs btn-warning mx-1"
+                                           href="{{ route('dashboard.payment-receipt-download',[$record->plan_subscription->id]) }}">
+                                            {{ trans('general.download_receipt') }}
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

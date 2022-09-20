@@ -24,6 +24,11 @@
                                        href="{{ route('website.startups.index',[\App\Enum\StartUpForEnum::BA,\App\Enum\StartUpTypeEnum::INDIVIDUAL]) }}">
                                         {{$page->name}}
                                     </a>
+                                @elseif($page->code=='plan')
+                                    <a class="nav-link" style="color: #01023B!important;"
+                                       href="{{ route('website.plans.index',[\App\Enum\StartUpForEnum::BA,\App\Enum\StartUpTypeEnum::INDIVIDUAL]) }}">
+                                        {{$page->name}}
+                                    </a>
                                 @else
                                     <a class="nav-link" style="color: #01023B!important;"
                                        href="{{ route('website.pages.index',['type'=>$page->code]) }}">
@@ -45,7 +50,7 @@
                         </a>
                     </div>
                 @else
-                    <div class="navbar-item padding">
+                    <div class="navbar-item padding mt-3">
                         <a href="{{ route('dashboard.index') }}"
                            class="text-white mx-1" style="color: #01023B!important;">
                             {{ trans('general.dashboard') }}

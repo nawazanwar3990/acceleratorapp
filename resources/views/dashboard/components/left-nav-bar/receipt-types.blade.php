@@ -30,3 +30,13 @@
         </li>
     @endforeach
 @endif
+
+@if(\Illuminate\Support\Facades\Auth::user()->hasRole(\App\Enum\RoleEnum::FREELANCER))
+    @foreach(\App\Enum\SubscriptionTypeEnum::getFreelancerTypes() as $key=>$value)
+        <li>
+            <a href="{{ route('dashboard.payment-receipts.index',['type'=>$key]) }}">
+                {!! $value !!}
+            </a>
+        </li>
+    @endforeach
+@endif

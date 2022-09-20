@@ -12,6 +12,8 @@ class FreelancerTableHeadingEnum extends AbstractEnum
     public const NAME = 'name';
     public const TYPE = 'type';
     public const SUBSCRIPTION_STATUS = 'subscription_status';
+    public const SERVICES = 'services';
+
     public static function getValues(): array
     {
         return [];
@@ -24,6 +26,7 @@ class FreelancerTableHeadingEnum extends AbstractEnum
             self::NAME => __(sprintf('%s.%s', 'general', self::NAME)),
             self::TYPE => __(sprintf('%s.%s', 'general', self::TYPE)),
             self::SUBSCRIPTION_STATUS => __(sprintf('%s.%s', 'general', self::SUBSCRIPTION_STATUS)),
+            self::SERVICES => __(sprintf('%s.%s', 'general', self::SERVICES)),
         ];
     }
 }

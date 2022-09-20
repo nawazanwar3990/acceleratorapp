@@ -9,8 +9,8 @@
             {{ trans('general.declined') }} <i class="bx bx-minus-circle"></i>
         </a>
     @else
-        <a class="btn btn-xs btn-warning mx-1" target="_blank" download
-           href="{{asset($record->file_name)}}">
+        <a class="btn btn-xs btn-warning mx-1"
+           href="{{ route('dashboard.payment-receipt-download',[$record->plan_subscription->id]) }}">
             {{ trans('general.download_receipt') }}
         </a>
     @endif
@@ -28,8 +28,8 @@
             {{ trans('general.renew') }} <i class="bx bx-plus-circle"></i>
         </a>
     @else
-        <a class="btn btn-xs btn-warning mx-1" target="_blank" download
-           href="{{asset($record->file_name)}}">
+        <a class="btn btn-xs btn-warning mx-1"
+           href="{{ route('dashboard.payment-receipt-download',[$record->plan_subscription->id]) }}">
             {{ trans('general.download_receipt') }}
         </a>
     @endif

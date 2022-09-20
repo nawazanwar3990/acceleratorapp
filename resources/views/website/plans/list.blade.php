@@ -1,5 +1,5 @@
 <div class="row px-2">
-    @foreach(\App\Services\PackageService::list_packages($package_for) as $package)
+    @foreach($records as $package)
         <div class="pricing-block px-1 col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
             <div class="inner-box">
                 <div class="icon-box">
@@ -23,7 +23,7 @@
                         @if($service->slug=='incubator')
                             <li class="true">
                                 <i class="fa @if($service->pivot->building_limit>0) fa-check-circle @else  fa-times-circle @endif"></i>
-                                    {{ trans('general.buildings') }}
+                                {{ trans('general.buildings') }}
                                 <span
                                     class="w-bold pull-right badge @if($service->pivot->building_limit>0) bg-success @else bg-danger @endif">
                                               {{ ($service->pivot->building_limit)=='∞'?'Unlimited':$service->pivot->building_limit }}
@@ -31,7 +31,7 @@
                             </li>
                             <li class="true">
                                 <i class="fa @if($service->pivot->floor_limit>0) fa-check-circle @else  fa-times-circle @endif"></i>
-                                    {{ trans('general.floors') }}
+                                {{ trans('general.floors') }}
                                 <span
                                     class="w-bold pull-right badge @if($service->pivot->floor_limit>0) bg-success @else bg-danger @endif">
                                               {{ ($service->pivot->floor_limit)=='∞'?'Unlimited':$service->pivot->floor_limit }}
@@ -39,42 +39,57 @@
                             </li>
                             <li class="true">
                                 <i class="fa @if($service->pivot->office_limit>0) fa-check-circle @else  fa-times-circle @endif"></i>
-                                    {{ trans('general.offices') }}
+                                {{ trans('general.offices') }}
                                 <span
                                     class="w-bold pull-right badge @if($service->pivot->office_limit>0) bg-success @else bg-danger @endif">
                                               {{ ($service->pivot->office_limit)=='∞'?'Unlimited':$service->pivot->office_limit }}
                                           </span>
                             </li>
                         @else
-                        <li class="true">
-                            <i class="fa @if($service->pivot->limit>0) fa-check-circle @else  fa-times-circle site-second-color @endif"></i>
-                            {{ $service->name }}
-                            <span
-                                class="w-bold pull-right badge @if($service->pivot->limit>0) bg-success @else bg-danger @endif">
+                            <li class="true">
+                                <i class="fa @if($service->pivot->limit>0) fa-check-circle @else  fa-times-circle site-second-color @endif"></i>
+                                {{ $service->name }}
+                                <span
+                                    class="w-bold pull-right badge @if($service->pivot->limit>0) bg-success @else bg-danger @endif">
                                               {{ ($service->pivot->limit)=='∞'?'Unlimited':$service->pivot->limit }}
                                           </span>
-                        </li>
+                            </li>
                         @endif
                     @endforeach
                 </ul>
                 <div class="btn-box">
-                    @if(isset($model->user))
-                        @php $selected = \App\Models\Subscription::where('subscribed_id',$model->user->id)->exists() @endphp
-                    @else
-                        @php $selected =0; @endphp
-                    @endif
-                    <div class="form-check form-switch d-inline-block">
-                        {!! Form::radio('subscription_id',$package->id,$selected,['id'=>$package->id,'class'=>'form-check-input',
-                            'data-name'=>$package->name,
-                            'data-price'=>$package->price,
-                             'data-expiry'=>\App\Services\GeneralService::get_remaining_time($package->duration_type->slug,$package->duration_limit, \Carbon\Carbon::now()),
-                            'required'
-                            ])
-                        !!}
-                        <label class="form-check-label" for="{{ $package->id }}"></label>
-                    </div>
+                    <a href="https://codepen.io/anupkumar92" class="theme-btn">BUY plan</a>
                 </div>
             </div>
         </div>
     @endforeach
 </div>
+<section class="bg-white">
+    <div class="container how-we-are-holder">
+        <div class="row">
+            <div class="col-6 mx-auto text-center">
+                <h1 class="who-are-you text-uppercase">Customized Packages</h1>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="row mx-1">
+            <div class="col-4 border-top"> </div>
+            <div class="col-4"> </div>
+            <div class="col-4 border-top"> </div>
+        </div>
+    </section>
+    <div class="container how-we-are-holder py-3">
+        <div class="row">
+            <div class="col-6 mx-auto text-center">
+                <h6 class="text-center">If you want to check customized plan then click here.</h6>
+                <div class="col-12 mt-1 mb-3 text-center" style="margin-top: -30px!important;">
+                    <a onclick="apply_registration('{{ json_encode(\App\Enum\RegisterTypeEnum::getTranslationKeys()) }}')"
+                       class="read-more btn py-sm-3 px-sm-5">
+                        {{ trans('general.get_started') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

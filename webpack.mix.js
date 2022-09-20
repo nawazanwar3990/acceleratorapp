@@ -27,6 +27,10 @@ mix.scripts([
     'resources/theme/js/plugins/buttons.html5.min.js',
     'resources/theme/js/plugins/buttons.print.min.js',
 
+    'resources/theme/js/plugins/buttons.print.min.js',
+
+    'resources/theme/js/plugins/html2pdf.bundle.min.js',
+    'resources/theme/js/plugins/owl.carousel.min.js',
 
     'resources/theme/js/plugins/raphael-min.js',
     'resources/theme/js/plugins/morris.js',
@@ -51,6 +55,8 @@ mix.scripts([
     'resources/theme/js/plugins/bootstrap-timepicker.min.js',
     'resources/theme/js/plugins/jquery-ui.min.js',
     'resources/theme/js/plugins/perfect-scrollbar.jquery.min.js',
+    'resources/theme/js/plugins/html2pdf.bundle.min.js',
+    'resources/theme/js/plugins/owl.carousel.min.js',
     'resources/theme/js/plugins/select2.min.js',
     'resources/theme/js/plugins/dropify.js',
     'resources/theme/js/plugins/print.js',
