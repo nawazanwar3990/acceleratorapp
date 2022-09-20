@@ -22,7 +22,7 @@
                                     <h4 class="card-title">{{$office->name}}</h4>
                                     @if($office->building)
                                         <p class="border-bottom pb-1 mb-2">
-                                            <spam>{{ trans('general.building') }}</spam>
+                                            <span>{{ trans('general.building') }}</span>
                                             <a href="{{ route('website.buildings.index',[$startup_id,'s'=>$office->building->id]) }}"
                                                class="pull-right">
                                                 {{ $office->building->name }}
@@ -31,7 +31,7 @@
                                     @endif
                                     @if($office->floor)
                                         <p class="border-bottom pb-1 mb-2">
-                                            <spam>{{ trans('general.floor') }}</spam>
+                                            <span>{{ trans('general.floor') }}</span>
                                             <a href="{{ route('website.floors.index',[$startup_id,$office->floor->building->id??null,'s'=>$office->floor->id]) }}"
                                                class="pull-right">
                                                 {{ $office->floor->name }}
@@ -39,7 +39,7 @@
                                         </p>
                                     @endif
                                     <p class="border-bottom pb-1">
-                                        <spam>{{ trans('general.office_type') }}</spam>
+                                        <span>{{ trans('general.office_type') }}</span>
                                         <span class="pull-right">
                                          {{ $office->type->name ?? '' }}
                                     </span>

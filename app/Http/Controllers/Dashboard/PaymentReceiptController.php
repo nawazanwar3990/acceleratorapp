@@ -6,6 +6,10 @@ use App\Enum\PaymentForEnum;
 use App\Enum\RoleEnum;
 use App\Enum\SubscriptionStatusEnum;
 use App\Http\Controllers\Controller;
+use App\Models\BA;
+use App\Models\Customer;
+use App\Models\Freelancer;
+use App\Models\Mentor;
 use App\Models\PaymentReceipt;
 use App\Models\Subscription;
 use App\Services\PaymentReceiptService;
@@ -63,12 +67,22 @@ class PaymentReceiptController extends Controller
     public function download($id): Factory|View|Application
     {
         $pageTitle = 'Download Payment Receipt';
-        $subscription = Subscription::find($id);
+        $subscription = Subscription::with('subscribed')->find($id);
+        if ($subscription->subscribed->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
+            $model = BA::where('user_id', $subscription->subscribed->id)->first();
+        } else if ($subscription->subscribed->hasRole(RoleEnum::MENTOR)) {
+            $model = Mentor::where('user_id', $subscription->subscribed->id)->first();
+        } else if ($subscription->subscribed->hasRole(RoleEnum::FREELANCER)) {
+            $model = Freelancer::where('user_id', $subscription->subscribed->id)->first();
+        } else if ($subscription->subscribed->hasRole(RoleEnum::CUSTOMER)) {
+            $model = Customer::where('user_id', $subscription->subscribed->id)->first();
+        }
         $receipt = PaymentReceipt::where('subscription_id', $subscription->subscription_id)->first();
         return view('dashboard.payment-receipts.download', compact(
-             'pageTitle',
-             'subscription',
-             'receipt'
+            'pageTitle',
+            'subscription',
+            'receipt',
+            'model'
         ));
     }
 }

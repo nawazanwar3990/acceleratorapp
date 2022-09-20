@@ -2,7 +2,7 @@
     <div class="">
         <div style="display: flex;flex-wrap: wrap">
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage1.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new1.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content1 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage2.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new2.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content2 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage3.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new3.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage4.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new4.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -64,7 +64,7 @@
             <div class="container-fluid ">
                 <div class="row justify-content-center py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage1.png') }}" class="blog-image" alt="">
+                        <img src="{{ asset('uploads/blog_new5.jpeg') }}" class="blog-image" alt="">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text"><a>Meet the heroes of tomorrow: how Business Accelerator played a role in the success of these growing startups</a></h3>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="row justify-content-center mt-5">
                     <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage2.png') }}" class="blog-image" alt="">
+                        <img src="{{ asset('uploads/blog_new6.jpeg') }}" class="blog-image" alt="">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text">
@@ -90,7 +90,7 @@
 
                 <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage3.png') }}" class="blog-image" alt="">
+                        <img src="{{ asset('uploads/blog_new7.jpg') }}" class="blog-image" alt="">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text">
@@ -100,129 +100,9 @@
                         <p>
                             KAUST and partner Saudi British Bank (SABB) today previewed 23 startups—eight from Saudi Arabia and 15 international—and 58 founders during its annual Business Accelerator Startup Accelerator Showcase. Startups were selected from...              </div>
                 </div>
-
-                <div class="row justify-content-center mt-5">
-                    <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage4.png') }}" class="blog-image" alt="">
-                    </div>
-                    <div class="col-sm-5">
-                        <h3 class="fw-bold blog-text">
-                            <a>Meet the startups at this year’s Business Accelerator Accelerator Showcase</a>
-                        </h3>
-                        <p><span> 24 MARCH 2022</span></p>
-                        <p>
-                            Posted on March 8, 2022 by KAUST Innovation Entrepreneurship is thriving in Saudi Arabia — and events like the Business Accelerator Accelerator Showcase shine a bright light on this fast-evolving landscape. On March...
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
-                    <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage5.png') }}" class="blog-image" alt="">
-                    </div>
-                    <div class="col-sm-5">
-                        <h3 class="fw-bold blog-text">
-                            <a>
-                                Gaining an uncluttered view of the Saudi startup landscape at Business Accelerator’s virtual showcase</a>
-                        </h3>
-                        <p><span> 24 MARCH 2022</span></p>
-                        <p>
-                            Posted on March 8, 2022 by KAUST Innovation Entrepreneurship is thriving in Saudi Arabia — and events like the Business Accelerator Accelerator Showcase shine a bright light on this fast-evolving landscape. On March...
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center mt-5">
-                    <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage6.png') }}" class="blog-image" alt="">
-                    </div>
-                    <div class="col-sm-5">
-                        <h3 class="fw-bold blog-text">
-                            <a>
-                                With support from Business Accelerator, a female founder grows her passion for fashion
-                            </a>
-                        </h3>
-                        <p><span> 06 OCTOBER 2021</span></p>
-                        <p>
-                            Posted on October 6, 2021 by KAUST Innovation Shahad Geoffrey has been on a unique entrepreneurial journey since she was a child. “My father is a tech entrepreneur, so I’ve always been...
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid about-us-holder">
-        <div class="">
-            <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
-                <div class="col-sm-4 text-end">
-                    <img src="{{ asset('uploads/blogimage7.png') }}" class="blog-image" alt="">
-                </div>
-                <div class="col-sm-5">
-                    <h3 class="fw-bold blog-text">
-                        <a>
-                            With support from Business Accelerator, a female founder grows her passion for fashion
-                        </a>
-                    </h3>
-                    <p><span> 06 OCTOBER 2021</span></p>
-                    <p>
-                        Posted on October 6, 2021 by KAUST Innovation Shahad Geoffrey has been on a unique entrepreneurial journey since she was a child. “My father is a tech entrepreneur, so I’ve always been...
-                    </p>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mt-5">
-                <div class="col-sm-4 text-end">
-                    <img src="{{ asset('uploads/blogimage8.png') }}" class="blog-image" alt="">
-                </div>
-                <div class="col-sm-5">
-                    <h3 class="fw-bold blog-text">
-                        <a>
-                            With support from Business Accelerator, a female founder grows her passion for fashion
-                        </a>
-                    </h3>
-                    <p><span> 06 OCTOBER 2021</span></p>
-                    <p>
-                        Posted on October 6, 2021 by KAUST Innovation Shahad Geoffrey has been on a unique entrepreneurial journey since she was a child. “My father is a tech entrepreneur, so I’ve always been...
-                    </p>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
-                <div class="col-sm-4 text-end">
-                    <img src="{{ asset('uploads/blogimage9.png') }}" class="blog-image" alt="">
-                </div>
-                <div class="col-sm-5">
-                    <h3 class="fw-bold blog-text">
-                        <a>
-                            With support from Business Accelerator, a female founder grows her passion for fashion
-                        </a>
-                    </h3>
-                    <p><span> 06 OCTOBER 2021</span></p>
-                    <p>
-                        Posted on October 6, 2021 by KAUST Innovation Shahad Geoffrey has been on a unique entrepreneurial journey since she was a child. “My father is a tech entrepreneur, so I’ve always been...
-                    </p>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mt-5">
-                <div class="col-sm-4 text-end">
-                    <img src="{{ asset('uploads/blogimage10.png') }}" class="blog-image" alt="">
-                </div>
-                <div class="col-sm-5">
-                    <h3 class="fw-bold blog-text">
-                        <a>
-                            With support from Business Accelerator, a female founder grows her passion for fashion
-                        </a>
-                    </h3>
-                    <p><span> 06 OCTOBER 2021</span></p>
-                    <p>
-                        Posted on October 6, 2021 by KAUST Innovation Shahad Geoffrey has been on a unique entrepreneurial journey since she was a child. “My father is a tech entrepreneur, so I’ve always been...
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 </section>
