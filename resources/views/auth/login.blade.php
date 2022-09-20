@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
 <x-auth-layout
     :page="$page">
     <x-slot name="content">
@@ -70,4 +69,3 @@
         </div>
     </x-slot>
 </x-auth-layout>
-<script src="{{asset('js/dashboard.min.js')}}"></script>
