@@ -40,10 +40,8 @@
                         @if(count($startup_services)>0)
                             @foreach($startup_services as $service)
                                 <div class="col-lg-2 col-sm-4 mb-4">
-                                    <div class="card p-2 rounded-3 card-shadow h-100">
-                                        <img class="card-img-adjust"
-                                             src="{{ asset(sprintf('uploads/%s.png',$service->slug)) }}"
-                                             alt="Card image cap">
+                                    <div class="card p-3 rounded-3 card-shadow h-100">
+                                        <img class="card-img-adjust" src="{{ asset(sprintf('uploads/ot_logo.png',$service->slug)) }}" alt="Card image cap">
                                         <div class="card-body text-center">
                                             <h6 class="card-title text-center fs-6">{{ $service->name }}</h6>
                                             @if($service->slug =='incubator')
