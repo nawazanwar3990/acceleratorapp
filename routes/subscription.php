@@ -24,3 +24,7 @@ Route::get('/payment-receipts', [PaymentReceiptController::class, 'index'])
 Route::get('/payment-logs/{subscription_id}', [PaymentReceiptController::class, 'logs'])
     ->name('payment-logs.index')
     ->middleware('has_package');
+
+Route::get('/payment-receipt-download/{subscription_id}', [PaymentReceiptController::class, 'download'])
+    ->name('payment-receipt-download')
+    ->middleware('has_package');
