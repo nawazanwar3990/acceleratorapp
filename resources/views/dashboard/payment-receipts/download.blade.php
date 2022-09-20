@@ -7,7 +7,7 @@
                     class="bx bx-download"></i></a>
         </div>
     </div>
-    <div class="row" id="download-holder">
+    <div class="row bg-white p-3" id="download-holder">
         <div class="col-12">
             <div class="panel panel-default invoice shadow-none">
                 <div class="panel-body">
