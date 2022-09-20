@@ -7,16 +7,16 @@
                 </div>
                 <div class="price-box">
                     <div class="title">{{ $package->name }}</div>
-                    <h4 class="price">{{ \App\Services\GeneralService::get_default_currency() }}</h4>
+                    <h4 class="price">{{ $package->price }} {{ \App\Services\GeneralService::get_default_currency() }}</h4>
                     <div class="month">  @if($package->duration_type->slug===\App\Enum\DurationEnum::Daily)
-                            Days
+                            @if($package->duration_limit>1)  Days @else Day @endif
                         @elseif($package->duration_type->slug===\App\Enum\DurationEnum::MONTHLY)
-                            Months
+                            @if($package->duration_limit>1)  Months @else Month @endif
                         @elseif($package->duration_type->slug===\App\Enum\DurationEnum::WEEKLY)
-                            Weeks
+                            @if($package->duration_limit>1)  Weeks @else Week @endif
                         @elseif($package->duration_type->slug===\App\Enum\DurationEnum::YEARLY)
-                            Years
-                        @endif : {{ $package->price }}</div>
+                            @if($package->duration_limit>1)  Years @else Year @endif
+                        @endif : {{ $package->duration_limit }}</div>
                 </div>
                 <ul class="features">
                     @foreach($package->services as $service)
@@ -57,7 +57,7 @@
                         @endif
                     @endforeach
                 </ul>
-                <div class="btn-box">
+                <div class="btn-box pt-3">
                     <a href="https://codepen.io/anupkumar92" class="theme-btn">BUY plan</a>
                 </div>
             </div>
