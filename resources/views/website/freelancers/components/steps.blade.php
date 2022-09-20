@@ -1,4 +1,4 @@
-<div class="@if(auth()->user()) col-lg-3 col-xl-3 @else col-lg-4 col-md-4 @endif">
+<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-12">
     @if($type=='company')
         <h4 class="fw-bold">{{ trans('general.service_provider_company') }}</h4>
     @else

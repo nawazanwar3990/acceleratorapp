@@ -1,7 +1,17 @@
 <div class="card card-shadow px-5 py-3  rounded-3">
     <div>
-        <img class="card-img-top circle" src="https://accelator.businessholics.com/uploads/ot_logo.png"
-             alt="Card image cap">
+        <img class="card-img-top circle  p-3" style="height:171px;" src="{{ asset($record->logo[0]->filename??'uploads/no_image.png') }}"
+             alt=" @if($startup_for==\App\Enum\StartUpForEnum::BA AND $startup_type==\App\Enum\StartUpTypeEnum::INDIVIDUAL)
+                {{ $record->user->getFullName() }}
+            @elseif($startup_for==\App\Enum\StartUpForEnum::FREELANCER AND $startup_type==\App\Enum\StartUpTypeEnum::INDIVIDUAL)
+                {{ $record->user->getFullName() }}
+            @elseif($startup_for==\App\Enum\StartUpForEnum::BA AND $startup_type==\App\Enum\StartUpTypeEnum::COMPANY)
+                {{ $record->company_name }}
+            @elseif($startup_for==\App\Enum\StartUpForEnum::FREELANCER AND $startup_type==\App\Enum\StartUpTypeEnum::COMPANY)
+                {{ $record->company_name }}
+            @elseif($startup_for==\App\Enum\StartUpForEnum::MENTOR)
+                {{ $record->user->getFullName() }}
+            @endif">
     </div>
     <div class="card-title">
         <h6 class="card-title text-center title-card">
