@@ -33,8 +33,9 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('/pending-subscription/{id}/{type}', [SubscriptionController::class, 'viewPendingSubscription'])
         ->name('pending-subscription')
         ->middleware('has_package');
-    Route::post('/payment-receipts/store', [PaymentReceiptController::class, 'storePaymentReceipt'])
-        ->name('payment-receipts.store');
+
+    Route::post('/package-payment/store', [SubscriptionController::class, 'storePackagePayment'])
+        ->name('package-payment.store');
 
     Route::post('/office-subscriptions/store', [SubscriptionController::class, 'storeOfficeSubscription'])
         ->name('office-subscriptions.store');
