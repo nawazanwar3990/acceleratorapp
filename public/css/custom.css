@@ -1896,6 +1896,26 @@ img {
     -moz-box-shadow: 10px 10px 5px 0px rgba(213, 210, 210, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(210, 209, 209, 0.75);
 }
+
+/*ba company Style end*/
+/* how it work section  changes */
+.HIW{
+    margin-bottom:0.75rem!important ;
+}
+.steps{
+    clip-path:circle(20% at 50% 50%);
+    background-color:#01023B; 
+    color:white; 
+    padding:3rem
+}
+.steps-heading{
+    font-weight:bolder;
+    font-size:medium;
+}
+.steps-desc{
+    font-size: small;
+    font-weight: lighter;
+}
 /*ba company Style start*/
 
 
@@ -1970,7 +1990,7 @@ img {
 }
 
 @media screen and (max-width: 650px) {
-    main{
+    .tab-main{
         width: 100%;
     }
     #tsum-tabs label {
@@ -1986,7 +2006,7 @@ img {
 }
 
 @media screen and (max-width: 400px) {
-    main{
+    .tab-main{
         width: 100%;
     }
     #tsum-tabs label {
