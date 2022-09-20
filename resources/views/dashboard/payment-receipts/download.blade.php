@@ -26,7 +26,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        @if($mode->type=='company')
+                        @if($model->type=='company')
                             <div class="col-12 text-md-start">
                                 <h3>{{ $model->company_name }}</h3>
                                 <p>{{__('general.company_no_of_emp')}} : {{ $model->company_no_of_emp }}</p>
@@ -39,7 +39,7 @@
                             </div>
                         @endif
                         <div class="col-12">
-                            @if($mode->type=='company')
+                            @if($model->type=='company')
                                 <div class="text-md-end"> @endif
                                     <h3>To,</h3>
                                     <p>{{ $model->user->email }}</p>
@@ -48,7 +48,7 @@
                                     <p>{{__('general.invoice_date')}}
                                         : {{ \Carbon\Carbon::now()->format('M d Y')}}</p>
                                 </div>
-                                @if($mode->type=='company') </div> @endif
+                                @if($model->type=='company') </div> @endif
                     </div>
                     <div class="row">
                         <div class="col-8 border-top">
