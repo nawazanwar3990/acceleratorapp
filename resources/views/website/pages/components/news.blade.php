@@ -2,7 +2,7 @@
     <div class="">
         <div style="display: flex;flex-wrap: wrap">
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage1.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new1.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content1 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage2.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new2.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content2 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage3.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new3.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blogimage4.png') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
+                <div class="our-story wow fadeInUp" style="background: url({{ asset('uploads/blog_new4.jpeg') }}) no-repeat; background-position: center; background-size: cover;" data-wow-duration="0.5s" data-wow-delay="0.2s">
                     <div class="">
                         <div class="our-story-content4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <div class="our-story-content-inner">
@@ -64,7 +64,7 @@
             <div class="container-fluid ">
                 <div class="row justify-content-center py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage1.png') }}" class="blog-image" alt="">
+                        <img src="{{ asset('uploads/blog_new5.jpeg') }}" class="blog-image" alt="">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text"><a>Meet the heroes of tomorrow: how Business Accelerator played a role in the success of these growing startups</a></h3>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="row justify-content-center mt-5">
                     <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage2.png') }}" class="blog-image" alt="">
+                        <img src="{{ asset('uploads/blog_new6.jpeg') }}" class="blog-image" alt="">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text">
@@ -90,7 +90,7 @@
 
                 <div class="row justify-content-center mt-5 py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
-                        <img src="{{ asset('uploads/blogimage3.png') }}" class="blog-image" alt="">
+                        <img src="{{ asset('uploads/blog_new7.jpg') }}" class="blog-image" alt="">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text">
