@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enum\PaymentForEnum;
 use App\Enum\RoleEnum;
+use App\Enum\SubscriptionStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentReceipt;
+use App\Models\Subscription;
 use App\Services\PaymentReceiptService;
 use App\Services\PersonService;
 use Illuminate\Contracts\Foundation\Application;
@@ -36,7 +39,7 @@ class PaymentReceiptController extends Controller
 
     public function logs($subscription_id): Factory|View|Application
     {
-        $records = PaymentReceipt::with('package_subscription','plan_subscription', 'subscribed');
+        $records = PaymentReceipt::with('package_subscription', 'plan_subscription', 'subscribed');
         if ($subscription_id) {
             $records = $records->where('subscription_id', $subscription_id);
         }
@@ -55,5 +58,17 @@ class PaymentReceiptController extends Controller
             'records' => $records,
         ];
         return view('dashboard.payment-receipts.logs', $params);
+    }
+
+    public function download($id): Factory|View|Application
+    {
+        $pageTitle = 'Download Payment Receipt';
+        $subscription = Subscription::find($id);
+        $receipt = PaymentReceipt::where('subscription_id', $subscription->subscription_id)->first();
+        return view('dashboard.payment-receipts.download', compact(
+             'pageTitle',
+             'subscription',
+             'receipt'
+        ));
     }
 }
