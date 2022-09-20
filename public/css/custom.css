@@ -944,7 +944,7 @@ footer .nav-holder img {
     font-size: 16px;
 }
 
-/*New Page Style*/
+/*News Page Style*/
 
 
 .wow {
@@ -957,36 +957,36 @@ footer .nav-holder img {
 }
 
 .our-story-content1 {
-    background-color: #1E1507;
+    background-color: #01023B;
     height: 300px;
     display: table;
     width: 100%;
-    opacity: 0.7 !important;
+    opacity: 0.5!important;
 }
 
 .our-story-content2 {
-    background-color: #005654;
+    background-color: #01023B;
     height: 300px;
     display: table;
     width: 100%;
-    opacity: 0.8 !important;
+    opacity: 0.5!important;
 }
 
 
 .our-story-content3 {
-    background-color: #704E19;
+    background-color: #01023B;
     height: 300px;
     display: table;
     width: 100%;
-    opacity: 0.7 !important;
+    opacity: 0.5!important;
 }
 
 .our-story-content4 {
-    background-color: #00432E;
+    background-color: #01023B;
     height: 300px;
     display: table;
     width: 100%;
-    opacity: 0.7 !important;
+    opacity: 0.5!important;
 }
 
 .our-story-content4:hover, .our-story-content3:hover, .our-story-content2:hover, .our-story-content1:hover {
@@ -1904,8 +1904,8 @@ img {
 }
 .steps{
     clip-path:circle(20% at 50% 50%);
-    background-color:#01023B; 
-    color:white; 
+    background-color:#01023B;
+    color:white;
     padding:3rem
 }
 .steps-heading{
