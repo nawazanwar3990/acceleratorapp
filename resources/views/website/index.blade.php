@@ -254,33 +254,33 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-lg-3 col-md-6 ">
-                        <div class="card" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
+                        <div class="card h-100" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
                             <div class="card-header mb-2">
                                 <h4 class="card-title HIW"><span class="steps">1</span></h4>
                             </div>
-                            <img class="" src="{{ asset('uploads/user-registration-icon.png') }}" alt="Card image cap" width="300" height="250" />
+                            <img  src="{{ asset('uploads/user-registration-icon.png') }}" alt="Card image cap" width="150" height="150"  />
                             <div class="card-body text-center">
                                 <h6 class="steps-heading">Choose your User Registration Type</h6>
-                                <p class="steps-desc">Select how you want to be the part of us and start providing your services.</p>
+                                <p class="steps-desc" >Select how you want to be the part of us and start providing your services.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 ">
-                        <div class="card" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
+                        <div class="card h-100" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
                             <div class="card-header mb-2">
                                 <h4 class="card-title HIW"><span class="steps">2</span></h4>
                             </div>
-                            <img class="card-img-top img-responsive" src="{{ asset('uploads/quick-registration-icon.png') }}" alt="Card image cap" width="300" height="250" />
+                            <img class="card-img-top img-responsive" src="{{ asset('uploads/quick-registeration.png') }}" alt="Card image cap" width="300" height="250" />
                             <div class="card-body text-center">
                                 <h6 class="steps-heading"><b>Choose your Business Type</b></h6>
-                                <p class="steps-desc"><br>
+                                <p class="steps-desc">
                                     Select if you are and individual or an organization.<br>
                                     <i>For Business Accelerator/Freelancer</i></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
+                        <div class="card h-100" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
                             <div class="card-header mb-2">
                                 <h4 class="card-title HIW"><span class="steps">3</span></h4>
                             </div>
@@ -292,11 +292,11 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
+                        <div class="card h-100" style="box-shadow: #b4b4b4 1px 1.7px 5.8px;">
                             <div class="card-header mb-2">
                                 <h4 class="card-title HIW"><span class="steps">4</span></h4>
                             </div>
-                            <img class="card-img-top img-responsive" src="{{ asset('uploads/quick-registeration.png') }}" alt="Card image cap" width="300" height="250" />
+                            <img class="card-img-top img-responsive" src="{{ asset('uploads/quick-registration-icon.png') }}" alt="Card image cap" width="300" height="250" />
                             <div class="card-body text-center">
                                 <h6 class="steps-heading">Get Registered in two minutes</h6>
                                 <p class="steps-desc">Provide your basic details, Qualifications and Previous experiences. .
@@ -308,27 +308,7 @@
             </div>
         </section>
 
-        <section class="my-5 py-5 meet-startup-holder" style="">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-12 text-center pb-3">
-                        <h1 class="mb-4 who-are-you">Meet The Startups</h1>
-                        <div class="row mt-5 mb-5">
-                            <div class="col-md-6">
-                                <img src="{{ asset('uploads/team-member.png') }}" alt="Meet Up Image" class="team-image">
-
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="pt-4 h6-text">
-                                    Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
-                                    Since its launch in 2016, more than 130 startups have graduated from Business Accelerators. During that time, Business Accelerators funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      
         <section>
             <header>
                 <div class="owl-carousel testing_owl owl-theme">
