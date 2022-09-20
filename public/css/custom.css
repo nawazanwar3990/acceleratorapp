@@ -292,7 +292,7 @@
 
 .how-its-work-holder img {
     width: 100%;
-    max-width: 130px;
+    max-width: 100px;
     height: auto;
     margin: 0 auto;
     border: 7px solid #fff;
@@ -1384,7 +1384,7 @@ svg {
 /*slider home page start*/
 
 header .item {
-    height: 100vh;
+    height: 80vh;
     position: relative;
 }
 header .item img {
@@ -1898,6 +1898,7 @@ img {
 }
 
 /*ba company Style end*/
+
 /* how it work section  changes */
 .HIW{
     margin-bottom:0.75rem!important ;
@@ -1905,8 +1906,8 @@ img {
 .steps{
     clip-path:circle(20% at 50% 50%);
     background-color:#01023B;
-    color:white;
-    padding:3rem
+    color:white; 
+    padding:2rem;
 }
 .steps-heading{
     font-weight:bolder;
