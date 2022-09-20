@@ -101,8 +101,16 @@
                 @endif
             @endforeach
         </ul>
-        <a class="read-more btn px-3 py-2 mt-3 rounded-2" href="{{ route('website.startups.services.index',[$startup_for,$startup_type,$record->user->id]) }}">
-            View Services
-        </a>
+        @if($startup_for !==\App\Enum\StartUpForEnum::MENTOR)
+            <a class="read-more btn px-3 py-2 mt-3 rounded-2"
+               href="{{ route('website.startups.services.index',[$startup_for,$startup_type,$record->user->id]) }}">
+                View Services
+            </a>
+        @else
+            <a class="read-more btn px-3 py-2 mt-3 rounded-2"
+               href="{{ route('website.startups.services.index',[$startup_for,'individual',$record->user->id]) }}">
+                View Services
+            </a>
+        @endif
     </div>
 </div>

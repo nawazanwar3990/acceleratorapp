@@ -70,8 +70,8 @@ class StartupController extends Controller
 
     public function services(
         Request $request,
-                $startup_for,
-                $startup_type,
+                $startup_for=null,
+                $startup_type=null,
                 $startup_id): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
