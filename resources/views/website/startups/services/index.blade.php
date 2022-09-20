@@ -40,7 +40,7 @@
                             @foreach($startup_services as $service)
                                 <div class="col-lg-2 col-sm-4 mb-4">
                                     <div class="card p-3 rounded-3 card-shadow h-100">
-                                        <img class="card-img-adjust p-4" onerror="this.src='{{ asset('uploads/default_service.png') }}'"
+                                        <img class="card-img-adjust p-2" onerror="this.src='{{ asset('uploads/default_service.png') }}'"
                                              src="{{ asset(sprintf('uploads/%s.png',$service->slug)) }}"
                                              alt="Card image cap">
                                         <div class="card-body text-center">
