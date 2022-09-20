@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
 @section('content')
-    <section class="bg-white p-4">
-        <div class="row mb-4">
+    <section class="bg-white">
+        <div class="row mb-4 p-4">
             <div class="col-12 text-right my-2">
                 <a class="btn btn-info" onclick="goBack();"><i class="bx bx-arrow-to-left"></i> Back</a>
                 <a class="btn btn-info" id="download_btn" onclick="downloadPdf();">Download <i
                         class="bx bx-download"></i></a>
             </div>
         </div>
-        <div class="row" id="download-holder">
+        <div class="row p-4 text-body" id="download-holder">
             <div class="col-12">
                 <div class="panel panel-default invoice shadow-none">
                     <div class="panel-body">
