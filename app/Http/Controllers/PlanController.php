@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\AccessTypeEnum;
 use App\Enum\StartUpForEnum;
+use App\Enum\StartUpTypeEnum;
 use App\Models\Package;
 use App\Services\CMS\PageService;
 use Illuminate\Contracts\Foundation\Application;
@@ -23,13 +24,13 @@ class PlanController extends Controller
     {
         $page = $this->pageService->findByCode('plan');
         $records = null;
-        if ($plan_for==StartUpForEnum::BA && $plan_type=='individual'){
+        if ($plan_for==StartUpForEnum::BA && $plan_type==StartUpTypeEnum::INDIVIDUAL){
             $records = Package::where('package_type',AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL);
-        }else  if ($plan_for==StartUpForEnum::BA && $plan_type=='company'){
+        }else  if ($plan_for==StartUpForEnum::BA && $plan_type==StartUpTypeEnum::COMPANY){
             $records = Package::where('package_type',AccessTypeEnum::BUSINESS_ACCELERATOR);
-        }else  if ($plan_for==StartUpForEnum::FREELANCER && $plan_type=='company'){
+        }else  if ($plan_for==StartUpForEnum::FREELANCER && $plan_type==StartUpTypeEnum::COMPANY){
             $records = Package::where('package_type',AccessTypeEnum::SERVICE_PROVIDER_COMPANY);
-        }else  if ($plan_for==StartUpForEnum::BA && $plan_type=='individual'){
+        }else  if ($plan_for==StartUpForEnum::BA && $plan_type==StartUpTypeEnum::INDIVIDUAL){
             $records = Package::where('package_type',AccessTypeEnum::FREELANCER);
         }else  if ($plan_for==StartUpForEnum::MENTOR ){
             $records = Package::where('package_type',AccessTypeEnum::MENTOR);
