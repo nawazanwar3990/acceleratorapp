@@ -5,20 +5,22 @@
             <div class="">
                 <div style="display: flex;flex-wrap: wrap">
                     @forelse($newses as $news)
-                        <div class="col-md-3">
-                            <div class="our-story wow fadeInUp"
-                                 style="background: url('{{ asset($news->image) }}') no-repeat center;background-size: cover;"
-                                 data-wow-duration="0.5s" data-wow-delay="0.2s">
-                                <div class="">
-                                    <div class="our-story-content1 wow fadeInUp" data-wow-duration="0.5s"
-                                         data-wow-delay="0.5s">
-                                        <div class="our-story-content-inner">
-                                            <p>{{ $news->heading }}</p>
+                        @if($loop->index<4)
+                            <div class="col-md-3">
+                                <div class="our-story wow fadeInUp"
+                                     style="background: url('{{ asset($news->image) }}') no-repeat center;background-size: cover;"
+                                     data-wow-duration="0.5s" data-wow-delay="0.2s">
+                                    <div class="">
+                                        <div class="our-story-content1 wow fadeInUp" data-wow-duration="0.5s"
+                                             data-wow-delay="0.5s">
+                                            <div class="our-story-content-inner">
+                                                <p>{{ $news->heading }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     @empty
                     @endforelse
                 </div>
