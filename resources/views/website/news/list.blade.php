@@ -4,7 +4,7 @@
             <div class="container-fluid ">
                 <div class="row justify-content-center py-5" style="background-color: #dee2e6">
                     <div class="col-sm-4 text-end">
-                        <img src="{{asset($record->image)}}" class="blog-image" alt="{{ $news->heading }}">
+                        <img src="{{asset($news->image)}}" class="blog-image" alt="{{ $news->heading }}">
                     </div>
                     <div class="col-sm-5">
                         <h3 class="fw-bold blog-text">
