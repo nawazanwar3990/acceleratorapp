@@ -343,35 +343,35 @@
         <section class="my-5 py-5 counter-back-holder" style="background-image: url({{ asset('uploads/counter_back.webp') }});">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-3 text-center pb-3">
+                    <div class="col-md-3 text-center pb-3">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-first-btn-color text-white">130+</h4>
-                                <p class="card-text site-first-color">Business <br />Accelerator</p>
+                                <p class="card-text site-first-color">Business Accelerator</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 text-center pb-3">
+                    <div class="col-md-3 text-center pb-3">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-second-btn-color text-white">500+</h4>
-                                <p class="card-text site-second-color">Freelancer</p>
+                                <p class="card-text text-center site-second-color">Freelancer</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 text-center pb-3">
+                    <div class="col-md-3 text-center pb-3">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-first-btn-color text-white">8500+</h4>
-                                <p class="card-text site-first-color">Service <br />Provider</p>
+                                <p class="card-text site-first-color">Service Provider</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 text-center pb-3">
+                    <div class="col-md-3 text-center pb-3">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title site-second-btn-color text-white">1700+</h4>
-                                <p class="card-text site-second-color">Mentor</p>
+                                <p class="card-text text-center site-second-color">Mentor</p>
                             </div>
                         </div>
                     </div>
