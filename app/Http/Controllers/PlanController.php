@@ -22,18 +22,18 @@ class PlanController extends Controller
     public function index(Request $request, $plan_for, $plan_type = null): Factory|View|Application
     {
         $page = $this->pageService->findByCode('plan');
-        $plan_for = $request->segment(2);
-        $plan_type = $request->segment(3);
+        $new_plan_for = $request->segment(2);
+        $new_plan_type = $request->segment(3);
         $records = null;
-        if ($plan_for==StartUpForEnum::BA && $plan_type='individual'){
-            $records = Package::where('package_type',AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL);
-        }else  if ($plan_for==StartUpForEnum::BA && $plan_type='company'){
-            $records = Package::where('package_type',AccessTypeEnum::BUSINESS_ACCELERATOR);
-        }else  if ($plan_for==StartUpForEnum::FREELANCER && $plan_type='company'){
+        if ($new_plan_for==StartUpForEnum::BA && $new_plan_type='individual'){
+            $records = Package::where('package_type','business_accelerator_individual');
+        }else  if ($new_plan_for==StartUpForEnum::BA && $new_plan_type='company'){
+            $records = Package::where('package_type','business_accelerator');
+        }else  if ($new_plan_for==StartUpForEnum::FREELANCER && $new_plan_type='company'){
             $records = Package::where('package_type',AccessTypeEnum::SERVICE_PROVIDER_COMPANY);
-        }else  if ($plan_for==StartUpForEnum::BA && $plan_type='individual'){
+        }else  if ($new_plan_for==StartUpForEnum::BA && $new_plan_type='individual'){
             $records = Package::where('package_type',AccessTypeEnum::FREELANCER);
-        }else  if ($plan_for==StartUpForEnum::MENTOR ){
+        }else  if ($new_plan_for==StartUpForEnum::MENTOR ){
             $records = Package::where('package_type',AccessTypeEnum::MENTOR);
         }
         $records = $records->paginate(20);
