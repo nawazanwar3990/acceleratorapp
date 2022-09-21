@@ -19,9 +19,11 @@ class PlanController extends Controller
     {
 
     }
-    public function index(Request $request, $plan_for, $plan_type = null)
+    public function index(Request $request, $plan_for, $plan_type = null): Factory|View|Application
     {
         $page = $this->pageService->findByCode('plan');
+        $plan_for = $request->segment(2);
+        $plan_type = $request->segment(3);
         $records = null;
         if ($plan_for==StartUpForEnum::BA && $plan_type='individual'){
             $records = Package::where('package_type',AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL);
