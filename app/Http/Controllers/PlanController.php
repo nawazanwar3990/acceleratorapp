@@ -30,7 +30,7 @@ class PlanController extends Controller
             $records = Package::where('package_type',AccessTypeEnum::BUSINESS_ACCELERATOR);
         }else  if ($plan_for==StartUpForEnum::FREELANCER && $plan_type==StartUpTypeEnum::COMPANY){
             $records = Package::where('package_type',AccessTypeEnum::SERVICE_PROVIDER_COMPANY);
-        }else  if ($plan_for==StartUpForEnum::BA && $plan_type==StartUpTypeEnum::INDIVIDUAL){
+        }else  if ($plan_for==StartUpForEnum::FREELANCER && $plan_type==StartUpTypeEnum::INDIVIDUAL){
             $records = Package::where('package_type',AccessTypeEnum::FREELANCER);
         }else  if ($plan_for==StartUpForEnum::MENTOR ){
             $records = Package::where('package_type',AccessTypeEnum::MENTOR);
