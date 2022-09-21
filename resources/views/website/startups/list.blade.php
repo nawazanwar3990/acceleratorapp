@@ -142,7 +142,7 @@
     <div class="card-footer">
         <div class="row">
             <div class="col-sm-12 col-sm-4 col-xs-12 align-self-center text-center">
-                <div class="footer-buttons mt-3">
+                <div class="footer-buttons mt-3 pb-1">
                     <a class="btn btn-primary btn-xs btn-circle mx-2" style="background-color: #01023B!important;">
                         <i class="bx bxl-linkedin"></i>
                     </a>
