@@ -531,12 +531,16 @@ footer .nav-holder .col.right {
 footer .nav-holder a {
     font-size: 15px;
     line-height: 20px;
+    letter-spacing: 3px;
 }
 
 footer .nav-holder img {
     display: block;
     width: 80px;
     height: 2px;
+}
+.image-right{
+    margin-left: auto;
 }
 
 .btn-circle {
@@ -793,6 +797,11 @@ footer .nav-holder img {
     }
 }
 
+@media screen and (max-width: 767px) {
+    .footer-logo{
+        text-align: center!important;
+    }
+}
 @media screen and (max-width: 500px) {
     .set {
         margin-left: 0 !important;
@@ -2156,7 +2165,7 @@ img {
   color: #FFF;
 }
 .date-picker{
-            
+
     border: 1px solid transparent;
     border-radius: 4px;
 }
