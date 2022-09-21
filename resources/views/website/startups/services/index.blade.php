@@ -1,71 +1,5 @@
 
-<style>
-    .responsive-map iframe{
-        left:0;
-        top:0;
-        height:100%;
-        width:100%;
-        position:absolute;
-    }
-     .mapouter {
-         position: relative;
-         text-align: right;
-         width: 100%;
-         height: 400px;
-     }
-    .gmap_canvas {
-        overflow: hidden;
-        background: none !important;
-        width: 100%;
-        height: 400px;
-    }
-    .gmap_iframe {
-        height: 400px !important;
-    }
-
-
-    .contact-info {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        color: #fff;
-        margin-bottom: 10px;
-    }
-    .contact-info-icon {
-        margin-bottom: 15px;
-    }
-    .contact-info-item {
-        background: #01023B;
-        border: 1px solid #01023B;
-        color: #01023B!important;
-        padding: 30px 0;
-    }
-    .contact-info-text h2 {
-        color: #01023B;
-        text-transform: capitalize;
-        font-size: 22px;
-        font-weight: 700;
-    }
-    .contact-info-icon i {
-        font-size: 48px;
-        color: #fff;
-    }
-    .contact-info-text h2 {
-        color: #fff;
-        font-size: 22px;
-        text-transform: capitalize;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-    .contact-info-text .contact_text {
-        color: #fff;
-        font-size: 16px;
-        display: inline-block;
-        width: 100%;
-    }
-
-
-</style>
+<style></style>
 
 <x-page-layout
     :page="$page">
@@ -213,8 +147,8 @@
             <section class="contact-page-sec">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="contact-info card-shadow">
+                        <div class="col-md-4 top_animation">
+                            <div class="contact-info contact-shadow">
                                 <div class="contact-info-item">
                                     <div class="contact-info-icon">
                                         <i class="fas fa-map-marked"></i>
@@ -227,8 +161,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="contact-info">
+                        <div class="col-md-4 top_animation">
+                            <div class="contact-info contact-shadow">
                                 <div class="contact-info-item">
                                     <div class="contact-info-icon">
                                         <i class="fas fa-envelope"></i>
@@ -241,8 +175,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="contact-info">
+                        <div class="col-md-4 top_animation">
+                            <div class="contact-info contact-shadow">
                                 <div class="contact-info-item">
                                     <div class="contact-info-icon">
                                         <i class="fas fa-clock"></i>
