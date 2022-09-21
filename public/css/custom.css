@@ -2032,6 +2032,11 @@ img {
     position: relative;
     bottom: 0!important;
 }
+
+.startup-nav-holder li a:hover{
+    color:#01023B!important;
+}
+
 @media screen and (max-width: 576px) {
 
     .card{
