@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PaymentReceiptController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\StartupController;
@@ -33,8 +35,9 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('/pending-subscription/{id}/{type}', [SubscriptionController::class, 'viewPendingSubscription'])
         ->name('pending-subscription')
         ->middleware('has_package');
-    Route::post('/payment-receipts/store', [PaymentReceiptController::class, 'storePaymentReceipt'])
-        ->name('payment-receipts.store');
+
+    Route::post('/package-payment/store', [SubscriptionController::class, 'storePackagePayment'])
+        ->name('package-payment.store');
 
     Route::post('/office-subscriptions/store', [SubscriptionController::class, 'storeOfficeSubscription'])
         ->name('office-subscriptions.store');
@@ -55,6 +58,11 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
 
     Route::get('pages', [PageController::class, 'index'])
         ->name('pages.index');
+
+    Route::get('news', [NewsController::class, 'index'])
+        ->name('news.index');
+    Route::get('events', [EventController::class, 'index'])
+        ->name('events.index');
 
     Route::get('plans/{for}/{type?}', [PlanController::class, 'index'])
         ->name('plans.index');

@@ -11,6 +11,7 @@ use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Services\GeneralService;
+use App\Traits\General;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -20,6 +21,12 @@ use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
+
+    use General;
+    public function __construct()
+    {
+        $this->makeDirectory('receipts');
+    }
     public function expire(): Factory|View|Application
     {
         $pageTitle = trans('general.package_expire');
@@ -106,7 +113,7 @@ class SubscriptionController extends Controller
         $subscription->save();
         $receipt = PaymentReceipt::create([
             'owner_id' => $owner_id,
-            'subscription_id' => $subscription_id,
+            'subscription_id' => $subscription->id,
             'subscribed_id' => $subscribed_id,
             'payment_type' => $payment_type,
             'transaction_id' => $transaction_id,
@@ -126,6 +133,25 @@ class SubscriptionController extends Controller
             return response()->json([
                 'status' => true,
                 'route' => route('website.index')
+            ]);
+        }
+    }
+
+    public function storePackagePayment(Request $request)
+    {
+        $model = PaymentReceipt::create($request->all());
+        if ($request->hasFile('file_name')) {
+            $file = $request->file('file_name');
+            $file_name = GeneralService::generateFileName($file);
+            $file_path = 'uploads/receipts/' . $file_name;
+            $file->move('uploads/receipts/', $file_name);
+            $model->file_name = $file_path;
+            $model->save();
+        }
+        session(['info' => trans('general.receipt_uploaded_message')]);
+        if ($model) {
+            return response()->json([
+                'status' => true
             ]);
         }
     }

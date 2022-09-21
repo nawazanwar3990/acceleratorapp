@@ -1,11 +1,3 @@
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-
-{{--<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">--}}
-<style></style>
 <x-home-layout :page="$page">
     <x-slot name="content">
        {{-- @if(count($page->sections)>0)
@@ -13,11 +5,6 @@
                 {!! $section->html !!}
             @endforeach
         @endif--}}
-
-
-
-
-
         <div class="container how-we-are-holder pt-4">
             <div class="row">
                 <div class="col-6 mx-auto text-center">
@@ -308,7 +295,7 @@
             </div>
         </section>
 
-      
+
         <section>
             <header>
                 <div class="owl-carousel testing_owl owl-theme">
@@ -445,30 +432,3 @@
         </section>
     </x-slot>
 </x-home-layout>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-    $('.testing_owl').owlCarousel({
-        loop:true,
-        margin:10,
-        dots:false,
-        nav:true,
-        mouseDrag:false,
-        autoplay:true,
-        animateOut: 'slideOutUp',
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:1
-            },
-            1000:{
-                items:1
-            }
-        }
-    });
-</script>

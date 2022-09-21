@@ -58,10 +58,12 @@
                                         @if(\App\Services\OfficeService::already_subscribed($office->id))
                                             <a class="view_services">{{ trans('general.already_subscribed') }}</a>
                                         @else
-                                            <a class="btn rounded-3"
-                                               href="{{ route('website.office.plans.index',[$office->id]) }}">
-                                                {{ trans('general.subscription_plans') }}
-                                            </a>
+                                            @if(count($office->plans)>0)
+                                                <a class="btn btn-primary site-first-btn-color rounded-3"
+                                                   href="{{ route('website.office.plans.index',[$office->id]) }}">
+                                                    {{ trans('general.plans') }}
+                                                </a>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>

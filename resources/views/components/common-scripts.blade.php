@@ -174,7 +174,7 @@
                     data.append('file_name', file_name);
                     Ajax.setAjaxHeader();
                     $.ajax({
-                        url: "{{ route('website.payment-receipts.store')}}",
+                        url: "{{ route('website.package-payment.store')}}",
                         method: 'POST',
                         data: data,
                         enctype: 'multipart/form-data',
@@ -252,16 +252,18 @@
                     let transaction_id = result.value.transaction_id;
                     let file_name = result.value.file_name;
                     let data = new FormData();
+
                     data.append('payment_type', payment_type);
                     data.append('transaction_id', transaction_id);
-                    data.append('subscription_id', "{{ $subscription->subscription_id }}");
+                    data.append('subscription_id', "{{ $subscription->id }}");
                     data.append('subscribed_id', "{{ $subscription->subscribed_id }}");
                     data.append('payment_for', "{{ \App\Enum\PaymentForEnum::PACKAGE_APPROVAL }}");
                     data.append('price', "{{ $subscription->package->price }}");
                     data.append('file_name', file_name);
+
                     Ajax.setAjaxHeader();
                     $.ajax({
-                        url: "{{ route('website.payment-receipts.store')}}",
+                        url: "{{ route('website.package-payment.store')}}",
                         method: 'POST',
                         data: data,
                         enctype: 'multipart/form-data',

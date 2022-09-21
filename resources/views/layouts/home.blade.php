@@ -44,6 +44,28 @@
 </main>
 <x-web-footer :cPage="$page"></x-web-footer>
 <script src="{{ asset('js/website.min.js') }}"></script>
+<script>
+    $('.testing_owl').owlCarousel({
+        loop:true,
+        margin:10,
+        dots:false,
+        nav:true,
+        mouseDrag:false,
+        autoplay:true,
+        animateOut: 'slideOutUp',
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    });
+</script>
 <x-session-messages></x-session-messages>
 </body>
 </html>
