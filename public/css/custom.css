@@ -2039,7 +2039,7 @@ img {
     border-image:linear-gradient(#00D3E1FF, #6641F3FF ,#F784B2FF) ;
     border-width: 2px;
     border-image-slice:1;
-    margin: 10px;
+    margin: 20px;
 }
 .startup-nav-holder li a, .event-tab:hover{
     color:#01023B!important;
@@ -2050,12 +2050,16 @@ img {
     .card{
         width: 100%;
         margin: auto;
-        max-width:300px;
+        /* max-width:300px; */
+        margin-bottom: 5rem;
     }
     .card-img-adjust{
         width: 100%;
         margin:auto;
         max-width: 150px;
+    }
+    .nav-tabs .nav-link{
+        width:100% ;
     }
 }
 /*ba company card end*/
