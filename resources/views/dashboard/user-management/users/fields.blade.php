@@ -15,30 +15,12 @@
 </div>
 <div class="mb-3 row">
     <div class="col-12 bg-light p-3 mb-2">Social Accounts</div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('social_accounts[facebook]' ,__('general.facebook') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('social_accounts[facebook]',$user->social_accounts['facebook']??null,['id'=>'social_accounts[facebook]','class'=>'form-control']) !!}
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('social_accounts[twitter]' ,__('general.twitter') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('social_accounts[twitter]',$user->social_accounts['twitter']??null,['id'=>'social_accounts[twitter]','class'=>'form-control']) !!}
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('social_accounts[youtube]' ,__('general.youtube') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('social_accounts[youtube]',$user->social_accounts['youtube']??null,['id'=>'social_accounts[youtube]','class'=>'form-control']) !!}
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('social_accounts[linkedin]' ,__('general.linkedin') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('social_accounts[linkedin]',$user->linkedin['facebook']??null,['id'=>'social_accounts[linkedin]','class'=>'form-control']) !!}
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('social_accounts[whats_up]' ,__('general.whats_up') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('social_accounts[whats_up]',$user->whats_up['facebook']??null,['id'=>'social_accounts[whats_up]','class'=>'form-control']) !!}
-    </div>
-    <div class="col-3 mb-3">
-        {!!  Html::decode(Form::label('social_accounts[instagram]' ,__('general.instagram') ,['class'=>'form-label']))   !!}
-        {!!  Form::text('social_accounts[instagram]',$user->social_accounts['instagram']??null,['id'=>'social_accounts[instagram]','class'=>'form-control']) !!}
-    </div>
+    @foreach(\App\Enum\SocialNavEnum::getTranslationKeys() as $social_key=>$social_value)
+        <div class="col-3 mb-3">
+            {!!  Html::decode(Form::label('social_accounts['.$social_key.']' ,$social_value,['class'=>'form-label']))   !!}
+            {!!  Form::url('social_accounts['.$social_key.']',$user->social_accounts[$social_key]??null,['id'=>'social_accounts['.$social_key.']','class'=>'form-control']) !!}
+        </div>
+    @endforeach
 </div>
 <div class="mb-3 row">
     <div class="col-12 bg-light p-3 mb-2">Office Timing</div>

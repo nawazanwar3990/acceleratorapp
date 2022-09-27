@@ -23,10 +23,12 @@ class SubscriptionController extends Controller
 {
 
     use General;
+
     public function __construct()
     {
         $this->makeDirectory('receipts');
     }
+
     public function expire(): Factory|View|Application
     {
         $pageTitle = trans('general.package_expire');
@@ -140,6 +142,10 @@ class SubscriptionController extends Controller
     public function storePackagePayment(Request $request)
     {
         $model = PaymentReceipt::create($request->all());
+        $model->is_processed = false;
+        $model->save();
+
+
         if ($request->hasFile('file_name')) {
             $file = $request->file('file_name');
             $file_name = GeneralService::generateFileName($file);

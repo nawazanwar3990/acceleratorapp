@@ -105,6 +105,12 @@ class KeyWordEnum extends AbstractEnum
     public const ONLINE = 'online';
 
     public const CMS = 'cms';
+    public const FACEBOOK = 'facebook';
+    public const TWITTER = 'twitter';
+    public const INSTAGRAM = 'instagram';
+    public const LINKEDIN = 'linkedin';
+    public const YOUTUBE = 'youtube';
+    public const WHATSAPP = 'whatsapp';
 
     static function getConstants()
     {

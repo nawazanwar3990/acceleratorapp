@@ -3,7 +3,7 @@
         <li>
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                aria-expanded="false">
-                <i class="ti-settings"></i>
+                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($common) !!}
                 <span
                     class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}</span>
             </a>
@@ -15,7 +15,7 @@
         <li>
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                aria-expanded="false">
-                <i class="ti-settings"></i>
+                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($common) !!}
                 <span
                     class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}</span>
             </a>
@@ -27,7 +27,7 @@
         <li>
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                aria-expanded="false">
-                <i class="ti-settings"></i>
+                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($common) !!}
                 <span
                     class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($common) }}</span>
             </a>
@@ -50,7 +50,7 @@
         <li>
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                aria-expanded="false">
-                <i class="ti-settings"></i>
+                {!! \App\Enum\LeftNavBar\BANavEnum::getIcon($common) !!}
                 <span
                     class="hide-menu">  {{ \App\Enum\LeftNavBar\BANavEnum::getTranslationKeyBy($key) }}</span>
             </a>

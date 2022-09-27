@@ -45,6 +45,7 @@ class BANavEnum extends AbstractEnum
             self::SERVICE => '<i class="bx bx-server"></i>',
             self::PACKAGE => '<i class="bx bx-package"></i>',
             self::SUBSCRIPTION => '<i class="bx bx-subdirectory-left"></i>',
+            self::PAYMENT_RECEIPT => '<i class="bx bx-rupee"></i>',
             self::INCUBATOR => '<i class="bx bx-building"></i>',
             self::FREELANCER => '<i class="bx bx-user"></i>',
             self::MEETING_ROOM => '<i class="bx bx-building-house"></i>',
