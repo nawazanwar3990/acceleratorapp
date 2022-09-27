@@ -30,7 +30,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'active',
         'first_password',
-        'email_verified_at'
+        'email_verified_at',
+        'google_map_path',
+        'address',
+        'about_us',
+        'social_accounts',
+        'office_timings'
     ];
     protected $hidden = [
         'password',
