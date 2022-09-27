@@ -22,8 +22,8 @@ class FreelancerNavEnum extends AbstractEnum
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::PACKAGE => '<i class="mdi mdi-account"></i>',
-            self::PAYMENT_RECEIPT => '<i class="mdi mdi-account"></i>',
+            self::PACKAGE => '<i class="bx bx-package"></i>',
+            self::PAYMENT_RECEIPT => '<i class="bx bx-rupee"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

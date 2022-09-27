@@ -21,8 +21,8 @@ class CustomerNavEnum extends AbstractEnum
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::SUBSCRIPTION => '<i class="mdi mdi-account"></i>',
-            self::PAYMENT_RECEIPT => '<i class="mdi mdi-account"></i>',
+            self::SUBSCRIPTION => '<i class="bx bx-subdirectory-left"></i>',
+            self::PAYMENT_RECEIPT => '<i class="bx bx-rupee"></i>',
 
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {

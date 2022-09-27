@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -31,48 +32,71 @@ class User extends Authenticatable implements MustVerifyEmail
         'active',
         'first_password',
         'email_verified_at',
-        'google_map_path',
         'address',
+        'google_map_path',
         'about_us',
         'social_accounts',
-        'office_timings'
+        'office_timings',
     ];
     protected $hidden = [
         'password',
         'remember_token',
     ];
+    protected $casts = [
+        'social_accounts' => 'array',
+        'office_timings' => 'array'
+    ];
+
+    protected function getSocialAccountsAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    protected function getOfficeTimingsAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
     public function verifyUser(): HasOne
     {
         return $this->hasOne(VerifyUser::class);
     }
+
     public function ba(): HasOne
     {
-        return $this->hasOne(BA::class,'user_id');
+        return $this->hasOne(BA::class, 'user_id');
     }
+
     public function customer(): HasOne
     {
-        return $this->hasOne(Customer::class,'user_id');
+        return $this->hasOne(Customer::class, 'user_id');
     }
+
     public function freelancer(): HasOne
     {
-        return $this->hasOne(Freelancer::class,'user_id');
+        return $this->hasOne(Freelancer::class, 'user_id');
     }
+
     public function mentor(): HasOne
     {
-        return $this->hasOne(Mentor::class,'user_id');
+        return $this->hasOne(Mentor::class, 'user_id');
     }
+
     public function getFullName(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+
     public static function getNotifier()
     {
         return User::where('email', 'superadmin@gmail.com')->first();
     }
+
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, TableEnum::ROLE_USER);
     }
+
     public function hasRole($role): bool
     {
         if (is_string($role)) {
@@ -80,6 +104,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return !!$role->intersect($this->roles);
     }
+
     public function getRoleName(): bool
     {
         return $this->roles[0]->name;
@@ -92,7 +117,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function subscription(): HasOne
     {
-        return $this->hasOne(Subscription::class,'subscribed_id','id');
+        return $this->hasOne(Subscription::class, 'subscribed_id', 'id');
     }
 
     public function already_subscription($id, $type)
@@ -104,10 +129,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
+
     public function getFullNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+
     public function updated_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');

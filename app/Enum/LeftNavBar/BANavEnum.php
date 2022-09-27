@@ -41,16 +41,16 @@ class BANavEnum extends AbstractEnum
     public static function getIcon($key = null): ?string
     {
         $routes = [
-            self::PLAN => '<i class="mdi mdi-account"></i>',
-            self::SERVICE => '<i class="mdi mdi-account"></i>',
-            self::PACKAGE => '<i class="mdi mdi-account"></i>',
-            self::SUBSCRIPTION => '<i class="mdi mdi-account"></i>',
-            self::INCUBATOR => '<i class="mdi mdi-account"></i>',
-            self::FREELANCER => '<i class="mdi mdi-account"></i>',
-            self::MEETING_ROOM => '<i class="mdi mdi-account"></i>',
-            self::MENTORSHIP_WITH_INVESTMENT => '<i class="mdi mdi-account"></i>',
-            self::MENTORSHIP_WITHOUT_INVESTMENT => '<i class="mdi mdi-account"></i>',
-            self::EVENT_MANAGEMENT => '<i class="mdi mdi-account"></i>',
+            self::PLAN => '<i class="bx bx-subdirectory-left"></i>',
+            self::SERVICE => '<i class="bx bx-server"></i>',
+            self::PACKAGE => '<i class="bx bx-package"></i>',
+            self::SUBSCRIPTION => '<i class="bx bx-subdirectory-left"></i>',
+            self::INCUBATOR => '<i class="bx bx-building"></i>',
+            self::FREELANCER => '<i class="bx bx-user"></i>',
+            self::MEETING_ROOM => '<i class="bx bx-building-house"></i>',
+            self::MENTORSHIP_WITH_INVESTMENT => '<i class="bx bx-rupee"></i>',
+            self::MENTORSHIP_WITHOUT_INVESTMENT => '<i class="bx bx-rupee"></i>',
+            self::EVENT_MANAGEMENT => '<i class="bx bx-calendar-event"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
