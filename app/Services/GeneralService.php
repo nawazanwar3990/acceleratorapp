@@ -1361,4 +1361,25 @@ class GeneralService
             return 'mentor';
         }
     }
+
+    public static function get_startup_counts($start_up_for)
+    {
+        switch ($start_up_for) {
+            case AccessTypeEnum::BUSINESS_ACCELERATOR:
+                return BA::where('type', 'company')->count();
+                break;
+            case  AccessTypeEnum::BUSINESS_ACCELERATOR_INDIVIDUAL:
+                return BA::where('type', 'individual')->count();
+                break;
+            case  AccessTypeEnum::SERVICE_PROVIDER_COMPANY:
+                return Freelancer::where('type', 'company')->count();
+                break;
+            case  AccessTypeEnum::FREELANCER:
+                return Freelancer::where('type', 'individual')->count();
+                break;
+            case  AccessTypeEnum::MENTOR:
+                return Mentor::count();
+                break;
+        }
+    }
 }
