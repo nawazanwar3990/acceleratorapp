@@ -22,7 +22,7 @@
 </section>
 {{--our values--}}
 
-<section class="about-value">
+<section class="about-value pb-3">
     <div class="container">
         <h2 class="mb-5 pt-5"><span><b> Our Values </b></span></h2>
         <div class="values-items my-5 pb-5 row">
@@ -91,52 +91,11 @@
 </section>
 
 {{--our values--}}
-<section style="">
-    <section class="my-5 mx-sm-3">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-6 ml-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
-                <div class="col-5 ms-5"></div>
-                <div><h2>Business Accelerator Startup Accelerator</h2></div>
-                <div class="col-5 me-5"></div>
-                <div class="col-6 mr-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
-            </div>
-        </div>
-    </section>
-    <section class="my-5">
-        <div class="container-fluid text-center">
-            <div class="row justify-content-center">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <p style="text-align:left;">At Business Accelerator, we believe in the power of people with big ideas, bold
-                        thinking and creativity to change the world. We back MENA’s most remarkable founders who are
-                        creating the next generation of startups.
-                        <br><br>
-                        Business Accelerator is a startup accelerator powered by KAUST and SABB. Since 2016, we’ve helped founders
-                        push the boundaries of what’s possible, giving them the funds, tools, and hands-on resources to
-                        define and refine their companies — and bring their game-changing businesses to market.
-                        <br><br>
-                        Over six months, we guide and develop entrepreneurs through mentorship, funding and targeted
-                        workshops focusing on product design, market fit, business model planning, team development, and
-                        fundraising.
-                        <br><br>
-                        For each Business Accelerator cohort, participating startups receive $40,000 in funding, plus access to
-                        co-working spaces across Saudi, a diverse international community and a wide pool of experts and
-                        mentors.
-                        <br><br>
-                        At the close of each Business Accelerator cohort, founders walk away with a dynamic toolkit designed to
-                        accelerate their business, while ensuring they have the insights and access needed to engage
-                        potential customers and develop an exceptional network of mentors and investors.</p>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-        </div>
-    </section>
-</section>
-<section class="my-5" style="background-color:rgb(232, 228, 228);">
+
+<section class="" style="background-color:rgb(232, 228, 228);">
     <div class="container text-center">
         <div class="row justify-content-center">
-            <div class="col-md-3 pt-4">
+            <div class="col-md-3 pt-5">
                 <div class="row justify-content-center">
                     <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
                     <div class="col-3"></div>
@@ -255,35 +214,51 @@
         </div>
     </div>
 </section>
-<section class="py-5 meet-startup-holder" style="background-color: #fff">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center vpb-3">
-                <div class="col-md-3 mx-auto pt-4">
-                    <div class="row justify-content-center">
-                        <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
-                        <div class="col-3"></div>
-                        <div><h2>About Us</h2></div>
-                        <div class="col-3"></div>
-                        <div class="col-5"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
-                    </div>
-                </div>
-                <div class="row mt-5 mb-5">
-                    <div class="col-md-6">
-                        <img src="{{ asset('uploads/team-member.png') }}" alt="Meet Up Image" class="team-image">
-
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="pt-4 h6-text">
-                            Since its launch in 2016, more than 130 startups have graduated from Business Accelerator. During that time, Business Accelerator funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
-                            Since its launch in 2016, more than 130 startups have graduated from Business Accelerator. During that time, Business Accelerator funded more than $10 million in non-dilutive funding to startup founders. Learn more about our dynamic community.
-                        </h6>
-                    </div>
-                </div>
+<section style="">
+    <section class="my-5 mx-sm-3">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-6 ml-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="green_hr"></div>
+                <div class="col-5 ms-5"></div>
+                <div><h2>Business Accelerator Startup Accelerator</h2></div>
+                <div class="col-5 me-5"></div>
+                <div class="col-6 mr-auto"><img src="{{ asset('uploads/line-D1.png') }}" alt="" class="red_hr"></div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="my-5">
+        <div class="container-fluid text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <p style="text-align:left;">At Business Accelerator, we believe in the power of people with big ideas, bold
+                        thinking and creativity to change the world. We back MENA’s most remarkable founders who are
+                        creating the next generation of startups.
+                        <br><br>
+                        Business Accelerator is a startup accelerator powered by KAUST and SABB. Since 2016, we’ve helped founders
+                        push the boundaries of what’s possible, giving them the funds, tools, and hands-on resources to
+                        define and refine their companies — and bring their game-changing businesses to market.
+                        <br><br>
+                        Over six months, we guide and develop entrepreneurs through mentorship, funding and targeted
+                        workshops focusing on product design, market fit, business model planning, team development, and
+                        fundraising.
+                        <br><br>
+                        For each Business Accelerator cohort, participating startups receive $40,000 in funding, plus access to
+                        co-working spaces across Saudi, a diverse international community and a wide pool of experts and
+                        mentors.
+                        <br><br>
+                        At the close of each Business Accelerator cohort, founders walk away with a dynamic toolkit designed to
+                        accelerate their business, while ensuring they have the insights and access needed to engage
+                        potential customers and develop an exceptional network of mentors and investors.</p>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </section>
 </section>
+
+
 
 <script type="text/javascript">
         jQuery('.card-slider').slick({
