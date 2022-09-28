@@ -13,6 +13,8 @@ class CMSNavEnum extends AbstractEnum
     public const BLOG = 'blog';
     public const SLIDER = 'slider';
     public const DESCRIPTIVE = 'descriptive';
+    public const WHAT_WE_OFFER = 'what_we_offer';
+    public const HOW_IT_WORK = 'how_it_work';
 
     public static function getValues(): array
     {
@@ -22,7 +24,9 @@ class CMSNavEnum extends AbstractEnum
             self::SECTION,
             self::BLOG,
             self::SLIDER,
-            self::DESCRIPTIVE
+            self::DESCRIPTIVE,
+            self::WHAT_WE_OFFER,
+            self::HOW_IT_WORK
         ];
     }
 
@@ -35,6 +39,8 @@ class CMSNavEnum extends AbstractEnum
             self::BLOG => '<i class="mdi mdi-account"></i>',
             self::SLIDER => '<i class="mdi mdi-account"></i>',
             self::DESCRIPTIVE => '<i class="mdi mdi-account"></i>',
+            self::WHAT_WE_OFFER => '<i class="mdi mdi-account"></i>',
+            self::HOW_IT_WORK => '<i class="mdi mdi-account"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -52,6 +58,8 @@ class CMSNavEnum extends AbstractEnum
             self::BLOG => __(sprintf('%s.%s', 'general.left-bar', self::BLOG)),
             self::SLIDER => __(sprintf('%s.%s', 'general.left-bar', self::SLIDER)),
             self::DESCRIPTIVE => __(sprintf('%s.%s', 'general.left-bar', self::DESCRIPTIVE)),
+            self::WHAT_WE_OFFER => __(sprintf('%s.%s', 'general.left-bar', self::WHAT_WE_OFFER)),
+            self::HOW_IT_WORK => __(sprintf('%s.%s', 'general.left-bar', self::HOW_IT_WORK)),
         ];
     }
 
@@ -64,6 +72,8 @@ class CMSNavEnum extends AbstractEnum
             self::BLOG => route('cms.blogs.index'),
             self::SLIDER => route('cms.sliders.index'),
             self::DESCRIPTIVE => route('cms.descriptive.index'),
+            self::WHAT_WE_OFFER => route('cms.what-we-offers.index'),
+            self::HOW_IT_WORK => route('cms.how-it-works.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
