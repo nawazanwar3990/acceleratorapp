@@ -82,6 +82,7 @@ class TableEnum extends AbstractEnum
     public const CMS_FAQ_TOPIC_SECTIONS = 'cms_faq_topic_sections';
     public const BLOGS = 'blogs';
     public const SLIDERS = 'sliders';
+    public const DESCRIPTIVE = 'descriptive';
 
     public static function getValues(): array
     {

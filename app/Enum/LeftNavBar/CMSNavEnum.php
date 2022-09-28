@@ -12,6 +12,7 @@ class CMSNavEnum extends AbstractEnum
     public const SECTION = 'section';
     public const BLOG = 'blog';
     public const SLIDER = 'slider';
+    public const DESCRIPTIVE = 'descriptive';
 
     public static function getValues(): array
     {
@@ -20,7 +21,8 @@ class CMSNavEnum extends AbstractEnum
             self::LAYOUT,
             self::SECTION,
             self::BLOG,
-            self::SLIDER
+            self::SLIDER,
+            self::DESCRIPTIVE
         ];
     }
 
@@ -32,6 +34,7 @@ class CMSNavEnum extends AbstractEnum
             self::SECTION => '<i class="mdi mdi-account"></i>',
             self::BLOG => '<i class="mdi mdi-account"></i>',
             self::SLIDER => '<i class="mdi mdi-account"></i>',
+            self::DESCRIPTIVE => '<i class="mdi mdi-account"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -48,6 +51,7 @@ class CMSNavEnum extends AbstractEnum
             self::SECTION => __(sprintf('%s.%s', 'general.left-bar', self::SECTION)),
             self::BLOG => __(sprintf('%s.%s', 'general.left-bar', self::BLOG)),
             self::SLIDER => __(sprintf('%s.%s', 'general.left-bar', self::SLIDER)),
+            self::DESCRIPTIVE => __(sprintf('%s.%s', 'general.left-bar', self::DESCRIPTIVE)),
         ];
     }
 
@@ -59,6 +63,7 @@ class CMSNavEnum extends AbstractEnum
             self::SECTION => route('cms.pages.index'),
             self::BLOG => route('cms.blogs.index'),
             self::SLIDER => route('cms.sliders.index'),
+            self::DESCRIPTIVE => route('cms.descriptive.index'),
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

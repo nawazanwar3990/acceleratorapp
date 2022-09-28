@@ -9,6 +9,9 @@ return [
     'edit_slider' => 'Edit Slider',
     'front_image' => 'Front Image',
     'back_image' => 'Back Image',
+    'new_descriptive' => 'New Descriptive',
+    'descriptive' => 'Descriptive',
+    'edit_descriptive' => 'Edit Descriptive',
 
     'profile' => 'Profile',
     'google_map_path' => 'Google Map Path',
@@ -417,6 +420,7 @@ return [
 
     'left-bar' => [
         'slider' => 'Slider',
+        'descriptive' => 'Descriptive',
         'payment-receipt' => 'Payment Receipts',
         'layout' => 'Layout',
         'blog' => 'Blog',

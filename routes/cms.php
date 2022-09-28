@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CMS\BlogController;
 use App\Http\Controllers\CMS\ContactUsController;
+use App\Http\Controllers\CMS\DescriptiveController;
 use App\Http\Controllers\CMS\FaqSectionController;
 use App\Http\Controllers\CMS\FaqTopicController;
 use App\Http\Controllers\CMS\LayoutController;
@@ -22,6 +23,7 @@ Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
     Route::resource('/contact-us', ContactUsController::class)->names('contact-us');
     Route::resource('/blogs', BlogController::class)->names('blogs');
     Route::resource('/sliders', SliderController::class)->names('sliders');
+    Route::resource('/descriptive', DescriptiveController::class)->names('descriptive');
 
     Route::post('/sections/upload', [SectionController::class, 'uploadImage'])->name('sections.upload');
     Route::post('/layouts/upload', [LayoutController::class, 'uploadImage'])->name('layouts.upload');
