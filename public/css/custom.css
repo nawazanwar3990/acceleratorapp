@@ -2420,3 +2420,7 @@ img {
     height: 70px;
 }
 
+.carousel-control-prev, .carousel-control-next{
+    background-color: #01023B;
+    width:3%;
+}
