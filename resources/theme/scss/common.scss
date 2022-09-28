@@ -107,6 +107,7 @@ a {
         color: #fb9678;
     }
 }
+
 .in-active-link {
     a {
         color: black !important;
@@ -283,10 +284,16 @@ a {
     width: 108px;
     max-height: 150px !important;
 }
+
 .swal2-confirm {
     border: none !important;
     color: white !important;
     text-transform: capitalize !important;
     padding: 10px 20px !important;
     border-radius: 4px;
+}
+
+.avatar {
+    height: 100px;
+    width: 100px;
 }
