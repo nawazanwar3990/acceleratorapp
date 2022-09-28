@@ -1,6 +1,11 @@
 <?php
 return [
-    'profile'=>'Profile',
+
+    'from_day' => 'From Day',
+    'to_day' => 'To Day',
+    'select_date' => 'Select Date',
+
+    'profile' => 'Profile',
     'google_map_path' => 'Google Map Path',
     'profile_updated_successfully' => 'profile Updated Successfully',
     'monday' => 'Monday',

@@ -23,6 +23,7 @@
                 <div class="container how-we-are-holder py-3">
                     <div class="row">
                         <div class="col-6 mx-auto text-center">
+                            @if()
                             <h6 class="h6-text">A national gathering of business incubators, accelerators, co-working spaces, and all parties related or interested in creating the entrepreneurship ecosystem in the Kingdom.</h6>
                             <a class="read-more btn px-sm-5 fw-sm-bold py-sm-3">Read More</a></div>
                     </div>
