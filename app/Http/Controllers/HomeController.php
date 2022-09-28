@@ -36,14 +36,12 @@ class HomeController extends Controller
         $industries = $this->descriptiveService->listByPagination();
         $offers = $this->whatWeOfferService->listByPagination();
         $works = $this->howItWorkService->listByPagination();
-        $teams = $this->teamService->listByPagination();
         return view('website.index', compact(
                 'page',
                 'sliders',
                 'industries',
                 'offers',
-                'works',
-                'teams'
+                'works'
             )
         );
     }

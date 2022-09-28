@@ -16,4 +16,8 @@ class TeamService
     {
         return Team::orderBy('id', 'ASC')->paginate(20);
     }
+    public static function all_teams()
+    {
+        return Team::orderBy('id', 'ASC')->get();
+    }
 }

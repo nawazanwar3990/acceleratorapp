@@ -108,7 +108,7 @@
                 <p>Meet the team behind the Business Accelerator initiative</p>
             </div>
             @php
-                $team_chunks = array_chunk(json_decode($teams,true),3)
+                $team_chunks = array_chunk(json_decode(\App\Services\CMS\TeamService::all_teams(),true),3)
             @endphp
             @if(count($team_chunks)>0)
                 <section class="work section" id="team">
