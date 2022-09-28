@@ -2422,5 +2422,6 @@ img {
 
 .carousel-control-prev, .carousel-control-next{
     background-color: #01023B;
-    width:3%;
+    width:10%;
+    clip-path: circle(10% at 50% 50%);
 }
