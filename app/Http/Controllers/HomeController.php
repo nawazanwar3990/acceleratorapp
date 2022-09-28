@@ -6,6 +6,7 @@ use App\Services\CMS\DescriptiveService;
 use App\Services\CMS\HowItWorkService;
 use App\Services\CMS\PageService;
 use App\Services\CMS\SliderService;
+use App\Services\CMS\TeamService;
 use App\Services\CMS\WhatWeOfferService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,6 +23,7 @@ class HomeController extends Controller
         private DescriptiveService $descriptiveService,
         private WhatWeOfferService $whatWeOfferService,
         private HowItWorkService $howItWorkService,
+        private TeamService $teamService,
 
     )
     {
@@ -34,12 +36,14 @@ class HomeController extends Controller
         $industries = $this->descriptiveService->listByPagination();
         $offers = $this->whatWeOfferService->listByPagination();
         $works = $this->howItWorkService->listByPagination();
+        $teams = $this->teamService->listByPagination();
         return view('website.index', compact(
                 'page',
                 'sliders',
                 'industries',
                 'offers',
-                'works'
+                'works',
+                'teams'
             )
         );
     }

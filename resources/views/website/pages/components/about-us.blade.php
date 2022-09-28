@@ -35,7 +35,7 @@
                         <div class="small-img" style="background-color: #00D3E1"></div>
                         <div class="values-items-item-img-details" style="background-color:#00D3E1">
                             <div>
-                                <p style="margin-top: 15px">Freedom <br>  Autonomy <br> Independence<br></p>
+                                <p style="margin-top: 15px">Freedom <br> Autonomy <br> Independence<br></p>
                             </div>
                         </div>
                     </div>
@@ -107,110 +107,43 @@
             <div>
                 <p>Meet the team behind the Business Accelerator initiative</p>
             </div>
+            @php
+                $team_chunks = array_chunk(json_decode($teams,true),3)
+            @endphp
+            @if(count($team_chunks)>0)
+                <section class="work section" id="team">
+                    <div class="containers">
+                        <input type="radio" name="dot" class="radio" id="one"/>
+                        <input type="radio" name="dot" class="radio" id="two"/>
+                        <div class="main-card">
+                            @foreach($team_chunks as $team_chunk)
+                                <div class="cards">
+                                    @foreach($team_chunk as $key=>$value)
+                                        <div class="card">
 
-            <section class="work section" id="team">
-                <div class="containers">
-                    <input type="radio" name="dot" class="radio" id="one"/>
-                    <input type="radio" name="dot" class="radio" id="two"/>
+                                            <div class="content">
+                                                <div class="img">
+                                                    <img src="{{asset($value['image']??'')}}" alt=""/>
+                                                </div>
+                                                <div class="details mt-4">
+                                                    <div class="name">{{$value['name']??''}}</div>
+                                                    <div class="job work">{{$value['designation']?''}}</div>
 
-                    <div class="main-card">
-                        <div class="cards">
-                            <!--//Member 1st//-->
+                                                </div>
 
-                            <div class="card">
-
-                                <div class="content">
-                                    <div class="img">
-                                        <img src="{{asset('uploads/slider.png')}}" alt=""/>
-                                    </div>
-                                    <div class="details mt-4">
-                                        <div class="name">Ahsan</div>
-                                        <div class="job work">Full Stack Developer</div>
-
-                                    </div>
-
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            </div>
-
-                            <!--//Member 2nd//-->
-                            <div class="card">
-                                <div class="content">
-                                    <div class="img">
-                                        <img src="{{asset('uploads/slider2.png')}}" alt=""/>                                    </div>
-
-                                    <div class="details mt-4">
-                                        <div class="name">Usman</div>
-                                        <div class="job work">Web Designer</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--//Member 3rd//-->
-
-                            <div class="card">
-
-                                <div class="content">
-                                    <div class="img">
-                                        <img src="{{asset('uploads/slider3.png')}}" alt=""/>                                    </div>
-                                    <div class="details mt-4">
-                                        <div class="name">Ramisha</div>
-                                        <div class="job work">Web Designer</div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <div class="cards">
-                            <!--//Member 4th//-->
-
-                            <div class="card">
-                                <div class="content">
-                                    <div class="img">
-                                        <img src="{{asset('uploads/slider4.png')}}" alt=""/>
-                                    </div>
-                                    <div class="details mt-4 ">
-                                        <div class="name">Zubaida</div>
-                                        <div class="job work">Web Designer</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--//Member 5th//-->
-
-                            <div class="card">
-
-                                <div class="content">
-                                    <div class="img">
-                                        <img src="{{asset('uploads/slider5.png')}}" alt=""/>
-                                    </div>
-                                    <div class="details mt-4">
-                                        <div class="name">Sana</div>
-                                        <div class="job work">Web Designer</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--//Member 6th//-->
-
-                            <div class="card">
-                                <div class="content">
-                                    <div class="img">
-                                        <img src="{{asset('uploads/slider6.png')}}" alt=""/>
-                                    </div>
-                                    <div class="details mt-4">
-                                        <div class="name">Nawaz</div>
-                                        <div class="job work">Web Desginer</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="buttons">
+                            <label for="one" class="active one"></label>
+                            <label for="two" class="two"></label>
                         </div>
                     </div>
-                    <div class="buttons">
-                        <label for="one" class="active one"></label>
-                        <label for="two" class="two"></label>
-                    </div>
-                </div>
-            </section>
-
+                </section>
+            @endif
         </div>
     </div>
 </section>
@@ -232,11 +165,13 @@
             <div class="row justify-content-center">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <p style="text-align:left;">At Business Accelerator, we believe in the power of people with big ideas, bold
+                    <p style="text-align:left;">At Business Accelerator, we believe in the power of people with big
+                        ideas, bold
                         thinking and creativity to change the world. We back MENA’s most remarkable founders who are
                         creating the next generation of startups.
                         <br><br>
-                        Business Accelerator is a startup accelerator powered by KAUST and SABB. Since 2016, we’ve helped founders
+                        Business Accelerator is a startup accelerator powered by KAUST and SABB. Since 2016, we’ve
+                        helped founders
                         push the boundaries of what’s possible, giving them the funds, tools, and hands-on resources to
                         define and refine their companies — and bring their game-changing businesses to market.
                         <br><br>
@@ -244,11 +179,13 @@
                         workshops focusing on product design, market fit, business model planning, team development, and
                         fundraising.
                         <br><br>
-                        For each Business Accelerator cohort, participating startups receive $40,000 in funding, plus access to
+                        For each Business Accelerator cohort, participating startups receive $40,000 in funding, plus
+                        access to
                         co-working spaces across Saudi, a diverse international community and a wide pool of experts and
                         mentors.
                         <br><br>
-                        At the close of each Business Accelerator cohort, founders walk away with a dynamic toolkit designed to
+                        At the close of each Business Accelerator cohort, founders walk away with a dynamic toolkit
+                        designed to
                         accelerate their business, while ensuring they have the insights and access needed to engage
                         potential customers and develop an exceptional network of mentors and investors.</p>
                 </div>
@@ -259,26 +196,25 @@
 </section>
 
 
-
 <script type="text/javascript">
-        jQuery('.card-slider').slick({
-        slidesToShow:3,
+    jQuery('.card-slider').slick({
+        slidesToShow: 3,
         autoplay: true,
-        slidesToScroll:1,
+        slidesToScroll: 1,
         dots: false,
-        responsive:[
-    {
-        breakpoint: 768,
-        settings: {
-        slidesToShow: 2
-    }
-    },
-    {
-        breakpoint: 600,
-        settings: {
-        slidesToShow: 1
-    }
-    }
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
         ]
     });
 </script>
