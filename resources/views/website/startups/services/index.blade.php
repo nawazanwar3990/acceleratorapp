@@ -1,10 +1,16 @@
 <x-page-layout
     :page="$page">
     <x-slot name="content">
+        <style>
+            input[type="time"]::-webkit-calendar-picker-indicator {
+                background: none;
+                display: none;
+            }
+        </style>
         @if($startup_user->about_us)
             <section class="startup-holder pb-5">
                 <section class="mb-5" style="background-color: #dee2e6">
-                    <div class="container how-we-are-holder pt-4" style="height: 223px;">
+                    <div class="container how-we-are-holder pt-4" style="height: 100px;">
                         <div class="row">
                             <div class="col-6 mx-auto text-center">
                                 <h1 class="who-are-you">Who We Are?</h1>
@@ -13,9 +19,9 @@
                     </div>
                     <div>
                         <div class="row mx-1">
-                            <div class="col-5 border-top" style="background-color: #3b3a3a"></div>
+                            <div class="col-5 border-top" style="border-top: 1px solid black!important;"></div>
                             <div class="col-2"></div>
-                            <div class="col-5 border-top" style="background-color: #3b3a3a"></div>
+                            <div class="col-5 border-top" style="border-top: 1px solid black!important;"></div>
                         </div>
                     </div>
                     <div class="container how-we-are-holder py-3">
@@ -129,7 +135,7 @@
                                         </div>
                                         <div class="contact-info-text">
                                             <h2 class="contact-head">{{ trans('general.address') }}</h2>
-                                            <span class="contact_text">{{ $startup_user->address }}</span>
+                                            <span class="contact_text text-capitalize">{{ $startup_user->address }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +166,18 @@
                                         <div class="contact-info-text">
                                             <h2 class="contact-head">office time</h2>
                                             @foreach($startup_user->office_timings['from_day'] as $office_key=>$office_timing)
-                                                <span class="contact_text text-capitalize">{{ $startup_user->office_timings['from_day'][$office_key] }} - {{ $startup_user->office_timings['to_day'][$office_key] }}  <input type="time" value="{{ $startup_user->office_timings['start_time'][$office_key] }}" readonly style="border:none;"/> - <input type="time" value="{{ $startup_user->office_timings['end_time'][$office_key] }}" readonly style="border:none;"/></span>
+
+                                                <span class="contact_text text-capitalize">
+                                                    {{ $startup_user->office_timings['from_day'][$office_key] }}
+                                                    -
+                                                    {{ $startup_user->office_timings['to_day'][$office_key] }}
+
+                                                    <input type="time" class="ms-2" value="{{ $startup_user->office_timings['start_time'][$office_key] }}" readonly
+                                                           style="width: 80px;outline: none;border: none;"/>
+                                                    -
+                                                    <input type="time" class="ps-2" value="{{ $startup_user->office_timings['end_time'][$office_key] }}" readonly
+                                                           style="width: 80px;outline: none;border: none;"/>
+                                                </span>
                                             @endforeach
                                         </div>
                                     </div>

@@ -41,7 +41,7 @@
                         </nav>
                         <div class="tab-content p-3 border bg-light" id="nav-tabContent">
                             <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                
+
                                 <div class="row justify-content-around">
                                     <div class="col-md-5">
                                         <div class="event_container">
@@ -59,7 +59,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -82,7 +82,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -107,7 +107,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -130,7 +130,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -158,7 +158,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -181,7 +181,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -209,7 +209,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -232,7 +232,7 @@
                                                 </div>
                                                 <div class="event_more">
                                                   <a href="#" class="btn_more">
-                                                    learn more
+                                                    Register Now
                                                   </a>
                                                 </div>
                                               </div>
@@ -245,8 +245,8 @@
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </section>
-       
+
     </x-slot>
 </x-page-layout>

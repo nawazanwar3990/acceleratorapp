@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-6 mx-auto text-center">
                     <h6 class="h6-text">A national gathering of business incubators, accelerators, co-working spaces, and all parties related or interested in creating the entrepreneurship ecosystem in the Kingdom.</h6>
-                    <a class="read-more btn px-sm-5 fw-sm-bold py-sm-3">Read More</a></div>
+                    <a class="read-more btn px-sm-5 fw-sm-bold py-sm-3" href="">Read More</a></div>
             </div>
         </div>
         <section class="my-5 py-5 we-offer-holder">
