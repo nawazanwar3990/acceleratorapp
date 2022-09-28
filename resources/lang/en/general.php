@@ -4,6 +4,11 @@ return [
     'from_day' => 'From Day',
     'to_day' => 'To Day',
     'select_date' => 'Select Date',
+    'new_slider' => 'New Slider',
+    'slider' => 'Slider',
+    'edit_slider' => 'Edit Slider',
+    'front_image' => 'Front Image',
+    'back_image' => 'Back Image',
 
     'profile' => 'Profile',
     'google_map_path' => 'Google Map Path',
@@ -411,6 +416,7 @@ return [
 
 
     'left-bar' => [
+        'slider' => 'Slider',
         'payment-receipt' => 'Payment Receipts',
         'layout' => 'Layout',
         'blog' => 'Blog',

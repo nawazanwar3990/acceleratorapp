@@ -8,6 +8,7 @@ use App\Http\Controllers\CMS\LayoutController;
 use App\Http\Controllers\CMS\MenuController;
 use App\Http\Controllers\CMS\PageController;
 use App\Http\Controllers\CMS\SectionController;
+use App\Http\Controllers\CMS\SliderController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
@@ -20,6 +21,7 @@ Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
     Route::resource('/faq-sections',FaqSectionController::class)->names('faq-sections');
     Route::resource('/contact-us', ContactUsController::class)->names('contact-us');
     Route::resource('/blogs', BlogController::class)->names('blogs');
+    Route::resource('/sliders', SliderController::class)->names('sliders');
 
     Route::post('/sections/upload', [SectionController::class, 'uploadImage'])->name('sections.upload');
     Route::post('/layouts/upload', [LayoutController::class, 'uploadImage'])->name('layouts.upload');
