@@ -6,13 +6,13 @@ namespace App\Enum;
 
 class WeekDaysEnum extends AbstractEnum
 {
-    public const MONDAY = 'monday';
-    public const TUESDAY = 'tuesday';
-    public const WEDNESDAY = 'wednesday';
-    public const THURSDAY = 'thursday';
-    public const FRIDAY = 'friday';
-    public const SATURDAY = 'saturday';
-    public const SUNDAY = 'sunday';
+    public const MONDAY = 'mon';
+    public const TUESDAY = 'tue';
+    public const WEDNESDAY = 'wed';
+    public const THURSDAY = 'thu';
+    public const FRIDAY = 'fri';
+    public const SATURDAY = 'sat';
+    public const SUNDAY = 'sun';
     public static function getValues(): array
     {
         return array(

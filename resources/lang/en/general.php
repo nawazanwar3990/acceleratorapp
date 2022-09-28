@@ -1,6 +1,6 @@
 <?php
 return [
-
+    'address' => 'Address',
     'from_day' => 'From Day',
     'to_day' => 'To Day',
     'select_date' => 'Select Date',
@@ -8,13 +8,13 @@ return [
     'profile' => 'Profile',
     'google_map_path' => 'Google Map Path',
     'profile_updated_successfully' => 'profile Updated Successfully',
-    'monday' => 'Monday',
-    'tuesday' => 'Tuesday',
-    'wednesday' => 'Wednesday',
-    'thursday' => 'Thursday',
-    'friday' => 'Friday',
-    'saturday' => 'Saturday',
-    'sunday' => 'Sunday',
+    'mon' => 'Monday',
+    'tue' => 'Tuesday',
+    'wed' => 'Wednesday',
+    'thu' => 'Thursday',
+    'fri' => 'Friday',
+    'sat' => 'Saturday',
+    'sun' => 'Sunday',
     'day' => 'Day',
     'map_address' => 'Map Address',
     'about_us' => 'About Us',

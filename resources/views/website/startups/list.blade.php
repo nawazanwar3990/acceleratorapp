@@ -31,12 +31,9 @@
                     {{ $record->user->getFullName() }}
                 @endif
             </h3>
-            <p class="text-center pt-2">
+            <p class="text-center pt-2 h-70px overflow-hidden">
                 @if($record->user->about_us)
                     {!! $record->user->about_us !!}
-                @else
-                    We develop and implement a systemic approach to outsmart your competition and employ a multifaceted
-                    strategy.
                 @endif
             </p>
             <div class="text-center">
@@ -54,11 +51,11 @@
             </div>
         </div>
     </div>
-    @if($record->user->social_accounts)
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-sm-12 col-sm-4 col-xs-12 align-self-center text-center">
-                    <div class="footer-buttons mt-3 pb-1">
+    <div class="card-footer h-66px">
+        <div class="row">
+            <div class="col-sm-12 col-sm-4 col-xs-12 align-self-center text-center">
+                @if($record->user->social_accounts)
+                    <div class="footer-buttons py-2">
                         @foreach($record->user->social_accounts as $account_key => $account_value)
                             @if($account_value)
                                 <a class="btn btn-primary btn-xs btn-circle mx-2"
@@ -69,8 +66,8 @@
                             @endif
                         @endforeach
                     </div>
-                </div>
+                @endif
             </div>
         </div>
-    @endif
+    </div>
 </div>
