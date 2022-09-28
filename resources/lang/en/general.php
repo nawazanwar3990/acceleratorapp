@@ -18,6 +18,10 @@ return [
     'new_offer'=>'New Offer',
     'edit_work'=>'Edit Work',
     'edit_offer'=>'Edit Offer',
+    'new_team'=>'New Team',
+    'edit_team'=>'Edit Team',
+    'team'=>'Team',
+
 
     'profile' => 'Profile',
     'google_map_path' => 'Google Map Path',
@@ -425,6 +429,7 @@ return [
 
 
     'left-bar' => [
+        'team'=>'Team',
         'how_it_work'=>'How It Work',
         'what_we_offer'=>'What We Offer',
         'slider' => 'Slider',

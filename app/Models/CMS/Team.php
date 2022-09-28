@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class HowItWork extends Model
+class Team extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'steps',
         'image',
-        'heading',
-        'description',
+        'name',
+        'designation',
         'created_by',
         'updated_by',
         'deleted_by'
