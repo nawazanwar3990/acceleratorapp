@@ -8,54 +8,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/mobilityy.jpg');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-12.webp') }}" alt=""/>
-                    <h4>Mobality</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/energy.jpg');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-15.webp') }}" alt=""/>
-                    <h4>Energy</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/logistics.jpg');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-10.webp') }}" alt=""/>
-                    <h4>Logistics</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/WATER-1.webp');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-9.webp') }}" alt=""/>
-                    <h4>Water</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/DIGITAL-1.webp');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-14.webp') }}" alt=""/>
-                    <h4>Digital</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/FINTECH.webp');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-16.webp') }}" alt=""/>
-                    <h4>FIN-Teach</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/CYBER.webp');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-13.webp') }}" alt=""/>
-                    <h4>cyber security</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 position-relative"
-                 style="background: url('http://accelator.businessholics.com/uploads/HEALTH.webp');">
-                <div class="position-absolute"><img src="{{ asset('uploads/Asset-11.webp') }}" alt=""/>
-                    <h4>health</h4>
-                </div>
-            </div>
+            @if(count($industries)>0)
+                @foreach($industries as $industry)
+                    <div class="col-lg-3 col-md-6 position-relative"
+                         style="background: url('{{ asset($industry->back_image) }}');">
+                        <div class="position-absolute"><img src="{{ asset($industry->front_image) }}" alt=""/>
+                            <h4>{{ $industry->heading }}</h4>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>
