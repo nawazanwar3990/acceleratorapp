@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="details mt-4">
                                                     <div class="name">{{$value['name']??''}}</div>
-                                                    <div class="job work">{{$value['designation']?''}}</div>
+                                                    <div class="job work">{{$value['designation']??''}}</div>
 
                                                 </div>
 
