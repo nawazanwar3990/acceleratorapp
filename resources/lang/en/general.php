@@ -12,6 +12,12 @@ return [
     'new_descriptive' => 'New Descriptive',
     'descriptive' => 'Descriptive',
     'edit_descriptive' => 'Edit Descriptive',
+    'how_it_work'=>'How It Work',
+    'what_we_offer'=>'What We Offer',
+    'new_work'=>'New Work',
+    'new_offer'=>'New Offer',
+    'edit_work'=>'Edit Work',
+    'edit_offer'=>'Edit Offer',
 
     'profile' => 'Profile',
     'google_map_path' => 'Google Map Path',
@@ -419,6 +425,8 @@ return [
 
 
     'left-bar' => [
+        'how_it_work'=>'How It Work',
+        'what_we_offer'=>'What We Offer',
         'slider' => 'Slider',
         'descriptive' => 'Descriptive',
         'payment-receipt' => 'Payment Receipts',

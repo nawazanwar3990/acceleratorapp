@@ -5,11 +5,13 @@ use App\Http\Controllers\CMS\ContactUsController;
 use App\Http\Controllers\CMS\DescriptiveController;
 use App\Http\Controllers\CMS\FaqSectionController;
 use App\Http\Controllers\CMS\FaqTopicController;
+use App\Http\Controllers\CMS\HowItWorkController;
 use App\Http\Controllers\CMS\LayoutController;
 use App\Http\Controllers\CMS\MenuController;
 use App\Http\Controllers\CMS\PageController;
 use App\Http\Controllers\CMS\SectionController;
 use App\Http\Controllers\CMS\SliderController;
+use App\Http\Controllers\CMS\WhatWeOfferController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
@@ -24,6 +26,9 @@ Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
     Route::resource('/blogs', BlogController::class)->names('blogs');
     Route::resource('/sliders', SliderController::class)->names('sliders');
     Route::resource('/descriptive', DescriptiveController::class)->names('descriptive');
+
+    Route::resource('/how-it-works', HowItWorkController::class)->names('how-it-works');
+    Route::resource('/what-we-offers', WhatWeOfferController::class)->names('what-we-offers');
 
     Route::post('/sections/upload', [SectionController::class, 'uploadImage'])->name('sections.upload');
     Route::post('/layouts/upload', [LayoutController::class, 'uploadImage'])->name('layouts.upload');
