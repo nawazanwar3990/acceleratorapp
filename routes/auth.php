@@ -36,13 +36,7 @@ Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
     ->middleware('guest')
     ->name('password.email');
-Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
-    ->middleware('auth')
-    ->name('password.confirm');
-Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
-    ->middleware('auth');
-
-Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+Route::get('/password/reset/{token}', [NewPasswordController::class, 'create'])
     ->middleware('guest')
     ->name('password.reset');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])
