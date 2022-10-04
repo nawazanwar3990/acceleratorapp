@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Auth\VerificationController;
@@ -25,6 +27,19 @@ Route::post('email/resend/post', [VerificationController::class,'postResend'])
     ->name('verification.resend.post');
 
 Route::get('/user/verify/{token}', [RegisterController::class, 'verifyUser'])->name('user.verify');
+
+
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+    ->middleware('guest')
+    ->name('password.request');
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+    ->middleware('guest')
+    ->name('password.email');
+Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
+    ->middleware('auth')
+    ->name('password.confirm');
+Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
+    ->middleware('auth');
 
 
 Route::get('/auth/login/{provider}', [SocialController::class, 'redirect'])->name('social-login');

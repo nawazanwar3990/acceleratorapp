@@ -50,7 +50,7 @@
                                         <label class="form-check-label text-white" for="customCheck1">{{ __('general.remember_me') }}</label>
                                     </div>
                                     <div class="ms-auto">
-                                        <a href="javascript:void(0)" id="to-recover" class="text-white">
+                                        <a href="{{ route('password.request') }}" id="to-recover" class="text-white">
                                             <i class="fas fa-lock m-r-5"></i> Forgot password?
                                         </a>
                                     </div>

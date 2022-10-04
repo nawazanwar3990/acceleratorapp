@@ -7,6 +7,7 @@
     <title>{{ $page->page_title }}</title>
     <meta name="description" content="{{ $page->page_description }}">
     <meta name="keywords" content="{{ $page->page_keyword }}">
+    <link rel="stylesheet" href="{{ asset('css/website.min.css') }}">
     <link href="{{ asset('css/auth.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
