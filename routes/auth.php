@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Support\Facades\Route;
 
