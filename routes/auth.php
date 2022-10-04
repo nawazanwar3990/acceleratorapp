@@ -23,5 +23,8 @@ Route::get('email/resend', [VerificationController::class,'resend'])
 Route::post('email/resend/post', [VerificationController::class,'postResend'])
     ->name('verification.resend.post');
 
-
 Route::get('/user/verify/{token}', [RegisterController::class, 'verifyUser'])->name('user.verify');
+
+
+Route::get('/auth/login/{provider}', [SocialController::class, 'redirect'])->name('social-login');
+Route::get('/auth/login/{provider}/callback', [SocialController::class, 'callback']);
