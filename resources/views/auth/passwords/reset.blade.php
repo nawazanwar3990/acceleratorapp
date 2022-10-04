@@ -6,9 +6,10 @@
                 <div class="card-body" style="padding: 1rem 1rem 0 1rem">
                     {!! Form::open(['url'=>route('password.update'),'method'=>\App\Enum\MethodEnum::POST,'class'=>'form-horizontal form-material']) !!}
                     @csrf
+                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
                     <h3 class="text-center m-b-20">Reset Password</h3>
                     <div class="mb-3 m-t-40">
-                        {!! Form::text('email',old('email'),['id'=>'email','class'=>'form-control','placeholder'=>'Email']) !!}
+                        {!! Form::text('email',$request->route('email'),['id'=>'email','class'=>'form-control','placeholder'=>'Email']) !!}
                         @error('email')
                         <small class="input-feedback text-danger"> {{ $message }} </small>
                         @enderror
