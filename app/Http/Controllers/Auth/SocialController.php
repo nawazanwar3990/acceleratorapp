@@ -11,11 +11,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
 {
-    /**
-     * Redirect to Social Login.
-     * @param $provider
-     * @return mixed
-     */
     public function redirect($provider)
     {
         if ($provider == 'linkedin') {
@@ -28,39 +23,14 @@ class SocialController extends Controller
         }
     }
 
-    /**
-     * Call Back From Social Login.
-     * @param $provider
-     * @return RedirectResponse
-     */
-    public function callBack($provider): RedirectResponse
+    public function callBack($provider)
     {
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
+            echo "<pre>";
+            print_r($socialUser);
         } catch (Exception $e) {
             return redirect()->route('social-login', array($provider));
-        }
-        if (empty($socialUser->email)) {
-            return \redirect()->route('login')->with('social_error', trans('auth.no-id-return') . $provider);
-        } else {
-            $email = $socialUser->email;
-            $alreadyUser = User::where('email', $email)->exists();
-            if ($alreadyUser) {
-                $user = User::where('email', $email)->first();
-                $user->provider = $provider;
-                $user->provider_id = $socialUser->id;
-                if ($user->save()) {
-                    Auth::login($user);
-                    return \redirect()->route('home');
-                }
-            } else {
-                return \redirect()->route('register', array(
-                    'name' => $socialUser->getName(),
-                    'email' => $socialUser->getEmail(),
-                    'provider' => $provider,
-                    'provider_id' => $socialUser->id,
-                ));
-            }
         }
     }
 }
