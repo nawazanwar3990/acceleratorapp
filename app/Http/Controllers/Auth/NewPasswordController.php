@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\CMS\PageService;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -18,8 +19,13 @@ class NewPasswordController extends Controller
 {
     public function create(Request $request): Factory|View|Application
     {
-        return view('auth.passwords.reset', ['request' => $request]);
+        $page = PageService::getLoginPage();
+        return view('auth.passwords.reset', [
+            'request' => $request,
+            'page' => $page
+        ]);
     }
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
