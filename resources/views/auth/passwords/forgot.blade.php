@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3  text-center">
                         <button class="btn btn-login site-first-btn-color text-white" type="submit">Send
-                          Update Password
+                            Password Reset Link
                         </button>
                     </div>
                     {!! Form::close() !!}
