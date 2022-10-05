@@ -100,6 +100,10 @@ class SocialController extends Controller
                         }
                         Auth::login($user);
                     }
+                    setcookie("register_detail", "", time() - 3600);
+                    setcookie("register_route", "", time() - 3600);
+                    setcookie("is_register", "", time() - 3600);
+
                     return redirect()
                         ->route('website.index')
                         ->with('success', 'Successfully Register From ' . strtoupper($provider));
