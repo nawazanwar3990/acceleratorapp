@@ -29,6 +29,12 @@ class SocialController extends Controller
             $socialUser = Socialite::driver($provider)->stateless()->user();
             $provider_id = $socialUser->id;
             $email = $socialUser->email;
+            $is_register = $_COOKIE['is_register'];
+            if ($is_register == 'yes') {
+                // Ready for Registration
+            }else{
+                // Ready for Login
+            }
         } catch (Exception $e) {
             return redirect()->route('social-login', array($provider));
         }
