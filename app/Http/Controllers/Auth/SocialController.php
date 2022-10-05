@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\GeneralService;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -29,17 +30,16 @@ class SocialController extends Controller
             $socialUser = Socialite::driver($provider)->stateless()->user();
             $provider_id = $socialUser->id;
             $email = $socialUser->email;
-            $is_register_object = $_COOKIE['is_register_object'];
-            if ($is_register_object) {
+            $is_register = $_COOKIE['is_register'];
+            if ($is_register == 'yes') {
                 // apply register
-                $register_object = json_decode($is_register_object, true);
                 $alreadyUser = User::where('email', $email)->exists();
                 if ($alreadyUser) {
-                    return redirect()->route('website.index')->with('success', 'User With the Email Already Exists');
-                    unset($_COOKIE["is_register_object"]);
-                    setcookie('is_register_error', 'yes');
+                    GeneralService::setCookie('is_register_error', 'yes');
+                    return redirect()->route('website.index')->with('error', 'User With the Email Already Exists');
                 } else {
-                    print_r($register_object);
+                    echo "<pre>";
+                    print_r($socialUser);
                 }
             } else {
                 //apply login
