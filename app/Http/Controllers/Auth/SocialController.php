@@ -81,10 +81,11 @@ class SocialController extends Controller
                         $user->provider = $provider;
                         $user->provider_id = $socialUser->id;
                         $user->save();
+                        Auth::login($user);
                     }
                     return redirect()
-                        ->route('login', ['email' => $email, 'password' => 'user1234'])
-                        ->with('success', 'Successfully Register Account From ' . strtoupper($provider) . " Please login with temporary Password or Recover Password");
+                        ->route('website.index')
+                        ->with('success', 'Successfully Register Account From ' . strtoupper($provider));
                 }
             } else {
                 // Ready for Login
