@@ -33,8 +33,14 @@ class SocialController extends Controller
             if ($is_register_object) {
                 // apply register
                 $register_object = json_decode($is_register_object, true);
-                echo "<pre>";
-                print_r($register_object);
+                $alreadyUser = User::where('email', $email)->exists();
+                if ($alreadyUser) {
+                    return redirect()->route('website.index')->with('success', 'User With the Email Already Exists');
+                    unset($_COOKIE["is_register_object"]);
+                    setcookie('is_register_error', 'yes');
+                } else {
+                    print_r($register_object);
+                }
             } else {
                 //apply login
             }
