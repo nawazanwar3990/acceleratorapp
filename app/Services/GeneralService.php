@@ -1382,4 +1382,8 @@ class GeneralService
                 break;
         }
     }
+    public static function setCookie($cookie_name,$cookie_value): void
+    {
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+    }
 }
