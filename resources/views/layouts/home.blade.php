@@ -45,24 +45,27 @@
 <x-web-footer :cPage="$page"></x-web-footer>
 <script src="{{ asset('js/website.min.js') }}"></script>
 <script>
+    @if(request()->has('social_register_error'))
+        apply_login_types();
+    @endif
     $('.testing_owl').owlCarousel({
-        loop:true,
-        margin:10,
-        dots:false,
-        nav:true,
-        navText:["<i class='bx bx-chevron-left'></i>","<i class='bx bx-chevron-right'></i>"],
-        mouseDrag:false,
-        autoplay:true,
+        loop: true,
+        margin: 10,
+        dots: false,
+        nav: true,
+        navText: ["<i class='bx bx-chevron-left'></i>", "<i class='bx bx-chevron-right'></i>"],
+        mouseDrag: false,
+        autoplay: true,
         animateOut: 'slideOutUp',
-        responsive:{
-            0:{
-                items:1
+        responsive: {
+            0: {
+                items: 1
             },
-            600:{
-                items:1
+            600: {
+                items: 1
             },
-            1000:{
-                items:1
+            1000: {
+                items: 1
             }
         }
     });
