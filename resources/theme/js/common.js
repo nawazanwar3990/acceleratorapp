@@ -111,7 +111,7 @@ function apply_payment(parent = null, type) {
             'type':type,
             'payment_type':payment_type
         }
-        setCookie('is_register_object',JSON.parse(register_object));
+        setCookie('is_register_object',JSON.stringify(register_object));
         let route = null;
         if (parent === 'ba' || parent === 'freelancers') {
             route = '/' + parent + '/create/' + type + "/" + payment_type + "/user-info";
