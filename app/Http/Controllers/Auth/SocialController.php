@@ -47,7 +47,7 @@ class SocialController extends Controller
             $email = $socialUser->email;
             if (!isset($_COOKIE['is_register'])) {
                 $user = $this->personService->findByEmail($email);
-                if ($user->provide_id == $socialUser->id) {
+                if ($user->provider !== '') {
                     Auth::login($user);
                     return redirect()
                         ->route('website.index')
