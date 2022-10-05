@@ -102,10 +102,19 @@ class SocialController extends Controller
                     }
                     return redirect()
                         ->route('website.index')
-                        ->with('success', 'Successfully Register Account From ' . strtoupper($provider));
+                        ->with('success', 'Successfully Register From ' . strtoupper($provider));
                 }
             } else {
                 // Ready for Login
+                $user = $this->personService->findByEmail($email);
+                if ($user->provide_id == $socialUser->id) {
+                    Auth::login($user);
+                    return redirect()
+                        ->route('website.index')
+                        ->with('success', 'Successfully Login From ' . strtoupper($provider));
+                } else {
+                    return redirect()->back()->with('error', 'This is not a valid User Please check Your Account and try again');
+                }
             }
         } catch (Exception $e) {
             return redirect()->route('social-login', array($provider));
