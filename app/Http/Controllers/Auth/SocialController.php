@@ -27,6 +27,7 @@ class SocialController extends Controller
     {
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
+
             echo "<pre>";
             print_r($socialUser);
         } catch (Exception $e) {
