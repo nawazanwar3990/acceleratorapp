@@ -40,7 +40,7 @@ class SocialController extends Controller
         }
     }
 
-    public function callBack($provider)
+    public function callBack($provider): RedirectResponse
     {
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
@@ -100,9 +100,9 @@ class SocialController extends Controller
                         }
                         Auth::login($user);
                     }
-                    setcookie("register_detail", "", time() - 3600);
-                    setcookie("register_route", "", time() - 3600);
-                    setcookie("is_register", "", time() - 3600);
+                    GeneralService::setCookie("register_detail", "");
+                    GeneralService::setCookie("register_route", "");
+                    GeneralService::setCookie("is_register", "");
 
                     return redirect()
                         ->route('website.index')
