@@ -74,7 +74,9 @@ class SocialController extends Controller
                     $model->save();
                     $user = new User();
                     if ($provider == 'google') {
-                        $user->first_name = $socialUser->name ?? null;
+                        $name = explode(' ', $socialUser->name);
+                        $user->first_name = $name[0] ?? null;
+                        $user->last_name = $name[1] ?? null;
                         $user->email = $email;
                         $user->email_verified_at = Carbon::now();
                         $user->normal_password = 'user1234';
@@ -85,16 +87,16 @@ class SocialController extends Controller
                         $model->user_id = $user->id;
                         $model->save();
                         if ($register_detail['parent'] == 'ba') {
-                            $user->roles()->sync(Role::where('name', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
+                            $user->roles()->sync(Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
                         }
                         if ($register_detail['parent'] == 'freelancers') {
-                            $user->roles()->sync(Role::where('name', RoleEnum::FREELANCER)->value('id'));
+                            $user->roles()->sync(Role::where('slug', RoleEnum::FREELANCER)->value('id'));
                         }
                         if ($register_detail['parent'] == 'customer') {
-                            $user->roles()->sync(Role::where('name', RoleEnum::CUSTOMER)->value('id'));
+                            $user->roles()->sync(Role::where('slug', RoleEnum::CUSTOMER)->value('id'));
                         }
                         if ($register_detail['parent'] == 'mentors') {
-                            $user->roles()->sync(Role::where('name', RoleEnum::MENTOR)->value('id'));
+                            $user->roles()->sync(Role::where('slug', RoleEnum::MENTOR)->value('id'));
                         }
                         Auth::login($user);
                     }
