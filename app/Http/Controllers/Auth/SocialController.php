@@ -44,9 +44,13 @@ class SocialController extends Controller
                 if ($user) {
                     return redirect()->route('website.index', ['social_register_error' => 'yes'])->with('error', 'User With this Email is already Exists');
                 } else {
-                    session()->put('social_user', $socialUser);
+                    $register_detail = json_decode($_COOKIE['register_detail'], true);
+                    echo "<pre>";
+                    print_r($register_detail);
+                    print_r($socialUser);
+                    /*session()->put('social_user', $socialUser);
                     $route = $_COOKIE['register_route'];
-                    return redirect()->to($route)->with('success', 'Successfully Register From Social Account Please Fill Other Information');
+                    return redirect()->to($route)->with('success', 'Successfully Register From Social Account Please Fill Other Information');*/
                 }
             } else {
                 // Ready for Login
