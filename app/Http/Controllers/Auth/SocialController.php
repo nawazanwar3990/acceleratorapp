@@ -58,7 +58,7 @@ class SocialController extends Controller
                         $model = new BA();
                         $model->type = $register_detail['type'];
                     }
-                    if ($register_detail['parent'] == 'freelancer') {
+                    if ($register_detail['parent'] == 'freelancers') {
                         $model = new Freelancer();
                         $model->type = $register_detail['type'];
                     }
@@ -87,7 +87,7 @@ class SocialController extends Controller
                         if ($register_detail['parent'] == 'ba') {
                             $user->roles()->sync(Role::where('name', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
                         }
-                        if ($register_detail['parent'] == 'freelancer') {
+                        if ($register_detail['parent'] == 'freelancers') {
                             $user->roles()->sync(Role::where('name', RoleEnum::FREELANCER)->value('id'));
                         }
                         if ($register_detail['parent'] == 'customer') {
