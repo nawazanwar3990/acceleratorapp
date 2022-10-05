@@ -79,4 +79,7 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
 
     Route::get('office/{office_id}/plans', [StartupController::class, 'office_plans'])
         ->name('office.plans.index');
+
+    Route::get('privacy-policy',function (){});
+    Route::get('term-and-condition',function (){});
 });
