@@ -30,8 +30,14 @@ class SocialController extends Controller
             $provider_id = $socialUser->id;
             $email = $socialUser->email;
             $is_register_object = $_COOKIE['is_register_object'];
-            echo "<pre>";
-            print_r($is_register_object);
+            if ($is_register_object) {
+                // apply register
+                $register_object = json_decode($is_register_object, true);
+                echo "<pre>";
+                print_r($register_object);
+            } else {
+                //apply login
+            }
         } catch (Exception $e) {
             return redirect()->route('social-login', array($provider));
         }
