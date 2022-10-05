@@ -40,86 +40,87 @@ class SocialController extends Controller
         }
     }
 
-    public function callBack($provider): RedirectResponse
+    public function callBack($provider)
     {
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
             $email = $socialUser->email;
             $is_register = $_COOKIE['is_register'];
-            if ($is_register == 'yes') {
-                // Ready for Registration
-                $user = $this->personService->findByEmail($email);
-                if ($user) {
-                    return redirect()->route('website.index', ['social_register_error' => 'yes'])->with('error', 'User With this Email is already Exists');
-                } else {
-                    $register_detail = json_decode($_COOKIE['register_detail'], true);
-                    $model = null;
-                    if ($register_detail['parent'] == 'ba') {
-                        $model = new BA();
-                        $model->type = $register_detail['type'];
-                    }
-                    if ($register_detail['parent'] == 'freelancers') {
-                        $model = new Freelancer();
-                        $model->type = $register_detail['type'];
-                    }
-                    if ($register_detail['parent'] == 'customer') {
-                        $model = new Customer();
-                    }
-                    if ($register_detail['parent'] == 'mentors') {
-                        $model = new Mentor();
-                    }
-                    if (isset($register_detail['payment_type'])) {
-                        $model->payment_process = $register_detail['payment_type'];
-                    }
-                    $model->save();
-                    $user = new User();
-                    if ($provider == 'google') {
-                        $name = explode(' ', $socialUser->name);
-                        $user->first_name = $name[0] ?? null;
-                        $user->last_name = $name[1] ?? null;
-                        $user->email = $email;
-                        $user->email_verified_at = Carbon::now();
-                        $user->normal_password = 'user1234';
-                        $user->password = Hash::make('user1234');
-                        $user->provider = $provider;
-                        $user->provider_id = $socialUser->id;
-                        $user->save();
-                        $model->user_id = $user->id;
-                        $model->save();
-                        if ($register_detail['parent'] == 'ba') {
-                            $user->roles()->sync(Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
-                        }
-                        if ($register_detail['parent'] == 'freelancers') {
-                            $user->roles()->sync(Role::where('slug', RoleEnum::FREELANCER)->value('id'));
-                        }
-                        if ($register_detail['parent'] == 'customer') {
-                            $user->roles()->sync(Role::where('slug', RoleEnum::CUSTOMER)->value('id'));
-                        }
-                        if ($register_detail['parent'] == 'mentors') {
-                            $user->roles()->sync(Role::where('slug', RoleEnum::MENTOR)->value('id'));
-                        }
-                        Auth::login($user);
-                    }
-                    GeneralService::setCookie("register_detail", "");
-                    GeneralService::setCookie("register_route", "");
-                    GeneralService::setCookie("is_register", "");
+            echo $is_register;
+            echo "<pre>";
+            print_r($socialUser);
+            /* if ($is_register == 'yes') {
+                 $user = $this->personService->findByEmail($email);
+                 if ($user) {
+                     return redirect()->route('website.index', ['social_register_error' => 'yes'])->with('error', 'User With this Email is already Exists');
+                 } else {
+                     $register_detail = json_decode($_COOKIE['register_detail'], true);
+                     $model = null;
+                     if ($register_detail['parent'] == 'ba') {
+                         $model = new BA();
+                         $model->type = $register_detail['type'];
+                     }
+                     if ($register_detail['parent'] == 'freelancers') {
+                         $model = new Freelancer();
+                         $model->type = $register_detail['type'];
+                     }
+                     if ($register_detail['parent'] == 'customer') {
+                         $model = new Customer();
+                     }
+                     if ($register_detail['parent'] == 'mentors') {
+                         $model = new Mentor();
+                     }
+                     if (isset($register_detail['payment_type'])) {
+                         $model->payment_process = $register_detail['payment_type'];
+                     }
+                     $model->save();
+                     $user = new User();
+                     if ($provider == 'google') {
+                         $name = explode(' ', $socialUser->name);
+                         $user->first_name = $name[0] ?? null;
+                         $user->last_name = $name[1] ?? null;
+                         $user->email = $email;
+                         $user->email_verified_at = Carbon::now();
+                         $user->normal_password = 'user1234';
+                         $user->password = Hash::make('user1234');
+                         $user->provider = $provider;
+                         $user->provider_id = $socialUser->id;
+                         $user->save();
+                         $model->user_id = $user->id;
+                         $model->save();
+                         if ($register_detail['parent'] == 'ba') {
+                             $user->roles()->sync(Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
+                         }
+                         if ($register_detail['parent'] == 'freelancers') {
+                             $user->roles()->sync(Role::where('slug', RoleEnum::FREELANCER)->value('id'));
+                         }
+                         if ($register_detail['parent'] == 'customer') {
+                             $user->roles()->sync(Role::where('slug', RoleEnum::CUSTOMER)->value('id'));
+                         }
+                         if ($register_detail['parent'] == 'mentors') {
+                             $user->roles()->sync(Role::where('slug', RoleEnum::MENTOR)->value('id'));
+                         }
+                         Auth::login($user);
+                     }
+                     GeneralService::setCookie("register_detail", "");
+                     GeneralService::setCookie("register_route", "");
+                     GeneralService::setCookie("is_register", "");
 
-                    return redirect()
-                        ->route('website.index')
-                        ->with('success', 'Successfully Register From ' . strtoupper($provider));
-                }
-            } else {
-                // Ready for Login
-                $user = $this->personService->findByEmail($email);
-                if ($user->provide_id == $socialUser->id) {
-                    Auth::login($user);
-                    return redirect()
-                        ->route('website.index')
-                        ->with('success', 'Successfully Login From ' . strtoupper($provider));
-                } else {
-                    return redirect()->back()->with('error', 'This is not a valid User Please check Your Account and try again');
-                }
-            }
+                     return redirect()
+                         ->route('website.index')
+                         ->with('success', 'Successfully Register From ' . strtoupper($provider));
+                 }
+             } else {
+                 $user = $this->personService->findByEmail($email);
+                 if ($user->provide_id == $socialUser->id) {
+                     Auth::login($user);
+                     return redirect()
+                         ->route('website.index')
+                         ->with('success', 'Successfully Login From ' . strtoupper($provider));
+                 } else {
+                     return redirect()->back()->with('error', 'This is not a valid User Please check Your Account and try again');
+                 }
+             }*/
         } catch (Exception $e) {
             return redirect()->route('social-login', array($provider));
         }
