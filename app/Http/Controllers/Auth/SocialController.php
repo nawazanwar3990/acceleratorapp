@@ -52,7 +52,7 @@ class SocialController extends Controller
                 } else {
                     $register_detail = json_decode($_COOKIE['register_detail'], true);
                     $model = null;
-                    if ($register_detail['parent'] == 'business_accelerator') {
+                    if ($register_detail['parent'] == 'ba') {
                         $model = new BA();
                         $model->type = $register_detail['type'];
                     }
