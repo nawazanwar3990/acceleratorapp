@@ -72,8 +72,7 @@ class SocialController extends Controller
                     $model->save();
                     $user = new User();
                     if ($provider == 'google') {
-                        $user->first_name = $socialUser['user']['given_name'] ?? null;
-                        $user->last_name = $socialUser['user']['family_name'] ?? null;
+                        $user->first_name = $socialUser->name ?? null;
                         $user->email = $email;
                         $user->email_verified_at = Carbon::now();
                         $user->normal_password = 'user1234';
@@ -81,6 +80,8 @@ class SocialController extends Controller
                         $user->provider = $provider;
                         $user->provider_id = $socialUser->id;
                         $user->save();
+                        $model->user_id = $user->id;
+                        $model->save();
                         Auth::login($user);
                     }
                     return redirect()
