@@ -42,7 +42,7 @@ class SocialController extends Controller
                 // Ready for Registration
                 $user = $this->personService->findByEmail($email);
                 if ($user) {
-                    return redirect()->route('website.index', ['is_error' => true])->with('error', 'User With this Email is already Exists');
+                    return redirect()->route('website.index', ['social_register_error' => 'yes'])->with('error', 'User With this Email is already Exists');
                 } else {
                     session()->put('social_user', $socialUser);
                     $route = $_COOKIE['register_route'];
