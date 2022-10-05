@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Models\BA;
 use App\Models\Customer;
 use App\Models\Freelancer;
 use App\Models\Mentor;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\GeneralService;
 use App\Services\PersonService;
@@ -56,7 +58,7 @@ class SocialController extends Controller
                         $model = new BA();
                         $model->type = $register_detail['type'];
                     }
-                    if ($register_detail['parent'] == 'freelancers') {
+                    if ($register_detail['parent'] == 'freelancer') {
                         $model = new Freelancer();
                         $model->type = $register_detail['type'];
                     }
@@ -82,6 +84,18 @@ class SocialController extends Controller
                         $user->save();
                         $model->user_id = $user->id;
                         $model->save();
+                        if ($register_detail['parent'] == 'ba') {
+                            $user->roles()->sync(Role::where('name', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
+                        }
+                        if ($register_detail['parent'] == 'freelancer') {
+                            $user->roles()->sync(Role::where('name', RoleEnum::FREELANCER)->value('id'));
+                        }
+                        if ($register_detail['parent'] == 'customer') {
+                            $user->roles()->sync(Role::where('name', RoleEnum::CUSTOMER)->value('id'));
+                        }
+                        if ($register_detail['parent'] == 'mentors') {
+                            $user->roles()->sync(Role::where('name', RoleEnum::MENTOR)->value('id'));
+                        }
                         Auth::login($user);
                     }
                     return redirect()
