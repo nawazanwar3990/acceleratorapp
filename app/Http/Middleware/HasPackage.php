@@ -40,13 +40,13 @@ class HasPackage
                     } else {
                         if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)) {
                             $ba = $user->ba;
-                            return redirect()->route('ba.create', ['ba', $ba->type, $ba->payment_process, $ba->type == 'company' ? StepEnum::COMPANY_PROFILE : StepEnum::PACKAGES, $ba->id]);
+                            return redirect()->route('website.ba.create', [$ba->type, $ba->payment_process, $ba->type == 'company' ? StepEnum::COMPANY_PROFILE : StepEnum::PACKAGES, $ba->id]);
                         } else if ($user->hasRole(RoleEnum::FREELANCER)) {
                             $freelancer = $user->freelancer;
-                            return redirect()->route('freelancers.create', ['ba', $freelancer->type, $freelancer->payment_process, $freelancer->type == 'company' ? StepEnum::COMPANY_PROFILE : StepEnum::PACKAGES, $freelancer->id]);
+                            return redirect()->route('website.freelancers.create', [$freelancer->type, $freelancer->payment_process, $freelancer->type == 'company' ? StepEnum::COMPANY_PROFILE : StepEnum::PACKAGES, $freelancer->id]);
                         } else if ($user->hasRole(RoleEnum::MENTOR)) {
                             $mentor = $user->mentor;
-                            return redirect()->route('freelancers.create', ['mentor', $mentor->payment_process, StepEnum::PACKAGES, $mentor->id]);
+                            return redirect()->route('website.mentors.create', [ $mentor->payment_process, StepEnum::PACKAGES, $mentor->id]);
                         } else {
                             return $next($request);
                         }
