@@ -45,10 +45,12 @@ class SocialController extends Controller
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
             $email = $socialUser->email;
-            $is_register = $_COOKIE['is_register'];
-            echo $is_register;
-            echo "<pre>";
-            print_r($socialUser);
+            if (!isset($_COOKIE['is_register'])) {
+                echo "<pre>";
+                print_r($socialUser);
+            } else {
+                $is_register = $_COOKIE['is_register'];
+            }
             /* if ($is_register == 'yes') {
                  $user = $this->personService->findByEmail($email);
                  if ($user) {
