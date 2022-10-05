@@ -3,10 +3,8 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PaymentReceiptController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\StartupController;
-use App\Http\Controllers\StartupServiceController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Website\BAController;
 use App\Http\Controllers\Website\CustomerController;
