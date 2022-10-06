@@ -83,33 +83,31 @@ class SocialController extends Controller
                         }
                         $model->save();
                         $user = new User();
-                        if ($provider == 'google') {
-                            $name = explode(' ', $socialUser->name);
-                            $user->first_name = $name[0] ?? null;
-                            $user->last_name = $name[1] ?? null;
-                            $user->email = $email;
-                            $user->email_verified_at = Carbon::now();
-                            $user->normal_password = 'user1234';
-                            $user->password = Hash::make('user1234');
-                            $user->provider = $provider;
-                            $user->provider_id = $socialUser->id;
-                            $user->save();
-                            $model->user_id = $user->id;
-                            $model->save();
-                            if ($register_detail['parent'] == 'ba') {
-                                $user->roles()->sync(Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
-                            }
-                            if ($register_detail['parent'] == 'freelancers') {
-                                $user->roles()->sync(Role::where('slug', RoleEnum::FREELANCER)->value('id'));
-                            }
-                            if ($register_detail['parent'] == 'customer') {
-                                $user->roles()->sync(Role::where('slug', RoleEnum::CUSTOMER)->value('id'));
-                            }
-                            if ($register_detail['parent'] == 'mentors') {
-                                $user->roles()->sync(Role::where('slug', RoleEnum::MENTOR)->value('id'));
-                            }
-                            Auth::login($user);
+                        $name = explode(' ', $socialUser->name);
+                        $user->first_name = $name[0] ?? null;
+                        $user->last_name = $name[1] ?? null;
+                        $user->email = $email;
+                        $user->email_verified_at = Carbon::now();
+                        $user->normal_password = 'user1234';
+                        $user->password = Hash::make('user1234');
+                        $user->provider = $provider;
+                        $user->provider_id = $socialUser->id;
+                        $user->save();
+                        $model->user_id = $user->id;
+                        $model->save();
+                        if ($register_detail['parent'] == 'ba') {
+                            $user->roles()->sync(Role::where('slug', RoleEnum::BUSINESS_ACCELERATOR)->value('id'));
                         }
+                        if ($register_detail['parent'] == 'freelancers') {
+                            $user->roles()->sync(Role::where('slug', RoleEnum::FREELANCER)->value('id'));
+                        }
+                        if ($register_detail['parent'] == 'customer') {
+                            $user->roles()->sync(Role::where('slug', RoleEnum::CUSTOMER)->value('id'));
+                        }
+                        if ($register_detail['parent'] == 'mentors') {
+                            $user->roles()->sync(Role::where('slug', RoleEnum::MENTOR)->value('id'));
+                        }
+                        Auth::login($user);
                         GeneralService::setCookie("register_detail", "");
                         GeneralService::setCookie("register_route", "");
                         GeneralService::setCookie("is_register", "");
