@@ -82,4 +82,5 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
 
     Route::get('privacy-policy',function (){});
     Route::get('term-and-condition',function (){});
+    Route::get('data-deletion',function (){});
 });
