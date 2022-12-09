@@ -8,7 +8,7 @@
             </a>
         </li>
         <li class="in-active-link">
-            <a href="">
+            <a href="{{route('website.apply.team')}}">
                 Team
             </a>
         </li>
@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="in-active-link">
-            <a href="">
+            <a href="{{route('website.apply.market')}}">
                 Market
             </a>
         </li>
@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="in-active-link">
-            <a href="">
+            <a href="{{route('website.apply.curiosity')}}">
                 Curiosity
             </a>
         </li>

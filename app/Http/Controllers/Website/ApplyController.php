@@ -31,4 +31,21 @@ class ApplyController extends Controller
         $page = $this->pageService->findByCode('apply-now');
         return view('website.apply.equity',compact('page'));
     }
+    public function team()
+    {
+        $page = $this->pageService->findByCode('apply-now');
+        return view('website.apply.team', compact('page'));
+    }
+
+    public function market()
+    {
+        $page = $this->pageService->findByCode('apply-now');
+        return view('website.apply.market', compact('page'));
+    }
+    public function curiosity()
+    {
+        $page = $this->pageService->findByCode('apply-now');
+        return view('website.apply.curiosity', compact('page'));
+    }
 }
+

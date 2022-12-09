@@ -88,4 +88,7 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('/apply',[ApplyController::class,'index'])->name('apply.index');
     Route::get('/apply/product',[ApplyController::class,'product'])->name('apply.product');
     Route::get('/apply/equity',[ApplyController::class,'equity'])->name('apply.equity');
+    Route::get('/apply/team', [ApplyController::class, 'team'])->name('apply.team');
+    Route::get('/apply/market', [ApplyController::class, 'market'])->name('apply.market');
+    Route::get('/apply/curiosity', [ApplyController::class, 'curiosity'])->name('apply.curiosity');
 });
