@@ -2,7 +2,7 @@
     <x-slot name="content">
         <div class="container p-4">
             <div class="row bg-white p-3">
-                @include('website.apply.component.progress-bar')
+                @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     <form method="POST" action="" id="apply_now" class="solid-validation"
                         enctype="multipart/form-data">
@@ -51,9 +51,9 @@
                                 </h5>
                                 <div class="card border rounded-3 bg-secondary position-relative">
                                     <div class="card-body px-5">
-                                        <div class="position-absolute" style="left: 17px;">
+                                        {{-- <div class="position-absolute" style="left: 17px;">
                                             <a class="fs-5" href="javascript:void(0)"><i class="far fa-times-circle"></i></a>
-                                        </div>
+                                        </div> --}}
                                         <div class="row g-3">
                                             <div class="col-12">
                                                 <h6 class="fw-bold">Shareholder type 1</h6>
@@ -94,7 +94,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="col-md-12" id="view_sahreholder_type"></div>
                             <div class="col-md-12">
                                 <button type="button" class="btn btn-primary rounded text-white" onclick="add_sahreholder_type()">+ Add Shareholder type</button>
@@ -144,14 +143,17 @@
 
             function add_sahreholder_type()
             {   
-                    var html = '<div class="card border rounded-3 position-relative"><div class="card-body px-5"><div class="position-absolute" style="left: 17px;"><a class="fs-5" href="javascript:void(0)" onclick="remove_sahreholder_type('+loop_count+')"><i class="far fa-times-circle"></i></a></div><div class="row g-3"><div class="col-12"><h6 class="fw-bold">Shareholder type '+loop_count+'</h6></div><div class="col-md-12"><div class="form-group"><label class="form-label" for="name">Name</label><input type="text" class="form-control" name="name" id="name"></div></div><div class="col-md-12"><div class="form-group"><label class="form-label" for="ownership">% of ownership</label><input type="text" class="form-control" name="ownership" id="ownership"></div></div><div class="col-md-12"><div class="form-group"><label class="form-label">Role</label><div class="form-check mb-3"><input class="form-check-input" type="radio" name="role"id="roleFounder" value="Founder"><label class="form-check-label" for="roleFounder">Founder</label></div><div class="form-check mb-3"><input class="form-check-input" type="radio" name="role"id="roleInvestor" value="Investor"><label class="form-check-label" for="roleInvestor">Investor</label></div><div class="form-check mb-3"><input class="form-check-input" type="radio" name="role"id="roleEmployee" value="Employee"><label class="form-check-label" for="roleEmployee">Employee</label></div></div></div></div></div></div>';
-                    $('#view_sahreholder_type').html(html);
+                    var html = '<div class="card border rounded-3 position-relative mb-3" id="div_card_sahreholder_type'+loop_count+'"><div class="card-body px-5"><div class="position-absolute" style="left: 17px;"><a class="fs-5" href="javascript:void(0)" onclick="remove_sahreholder_type('+loop_count+')"><i class="far fa-times-circle"></i></a></div><div class="row g-3"><div class="col-12"><h6 class="fw-bold" id="loopCount'+loop_count+'">Shareholder type '+loop_count+'</h6></div><div class="col-md-12"><div class="form-group"><label class="form-label" for="name">Name</label><input type="text" class="form-control" name="name" id="name"></div></div><div class="col-md-12"><div class="form-group"><label class="form-label" for="ownership">% of ownership</label><input type="text" class="form-control" name="ownership" id="ownership"></div></div><div class="col-md-12"><div class="form-group"><label class="form-label">Role</label><div class="form-check mb-3"><input class="form-check-input" type="radio" name="role"id="roleFounder" value="Founder"><label class="form-check-label" for="roleFounder">Founder</label></div><div class="form-check mb-3"><input class="form-check-input" type="radio" name="role"id="roleInvestor" value="Investor"><label class="form-check-label" for="roleInvestor">Investor</label></div><div class="form-check mb-3"><input class="form-check-input" type="radio" name="role"id="roleEmployee" value="Employee"><label class="form-check-label" for="roleEmployee">Employee</label></div></div></div></div></div></div>';
+                    $('#view_sahreholder_type').append(html);
                     loop_count ++;
             }
 
             function remove_sahreholder_type(obj)
             {
-                $('#view_sahreholder_type').remove();
+                var count = obj+1;
+                $('#div_card_sahreholder_type'+obj).remove();
+                $('#loopCount'+count).html('Shareholder type '+ obj);
+                loop_count--;
             }
         </script>
     @endsection

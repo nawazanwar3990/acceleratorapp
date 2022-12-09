@@ -2,7 +2,7 @@
     <x-slot name="content">
         <div class="container p-4">
             <div class="row bg-white p-3">
-                @include('website.apply.component.progress-bar')
+                @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     <form method="POST" action="" id="apply_now" class="solid-validation"
                         enctype="multipart/form-data">
@@ -13,45 +13,45 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Startup Name <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" name="startup_name" required>
+                                    <label class="form-label" for="startup_name">Startup Name <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" name="startup_name" id="startup_name" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Name <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" name="first_name" placeholder="First"
+                                    <label class="form-label" for="first_name">Name <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First"
                                         required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="last_name" placeholder="Last"
+                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last"
                                         required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Email <i class="text-danger">*</i></label>
-                                    <input type="email" class="form-control" name="email" required>
+                                    <label class="form-label" for="email">Email <i class="text-danger">*</i></label>
+                                    <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Mobile <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" name="mobile" required>
+                                    <label class="form-label" for="mobile">Mobile <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" name="mobile" id="mobile" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Address <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" name="city" placeholder="City"
+                                    <label class="form-label" for="city">Address <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" name="city" id="city" placeholder="City"
                                         required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <select class="form-control form-select" name="country" required>
+                                    <select class="form-control form-select" name="country" id="country" required>
                                         <option value="">Country</option>
                                         <option value="Pakistan">Pakistan</option>
                                         <option value="India">India</option>

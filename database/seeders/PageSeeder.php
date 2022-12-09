@@ -109,10 +109,10 @@ class PageSeeder extends Seeder
             ],
             [
                 'layout_id' => '2',
-                'name' => 'Apply Now',
-                'code' => 'apply-now',
+                'name' => 'Investment',
+                'code' => 'investment',
                 'order' => '8',
-                'page_title' => 'Apply Now',
+                'page_title' => 'Investment',
                 'page_description' => 'info maybe showcased to investors via platform, shared with committee members and Falak teams, potential risk on loss of info, and confidentiality on part of entrepreneur',
                 'page_keyword' => '',
                 'active' => true,

@@ -2,7 +2,7 @@
     <x-slot name="content">
         <div class="container p-4">
             <div class="row bg-white p-3">
-                @include('website.apply.component.progress-bar')
+                @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     <form method="POST" action="" id="apply_now" class="solid-validation"
                         enctype="multipart/form-data">

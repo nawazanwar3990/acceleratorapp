@@ -6,7 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\StartupController;
 use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\Website\ApplyController;
+use App\Http\Controllers\Website\InvestmentController;
 use App\Http\Controllers\Website\BAController;
 use App\Http\Controllers\Website\CustomerController;
 use App\Http\Controllers\Website\FreelancerController;
@@ -85,10 +85,10 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('term-and-condition',function (){});
     Route::get('data-deletion',function (){});
 
-    Route::get('/apply',[ApplyController::class,'index'])->name('apply.index');
-    Route::get('/apply/product',[ApplyController::class,'product'])->name('apply.product');
-    Route::get('/apply/equity',[ApplyController::class,'equity'])->name('apply.equity');
-    Route::get('/apply/team', [ApplyController::class, 'team'])->name('apply.team');
-    Route::get('/apply/market', [ApplyController::class, 'market'])->name('apply.market');
-    Route::get('/apply/curiosity', [ApplyController::class, 'curiosity'])->name('apply.curiosity');
+    Route::get('/investment',[InvestmentController::class,'index'])->name('investment.index');
+    Route::get('/investment/product',[InvestmentController::class,'product'])->name('investment.product');
+    Route::get('/investment/equity',[InvestmentController::class,'equity'])->name('investment.equity');
+    Route::get('/investment/team', [InvestmentController::class, 'team'])->name('investment.team');
+    Route::get('/investment/market', [InvestmentController::class, 'market'])->name('investment.market');
+    Route::get('/investment/curiosity', [InvestmentController::class, 'curiosity'])->name('investment.curiosity');
 });

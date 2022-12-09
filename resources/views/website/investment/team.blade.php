@@ -2,11 +2,10 @@
     <x-slot name="content">
         <div class="container p-4">
             <div class="row bg-white p-3">
-                @include('website.apply.component.progress-bar')
+                @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
-                    <form method="POST" action="http://acceleratorapp.test/ba/store/company/pre-defined-plan/user-info"
-                        accept-charset="UTF-8" id="plan_form" class="solid-validation" enctype="multipart/form-data">
-                        <input name="_token" type="hidden" value="ZceDkgtWkrnP0CfdmrzNiNmzXnSEegFk94WRlQ3J">
+                    <form method="POST" action="" class="solid-validation" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-9">
                                 <h2 class="fw-bold mb-3">Team</h2>

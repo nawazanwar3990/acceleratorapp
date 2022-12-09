@@ -39,9 +39,9 @@
                                        href="{{ route('website.news.index') }}">
                                         {{$page->name}}
                                     </a>
-                                    @elseif($page->code=='apply-now')
+                                    @elseif($page->code=='investment')
                                     <a class="nav-link" style="color: #01023B!important;"
-                                       href="{{route('website.apply.index')}}">
+                                       href="{{route('website.investment.index')}}">
                                         {{$page->name}}
                                     </a>
                                 @else
