@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\StartupController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Website\ApplyController;
 use App\Http\Controllers\Website\BAController;
 use App\Http\Controllers\Website\CustomerController;
 use App\Http\Controllers\Website\FreelancerController;
@@ -83,4 +84,6 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('privacy-policy',function (){});
     Route::get('term-and-condition',function (){});
     Route::get('data-deletion',function (){});
+
+    Route::get('/apply',[ApplyController::class,'index'])->name('apply.index');
 });

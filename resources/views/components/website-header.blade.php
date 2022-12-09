@@ -39,6 +39,11 @@
                                        href="{{ route('website.news.index') }}">
                                         {{$page->name}}
                                     </a>
+                                    @elseif($page->code=='apply-now')
+                                    <a class="nav-link" style="color: #01023B!important;"
+                                       href="{{route('website.apply.index')}}">
+                                        {{$page->name}}
+                                    </a>
                                 @else
                                     <a class="nav-link" style="color: #01023B!important;"
                                        href="{{ route('website.pages.index',['type'=>$page->code]) }}">

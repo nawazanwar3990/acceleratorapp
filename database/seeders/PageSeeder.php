@@ -106,6 +106,19 @@ class PageSeeder extends Seeder
                 'banner_image' => '/uploads/contact.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ],
+            [
+                'layout_id' => '2',
+                'name' => 'Apply Now',
+                'code' => 'apply-now',
+                'order' => '8',
+                'page_title' => 'Apply Now',
+                'page_description' => 'info maybe showcased to investors via platform, shared with committee members and Falak teams, potential risk on loss of info, and confidentiality on part of entrepreneur',
+                'page_keyword' => '',
+                'active' => true,
+                'banner_image' => '/uploads/home-page-banner.png',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ], [
                 'layout_id' => '3',
                 'name' => 'Login',
