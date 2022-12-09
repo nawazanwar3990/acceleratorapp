@@ -86,4 +86,6 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('data-deletion',function (){});
 
     Route::get('/apply',[ApplyController::class,'index'])->name('apply.index');
+    Route::get('/apply/product',[ApplyController::class,'product'])->name('apply.product');
+    Route::get('/apply/equity',[ApplyController::class,'equity'])->name('apply.equity');
 });

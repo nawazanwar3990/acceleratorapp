@@ -67,23 +67,23 @@
                                     <label class="form-label">What Stage is your startup in? <i
                                             class="text-danger">*</i></label>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="startup_stage"id="pre_seed" required>
+                                        <input class="form-check-input" type="radio" name="startup_stage"id="pre_seed" value="Pre-Seed" required>
                                         <label class="form-check-label" for="pre_seed">Pre-Seed</label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="startup_stage"id="Seed" required>
+                                        <input class="form-check-input" type="radio" name="startup_stage"id="Seed" value="Seed" required>
                                         <label class="form-check-label" for="Seed">Seed</label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="startup_stage"id="seriesA" required>
+                                        <input class="form-check-input" type="radio" name="startup_stage"id="seriesA" value="Series A" required>
                                         <label class="form-check-label" for="seriesA">Series A</label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="startup_stage"id="seriesB" required>
+                                        <input class="form-check-input" type="radio" name="startup_stage"id="seriesB" value="Series B" required>
                                         <label class="form-check-label" for="seriesB">Series B</label>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="startup_stage"id="seriesC" required>
+                                        <input class="form-check-input" type="radio" name="startup_stage"id="seriesC" value="Series C" required>
                                         <label class="form-check-label" for="seriesC">Series C</label>
                                     </div>
                                 </div>

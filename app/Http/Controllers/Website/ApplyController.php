@@ -19,4 +19,16 @@ class ApplyController extends Controller
         $page = $this->pageService->findByCode('apply-now');
         return view('website.apply.index',compact('page'));
     }
+
+    public function product()
+    {
+        $page = $this->pageService->findByCode('apply-now');
+        return view('website.apply.product',compact('page'));
+    }
+
+    public function equity()
+    {
+        $page = $this->pageService->findByCode('apply-now');
+        return view('website.apply.equity',compact('page'));
+    }
 }

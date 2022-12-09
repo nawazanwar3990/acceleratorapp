@@ -13,7 +13,7 @@
             </a>
         </li>
         <li class="in-active-link">
-            <a href="">
+            <a href="{{route('website.apply.product')}}">
                 Product
             </a>
         </li>
@@ -23,7 +23,7 @@
             </a>
         </li>
         <li class="in-active-link">
-            <a href="">
+            <a href="{{route('website.apply.equity')}}">
                 Equity
             </a>
         </li>
