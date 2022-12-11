@@ -6,7 +6,7 @@
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
                     @csrf
-                    {!! Form::hidden('current_stp',\App\Enum\InvestmentStepEnum::PRODUCT) !!}
+                    {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::PRODUCT) !!}
                     <div class="row g-3 align-items-end">
                         <div class="col-12">
                             <h3 class="fw-bold">Product</h3>
