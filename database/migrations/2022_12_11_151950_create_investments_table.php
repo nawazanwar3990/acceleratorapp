@@ -11,7 +11,6 @@ return new class extends Migration {
         Schema::create(TableEnum::INVESTMENTS, function (Blueprint $table) {
 
             $table->id();
-
             $table->string('current_step')->nullable();
 
             /*Welcome*/
@@ -72,6 +71,10 @@ return new class extends Migration {
 
             $table->string('hear_about_us')->nullable();
             $table->string('what_made_apply_to_falak')->nullable();
+
+            $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
+            $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
 
             $table->timestamps();
         });
