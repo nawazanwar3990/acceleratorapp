@@ -12,53 +12,52 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="security_question_name" class="form-label">What is the industry
+                                            <label for="industry_of_start_up" class="form-label">What is the industry
                                                 of your startup?<i class="text-danger">*</i></label>
-                                            <select id="security_question_name" class="form-select form-control"
-                                                required="" name="security_question_name">
-                                                <option selected="selected" value=""></option>
-                                                <option value="1">Health & Healthcare</option>
-                                                <option value="2">Fintech</option>
-                                                <option value="3">Ed tech</option>
-                                                <option value="4">Consumer Products or Services</option>
-                                                <option value="">Logistics & Transportation</option>
-                                                <option value="">Travel Tourism & Hospitality</option>
-                                                <option value="">Recruitment and HR</option>
-                                                <option value="">Retail</option>
-                                                <option value="">Real Estate</option>
-                                                <option value="">Cyber Security</option>
-                                                <option value="">Insurance</option>
-                                                <option value="">Emerging Technologies (AI, VR, 3D, iOT, smart
-                                                    technologies)</option>
-                                                <option value="">Other</option>
-                                            </select>
+
+                                            {!! Form::select('industry_of_start_up',
+                                                                   [
+                                                    \Illuminate\Support\Str::slug('Health & Healthcare','-')=>'Health & Healthcare',
+                                                    \Illuminate\Support\Str::slug('Fintech','-')=>'Fintech',
+                                                    \Illuminate\Support\Str::slug('Ed tech','-')=>'Ed Tech',
+                                                    \Illuminate\Support\Str::slug('Consumer Products or Services','-')=>'Consumer Products or Services',
+                                                    \Illuminate\Support\Str::slug('Logistics & Transportation','-')=>'Logistics & Transportation',
+                                                    \Illuminate\Support\Str::slug('Travel Tourism & Hospitality','-')=>'Travel Tourism & Hospitality',
+                                                    \Illuminate\Support\Str::slug('Recruitment and HR','-')=>'Recruitment and HR',
+                                                    \Illuminate\Support\Str::slug('Retail','-')=>'Retail',
+                                                    \Illuminate\Support\Str::slug('Real Estate','-')=>'Real Estate',
+                                                    \Illuminate\Support\Str::slug('Cyber Security','-')=>'Cyber Security',
+                                                    \Illuminate\Support\Str::slug('Insurance','-')=>'Insurance',
+                                                    \Illuminate\Support\Str::slug('Emerging Technologies (AI, VR, 3D, iOT, smart
+                                                    technologies)','-')=>'Emerging Technologies (AI, VR, 3D, iOT, smart
+                                                    technologies)',
+                                                    \Illuminate\Support\Str::slug('Other','-')=>'Other',
+
+                                                                   ],null,['id'=>'industry_of_start_up','class'=>'form-control form-select','required','placeholder'=>'Select']
+                                                                   )
+                                                    !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="security_question_name" class="form-label">Do the founders have
-                                                domain expertise in the field?<i class="text-danger">*</i></label>
-                                            <select id="security_question_name" class="form-select form-control"
-                                                required="" name="security_question_name">
-                                                <option selected="selected" value=""></option>
-                                                <option value="1">Yes</option>
-                                                <option value="2">No</option>
-                                            </select>
+                                            <label for="founder_domain" class="form-label">Do the founders have domain
+                                                expertise in the field?<i class="text-danger">*</i></label>
+                                            {!! Form::select('founder_domain',['yes'=>'Yes','no'=>'No'],null,['id'=>'founder_domain','class'=>'form-select form-control','required']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="security_question_name" class="form-label">What is your Total
+                                            <label for="total_addressable_market" class="form-label">What is your Total
                                                 Addressable Market? (SAR)<i class="text-danger">*</i></label>
-                                            <input type="text" class="form-control" required>
+                                            {!! Form::text('total_addressable_market',null,['id'=>'total_addressable_market','class'=>'form-control','required']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="security_question_value" class="form-label">Who are your 3 key
+                                            <label for="three_key_competitors" class="form-label">Who are your 3 key
                                                 competitors? Why would customers choose you over them?<i
                                                     class="text-danger">*</i></label>
-                                            <textarea name="" id="" cols="0" rows="3" class="form-control" required></textarea>
+                                            {!! Form::textarea('three_key_competitors',null,['id'=>'three_key_competitors','class'=>'form-control','rows'=>'3','cols'=>'0','required']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
@@ -66,30 +65,29 @@
                                             <label for="product_service" class="form-label">How do you
                                                 commercialize your product or service?<i
                                                     class="text-danger">*</i></label>
-                                            <select id="product_service" class="form-select form-control"
-                                                required="" name="product_service">
-                                                <option selected="selected" value=""></option>
-                                                <option value="1">B2C (business-to-consumer)</option>
-                                                <option value="B2B">B2B (business-to-business)</option>
-                                                <option value="B2G">B2G (business-to-government)</option>
-                                                <option value="4">C2C (consumer-to-consumer)</option>
-                                                <option value="5">C2B (consumer-to-business)</option>
-                                            </select>
+                                            {!! Form::select('product_service',
+                                                                  [
+                                                   \Illuminate\Support\Str::slug('B2C (business-to-consumer)','-')=>'B2C (business-to-consumer)',
+                                                   \Illuminate\Support\Str::slug('B2B (business-to-business)','-')=>'B2B (business-to-business)',
+                                                   \Illuminate\Support\Str::slug('B2G (business-to-government)','-')=>'B2G (business-to-government)',
+                                                   \Illuminate\Support\Str::slug('C2C (consumer-to-consumer)','-')=>'C2C (consumer-to-consumer)',
+                                                   \Illuminate\Support\Str::slug('C2B (consumer-to-business)','-')=>'C2B (consumer-to-business)',
+                                                                  ],null,['id'=>'product_service','class'=>'form-control form-select','required','placeholder'=>'Select']
+                                                                  )
+                                                   !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3" id="div_product_service" style="display: none;">
                                         <div class="form-group">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
+                                                {!! Form::radio('product_service_value','already_contract_signed',false,['id'=>'already_contract_signed','class'=>'form-check-input']) !!}
+                                                <label class="form-check-label" for="already_contract_signed">
                                                     Do you have contracts already signed?
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckChecked">
-                                                <label class="form-check-label" for="flexCheckChecked">
+                                                {!! Form::radio('product_service_value','yet_to_sign',false,['id'=>'yet_to_sign','class'=>'form-check-input']) !!}
+                                                <label class="form-check-label" for="yet_to_sign">
                                                     Yet to sign?
                                                 </label>
                                             </div>
@@ -97,19 +95,19 @@
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="security_question_name" class="form-label">If you have a
+                                            <label for="suitable_competitive_edge" class="form-label">If you have a
                                                 sustainable competitive edge, do you believe you can sustain & further
                                                 develop this competitive edge for the next 2 years?<i
                                                     class="text-danger">*</i></label>
                                             <div class="form-check mb-2">
-                                                <input class="form-check-input" value="Yes" id="Yes"
-                                                    type="radio" name="YesEdge">
-                                                <label class="form-check-label" for="Yes">Yes</label>
+                                                {!! Form::radio('suitable_competitive_edge','yes',false,['id'=>'suitable_competitive_edge_yes','class'=>'form-check-input']) !!}
+                                                <label class="form-check-label"
+                                                       for="suitable_competitive_edge_yes">Yes</label>
                                             </div>
                                             <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="YesEdge"
-                                                    id="">
-                                                <label class="form-check-label" for="YesEdge">No</label>
+                                                {!! Form::radio('suitable_competitive_edge','no',false,['id'=>'suitable_competitive_edge_no','class'=>'form-check-input']) !!}
+                                                <label class="form-check-label"
+                                                       for="suitable_competitive_edge_no">No</label>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +115,7 @@
                                         <div class="form-group">
                                             <label for="security_question_name" class="form-label">How so?<i
                                                     class="text-danger">*</i></label>
-                                            <textarea name="" id="" cols="" rows="3" class="form-control"></textarea>
+                                            {!! Form::textarea('competitive_how_so',null,['id'=>'competitive_how_so','class'=>'form-control','rows'=>'3','cols'=>'30']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -137,17 +135,20 @@
     </x-slot>
     @section('innerScript')
         <script>
-            $(document).ready(function() {
-                $('#product_service').change(function() {
-                    if ($(this).val() == "B2B" || $(this).val() == "B2G") {
+            $(document).ready(function () {
+                $('#product_service').change(function () {
+                    if (
+                        $(this).val() === "b2b-business-to-business"
+                        ||
+                        $(this).val() === "b2g-business-to-government") {
                         $("#div_product_service").show('slow');
                     } else {
                         $("#div_product_service").hide('slow');
                     }
                 });
 
-                $('[name=YesEdge]').change(function() {
-                    if ($(this).val() == "Yes") {
+                $('[name=suitable_competitive_edge]').change(function () {
+                    if ($(this).val() === "yes") {
                         $("#div_how_so").show('slow');
                     } else {
                         $("#div_how_so").hide('slow');

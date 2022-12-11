@@ -86,6 +86,7 @@ class TableEnum extends AbstractEnum
     public const WHAT_WE_OFFERS = 'what_we_offers';
     public const HOW_IT_WORKS = 'how_it_works';
     public const TEAMS = 'teams';
+    public const INVESTMENTS = 'investments';
 
     public static function getValues(): array
     {

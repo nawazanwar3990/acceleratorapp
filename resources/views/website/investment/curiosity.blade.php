@@ -13,13 +13,13 @@
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
                                             <label for="security_question_name" class="form-label">How did you hear about us?<i class="text-danger">*</i></label>
-                                            <input type="text" class="form-control" required>
+                                            {!! Form::text('hear_about_us',null,['id'=>'hear_about_us','class'=>'form-control','required']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="security_question_value" class="form-label">What made you apply to Falak?<i class="text-danger">*</i></label>
-                                            <textarea name="" id="" cols="30" rows="3" class="form-control" required></textarea>
+                                            <label for="what_made_apply_to_falak" class="form-label">What made you apply to Falak?<i class="text-danger">*</i></label>
+                                            {!! Form::textarea('what_made_apply_to_falak',null,['id'=>'what_made_apply_to_falak','class'=>'form-control','required','rows'=>'3','cols'=>'30']) !!}
                                         </div>
                                     </div>
                                 </div>
