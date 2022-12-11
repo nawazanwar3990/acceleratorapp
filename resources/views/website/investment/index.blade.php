@@ -4,9 +4,9 @@
             <div class="row bg-white p-3">
                 @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
-                    <form method="POST" action="" id="apply_now" class="solid-validation"
-                        enctype="multipart/form-data">
-                        @csrf
+                    {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                    @csrf
+                    {!! Form::hidden('current_stp',\App\Enum\InvestmentStepEnum::WELCOME) !!}
                         <div class="row g-3 align-items-end">
                             <div class="col-12">
                                 <h3 class="fw-bold">Welcome</h3>
@@ -89,7 +89,7 @@
                                 Next <i class="bx bx-arrow-to-right"></i>
                             </button>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

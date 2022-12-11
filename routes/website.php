@@ -91,4 +91,7 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('/investment/team', [InvestmentController::class, 'team'])->name('investment.team');
     Route::get('/investment/market', [InvestmentController::class, 'market'])->name('investment.market');
     Route::get('/investment/curiosity', [InvestmentController::class, 'curiosity'])->name('investment.curiosity');
+
+    Route::post('/investment/store',[InvestmentController::class,'store'])
+        ->name('investments.store');
 });
