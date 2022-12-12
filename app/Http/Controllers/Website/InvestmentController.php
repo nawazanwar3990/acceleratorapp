@@ -111,8 +111,6 @@ class InvestmentController extends Controller
         $email = $request->input('email');
 
         $current_step = $request->input('current_step');
-        Session::put('apply_investment', true);
-
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
@@ -122,6 +120,7 @@ class InvestmentController extends Controller
             $model->create($data);
             $this->manageFile($model);
         }
+        Session::put('apply_investment', true);
         $next_step = null;
         $message = null;
         switch ($current_step) {
