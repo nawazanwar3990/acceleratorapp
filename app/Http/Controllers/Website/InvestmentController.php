@@ -57,7 +57,7 @@ class InvestmentController extends Controller
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
-        }else {
+        } else {
             return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.equity', compact('page', 'model'));
@@ -70,7 +70,7 @@ class InvestmentController extends Controller
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
-        }else {
+        } else {
             return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.team', compact('page', 'model'));
@@ -83,7 +83,7 @@ class InvestmentController extends Controller
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
-        }else {
+        } else {
             return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.market', compact('page', 'model'));
@@ -108,7 +108,6 @@ class InvestmentController extends Controller
         $data = $request->all();
 
         $model = new Investment();
-        $email = $request->input('email');
 
         $current_step = $request->input('current_step');
         if (Session::has('apply_investment')) {
@@ -118,6 +117,7 @@ class InvestmentController extends Controller
             $this->manageFile($model);
         } else {
             $model->create($data);
+            Session::put('investment_email', $request->input('email'));
             $this->manageFile($model);
         }
         Session::put('apply_investment', true);
