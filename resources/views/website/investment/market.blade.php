@@ -82,7 +82,8 @@
                                                !!}
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3" id="div_product_service" style="display: none;">
+                                <div class="col-md-12 mb-3" id="div_product_service"
+                                     style="display:{{ isset($model)&& $model->product_service=='b2b-business-to-business' || $model->product_service=='b2g-business-to-government'?'block':'none' }}">
                                     <div class="form-group">
                                         <div class="form-check">
                                             {!! Form::radio('product_service_value','already_contract_signed',false,['id'=>'already_contract_signed','class'=>'form-check-input']) !!}
@@ -116,7 +117,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3" id="div_how_so" style="display: none;">
+                                <div class="col-md-12 mb-3" id="div_how_so" style="display:{{ isset($model)&& $model->suitable_competitive_edge=='yes'?'block':'none' }};">
                                     <div class="form-group">
                                         <label for="security_question_name" class="form-label">How so?<i
                                                 class="text-danger">*</i></label>

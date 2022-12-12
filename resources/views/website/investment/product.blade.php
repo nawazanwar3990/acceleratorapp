@@ -70,7 +70,7 @@
                               !!}
                             </div>
                         </div>
-                        <div class="col-md-12" id="div_avaerage_month_grow" style="display: none;">
+                        <div class="col-md-12" id="div_avaerage_month_grow" style="display:{{ isset($model)&& $model->generating_revenue=='yes'?'block':'none' }};">
                             <div class="form-group">
                                 <label class="form-label" for="average_month_grow">How much have you generated over the
                                     past 12 months and
@@ -92,7 +92,7 @@
                                                            ) !!}
                             </div>
                         </div>
-                        <div class="col-md-12" id="div_fund_sar" style="display: none;">
+                        <div class="col-md-12" id="div_fund_sar" style="display:{{ isset($model)&& $model->raised_external_funding=='no'?'block':'none' }}">
                             <div class="form-group">
                                 <label class="form-label" for="fund_sar">How much was the fund? (SAR) <i
                                         class="text-danger">*</i></label>
