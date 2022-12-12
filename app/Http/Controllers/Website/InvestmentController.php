@@ -145,7 +145,7 @@ class InvestmentController extends Controller
                 $message = "Equity Added successfully Now added Curiosity info";
                 break;
             case InvestmentStepEnum::CURIOSITY:
-                $next_step = route('website.investment.welcome');
+                $next_step = route('website.investment.index');
                 $message = "Form Submitted Successfully";
                 Session::remove('apply_investment');
                 Session::remove('investment_email');
