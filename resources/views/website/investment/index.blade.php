@@ -53,11 +53,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::select('country',
-                                      [
-                                       'pakistan'=>'Pakistan',
-                                       'india'=>'India',
-                                        ],null,['id'=>'country','class'=>'form-control form-select','placeholder'=>'Select','required']
+                                {!! Form::select('country',\App\Services\GeneralService::getCountriesArray(),null,['id'=>'country','class'=>'form-control form-select','placeholder'=>'Select','required']
                                       )
                               !!}
                             </div>
