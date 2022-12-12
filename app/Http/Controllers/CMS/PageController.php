@@ -54,7 +54,6 @@ class PageController extends Controller
                 return redirect()->route('cms.pages.index')
                     ->with('success', __('general.record_created_successfully'));
             }
-
         }
     }
     public function edit($id): Factory|View|Application

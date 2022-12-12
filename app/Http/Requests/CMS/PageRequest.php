@@ -40,6 +40,7 @@ class PageRequest extends FormRequest
     {
         $page = Page::create($this->all());
         $this->saveBannerImage($page);
+        return $page;
     }
 
     public function updateData($model)
