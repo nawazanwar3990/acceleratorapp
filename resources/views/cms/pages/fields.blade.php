@@ -34,7 +34,7 @@
     </div>
     <div class="mb-3 col-12">
         {!!  Html::decode(Form::label('banner_image' ,__('general.banner_image'),['class'=>'col-form-label']))   !!}
-        {!! Form::file('banner_image', ['class' => 'form-control dropify','id' => 'banner_image','data-default-file'=>asset($model->banner_image)]) !!}
+        {!! Form::file('banner_image', ['class' => 'form-control dropify','id' => 'banner_image','data-default-file'=>$for=='edit'?asset($model->banner_image):'']) !!}
     </div>
     <div class="mb-3 col-12">
         {!! Form::checkbox('active',($for=='edit')?$model->active:0,null,['class'=>'custom_checkbox']); !!}
