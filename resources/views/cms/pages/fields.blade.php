@@ -37,7 +37,7 @@
         {!! Form::file('banner_image', ['class' => 'form-control dropify','id' => 'banner_image','data-default-file'=>$for=='edit'?asset($model->banner_image):'']) !!}
     </div>
     <div class="mb-3 col-12">
-        {!! Form::checkbox('active',($for=='edit')?$model->active:0,null,['class'=>'custom_checkbox']); !!}
+        {!! Form::checkbox('active',null,true,['class'=>'custom_checkbox']); !!}
         {!!  Html::decode(Form::label('active' ,__('general.active')))   !!}
     </div>
 </div>
