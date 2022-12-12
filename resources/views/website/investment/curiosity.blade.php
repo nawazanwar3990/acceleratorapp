@@ -25,7 +25,7 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="what_made_apply_to_falak" class="form-label">What made you apply to
-                                            Falak?<i class="text-danger">*</i></label>
+                                            INCUAPP?<i class="text-danger">*</i></label>
                                         {!! Form::textarea('what_made_apply_to_falak',null,['id'=>'what_made_apply_to_falak','class'=>'form-control','required','rows'=>'3','cols'=>'30']) !!}
                                     </div>
                                 </div>
