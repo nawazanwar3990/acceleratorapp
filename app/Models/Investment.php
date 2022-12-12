@@ -62,4 +62,9 @@ class Investment extends Model
         'updated_by',
         'deleted_by'
     ];
+
+    public function getEquitySplitsAttribute($key)
+    {
+        return json_decode($key, true);
+    }
 }
