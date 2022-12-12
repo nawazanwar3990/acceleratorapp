@@ -5,9 +5,9 @@
                 @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     @if(!$model)
-                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'market_form', 'class' => 'solid-validation']) !!}
                     @else
-                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'market_form', 'class' => 'solid-validation']) !!}
                     @endif
                     @csrf
                     {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::MARKET) !!}
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3" id="div_product_service"
-                                     style="display:{{ isset($model)&& $model->product_service=='b2b-business-to-business' || $model->product_service=='b2g-business-to-government'?'block':'none' }}">
+                                     style="display:{{ isset($model) && in_array($model->product_service,['b2b-business-to-business','b2g-business-to-government'])?'block':'none' }}">
                                     <div class="form-group">
                                         <div class="form-check">
                                             {!! Form::radio('product_service_value','already_contract_signed',false,['id'=>'already_contract_signed','class'=>'form-check-input']) !!}
@@ -117,7 +117,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3" id="div_how_so" style="display:{{ isset($model)&& $model->suitable_competitive_edge=='yes'?'block':'none' }};">
+                                <div class="col-md-12 mb-3" id="div_how_so"
+                                     style="display:{{ isset($model)&& $model->suitable_competitive_edge=='yes'?'block':'none' }};">
                                     <div class="form-group">
                                         <label for="security_question_name" class="form-label">How so?<i
                                                 class="text-danger">*</i></label>
@@ -130,14 +131,16 @@
                     <div style="margin-top: 4rem!important;">
                     </div>
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn  btn-primary site-first-btn-color">
-                            Next <i class="bx bx-arrow-to-right"></i>
-                        </button>
+                        @include('website.investment.component.next-save-button')
                     </div>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
+        @include('website.investment.component.scripts')
+        <script>
+            $("#market_form").validate();
+        </script>
     </x-slot>
     @section('innerScript')
         <script>

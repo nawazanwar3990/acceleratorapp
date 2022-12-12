@@ -37,57 +37,67 @@ class InvestmentController extends Controller
         return view('website.investment.index', compact('page', 'model'));
     }
 
-    public function product(): Factory|View|Application
+    public function product(): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
+        } else {
+            return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.product', compact('page', 'model'));
     }
 
-    public function equity(): Factory|View|Application
+    public function equity(): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
+        }else {
+            return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.equity', compact('page', 'model'));
     }
 
-    public function team(): Factory|View|Application
+    public function team(): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
+        }else {
+            return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.team', compact('page', 'model'));
     }
 
-    public function market(): Factory|View|Application
+    public function market(): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
+        }else {
+            return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.market', compact('page', 'model'));
     }
 
-    public function curiosity(): Factory|View|Application
+    public function curiosity(): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
         if (Session::has('apply_investment')) {
             $email = Session::get('investment_email');
             $model = Investment::where('email', $email)->first();
+        } else {
+            return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
         }
         return view('website.investment.curiosity', compact('page', 'model'));
     }
@@ -113,30 +123,37 @@ class InvestmentController extends Controller
             $this->manageFile($model);
         }
         $next_step = null;
+        $message = null;
         switch ($current_step) {
             case InvestmentStepEnum::WELCOME:
                 $next_step = route('website.investment.team');
+                $message = "Basic Info Added successfully now added Team info";
                 break;
             case InvestmentStepEnum::TEAM:
                 $next_step = route('website.investment.product');
+                $message = "Team Added successfully now added Product info";
                 break;
             case InvestmentStepEnum::PRODUCT:
                 $next_step = route('website.investment.market');
+                $message = "Product Added successfully now added Market info";
                 break;
             case InvestmentStepEnum::MARKET:
                 $next_step = route('website.investment.equity');
+                $message = "Market Added successfully now added Equity info";
                 break;
             case InvestmentStepEnum::EQUITY:
                 $next_step = route('website.investment.curiosity');
+                $message = "Equity Added successfully Now added Curiosity info";
                 break;
             case InvestmentStepEnum::CURIOSITY:
-                $next_step = route('website.investment.curiosity');
+                $next_step = route('website.investment.welcome');
+                $message = "Form Submitted Successfully";
                 Session::remove('apply_investment');
                 Session::remove('investment_email');
                 break;
         }
         return redirect()->to($next_step)
-            ->with('success', __('general.record_created_successfully'));
+            ->with('success', $message);
     }
 
     private function manageFile($model)

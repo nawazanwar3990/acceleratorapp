@@ -1,6 +1,21 @@
 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-12">
-    <h4 class="fw-bold">Business Accelerator</h4>
-    <h6 class="fw-bold text-muted">Investment</h6>
+    @php $currentRoute = request()->route()->getName(); @endphp
+    <h4 class="fw-bold">Investment</h4>
+    <h6 class="fw-bold text-muted">
+        @if($currentRoute=='website.investment.index')
+            Welcome
+        @elseif($currentRoute=='website.investment.team')
+            Team
+        @elseif($currentRoute=='website.investment.product')
+            Product
+        @elseif($currentRoute=='website.investment.market')
+            Market
+        @elseif($currentRoute=='website.investment.equity')
+            Equity
+        @elseif($currentRoute=='website.investment.curiosity')
+            Curiosity
+        @endif
+    </h6>
     @php $currentRoute = request()->route()->getName(); @endphp
     <ul class="progress-bar text-left">
         <li class="{{ $currentRoute=='website.investment.index'?'active-link':'in-active-link' }}">

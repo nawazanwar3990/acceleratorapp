@@ -5,9 +5,9 @@
                 @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     @if(!$model)
-                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'equity_form', 'class' => 'solid-validation']) !!}
                     @else
-                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'equity_form', 'class' => 'solid-validation']) !!}
                     @endif
                     @csrf
                     {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::EQUITY) !!}
@@ -88,14 +88,16 @@
                         </div>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn  btn-primary site-first-btn-color">
-                            Next <i class="bx bx-arrow-to-right"></i>
-                        </button>
+                        @include('website.investment.component.next-save-button')
                     </div>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
+        @include('website.investment.component.scripts')
+        <script>
+            $("#equity_form").validate();
+        </script>
     </x-slot>
     @section('innerScript')
         <script>
