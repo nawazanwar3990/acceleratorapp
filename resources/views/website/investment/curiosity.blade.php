@@ -4,7 +4,11 @@
             <div class="row bg-white p-3">
                 @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
-                    {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                    @if(!$model)
+                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                    @else
+                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'plan_form', 'class' => 'solid-validation']) !!}
+                    @endif
                     @csrf
                     {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::CURIOSITY) !!}
                     <div class="row">

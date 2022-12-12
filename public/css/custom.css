@@ -2425,3 +2425,7 @@ img {
     width:10%;
     clip-path: circle(10% at 50% 50%);
 }
+.progress-bar li.active-link::before {
+    background-color:green;
+    border: 1px solid white;
+}
