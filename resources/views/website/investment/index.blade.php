@@ -19,18 +19,18 @@
                             <div class="form-group">
                                 <label class="form-label" for="startup_name">Startup Name <i
                                         class="text-danger">*</i></label>
-                                {!! Form::text('startup_name',null,['id'=>'startup_name','class'=>'form-control','required']) !!}
+                                {!! Form::text('startup_name',null,['id'=>'startup_name','class'=>'form-control','required',]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label" for="first_name">Name <i class="text-danger">*</i></label>
-                                {!! Form::text('first_name',null,['id'=>'first_name','class'=>'form-control','required']) !!}
+                                {!! Form::text('first_name',null,['id'=>'first_name','class'=>'form-control','required' , 'placeholder'=>'First Name']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::text('last_name',null,['id'=>'last_name','class'=>'form-control','required']) !!}
+                                {!! Form::text('last_name',null,['id'=>'last_name','class'=>'form-control','required','placeholder'=>'Last Name']) !!}
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -48,7 +48,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label" for="city">Address <i class="text-danger">*</i></label>
-                                {!! Form::text('city',null,['id'=>'city','class'=>'form-control','required']) !!}
+                                {!! Form::text('city',null,['id'=>'city','class'=>'form-control','required', 'placeholder'=>'City']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
