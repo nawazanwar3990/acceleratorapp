@@ -572,6 +572,7 @@
                 let value = $(this).val();
                 selected.push(value);
             });
+            console.log(selected);
             for (const selectedKey in selected) {
                 Ajax.call("{{ route('api.ba.info') }}", {
                     'id': selected[selectedKey]
