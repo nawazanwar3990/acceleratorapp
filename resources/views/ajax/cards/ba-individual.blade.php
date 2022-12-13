@@ -7,6 +7,7 @@
             <thead>
             <tr>
                 <th>Sr#</th>
+                <th>{{ trans('general.logo') }}</th>
                 <th>{{ trans('general.accelerator_name') }}</th>
                 <th>{{ trans('general.accelerator_email') }}</th>
                 <th>{{ trans('general.contact') }}</th>
@@ -14,7 +15,10 @@
             </thead>
             <tbody>
             @forelse($data as $d)
-                <tr>
+                <tr class="parents">
+                    <td>
+                        <img src="{{ (isset($model->logo) && count($model->logo))?asset($model->logo[0]->filename):'' }}" alt="">
+                    </td>
                     <td>
                         {!! Form::hidden('mentors[]',$d->id) !!}
                         {{ $loop->index+1 }}
