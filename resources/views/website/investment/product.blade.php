@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-md-12" id="div_how_much_funding"
-                             style="display:{{ isset($model)&& $model->generating_revenue=='yes'?'block':'none' }};">
+                             style="display:{{ isset($model)&& $model->are_you_looking_for_funding=='yes'?'block':'none' }};">
                             <div class="form-group">
                                 <label class="form-label" for="how_much_funding_you_want">How Much Funding you want?<i class="text-danger">*</i></label>
                                 {!! Form::textarea('how_much_funding_you_want',null,['id'=>'how_much_funding_you_want','class'=>'form-control','required','rows'=>'3','cols'=>'30']) !!}
