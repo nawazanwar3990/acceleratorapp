@@ -562,18 +562,32 @@
     }
 
     function loadInfo(cElement, type) {
-        let value = $(cElement).val();
-        if (!value) {
-            showError("First Choose Value");
+
+        let parents = $(".parents");
+        if (parents.length > 4) {
+            showError('You can only Send Request to 4 Mentors')
         } else {
-            Ajax.call("{{ route('api.ba.info') }}", {
-                'id': value
-            }, '{{ \App\Enum\MethodEnum::POST }}', function (response) {
-                if (response.status === true) {
-                    $(cElement)
-                        .closest('.main_data_holder')
-                        .find('.data_holder')
-                        .html(response.html);
+            const selected = [];
+            $(cElement).find('option:selected').each(function () {
+                let value = $(this).val();
+                selected.push(value);
+            });
+            for (const selectedKey in selected) {
+                Ajax.call("{{ route('api.ba.info') }}", {
+                    'id': selected[selectedKey]
+                }, '{{ \App\Enum\MethodEnum::POST }}', function (response) {
+                    if (response.status === true) {
+                        let slug = type + "_" + selectedKey + "_holder";
+                        if ($("#" + slug).length < 1) {
+                            $(cElement).closest('.main_data_holder').find('.data_holder').prepend(response.html);
+                        }
+                    }
+                });
+            }
+            parents.each(function (key, value) {
+                let currentElement = $(value).attr('id');
+                if (selected[currentElement] === undefined) {
+                    $("#" + currentElement).remove();
                 }
             });
         }

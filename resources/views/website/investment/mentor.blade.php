@@ -1,5 +1,10 @@
 <x-page-layout :page="$page">
     <x-slot name="content">
+        <style>
+            .select2-container {
+                width: 100% !important;
+            }
+        </style>
         <div class="container p-4">
             <div class="row bg-white p-3">
                 @include('website.investment.component.progress-bar')
@@ -34,7 +39,7 @@
                                 <div class="col-md-12 mb-3 form-group main_data_holder" id="individual_mentor_holder">
                                     <label for="mentor_individual_value" class="form-label">Select BA Individual
                                         Mentor<i class="text-danger">*</i></label>
-                                    {!! Form::select('mentor_individual_value',\App\Services\BaService::getBACompaniesDropdown(),null,['id'=>'mentor_individual_value','class'=>'form-control','placeholder'=>'Select','onchange'=>'loadInfo(this,"'.\App\Enum\AcceleratorTypeEnum::INDIVIDUAL.'");']); !!}
+                                    {!! Form::select('mentor_individual_value',\App\Services\BaService::getBADropdown(\App\Enum\AccessTypeEnum::INDIVIDUAL),null,['id'=>'mentor_individual_value','class'=>'form-control select2','data-placeholder'=>'Select','onchange'=>'loadInfo(this,"'.\App\Enum\AcceleratorTypeEnum::INDIVIDUAL.'");','multiple']); !!}
                                     <div class="data_holder my-2"></div>
                                 </div>
                                 {{--BA Company Holder--}}
@@ -42,7 +47,7 @@
                                      id="company_mentor_holder">
                                     <label for="mentor_company_value" class="form-label">Select BA Company<i
                                             class="text-danger">*</i></label>
-                                    {!! Form::select('mentor_company_value',\App\Services\BaService::getBACompaniesDropdown(),null,['id'=>'mentor_company_value','class'=>'form-control','placeholder'=>'Select','onchange'=>'loadInfo(this,"'.\App\Enum\AcceleratorTypeEnum::COMPANY.'");']); !!}
+                                    {!! Form::select('mentor_company_value[]',\App\Services\BaService::getBADropdown(\App\Enum\AccessTypeEnum::COMPANY),null,['id'=>'mentor_company_value','class'=>'form-control select2 w-100','data-placeholder'=>'Select','onchange'=>'loadInfo(this,"'.\App\Enum\AcceleratorTypeEnum::COMPANY.'");','multiple']); !!}
                                     <div class="data_holder my-2"></div>
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enum\AcceleratorTypeEnum;
 use App\Enum\RoleEnum;
+use App\Enum\TableEnum;
 use App\Models\BA;
 use App\Models\Service;
 use App\Models\User;
@@ -11,6 +12,7 @@ use App\Models\VerifyUser;
 use App\Notifications\VerifyEmailLink;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 
@@ -159,8 +161,14 @@ class BaService
         return $model;
     }
 
-    public static function getBACompaniesDropdown()
+    public static function getBADropdown($type)
     {
-        return BA::where('type', AcceleratorTypeEnum::COMPANY)->pluck('company_name','id');
+        $query = BA::join(TableEnum::USERS, 'ba.user_id', 'users.id')
+            ->where('ba.type', $type);
+        if ($type == AcceleratorTypeEnum::COMPANY) {
+            return $query->pluck('ba.company_name', 'ba.id');
+        } else {
+            return $query->pluck('users.first_name', 'ba.id');
+        }
     }
 }
