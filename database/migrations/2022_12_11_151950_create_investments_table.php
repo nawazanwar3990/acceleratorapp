@@ -72,6 +72,9 @@ return new class extends Migration {
             $table->string('hear_about_us')->nullable();
             $table->string('what_made_apply_to_falak')->nullable();
 
+            $table->string('mentor_type')->nullable();
+            $table->json('mentors')->nullable();
+
             $table->foreignId('created_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('updated_by')->nullable()->constrained(TableEnum::USERS);
             $table->foreignId('deleted_by')->nullable()->constrained(TableEnum::USERS);
