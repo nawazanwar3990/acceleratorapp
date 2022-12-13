@@ -168,7 +168,8 @@ class BaService
         if ($type == AcceleratorTypeEnum::COMPANY) {
             return $query->pluck('ba.company_name', 'ba.id');
         } else {
-            return $query->pluck('users.first_name', 'ba.id');
+            return $query->select(DB::raw("CONCAT(users.first_name,' ',users.last_name) AS name"), 'ba.id')
+                ->pluck('name', 'id');
         }
     }
 }
