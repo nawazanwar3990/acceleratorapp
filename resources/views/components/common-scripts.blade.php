@@ -585,9 +585,10 @@
                 });
             }
             parents.each(function (key, value) {
-                let currentElement = $(value).attr('id');
-                if (selected[currentElement] === undefined) {
-                    $("#" + currentElement).remove();
+                let cElement = $(value);
+                let data_id = cElement.attr('data-id');
+                if (selected.indexOf(data_id) === -1) {
+                    $("#" + cElement.attr('id')).remove();
                 }
             });
         }
