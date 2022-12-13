@@ -12,6 +12,7 @@ class InvestmentStepEnum extends AbstractEnum
     public const MARKET = 'market';
     public const EQUITY = 'equity';
     public const CURIOSITY = 'curiosity';
+    public const MENTOR = 'mentor';
 
     public static function getValues(): array
     {
@@ -21,7 +22,8 @@ class InvestmentStepEnum extends AbstractEnum
             self::PRODUCT,
             self::MARKET,
             self::EQUITY,
-            self::CURIOSITY
+            self::CURIOSITY,
+            self::MENTOR
         );
     }
 
@@ -33,7 +35,8 @@ class InvestmentStepEnum extends AbstractEnum
             self::PRODUCT => 'Product',
             self::MARKET => 'Market',
             self::EQUITY => 'Equity',
-            self::CURIOSITY => 'Curiosity'
+            self::CURIOSITY => 'Curiosity',
+            self::MENTOR => 'Mentor'
         );
     }
 }

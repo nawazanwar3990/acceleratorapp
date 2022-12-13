@@ -101,6 +101,18 @@ class InvestmentController extends Controller
         }
         return view('website.investment.curiosity', compact('page', 'model'));
     }
+    public function mentor(): Factory|View|RedirectResponse|Application
+    {
+        $model = null;
+        $page = $this->pageService->findByCode('investment');
+        if (Session::has('apply_investment')) {
+            $email = Session::get('investment_email');
+            $model = Investment::where('email', $email)->first();
+        } else {
+            return redirect()->route('website.investment.index')->with('error', 'First Add the Basic Info');
+        }
+        return view('website.investment.mentor', compact('page', 'model'));
+    }
 
     public function store(Request $request): RedirectResponse
     {
@@ -145,6 +157,10 @@ class InvestmentController extends Controller
                 $message = "Equity Added successfully Now added Curiosity info";
                 break;
             case InvestmentStepEnum::CURIOSITY:
+                $next_step = route('website.investment.mentor');
+                $message = "Curiosity Added successfully Now added Mentor info";
+                break;
+            case InvestmentStepEnum::MENTOR:
                 $next_step = route('website.investment.index');
                 $message = "Form Submitted Successfully";
                 Session::remove('apply_investment');

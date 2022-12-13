@@ -14,6 +14,8 @@
             Equity
         @elseif($currentRoute=='website.investment.curiosity')
             Curiosity
+        @elseif($currentRoute=='website.investment.mentor')
+            Mentor
         @endif
     </h6>
     @php $currentRoute = request()->route()->getName(); @endphp
@@ -46,6 +48,11 @@
         <li class="{{ $currentRoute=='website.investment.curiosity'?'active-link':'in-active-link' }}">
             <a href="{{route('website.investment.curiosity')}}">
                 Curiosity
+            </a>
+        </li>
+        <li class="{{ $currentRoute=='website.investment.mentor'?'active-link':'in-active-link' }}">
+            <a href="{{route('website.investment.mentor')}}">
+                Mentor
             </a>
         </li>
     </ul>
