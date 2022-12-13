@@ -561,8 +561,20 @@
         });
     }
 
-    function loadInfo(cElement, type) {
+    function showLoadingMessage() {
+        $.toast({
+            heading: "Loading",
+            text: 'Please wait while loading data',
+            position: 'top-right',
+            icon: 'info',
+            hideAfter: 1000,
+            stack: 6
+        });
+    }
 
+    function loadInfo(cElement, type) {
+        showLoadingMessage();
+        $(cElement).closest('.main_data_holder').find('.data_holder').empty();
         let parents = $(".parents");
         if (parents.length > 4) {
             showError('You can only Send Request to 4 Mentors')
@@ -572,26 +584,16 @@
                 let value = $(this).val();
                 selected.push(value);
             });
-            console.log(selected);
             for (const selectedKey in selected) {
                 Ajax.call("{{ route('api.ba.info') }}", {
-                    'id': selected[selectedKey]
+                    'ids': selected,
+                    'type': type
                 }, '{{ \App\Enum\MethodEnum::POST }}', function (response) {
                     if (response.status === true) {
-                        let slug = type + "_" + selectedKey + "_holder";
-                        if ($("#" + slug).length < 1) {
-                            $(cElement).closest('.main_data_holder').find('.data_holder').prepend(response.html);
-                        }
+                        $(cElement).closest('.main_data_holder').find('.data_holder').empty().html(response.html);
                     }
                 });
             }
-            parents.each(function (key, value) {
-                let cElement = $(value);
-                let data_id = cElement.attr('data-id');
-                if (selected.indexOf(data_id) === -1) {
-                    $("#" + cElement.attr('id')).remove();
-                }
-            });
         }
     }
 

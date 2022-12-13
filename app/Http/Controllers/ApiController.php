@@ -80,17 +80,18 @@ class ApiController extends Controller
 
     public function getBaInfo(Request $request): JsonResponse
     {
-        $id = $request->input('id');
-        $model = BA::with('logo')->find($id);
-        if ($model->type == AccessTypeEnum::COMPANY) {
-            $html = view('ajax.cards.ba-company', compact('model'))->render();
+        $ids = $request->input('ids', array());
+        $type = $request->input('type');
+        $data = BA::with('logo')->whereIn('id', $ids)->get();
+        if ($type == AccessTypeEnum::COMPANY) {
+            $html = view('ajax.cards.ba-company', compact('data'))->render();
         } else {
-            $html = view('ajax.cards.ba-individual', compact('model'))->render();
+            $html = view('ajax.cards.ba-individual', compact('data'))->render();
         }
         return response()->json([
             'status' => true,
             'html' => $html,
-            'model' => $model
+            'ids' => $ids
         ]);
     }
 }
