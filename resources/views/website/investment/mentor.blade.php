@@ -69,6 +69,10 @@
                 $('[name=mentor_type]').change(function () {
                     let individual_mentor_holder = $("#individual_mentor_holder");
                     let company_mentor_holder = $("#company_mentor_holder");
+
+                    individual_mentor_holder.find('.data_holder').empty();
+                    company_mentor_holder.find('.data_holder').empty();
+
                     individual_mentor_holder.hide();
                     company_mentor_holder.hide();
                     if ($(this).val() === "individual") {
