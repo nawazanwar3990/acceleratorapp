@@ -1,5 +1,5 @@
-{!! Form::hidden('mentors[]',$model->id) !!}
-<div class="card border">
+<div class="card border parents mb-2" id="{{ $model->type }}_{{$model->id}}_holder">
+    {!! Form::hidden('mentors[]',$model->id) !!}
     <div class="card-header">
         <h6 class="mb-0">Detail of <strong>{{ strtoupper($model->user->getFullName())  }}</strong></h6>
     </div>
