@@ -15,8 +15,9 @@ return new class extends Migration {
 
             /*Welcome*/
             $table->string('startup_name')->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+
+            $table->string('full_name')->nullable();
+
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
             $table->string('city')->nullable();
@@ -37,6 +38,8 @@ return new class extends Migration {
             $table->string('file')->nullable();
             /*Products*/
             $table->string('product_tech_focused')->nullable();
+            $table->string('are_you_looking_for_funding')->nullable();
+            $table->longText('how_much_funding_you_want')->nullable();
             $table->string('working_on_your_product')->nullable();
             $table->string('launch_your_startup')->nullable();
             $table->string('generating_revenue')->nullable();

@@ -161,7 +161,7 @@ class InvestmentController extends Controller
                 $message = "Curiosity Added successfully Now added Mentor info";
                 break;
             case InvestmentStepEnum::MENTOR:
-                $next_step = route('website.investment.index');
+                $next_step = route('website.index');
                 $message = "Form Submitted Successfully";
                 Session::remove('apply_investment');
                 Session::remove('investment_email');

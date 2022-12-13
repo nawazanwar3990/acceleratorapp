@@ -30,6 +30,25 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label class="form-label" for="are_you_looking_for_funding">Are you looking for Funding?</label>
+                                {!! Form::select('are_you_looking_for_funding',
+                                        [
+                                         'yes'=>'Yes',
+                                         'no'=>'No',
+                                          ],null,['id'=>'are_you_looking_for_funding','class'=>'form-control form-select','placeholder'=>'Select']
+                                )
+                                !!}
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="div_how_much_funding"
+                             style="display:{{ isset($model)&& $model->generating_revenue=='yes'?'block':'none' }};">
+                            <div class="form-group">
+                                <label class="form-label" for="how_much_funding_you_want">How Much Funding you want?<i class="text-danger">*</i></label>
+                                {!! Form::textarea('how_much_funding_you_want',null,['id'=>'how_much_funding_you_want','class'=>'form-control','required','rows'=>'3','cols'=>'30']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label class="form-label" for="working_on_your_product">How long have you been
                                     working on your product?</label>
                                 {!! Form::select('working_on_your_product',
@@ -70,7 +89,8 @@
                               !!}
                             </div>
                         </div>
-                        <div class="col-md-12" id="div_avaerage_month_grow" style="display:{{ isset($model)&& $model->generating_revenue=='yes'?'block':'none' }};">
+                        <div class="col-md-12" id="div_avaerage_month_grow"
+                             style="display:{{ isset($model)&& $model->generating_revenue=='yes'?'block':'none' }};">
                             <div class="form-group">
                                 <label class="form-label" for="average_month_grow">How much have you generated over the
                                     past 12 months and
@@ -92,7 +112,8 @@
                                                            ) !!}
                             </div>
                         </div>
-                        <div class="col-md-12" id="div_fund_sar" style="display:{{ isset($model)&& $model->raised_external_funding=='no'?'block':'none' }}">
+                        <div class="col-md-12" id="div_fund_sar"
+                             style="display:{{ isset($model)&& $model->raised_external_funding=='no'?'block':'none' }}">
                             <div class="form-group">
                                 <label class="form-label" for="fund_sar">How much was the fund? (SAR) <i
                                         class="text-danger">*</i></label>
@@ -145,7 +166,7 @@
                         </div>
                     </div>
                     <div class="text-center mt-4">
-                      @include('website.investment.component.next-save-button')
+                        @include('website.investment.component.next-save-button')
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -158,6 +179,16 @@
     </x-slot>
     @section('innerScript')
         <script>
+            $('#are_you_looking_for_funding').on('change', function (obj) {
+                const val = $(this).val();
+                if (val === 'yes') {
+                    $('#div_how_much_funding').show('slow');
+                    $('#how_much_funding_you_want').attr('required', true);
+                } else {
+                    $('#div_how_much_funding').hide('slow');
+                    $('#how_much_funding_you_want').attr('required', false);
+                }
+            });
             $('#generating_revenue').on('change', function (obj) {
                 const val = $('#generating_revenue').val();
                 if (val === 'yes') {

@@ -11,10 +11,11 @@ class Investment extends Model
     protected $fillable = [
         'current_step',
         'startup_name',
-        'first_name',
-        'last_name',
+        'full_name',
         'email',
         'mobile',
+        'are_you_looking_for_funding',
+        'how_much_funding_you_want',
         'city',
         'country',
         'startup_stage',

@@ -7,7 +7,7 @@
             <thead>
             <tr>
                 <th>Sr#</th>
-                <th>{{ trans('general.logo') }}</th>
+                <th>Profile Image</th>
                 <th>{{ trans('general.accelerator_name') }}</th>
                 <th>{{ trans('general.accelerator_email') }}</th>
                 <th>{{ trans('general.contact') }}</th>
@@ -21,7 +21,9 @@
                         {{ $loop->index+1 }}
                     </td>
                     <td>
-                        <img  style="height: 34px;border-radius: 50%;" src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):asset('uploads/default_service.png') }}" alt="">
+                        <img style="height: 34px;border-radius: 50%;"
+                             src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):asset('uploads/default_service.png') }}"
+                             alt="">
                     </td>
                     <td>{{ $d->user->getFullName() }}</td>
                     <td>{{ $d->user->email }}</td>

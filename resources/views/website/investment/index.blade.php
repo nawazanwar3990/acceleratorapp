@@ -22,15 +22,11 @@
                                 {!! Form::text('startup_name',null,['id'=>'startup_name','class'=>'form-control','required',]) !!}
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label" for="first_name">Name <i class="text-danger">*</i></label>
-                                {!! Form::text('first_name',null,['id'=>'first_name','class'=>'form-control','required' , 'placeholder'=>'First Name']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::text('last_name',null,['id'=>'last_name','class'=>'form-control','required','placeholder'=>'Last Name']) !!}
+                                <label class="form-label" for="full_name">Full Name <i
+                                        class="text-danger">*</i></label>
+                                {!! Form::text('full_name',null,['id'=>'full_name','class'=>'form-control','required' , 'placeholder'=>'Full Name']) !!}
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -47,8 +43,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label" for="city">Address <i class="text-danger">*</i></label>
-                                {!! Form::text('city',null,['id'=>'city','class'=>'form-control','required', 'placeholder'=>'City']) !!}
+                                <label class="form-label" for="city">Address</label>
+                                {!! Form::text('city',null,['id'=>'city','class'=>'form-control', 'placeholder'=>'City']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
