@@ -5,9 +5,9 @@
                 @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     @if(!$model)
-                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'market_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::open(['url' =>route('website.investment.store'), 'method' => 'POST','files' => true,'id' =>'market_form', 'class' => 'solid-validation']) !!}
                     @else
-                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'market_form', 'class' => 'solid-validation']) !!}
+                        {!! Form::model($model,['url' =>route('website.investment.store'), 'method' => 'POST','files' => true,'id' =>'market_form', 'class' => 'solid-validation']) !!}
                     @endif
                     @csrf
                     {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::MARKET) !!}

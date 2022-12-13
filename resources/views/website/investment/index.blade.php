@@ -5,9 +5,9 @@
                 @include('website.investment.component.progress-bar')
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-12 border-start">
                     @if(!$model)
-                        {!! Form::open(['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'welcome_form', 'class' => 'solid-validation welcome_form']) !!}
+                        {!! Form::open(['url' =>route('website.investment.store'), 'method' => 'POST','files' => true,'id' =>'welcome_form', 'class' => 'solid-validation welcome_form']) !!}
                     @else
-                        {!! Form::model($model,['url' =>route('website.investments.store'), 'method' => 'POST','files' => true,'id' =>'welcome_form', 'class' => 'solid-validation welcome_form']) !!}
+                        {!! Form::model($model,['url' =>route('website.investment.store'), 'method' => 'POST','files' => true,'id' =>'welcome_form', 'class' => 'solid-validation welcome_form']) !!}
                     @endif
                     @csrf
                     {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::WELCOME) !!}
