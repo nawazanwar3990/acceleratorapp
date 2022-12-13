@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\AcceleratorTypeEnum;
 use App\Enum\RoleEnum;
 use App\Models\BA;
 use App\Models\Service;
@@ -156,5 +157,10 @@ class BaService
             $user->notify(new VerifyEmailLink($token));
         }
         return $model;
+    }
+
+    public static function getBACompaniesDropdown()
+    {
+        return BA::where('type', AcceleratorTypeEnum::COMPANY)->pluck('company_name','id');
     }
 }

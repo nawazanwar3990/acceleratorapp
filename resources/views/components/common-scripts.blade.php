@@ -561,6 +561,24 @@
         });
     }
 
+    function loadInfo(cElement, type) {
+        let value = $(cElement).val();
+        if (!value) {
+            showError("First Choose Value");
+        } else {
+            Ajax.call("{{ route('api.ba.info') }}", {
+                'id': value
+            }, '{{ \App\Enum\MethodEnum::POST }}', function (response) {
+                if (response.status === true) {
+                    $(cElement)
+                        .closest('.main_data_holder')
+                        .find('.data_holder')
+                        .html(response.html);
+                }
+            });
+        }
+    }
+
     function applyEventType(cElement) {
         let sub_types = JSON.parse($(cElement).find('option:selected').attr('data-sub-types'));
         let options = "<option value='' selected>{{ trans('general.select') }}</option>";

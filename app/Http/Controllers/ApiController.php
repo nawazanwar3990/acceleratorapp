@@ -77,4 +77,20 @@ class ApiController extends Controller
             ]);
         }
     }
+
+    public function getBaInfo(Request $request): JsonResponse
+    {
+        $id = $request->input('id');
+        $model = BA::with('logo')->find($id);
+        if ($model->type == AccessTypeEnum::COMPANY) {
+            $html = view('ajax.cards.ba-company', compact('model'))->render();
+        } else {
+            $html = view('ajax.cards.ba-individual', compact('model'))->render();
+        }
+        return response()->json([
+            'status' => true,
+            'html' => $html,
+            'model' => $model
+        ]);
+    }
 }

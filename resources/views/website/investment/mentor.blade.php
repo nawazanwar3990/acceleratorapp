@@ -31,14 +31,19 @@
                                     </div>
                                 </div>
                                 {{--BA Individual Holder--}}
-                                <div class="col-md-12 mb-3 form-group"  id="individual_mentor_holder">
-                                    <label for="mentor_individual_value" class="form-label">Select BA Individual Mentor<i class="text-danger">*</i></label>
-                                    {!! Form::select('mentor_individual_value',[],null,['id'=>'mentor_individual_value','class'=>'form-control','placeholder'=>'Select']); !!}
+                                <div class="col-md-12 mb-3 form-group main_data_holder" id="individual_mentor_holder">
+                                    <label for="mentor_individual_value" class="form-label">Select BA Individual
+                                        Mentor<i class="text-danger">*</i></label>
+                                    {!! Form::select('mentor_individual_value',\App\Services\BaService::getBACompaniesDropdown(),null,['id'=>'mentor_individual_value','class'=>'form-control','placeholder'=>'Select','onchange'=>'loadInfo(this,"'.\App\Enum\AcceleratorTypeEnum::INDIVIDUAL.'");']); !!}
+                                    <div class="data_holder my-2"></div>
                                 </div>
                                 {{--BA Company Holder--}}
-                                <div class="col-md-12 mb-3 form-group" style="display: none;" id="company_mentor_holder">
-                                    <label for="mentor_company_value" class="form-label">Select BA Company<i class="text-danger">*</i></label>
-                                    {!! Form::select('mentor_company_value',[],null,['id'=>'mentor_company_value','class'=>'form-control','placeholder'=>'Select']); !!}
+                                <div class="col-md-12 mb-3 form-group main_data_holder" style="display: none;"
+                                     id="company_mentor_holder">
+                                    <label for="mentor_company_value" class="form-label">Select BA Company<i
+                                            class="text-danger">*</i></label>
+                                    {!! Form::select('mentor_company_value',\App\Services\BaService::getBACompaniesDropdown(),null,['id'=>'mentor_company_value','class'=>'form-control','placeholder'=>'Select','onchange'=>'loadInfo(this,"'.\App\Enum\AcceleratorTypeEnum::COMPANY.'");']); !!}
+                                    <div class="data_holder my-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +56,7 @@
                 </div>
             </div>
         </div>
-        @include('website.investment.component.scripts')
-        <script>
-            $("#market_form").validate();
-        </script>
+        @include('components.common-scripts')
     </x-slot>
     @section('innerScript')
         <script>
