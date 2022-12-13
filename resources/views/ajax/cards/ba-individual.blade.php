@@ -21,7 +21,7 @@
                         {{ $loop->index+1 }}
                     </td>
                     <td>
-                        <img src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):'' }}" alt="">
+                        <img  src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):asset('images/users/img.jpg') }}" alt="">
                     </td>
                     <td>{{ $d->user->getFullName() }}</td>
                     <td>{{ $d->user->email }}</td>
