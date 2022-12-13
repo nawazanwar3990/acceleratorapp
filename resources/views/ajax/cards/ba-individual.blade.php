@@ -1,4 +1,4 @@
-<div class="card border parents mb-2">
+<div class="card border parents mb-2 parents">
     <div class="card-header">
         <h6 class="mb-0">List of all Selected Mentors</h6>
     </div>

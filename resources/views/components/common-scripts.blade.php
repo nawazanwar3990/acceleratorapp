@@ -573,12 +573,12 @@
     }
 
     function loadInfo(cElement, type) {
-        showLoadingMessage();
-        $(cElement).closest('.main_data_holder').find('.data_holder').empty();
         let parents = $(".parents");
         if (parents.length > 4) {
-            showError('You can only Send Request to 4 Mentors')
+            showError('You can only Send Request to 4 Mentors');
         } else {
+            showLoadingMessage();
+            $(cElement).closest('.main_data_holder').find('.data_holder').empty();
             const selected = [];
             $(cElement).find('option:selected').each(function () {
                 let value = $(this).val();
