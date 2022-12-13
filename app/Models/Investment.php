@@ -58,6 +58,8 @@ class Investment extends Model
         'founder_involved',
         'hear_about_us',
         'what_made_apply_to_falak',
+        'mentor_type',
+        'mentors',
         'created_by',
         'updated_by',
         'deleted_by'

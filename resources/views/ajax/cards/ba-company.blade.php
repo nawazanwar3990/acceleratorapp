@@ -21,7 +21,7 @@
                         {{ $loop->index+1 }}
                     </td>
                     <td>
-                        <img style=" width: 34px;height: 34px;border-radius: 50%;" src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):asset('uploads/default_startup.png') }}" alt="">
+                        <img style="height: 34px;border-radius: 50%;" src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):asset('uploads/default_startup.png') }}" alt="">
                     </td>
                     <td>{{ $d->company_name }}</td>
                     <td>{{ $d->company_email }}</td>
