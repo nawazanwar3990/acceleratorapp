@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 text-center">
                             <label for="file" class="form-label">Upload Team Pic</label>
                             {!! Form::file('file',['class'=>'dropify','data-default-file'=>isset($model) && $model->file?asset($model->file):'']); !!}
                         </div>
