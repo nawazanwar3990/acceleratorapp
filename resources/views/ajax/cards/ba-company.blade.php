@@ -17,11 +17,11 @@
             @forelse($data as $d)
                 <tr class="parents">
                     <td>
-                        <img src="{{ (isset($model->logo) && count($model->logo))?asset($model->logo[0]->filename):'' }}" alt="">
-                    </td>
-                    <td>
                         {!! Form::hidden('mentors[]',$d->id) !!}
                         {{ $loop->index+1 }}
+                    </td>
+                    <td>
+                        <img src="{{ (isset($d->logo) && count($d->logo))?asset($d->logo[0]->filename):'' }}" alt="">
                     </td>
                     <td>{{ $d->company_name }}</td>
                     <td>{{ $d->company_email }}</td>
