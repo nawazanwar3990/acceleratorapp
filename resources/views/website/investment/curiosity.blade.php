@@ -34,13 +34,11 @@
                     </div>
                     <div style="margin-top: 4rem!important;">
                     </div>
-                    @if(!request()->has('id'))
                         <div class="text-center mt-4">
                             <button type="submit" class="btn  btn-primary site-first-btn-color">
                                 Save <i class="bx bx-arrow-to-right"></i>
                             </button>
                         </div>
-                    @endif
                     {!! Form::close() !!}
                 </div>
             </div>

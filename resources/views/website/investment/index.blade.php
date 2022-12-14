@@ -81,11 +81,9 @@
                             </div>
                         </div>
                     </div>
-                    @if(!request()->has('id'))
-                        <div class="text-center mt-4">
-                            @include('website.investment.component.next-save-button')
-                        </div>
-                    @endif
+                    <div class="text-center mt-4">
+                        @include('website.investment.component.next-save-button')
+                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>
