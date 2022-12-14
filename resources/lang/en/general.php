@@ -1,5 +1,9 @@
 <?php
 return [
+    'investments' => 'Investments',
+    'mobile' => 'Mobile',
+    'city' => 'City',
+    'start_up_name' => 'Startup Name',
     'address' => 'Address',
     'from_day' => 'From Day',
     'to_day' => 'To Day',
@@ -12,15 +16,15 @@ return [
     'new_descriptive' => 'New Descriptive',
     'descriptive' => 'Descriptive',
     'edit_descriptive' => 'Edit Descriptive',
-    'how_it_work'=>'How It Work',
-    'what_we_offer'=>'What We Offer',
-    'new_work'=>'New Work',
-    'new_offer'=>'New Offer',
-    'edit_work'=>'Edit Work',
-    'edit_offer'=>'Edit Offer',
-    'new_team'=>'New Team',
-    'edit_team'=>'Edit Team',
-    'team'=>'Team',
+    'how_it_work' => 'How It Work',
+    'what_we_offer' => 'What We Offer',
+    'new_work' => 'New Work',
+    'new_offer' => 'New Offer',
+    'edit_work' => 'Edit Work',
+    'edit_offer' => 'Edit Offer',
+    'new_team' => 'New Team',
+    'edit_team' => 'Edit Team',
+    'team' => 'Team',
 
 
     'profile' => 'Profile',
@@ -429,9 +433,9 @@ return [
 
 
     'left-bar' => [
-        'team'=>'Team',
-        'how_it_work'=>'How It Work',
-        'what_we_offer'=>'What We Offer',
+        'team' => 'Team',
+        'how_it_work' => 'How It Work',
+        'what_we_offer' => 'What We Offer',
         'slider' => 'Slider',
         'descriptive' => 'Descriptive',
         'payment-receipt' => 'Payment Receipts',

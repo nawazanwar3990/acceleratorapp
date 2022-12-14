@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\BAController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\FreelancerController;
+use App\Http\Controllers\Dashboard\InvestmentController;
 use App\Http\Controllers\Dashboard\MeetingController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     require __DIR__ . '/working-space.php';
     require __DIR__ . '/subscription.php';
     require __DIR__ . '/setting.php';
+
+    Route::resource('/investment-asks', InvestmentController::class, ['names' => 'investment-asks'])->middleware('has_package');
 
     Route::get('/ba/create/{step?}/{id?}', [BAController::class, 'create'])
         ->name('ba.create');

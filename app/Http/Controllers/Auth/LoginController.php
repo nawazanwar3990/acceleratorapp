@@ -36,7 +36,7 @@ class LoginController extends Controller
     public function showLoginForm(): Factory|View|Application
     {
         $page = PageService::getLoginPage();
-        return view('auth.login',compact('page'));
+        return view('auth.login', compact('page'));
     }
 
     /**
@@ -76,7 +76,7 @@ class LoginController extends Controller
                     throw ValidationException::withMessages([
                         'login' => __('general.your_account_is_not_activate_message'),
                     ]);
-                }else if ($user->hasRole(RoleEnum::CUSTOMER)){
+                } else if ($user->hasRole(RoleEnum::CUSTOMER)) {
                     if (!Auth::attempt([
                         'email' => $email,
                         'password' => $password
@@ -88,8 +88,7 @@ class LoginController extends Controller
                         RateLimiter::clear($this->throttleKey());
                         return redirect()->route('website.index')->with('success', trans('general.welcome_back'));
                     }
-                }
-                else {
+                } else {
                     if ($user->hasRole(RoleEnum::BUSINESS_ACCELERATOR)
                         || $user->hasRole(RoleEnum::MENTOR)
                         || $user->hasRole(RoleEnum::FREELANCER)
@@ -99,8 +98,8 @@ class LoginController extends Controller
                             if ($subscription->status == SubscriptionStatusEnum::PENDING) {
                                 $current_role = $user->roles[0]->slug;
                                 $subscription_type = $current_role;
-                                $subscription_id =$user->subscription->id;
-                                return redirect()->route('website.pending-subscription',[$subscription_id,$subscription_type]);
+                                $subscription_id = $user->subscription->id;
+                                return redirect()->route('website.pending-subscription', [$subscription_id, $subscription_type]);
                             } else {
                                 if (!Auth::attempt([
                                     'email' => $email,
@@ -123,10 +122,7 @@ class LoginController extends Controller
                                 RateLimiter::hit($this->throttleKey());
                                 return redirect()->back()->withInput()->with('error', __('auth.failed'));
                             } else {
-                                RateLimiter::clear($this->throttleKey());
-                                Auth::logout();
-                                Cache::flush();
-                                return redirect()->route('website.index')->with('info','We are creating package on the basis of your selected services .So we will send you confirmation email after creating your package');
+                                return redirect()->route('website.index')->with('success', trans('general.welcome_back'));
                             }
                         }
                     }

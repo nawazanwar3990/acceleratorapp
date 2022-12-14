@@ -130,9 +130,11 @@
                     </div>
                     <div style="margin-top: 4rem!important;">
                     </div>
-                    <div class="text-center mt-4">
-                        @include('website.investment.component.next-save-button')
-                    </div>
+                    @if(!request()->has('id'))
+                        <div class="text-center mt-4">
+                            @include('website.investment.component.next-save-button')
+                        </div>
+                    @endif
                     {!! Form::close() !!}
                 </div>
             </div>

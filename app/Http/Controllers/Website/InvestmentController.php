@@ -26,7 +26,7 @@ class InvestmentController extends Controller
         $this->makeDirectory('investments');
     }
 
-    public function index(): Factory|View|Application
+    public function index(Request $request): Factory|View|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
@@ -37,7 +37,7 @@ class InvestmentController extends Controller
         return view('website.investment.index', compact('page', 'model'));
     }
 
-    public function product(): Factory|View|RedirectResponse|Application
+    public function product(Request $request): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
@@ -50,7 +50,7 @@ class InvestmentController extends Controller
         return view('website.investment.product', compact('page', 'model'));
     }
 
-    public function equity(): Factory|View|RedirectResponse|Application
+    public function equity(Request $request): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
@@ -63,7 +63,7 @@ class InvestmentController extends Controller
         return view('website.investment.equity', compact('page', 'model'));
     }
 
-    public function team(): Factory|View|RedirectResponse|Application
+    public function team(Request $request): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
@@ -76,7 +76,7 @@ class InvestmentController extends Controller
         return view('website.investment.team', compact('page', 'model'));
     }
 
-    public function market(): Factory|View|RedirectResponse|Application
+    public function market(Request $request): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
@@ -89,7 +89,7 @@ class InvestmentController extends Controller
         return view('website.investment.market', compact('page', 'model'));
     }
 
-    public function curiosity(): Factory|View|RedirectResponse|Application
+    public function curiosity(Request $request): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');
@@ -101,7 +101,8 @@ class InvestmentController extends Controller
         }
         return view('website.investment.curiosity', compact('page', 'model'));
     }
-    public function mentor(): Factory|View|RedirectResponse|Application
+
+    public function mentor(Request $request): Factory|View|RedirectResponse|Application
     {
         $model = null;
         $page = $this->pageService->findByCode('investment');

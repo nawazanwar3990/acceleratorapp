@@ -21,7 +21,7 @@ class BANavEnum extends AbstractEnum
     public const MENTORSHIP_WITHOUT_INVESTMENT = 'mentorship-with-out-investment';
     public const EVENT_MANAGEMENT = 'event-management';
     public const PAYMENT_RECEIPT =KeyWordEnum::PAYMENT_RECEIPT;
-
+    public const INVESTMENT_ASK =KeyWordEnum::INVESTMENT_ASK;
     public static function getValues(): array
     {
         return [
@@ -35,6 +35,7 @@ class BANavEnum extends AbstractEnum
             self::MENTORSHIP_WITH_INVESTMENT,
             self::MENTORSHIP_WITHOUT_INVESTMENT,
             self::EVENT_MANAGEMENT,
+            self::INVESTMENT_ASK
         ];
     }
 
@@ -52,6 +53,7 @@ class BANavEnum extends AbstractEnum
             self::MENTORSHIP_WITH_INVESTMENT => '<i class="bx bx-rupee"></i>',
             self::MENTORSHIP_WITHOUT_INVESTMENT => '<i class="bx bx-rupee"></i>',
             self::EVENT_MANAGEMENT => '<i class="bx bx-calendar-event"></i>',
+            self::INVESTMENT_ASK => '<i class="bx bx-calendar-event"></i>',
         ];
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];
@@ -66,7 +68,8 @@ class BANavEnum extends AbstractEnum
             self::SERVICE,
             self::PLAN,
             self::SUBSCRIPTION,
-            self::PAYMENT_RECEIPT
+            self::PAYMENT_RECEIPT,
+            self::INVESTMENT_ASK
         );
     }
 
@@ -83,7 +86,8 @@ class BANavEnum extends AbstractEnum
             self::FREELANCER => 'Freelancer',
             self::MENTORSHIP_WITH_INVESTMENT => 'Mentorship with Investment',
             self::MENTORSHIP_WITHOUT_INVESTMENT => 'Mentorship with out Investment',
-            self::EVENT_MANAGEMENT => 'Event Management'
+            self::EVENT_MANAGEMENT => 'Event Management',
+            self::INVESTMENT_ASK => 'Investment Ask'
         ];
     }
 
@@ -99,7 +103,8 @@ class BANavEnum extends AbstractEnum
             self::FREELANCER => route('dashboard.freelancers.index', ['type' => PaymentTypeProcessEnum::PRE_DEFINED_PLAN]),
             self::MENTORSHIP_WITH_INVESTMENT => '',
             self::MENTORSHIP_WITHOUT_INVESTMENT => '',
-            self::EVENT_MANAGEMENT => route('dashboard.events.index')
+            self::EVENT_MANAGEMENT => route('dashboard.events.index'),
+            self::INVESTMENT_ASK => route('dashboard.investment-asks.index')
         );
         if (!is_null($key) && array_key_exists($key, $routes)) {
             return $routes[$key];

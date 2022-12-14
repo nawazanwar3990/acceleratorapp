@@ -30,7 +30,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label" for="are_you_looking_for_funding">Are you looking for Funding?</label>
+                                <label class="form-label" for="are_you_looking_for_funding">Are you looking for
+                                    Funding?</label>
                                 {!! Form::select('are_you_looking_for_funding',
                                         [
                                          'yes'=>'Yes',
@@ -43,7 +44,8 @@
                         <div class="col-md-12" id="div_how_much_funding"
                              style="display:{{ isset($model)&& $model->are_you_looking_for_funding=='yes'?'block':'none' }};">
                             <div class="form-group">
-                                <label class="form-label" for="how_much_funding_you_want">How Much Funding you want?<i class="text-danger">*</i></label>
+                                <label class="form-label" for="how_much_funding_you_want">How Much Funding you want?<i
+                                        class="text-danger">*</i></label>
                                 {!! Form::textarea('how_much_funding_you_want',null,['id'=>'how_much_funding_you_want','class'=>'form-control','required','rows'=>'3','cols'=>'30']) !!}
                             </div>
                         </div>
@@ -165,9 +167,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-center mt-4">
-                        @include('website.investment.component.next-save-button')
-                    </div>
+                    @if(!request()->has('id'))
+                        <div class="text-center mt-4">
+                            @include('website.investment.component.next-save-button')
+                        </div>
+                    @endif
                     {!! Form::close() !!}
                 </div>
             </div>

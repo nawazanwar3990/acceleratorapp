@@ -111,6 +111,7 @@ class KeyWordEnum extends AbstractEnum
     public const LINKEDIN = 'linkedin';
     public const YOUTUBE = 'youtube';
     public const WHATSAPP = 'whatsapp';
+    public const INVESTMENT_ASK = 'investment_ask';
 
     static function getConstants()
     {
