@@ -1,5 +1,6 @@
 <?php
 return [
+    'reason' => 'Reason',
     'investments' => 'Investments',
     'mobile' => 'Mobile',
     'city' => 'City',
