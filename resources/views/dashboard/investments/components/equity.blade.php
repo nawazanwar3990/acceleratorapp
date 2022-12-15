@@ -13,39 +13,32 @@
     </div>
     @if(isset($model) && is_array($model->equity_splits) && count($model->equity_splits)>0)
         <div class="col-md-12 form-group">
-            <label class="form-label" for="jurisdiction">>Describe the current equity split between the founders,
+            <label class="form-label" for="jurisdiction">Describe the current equity split between the founders,
                 shareholders, and
                 employees?</label>
-            <div class="card border my-3">
-                <div class="card-body px-5">
-                    @foreach($model->equity_splits['name'] as $split_key=>$split_value)
-                        <div class="row g-3 my-3">
-                            <div class="col-12 form-group">
-                                <h6 class="fw-bold">Shareholder
-                                    type {{ isset($model->equity_splits) && $model->equity_splits['name'][$split_key]?$split_key+1:'1' }}</h6>
-                            </div>
+            @foreach($model->equity_splits['name'] as $split_key=>$split_value)
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h6 class="card-title pb-0">Shareholder Type {{ isset($model->equity_splits) && $model->equity_splits['name'][$split_key]?$split_key+1:'1' }}</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
                             <div class="col-md-4 form-group">
                                 <label class="form-label" for="name">Name</label>
-                                <input type="text" class="form-control"
-                                       disabled
-                                       value="{{ isset($model->equity_splits) && $model->equity_splits['name'][$split_key]?$model->equity_splits['name'][$split_key]:'' }}">
+                                {!! Form::text('',isset($model->equity_splits) && $model->equity_splits['name'][$split_key]?$model->equity_splits['name'][$split_key]:'',['class'=>'form-control','disabled']) !!}
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-label" for="ownership">% of ownership</label>
-                                <input type="text"
-                                       disabled
-                                       value="{{ isset($model->equity_splits) && $model->equity_splits['ownership'][$split_key]?$model->equity_splits['ownership'][$split_key]:'' }}">
+                                {!! Form::text('',isset($model->equity_splits) && $model->equity_splits['ownership'][$split_key]?$model->equity_splits['ownership'][$split_key]:'',['class'=>'form-control','disabled']) !!}
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-label">Role</label>
-                                <input type="text"
-                                       disabled
-                                       value="{{ isset($model->equity_splits) && $model->equity_splits['role'][$split_key]?$model->equity_splits['role'][$split_key]:'' }}">
+                                {!! Form::text('',isset($model->equity_splits) && $model->equity_splits['role'][$split_key]?$model->equity_splits['role'][$split_key]:'',['class'=>'form-control','disabled']) !!}
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     @endif
     <div class="col-md-12 form-group">
