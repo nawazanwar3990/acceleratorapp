@@ -12,14 +12,14 @@
         {!! Form::text('jurisdiction',str_replace('_',' ',$model->jurisdiction),['id'=>'jurisdiction','class'=>'form-control']) !!}
     </div>
     @if(isset($model) && is_array($model->equity_splits) && count($model->equity_splits)>0)
-        <div class="col-md-12 form-group">
+        <div class="col-md-12 form-group mt-3">
             <label class="form-label" for="jurisdiction">Describe the current equity split between the founders,
                 shareholders, and
                 employees?</label>
             @foreach($model->equity_splits['name'] as $split_key=>$split_value)
-                <div class="card my-3">
-                    <div class="card-header">
-                        <h6 class="card-title pb-0">Shareholder Type {{ isset($model->equity_splits) && $model->equity_splits['name'][$split_key]?$split_key+1:'1' }}</h6>
+                <div class="card my-3 border " style=" border-top: none !important;">
+                    <div class="card-header border-top border-bottom" style="background-color: transparent;">
+                        <h6 class="card-title pb-0 mb-0">Shareholder Type {{ isset($model->equity_splits) && $model->equity_splits['name'][$split_key]?$split_key+1:'1' }}</h6>
                     </div>
                     <div class="card-body">
                         <div class="row">

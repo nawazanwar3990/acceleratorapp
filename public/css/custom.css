@@ -2440,3 +2440,7 @@ label.error {
 .btn {
     align-self: center !important;
 }
+
+.form-group {
+    margin-bottom: 5px !important;
+}
