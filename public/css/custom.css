@@ -2420,17 +2420,23 @@ img {
     height: 70px;
 }
 
-.carousel-control-prev, .carousel-control-next{
+.carousel-control-prev, .carousel-control-next {
     background-color: #01023B;
-    width:10%;
+    width: 10%;
     clip-path: circle(10% at 50% 50%);
 }
+
 .progress-bar li.active-link::before {
-    background-color:green;
+    background-color: green;
     border: 1px solid white;
 }
-label.error{
+
+label.error {
     color: #f44336;
     padding-top: 9px;
     font-size: 13px;
+}
+
+.btn {
+    align-self: center !important;
 }

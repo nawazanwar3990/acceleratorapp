@@ -12,13 +12,13 @@
                         </div>
                         <div class="col justify-content-end d-flex">
                             @if($investmentStatus)
-                                <a class="d-print-none btn btn-danger disabled mx-2">
-                                  {{ucwords($investmentStatus->status)}}
+                                <a class="btn btn-info mx-2">
+                                    Already {{ucwords($investmentStatus->status)}}
                                 </a>
                             @else
-                                <a class="d-print-none btn btn-primary mx-2"
+                                <a class="btn btn-primary mx-2"
                                    onclick="approvedInvestment();">Approved</a>
-                                <a class="d-print-none btn btn-primary mx-2"
+                                <a class="btn btn-primary mx-2"
                                    onclick="rejectedInvestment();">Rejected</a>
                             @endif
                             <div class="card-actions">

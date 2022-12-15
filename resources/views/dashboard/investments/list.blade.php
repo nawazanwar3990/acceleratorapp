@@ -21,8 +21,8 @@
         </td>
         <td class="text-center">
             @if($record->status)
-                <a class="btn btn-xs btn-danger disabled">
-                    {{ ucwords($record->status) }}
+                <a class="btn btn-info mx-2">
+                    Already {{ ucwords($record->status) }}
                 </a>
             @else
                 <a class="btn btn-xs btn-info">{{ trans('general.pending') }}</a>
