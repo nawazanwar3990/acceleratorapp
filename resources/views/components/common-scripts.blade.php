@@ -1,4 +1,98 @@
 <script>
+    function approvedInvestment() {
+        Swal.fire({
+            title: 'Approved Investment',
+            html: `{{ Form::textarea('reason',null,['class'=>'form-control','id'=>'reason','placeholder'=>'Enter Reason']) }}`,
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonText: "Proceeded",
+            confirmButtonColor: '#01023B',
+            cancelButtonColor: '#01023B',
+            focusConfirm: false,
+            preConfirm: () => {
+                const reason = Swal.getPopup().querySelector('#reason').value
+                if (!reason) {
+                    Swal.showValidationMessage(`Enter Reason Here`)
+                }
+                return {reason: reason}
+            }
+        }).then((result) => {
+            let reason = result.value.reason;
+            let data = new FormData();
+            data.append('reason', reason);
+            data.append('status', 'approved');
+            data.append('investment_id', "{{ isset($model)?$model->id:'' }}");
+            data.append('investor_id', "{{ auth()->user()?auth()->id():'' }}");
+            Ajax.setAjaxHeader();
+            Swal.fire({
+                html: '<?php echo __('general.request_wait'); ?>',
+                allowOutsideClick: () => !Swal.isLoading()
+            });
+            $.ajax({
+                url: "{{ route('dashboard.investment-asks.store')}}",
+                method: 'POST',
+                data: data,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status === true) {
+                        location.reload();
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        });
+    }
+
+    function rejectedInvestment() {
+        Swal.fire({
+            title: 'Reject Investment',
+            html: `{{ Form::textarea('reason',null,['class'=>'form-control','id'=>'reason','placeholder'=>'Enter Reason']) }}`,
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonText: "Proceeded",
+            confirmButtonColor: '#01023B',
+            cancelButtonColor: '#01023B',
+            focusConfirm: false,
+            preConfirm: () => {
+                const reason = Swal.getPopup().querySelector('#reason').value
+                if (!reason) {
+                    Swal.showValidationMessage(`Enter Reason Here`)
+                }
+                return {reason: reason}
+            }
+        }).then((result) => {
+            let reason = result.value.reason;
+            let data = new FormData();
+            data.append('reason', reason);
+            data.append('status', 'rejected');
+            data.append('investment_id', "{{ isset($model)?$model->id:'' }}");
+            data.append('investor_id', "{{ auth()->user()?auth()->id():'' }}");
+            Ajax.setAjaxHeader();
+            Swal.fire({
+                html: '<?php echo __('general.request_wait'); ?>',
+                allowOutsideClick: () => !Swal.isLoading()
+            });
+            $.ajax({
+                url: "{{ route('dashboard.investment-asks.store')}}",
+                method: 'POST',
+                data: data,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status === true) {
+                        location.reload();
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        });
+    }
+
     function apply_office_plan_subscription(
         subscription_id,
         subscribed_id,

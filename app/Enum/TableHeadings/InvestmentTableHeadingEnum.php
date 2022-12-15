@@ -14,7 +14,7 @@ class InvestmentTableHeadingEnum extends AbstractEnum
     public const MOBILE = 'mobile';
     public const CITY = 'city';
     public const COUNTRY = 'country';
-
+    public const STATUS = 'status';
     public static function getValues(): array
     {
         return [];
@@ -29,6 +29,7 @@ class InvestmentTableHeadingEnum extends AbstractEnum
             self::MOBILE => __(sprintf('%s.%s', 'general', self::MOBILE)),
             self::CITY => __(sprintf('%s.%s', 'general', self::CITY)),
             self::COUNTRY => __(sprintf('%s.%s', 'general', self::COUNTRY)),
+            self::STATUS => __(sprintf('%s.%s', 'general', self::STATUS)),
         ];
     }
 }

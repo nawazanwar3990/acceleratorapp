@@ -17,12 +17,22 @@
             {{ $record->city }}
         </td>
         <td>
-            {{ $record->country }}
+            {{ \App\Services\GeneralService::getCountriesArray($record->country )}}
         </td>
         <td class="text-center">
-            <a class="btn btn-xs btn-info" href="{{ route('dashboard.investment-asks.show',$record->id) }}">{{ trans('general.view') }}</a>
+            @if($record->status)
+                <a class="btn btn-xs btn-danger disabled">
+                    {{ ucwords($record->status) }}
+                </a>
+            @else
+                <a class="btn btn-xs btn-info">{{ trans('general.pending') }}</a>
+            @endif
+        </td>
+        <td class="text-center">
+            <a class="btn btn-xs btn-info" href="{{ route('dashboard.investment-asks.show',$record->id) }}">
+                {{ trans('general.view') }}
+            </a>
         </td>
     </tr>
 @empty
-
 @endforelse

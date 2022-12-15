@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-6 form-group">
         <label class="form-label" for="country">Country</label>
-        {!! Form::text('country',$model->country,['id'=>'country','class'=>'form-control','disabled']) !!}
+        {!! Form::text('country',($model->country)?\App\Services\GeneralService::getCountriesArray($model->country):null,['id'=>'country','class'=>'form-control','disabled']) !!}
     </div>
     <div class="col-md-6 form-group">
         <label class="form-label" for="startup_stage">What Stage is your startup in?</label>

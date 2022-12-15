@@ -1388,9 +1388,9 @@ class GeneralService
         setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
     }
 
-    public static function getCountriesArray(): array
+    public static function getCountriesArray($key = null): array|string|null
     {
-        return array(
+        $data = array(
             "AF" => "Afghanistan",
             "AL" => "Albania",
             "DZ" => "Algeria",
@@ -1656,5 +1656,10 @@ class GeneralService
             "ZW" => "Zimbabwe",
             "AX" => "Åland Islands",
         );
+        if ($key) {
+            return $data[$key] ?? null;
+        } else {
+            return $data;
+        }
     }
 }

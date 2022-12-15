@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Enum\TableEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
 
 class Investment extends Model
 {
