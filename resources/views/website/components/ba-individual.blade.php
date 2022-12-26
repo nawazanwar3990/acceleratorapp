@@ -25,9 +25,9 @@
                         <hr>
                     </div>
                     <div class="col-md-12">
-                        <h3 class="text-center fw-bold text-uppercase">
+                        <h6 class="text-center fw-bold text-uppercase">
                             {{ $ba->user->getFullName() }}
-                        </h3>
+                        </h6>
                         <div class="text-center">
                             <a class="read-more btn px-3 py-2 mt-3 rounded-2"
                                href="{{ route('website.startups.services.index',['ba','individual',$ba->user->id]) }}">
