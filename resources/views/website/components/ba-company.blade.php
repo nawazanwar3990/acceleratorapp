@@ -3,7 +3,7 @@
 @endphp
 <div class="row">
     @forelse(\App\Services\BaService::getBaPaginateByType(\App\Enum\AccessTypeEnum::COMPANY) as $ba)
-        <div class="col-md-4">
+        <div class="col-md-4" id="company_page_{{ $loop->index+1 }}">
             <div class="card mt-3 shadow rounded-3" style="5px 5px 5px 5px rgb(210 209 209 / 75%)">
                 <div class="card-body">
                     <div class="col-md-12 text-center position-relative">
