@@ -95,7 +95,7 @@ class InvestorController extends Controller
     public function getInvestors(): Factory|View|Application
     {
         $investors = User::with('hr')->whereHas('roles', function ($q) {
-            $q->where('slug', RoleEnum::INVESTOR);
+            $q->where('slug', RoleEnum::BUSINESS_ACCELERATOR);
         })->get();
         $params = [
             'pageTitle' => __('general.investors'),
