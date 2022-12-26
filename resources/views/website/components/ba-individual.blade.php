@@ -18,7 +18,7 @@
                                    onchange='loadInfo(this,"{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}");'>
                             <label class="form-check-label" for="ba-{{$ba->id}}"></label>
                         </div>
-                        <img style="width: 100%; max-width: 200px;height: 115px;"
+                        <img style="height: 115px;"
                              onerror="this.src='{{ asset('uploads/default_startup.png') }}'"
                              src="{{ asset($ba->logo[0]->filename??'uploads/default_startup.png') }}"
                              alt="{{ $ba->user->getFullName() }}">
