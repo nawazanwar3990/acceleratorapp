@@ -165,6 +165,9 @@ class BaService
 
     public static function getBaPaginateByType($type): array|Collection
     {
-        return BA::with('user')->where('type', $type)->get();
+        return BA::with('user')
+            ->where('type', $type)
+            ->orderBy('id',"DESC")
+            ->get();
     }
 }
