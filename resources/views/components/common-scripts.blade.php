@@ -10,17 +10,17 @@
                   <div class="row">
                      <div class="col-12 mb-3">
                         {{Form::label('email','Enter your email address to receive the link via email',['class'=>'form-label fs-13','style'=>'float:left;'])}}
-                        {{ Form::email('email',$model->email,['class'=>'form-control','id'=>'email','placeholder'=>'Enter Email']) }}
-                     </div>
-                     <div class="col-12 mb-3 text-center">OR</div>
-                     <div class="col-12 mb-3">
-                         {{Form::label('save_later_link','Alternatively, you can copy and save the link below!',['class'=>'form-label fs-13','style'=>'float:left;'])}}
-                         {{ Form::text('save_later_link',route('website.investment.index',['uId'=>$model->id]),['class'=>'form-control','id'=>'save_later_link','readonly']) }}
-                     </div>
-                    </div>
-                </div>
-                  </div>
-            </div>`,
+            {{ Form::email('email',isset($model)?$model->email:null,['class'=>'form-control','id'=>'email','placeholder'=>'Enter Email']) }}
+            </div>
+            <div class="col-12 mb-3 text-center">OR</div>
+            <div class="col-12 mb-3">
+{{Form::label('save_later_link','Alternatively, you can copy and save the link below!',['class'=>'form-label fs-13','style'=>'float:left;'])}}
+            {{ Form::text('save_later_link',route('website.investment.index',['uId'=>isset($model)?$model->id:'']),['class'=>'form-control','id'=>'save_later_link','readonly']) }}
+            </div>
+           </div>
+       </div>
+         </div>
+   </div>`,
             showCancelButton: true,
             showConfirmButton: true,
             confirmButtonText: "Click to Proceed",
