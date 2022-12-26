@@ -1,4 +1,74 @@
 <script>
+    function saveInvestmentLater() {
+        Swal.fire({
+            title: 'Save Letter',
+            html: `<div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Do you want to save your progress and resume later?</div>
+                  </div>
+                <div class="card-body">
+                  <div class="row">
+                     <div class="col-12 mb-3">
+                        {{Form::label('email','Enter your email address to receive the link via email',['class'=>'form-label fs-13','style'=>'float:left;'])}}
+                        {{ Form::email('email',$model->email,['class'=>'form-control','id'=>'email','placeholder'=>'Enter Email']) }}
+                     </div>
+                     <div class="col-12 mb-3 text-center">OR</div>
+                     <div class="col-12 mb-3">
+                         {{Form::label('save_later_link','Alternatively, you can copy and save the link below!',['class'=>'form-label fs-13','style'=>'float:left;'])}}
+                         {{ Form::text('save_later_link',route('website.investment.index',['uId'=>$model->id]),['class'=>'form-control','id'=>'save_later_link','readonly']) }}
+                     </div>
+                    </div>
+                </div>
+                  </div>
+            </div>`,
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonText: "Click to Proceed",
+            confirmButtonColor: '#01023B',
+            cancelButtonColor: '#01023B',
+            focusConfirm: false,
+            preConfirm: () => {
+                const email = Swal.getPopup().querySelector('#email').value;
+                const save_later_link = Swal.getPopup().querySelector('#save_later_link').value
+                if (!email) {
+                    Swal.showValidationMessage(`Enter Email Address`)
+                }
+                return {
+                    email: email,
+                    save_later_link: save_later_link
+                }
+            }
+        }).then((result) => {
+            let email = result.value.email;
+            let save_later_link = result.value.save_later_link;
+            let data = new FormData();
+            data.append('email', email);
+            data.append('save_later_link', save_later_link);
+            data.append('investment_id', "{{ isset($model)?$model->id:'' }}");
+            Ajax.setAjaxHeader();
+            Swal.fire({
+                html: '<?php echo __('general.request_wait'); ?>',
+                allowOutsideClick: () => !Swal.isLoading()
+            });
+            $.ajax({
+                url: "{{ route('website.investment.save-later')}}",
+                method: 'POST',
+                data: data,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status === true) {
+                        showSuccessMessage('We have send you a mail please.. check your email for save it later');
+                        location.reload();
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        });
+    }
+
     function approvedInvestment() {
         Swal.fire({
             title: 'Approved Investment',
@@ -673,7 +743,7 @@
         let parent = $(cElement);
         let value = parent.val();
         if (parent.prop("checked") === true) {
-            if (type==='{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}'){
+            if (type === '{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}') {
                 if (individual_selected.length > 3) {
                     $.toast({
                         heading: "{{ __('general.error') }}",
@@ -683,11 +753,11 @@
                         hideAfter: 500,
                         stack: 6
                     });
-                    $(cElement).prop('checked',false);
+                    $(cElement).prop('checked', false);
                 } else {
                     individual_selected.push(value);
                 }
-            }else{
+            } else {
                 if (company_selected.length > 3) {
                     $.toast({
                         heading: "{{ __('general.error') }}",
@@ -697,16 +767,16 @@
                         hideAfter: 500,
                         stack: 6
                     });
-                    $(cElement).prop('checked',false);
+                    $(cElement).prop('checked', false);
                 } else {
                     company_selected.push(value);
                 }
             }
 
         } else {
-            if (type==='{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}') {
+            if (type === '{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}') {
                 individual_selected = selected.filter(val => val !== value);
-            }else{
+            } else {
                 company_selected = selected.filter(val => val !== value);
             }
         }

@@ -61,14 +61,13 @@
                     </div>
                     <div style="margin-top: 4rem!important;"></div>
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn  btn-primary site-first-btn-color">
-                            Save <i class="bx bx-arrow-to-right"></i>
-                        </button>
+                        @include('website.investment.component.next-save-button')
                     </div>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
+        @include('website.investment.component.scripts')
         @include('components.common-scripts')
     </x-slot>
     @section('innerScript')

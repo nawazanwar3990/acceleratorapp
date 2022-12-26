@@ -138,6 +138,7 @@
             </div>
         </div>
         @include('website.investment.component.scripts')
+        @include('components.common-scripts')
         <script>
             $("#market_form").validate();
         </script>

@@ -89,6 +89,7 @@
             </div>
         </div>
         @include('website.investment.component.scripts')
+        @include('components.common-scripts')
         <script>
             $("#welcome_form").validate();
         </script>

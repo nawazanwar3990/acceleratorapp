@@ -44,6 +44,7 @@
             </div>
         </div>
         @include('website.investment.component.scripts')
+        @include('components.common-scripts')
         <script>
             $("#curiosity_form").validate();
         </script>

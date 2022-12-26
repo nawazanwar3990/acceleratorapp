@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Website;
 
 use App\Enum\AcceleratorTypeEnum;
+use App\Enum\InvestmentEmailEnum;
 use App\Enum\InvestmentStepEnum;
 use App\Http\Controllers\Controller;
-use App\Models\BA;
+use App\Mail\GlobalEmailNotification;
 use App\Models\Investment;
-use App\Notifications\GlobalEmailNotification;
+use App\Services\CMS\PageService;
 use App\Services\GeneralService;
 use App\Traits\General;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Services\CMS\PageService;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class InvestmentController extends Controller
@@ -27,6 +29,28 @@ class InvestmentController extends Controller
     )
     {
         $this->makeDirectory('investments');
+        $uId = \request()->query('uId');
+        if ($uId) {
+            $model = Investment::find($uId);
+            if ($model) {
+                Session::put('apply_investment', true);
+                Session::put('investment_id', $model->id);
+                $current_step = $model->current_step;
+                $next_step = match ($current_step) {
+                    InvestmentStepEnum::MENTOR => route('website.investment.basic'),
+                    InvestmentStepEnum::BASIC => route('website.investment.team'),
+                    InvestmentStepEnum::TEAM => route('website.investment.product'),
+                    InvestmentStepEnum::PRODUCT => route('website.investment.market'),
+                    InvestmentStepEnum::MARKET => route('website.investment.equity'),
+                    InvestmentStepEnum::EQUITY => route('website.investment.curiosity'),
+                    default => null,
+                };
+                return redirect()
+                    ->to($next_step)
+                    ->send()
+                    ->with('success', 'Welcome Back please fill your Form');
+            }
+        }
     }
 
     public function index(Request $request): Factory|View|Application
@@ -188,6 +212,28 @@ class InvestmentController extends Controller
             $model->save();
             return $model;
         }
+    }
+
+    public function saveLater(Request $request): JsonResponse
+    {
+        $email = $request->input('email', null);
+        $investment_id = $request->input('investment_id', null);
+        $save_later_link = $request->input('save_later_link', null);
+        $investment = Investment::find($investment_id);
+        $investment->email = $email;
+        $investment->save_later_link = $save_later_link;
+        $investment->save();
+        $investmentData = InvestmentEmailEnum::getTranslationKeyBy(InvestmentEmailEnum::SAVE_LATER);
+        Mail::to($email)->send(new GlobalEmailNotification(
+            [
+                'subject' => $investmentData['subject'],
+                'link' => "<a style='background: #673ab7;color: white;text-decoration: none;padding: 10px;border-radius: 5px;' href=" . $save_later_link . ">Click to Save</a>",
+                'description' => $investmentData['description']
+            ]
+        ));
+        return response()->json([
+            'status' => true
+        ]);
     }
 }
 

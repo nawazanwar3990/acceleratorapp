@@ -175,6 +175,7 @@
             </div>
         </div>
         @include('website.investment.component.scripts')
+        @include('components.common-scripts')
         <script>
             $("#product_form").validate();
         </script>

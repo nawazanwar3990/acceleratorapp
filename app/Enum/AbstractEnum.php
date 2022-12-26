@@ -27,7 +27,7 @@ abstract class AbstractEnum implements EnumInterface
 
         return $res;
     }
-    public static function getTranslationKeyBy($enum): string
+    public static function getTranslationKeyBy($enum)
     {
         return (array_key_exists($enum, static::getTranslationKeys())) ? static::getTranslationKeys()[$enum] : '';
     }

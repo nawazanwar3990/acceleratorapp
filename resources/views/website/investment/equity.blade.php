@@ -87,14 +87,15 @@
                             </div>
                         </div>
                     </div>
-                        <div class="text-center mt-4">
-                            @include('website.investment.component.next-save-button')
-                        </div>
+                    <div class="text-center mt-4">
+                        @include('website.investment.component.next-save-button')
+                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
         @include('website.investment.component.scripts')
+        @include('components.common-scripts')
         <script>
             $("#equity_form").validate();
         </script>
