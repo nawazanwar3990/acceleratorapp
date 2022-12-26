@@ -60,7 +60,7 @@
                 success: function (response) {
                     if (response.status === true) {
                         showSuccessMessage('We have send you a mail please.. check your email for save it later');
-                        location.reload();
+                        location.assign("{{ route('website.investment.index') }}");
                     }
                 },
                 error: function (response) {

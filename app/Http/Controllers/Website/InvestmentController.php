@@ -7,7 +7,9 @@ use App\Enum\InvestmentEmailEnum;
 use App\Enum\InvestmentStepEnum;
 use App\Http\Controllers\Controller;
 use App\Mail\GlobalEmailNotification;
+use App\Models\BA;
 use App\Models\Investment;
+use App\Models\Mentor;
 use App\Services\CMS\PageService;
 use App\Services\GeneralService;
 use App\Traits\General;
@@ -193,9 +195,30 @@ class InvestmentController extends Controller
                 break;
             case InvestmentStepEnum::CURIOSITY:
                 $next_step = route('website.investment.index');
-                $message = "Form Submitted Successfully";
+                $message = "Form Submitted Successfully and mailed to all mentor lets wait for Approval or Rejection";
                 Session::remove('apply_investment');
                 Session::remove('investment_id');
+                $mentors = $model->mentors;
+                if (count($mentors) > 0) {
+                    foreach ($mentors as $mentorId) {
+                        $mentor = BA::find($mentorId);
+                        if ($mentor->type == AcceleratorTypeEnum::INDIVIDUAL) {
+                            $email = $mentor->user->email??null;
+                        } else {
+                            $email = $mentor->user->company_email??null;
+                        }
+                        if ($email) {
+                            $investmentData = InvestmentEmailEnum::getTranslationKeyBy(InvestmentEmailEnum::NEW_PITCH);
+                            Mail::to($email)->send(new GlobalEmailNotification(
+                                [
+                                    'subject' => $investmentData['subject'],
+                                    'link' => "<a style='background: #673ab7;color: white;text-decoration: none;padding: 10px;border-radius: 5px;' href=" . route('dashboard.investment-asks.index') . ">Click to Save</a>",
+                                    'description' => $investmentData['description']
+                                ]
+                            ));
+                        }
+                    }
+                }
                 break;
         }
         return redirect()->to($next_step)->with('success', $message);
@@ -231,6 +254,8 @@ class InvestmentController extends Controller
                 'description' => $investmentData['description']
             ]
         ));
+        Session::remove('apply_investment');
+        Session::remove('investment_id');
         return response()->json([
             'status' => true
         ]);
