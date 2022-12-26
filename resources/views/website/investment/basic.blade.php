@@ -10,10 +10,10 @@
                         {!! Form::model($model,['url' =>route('website.investment.store'), 'method' => 'POST','files' => true,'id' =>'welcome_form', 'class' => 'solid-validation welcome_form']) !!}
                     @endif
                     @csrf
-                    {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::WELCOME) !!}
+                    {!! Form::hidden('current_step',\App\Enum\InvestmentStepEnum::BASIC) !!}
                     <div class="row g-3 align-items-end">
                         <div class="col-12">
-                            <h3 class="fw-bold">Welcome</h3>
+                            <h3 class="fw-bold">Basic Info</h3>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">

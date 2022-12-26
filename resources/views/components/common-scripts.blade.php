@@ -666,27 +666,48 @@
         });
     }
 
+    let individual_selected = [];
+    let company_selected = [];
+
     function loadInfo(cElement, type) {
-        let parents = $(".parents");
-        if (parents.length > 4) {
-            showError('You can only Send Request to 4 Mentors');
+        let parent = $(cElement);
+        let value = parent.val();
+        if (parent.prop("checked") === true) {
+            if (type==='{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}'){
+                if (individual_selected.length > 3) {
+                    $.toast({
+                        heading: "{{ __('general.error') }}",
+                        text: "You can Select Only 4",
+                        position: 'top-right',
+                        icon: 'error',
+                        hideAfter: 500,
+                        stack: 6
+                    });
+                    $(cElement).prop('checked',false);
+                } else {
+                    individual_selected.push(value);
+                }
+            }else{
+                if (company_selected.length > 3) {
+                    $.toast({
+                        heading: "{{ __('general.error') }}",
+                        text: "You can Select Only 4",
+                        position: 'top-right',
+                        icon: 'error',
+                        hideAfter: 500,
+                        stack: 6
+                    });
+                    $(cElement).prop('checked',false);
+                } else {
+                    company_selected.push(value);
+                }
+            }
+
         } else {
-            showLoadingMessage();
-            $(cElement).closest('.main_data_holder').find('.data_holder').empty();
-            const selected = [];
-            $(cElement).find('option:selected').each(function () {
-                let value = $(this).val();
-                selected.push(value);
-            });
-            for (const selectedKey in selected) {
-                Ajax.call("{{ route('api.ba.info') }}", {
-                    'ids': selected,
-                    'type': type
-                }, '{{ \App\Enum\MethodEnum::POST }}', function (response) {
-                    if (response.status === true) {
-                        $(cElement).closest('.main_data_holder').find('.data_holder').empty().html(response.html);
-                    }
-                });
+            if (type==='{{ \App\Enum\AcceleratorTypeEnum::INDIVIDUAL }}') {
+                individual_selected = selected.filter(val => val !== value);
+            }else{
+                company_selected = selected.filter(val => val !== value);
             }
         }
     }

@@ -85,13 +85,13 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
     Route::get('term-and-condition',function (){});
     Route::get('data-deletion',function (){});
 
-    Route::get('/investment',[InvestmentController::class,'index'])->name('investment.index');
+    Route::get('/investment', [InvestmentController::class, 'index'])->name('investment.index');
+    Route::get('/investment/basic',[InvestmentController::class,'basic'])->name('investment.basic');
     Route::get('/investment/product',[InvestmentController::class,'product'])->name('investment.product');
     Route::get('/investment/equity',[InvestmentController::class,'equity'])->name('investment.equity');
     Route::get('/investment/team', [InvestmentController::class, 'team'])->name('investment.team');
     Route::get('/investment/market', [InvestmentController::class, 'market'])->name('investment.market');
     Route::get('/investment/curiosity', [InvestmentController::class, 'curiosity'])->name('investment.curiosity');
-    Route::get('/investment/mentor', [InvestmentController::class, 'mentor'])->name('investment.mentor');
 
     Route::post('/investment/store',[InvestmentController::class,'store'])
         ->name('investment.store');

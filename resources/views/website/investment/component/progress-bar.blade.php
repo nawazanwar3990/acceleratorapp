@@ -3,7 +3,9 @@
     <h4 class="fw-bold">Investment</h4>
     <h6 class="fw-bold text-muted">
         @if($currentRoute=='website.investment.index')
-            Welcome
+            Mentor
+        @elseif($currentRoute=='website.investment.basic')
+            Basic Info
         @elseif($currentRoute=='website.investment.team')
             Team
         @elseif($currentRoute=='website.investment.product')
@@ -14,15 +16,18 @@
             Equity
         @elseif($currentRoute=='website.investment.curiosity')
             Curiosity
-        @elseif($currentRoute=='website.investment.mentor')
-            Mentor
         @endif
     </h6>
     @php $currentRoute = request()->route()->getName(); @endphp
     <ul class="progress-bar text-left">
         <li class="{{ $currentRoute=='website.investment.index'?'active-link':'in-active-link' }}">
             <a href="{{route('website.investment.index')}}">
-                Welcome
+                Mentor
+            </a>
+        </li>
+        <li class="{{ $currentRoute=='website.investment.basic'?'active-link':'in-active-link' }}">
+            <a href="{{route('website.investment.basic')}}">
+                Basic Info
             </a>
         </li>
         <li class="{{ $currentRoute=='website.investment.team'?'active-link':'in-active-link' }}">
@@ -48,11 +53,6 @@
         <li class="{{ $currentRoute=='website.investment.curiosity'?'active-link':'in-active-link' }}">
             <a href="{{route('website.investment.curiosity')}}">
                 Curiosity
-            </a>
-        </li>
-        <li class="{{ $currentRoute=='website.investment.mentor'?'active-link':'in-active-link' }}">
-            <a href="{{route('website.investment.mentor')}}">
-                Mentor
             </a>
         </li>
     </ul>

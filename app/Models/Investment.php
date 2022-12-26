@@ -72,4 +72,8 @@ class Investment extends Model
     {
         return json_decode($key, true);
     }
+    public function getMentorsAttribute($key)
+    {
+        return json_decode($key, true);
+    }
 }

@@ -161,15 +161,8 @@ class BaService
         return $model;
     }
 
-    public static function getBADropdown($type)
+    public static function getBaPaginateByType($type)
     {
-        $query = BA::join(TableEnum::USERS, 'ba.user_id', 'users.id')
-            ->where('ba.type', $type);
-        if ($type == AcceleratorTypeEnum::COMPANY) {
-            return $query->pluck('ba.company_name', 'ba.id');
-        } else {
-            return $query->select(DB::raw("CONCAT(users.first_name,' ',users.last_name) AS name"), 'ba.id')
-                ->pluck('name', 'id');
-        }
+        return BA::with('user')->where('type', $type)->paginate(10);
     }
 }
