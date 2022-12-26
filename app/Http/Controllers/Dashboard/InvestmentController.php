@@ -33,6 +33,7 @@ class InvestmentController extends Controller
     )
     {
         $this->makeMultipleDirectories('buildings', ['documents', 'images']);
+        $this->middleware('auth');
     }
 
     public function index(): Factory|View|Application
