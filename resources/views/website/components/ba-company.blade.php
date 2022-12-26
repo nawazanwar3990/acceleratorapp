@@ -26,7 +26,7 @@
                         <hr>
                     </div>
                     <div class="col-md-12">
-                        <h6 class="text-center fw-bold text-uppercase">
+                        <h6 class="text-center fw-bold text-uppercase" style="height: 16px;overflow: hidden;">
                             {{ $ba->company_name }}
                         </h6>
                         <div class="text-center">
