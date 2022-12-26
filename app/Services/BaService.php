@@ -12,6 +12,7 @@ use App\Models\VerifyUser;
 use App\Notifications\VerifyEmailLink;
 use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -162,8 +163,8 @@ class BaService
         return $model;
     }
 
-    public static function getBaPaginateByType($type): LengthAwarePaginator
+    public static function getBaPaginateByType($type): array|Collection
     {
-        return BA::with('user')->where('type', $type)->paginate(6);
+        return BA::with('user')->where('type', $type)->get();
     }
 }
