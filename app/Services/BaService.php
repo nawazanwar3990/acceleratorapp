@@ -164,6 +164,6 @@ class BaService
 
     public static function getBaPaginateByType($type): LengthAwarePaginator
     {
-        return BA::with('user')->where('type', $type)->paginate(9);
+        return BA::with('user')->where('type', $type)->paginate(6);
     }
 }

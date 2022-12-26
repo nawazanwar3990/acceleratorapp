@@ -38,6 +38,12 @@
                 </div>
             </div>
         </div>
+        @if($loop->last)
+            <div class="col-12 text-center">
+                <a class=""><i class="bx bx-chevron-left"></i></a>
+                <a class=""><i class="bx bx-chevron-right"></i></a>
+            </div>
+        @endif
     @empty
     @endforelse
 </div>

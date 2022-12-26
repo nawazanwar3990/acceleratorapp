@@ -11,7 +11,8 @@
                             <input class="form-check-input ba_individuals"
                                    type="checkbox"
                                    role="switch"
-                                   @if(is_array($company_mentor_array) && in_array($ba->id,$company_mentor_array)) checked @endif
+                                   @if(is_array($company_mentor_array) && in_array($ba->id,$company_mentor_array)) checked
+                                   @endif
                                    name="ba_companies[]"
                                    value="{{ $ba->id }}"
                                    id="ba-{{$ba->id}}"
@@ -38,6 +39,12 @@
                 </div>
             </div>
         </div>
+        @if($loop->last)
+            <div class="col-12 text-center">
+                <a class=""><i class="bx bx-chevron-left"></i></a>
+                <a class=""><i class="bx bx-chevron-right"></i></a>
+            </div>
+        @endif
     @empty
     @endforelse
 </div>
