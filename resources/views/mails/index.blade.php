@@ -1,5 +1,5 @@
 @include('mails.email-header')
-<table style="width:700px;margin: 20px auto;">
+<table style="width:700px;margin:0 auto;">
     <tr>
         <td colspan="20" style="text-align: center;">
             <h1>
