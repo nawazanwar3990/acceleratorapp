@@ -49,25 +49,32 @@
                         @if(count($startup_services)>0)
                             @foreach($startup_services as $service)
                                 <div class="col-lg-2 col-sm-4 mb-4">
-                                    <div class="card py-3 rounded-3 card-shadow h-100">
-                                        <img class="card-img-adjust py-2 px-1"
-                                             onerror="this.src='{{ asset('uploads/default_service.png') }}'"
-                                             src="{{ asset(sprintf('uploads/%s.png',$service->slug)) }}"
-                                             alt="Card image cap" style="width: 100%;height: 100%;max-height: 100px;">
-                                        <hr>
-                                        <div class="card-body">
+                                    <div class="card rounded-3 card-shadow h-100">
+                                        <img class="card-img-adjust p-2"
+                                            onerror="this.src='{{ asset('uploads/default_service.png') }}'"
+                                             src="{{ asset(str_replace('-','_',sprintf('images/services/%s.jpg',$service->slug))) }}"
+                                             alt="{{ $service->name  }}" style="width: 100%;height: 100px;">
+                                        <div class="card-body border-top">
                                             <h6 class="card-title text-center fs-6">{{ $service->name }}</h6>
                                         </div>
-                                        <div class="card-footer text-center"
-                                             style="background-color: transparent!important;">
+                                        <div class="card-footer text-center" style="background-color: transparent!important;">
                                             @if($service->slug =='incubator')
-                                                <a class="btn rounded-3 mb-2"
-                                                   href="{{route('website.offices.index',$startup_id)}}">{{ trans('general.explore') }}</a>
-                                                <a href="#"
-                                                   class="btn rounded-3 mb-2">{{ trans('general.Subscribe') }}</a>
+                                                <a class="btn rounded-3 mb-2" href="{{route('website.offices.index',$startup_id)}}">
+                                                    {{ trans('general.explore') }}
+                                                </a>
+                                                <a  href="{{ route('website.startups.services.subscription.apply',[$startup_for,$startup_type,$startup_id,$service->id]) }}" class="btn rounded-3 mb-2">
+                                                    {{ trans('general.Subscribe') }}
+                                                </a>
                                             @else
-                                                <a class="btn rounded-3 mb-2 card-btn">{{ trans('general.explore') }}</a>
-                                                <a class="btn rounded-3 mb-2 card-btn">{{ trans('general.Subscribe') }}</a>
+                                                <a class="btn rounded-3 mb-2 card-btn"
+                                                href="{{ route('website.startups.services.list',[$startup_for,$startup_type,$startup_id,$service->id]) }}">
+                                                    {{ trans('general.explore') }}
+                                                </a>
+                                                <a class="btn rounded-3 mb-2 card-btn"
+                                                   href="{{ route('website.startups.services.subscription.apply',[$startup_for,$startup_type,$startup_id,$service->id]) }}"
+                                                >
+                                                    {{ trans('general.Subscribe') }}
+                                                </a>
                                             @endif
                                         </div>
                                     </div>

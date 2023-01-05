@@ -7,6 +7,7 @@ use App\Enum\SubscriptionStatusEnum;
 use App\Models\BA;
 use App\Models\Freelancer;
 use App\Models\Mentor;
+use App\Models\Service;
 use App\Models\User;
 use App\Services\BaService;
 use App\Services\BuildingService;
@@ -45,21 +46,21 @@ class StartupController extends Controller
             case StartUpForEnum::BA:
                 $records = BA::whereHas('user', function ($query) {
                     $query->whereHas('subscription', function ($q) {
-                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED,SubscriptionStatusEnum::RENEW]);
+                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED, SubscriptionStatusEnum::RENEW]);
                     });
                 })->where('ba.type', $startup_type);
                 break;
             case StartUpForEnum::FREELANCER:
                 $records = Freelancer::whereHas('user', function ($query) {
                     $query->whereHas('subscription', function ($q) {
-                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED,SubscriptionStatusEnum::RENEW]);
+                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED, SubscriptionStatusEnum::RENEW]);
                     });
                 })->where('freelancers.type', $startup_type);
                 break;
             case StartUpForEnum::MENTOR:
                 $records = Mentor::whereHas('user', function ($query) {
                     $query->whereHas('subscription', function ($q) {
-                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED,SubscriptionStatusEnum::RENEW]);
+                        $q->whereIn('subscriptions.status', [SubscriptionStatusEnum::APPROVED, SubscriptionStatusEnum::RENEW]);
                     });
                 });
                 break;
@@ -70,8 +71,8 @@ class StartupController extends Controller
 
     public function services(
         Request $request,
-                $startup_for=null,
-                $startup_type=null,
+                $startup_for = null,
+                $startup_type = null,
                 $startup_id): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
@@ -87,6 +88,60 @@ class StartupController extends Controller
         ));
     }
 
+    public function listServices(
+        Request $request,
+                $startup_for = null,
+                $startup_type = null,
+                $startup_id,
+                $service_id
+    ): Factory|View|Application
+    {
+        $page = $this->pageService->findByCode('startup');
+        $service = Service::find($service_id);
+        return view('website.startups.services.list', compact(
+            'page',
+            'startup_for',
+            'startup_type',
+            'service',
+            'startup_id'
+        ));
+    }
+    public function listServicePlans(
+        Request $request,
+                $startup_for = null,
+                $startup_type = null,
+                $startup_id,
+                $service_id
+    ): Factory|View|Application
+    {
+        $page = $this->pageService->findByCode('startup');
+        $service = Service::find($service_id);
+        return view('website.startups.services.plans', compact(
+            'page',
+            'startup_for',
+            'startup_type',
+            'service',
+            'startup_id'
+        ));
+    }
+    public function applyServiceSubscription(
+        Request $request,
+                $startup_for = null,
+                $startup_type = null,
+                $startup_id,
+                $service_id
+    ): Factory|View|Application
+    {
+        $page = $this->pageService->findByCode('startup');
+        $service = Service::find($service_id);
+        return view('website.startups.services.subscription', compact(
+            'page',
+            'startup_for',
+            'startup_type',
+            'service',
+            'startup_id'
+        ));
+    }
     public function buildings($startup_id): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
@@ -104,7 +159,7 @@ class StartupController extends Controller
     public function offices($startup_id, $building_id = null, $floor_id = null): Factory|View|Application
     {
         $page = $this->pageService->findByCode('startup');
-        $offices = $this->officeService->startup_offices($startup_id,$building_id,$floor_id);
+        $offices = $this->officeService->startup_offices($startup_id, $building_id, $floor_id);
         return view('website.startups.offices.index', compact('offices', 'page', 'startup_id'));
     }
 

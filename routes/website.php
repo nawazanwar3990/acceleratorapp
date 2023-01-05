@@ -70,6 +70,12 @@ Route::group(['prefix' => '/', 'as' => 'website.'], function () {
         ->name('startups.index');
     Route::get('startups/{for?}/{type?}/{id}/services', [StartupController::class, 'services'])
         ->name('startups.services.index');
+    Route::get('startups/{for?}/{type?}/{id}/services/{service_id}', [StartupController::class, 'listServices'])
+        ->name('startups.services.list');
+    Route::get('startups/{for?}/{type?}/{id}/plans/{service_id}', [StartupController::class, 'listServicePlans'])
+        ->name('startups.services.plans');
+    Route::get('startups/{for?}/{type?}/{id}/subscription/{service_id}', [StartupController::class, 'applyServiceSubscription'])
+        ->name('startups.services.subscription.apply');
 
     Route::get('buildings/{user_id}', [StartupController::class, 'buildings'])
         ->name('buildings.index');
