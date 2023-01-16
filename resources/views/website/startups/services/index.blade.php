@@ -62,19 +62,19 @@
                                                 <a class="btn rounded-3 mb-2" href="{{route('website.offices.index',$startup_id)}}">
                                                     {{ trans('general.explore') }}
                                                 </a>
-                                                <a  href="{{ route('website.startups.services.subscription.apply',[$startup_for,$startup_type,$startup_id,$service->id]) }}" class="btn rounded-3 mb-2">
+                                               {{-- <a  href="{{ route('website.startups.services.subscription.apply',[$startup_for,$startup_type,$startup_id,$service->id]) }}" class="btn rounded-3 mb-2">
                                                     {{ trans('general.Subscribe') }}
-                                                </a>
+                                                </a>--}}
                                             @else
                                                 <a class="btn rounded-3 mb-2 card-btn"
                                                 href="{{ route('website.startups.services.list',[$startup_for,$startup_type,$startup_id,$service->id]) }}">
                                                     {{ trans('general.explore') }}
                                                 </a>
-                                                <a class="btn rounded-3 mb-2 card-btn"
+                                               {{-- <a class="btn rounded-3 mb-2 card-btn"
                                                    href="{{ route('website.startups.services.subscription.apply',[$startup_for,$startup_type,$startup_id,$service->id]) }}"
                                                 >
                                                     {{ trans('general.Subscribe') }}
-                                                </a>
+                                                </a>--}}
                                             @endif
                                         </div>
                                     </div>
